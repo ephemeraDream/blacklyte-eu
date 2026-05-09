@@ -1,0 +1,332 @@
+<style>
+    .blast-bounty-tabs{
+        position: sticky;
+        top: 100px;
+        z-index: 20;
+    }
+
+    {% if collection.handle == 'spring-sale' %}
+        @media(min-width: 1025px){
+            .shopify-section-group-header-group,
+            div.shopify-section-header-sticky {
+                position: relative !important;
+                top: 0 !important;
+            }
+            .blast-bounty-tabs{
+                top: 0px;
+            }
+        }
+        
+    {% endif %}
+
+    .section-{{ section.id }} .container-full{
+        padding: 15px 16%;
+    }
+
+    .section-{{ section.id }} .tab-lists{
+        display: flex;
+        justify-content: space-between;
+        position: relative;
+        align-items: center;
+    }
+
+    .section-{{ section.id }} .tab-lists .tab-item{
+        font-family: Poppins;
+        font-weight: 500;
+        font-style: Medium;
+        font-size: 16px;
+        line-height: normal;
+        letter-spacing: 0%;
+        text-align: center;
+        color: #fff;
+        transition: all .35s ease;
+        padding-left: 11px;
+        padding-right: 11px;
+        position: relative;
+        z-index: 2;
+            padding-top: 5px;
+    padding-bottom: 5px;
+    }
+    .section-{{ section.id }} .tab-lists .tab-item.tab-item-active{
+        color: #262629;
+        background: #fff;
+        border-radius: 100px;
+        transition: transform 0.45s cubic-bezier(0.23, 1, 0.32, 1), 
+                    width 0.45s cubic-bezier(0.23, 1, 0.32, 1);
+        pointer-events: none;
+    }
+
+    .section-{{ section.id }} .tab-lists div.tab-indicator {
+        display: block;
+        position: absolute;
+        z-index: 1;
+        background-color: #fff;
+        border-radius: 100px;
+        height: calc(100% - 40px);
+        top: 20px;
+        left: 0;
+        transition: transform 0.45s cubic-bezier(0.23, 1, 0.32, 1), 
+                    width 0.45s cubic-bezier(0.23, 1, 0.32, 1);
+        pointer-events: none;
+    }
+
+    {% comment %} iPad {% endcomment %}
+    @media(min-width: 768px) and (max-width: 1024px){
+        .section-{{ section.id }} .container-full{
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+        
+        .section-{{ section.id }} .tab-lists .tab-item{
+            font-size: 12px;  
+        }
+    }
+
+    {% comment %} iPhone {% endcomment %}
+    @media(max-width: 767px){
+        .section-{{ section.id }} .container-full{
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+        .section-{{ section.id }} .tab-lists{
+            overflow-x: scroll;
+            scrollbar-width: none; 
+            -ms-overflow-style: none; 
+            -webkit-overflow-scrolling: touch; 
+        }
+
+        .section-{{ section.id }} .tab-lists::-webkit-scrollbar {
+            display: none; 
+        }
+        .section-{{ section.id }} .tab-lists .tab-item{
+            font-size: 12px;
+            white-space: nowrap;
+        }
+        .blast-bounty-tabs{
+            top: 0;
+            z-index: 20;
+        }
+    }
+
+    {% comment %} small screen {% endcomment %}
+    @media(min-width: 1025px) and (max-width: 1480px){
+        .section-{{ section.id }} .container-full{
+            padding-left: 60px;
+            padding-right: 60px;
+        }
+    }
+
+</style>
+
+<section class="section-{{ section.id }}" id="{{ section.id }}" data-section-id="{{ section.id }}" style="background: {{ section.settings.sectionColor }}">
+    <div class="container-full tab-lists">
+        {% for block in section.blocks %}
+            {% if block.type == "item" %}
+                <a class="tab-item {% if forloop.first %}tab-item-active{% endif %}" id="{{ block.settings.itemTargetId }}" target="{{ block.settings.itemTargetId }}">
+                    {{ block.settings.itemTitle }}
+                </a>
+            {% endif %}
+        {% endfor %}
+        <div class="tab-indicator"></div>
+    </div>
+</section>
+
+<script>
+    $(document).ready(function() {
+        const $indicator = $('.tab-indicator');
+        const $container = $('.tab-lists');
+        {% comment %} 定义顶部偏移量，防止被固定导航栏遮挡（根据你 Header 的高度调整） {% endcomment %}
+        const headerOffset = 200; 
+
+        {% comment %} 滑块更新函数 {% endcomment %}
+        function updateIndicator($target) {
+            if (!$target.length) return;
+            const scrollLeft = $container.scrollLeft();
+            const width = $target.outerWidth();
+            const left = $target.position().left;
+            const actualLeft = left + scrollLeft;
+
+            $indicator.css({
+                'width': width + 'px',
+                'transform': `translateX(${actualLeft}px)`
+            });
+        }
+
+        {% comment %} 初始化位置 {% endcomment %}
+        setTimeout(() => {
+            updateIndicator($('.tab-item-active'));
+        }, 200);
+
+        {% comment %} 点击事件：同步滑块 + 平滑滚动 {% endcomment %}
+        $('.tab-item').on('click', function(e) {
+            e.preventDefault();
+            const $this = $(this);
+            const tabId = $this.attr('id');
+
+            {% comment %} 更新 UI 状态 {% endcomment %}
+            $('.tab-item').removeClass('tab-item-active');
+            $this.addClass('tab-item-active');
+            updateIndicator($this);
+
+            {% comment %} 目标匹配逻辑 (根据你的描述建立映射) {% endcomment %}
+            let $target;
+            
+            switch (tabId) {
+                case 'Best-Sellers-of-the-Season':
+                    {% comment %} 对应跳转到同名 ID 模块 {% endcomment %}
+                    $target = $('.collections-head-blast-bounty');
+                    break;
+                case 'Handpicked-Essentials':
+                    $target = $('.Innovation-Picks');
+                    break;
+                case 'Find-Your-2026-Setup':
+                    {% comment %} 跳转到 Class 模块 {% endcomment %}
+                    $target = $('.collections-prods.all-products-module');
+                    break;
+                case 'Bundle-Offers':
+                    $target = $('#bundle-head');
+                    break;
+                case 'Influencer-Spotlight':
+                    $target = $('.shopify-block.xmas-video-module');
+                    break;
+                case 'Verified-Reviews':
+                    $target = $('.shopify-block.xmas-reviews-blocks');
+                    break;
+            }
+
+            {% comment %} 执行平滑滚动 {% endcomment %}
+            if ($target && $target.length) {
+                const targetTop = $target.offset().top - headerOffset;
+                $('html, body').stop().animate({
+                    scrollTop: targetTop
+                }, 800);
+            }
+        });
+
+        {% comment %} 窗口缩放自适应 {% endcomment %}
+        $(window).on('resize', function() {
+            updateIndicator($('.tab-item-active'));
+        });
+
+        {% comment %} 滑动时对应的tab-item样式优化 {% endcomment %}
+        $(window).on('scroll', function() {
+            const scrollTop = $(window).scrollTop();
+            const scrollThreshold = scrollTop + headerOffset + 50;
+
+            const sections = [
+                { id: 'Best-Sellers-of-the-Season', target: $('.collections-head-blast-bounty') },
+                { id: 'Handpicked-Essentials', target: $('.Innovation-Picks') },
+                { id: 'Find-Your-2026-Setup', target: $('.collections-prods.all-products-module') },
+                { id: 'Bundle-Offers', target: $('#bundle-head') },
+                { id: 'Influencer-Spotlight', target: $('.shopify-block.xmas-video-module') },
+                { id: 'Verified-Reviews', target: $('.shopify-block.xmas-reviews-blocks') }
+            ];
+
+            let currentId = '';
+
+            sections.forEach(section => {
+                if (section.target.length) {
+                    const targetTop = section.target.offset().top;
+                    if (scrollThreshold >= targetTop) {
+                        currentId = section.id;
+                    }
+                }
+            });
+
+            if (currentId && !$('#' + currentId).hasClass('tab-item-active')) {
+                const $activeTab = $('#' + currentId);
+                
+                $('.tab-item').removeClass('tab-item-active');
+                $activeTab.addClass('tab-item-active');
+
+                updateIndicator($activeTab);
+
+                const $container = $('.tab-lists');
+                const scrollLeft = $container.scrollLeft();
+                const tabLeft = $activeTab.position().left;
+                
+                if (tabLeft < 0 || tabLeft > $container.width()) {
+                    $container.stop().animate({
+                        scrollLeft: scrollLeft + tabLeft - 20 
+                    }, 300);
+                }
+            }
+        });
+
+        {% comment %} sticky {% endcomment %}
+        const mobileQuery = window.matchMedia('(max-width: 767px)');
+        
+        const isTabletHiddenClass = 'shopify-section-header-sticky'
+        const $header = $('.section-header-mobile');
+        const $tabs = $('.blast-bounty-tabs');
+        const hiddenClass = 'shopify-section-header-hidden';
+
+        if (mobileQuery.matches && $header.length && $tabs.length) {
+            {% comment %} 定义调整位置的函数 {% endcomment %}
+            const adjustTabTop = () => {
+                {% comment %} 对应 Header 显示时的高度偏移 {% endcomment %}
+                if ($header.hasClass(hiddenClass)) {
+                    $tabs.css('top', '0px');
+                } else {
+                    $tabs.css('top', '50px'); 
+                }
+            };
+
+            {% comment %} 初始化执行一次，防止页面刷新时状态不匹配 {% endcomment %}
+            adjustTabTop();
+
+            {% comment %} 创建观察器：监控 class 属性的变化 {% endcomment %}
+            const observer = new MutationObserver((mutations) => {
+                mutations.forEach((mutation) => {
+                    if (mutation.attributeName === 'class') {
+                        adjustTabTop();
+                    }
+                });
+            });
+
+            {% comment %} 开始观察 {% endcomment %}
+            observer.observe($header[0], {
+                attributes: true
+            });
+        }
+
+    });
+</script>
+
+{% schema %}
+{
+    "name": "blast Bounty Tabs",
+    "class": "blast-bounty-tabs",
+    "settings": [
+        {
+            "type": "color",
+            "id": "sectionColor",
+            "label": "section Color",
+            "default": "#262626"
+        }
+    ],
+    "blocks": [
+        {
+            "type": "item",
+            "name": "item",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "itemTitle",
+                    "label": "item Title"
+                },
+                {
+                    "type": "text",
+                    "id": "itemTargetId",
+                    "label": "item Target ID"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "blast Bounty Tabs"
+        }
+    ]
+}
+{% endschema %}

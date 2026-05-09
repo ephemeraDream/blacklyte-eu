@@ -1,0 +1,83 @@
+{{ 'buypage-section-5.css' | asset_url | stylesheet_tag }}
+
+<div class="buypage_section_5">
+  <div class="buypage_section_5_head">
+    <div class="buypage_section_5_head_title">{{ section.settings.title }}</div>
+    <div class="buypage_section_5_head_text">{{ section.settings.text }}</div>
+  </div>
+  <div class="buypage_section_5_contain">
+    {% for block in section.blocks %}
+      <div class="buypage_section_5_contain_item">
+        <div class="buypage_section_5_contain_item_img">
+          {% render 'picture-simple',
+            image: block.settings.image,
+            image_mobile: block.settings.image,
+            mobile_widths: '350,450,550,650',
+            mobile_dpr: 1,
+            widths_sizes: '30vw'
+          %}
+          {% comment %}
+            {{-
+              block.settings.image
+              | image_url: width: block.settings.image.width
+              | image_tag: alt: block.settings.image.alt, loading: 'lazy'
+            -}}
+          {% endcomment %}
+        </div>
+        <div class="buypage_section_5_contain_item_title">{{ block.settings.title }}</div>
+        <div class="buypage_section_5_contain_item_text">{{ block.settings.text }}</div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "buypage section 5",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "title",
+      "label": "title"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "text"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "item",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "title",
+          "label": "title"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "text"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "image"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "buypage section 5"
+    }
+  ]
+}
+{% endschema %}

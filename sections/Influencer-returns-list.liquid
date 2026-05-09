@@ -1,0 +1,760 @@
+{% comment %}
+  达人返图 or 视频文件
+  功能介绍:
+    a. 点击可播放可暂停
+      I. 当前被点击的视频文件如果在播放状态则暂停播放, 如果在未播放状态则播放视频文件. 始终保持只播放一个视频文件.
+    b. 显示达人名称.
+    c. 当前视频播放完毕自动播放下一个.
+    d. 移动端显示轮播样式, 当前视频文件播放完自动轮播下一个, 始终播放当前页的第一个视频文件.
+{% endcomment %}
+<link rel="stylesheet" href="{{ 'component-fancybox.css' | asset_url }}" media="print" onload="this.media='all'">
+<noscript>{{ 'component-fancybox.css' | asset_url | stylesheet_tag }}</noscript>
+
+<style>
+  .Influencer-return {
+    padding: 100px 0;
+  }
+  .influencer_title {
+    font-size: 40px;
+    line-height: 50px;
+    color: #262629;
+    text-align: center;
+    font-weight: 600;
+    font-family: var(--font-family-3);
+  }
+  .influencer_desc{
+    font: 500 16px var(--font-family-3);
+    color: #262629;
+    line-height: 1.4;
+    margin-top: 10px;
+    text-align: center;
+    opacity: 0.7;
+  }
+  .Influencer-return .video-list-container {
+    margin-top: 60px;
+  }
+  .video-item-contain {
+    width: 33.333333vw;
+    position: relative;
+    {% comment %} margin-right: 10px; {% endcomment %}
+    cursor: pointer;
+  }
+  .video-item {
+    display: flex;
+    position: relative;
+    flex: 1;
+  }
+  .video-item .video-item-settings {
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+    object-fit: cover;
+  }
+  .video-item .focusable-play-button {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transfrom: translate(-50%, -50%);
+  }
+  .video-item .focusable-play-button.fwn-1oknevx {
+    background-color: rgba(255, 255, 255, 0.6);
+    border-radius: 50%;
+    border: 0px;
+    inset: 50% auto auto 50%;
+    box-sizing: border-box;
+    color: inherit;
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    margin: 0px !important;
+    padding: 0px !important;
+  }
+  .video-item .focusable-play-button .fwn-na8a98 {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+  }
+  .video-item .focusable-play-button .fwn-na8a98 svg {
+    width: 50px;
+    height: 50px;
+    fill: none;
+    stroke: none;
+  }
+  .person_info_container {
+    color: rgb(255, 255, 255);
+    text-shadow: rgba(0, 0, 0, 0.8) 0px 0px 4px;
+    position: absolute;
+    bottom: 20px;
+    left: 0;
+    text-align: center;
+    font-size: 24px;
+    font-weight: 600;
+    width: 100%;
+    line-height: 40px;
+  }
+
+  .video-item-contain {
+    display: flex !important;
+    flex-direction: column;
+    {% comment %} border: 1px solid #d5d5d5; {% endcomment %}
+    border-radius: 12px;
+    height: auto;
+    margin : 0 5px;
+  }
+
+  .Influencer-return .slick-slider .slick-list{
+    margin: 0 -5px;
+  }
+
+  .video-item-contain:hover {
+    border-color: #262629;
+  }
+
+  .video-item-contain.has_product .video-item .video-item-settings {
+    border-radius: 10px 10px 0 0;
+  }
+
+  .influencer_return_product {
+    border-radius: 0 0 12px 12px;
+    background: #f5f5f7;
+    padding: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex: 1;
+  }
+
+  .influencer_return_product_img {
+    width: 55px;
+    height: 55px;
+    background: #e0e0e0;
+    border-radius: 6px;
+    flex: 0 0 auto;
+  }
+
+  .influencer_return_product_img img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center center;
+  }
+
+  .influencer_return_product_title {
+    font-family: Roboto;
+    font-weight: 500;
+    font-style: Medium;
+    font-size: 14px;
+    leading-trim: NONE;
+    line-height: 20px;
+    letter-spacing: 0%;
+    color: #262629;
+  }
+
+  .influencer_return_product_price {
+    font-family: Roboto;
+    font-weight: 600;
+    font-style: SemiBold;
+    font-size: 12px;
+    leading-trim: NONE;
+    line-height: 100%;
+    letter-spacing: 0%;
+    color: #262629;
+    margin-top: 2px;
+    display: flex;
+    align-items: baseline;
+    gap: 5px;
+  }
+
+  .influencer_return_product_price_dp + .influencer_return_product_price_op {
+    font-family: Roboto;
+    font-weight: 400;
+    font-style: Regular;
+    font-size: 12px;
+    leading-trim: NONE;
+    line-height: 100%;
+    letter-spacing: 0%;
+    text-decoration: line-through;
+    color: #76767f;
+  }
+
+  .Influencer-return .slick-track {
+    display: flex;
+    align-items: stretch;
+  }
+
+  .Influencer-return-container {
+    max-width: 100%;
+    padding-left: 16%;
+    padding-right: 16%;
+  }
+  .Influencer-return .slick-arrow.slick-prev{
+    left: 4px;
+  }
+  .Influencer-return .slick-arrow.slick-next{
+    right: 4px;
+  }
+
+  .video-modal {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0,0,0,0.85);
+      backdrop-filter: blur(5px); /* 毛玻璃效果 */
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+  }
+
+  .video-modal.is-active {
+      opacity: 1;
+  }
+
+  .video-modal .modal-content-wrapper {
+      position: relative;
+      max-width: 90%;
+      max-height: 90%;
+      transform: scale(0.9);
+      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .video-modal.is-active .modal-content-wrapper {
+      transform: scale(1);
+      text-align: center;
+  }
+
+  .video-modal .modal-content-wrapper img {
+      width: auto;
+      height: auto;
+      max-width: 100%;
+      max-height: 90vh;
+      border-radius: 4px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+  }
+  .video-modal .modal-content-wrapper video{
+     height: 90vh;
+  }
+
+  .video-modal .video-modal-close {
+      position: absolute;
+      top: 20px;
+      right: 30px;
+      color: #fff;
+      font-size: 20px;
+      cursor: pointer;
+      z-index: 10001;
+  }
+
+
+  @media(min-width: 768px) and (max-width: 1024px){
+    .Influencer-return-container{
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+  }
+  @media (min-width: 1025px) and (max-width: 1480px){
+    .Influencer-return-container{
+      padding-left: var(--padding-left-1);
+      padding-right: var(--padding-right-1);
+    }
+  }
+  @media (max-width: 768px) {
+    .Influencer-return{
+      padding: 50px 0;
+    }
+    .video-item-contain{
+      width: 25vw;
+    }
+    .influencer_title{
+      font-size: 24px;
+      line-height: 30px;
+    }
+    .influencer_desc{
+      font-size: 14px;
+    }
+    .person_info_container{
+      font-size: 3.733vw;
+      line-height: 20px;
+      font-weight: 500;
+      bottom: 10px;
+    }
+
+    .Influencer-return-container{
+      padding-left: 5.33vw;
+      padding-right: 5.33vw;
+    }
+
+    .Influencer-return .video-list-container {
+      margin-top: 8vw;
+    }
+  }
+</style>
+<div class="Influencer-return" style="background: {{ section.settings.sectionBgColor }}">
+  <div class="Influencer-return-container {% if section.settings.container == 'fullwidth' %}container-full{% elsif section.settings.container == '1770' %}container-1770{% elsif section.settings.container == '1570' %}container-1570{% elsif section.settings.container == '1170' %}container-1170{% else %}container{% endif %}">
+    <h2 class="influencer_title">{{ section.settings.title }}</h2>
+    {% if section.settings.sectionDesc != blank %}
+      <div class="influencer_desc">{{ section.settings.sectionDesc }}</div>
+    {% endif %}
+    <div class="video-list-container">
+      {%- for block in section.blocks -%}
+        {% if block.type == "blcok" %}
+          <div class="video-item-contain{% if block.settings.product != blank %} has_product{% endif %}">
+            <div class="video-item" data-modal-url="{{ block.settings.url_upload.sources[0].url }}">
+              {% if block.settings.url_upload != blank %}
+                <video
+                  class="video-item-settings Influencer-lazy-video"
+                  data-src="{{ block.settings.url_upload.sources[0].url }}"
+                  data-poster="{{ block.settings.video_poster_url }}"
+                  muted
+                  loop
+                  playsinline
+                  preload="none"
+                ></video>
+              {% else %}
+                <video
+                  class="video-item-settings Influencer-lazy-video"
+                  data-src="{{ block.settings.video_url }}"
+                  data-poster="{{ block.settings.video_poster_url }}"
+                  muted
+                  loop
+                  playsinline
+                  preload="none"
+                ></video>
+              {% endif %}
+              {% if block.settings.show_playicon %}
+                <button aria-label="Play Video" class="focusable-play-button fwn-1oknevx">
+                  <div role="presentation" class="accessible-icon">
+                    <div class="fwn-na8a98">
+                      <svg role="img" width="100%" height="100%" viewBox="0 0 40 40">
+                        <title>play</title>
+                        <circle cx="50%" cy="50%" r="50%" fill="rgba(64 64 64 / 50%)"></circle>
+                        <path filter="" d="M14.9765 29.3996C14.1117 29.3996 13.5 28.7316 13.5 27.654V12.2456C13.5 11.1788 14.1117 10.5 14.9765 10.5C15.3703 10.5 15.7224 10.6277 16.1365 10.8604L28.7505 18.312C29.6575 18.8615 30.0372 19.271 30.0372 19.9498C30.0372 20.6286 29.6575 21.0489 28.7505 21.5876L16.2949 28.9471C15.8097 29.238 15.4195 29.3996 14.9765 29.3996Z" fill="currentColor"></path>
+                      </svg>
+                    </div>
+                    <span style="contain: paint; opacity: 0; overflow: hidden; margin: 0px; padding: 0px; height: 0px; width: 0px; font-size: 0px; clip: rect(0px, 0px, 0px, 0px); border: none; position: fixed; top: -200vh; left: -200vw;"
+                      >Play</span
+                    >
+                  </div>
+                </button>
+              {% endif %}
+              <div class="person_info_container">{{ block.settings.influencer_name }}</div>
+            </div>
+            {% if block.settings.product != blank %}
+              {% assign product_options = block.settings.product_options | split: ',' %}
+              {% assign product_variant = '' %}
+
+              {% for variant in block.settings.product.variants %}
+                {% assign match = true %}
+
+                {% if product_options.size > 0 %}
+                  {% if variant.option1 != product_options[0] %}
+                    {% assign match = false %}
+                  {% endif %}
+                {% endif %}
+
+                {% if product_options.size > 1 %}
+                  {% if variant.option2 != product_options[1] %}
+                    {% assign match = false %}
+                  {% endif %}
+                {% endif %}
+
+                {% if product_options.size > 2 %}
+                  {% if variant.option3 != product_options[2] %}
+                    {% assign match = false %}
+                  {% endif %}
+                {% endif %}
+
+                {% if match %}
+                  {% assign product_variant = variant %}
+                  {% break %}
+                {% endif %}
+              {% endfor %}
+              <a class="influencer_return_product" href="{{ product_variant.url }}">
+                <div class="influencer_return_product_img">
+                  {{-
+                    product_variant.featured_image
+                    | image_url: width: product_variant.featured_image.width
+                    | image_tag: alt: block.settings.product.title
+                  -}}
+                </div>
+                {% if block.settings.product != blank and block.settings.product.available %}
+                  <div class="influencer_return_product_info">
+                    <div class="influencer_return_product_title">{{ block.settings.product.title }}</div>
+                    <div class="influencer_return_product_price">
+                      {% if product_variant.metafields.custom.discount_price != blank %}
+                        <div class="influencer_return_product_price_dp">
+                          {{
+                            product_variant.price
+                            | minus: product_variant.metafields.custom.discount_price.value
+                            | money_without_trailing_zeros
+                          }}
+                        </div>
+                      {% endif %}
+                      <div class="influencer_return_product_price_op">
+                        {{ product_variant.price | money_without_trailing_zeros }}
+                      </div>
+                    </div>
+                  </div>
+                {% endif %}
+              </a>
+            {% endif %}
+          </div>
+        {% endif %}
+        
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+
+<div id="videoModal" class="video-modal">
+    <span class="video-modal-close">&times;</span>
+    <div class="modal-content-wrapper">
+        <video id="modalVideo" 
+            controls 
+            autoplay 
+            muted 
+            playsinline 
+            width="100%" 
+            height="auto">
+            <source src="" type="application/x-mpegURL"> <source src="" type="video/mp4"> Your browser does not support the video tag.
+        </video>
+        <div class="modal-loader"></div> 
+    </div>
+</div>
+
+<script src="{{ 'hls.js' | asset_url }}" defer></script>
+
+<script defer>
+  (function ($) {
+    const loadVideoSrc = (video) => {
+      const dataSrc = video.getAttribute('data-src');
+      const dataPoster = video.getAttribute('data-poster');
+      if (!dataSrc || video.getAttribute('data-loaded')) return;
+      video.setAttribute('poster', dataPoster);
+      if (Hls.isSupported()) {
+        const hls = new Hls();
+        hls.loadSource(dataSrc);
+        hls.attachMedia(video);
+      } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+        {% comment %} Safari 原生支持 {% endcomment %}
+        video.src = dataSrc;
+      } else {
+        console.warn('该浏览器不支持 HLS');
+        return;
+      }
+
+      video.setAttribute('data-loaded', 'true');
+    };
+
+
+    const playVideo = (video) => {
+      if (!video) return;
+      video.play().catch((e) => console.warn('播放失败:', e));
+    };
+
+    const pauseAllVideos = () => {
+      $('.video-list-container video').each(function () {
+        this.pause();
+        this.currentTime = 0;
+        $(this).closest('.video-item').find('.focusable-play-button').css('opacity', 1);
+      });
+    };
+
+    const playFirstVisibleVideo = () => {
+      const video = $('.slick-current video.Influencer-lazy-video')[0];
+      if (video) {
+        loadVideoSrc(video);
+        playVideo(video);
+        $(video).closest('.video-item').find('.focusable-play-button').css('opacity', 0);
+      }
+    };
+
+    {% comment %} 初始化 slick {% endcomment %}
+    $('.video-list-container').slick({
+      infinite: true,
+      slidesToShow: 4,
+      slidesToScroll: 1,
+      nextArrow: window.arrows.icon_next,
+      prevArrow: window.arrows.icon_prev,
+      dots: false,
+      autoplay: false,
+      responsive: [
+        {
+          breakpoint: 768,
+          settings: {
+            slidesToShow: 2,
+            slidesToScroll: 1,
+            arrows: false,
+            dots: true,
+          },
+        },
+      ],
+    });
+
+    {% comment %} 切换时只播放当前页第一个视频 {% endcomment %}
+    $('.video-list-container').on('afterChange', function (event, slick, currentSlide) {
+      pauseAllVideos();
+      playFirstVisibleVideo();
+    });
+
+    {% comment %} 初始化时播放第一个视频 {% endcomment %}
+    $(document).ready(function () {
+      setTimeout(() => {
+        playFirstVisibleVideo();
+      }, 200);
+    });
+
+    {% comment %} 点击视频：懒加载 + 播放/暂停切换 {% endcomment %}
+    $('.video-list-container').on('click', '.video-item', function () {
+      const video = $(this).find('video.Influencer-lazy-video')[0];
+      if (!video) return;
+
+      const button = $(this).find('.focusable-play-button');
+
+      {% comment %} 若未加载 src，先加载 {% endcomment %}
+      if (!video.getAttribute('data-loaded')) {
+        loadVideoSrc(video);
+      }
+
+      {% comment %} 暂停其他视频 {% endcomment %}
+      $('.video-list-container video').each(function () {
+        if (this !== video) {
+          this.pause();
+          $(this).closest('.video-item').find('.focusable-play-button').css('opacity', 1);
+        }
+      });
+
+      {% comment %} // 切换当前视频播放状态 {% endcomment %}
+      if (video.paused) {
+        video.play();
+        button.css('opacity', 0);
+      } else {
+        video.pause();
+        button.css('opacity', 1);
+      }
+    });
+
+    {% comment %} // 使用 IntersectionObserver 提前懒加载当前页第一个视频（仅加载不播放） {% endcomment %}
+    if ('IntersectionObserver' in window) {
+      const observer = new IntersectionObserver((entries, obs) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const video = entry.target;
+            loadVideoSrc(video);
+            obs.unobserve(video);
+          }
+        });
+      }, {
+        threshold: 0.5,
+      });
+
+      document.querySelectorAll('.video-list-container video.Influencer-lazy-video').forEach((video) => {
+        observer.observe(video);
+      });
+    }
+
+    {% comment %} // 鼠标 hover 播放当前视频 {% endcomment %}
+    if (window.innerWidth > 768) {
+      $('.video-list-container').on('mouseenter', '.video-item', function () {
+        var currentVideo = $(this).find('video')[0];
+
+        $('.video-list-container video').each(function () {
+          var button = $(this).closest('.video-item').find('button');
+          if (this !== currentVideo) {
+            this.pause();
+            button.css('opacity', 1);
+          }
+        });
+
+        currentVideo.play();
+        $(this).find('.focusable-play-button').css('opacity', 0);
+      });
+    }
+
+    document.addEventListener('click', (e) => {
+        {% comment %} 匹配点击元素 {% endcomment %}
+        const videoItem = e.target.closest('.video-item');
+        if (!videoItem) return;
+
+        const videoUrl = videoItem.getAttribute('data-modal-url');
+        const modal = document.getElementById('videoModal');
+        const video = document.getElementById('modalVideo');
+
+        if (!videoUrl || !video) return;
+
+        {% comment %} 显示弹窗 {% endcomment %}
+        modal.style.display = "flex";
+        modal.offsetHeight; 
+        modal.classList.add('is-active');
+        document.body.style.overflow = 'hidden';
+
+        {% comment %} HLS 播放逻辑 {% endcomment %}
+        if (videoUrl.includes('.m3u8')) {
+            if (Hls.isSupported()) {
+                const hls = new Hls();
+                hls.loadSource(videoUrl);
+                hls.attachMedia(video);
+                hls.on(Hls.Events.MANIFEST_PARSED, () => video.play());
+                
+                {% comment %} 绑定到 video 对象以便关闭时销毁 {% endcomment %}
+                video._hls = hls;
+            } 
+            {% comment %} 针对 Safari 原生支持 {% endcomment %}
+            else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+                video.src = videoUrl;
+                video.addEventListener('loadedmetadata', () => video.play());
+            }
+        } else {
+            {% comment %} 普通 MP4 逻辑 {% endcomment %}
+            video.src = videoUrl;
+            video.play();
+        }
+    });
+
+    {% comment %} 关闭弹窗时彻底清理 {% endcomment %}
+    const closeBtn = document.querySelector('.video-modal-close');
+    
+    const closeModal = () => {
+      const modal = document.getElementById('videoModal');
+      const video = document.getElementById('modalVideo');
+        modal.classList.remove('is-active');
+        video.pause();
+
+        if (video._hls) {
+            video._hls.destroy(); 
+            delete video._hls;
+        }
+
+        setTimeout(() => {
+            modal.style.display = "none";
+            video.src = "";
+            video.load();
+        }, 300);
+
+        document.body.style.overflow = '';
+    };
+  
+    closeBtn.onclick = closeModal;
+
+  })(jQuery);
+
+  
+</script>
+
+{% schema %}
+{
+  "name": "Influencer Returns",
+  "tag": "section",
+  "max_blocks": 50,
+  "settings": [
+    {
+      "type": "color",
+      "id": "sectionBgColor",
+      "label": "section Background Color",
+      "default": "#f2f2f2"
+    },
+    {
+      "type": "select",
+      "id": "container",
+      "label": "t:sections.layout.container.option",
+      "default": "container",
+      "options": [
+        {
+          "value": "container",
+          "label": "t:sections.layout.container.option1"
+        },
+        {
+          "value": "1170",
+          "label": "t:sections.layout.container.option4"
+        },
+        {
+          "value": "1570",
+          "label": "Width (1570px)"
+        },
+        {
+          "value": "1770",
+          "label": "t:sections.layout.container.option3"
+        },
+        {
+          "value": "fullwidth",
+          "label": "t:sections.layout.container.option2"
+        }
+      ]
+    },
+    {
+      "type": "textarea",
+      "id": "title",
+      "label": "Section title",
+      "default": "Section title"
+    },
+    {
+      "type": "text",
+      "id": "sectionDesc",
+      "label": "Section Descripe",
+      "default": "Trusted by the community for peak performance, style, comfort, and reliability"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "blcok",
+      "name": "item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "video_url",
+          "label": "video URL",
+          "info": "Video URL"
+        },
+        {
+          "type": "text",
+          "id": "video_poster_url",
+          "label": "video poster URL",
+          "info": "video poster url"
+        },
+        {
+          "type": "text",
+          "id": "influencer_name",
+          "label": "Influencer Name",
+          "info": "Influencer Name"
+        },
+        {
+          "type": "video",
+          "id": "url_upload",
+          "label": "video upload"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_playicon",
+          "label": "show playicon",
+          "default": true
+        },
+        {
+          "type": "product",
+          "id": "product",
+          "label": "product"
+        },
+        {
+          "type": "text",
+          "id": "product_options",
+          "label": "product options"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Blacklyte Influencer Returns"
+    }
+  ]
+}
+{% endschema %}

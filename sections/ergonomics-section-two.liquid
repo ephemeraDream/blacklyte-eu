@@ -1,0 +1,110 @@
+{{ 'ergonomics-section-two.css' | asset_url | stylesheet_tag }}
+
+<div class="ergonomics_section_two">
+  {%- for block in section.blocks -%}
+    {%- case block.type -%}
+      {% when 'first_part' %}
+        <div class="first_part">
+          <div class="first_part_title">{{ block.settings.title }}</div>
+          <div class="first_part_subtitle">{{ block.settings.subtitle }}</div>
+          <div class="first_part_text">{{ block.settings.text }}</div>
+          {{-
+            block.settings.image
+            | image_url: width: block.settings.image.width
+            | image_tag: alt: block.settings.image.alt, class: 'first_part_img'
+          -}}
+        </div>
+      {%- when 'second_part' -%}
+        <div class="second_part">
+          <div>
+            <div class="second_part_title">{{ block.settings.title }}</div>
+            <div class="second_part_text">{{ block.settings.left_text }}</div>
+            <div class="pressure_box">
+              <div class="pressure_color_box">
+                <div class="pressure_color_item"></div>
+                <div class="pressure_color_item"></div>
+                <div class="pressure_color_item"></div>
+                <div class="pressure_color_item"></div>
+              </div>
+              <div class="pressure_txt_box">
+                <span>Minimal pressure</span>
+                <span>Substantial pressure</span>
+                <span>Concentrated pressure</span>
+              </div>
+            </div>
+          </div>
+          {{-
+            block.settings.image
+            | image_url: width: block.settings.image.width
+            | image_tag: alt: block.settings.image.alt, class: 'second_part_img'
+          -}}
+        </div>
+    {%- endcase -%}
+  {%- endfor -%}
+</div>
+
+{% schema %}
+{
+  "name": "ergonomics section two",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [],
+  "blocks": [
+    {
+      "type": "first_part",
+      "name": "first part",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "title",
+          "label": "title"
+        },
+        {
+          "type": "textarea",
+          "id": "subtitle",
+          "label": "subtitle"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "text"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "image"
+        }
+      ]
+    },
+    {
+      "type": "second_part",
+      "name": "second part",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "title",
+          "label": "title"
+        },
+        {
+          "type": "textarea",
+          "id": "left_text",
+          "label": "left text"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "image"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "ergonomics section two"
+    }
+  ]
+}
+{% endschema %}

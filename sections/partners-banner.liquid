@@ -1,0 +1,73 @@
+{{ 'section-partners-banner.css' | asset_url | stylesheet_tag }}
+
+<div class="partners_banner">
+  <div class="partners_banner_contain">
+    {% for block in section.blocks %}
+      {{-
+        block.settings.file_image
+        | image_url: width: block.settings.file_image.width
+        | image_tag: alt: block.settings.title, class: 'partners_banner_contain_item'
+      -}}
+    {% endfor %}
+    {% for block in section.blocks %}
+      {{-
+        block.settings.file_image
+        | image_url: width: block.settings.file_image.width
+        | image_tag: alt: block.settings.title, class: 'partners_banner_contain_item'
+      -}}
+    {% endfor %}
+  </div>
+  <div class="partners_banner_info">
+    <div class="partners_banner_title">{{ section.settings.title }}</div>
+    <div class="partners_banner_text">{{ section.settings.text }}</div>
+  </div>
+</div>
+
+<script>
+  (() => {
+    const banner = document.querySelector('.partners_banner_contain');
+    const firstGroupWidth = banner.scrollWidth / 2;
+    banner.style.setProperty('--scroll-width', `-${firstGroupWidth}px`);
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "partners banner",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "title",
+      "label": "title"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "text"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "item",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "file_image",
+          "label": "file image"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "partners banner"
+    }
+  ]
+}
+{% endschema %}

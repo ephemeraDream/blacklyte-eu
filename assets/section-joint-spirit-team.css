@@ -1,0 +1,307 @@
+.spirit_team {
+  width: 100%;
+  padding: 7.5vw 0 0vw;
+  background-color: #0c0c0c;
+}
+
+.spirit_team .spirit_team_achievements_title {
+  font-family: DINCond-Bold;
+  font-weight: 500;
+  font-style: Regular;
+  font-size: 2.0833vw;
+  leading-trim: NONE;
+  line-height: 100%;
+  letter-spacing: 0.32px;
+  text-align: center;
+  background: linear-gradient(180deg, #FDEDCD 0%, #B6A583 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.spirit_team .spirit_team_achievements_text {
+  font-family: Roboto;
+  font-weight: 500;
+  font-style: Medium;
+  font-size: clamp(14px, 0.833vw, 0.833vw);
+  leading-trim: NONE;
+  line-height: clamp(22px, 1.25vw, 1.25vw);
+  letter-spacing: 0.32px;
+  text-align: center;
+  color: rgba(255, 255, 255, .7);
+  margin: 1.25vw auto 0;
+  width: 43.125vw;
+}
+
+.spirit_team .spirit_team_achievements_contain {
+  display: flex;
+  gap: 1.875vw;
+  margin-top: 1.875vw;
+}
+
+.spirit_team .spirit_team_achievements_item {
+  flex: 1;
+}
+
+.spirit_team .spirit_team_achievements_item_img {
+  width: 100%;
+  height: 25vw;
+}
+
+.spirit_team .spirit_team_achievements_item_img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  transition: transform .4s ease-in-out;
+}
+
+.spirit_team .spirit_team_achievements_item_title {
+  font-family: Roboto;
+  font-weight: 500;
+  font-style: Medium;
+  font-size: clamp(14px, 0.833vw, 0.833vw);
+  leading-trim: NONE;
+  line-height: clamp(22px, 1.25vw, 1.25vw);
+  letter-spacing: 0.32px;
+  color: rgba(255, 255, 255, .7);
+  margin-top: 0.9375vw;
+}
+
+.spirit_team .spirit_team_team {
+  display: flex;
+  align-items: center;
+  margin-top: 7.96875vw;
+  padding-left: 10.828125vw;
+  padding-right: 20.359375vw;
+  gap: 3.234375vw;
+}
+
+.spirit_team .spirit_team_team_img {
+  width: 38.75vw;
+  height: 32.546875vw;
+  object-fit: cover;
+  object-position: center center;
+}
+
+.spirit_team .spirit_team_team_contian_title {
+  font-family: DINCond-Bold;
+  font-weight: 500;
+  font-style: Regular;
+  font-size: 2.0833vw;
+  leading-trim: NONE;
+  line-height: 3.020833vw;
+  letter-spacing: 0.32px;
+  background: linear-gradient(180deg, #FDEDCD 0%, #B6A583 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.spirit_team .spirit_team_team_contian_text {
+  font-family: Roboto;
+  font-weight: 500;
+  font-style: Medium;
+  font-size: clamp(14px, 0.833vw, 0.833vw);
+  leading-trim: NONE;
+  line-height: clamp(22px, 1.25vw, 1.25vw);
+  letter-spacing: 0.32px;
+  color: rgba(255, 255, 255, .7);
+  margin-top: 1.359375vw;
+}
+
+.spirit_team .spirit_team_team_contian_btn {
+  padding: 0.9375vw 3.484375vw;
+  background: linear-gradient(90deg, #fdedcd 0%, #b6a583 100%);
+  border-radius: 2.34375vw;
+  font-family: Roboto;
+  font-weight: 500;
+  font-style: Medium;
+  font-size: 1.041667vw;
+  leading-trim: NONE;
+  line-height: 1.25vw;
+  letter-spacing: 0.32px;
+  color: #000;
+  margin-top: 1.515625vw;
+  display: inline-block;
+}
+
+.spirit_team .spirit_team_slick {
+  position: relative;
+  margin-top: 4.109375vw;
+  height: 38.015625vw;
+}
+
+.spirit_team .spirit_team_slick_contain {
+  display: flex;
+  gap: 1.5625vw;
+}
+
+.spirit_team .spirit_team_slick_nav {
+  width: 57.96875vw;
+  height: calc(100% - 18.75vw);
+  background: linear-gradient(90deg, rgba(12, 12, 12, 0) 0%, #0C0C0C 100%);
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+
+.spirit_team .spirit_team_slick_nav svg {
+  width: 2.921875vw;
+  height: 2.921875vw;
+  cursor: pointer;
+  position: absolute;
+  top: 6.828125vw;
+}
+
+.spirit_team .spirit_team_slick_nav_left {
+  right: 12.65625vw;
+}
+
+.spirit_team .spirit_team_slick_nav_right {
+  right: 8.75vw;
+}
+
+.spirit_team .spirit_team_slick_contain_item {
+  width: 24.015625vw;
+  margin-right: 1.5625vw;
+}
+
+.spirit_team .spirit_team_slick_contain_item img {
+  width: 100%;
+  height: 18.75vw;
+  object-fit: cover;
+  object-position: center center;
+}
+
+.spirit_team .spirit_team_slick_contain_item .spirit_team_team_contian_text {
+  margin-top: 0.515625vw;
+}
+
+.spirit_team .spirit_team_slick_contain_item_title {
+  font-family: Roboto;
+  font-weight: 600;
+  font-style: SemiBold;
+  font-size: clamp(16px, 1.145833vw, 1.145833vw);
+  leading-trim: NONE;
+  line-height: clamp(17.45px, 1.25vw, 1.25vw);
+  letter-spacing: 0.32px;
+  color: #fff;
+  margin-top: 1.765625vw;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .spirit_team .spirit_team_achievements_item_img:hover img {
+    transform: scale(1.1);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .spirit_team {
+    padding: 20vw 7.2vw 23.2vw;
+  }
+
+  .spirit_team .spirit_team_achievements_title {
+    font-size: 8vw;
+    line-height: 6.4vw;
+  }
+
+  .spirit_team .spirit_team_achievements_text {
+    width: 100%;
+    font-size: 14px;
+    line-height: 22px;
+    margin-top: 4vw;
+  }
+
+  .spirit_team .spirit_team_achievements_contain {
+    flex-wrap: wrap;
+    margin-top: 12vw;
+  }
+
+  .spirit_team .spirit_team_achievements_item {
+    flex: 0 0 100%;
+  }
+
+  .spirit_team .spirit_team_achievements_item_img {
+    height: 104vw;
+  }
+
+  .spirit_team .spirit_team_achievements_item_title {
+    margin-top: 4vw;
+  }
+
+  .spirit_team .spirit_team_team {
+    flex-wrap: wrap;
+    margin-top: 0;
+    margin-left: 0;
+    padding: 0;
+  }
+
+  .spirit_team .spirit_team_team_img {
+    height: 118.4vw;
+    width: 100%;
+  }
+
+  .spirit_team .spirit_team_team_contian_title {
+    font-size: 8vw;
+    line-height: 10.67vw;
+  }
+
+  .spirit_team .spirit_team_team_contian_text {
+    margin-top: 1.6vw;
+  }
+
+  .spirit_team .spirit_team_slick {
+    margin-top: 12vw;
+    height: auto;
+  }
+
+  .spirit_team .spirit_team_slick_contain_item {
+    width: 100%;
+  }
+
+  .spirit_team .spirit_team_slick_contain_item img {
+    height: 103.76vw;
+  }
+
+  .spirit_team .slick-slider .slick-track {
+    width: 100%;
+  }
+
+  .spirit_team .spirit_team_slick_contain_item .spirit_team_team_contian_text {
+    margin-top: 1.765625vw;
+  }
+
+  .spirit_team .spirit_team_slick_contain_item_title {
+    font-size: 4.26667vw;
+    line-height: 4.65333vw;
+    margin-top: 4vw;
+  }
+
+  .spirit_team .spirit_team_slick_nav {
+    position: relative;
+    width: 100%;
+    height: 37.04vw;
+    right: 0;
+  }
+
+  .spirit_team .spirit_team_slick_nav svg {
+    width: 14.96vw;
+    height: 14.96vw;
+    top: 4vw;
+  }
+
+  .spirit_team .spirit_team_slick_nav_left {
+    left: 23.76vw;
+  }
+
+  .spirit_team .spirit_team_slick_nav_right {
+    right: 23.76vw;
+  }
+
+  .spirit_team .spirit_team_team_contian_btn {
+    padding: 3.76vw 17.84vw;
+    font-size: 5.33vw;
+    line-height: 6.4vw;
+    border-radius: 12vw;
+    margin-top: 5.6vw;
+  }
+}

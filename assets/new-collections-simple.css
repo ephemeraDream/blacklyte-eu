@@ -1,0 +1,409 @@
+div.all-gaming-chairs-new-collections .container-full .all_product_toolbar_container {
+  background-color: #f5f5f5;
+  padding: 0 7.296875vw;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+div.all-gaming-chairs-new-collections .collection-filters__item.facets__wrapper {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+#CollectionProductGrid .page-sidebar.page-sidebar-left {
+  max-width: none;
+  display: flex;
+  padding: 7px 0;
+  width: auto;
+}
+
+div.all-gaming-chairs-new-collections .container-full .all_product_toolbar_container:after {
+  display: none;
+}
+
+#CollectionProductGrid .filter_title {
+  display: flex;
+  align-items: center;
+  gap: clamp(5.4px, 0.421875vw, 0.421875vw);
+  font-family: Poppins;
+  font-weight: 500;
+  font-style: Medium;
+  font-size: clamp(12px, 0.7291667vw, 0.7291667vw);
+  leading-trim: NONE;
+  letter-spacing: 0%;
+  color: #262629;
+  margin-right: clamp(22px, 1.71875vw, 1.71875vw);
+}
+
+#CollectionProductGrid .filter_title svg {
+  width: clamp(13.4px, 1.046875vw, 1.046875vw);
+  height: clamp(13.4px, 1.046875vw, 1.046875vw);
+}
+
+div.all-gaming-chairs-new-collections .sidebarBlock-heading,
+.toolbar .toolbar-label,
+.toolbar .toolbar-dropdown .label-text {
+  font-family: Poppins;
+  font-weight: 500 !important;
+  font-style: Medium;
+  font-size: clamp(12px, 0.7291667vw, 0.7291667vw) !important;
+  leading-trim: NONE;
+  letter-spacing: 0%;
+  color: #262629;
+  line-height: 29px;
+}
+
+.toolbar .toolbar-dropdown .label-tab .icon-dropdown {
+  right: 45px !important;
+}
+
+div.all-gaming-chairs-new-collections .collection-filters__item.facets__wrapper .sidebarBlock.js-filter {
+  top: 2px;
+}
+
+.new-chairs-collection-section .header-cont {
+  padding: 0;
+  height: 0;
+  z-index: 1;
+  border: none;
+  padding-right: 7.296875vw;
+}
+
+.new-chairs-collection-section .header-cont .header-menu {
+  visibility: hidden;
+}
+
+.new-chairs-collection-section .header-cont .compare-cont-modal {
+  font-family: Poppins;
+  font-weight: 500;
+  font-style: Medium;
+  font-size: clamp(14px, 0.83333vw, 0.83333vw);
+  leading-trim: CAP_HEIGHT;
+  line-height: 20px;
+  letter-spacing: 0%;
+  vertical-align: middle;
+  position: relative;
+  top: 20px;
+}
+
+.new-chairs-collection-section .header-cont .compare-cont-modal .icon svg {
+  width: clamp(10.6px, 0.828125vw, 0.828125vw);
+  height: clamp(10.6px, 0.828125vw, 0.828125vw);
+  margin-left: clamp(6.6px, 0.515625vw, 0.515625vw);
+}
+
+
+
+div.all-gaming-chairs-new-collections .container-full .collection {
+  background-color: #f5f5f5;
+  padding: 0 7.296875vw;
+  border-top: 0.5px solid #2626294D;
+}
+
+#CollectionProductGrid .productGrid {
+  margin: 0;
+}
+
+#CollectionProductGrid .productGrid.column-5 .product {
+  margin: 0;
+  padding: 0;
+  border: 0.5px solid #2626294D;
+  border-top: none;
+}
+
+#CollectionProductGrid .productGrid.column-5 .product:not(:nth-child(4n + 1)) {
+  border-left: none;
+}
+
+.new-chairs-collection-section .show_popup_lists {
+  visibility: hidden;
+}
+
+#CollectionProductGrid .productGrid.column-5 .product {
+  width: 25%;
+}
+
+div.all-gaming-chairs-new-collections .collection .card-information {
+  padding: 0
+}
+
+#CollectionProductGrid .card-information__wrapper {
+  text-align: center;
+}
+
+div.all-gaming-chairs-new-collections .card-title {
+  font-family: Roboto;
+  font-weight: 500;
+  font-style: Medium;
+  font-size: clamp(16px, 0.9375vw, 0.9375vw);
+  leading-trim: NONE;
+  line-height: 1;
+  letter-spacing: 0%;
+  vertical-align: middle;
+  color: #262629;
+}
+
+div.all-gaming-chairs-new-collections .collection_all_variant_name {
+  font-family: Roboto;
+  font-weight: 400;
+  font-style: Regular;
+  font-size: clamp(12px, 0.7291667vw, 0.7291667vw);
+  leading-trim: NONE;
+  line-height: clamp(15.428px, 0.9375vw, 0.9375vw);
+  letter-spacing: 0%;
+  vertical-align: middle;
+  color: rgba(38, 38, 41, .7);
+  margin-top: clamp(4px, 0.3125vw, 0.3125vw);
+  margin-bottom: (8px, 0.625vw, 0.625vw);
+}
+
+#CollectionProductGrid .price__regular,
+div.all-gaming-chairs-new-collections .price-item {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(4px, 0.3125vw, 0.3125vw);
+  font-family: Roboto;
+  font-weight: 500;
+  font-style: Medium;
+  font-size: clamp(14px, 0.8333vw, 0.8333vw);
+  leading-trim: NONE;
+  line-height: clamp(15.75px, 0.9375vw, 0.9375vw);
+  letter-spacing: 0%;
+  vertical-align: middle;
+  color: #262629;
+}
+
+/* #CollectionProductGrid .price__regular .prod_item_discount_price:before {
+  content: "€";
+} */
+
+/* div.all-gaming-chairs-new-collections .price-item {
+  color: rgba(38, 38, 41, .7);
+  text-decoration: line-through;
+} */
+
+.card-information__wrapper.text-left .card-price {
+  justify-content: center;
+  margin-bottom: clamp(47.4px, 3.703125vw, 3.703125vw);
+}
+
+#CollectionProductGrid .sale-tags {
+  width: clamp(30px, 2.34375vw, 2.34375vw);
+  height: clamp(13.4px, 1.046875vw, 1.046875vw);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #AF1C1C;
+  font-family: Roboto;
+  font-weight: 500;
+  font-style: Medium;
+  font-size: clamp(12px, 0.7291667vw, 0.7291667vw);
+  leading-trim: NONE;
+  letter-spacing: 0%;
+  vertical-align: middle;
+  color: #fff;
+  position: absolute;
+  left: clamp(10px, 0.78125vw, 0.78125vw);
+  top: clamp(10px, 0.78125vw, 0.78125vw);
+}
+
+#CollectionProductGrid .atc-btns {
+  min-width: clamp(90px, 7.03125vw, 7.03125vw);
+  padding: 0 0.46875vw;
+  height: clamp(26.6px, 2.078125vw, 2.078125vw);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(3.4px, 0.265625vw, 0.265625vw);
+  font-family: Roboto;
+  font-weight: 600;
+  font-style: SemiBold;
+  font-size: clamp(14px, 0.8333vw, 0.8333vw);
+  leading-trim: NONE;
+  letter-spacing: 0%;
+  vertical-align: middle;
+  color: #fff;
+  background: #262629;
+  border: 1px solid #262629;
+  border-radius: clamp(32.6px, 2.546875vw, 2.546875vw);
+  cursor: pointer;
+  position: absolute;
+  bottom: clamp(-66px, -5.15625vw, -5.15625vw);
+  opacity: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 19;
+  transition: all .5s ease-in-out;
+  white-space: nowrap;
+}
+
+#CollectionProductGrid .atc-btns svg {
+  width: clamp(6px, 0.46875vw, 0.46875vw);
+  height: clamp(6px, 0.46875vw, 0.46875vw);
+}
+
+div.all-gaming-chairs-new-collections .sidebarBlock.refined-widgets {
+  width: 0;
+  height: 0;
+  overflow: hidden;
+}
+
+.price-item--regular .text {
+  display: none;
+}
+
+@media (max-width: 1024px) {
+  div.all-gaming-chairs-new-collections .toolbar {
+    padding: 0;
+    justify-content: flex-start;
+  }
+
+  #CollectionProductGrid .page-sidebar.page-sidebar-left {
+    max-width: 300px;
+    display: block;
+  }
+
+  #CollectionProductGrid .filter_title {
+    display: none;
+  }
+
+  #CollectionProductGrid .toolbar .toolbar-item .toolbar-icon.icon-filter {
+    padding: 0;
+    height: auto;
+  }
+
+  #CollectionProductGrid .toolbar .toolbar-item .toolbar-icon .icon {
+    width: clamp(13.4px, 1.046875vw, 1.046875vw) !important;
+    height: clamp(13.4px, 1.046875vw, 1.046875vw) !important;
+  }
+
+  #CollectionProductGrid .toolbar .toolbar-item .toolbar-icon.icon-filter .filter-text {
+    font-family: Poppins;
+    font-weight: 500 !important;
+    font-style: Medium;
+    font-size: clamp(12px, .7291667vw, .7291667vw) !important;
+    leading-trim: NONE;
+    letter-spacing: 0%;
+    color: #262629;
+    line-height: 29px;
+  }
+
+  #CollectionProductGrid .toolbar .toolbar-item {
+    display: flex;
+  }
+
+  #CollectionProductGrid .toolbar .toolbar-dropdown.filter-sortby .label-tab.hidden-on-desktop {
+    width: auto;
+  }
+
+  #CollectionProductGrid .productGrid.column-5 .product {
+    width: calc(100% / 3);
+  }
+
+  #CollectionProductGrid .productGrid.column-5 .product:not(:nth-child(4n + 1)) {
+    border-left: 0.5px solid #2626294D;
+  }
+
+  #CollectionProductGrid .productGrid.column-5 .product:not(:nth-child(3n + 1)) {
+    border-left: none;
+  }
+}
+
+@media (max-width: 767px) {
+  div.all-gaming-chairs-new-collections .container-full .all_product_toolbar_container {
+    padding: 0 5.33vw;
+  }
+
+  .toolbar .toolbar-item .toolbar-icon .icon {
+    width: 12px;
+  }
+
+  #CollectionProductGrid .toolbar .toolbar-item .toolbar-icon.icon-filter .filter-text,
+  .toolbar .toolbar-dropdown .label-text {
+    font-size: 3.733vw !important;
+  }
+
+  .toolbar .toolbar-dropdown .label-tab.hidden-on-desktop .icon-dropdown {
+    right: 0;
+    width: 14px;
+    height: 12px;
+    margin-left: 0;
+  }
+
+  .toolbar .toolbar-dropdown .label-text {
+    position: relative;
+    left: 8px;
+  }
+
+  .new-chairs-collection-section .menu-icon-mobile {
+    padding: 0;
+    height: 0;
+    justify-content: flex-end;
+  }
+
+  .menu-icon-mobile .menu-icon-right {
+    display: none;
+  }
+
+  .new-chairs-collection-section .menu-icon-mobile .menu-icon-left {
+    padding-right: 5.33vw;
+    position: relative;
+    top: 18px;
+    z-index: 1;
+  }
+
+  .menu-icon-pop {
+    top: 37px;
+  }
+
+  div.all-gaming-chairs-new-collections .container-full .collection {
+    padding: 0;
+  }
+
+  #CollectionProductGrid .productGrid.column-5 .product {
+    width: 50%;
+    padding: 0 10px;
+  }
+
+  #CollectionProductGrid .productGrid.column-5 .product:not(:nth-child(4n + 1)),
+  #CollectionProductGrid .productGrid.column-5 .product:not(:nth-child(3n + 1)) {
+    border-left: 0.5px solid #2626294D;
+  }
+
+  #CollectionProductGrid .productGrid.column-5 .product:not(:nth-child(2n + 1)) {
+    border-left: none;
+  }
+
+  #CollectionProductGrid .sale-tags {
+    width: 10.4vw;
+    height: 5.6vw;
+    font-size: 3.733vw;
+    left: clamp(10px, .78125vw, .78125vw);
+    top: clamp(10px, .78125vw, .78125vw);
+  }
+
+  div.all-gaming-chairs-new-collections .collection .card-title {
+    font-size: 3.733vw;
+    line-height: 5.33vw;
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+
+  .new-chairs-collection-section .header-cont .compare-cont-modal .compare-upholstery:hover .icon svg,
+  .new-chairs-collection-section .header-cont .compare-cont-modal .compare-models:hover .icon svg {
+    transform: rotate(45deg);
+  }
+
+  #CollectionProductGrid .productGrid.column-5 .product:hover .card:not(.out_of_stock) .atc-btns {
+    opacity: 1;
+    bottom: clamp(6px, 0.46875vw, 0.46875vw);
+  }
+
+  #CollectionProductGrid .productGrid.column-5 .product .atc-btns:hover {
+    color: #fff;
+    background: #931717;
+    border-color: #931717;
+  }
+}

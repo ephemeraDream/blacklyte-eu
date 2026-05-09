@@ -1,0 +1,95 @@
+{{ 'buypage-section-15.css' | asset_url | stylesheet_tag }}
+
+<div class="buypage_section_15" id="{{section.settings.specId}}">
+  <div class="buypage_section_15_title">{{ section.settings.title }}</div>
+  <div class="buypage_section_15_text">{{ section.settings.text }}</div>
+  {{
+    section.settings.certifications
+    | image_url: width: section.settings.certifications.width
+    | image_tag: class: 'buypage_section_15_certifications'
+  }}
+  <div class="buypage_section_15_img_box">
+    {% render 'picture-simple',
+      image: section.settings.image,
+      image_mobile: section.settings.image_mobile,
+      mobile_widths: '350,450,550,650',
+      mobile_dpr: 1,
+      class_str: 'buypage_section_15_img',
+      widths_sizes: '70vw'
+    %}
+  </div>
+  <div class="buypage_section_15_info">
+    {% for block in section.blocks %}
+      <div class="buypage_section_15_info_item">
+        <div class="buypage_section_15_info_item_title">{{ block.settings.title }}</div>
+        <div class="buypage_section_15_info_item_text">{{ block.settings.text }}</div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "buypage section 15",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "specId",
+      "label": "specId"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "title"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "text"
+    },
+    {
+      "type": "image_picker",
+      "id": "certifications",
+      "label": "certifications"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_mobile",
+      "label": "image mobile"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "title"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "buypage section 15"
+    }
+  ]
+}
+{% endschema %}

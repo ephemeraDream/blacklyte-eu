@@ -1,0 +1,357 @@
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="https://cdn.shopify.com/s/files/1/0716/1341/5637/files/slick.css?v=1760406619"
+>
+{{ 'specs-new.css' | asset_url | stylesheet_tag }}
+
+{% if section.settings.product != blank %}
+  {% assign product = section.settings.product %}
+{% endif %}
+{% assign product_specs = product.metafields.custom.product_specs.value %}
+
+<div class="specs_new" id="{{ section.settings.specId }}">
+  {%- for block in section.blocks -%}
+    {%- case block.type -%}
+      {% when 'first_part' %}
+        <div class="specs_new_item active">
+          <div class="specs_new_item_head">
+            <div class="specs_new_item_head_title">{{ block.settings.title }}</div>
+            <div>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="3"
+                viewBox="0 0 24 3"
+                fill="none"
+                class="specs_new_item_head_icon"
+                data-type="open"
+              >
+                <rect width="24" height="3" fill="#262629"/>
+              </svg>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                class="specs_new_item_head_icon"
+                data-type="close"
+              >
+                <rect y="10" width="24" height="3" fill="#262629"/>
+                <rect x="14" width="24" height="3" transform="rotate(90 14 0)" fill="#262629"/>
+              </svg>
+            </div>
+          </div>
+          <div class="specs_new_item_body">
+            {% if product.metafields.custom.product_type == 'desk' %}
+              <div class="specs_new_item_body_slick">
+                {% for item in product.options_by_name.Size.values %}
+                  {% assign target_index = forloop.index0 %}
+                  {% comment %} {% unless item.variant.available == blank %} {% endcomment %}
+                  <div class="specs_new_item_body_slick_item">
+                    <div class="specs_new_item_body_left">
+                      {% assign feature_image_urls = '' %}
+
+                      {% comment %}
+                        {% if request.path contains 'features' %}
+                          {% for img in product_specs.images.value %}
+                            {% if img.src contains 'features' %}
+                              {% assign img_url = img | image_url %}
+                              {% assign feature_image_urls = feature_image_urls | append: img_url | append: ',' %}
+                            {% endif %}
+                          {% endfor %}
+                        {% else %}
+                          {% for img in product_specs.images.value %}
+                            {% unless img.src contains 'features' %}
+                              {% assign img_url = img | image_url %}
+                              {% assign feature_image_urls = feature_image_urls | append: img_url | append: ',' %}
+                            {% endunless %}
+                          {% endfor %}
+                        {% endif %}
+                      {% endcomment %}
+                      {% for img in product_specs.images.value %}
+                        {% unless img.src contains 'features' %}
+                          {% assign img_url = img | image_url %}
+                          {% assign feature_image_urls = feature_image_urls | append: img_url | append: ',' %}
+                        {% endunless %}
+                      {% endfor %}
+
+                      {% assign feature_image_list = feature_image_urls | split: ',' %}
+
+                      {% for img in feature_image_list %}
+                        {% if forloop.index0 == target_index %}
+                          <img src="{{ img }}" width="100%" height="100%">
+                        {% endif %}
+                      {% endfor %}
+                    </div>
+                    <div class="specs_new_item_body_right">
+                      {% if product_specs.size_load_and_adjusrmenbts.value != blank %}
+                        {% for item in product_specs.size_load_and_adjusrmenbts.value %}
+                          {% if forloop.index0 == target_index %}
+                            {% for spec in item.data %}
+                              <div class="specs_new_item_body_right_line">
+                                <span>{{ spec.label }}:</span><span>{{ spec.value }}</span>
+                              </div>
+                            {% endfor %}
+                          {% endif %}
+                        {% endfor %}
+                      {% endif %}
+                      {% if product_specs.structure_and_materials.value != blank %}
+                        {% for item in product_specs.structure_and_materials.value %}
+                          {% if forloop.index0 == target_index %}
+                            {% for spec in item.data %}
+                              <div class="specs_new_item_body_right_line">
+                                <span>{{ spec.label }}:</span><span>{{ spec.value }}</span>
+                              </div>
+                            {% endfor %}
+                          {% endif %}
+                        {% endfor %}
+                      {% endif %}
+                      {% if product_specs.electrical_specifications.value != blank %}
+                        {% for item in product_specs.electrical_specifications.value %}
+                          {% if forloop.index0 == target_index %}
+                            {% for spec in item.data %}
+                              <div class="specs_new_item_body_right_line">
+                                <span>{{ spec.label }}:</span><span>{{ spec.value }}</span>
+                              </div>
+                            {% endfor %}
+                          {% endif %}
+                        {% endfor %}
+                      {% endif %}
+                      {% if product_specs.packaging.value != blank %}
+                        {% for item in product_specs.packaging.value %}
+                          {% if forloop.index0 == target_index %}
+                            {% for spec in item.data %}
+                              <div class="specs_new_item_body_right_line">
+                                <span
+                                  {% if spec.value == '' %}
+                                    class="specs_new_item_body_right_line_spectitle"
+                                  {% endif %}
+                                >
+                                  {{- spec.label }}
+                                  {%- if spec.value != '' %}:{% endif -%}</span
+                                ><span>{{ spec.value }}</span>
+                              </div>
+                            {% endfor %}
+                          {% endif %}
+                        {% endfor %}
+                      {% endif %}
+                    </div>
+                  </div>
+                  {% comment %} {% endunless %} {% endcomment %}
+                {% endfor %}
+              </div>
+              {% if product.title contains 'Atlas Lite Desk' %}
+                <div class="specs_new_item_body_slick_prev">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="19" viewBox="0 0 12 19" fill="none">
+                    <path d="M10.3208 1L2.00006 9.32074L10.3208 17.6415" stroke="black" stroke-width="2"/>
+                  </svg>
+                </div>
+                <div class="specs_new_item_body_slick_next">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="12" height="19" viewBox="0 0 12 19" fill="none">
+                    <path d="M1.3208 1L9.64154 9.32074L1.3208 17.6415" stroke="black" stroke-width="2"/>
+                  </svg>
+                </div>
+              {% endif %}
+            {% else %}
+              <div class="specs_new_item_body_left">
+                {% for image in product_specs.images.value %}
+                  {% render 'picture-simple',
+                    image: image,
+                    image_mobile: image,
+                    mobile_widths: '350,450,550,650',
+                    mobile_dpr: 1,
+                    widths_sizes: '35vw'
+                  %}
+                  {% comment %} {{- image | image_url: width: image.width | image_tag: alt: image.alt -}} {% endcomment %}
+                {% endfor %}
+              </div>
+              <div class="specs_new_item_body_right">
+                {% if product_specs.main_components.value != blank %}
+                  {% for spec in product_specs.main_components.value.data %}
+                    <div class="specs_new_item_body_right_line">
+                      <span>{{ spec.label }}:</span><span>{{ spec.value }}</span>
+                    </div>
+                  {% endfor %}
+                {% endif %}
+                {% if product_specs.packaging.value != blank %}
+                  {% for spec in product_specs.packaging.value.data %}
+                    <div class="specs_new_item_body_right_line">
+                      <span>{{ spec.label }}:</span><span>{{ spec.value }}</span>
+                    </div>
+                  {% endfor %}
+                {% endif %}
+              </div>
+            {% endif %}
+          </div>
+        </div>
+      {%- when 'second_part' -%}
+        <div class="specs_new_item specs_new_item_include">
+          <div class="specs_new_item_head">
+            <div class="specs_new_item_head_title">{{ block.settings.title }}</div>
+            <div>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="3"
+                viewBox="0 0 24 3"
+                fill="none"
+                class="specs_new_item_head_icon"
+                data-type="open"
+              >
+                <rect width="24" height="3" fill="#262629"/>
+              </svg>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                class="specs_new_item_head_icon"
+                data-type="close"
+              >
+                <rect y="10" width="24" height="3" fill="#262629"/>
+                <rect x="14" width="24" height="3" transform="rotate(90 14 0)" fill="#262629"/>
+              </svg>
+            </div>
+          </div>
+          <div class="specs_new_item_body">
+            <div class="specs_new_item_body_left">
+              {% render 'picture-simple',
+                image: block.settings.image,
+                image_mobile: block.settings.image,
+                mobile_widths: '350,450,550,650',
+                mobile_dpr: 1,
+                widths_sizes: '35vw'
+              %}
+              {% comment %}
+                {{-
+                  block.settings.image
+                  | image_url: width: block.settings.image.width
+                  | image_tag: alt: block.settings.image.alt
+                -}}
+              {% endcomment %}
+            </div>
+            <div class="specs_new_item_body_right">
+              {{ block.settings.text }}
+            </div>
+          </div>
+        </div>
+    {%- endcase -%}
+  {% endfor %}
+</div>
+
+<script>
+  (function ($) {
+    $(function () {
+      const specsItems = document.querySelectorAll('.specs_new_item');
+
+      specsItems.forEach((item) => {
+        const specsItem = item.querySelector('.specs_new_item_head');
+        specsItem.addEventListener('click', function () {
+          item.classList.toggle('active');
+        });
+      });
+
+      {% if product.metafields.custom.product_type == 'desk' %}
+        const $slickEl = $(".specs_new_item_body_slick");
+
+        // 找到所有尺寸项
+        const productItems = document.querySelectorAll('.product_info_new_right_select_contain[data-type="Size"] .product_info_new_right_select_item');
+        if(productItems.length < 2) return;
+
+        // 初始化 slick（默认使用当前 active 的 index）
+        const activeItem = document.querySelector('.product_info_new_right_select_contain[data-type="Size"] .product_info_new_right_select_item_active');
+        const initialIndex = Array.from(productItems).indexOf(activeItem);
+
+        $slickEl.slick({
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          arrows: false,
+          waitForAnimate: false,
+          initialSlide: initialIndex >= 0 ? initialIndex : 0
+        });
+
+        productItems.forEach((el) => {
+          el.addEventListener('click', function () {
+            const index = Array.from(productItems).indexOf(this);
+            {% comment %} console.log('切换到 slick slide index:', index); {% endcomment %}
+
+            $slickEl.slick('slickGoTo', index);
+          });
+        });
+
+        $(".specs_new_item_body_slick_prev").on("click", () => {
+          $slickEl.slick("slickPrev");
+        });
+
+        $(".specs_new_item_body_slick_next").on("click", () => {
+          $slickEl.slick("slickNext");
+        });
+      {% endif %}
+    });
+  })(jQuery);
+</script>
+
+{% schema %}
+{
+  "name": "specs new",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "specId",
+      "label": "specId"
+    },
+    {
+      "type": "product",
+      "id": "product",
+      "label": "product"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "first_part",
+      "name": "first part",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "title",
+          "label": "title"
+        }
+      ]
+    },
+    {
+      "type": "second_part",
+      "name": "second part",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "title",
+          "label": "title"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "image"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "specs new"
+    }
+  ]
+}
+{% endschema %}

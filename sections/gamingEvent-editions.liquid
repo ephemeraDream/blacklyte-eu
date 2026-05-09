@@ -1,0 +1,518 @@
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="https://cdn.shopify.com/s/files/1/0716/1341/5637/files/slick.css?v=1760406619"
+>
+
+<style>
+  .section-{{ section.id }}{
+      padding-top: 6px;
+      padding-bottom: 130px;
+      background: #EBEBEB;
+  }
+  .section-{{ section.id }} .container-full{
+      padding-left: 16%;
+      padding-right: 16%;
+  }
+  .section-{{ section.id }} .head-cont .section-sub-title{
+      font-family: Poppins;
+      font-weight: 500;
+      font-style: Medium;
+      font-size: 20px;
+      leading-trim: NONE;
+      line-height: 24px;
+      letter-spacing: 0%;
+      text-align: center;
+      vertical-align: middle;
+      color: #262629;
+  }
+  .section-{{ section.id }} .head-cont .section-title{
+      font-family: Poppins;
+      font-weight: 600;
+      font-style: SemiBold;
+      font-size: 40px;
+      line-height: 50px;
+      letter-spacing: 0%;
+      text-align: center;
+      vertical-align: middle;
+      color: #262629;
+      margin: 10px auto 5px;
+  }
+  .section-{{ section.id }} .head-cont .section-desc{
+      font-family: Poppins;
+      font-weight: 500;
+      font-style: Medium;
+      font-size: 16px;
+      line-height: 24px;
+      letter-spacing: 0%;
+      text-align: center;
+      vertical-align: middle;
+      color: #262629;
+      opacity: 0.7;
+      width: 81%;
+      margin: auto;
+  }
+  .section-{{ section.id }} .product-lists{
+      margin-top: 17px;
+  }
+  .section-{{ section.id }} .product-lists .product-item{
+      display: flex;
+      gap: 16px;
+  }
+  .section-{{ section.id }} .product-lists .product-item img{
+      height: auto;
+  }
+  .section-{{ section.id }} .product-lists .product-item .product-item-left{
+      width: calc(70% - 8px);
+  }
+
+  .section-{{ section.id }} .product-lists .product-item .prod-large-image,
+  .section-{{ section.id }} .product-lists .product-item .product-item-left img{
+      height: 100%;
+      cursor: pointer;
+  }
+  .section-{{ section.id }} .product-lists .product-item .product-item-right{
+      width: calc(30% - 8px);
+  }
+  .section-{{ section.id }} .product-lists .product-item .product-item-right .prod-small-image{
+      cursor: pointer;
+  }
+  .section-{{ section.id }} .product-lists .product-item .prod-title{
+      font-family: Poppins;
+      font-weight: 600;
+      font-style: SemiBold;
+      font-size: 1.04vw;
+      line-height: 1.2;
+      letter-spacing: 0%;
+      text-align: left;
+      vertical-align: middle;
+      color: #262629;
+      margin-top: 1.2vw;
+  }
+  .section-{{ section.id }} .product-lists .product-item .prod-desc{
+      font-family: Poppins;
+      font-weight: 500;
+      font-style: Medium;
+      font-size: 0.83vw;
+      line-height: 1.4;
+      letter-spacing: 0%;
+      vertical-align: middle;
+      color: #262629;
+      opacity: 0.7;
+      margin: 0.26vw auto 0.89vw;
+  }
+  .section-{{ section.id }} .product-lists .product-item .prod-link{
+      font-family: Poppins;
+      font-weight: 500;
+      font-style: Medium;
+      font-size: 0.83vw;
+      line-height: 1;
+      letter-spacing: 0%;
+      vertical-align: middle;
+      color: #262629;
+      transition: all .35s ease;
+  }
+  .section-{{ section.id }} .product-lists .product-item .prod-link:hover svg{
+      transform: translateX(10px);
+  }
+  .section-{{ section.id }} .product-lists .product-item .prod-link svg{
+      width: 30px;
+      vertical-align: baseline;
+  }
+  .section-{{ section.id }} .product-for-lists{
+      width: 70%;
+      display: flex;
+      gap: 12px;
+      margin-top: 10px;
+  }
+  .section-{{ section.id }} .product-for-lists .prod-for-items{
+      width: 125px;
+      height: 125px;
+      border: 1px solid #C0C0C0;
+      border-radius: 10px;
+      background: #E9E9E9;
+      cursor: pointer;
+      margin-right: 11px;
+  }
+  .section-{{ section.id }} .product-for-lists .prod-for-items.slick-slide.slick-current{
+      border-color: #262629;
+  }
+  .section-{{ section.id }} .product-for-lists img{
+      height: 100%;
+      object-fit: contain;
+  }
+  .section-{{ section.id }} .slick-arrow{
+      width: 28px;
+      height: 28px;
+  }
+  .section-{{ section.id }} .slick-arrow.slick-prev{
+      left: -14px;
+  }
+  .section-{{ section.id }} .slick-arrow.slick-next{
+      right: -6px;
+  }
+  .section-{{ section.id }} .prod-title_mb{
+      display: none;
+  }
+
+  {% comment %} iPhone {% endcomment %}
+  @media(max-width: 767px){
+      .section-{{ section.id }}{
+          padding-bottom: 50px;
+      }
+      .section-{{ section.id }} .container-full{
+          padding-left: 10px;
+          padding-right: 10px;
+      }
+      .section-{{ section.id }} .product-lists .product-item{
+          gap: 0;
+      }
+      .section-{{ section.id }} .head-cont .section-sub-title{
+          font-size: 14px;
+      }
+      .section-{{ section.id }} .head-cont .section-title{
+          font-size: 26px;
+          line-height: 30px;
+      }
+      .section-{{ section.id }} .head-cont .section-desc{
+          font-size: 14px;
+          line-height: 24px;
+      }
+      .section-{{ section.id }} .product-lists .product-item .product-item-left{
+          width: 100%;
+          position: relative;
+      }
+      .section-{{ section.id }} .product-lists .product-item .product-item-right{
+          width: 0;
+          display: none;
+      }
+      .section-{{ section.id }} .product-for-lists{
+          width: 100%;
+      }
+      .section-{{ section.id }} .slick-arrow.slick-prev{
+          left: -8px;
+      }
+      .section-{{ section.id }} .slick-arrow.slick-next{
+          right: 0;
+      }
+      .section-{{ section.id }} .product-for-lists .prod-for-items{
+          margin-right: 6px;
+      }
+      .section-{{ section.id }} .product-for-lists .prod-for-items{
+          width: 69px;
+          height: 70px;
+      }
+      .section-{{ section.id }} .slick-arrow{
+          width: 20px;
+          height: 20px;
+          padding: 5px;
+      }
+      .section-{{ section.id }} .prod-title_mb{
+          display: block;
+          font-family: Poppins;
+          font-weight: 600;
+          font-style: SemiBold;
+          font-size: 12px;
+          line-height: 20px;
+          letter-spacing: 0%;
+          vertical-align: middle;
+          color: #fff;
+          position: absolute;
+          bottom: 10px;
+          left: 15px;
+      }
+  }
+  {% comment %} iPad {% endcomment %}
+  @media(min-width: 768px) and (max-width: 1024px){
+      .section-{{ section.id }} .container-full{
+          padding-left: 10px;
+          padding-right: 10px;
+      }
+
+  }
+
+  @media(min-width: 1025px) and (max-width: 1480px){
+      .section-{{ section.id }} .container-full{
+          padding-left: 60px;
+          padding-right: 60px;
+      }
+  }
+</style>
+
+<section class="section-{{ section.id }}" id="{{ section.id }}" data-section-id="{{ section.id }}">
+  <div class="container-full">
+    <div class="head-cont">
+      {% if section.settings.sectionSubTitle != blank %}
+        <div class="section-sub-title">{{ section.settings.sectionSubTitle }}</div>
+      {% endif %}
+      {% if section.settings.sectionTitle != blank %}
+        <div class="section-title">{{ section.settings.sectionTitle }}</div>
+      {% endif %}
+      {% if section.settings.sectionDesc != blank %}
+        <div class="section-desc">{{ section.settings.sectionDesc }}</div>
+      {% endif %}
+    </div>
+    <div class="product-lists">
+      {% for block in section.blocks %}
+        {% if block.type == 'item' %}
+          {% assign product_options = block.settings.prodVariants | split: ',' %}
+          {% assign product_variant = '' %}
+
+          {% for variant in block.settings.product.variants %}
+            {% assign match = true %}
+
+            {% if product_options.size > 0 %}
+              {% if variant.option1 != product_options[0] %}
+                {% assign match = false %}
+              {% endif %}
+            {% endif %}
+
+            {% if product_options.size > 1 %}
+              {% if variant.option2 != product_options[1] %}
+                {% assign match = false %}
+              {% endif %}
+            {% endif %}
+
+            {% if product_options.size > 2 %}
+              {% if variant.option3 != product_options[2] %}
+                {% assign match = false %}
+              {% endif %}
+            {% endif %}
+
+            {% if match %}
+              {% assign product_variant = variant %}
+              {% break %}
+            {% endif %}
+          {% endfor %}
+
+          {% assign variant_featured_image = '' %}
+          {% assign product_variant_id = '' %}
+
+          {% if block.settings.prodVariants != blank %}
+            {% assign product_variant_id = product_variant.id %}
+          {% endif %}
+
+          <div class="product-item">
+            <div class="product-item-left">
+              {% if block.settings.prodItemLargeImage != blank %}
+                <a
+                  href="{% if block.settings.prodVariants != blank %}{{ block.settings.product.url }}?variant={{ product_variant_id }}{% else %}{{ block.settings.product.url }}{% endif %}"
+                  class="prod-large-image prod-link-url"
+                >
+                  {% render 'picture-simple',
+                    image: block.settings.prodItemLargeImage,
+                    image_mobile: block.settings.prodItemLargeImage,
+                    mobile_dpr: 2
+                  %}
+                </a>
+              {% endif %}
+              {% if block.settings.product != blank %}
+                <div class="prod-title_mb">{{ block.settings.product.title }}</div>
+              {% endif %}
+            </div>
+            <div class="product-item-right">
+              {% if block.settings.prodItemSmallImage != blank %}
+                <a class="prod-small-image prod-link-url" href="{% if block.settings.prodVariants != blank %}{{ block.settings.product.url }}?variant={{ product_variant_id }}{% else %}{{ block.settings.product.url }}{% endif %}">
+                    {% render 'picture-simple',
+                      image: block.settings.prodItemSmallImage,
+                      image_mobile: block.settings.prodItemSmallImage,
+                      mobile_dpr: 2
+                    %}
+                </a>
+              {% endif %}
+              {% if block.settings.product != blank %}
+                <div class="prod-title">
+                  {{ block.settings.product.title }}
+                </div>
+              {% endif %}
+              {% if block.settings.product != blank %}
+                <div class="prod-desc">
+                  {% if block.settings.product.description != blank %}
+                    {{ block.settings.product.description }}
+                  {% else %}
+                    {{ block.settings.product.prodDesc }}
+                  {% endif %}
+                </div>
+              {% endif %}
+              {% if block.settings.prodLink != blank %}
+                <a
+                  class="prod-link"
+                  {% if block.settings.prodURL != blank %}
+                    href="{{ block.settings.prodURL }}"
+                  {% else %}
+                    aria-disabled="true"
+                  {% endif %}
+                >
+                  {{ block.settings.prodLink }}
+                  <span class="link-svg">
+                    <svg width="32" height="15" viewBox="0 0 32 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M31.7071 8.07039C32.0976 7.67986 32.0976 7.0467 31.7071 6.65617L25.3431 0.292213C24.9526 -0.0983109 24.3195 -0.0983109 23.9289 0.292213C23.5384 0.682738 23.5384 1.3159 23.9289 1.70643L29.5858 7.36328L23.9289 13.0201C23.5384 13.4107 23.5384 14.0438 23.9289 14.4343C24.3195 14.8249 24.9526 14.8249 25.3431 14.4343L31.7071 8.07039ZM0 7.36328V8.36328H31V7.36328V6.36328H0V7.36328Z" fill="#262629"/>
+                    </svg>
+                  </span>
+                </a>
+              {% endif %}
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+
+    <div class="product-for-lists">
+      {% for block in section.blocks %}
+        {% if block.type == 'item' %}
+          {% assign product_options = block.settings.prodVariants | split: ',' %}
+          {% assign product_variant = '' %}
+
+          {% for variant in block.settings.product.variants %}
+            {% assign match = true %}
+
+            {% if product_options.size > 0 %}
+              {% if variant.option1 != product_options[0] %}
+                {% assign match = false %}
+              {% endif %}
+            {% endif %}
+
+            {% if product_options.size > 1 %}
+              {% if variant.option2 != product_options[1] %}
+                {% assign match = false %}
+              {% endif %}
+            {% endif %}
+
+            {% if product_options.size > 2 %}
+              {% if variant.option3 != product_options[2] %}
+                {% assign match = false %}
+              {% endif %}
+            {% endif %}
+
+            {% if match %}
+              {% assign product_variant = variant %}
+              {% break %}
+            {% endif %}
+          {% endfor %}
+
+          {% assign variant_featured_image = '' %}
+
+          {% if block.settings.prodVariants != blank %}
+            {% assign variant_featured_image = product_variant.featured_image %}
+          {% else %}
+            {% assign variant_featured_image = block.settings.product.selected_or_first_available_variant.featured_image %}
+          {% endif %}
+
+          <div class="prod-for-items">
+            <img
+              srcset="{{ variant_featured_image | image_url: width:200 }}"
+              width="{{ variant_featured_image.width }}"
+              height="{{ variant_featured_image.height }}"
+              alt="{{ variant_featured_image.alt }}"
+              loading="lazy"
+            >
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<script>
+  $(document).ready(function () {
+    $('.product-lists').slick({
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      arrows: false,
+      fade: true,
+      asNavFor: '.product-for-lists',
+    });
+    $('.product-for-lists').slick({
+      slidesToShow: 6,
+      slidesToScroll: 1,
+      asNavFor: '.product-lists',
+      dots: false,
+      centerMode: false,
+      focusOnSelect: true,
+      arrows: true,
+      prevArrow: window.arrows.icon_prev,
+      nextArrow: window.arrows.icon_next,
+    });
+
+  });
+</script>
+
+{% schema %}
+{
+  "name": "gaming Event Editions",
+  "settings": [
+    {
+      "type": "text",
+      "id": "sectionTitle",
+      "label": "section Title",
+      "default": "Discover our extensive range of gaming chairs"
+    },
+    {
+      "type": "text",
+      "id": "sectionSubTitle",
+      "label": "section Sub Title",
+      "default": "Blacklyte Signatures"
+    },
+    {
+      "type": "text",
+      "id": "sectionDesc",
+      "label": "section Desc",
+      "default": "Experience the gold standard of gaming chairs with the Blacklyte Athena pro range, critically acclaimed and trusted by esports legends around the world. Suitable for both casual and pro-gamers, the Blacklyte Athena pro gaming chairs are designed with the same relentless engineering and expert craftsmanship found in all Blacklyte gaming chairs."
+    }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "item",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "prodItemLargeImage",
+          "label": "prod Item Large Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "prodItemSmallImage",
+          "label": "prod Item Small Image"
+        },
+        {
+          "type": "product",
+          "id": "product",
+          "label": "product"
+        },
+        {
+          "type": "text",
+          "id": "prodTitle",
+          "label": "product Title"
+        },
+        {
+          "type": "text",
+          "id": "prodDesc",
+          "label": "product Descripe"
+        },
+        {
+          "type": "text",
+          "id": "prodVariants",
+          "label": "product Variants"
+        },
+        {
+          "type": "text",
+          "id": "prodLink",
+          "label": "product Link",
+          "default": "DISCOVER THE COLLECTION"
+        },
+        {
+          "type": "url",
+          "id": "prodURL",
+          "label": "product Link URL"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "gaming Event Editions"
+    }
+  ]
+}
+{% endschema %}

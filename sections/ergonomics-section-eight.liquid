@@ -1,0 +1,310 @@
+{{ 'ergonomics-section-eight.css' | asset_url | stylesheet_tag }}
+
+<div class="ergonomics_section_eight">
+  <div class="ergonomics_section_eight_head">
+    <div class="ergonomics_section_eight_title">{{ section.settings.title }}</div>
+    <div class="ergonomics_section_eight_text">{{ section.settings.text }}</div>
+  </div>
+  {%- for block in section.blocks -%}
+    {%- case block.type -%}
+      {% when 'first_part' %}
+        <div class="first_part">
+          <div class="first_part_title">{{ block.settings.title }}</div>
+          <div class="first_part_contain">
+            <div class="first_part_contain_item">
+              <div class="first_part_contain_item_img">
+                {{-
+                  block.settings.image_one
+                  | image_url: width: block.settings.image_one.width
+                  | image_tag: alt: block.settings.image_one.alt
+                -}}
+              </div>
+              <div class="first_part_contain_item_title">{{ block.settings.title_one }}</div>
+              <div class="first_part_contain_item_text">{{ block.settings.text_one }}</div>
+            </div>
+            <div class="first_part_contain_item">
+              <div class="first_part_contain_item_img">
+                {{-
+                  block.settings.image_two
+                  | image_url: width: block.settings.image_two.width
+                  | image_tag: alt: block.settings.image_two.alt
+                -}}
+              </div>
+              <div class="first_part_contain_item_title">{{ block.settings.title_two }}</div>
+              <div class="first_part_contain_item_text">{{ block.settings.text_two }}</div>
+            </div>
+            <div class="first_part_contain_item">
+              <div class="first_part_contain_item_img">
+                {{-
+                  block.settings.image_three
+                  | image_url: width: block.settings.image_three.width
+                  | image_tag: alt: block.settings.image_three.alt
+                -}}
+              </div>
+              <div class="first_part_contain_item_title">{{ block.settings.title_three }}</div>
+              <div class="first_part_contain_item_text">{{ block.settings.text_three }}</div>
+            </div>
+            <div class="first_part_contain_item">
+              <div class="first_part_contain_item_img">
+                {{-
+                  block.settings.image_four
+                  | image_url: width: block.settings.image_four.width
+                  | image_tag: alt: block.settings.image_four.alt
+                -}}
+              </div>
+              <div class="first_part_contain_item_title">{{ block.settings.title_four }}</div>
+              <div class="first_part_contain_item_text">{{ block.settings.text_four }}</div>
+            </div>
+          </div>
+        </div>
+      {%- when 'second_part' -%}
+        <div class="second_part">
+          <div class="second_part_title">{{ block.settings.title }}</div>
+          <div class="second_part_contain">
+            <div class="second_part_contain_item">
+              <div class="second_part_contain_item_img">
+                {{-
+                  block.settings.image_one
+                  | image_url: width: block.settings.image_one.width
+                  | image_tag: alt: block.settings.image_one.alt
+                -}}
+              </div>
+              <div class="second_part_contain_item_title">{{ block.settings.title_one }}</div>
+              <div class="second_part_contain_item_text">{{ block.settings.text_one }}</div>
+            </div>
+            <div class="second_part_contain_item">
+              <div class="second_part_contain_item_img">
+                {{-
+                  block.settings.image_two
+                  | image_url: width: block.settings.image_two.width
+                  | image_tag: alt: block.settings.image_two.alt
+                -}}
+              </div>
+              <div class="second_part_contain_item_title">{{ block.settings.title_two }}</div>
+              <div class="second_part_contain_item_text">{{ block.settings.text_two }}</div>
+            </div>
+            <div class="second_part_contain_item">
+              <div class="second_part_contain_item_img">
+                {{-
+                  block.settings.image_three
+                  | image_url: width: block.settings.image_three.width
+                  | image_tag: alt: block.settings.image_three.alt
+                -}}
+              </div>
+              <div class="second_part_contain_item_title">{{ block.settings.title_three }}</div>
+              <div class="second_part_contain_item_text">{{ block.settings.text_three }}</div>
+            </div>
+            <div class="second_part_contain_item">
+              <div class="second_part_contain_item_img">
+                {{-
+                  block.settings.image_four
+                  | image_url: width: block.settings.image_four.width
+                  | image_tag: alt: block.settings.image_four.alt
+                -}}
+              </div>
+              <div class="second_part_contain_item_title">{{ block.settings.title_four }}</div>
+              <div class="second_part_contain_item_text">{{ block.settings.text_four }}</div>
+            </div>
+            <div class="second_part_contain_item">
+              <div class="second_part_contain_item_img">
+                {{-
+                  block.settings.image_five
+                  | image_url: width: block.settings.image_five.width
+                  | image_tag: alt: block.settings.image_five.alt
+                -}}
+              </div>
+              <div class="second_part_contain_item_title">{{ block.settings.title_five }}</div>
+              <div class="second_part_contain_item_text">{{ block.settings.text_five }}</div>
+            </div>
+          </div>
+        </div>
+    {%- endcase -%}
+  {% endfor %}
+</div>
+
+{% schema %}
+{
+  "name": "ergonomics section eight",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "title",
+      "label": "title"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "text"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "first_part",
+      "name": "first part",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "title",
+          "label": "title"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_one",
+          "label": "image one"
+        },
+        {
+          "type": "textarea",
+          "id": "title_one",
+          "label": "title one"
+        },
+        {
+          "type": "textarea",
+          "id": "text_one",
+          "label": "text one"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_two",
+          "label": "image two"
+        },
+        {
+          "type": "textarea",
+          "id": "title_two",
+          "label": "title two"
+        },
+        {
+          "type": "textarea",
+          "id": "text_two",
+          "label": "text two"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_three",
+          "label": "image three"
+        },
+        {
+          "type": "textarea",
+          "id": "title_three",
+          "label": "title three"
+        },
+        {
+          "type": "textarea",
+          "id": "text_three",
+          "label": "text three"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_four",
+          "label": "image four"
+        },
+        {
+          "type": "textarea",
+          "id": "title_four",
+          "label": "title four"
+        },
+        {
+          "type": "textarea",
+          "id": "text_four",
+          "label": "text four"
+        }
+      ]
+    },
+    {
+      "type": "second_part",
+      "name": "second part",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "title",
+          "label": "title"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_one",
+          "label": "image one"
+        },
+        {
+          "type": "textarea",
+          "id": "title_one",
+          "label": "title one"
+        },
+        {
+          "type": "textarea",
+          "id": "text_one",
+          "label": "text one"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_two",
+          "label": "image two"
+        },
+        {
+          "type": "textarea",
+          "id": "title_two",
+          "label": "title two"
+        },
+        {
+          "type": "textarea",
+          "id": "text_two",
+          "label": "text two"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_three",
+          "label": "image three"
+        },
+        {
+          "type": "textarea",
+          "id": "title_three",
+          "label": "title three"
+        },
+        {
+          "type": "textarea",
+          "id": "text_three",
+          "label": "text three"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_four",
+          "label": "image four"
+        },
+        {
+          "type": "textarea",
+          "id": "title_four",
+          "label": "title four"
+        },
+        {
+          "type": "textarea",
+          "id": "text_four",
+          "label": "text four"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_five",
+          "label": "image five"
+        },
+        {
+          "type": "textarea",
+          "id": "title_five",
+          "label": "title five"
+        },
+        {
+          "type": "textarea",
+          "id": "text_five",
+          "label": "text five"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "ergonomics section eight"
+    }
+  ]
+}
+{% endschema %}

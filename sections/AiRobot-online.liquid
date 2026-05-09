@@ -1,0 +1,72 @@
+<style>
+    .ai-robot-onlines{
+        background: #000;
+        padding-bottom: 60px;
+    }
+
+    .ai-robot-onlines .container-full{
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 0.6771vw;
+    }
+
+
+    @media(max-width: 767px){
+        .ai-robot-onlines{
+            padding-bottom: 100px;
+        }
+        .ai-robot-onlines .container-full {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.4667vw;
+        }
+    
+    
+    }
+
+</style>
+
+
+
+<div class="ai-robot-onlines">
+    <div class="container-full">
+        {% for block in section.blocks %}
+          {% if block.type == "item" %}
+            <div class="online-items">
+                {% render 'picture-simple',
+                    image: block.settings.itemImage,
+                    image_mobile: block.settings.itemImage_mb,
+                    mobile_dpr: 2,
+                    loading: "eager"
+                %}
+            </div>
+          {% endif %}
+        {% endfor %}
+    </div>
+</div>
+
+{% schema %}
+{
+    "name": "AiRobot online",
+    "tag": "section",
+    "settings": [],
+    "blocks": [
+        {
+            "type": "item",
+            "name": "item",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "itemImage",
+                    "label": "item Image"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "itemImage_mb",
+                    "label": "item Image Mobile"
+                }
+            ]
+        }
+    ],
+    "presets": [{ "name": "AiRobot online" }]
+}
+{% endschema %}

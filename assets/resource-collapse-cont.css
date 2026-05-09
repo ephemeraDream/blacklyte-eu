@@ -1,0 +1,126 @@
+.resource-collapse-cont{
+    padding: 100px 16%;
+}
+
+.resource-collapse-cont .section-title{
+    font-size: 30px;
+    font-weight: 500;
+    color: #18181B;
+    line-height: 1.2;
+    text-align: center;
+}
+
+.resource-title-icon svg{
+    width: 16px;
+    height: 16px;
+}
+
+.resource-desc-icon svg{
+    fill: #18181b;
+    width: 18px;
+    height: 18px;
+}
+
+.resource-faq-item .resource-titles{
+    display: grid;
+    align-items: center;
+    grid-template-columns: auto 1fr auto;
+    font-size: 18px;
+    line-height: 1.2;
+    font-weight: 500;
+    color: #18181B;
+    background-color: #F2F2F2;
+    padding: 18px 20px;
+    cursor: pointer;
+}
+
+.resource-title-text{
+    margin-left: 19px;
+
+}
+
+.collapse-conts {
+    margin-top: 40px;
+}
+
+.resource-desc{
+    font-size: 14px;
+    line-height: 30px;
+    font-weight: 400;
+    color: #52525B;
+    padding-left: 54px;
+    padding-right: 54px;
+    max-height: 0;
+    overflow: hidden;
+    pointer-events: none;
+    position: relative;
+    transition: max-height .5s ease-out;
+}
+.resource-desc .resource-desc-card{
+    padding-bottom: 15px;
+
+}
+
+.resource-faq-item.resource-faq-item-active .resource-desc{
+    border: 0.5px solid #D4D4D8;
+}
+
+.resource-faq-item .resource-desc-icon{
+    transition: all .5s ease;
+    transform: rotate(90deg);
+}
+
+.resource-faq-item.resource-faq-item-active .resource-desc-icon{
+    transform: rotate(-90deg);
+}
+.resource-faq-item{
+    margin-bottom: 6px;
+}
+
+/* iPhone */
+@media(max-width: 767px){
+    .resource-collapse-cont{
+        padding: 50px 10px;
+    }
+    .resource-collapse-cont .section-title{
+        font-size: 24px;
+
+    }
+    .collapse-conts{
+        margin-top: 20px;
+    }
+    .resource-title-text{
+        font-size: 14px;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+    .resource-faq-item .resource-titles{
+        padding: 15px;
+    }
+    .resource-desc{
+        font-size: 12px;
+        line-height: 1.6;
+        padding-left: 14px;
+        padding-right: 14px;
+        padding-top: 10px;
+    }
+    .resource-desc-icon svg{
+        width: 14px;
+        height: 14px;
+    }
+}
+
+/* iPad */
+@media(min-width: 768px) and (max-width: 1024px){
+    .resource-collapse-cont{
+        padding: 50px 10px;
+    }
+}
+
+/* small screen */
+@media(min-width: 1025px) and (max-width: 1480px){
+    .resource-collapse-cont{
+        padding-left: 60px;
+        padding-right: 60px;
+    }
+}

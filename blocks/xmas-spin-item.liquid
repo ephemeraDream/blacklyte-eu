@@ -1,0 +1,97 @@
+<div class="cont-header">
+    {% if block.settings.spinItemTitle != blank %}
+        <div class="section-title">{{ block.settings.spinItemTitle }}</div>
+    {% endif %}
+    {% if block.settings.spinItemSubTitle != blank %}
+        <div class="section-sub-title">{{ block.settings.spinItemSubTitle }}</div>
+    {% endif %}
+    {% if block.settings.spinItemDesc != blank %}
+        <div class="section-descrip">{{ block.settings.spinItemDesc }}</div>
+    {% endif %}
+</div>
+<div class="cont-spins">
+    <div class="item-block">
+        <div class="item-block-left">
+            <img src="{{ block.settings.itemSpinImage | img_url: 'master' }}"
+                width="{{ block.settings.itemSpinImage.width }}"
+                height="{{ block.settings.itemSpinImage.height }}"
+                alt="{{ block.settings.itemSpinImage.alt }}" />
+        </div>
+        <div class="item-block-right">
+            {% if block.settings.itemTitle != blank %}
+                <div class="item-block-title">{{ block.settings.itemTitle }}</div>
+            {% endif %}
+            {% if block.settings.itemSubTitle != blank %}
+                <div class="item-block-sub-title">{{ block.settings.itemSubTitle }}</div>
+            {% endif %}
+            {% if block.settings.itemButton != blank %}
+                <button class="button item-button" onclick="openOmnisendForm()">{{ block.settings.itemButton }}</button>
+            {% endif %}
+            {% if block.settings.itemDescripe != blank %}
+                <div class="item-block-desc">{{ block.settings.itemDescripe }}</div>
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+
+{% schema %}
+{
+    "name": "xmas spin item",
+    "settings": [
+        {
+            "type": "text",
+            "id": "spinItemTitle",
+            "label": "spin Item Title",
+            "default": "Time-Limited Offers"
+        },
+        {
+            "type": "text",
+            "id": "spinItemSubTitle",
+            "label": "spin Item Sub Title",
+            "default": "Enjoy up to 30% OFF on Filmora"
+        },
+        {
+            "type": "text",
+            "id": "spinItemDesc",
+            "label": "spin Item Descripe",
+            "default": "Don't miss out on these exclusive christmas deals! Empower you to craft stunning videoseffortlessly with advanced features like Al music generation, customizable templates, efects, etc"
+        },
+        {
+            "type": "image_picker",
+            "id": "itemSpinImage",
+            "label": "Item Spin Image"
+        },
+        {
+            "type": "text",
+            "id": "itemTitle",
+            "label": "item Title",
+            "default": "Spin to Win"
+        },
+        {
+            "type": "text",
+            "id": "itemSubTitle",
+            "label": "item Sub Title",
+            "default": "Spin the wheel to win stackable discount codes."
+        },
+        {
+            "type": "text",
+            "id": "itemButton",
+            "label": "item button",
+            "default": "Spin now"
+        },
+        {
+            "type": "textarea",
+            "id": "itemDescripe",
+            "label": "item descripe",
+            "default": "The wheel of fortune can only be spun once after you sign up for our newsletter."
+        }
+    ],
+    
+    "presets": [
+        {
+            "name": "xmas spin item"
+        }
+    ]
+}
+{% endschema %}

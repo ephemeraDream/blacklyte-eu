@@ -1,0 +1,249 @@
+<style>
+    .section-{{ section.id }}{
+        padding-top: 100px;
+        padding-bottom: 174px;
+        background: #030409;
+    }
+    .section-{{ section.id }} .container-full{
+        padding-left: 16%;
+        padding-right: 16%;
+    }
+    .section-{{ section.id }} .cont{
+        text-align: center;
+    }
+    .section-{{ section.id }} .cont .cont-title{
+        font-family: Poppins;
+        font-weight: 600;
+        font-size: 40px;
+        line-height: 1.4;
+        letter-spacing: 0%;
+        text-align: center;
+        color: #8D959E;
+    }
+
+    .section-{{ section.id }} .cont .cont-title-mb{
+        display: none;
+    }
+    .section-{{ section.id }} .cont .cont-desc{
+        font-family: Poppins;
+        font-weight: 600;
+        font-size: 40px;
+        line-height: 1.4;
+        letter-spacing: 0%;
+        text-align: center;
+        text-transform: lowercase;
+        color: #8D959E;
+    }
+    .section-{{ section.id }} .part-logos{
+        display: grid;
+        column-gap: 60px;
+        justify-content: center;
+        margin-top: 64px;
+        grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+        width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .section-{{ section.id }} .event-images{
+        display: flex;
+        gap: 6px;
+        justify-content: center;
+        margin-top: 50px;
+        flex-wrap: wrap;
+    }
+    .section-{{ section.id }} .event-image-item{
+        width: calc((100% - 12px) / 3);
+    }
+
+    {% comment %} iPhone {% endcomment %}
+    @media(max-width: 767px) {
+        .section-{{ section.id }} {
+            padding-top: 50px;
+            padding-bottom: 100px;
+        }
+        .section-{{ section.id }} .container-full{
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+        .section-{{ section.id }} .cont .cont-title,
+        .section-{{ section.id }} .cont .cont-desc{
+            font-size: 26px;
+            display: none;
+        }
+        .section-{{ section.id }} .cont .cont-title-mb{
+            display: block;
+            font-family: Poppins;
+            font-weight: 600;
+            font-size: 26px;
+            line-height: 1.4;
+            letter-spacing: 0%;
+            text-align: center;
+            color: #8D959E;
+        }
+        .section-{{ section.id }} .part-logos{
+            margin-top: 30px;
+            row-gap: 35px;
+            column-gap: 35px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            
+        }
+        .section-{{ section.id }} .part-logos .part-logo-item{
+            width: calc((100% - 70px) / 3);
+        }
+
+        .section-{{ section.id }} .event-images{
+            gap: 6px;
+            margin-top: 30px;
+        }
+        .section-{{ section.id }} .event-image-item{
+            width: calc((100% - 10px) / 2);
+        }
+    
+    }
+    {% comment %} iPad {% endcomment %}
+    @media(min-width: 768px) and (max-width: 1024px){
+        .section-{{ section.id }} .container-full{
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+        .section-{{ section.id }} .cont .cont-title,
+        .section-{{ section.id }} .cont .cont-desc{
+            font-size: 40px;
+        }
+    
+    }
+
+    @media(min-width: 1025px) and (max-width: 1480px){
+        .section-{{ section.id }} .container-full{
+            padding-left: 60px;
+            padding-right: 60px;
+        }
+    }
+</style>
+
+<div class="section-{{ section.id }}" id="{{ section.id }}" data-section-id="{{ section.id }}">
+    {%- liquid
+        assign bg_image = section.settings.sectionBgImage
+        assign bg_image_mb = section.settings.sectionBgImageMb
+    -%}
+
+    <style>
+        .section-{{ section.id }} {
+            background-image: url({{ bg_image | image_url: width: 1200 }});
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        @media (max-width: 767px) {
+            .section-{{ section.id }} {
+                background-image: url({{ bg_image_mb | image_url: width: 1200 }});
+                background-position: top;
+            }
+        }
+    </style>
+    <div class="container-full">
+        <div class="cont">
+            <div class="cont-title">{{ section.settings.sectionTitle }}</div>
+            <div class="cont-desc">{{ section.settings.sectionDesc }}</div>
+            <div class="cont-title-mb">{{ section.settings.sectionTitleMb }}</div>
+        </div>
+        
+        <div class="event-images">
+            {% for block in section.blocks %}
+                {% if block.type == 'eventItem' %}
+                    <div class="event-image-item">
+                        <img {% render 'lazyload',preview_img: block.settings.eventItemImage, class: true, enable_rtl: settings.enable_layout_rtl  %}
+                            alt="{{ block.settings.eventItemImage.alt }}"
+                            width="{{ block.settings.eventItemImage.width }}"
+                            height="{{ block.settings.eventItemImage.height }}"
+                            style="height: auto;" />
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+
+        <div class="part-logos">
+            {% for block in section.blocks %}
+                {% if block.type == 'iconItem' %}
+                    <div class="part-logo-item">
+                        <img {% render 'lazyload',preview_img: block.settings.logoIcon, class: true, enable_rtl: settings.enable_layout_rtl  %}
+                            alt="{{ block.settings.logoIcon.alt }}"
+                            width="{{ block.settings.logoIcon.width }}"
+                            height="{{ block.settings.logoIcon.height }}"
+                            style="height: auto;" />
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% schema %}
+{
+    "name": "r6 Siege Tournament",
+    "tag": "section",
+    "settings": [
+        {
+            "type": "image_picker",
+            "id": "sectionBgImage",
+            "label": "Section Background Image"
+        },
+        {
+            "type": "image_picker",
+            "id": "sectionBgImageMb",
+            "label": "Section Background Image Mobile"
+        },
+        {
+        
+            "type": "text",
+            "id": "sectionTitle",
+            "label": "Section Title",
+            "default": "Open up the path to victory "
+        },
+        {
+            "type": "text",
+            "id": "sectionTitleMb",
+            "label": "Section Title Mobile"
+        },
+        {
+            "type": "text",
+            "id": "sectionDesc",
+            "label": "Section Descripe",
+            "default": "in the most prestigious esports tournament"
+        }
+    ],
+    "blocks": [
+        {
+            "type": "iconItem",
+            "name": "iconItem",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "logoIcon",
+                    "label": "logo Icon"
+                }
+            ]
+        },
+        {
+            "type": "eventItem",
+            "name": "eventItem",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "eventItemImage",
+                    "label": "event Item Image"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "r6 Siege Tournament"
+        }
+    ]
+}
+{% endschema %}

@@ -1,0 +1,77 @@
+{{ 'section-icon-simplicity.css' | asset_url | stylesheet_tag }}
+
+<div class="icon_simplicity" id="{{ section.settings.specId }}">
+  {% if section.settings.title != blank %}
+    <div class="icon_simplicity_title">{{ section.settings.title }}</div>
+  {% endif %}
+  {% if section.settings.text != blank %}
+    <div class="icon_simplicity_text">{{ section.settings.text }}</div>
+  {% endif %}
+  <div class="icon_simplicity_contain">
+    {% for block in section.blocks %}
+      <div class="icon_simplicity_item">
+        <img src="{{ block.settings.image | image_url }}" alt="{{ block.settings.text }}">
+        <div class="icon_simplicity_item_text">{{ block.settings.text }}</div>
+        {% if block.settings.tips != blank %}
+          <div class="icon_simplicity_item_tips">{{ block.settings.tips }}</div>
+        {% endif %}
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "icon simplicity",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "specId",
+      "label": "specId"
+    },
+    {
+      "type": "richtext",
+      "id": "title",
+      "label": "title"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "text"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "text"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "image"
+        },
+        {
+          "type": "textarea",
+          "id": "tips",
+          "label": "tips"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "icon simplicity"
+    }
+  ]
+}
+{% endschema %}

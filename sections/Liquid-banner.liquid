@@ -1,0 +1,270 @@
+<style>
+    .section-{{ section.id }}{
+        overflow: hidden;
+    }
+    .section-{{ section.id }} .large-image-pc,
+    .section-{{ section.id }} .large-video-pc{
+        display: block;
+    }
+    .section-{{ section.id }} .large-image-mb,
+    .section-{{ section.id }} .large-video-mb{
+        display: none;
+    }
+    .section-{{ section.id }} .large-image-container,
+    .section-{{ section.id }} .large-video-container{
+        position: relative;
+    }
+
+    .section-{{ section.id }} .large-image-container .large-image img,
+    .section-{{ section.id }} .large-video-container video{
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+    .section-{{ section.id }} .large-image-cont{
+        position: absolute;
+        bottom: 60px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: max-content;
+    }
+    .section-{{ section.id }} .large-image-logo-cont{
+        position: absolute;
+        top: 50px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    .section-{{ section.id }} .large-image-logo-cont .cont-logo{
+        width: 50%;
+        margin: auto;
+    }
+    .section-{{ section.id }} .large-image-logo-cont .cont-logo img{
+        height: auto;
+    }
+
+    .section-{{ section.id }} .large-image-cont .cont-sub-title{
+        font-family: DIN;
+        font-weight: 700;
+        font-style: Bold;
+        font-size: 20px;
+        line-height: 30px;
+        letter-spacing: -4%;
+        text-align: center;
+        text-transform: uppercase;
+        color: #fff;
+    }
+    .section-{{ section.id }} .large-image-cont .cont-title{
+        font-family: DIN;
+        font-weight: 700;
+        font-style: Bold;
+        font-size: 50px;
+        line-height: 50px;
+        letter-spacing: -4%;
+        text-align: center;
+        text-transform: uppercase;
+        color: #fff;
+        margin: 10px auto 13px;
+    }
+    .section-{{ section.id }} .large-image-cont .cont-desc{
+        font-family: Poppins;
+        font-weight: 400;
+        font-style: Regular;
+        font-size: 16px;
+        line-height: 24px;
+        letter-spacing: 0%;
+        text-align: center;
+        text-transform: capitalize;
+        color: #fff;
+    }
+
+    
+
+    {% comment %} iPhone {% endcomment %}
+    @media(max-width: 767px){
+        .section-{{ section.id }} .large-image-pc,
+        .section-{{ section.id }} .large-video-pc{
+            display: none;
+        }
+        .section-{{ section.id }} .large-image-mb,
+        .section-{{ section.id }} .large-video-mb{
+            display: block;
+        }
+        .section-{{ section.id }} .large-image-cont{
+            bottom: 30px;
+            width: calc(100% - 20px);
+        }
+        .section-{{ section.id }} .large-image-logo-cont{
+            top: 30px;
+        }
+        .section-{{ section.id }} .large-image-logo-cont .cont-logo{
+            width: 100%;
+        }
+        .section-{{ section.id }} .large-image-cont .cont-sub-title{
+            font-size: 16px;
+            line-height: normal;
+        }
+        .section-{{ section.id }} .large-image-cont .cont-title{
+            font-size: 25px;
+            line-height: normal;
+            margin: 5px auto 8px;
+        }
+        .section-{{ section.id }} .large-image-cont .cont-desc{
+            font-size: 14px;
+            line-height: normal;
+        }
+        
+    }
+
+    {% comment %} iPad {% endcomment %}
+    @media(min-width: 768px) and (max-width: 1024px){
+        .section-{{ section.id }} .large-image-cont{
+            width: 100%;
+        }
+    }
+
+    {% comment %} small screen {% endcomment %}
+    @media(min-width: 1025px) and (max-width: 1490px){ }
+
+</style>
+
+<section id={{ section.id }} data-section-id="{{ section.id }}" class="section-{{ section.id }}">
+    <div class="container-full">
+        {% for block in section.blocks %}
+            {% if block.type == 'largeImage' %}
+                <div class="large-image-container">
+                    <div class="large-image large-image-pc" style="padding-top: {% unless block.settings.imageATpc.presentation.focal_point == '50.0% 50.0%' %}{{ 1 | divided_by: block.settings.imageATpc.aspect_ratio | times: 120 }}%{% else %}{{ 1 | divided_by: block.settings.imageATpc.aspect_ratio | times: 100 }}%{% endunless %}">
+                        <img src="{{ block.settings.imageATpc | img_url: 'master' }}">
+                    </div>
+                    <div class="large-image large-image-mb" style="padding-top: {% unless block.settings.imageMobile.presentation.focal_point == '50.0% 50.0%' %}{{ 1 | divided_by: block.settings.imageMobile.aspect_ratio | times: 120 }}%{% else %}{{ 1 | divided_by: block.settings.imageMobile.aspect_ratio | times: 100 }}%{% endunless %}">
+                        <img src="{{ block.settings.imageMobile | img_url: 'master' }}">
+                    </div>
+                    <div class="large-image-logo-cont">
+                        {% if block.settings.image_logo != blank %}
+                            <div class="cont-logo">
+                                <img src="{{ block.settings.image_logo | img_url: 'master' }}"
+                                    width="{{ block.settings.image_logo.width }}" 
+                                    height="{{ block.settings.image_logo.height }}"
+                                    alt="{{ block.settings.image_logo.alt }}" />
+                            </div>
+                        {% endif %}
+                    </div>
+                    <div class="large-image-cont">
+                        
+                        {% if block.settings.blockSubTitle != blank %}
+                            <div class="cont-sub-title">{{ block.settings.blockSubTitle }}</div>
+                        {% endif %}
+                        {% if block.settings.blockTitle != blank %}
+                            <div class="cont-title">{{ block.settings.blockTitle }}</div>
+                        {% endif %}
+                        {% if block.settings.blockDesc != blank %}
+                            <div class="cont-desc">{{ block.settings.blockDesc }}</div>
+                        {% endif %}
+                    </div>
+                </div>
+            {% else %}
+                <div class="large-video-container">
+                    <div class="large-video large-video-pc" style="padding-top: {% unless block.settings.video_web_poster.presentation.focal_point == '50.0% 50.0%' %}{{ 1 | divided_by: block.settings.video_web_poster.aspect_ratio | times: 120 }}%{% else %}{{ 1 | divided_by: block.settings.video_web_poster.aspect_ratio | times: 100 }}%{% endunless %}">
+                        <video
+                            class="video-item-settings"
+                            muted
+                            playsinline
+                            preload="none"
+                            loop
+                            poster="{{ block.settings.video_web_poster | img_url: 'master' }}"
+                        >
+                            <source src="{{ block.settings.video_web }}" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="large-video large-video-mb" style="padding-top: {% unless block.settings.video_mb_poster.presentation.focal_point == '50.0% 50.0%' %}{{ 1 | divided_by: block.settings.video_mb_poster.aspect_ratio | times: 120 }}%{% else %}{{ 1 | divided_by: block.settings.video_mb_poster.aspect_ratio | times: 100 }}%{% endunless %}">
+                        <video
+                            class="video-item-settings"
+                            muted
+                            playsinline
+                            preload="none"
+                            loop
+                            poster="{{ block.settings.video_mb_poster | img_url: 'master' }}"
+                        >
+                            <source src="{{ block.settings.video_mb }}" type="video/mp4">
+                        </video>
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+</section>
+
+{% schema %}
+{
+    "name": "Liquid Banner",
+    "settings": [ ],
+    "blocks": [
+        {
+            "type": "largeImage",
+            "name": "largeImage",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "imageATpc",
+                    "label": "Web Image Banner"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "imageMobile",
+                    "label": "Image Banner Mobile"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "image_logo",
+                    "label": "Image Banner Logo"
+                },
+                {
+                    "type": "text",
+                    "id": "blockTitle",
+                    "label": "Block Title"
+                },
+                {
+                    "type": "text",
+                    "id": "blockSubTitle",
+                    "label": "Block Sub Title"
+                },
+                {
+                    "type": "textarea",
+                    "id": "blockDesc",
+                    "label": "Block Desc"
+                }
+            ]
+        },
+        {
+            "type": "videoItem",
+            "name": "videoItem",
+            "settings": [
+                {
+                    "type": "video",
+                    "id": "video_web",
+                    "label": "video web"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "video_web_poster",
+                    "label": "video web poster"
+                },
+                {
+                    "type": "video",
+                    "id": "video_mb",
+                    "label": "video mobile"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "video_mb_poster",
+                    "label": "video mobile poster"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "Liquid Banner"
+        }
+    ]
+}
+{% endschema %}

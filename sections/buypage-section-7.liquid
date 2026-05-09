@@ -1,0 +1,202 @@
+{{ 'buypage-section-7.css' | asset_url | stylesheet_tag }}
+
+<div class="buypage_section_7" id="{{section.settings.specId}}">
+  {%- for block in section.blocks -%}
+    {%- case block.type -%}
+      {% when 'first_part' %}
+        <div class="first_part">
+          <div class="first_part_title">{{ block.settings.title }}</div>
+          <div class="first_part_text">{{ block.settings.text }}</div>
+          {% render 'picture-simple',
+            image: block.settings.image,
+            image_mobile: block.settings.image_mobile,
+            mobile_widths: '350,450,550,650',
+            mobile_dpr: 1,
+            widths_sizes: '70vw',
+            class_str: 'first_part_img'
+          %}
+          {% comment %}
+            {{-
+              block.settings.image
+              | image_url: width: block.settings.image.width
+              | image_tag: alt: block.settings.image.alt, class: 'first_part_img pc_show', loading: 'lazy'
+            -}}
+            {% assign image_mobile = block.settings.image_mobile | default: block.settings.image %}
+            {{-
+              image_mobile
+              | image_url: width: image_mobile.width
+              | image_tag: alt: image_mobile.alt, class: 'first_part_img pmd_show', loading: 'lazy'
+            -}}
+          {% endcomment %}
+        </div>
+      {%- when 'second_part' -%}
+        <div class="second_part">
+          {% if block.settings.subtitle != blank %}
+            <div class="second_part_subtitle">{{ block.settings.subtitle }}</div>
+          {% endif %}
+          <div class="second_part_title">{{ block.settings.title }}</div>
+          {% if block.settings.logo_image != blank %}
+            {% render 'picture-simple',
+              image: block.settings.logo_image,
+              image_mobile: block.settings.logo_image,
+              mobile_widths: '350,450,550,650',
+              mobile_dpr: 1,
+              class_str: 'second_part_logo_img',
+              widths_sizes: '20vw'
+            %}
+            {% comment %}
+              {{-
+                block.settings.logo_image
+                | image_url: width: block.settings.logo_image.width
+                | image_tag: alt: block.settings.logo_image.alt, class: 'second_part_logo_img', loading: 'lazy'
+              -}}
+            {% endcomment %}
+          {% endif %}
+          <div class="second_part_contain">
+            {% render 'picture-simple',
+              image: block.settings.left_image,
+              image_mobile: block.settings.left_image,
+              mobile_widths: '350,450,550,650',
+              mobile_dpr: 1,
+              class_str: 'second_part_left_img',
+              widths_sizes: '50vw'
+            %}
+            {% comment %}
+              {{-
+                block.settings.left_image
+                | image_url: width: block.settings.left_image.width
+                | image_tag: alt: block.settings.left_image.alt, class: 'second_part_left_img', loading: 'lazy'
+              -}}
+            {% endcomment %}
+            <div>
+              {% assign list = '1,2,3' | split: ',' %}
+              {% for item in list %}
+                {% assign text = 'text_' | append: item %}
+                {% assign title = 'title_' | append: item %}
+                {% assign tip = 'tip_' | append: item %}
+                <div class="second_part_item">
+                  <div class="second_part_item_title">{{ block.settings[title] }}</div>
+                  <div class="second_part_item_text">{{ block.settings[text] }}</div>
+                  {% if block.settings[tip] %}
+                    <div class="second_part_item_tip">{{ block.settings[tip] }}</div>
+                  {% endif %}
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+    {%- endcase -%}
+  {% endfor %}
+</div>
+
+{% schema %}
+{
+  "name": "buypage section 7",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "specId",
+      "label": "specId"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "first_part",
+      "name": "first part",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "title",
+          "label": "title"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "text"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "image"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_mobile",
+          "label": "image mobile"
+        }
+      ]
+    },
+    {
+      "type": "second_part",
+      "name": "second part",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "title",
+          "label": "title"
+        },
+        {
+          "type": "text",
+          "id": "subtitle",
+          "label": "subtitle"
+        },
+        {
+          "type": "image_picker",
+          "id": "logo_image",
+          "label": "logo image"
+        },
+        {
+          "type": "image_picker",
+          "id": "left_image",
+          "label": "left image"
+        },
+        {
+          "type": "textarea",
+          "id": "title_1",
+          "label": "title 1"
+        },
+        {
+          "type": "textarea",
+          "id": "text_1",
+          "label": "text 1"
+        },
+        {
+          "type": "textarea",
+          "id": "tip_1",
+          "label": "tip 1"
+        },
+        {
+          "type": "textarea",
+          "id": "title_2",
+          "label": "title 2"
+        },
+        {
+          "type": "textarea",
+          "id": "text_2",
+          "label": "text 2"
+        },
+        {
+          "type": "textarea",
+          "id": "title_3",
+          "label": "title 3"
+        },
+        {
+          "type": "textarea",
+          "id": "text_3",
+          "label": "text 3"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "buypage section 7"
+    }
+  ]
+}
+{% endschema %}

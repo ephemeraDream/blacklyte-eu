@@ -1,0 +1,171 @@
+.top-pick-module{
+  display: flex;
+  gap: 100px;
+  background-color: #fff;
+  justify-content: space-around;
+  border-radius: 16px;
+  position: relative;
+  padding: 50px 100px;
+}
+.top-pick-module .cont-left{ }
+.top-pick-module .cont-left img{
+  max-width: 392px;
+}
+.top-pick-module .cont-right{
+  width: calc(100% - 400px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.top-pick-module .cont-right .title-info{
+  font: 500 40px var(--font-family-1);
+  color: #262626;
+}
+.top-pick-module .cont-right .desc-info{
+  font: 400 20px var(--font-family-1);
+  color: #262626;
+  margin-top: 10px;
+}
+.top-pick-module .cont-right .price-info{
+  display: flex;
+  margin-top: 26px;
+  align-items: center;
+}
+.top-pick-module .cont-right .price-info .discount-price,
+.top-pick-module .cont-right .price-info .origa-price{
+  font: 500 40px var(--font-family-1);
+  color: #262626;
+  margin-right: 8px;
+}
+.top-pick-module .cont-right .price-info .origa-price.origa-price-discount{
+  font: 400 20px var(--font-family-1);
+  color: #262626;
+  text-decoration: line-through;
+}
+.top-pick-module .buttons-info{
+  background-color: #7FBF1F;
+  color: #fff;
+  font: 600 24px var(--font-family-1);
+  padding: 20px 80px;
+  border-radius: 35px;
+  width: fit-content;
+  margin-top: 26px;
+  cursor: pointer;
+  border: 1px solid #7FBF1F;
+  transition: all .3s ease;
+}
+.top-pick-module .buttons-info:hover{
+  background-color: #94E023;
+  border-color: #94E023;
+}
+.top-pick-module .save-tag-cont{
+  font: 500 16px var(--font-family-1);
+  width: 53px;
+  height: 60px;
+  background: url('https://cdn.shopify.com/s/files/1/0716/1341/5637/files/backToSchool-event-icons.webp?v=1754547052') no-repeat;
+  background-size: contain;
+  position: absolute;
+  color: #fff;
+  left: 18px;
+  top: 0;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.top-pick-module .save-tag-cont .save-price{
+  display: inline-block;
+  margin-top: 2px;
+}
+
+/* IPhone */
+@media(max-width: 767px) {
+  .top-pick-module{
+    gap: 0;
+    flex-direction: column;
+    border-radius: 8px;
+    padding: 30px 20px;
+  }
+  .top-pick-module .save-tag-cont{
+    left: 5px;
+    width: 28px;
+    height: 31px;
+    font-size: 8px;
+  }
+  .top-pick-module .cont-left{
+    display: flex;
+    justify-content: center;
+  }
+  .top-pick-module .cont-left img{
+    height: 300px;
+    object-fit: contain;
+  }
+  .top-pick-module .cont-right{
+    width: 100%;
+    padding: 0;
+  }
+  .top-pick-module .cont-right .title-info{
+    font-size: 18px;
+  }
+  .top-pick-module .cont-right .desc-info{
+    font-size: 12px;
+    margin-top: 2px;
+  }
+  .top-pick-module .cont-right .price-info{
+    margin-top: 10px;
+  }
+  .top-pick-module .cont-right .price-info .discount-price,
+  .top-pick-module .cont-right .price-info .origa-price{
+    font-size: 20px;
+  }
+  .top-pick-module .cont-right .price-info .origa-price.origa-price-discount{
+    font-size: 14px;
+  }
+  .top-pick-module .buttons-info{
+    padding: 10px 50px;
+    font-size: 16px;
+    margin-top: 10px;
+    width: 100%;
+    text-align: center;
+  }
+}
+/* IPad */
+@media(min-width: 768px) and (max-width: 1025px){
+  .top-pick-module{
+    gap: 30px;
+  }
+  .top-pick-module .cont-right{
+    width: -webkit-fill-available;
+  }
+  .top-pick-module .cont-right .title-info{
+    font-size: 20px;
+  }
+  .top-pick-module .cont-right .desc-info{
+    font-size: 12px;
+    margin-top: 4px;
+  }
+  .top-pick-module .cont-right .price-info{
+    margin-top: 10px
+  }
+  .top-pick-module .cont-right .price-info .discount-price,
+  .top-pick-module .cont-right .price-info .origa-price{
+    font-size: 22px;
+  }
+  .top-pick-module .cont-right .price-info .origa-price.origa-price-discount{
+    font-size: 16px;
+  }
+  .top-pick-module .buttons-info{
+    font-size: 16px;
+    padding: 10px 50px;
+    margin-top: 10px;
+  }
+
+}
+/* large screen */
+@media(min-width: 2000px) {
+  .top-pick-module{
+    padding-left: 200px;
+  }
+  .top-pick-module .cont-left img{
+    max-width: max-content;
+  }
+}

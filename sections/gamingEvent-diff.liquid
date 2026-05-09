@@ -1,0 +1,496 @@
+<style>
+    .section-{{ section.id }}{
+        padding-top: 100px;
+        padding-bottom: 100px;
+        background: #EBEBEB;
+    }
+    .section-{{ section.id }} .container-full{
+        padding-left: 16%;
+        padding-right: 16%;
+    }
+    .section-{{ section.id }} .head-cont{
+        display: flex;
+        flex-direction: column;
+    }
+    .section-{{ section.id }} .head-cont .section-title{
+        font-family: Poppins;
+        font-weight: 600;
+        font-style: SemiBold;
+        font-size: 40px;
+        line-height: normal;
+        letter-spacing: 0%;
+        text-align: center;
+        vertical-align: middle;
+        color: #262629;
+    }
+    .section-{{ section.id }} .head-cont .section-descripe{
+        font-family: Poppins;
+        font-weight: 500;
+        font-style: Medium;
+        font-size: 16px;
+        line-height: normal;
+        letter-spacing: 0%;
+        text-align: center;
+        vertical-align: middle;
+        color: rgba(38, 38, 41, 0.7);
+        margin-top: 10px;
+    }
+    .section-{{ section.id }} .cont-lists{
+        margin-top: 26px;
+        display: flex;
+        flex-direction: column;
+        gap: 17px;
+    }
+
+    .section-{{ section.id }} .cont-lists .item-horizontal{
+        position: relative;
+    }
+    .section-{{ section.id }} .cont-lists .item-horizontal .item-horizontal-img img{
+        height: auto;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+    .section-{{ section.id }} .cont-lists .item-horizontal .horizontal-cont{
+        position: absolute;
+        left: 47px;
+        top: 50%;
+        transform: translateY(-50%);
+        display: flex;
+        flex-direction: column-reverse;
+    }
+    .section-{{ section.id }} .cont-lists .item-horizontal .horizontal-cont .horizontal-title{
+        font-family: Poppins;
+        font-weight: 600;
+        font-style: SemiBold;
+        font-size: 26px;
+        line-height: normal;
+        letter-spacing: -0.15px;
+        vertical-align: middle;
+        color: #fff;
+    }
+    .section-{{ section.id }} .cont-lists .item-horizontal .horizontal-cont .horizontal-desc{
+        font-family: Poppins;
+        font-weight: 500;
+        font-style: Medium;
+        font-size: 16px;
+        line-height: normal;
+        letter-spacing: 0%;
+        color: #fff;
+    }
+    .section-{{ section.id }} .cont-lists .item-horizontal .item-horizontal-img-pc{
+        display: block;
+    }
+    .section-{{ section.id }} .cont-lists .item-horizontal .item-horizontal-img-mb{
+        display: none;
+    }
+    .section-{{ section.id }} .large-and-small-items{
+        display: flex;
+        gap: 17px;
+    }
+    .section-{{ section.id }} .large-and-small-items .left-conts,
+    .section-{{ section.id }} .large-and-small-items .right-conts{
+        width: calc((100% - 17px) / 2);
+    }
+    .section-{{ section.id }} .large-and-small-items .large-item-left{
+        position: relative;
+        height: 100%;
+    }
+    .section-{{ section.id }} .large-and-small-items .large-item-left .large-item-img-pc{
+        display: block;
+    }
+    .section-{{ section.id }} .large-and-small-items .large-item-left .large-item-img-mb{
+        display: none;
+    }
+    .section-{{ section.id }} .large-and-small-items .large-item-left .large-item-img img{
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+    }
+    .section-{{ section.id }} .large-and-small-items .large-item-left .large-item-cont{
+        position: absolute;
+        left: 47px;
+        top: 45px;
+    }
+    .section-{{ section.id }} .large-and-small-items .large-item-left .large-item-title{
+        font-family: Poppins;
+        font-weight: 600;
+        font-style: SemiBold;
+        font-size: 26px;
+        line-height: 36px;
+        letter-spacing: -0.15px;
+        vertical-align: middle;
+        color: #262629;
+        width: 90%;
+    }
+    .section-{{ section.id }} .large-and-small-items .large-item-left .large-item-desc{
+        font-family: Poppins;
+        font-weight: 500;
+        font-style: Medium;
+        font-size: 16px;
+        line-height: 24px;
+        letter-spacing: 0%;
+        color: #262629;
+        width: 90%;
+    }
+    .section-{{ section.id }} .large-and-small-items .right-conts{
+        display: flex;
+        flex-direction: column;
+        gap: 18px;
+    }
+    .section-{{ section.id }} .large-and-small-items .right-conts .small-items{
+        position: relative;
+    }
+    .section-{{ section.id }} .large-and-small-items .right-conts .small-items img{
+        height: auto;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+    .section-{{ section.id }} .large-and-small-items .right-conts .small-cont{
+        position: absolute;
+        top: 34px;
+        left: 38px;
+        display: flex;
+        flex-direction: column;
+    }
+    .section-{{ section.id }} .large-and-small-items .right-conts .small-cont-column-reverse{
+        flex-direction: column-reverse;
+    }
+    .section-{{ section.id }} .large-and-small-items .right-conts .small-cont .small-cont-title{
+        font-family: Poppins;
+        font-weight: 600;
+        font-style: SemiBold;
+        font-size: 26px;
+        line-height: 36px;
+        letter-spacing: -0.15px;
+        vertical-align: middle;
+        color: #262629;
+        width: 80%;
+    }
+    .section-{{ section.id }} .large-and-small-items .right-conts .small-cont .small-cont-desc{
+        font-family: Poppins;
+        font-weight: 500;
+        font-style: Medium;
+        font-size: 16px;
+        line-height: 24px;
+        letter-spacing: 0%;
+        color: #262629;
+        width: 90%;
+    }
+    
+
+    {% comment %} iPhone {% endcomment %}
+    @media(max-width: 767px){
+        .section-{{ section.id }}{
+            padding-top: 50px;
+            padding-bottom: 50px;
+        }
+        .section-{{ section.id }} .container-full{
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+        .section-{{ section.id }} .head-cont .section-title{
+            font-size: 24px;
+        }
+        .section-{{ section.id }} .head-cont .section-descripe{
+            font-size: 14px;
+        }
+        .section-{{ section.id }} .cont-lists .item-horizontal .item-horizontal-img-pc{
+            display: none;
+        }
+        .section-{{ section.id }} .cont-lists .item-horizontal .item-horizontal-img-mb{
+            display: block;
+        }
+        .section-{{ section.id }} .cont-lists .item-horizontal .horizontal-cont .horizontal-title{
+            font-size: 20px;
+        }
+        .section-{{ section.id }} .cont-lists .item-horizontal .horizontal-cont .horizontal-desc{
+            font-size: 14px;
+        }
+        .section-{{ section.id }} .cont-lists .item-horizontal .horizontal-cont{
+            top: auto;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+        }
+        .section-{{ section.id }} .large-and-small-items{
+            flex-direction: column;
+        }
+        .section-{{ section.id }} .large-and-small-items .left-conts,
+        .section-{{ section.id }} .large-and-small-items .right-conts{
+            width: 100%;
+        }
+        .section-{{ section.id }} .large-and-small-items .large-item-left .large-item-img-pc{
+            display: none;
+        }
+        .section-{{ section.id }} .large-and-small-items .large-item-left .large-item-img-mb{
+            display: block;
+        }
+        .section-{{ section.id }} .large-and-small-items .large-item-left .large-item-cont{
+            top: 10px;
+            left: 10px;
+        }
+        .section-{{ section.id }} .large-and-small-items .right-conts .small-cont{
+            top: 10px;
+            left: 10px;
+        }
+        .section-{{ section.id }} .large-and-small-items .large-item-left .large-item-title,
+        .section-{{ section.id }} .large-and-small-items .right-conts .small-cont .small-cont-title{
+            font-size: 20px;
+            line-height: normal;
+        }
+        .section-{{ section.id }} .large-and-small-items .right-conts .small-cont .small-cont-title{
+            width: 80%;
+        }
+        .section-{{ section.id }} .large-and-small-items .right-conts .small-items:nth-of-type(2) .small-cont .small-cont-title{
+            width: 70%;
+        }
+        .section-{{ section.id }} .large-and-small-items .large-item-left .large-item-desc,
+        .section-{{ section.id }} .large-and-small-items .right-conts .small-cont .small-cont-desc{
+            font-size: 14px;
+            line-height: 22px;
+        }
+    }
+
+    {% comment %} iPad {% endcomment %}
+    @media(min-width: 768px) and (max-width: 1024px){
+        .section-{{ section.id }} .container-full{
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+        .section-{{ section.id }} .large-and-small-items .large-item-left .large-item-cont{
+            left: 20px;
+            top: 30px;
+        }
+        .section-{{ section.id }} .large-and-small-items .right-conts .small-cont{
+            top: 24px;
+            left: 28px;
+        }
+    }
+
+    @media(min-width: 1025px) and (max-width: 1480px){
+        .section-{{ section.id }} .container-full{
+            padding-left: 60px;
+            padding-right: 60px;
+        }
+    }
+</style>
+
+<section class="section-{{ section.id }}" id="{{ section.id }}" data-section-id="{{ section.id }}">
+    <div class="container-full">
+        <div class="head-cont">
+            {% if section.settings.sectionTitle != blank %}
+                <div class="section-title">{{ section.settings.sectionTitle }}</div>
+            {% endif %}
+            {% if section.settings.sectionDesc != blank %}
+                <div class="section-descripe">{{ section.settings.sectionDesc }}</div>
+            {% endif %}
+        </div>
+        <div class="cont-lists">
+            <div class="large-and-small-items">
+                <div class="left-conts">
+                    {% for block in section.blocks %}
+                        {% if block.type == "largeItem" %}
+                            <div class="large-item-left">
+                                <div class="large-item-img large-item-img-pc" style="padding-top: {% unless block.settings.largeItemImage.presentation.focal_point == '50.0% 50.0%' %}{{ 1 | divided_by: block.settings.largeItemImage.aspect_ratio | times: 120 }}%{% else %}{{ 1 | divided_by: block.settings.largeItemImage.aspect_ratio | times: 100 }}%{% endunless %}">
+                                    <img srcset="{{ block.settings.largeItemImage | img_url: 'master' }}"
+                                        height="{{ block.settings.largeItemImage.height }}"
+                                        width="{{ block.settings.largeItemImage.width }}"
+                                        alt="{{ block.settings.largeItemImage.alt }}" />
+                                </div>
+                                <div class="large-item-img large-item-img-mb" style="padding-top: {% unless block.settings.largeItemImage_mb.presentation.focal_point == '50.0% 50.0%' %}{{ 1 | divided_by: block.settings.largeItemImage_mb.aspect_ratio | times: 120 }}%{% else %}{{ 1 | divided_by: block.settings.largeItemImage_mb.aspect_ratio | times: 100 }}%{% endunless %}">
+                                    <img src="{{ block.settings.largeItemImage_mb | img_url: 'master' }}"
+                                        width="{{ block.settings.largeItemImage_mb.width }}"
+                                        height="{{ block.settings.largeItemImage_mb.height }}"
+                                        alt="{{ block.settings.largeItemImage_mb.alt }}" />
+                                </div>
+                                <div class="large-item-cont">
+                                    {% if block.settings.largeItemTitle != blank %}
+                                        <div class="large-item-title">{{ block.settings.largeItemTitle }}</div>
+                                    {% endif %}
+                                    {% if block.settings.largeItemDesc != blank %}
+                                        <div class="large-item-desc">{{ block.settings.largeItemDesc }}</div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+                <div class="right-conts">
+                    {% for block in section.blocks %}
+                        {% if block.type == "smallItem" %}
+                            <div class="small-items">
+                                <div class="small-image" style="padding-top: {% unless block.settings.smallItemImage.presentation.focal_point == '50.0% 50.0%' %}{{ 1 | divided_by: block.settings.smallItemImage.aspect_ratio | times: 120 }}%{% else %}{{ 1 | divided_by: block.settings.smallItemImage.aspect_ratio | times: 100 }}%{% endunless %}">
+                                    <img srcset="{{ block.settings.smallItemImage | img_url: 'master' }}"
+                                        height="{{ block.settings.smallItemImage.height }}"
+                                        width="{{ block.settings.smallItemImage.width }}"
+                                        alt="{{ block.settings.smallItemImage.alt }}" />
+                                </div>
+                                <div class="small-cont small-cont-{{ block.settings.smallContDirector }}">
+                                    {% if block.settings.smallItemTitle != blank %}
+                                        <div class="small-cont-title">{{ block.settings.smallItemTitle }}</div>
+                                    {% endif %}
+                                    {% if block.settings.smallItemDesc != blank %}
+                                        <div class="small-cont-desc">{{ block.settings.smallItemDesc }}</div>
+                                    {% endif %}
+                                </div>
+                                
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+                
+            </div>
+            <div class="horizontal-item">
+                {% for block in section.blocks %}
+                    {% if block.type == "largeHorizontalItem" %}
+                        <div class="item-horizontal">
+                            {% if block.settings.largeHorizontalImage != blank %}
+                                <div class="item-horizontal-img item-horizontal-img-pc" style="padding-top: {% unless block.settings.largeHorizontalImage.presentation.focal_point == '50.0% 50.0%' %}{{ 1 | divided_by: block.settings.largeHorizontalImage.aspect_ratio | times: 120 }}%{% else %}{{ 1 | divided_by: block.settings.largeHorizontalImage.aspect_ratio | times: 100 }}%{% endunless %}">
+                                    <img srcset="{{ block.settings.largeHorizontalImage | img_url: 'master' }}"
+                                        width="{{ block.settings.largeHorizontalImage.width }}"
+                                        height="{{ block.settings.largeHorizontalImage.height }}"
+                                        alt="{{ block.settings.largeHorizontalImage.alt }}" />
+                                </div>
+                            {% endif %}
+                            {% if block.settings.largeHorizontalImage_mb != blank %}
+                                <div class="item-horizontal-img item-horizontal-img-mb" style="padding-top: {% unless block.settings.largeHorizontalImage_mb.presentation.focal_point == '50.0% 50.0%' %}{{ 1 | divided_by: block.settings.largeHorizontalImage_mb.aspect_ratio | times: 120 }}%{% else %}{{ 1 | divided_by: block.settings.largeHorizontalImage_mb.aspect_ratio | times: 100 }}%{% endunless %}">
+                                    <img srcset="{{ block.settings.largeHorizontalImage_mb | img_url: 'master' }}"
+                                        width="{{ block.settings.largeHorizontalImage_mb.width }}"
+                                        height="{{ block.settings.largeHorizontalImage_mb.height }}"
+                                        alt="{{ block.settings.largeHorizontalImage_mb.alt }}" />
+                                </div>
+                            {% endif %}
+                            <div class="horizontal-cont">
+                                {% if block.settings.largeHorizontalTitle != blank %}
+                                    <div class="horizontal-title">{{ block.settings.largeHorizontalTitle }}</div>
+                                {% endif %}
+                                {% if block.settings.largeHorizontalDesc != blank %}
+                                    <div class="horizontal-desc">{{ block.settings.largeHorizontalDesc }}</div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+
+{% schema %}
+{
+    "name": "gaming Event Diff",
+    "settings": [
+        {
+            "type": "text",
+            "id": "sectionTitle",
+            "label": "section Title",
+            "default": "The Blacklyte Gaming Chair Difference"
+        },
+        {
+            "type": "textarea",
+            "id": "sectionDesc",
+            "label": "section Desc",
+            "default": "We are in a relentless pursuit to bring you the world's best gaming chair that suits everyone's needs."
+        }
+    ],
+    "blocks": [
+        {
+            "type": "largeItem",
+            "name": "largeItem",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "largeItemImage",
+                    "label": "large Item Image"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "largeItemImage_mb",
+                    "label": "large Item Image Mobile"
+                },
+                {
+                    "type": "text",
+                    "id": "largeItemTitle",
+                    "label": "large Item Title"
+                },
+                {
+                    "type": "textarea",
+                    "id": "largeItemDesc",
+                    "label": "large Item Desc"
+                }
+            ]
+        },
+        {
+            "type": "smallItem",
+            "name": "smallItem",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "smallItemImage",
+                    "label": "small Item Image"
+                },
+                {
+                    "type": "text",
+                    "id": "smallItemTitle",
+                    "label": "small Item Title"
+                },
+                {
+                    "type": "textarea",
+                    "id": "smallItemDesc",
+                    "label": "small Item Desc"
+                },
+                {
+                    "type": "select",
+                    "id": "smallContDirector",
+                    "label": "small Cont Director",
+                    "options": [
+                        {
+                            "value": "column",
+                            "label": "column"
+                        },
+                        {
+                            "value": "column-reverse",
+                            "label": "column-reverse"
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "type": "largeHorizontalItem",
+            "name": "largeHorizontalItem",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "largeHorizontalImage",
+                    "label": "large Horizontal Image"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "largeHorizontalImage_mb",
+                    "label": "large Horizontal Image Mobile"
+                },
+                {
+                    "type": "text",
+                    "id": "largeHorizontalTitle",
+                    "label": "large Horizontal Title"
+                },
+                {
+                    "type": "text",
+                    "id": "largeHorizontalDesc",
+                    "label": "large Horizontal Descripe"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "gaming Event Diff"
+        }
+    ]
+}
+{% endschema %}

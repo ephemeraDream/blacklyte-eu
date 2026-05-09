@@ -1,0 +1,286 @@
+<style>
+    .section-{{ section.id }}{
+        overflow: hidden;
+        background: #060606;
+    }
+    .section-{{ section.id }} .large-image-pc{
+        display: block;
+    }
+    .section-{{ section.id }} .large-image-mb{
+        display: none;
+    }
+    .section-{{ section.id }} .large-image-cont{
+        position: relative;
+    }
+
+    .section-{{ section.id }} .large-image-cont .large-image img{
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+
+    .section-{{ section.id }} .container-full .cont-info{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+    }
+   
+    .section-{{ section.id }} .cont-info .block-title{
+        font-family: Roboto;
+        font-weight: 500;
+        font-style: Medium;
+        font-size: 60px;
+        line-height: normal;
+        letter-spacing: 0%;
+        color: #fff;
+        white-space: nowrap;
+    }
+    .section-{{ section.id }} .cont-info .block-title .block-title-2{
+        color: #3173E8;
+    }
+    .section-{{ section.id }} .cont-info .block-desc{
+        font-family: Roboto;
+        font-weight: 400;
+        font-style: Regular;
+        font-size: 16px;
+        line-height: 26px;
+        letter-spacing: 0%;
+        text-align: center;
+        color: #fff;
+        margin: 24px 0 19px;
+    }
+    .section-{{ section.id }} .cont-info .block-search{
+        display: flex;
+        background: #fff;
+        border: 1px solid #9A9A9A;
+        justify-content: space-between;
+        border-radius: 40px;
+        align-items: center;
+    }
+    .section-{{ section.id }} .cont-info .search-input-class{
+        width: 90%;
+        padding: 16px;
+        border-radius: 40px;
+        border: none;
+    }
+    .section-{{ section.id }} .cont-info .block-search .search-input-icon{
+        padding-right: 14px;
+    }
+    .section-{{ section.id }} .cont-info .block-search .search-input-icon svg{
+        width: 24px;
+        height: 24px;
+        cursor: pointer;
+    }
+
+    {% comment %} iphone {% endcomment %}
+    @media(max-width: 767px){
+        .section-{{ section.id }} .large-image-pc{
+            display: none;
+        }
+        .section-{{ section.id }} .large-image-mb{
+            display: block;
+        }
+        .section-{{ section.id }} .cont-info .block-title{
+            font-size: 36px;
+        }
+        .section-{{ section.id }} .cont-info .block-desc{
+            font-size: 14px;
+        }
+    }
+
+    {% comment %} ipad {% endcomment %}
+    @media(min-width: 768px) and (max-width: 1024px){
+        .section-{{ section.id }} .cont-info .block-title{
+            font-size: 50px;
+            line-height: normal;
+        }
+        .section-{{ section.id }} .cont-info .block-desc{
+            font-size: 14px;
+            line-height: normal;
+            margin: 20px 0 15px;
+        }
+        .section-{{ section.id }} .cont-info .search-input-class{
+            padding: 12px;
+        }
+    }
+
+
+</style>
+
+<section class="section-{{ section.id }}" data-section-id="{{ section.id }}" id="{{ section.id }}">
+    <div class="container-full">
+        {% for block in section.blocks %}
+            {% if block.type == "largeImage" %}
+                <div class="large-image-cont">
+                    <div class="large-image large-image-pc" style="padding-top: {% unless block.settings.image_pc.presentation.focal_point == '50.0% 50.0%' %}{{ 1 | divided_by: block.settings.image_pc.aspect_ratio | times: 120 }}%{% else %}{{ 1 | divided_by: block.settings.image_pc.aspect_ratio | times: 100 }}%{% endunless %}">
+                        <img src="{{ block.settings.image_pc | img_url: 'master' }}">
+                    </div>
+                    <div class="large-image large-image-mb" style="padding-top: {% unless block.settings.image_mb.presentation.focal_point == '50.0% 50.0%' %}{{ 1 | divided_by: block.settings.image_mb.aspect_ratio | times: 120 }}%{% else %}{{ 1 | divided_by: block.settings.image_mb.aspect_ratio | times: 100 }}%{% endunless %}">
+                        <img src="{{ block.settings.image_mb | img_url: 'master' }}">
+                    </div>
+                    <div class="cont-info">
+                        {% if block.settings.blockTitle != blank %}
+                            <div class="block-title">
+                                {{ block.settings.blockTitle }}
+                                <span class="block-title-2">{{ block.settings['blockTitle-2'] }}</span>
+                            </div>
+                        {% endif %}
+                        {% if block.settings.blockDescripe != blank %}
+                            <div class="block-desc">{{ block.settings.blockDescripe }}</div>
+                        {% endif %}
+                        {% if block.settings.blockCheckbox %}
+                            <div class="block-search">
+                                <input class="search-input-class" id="search-input" placeholder="{{ block.settings.blockInputPlaceholder }}" />
+                                <span class="search-input-icon">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M9.99609 17.9922C11.7711 17.9918 13.4949 17.3976 14.8931 16.3042L19.2891 20.7002L20.7031 19.2862L16.3071 14.8902C17.4011 13.4919 17.9957 11.7676 17.9961 9.99219C17.9961 5.58119 14.4071 1.99219 9.99609 1.99219C5.58509 1.99219 1.99609 5.58119 1.99609 9.99219C1.99609 14.4032 5.58509 17.9922 9.99609 17.9922ZM9.99609 3.99219C13.3051 3.99219 15.9961 6.68319 15.9961 9.99219C15.9961 13.3012 13.3051 15.9922 9.99609 15.9922C6.68709 15.9922 3.99609 13.3012 3.99609 9.99219C3.99609 6.68319 6.68709 3.99219 9.99609 3.99219Z" fill="#262629"/>
+                                    </svg>
+                                </span>
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+</section>
+
+<script>
+    $(document).ready(function () {
+        {% comment %} 初始隐藏 {% endcomment %}
+        $('.item-area .desc').hide();
+
+        $('.item-area .title').on('click', function () {
+            const $currentItem = $(this).closest('.item-area');
+            const $currentBody = $currentItem.find('.desc');
+
+            if ($currentBody.is(':visible')) {
+                {% comment %} 当前是打开的 -> 关闭并移除 class {% endcomment %}
+                $currentItem.removeClass('item-area-toggle');
+                $currentBody.stop(true, true).slideUp(300);
+                
+            } else {
+                {% comment %} 关闭其他项并移除它们的 class {% endcomment %}
+                $('.item-area').not($currentItem).removeClass('item-area-toggle')
+                                        .find('.desc').stop(true, true).slideUp(300);
+
+                {% comment %} 打开当前项并添加 class {% endcomment %}
+                $currentItem.addClass('item-area-toggle');
+                $currentBody.stop(true, true).slideDown(300);
+
+            }
+        });
+    });
+
+    function getSearchResu(){
+        const input = document.getElementById("search-input");
+        const keyword = input.value.toLowerCase().trim();
+        const items = document.querySelectorAll(".item-cont-right .item-area");
+
+        if (!keyword) return;
+
+        let firstMatch = null;
+
+        items.forEach(item => {
+            const text = item.innerText.toLowerCase();
+            if (!firstMatch && text.includes(keyword)) {
+                firstMatch = item;
+            }
+        });
+
+        if (firstMatch) {
+            const offset = $(firstMatch).offset().top - 100;
+            $('html, body').animate({ scrollTop: offset }, 500);
+
+            $('.item-area').removeClass('highlight');
+            $(firstMatch).addClass('highlight');
+        }
+    }
+
+    $('.search-input-icon').on('click', function () {
+        getSearchResu()
+    });
+
+    document.addEventListener('DOMContentLoaded', function () {
+        const input = document.getElementById('search-input')
+        if (!input) return;
+
+        input.addEventListener('keydown', function (e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+
+                const keyword = input.value.trim();
+                if (!keyword) return;
+
+                getSearchResu()
+            }
+        });
+    });
+
+
+
+
+</script>
+
+{% schema %}
+{
+    "name": "newFaq Banner",
+    "settings": [],
+    "blocks": [
+        {
+            "type": "largeImage",
+            "name": "largeImage",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "image_pc",
+                    "label": "Web Image Banner"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "image_mb",
+                    "label": "Image Banner Mobile"
+                },
+                {
+                    "type": "text",
+                    "id": "blockTitle",
+                    "label": "block Title",
+                    "default": "How Can We"
+                },
+                {
+                    "type": "text",
+                    "id": "blockTitle-2",
+                    "label": "block Title 2",
+                    "default": " Help?"
+                },
+                {
+                    "type": "text",
+                    "id": "blockDescripe",
+                    "label": "block Descripe",
+                    "default": "Find answers to your questions, get step-by-step tutorials, and access resources to help you make the most of Nexus."
+                },
+                {
+                    "type": "checkbox",
+                    "id": "blockCheckbox",
+                    "label": "show Input"
+                },
+                {
+                    "type": "text",
+                    "id": "blockInputPlaceholder",
+                    "label": "block Input Placeholder",
+                    "default": "Search keywords..."
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "newFaq Banner"
+        }
+    ]
+}
+{% endschema %}

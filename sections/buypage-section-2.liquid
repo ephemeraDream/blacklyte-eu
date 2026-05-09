@@ -1,0 +1,259 @@
+{{ 'buypage-section-2.css' | asset_url | stylesheet_tag }}
+
+<div class="buypage_section_2">
+  {%- for block in section.blocks -%}
+    {%- case block.type -%}
+      {% when 'first_part' %}
+        <div class="first_part">
+          {{-
+            block.settings.image
+            | image_url: width: block.settings.image.width
+            | image_tag: alt: block.settings.image.alt, class: 'first_part_img', loading: 'lazy'
+          -}}
+          <div>
+            <div class="first_part_title">{{ block.settings.title }}</div>
+            <div class="first_part_text">{{ block.settings.text }}</div>
+          </div>
+        </div>
+      {%- when 'second_part' -%}
+        <div class="second_part">
+          <div class="second_part_title">{{ block.settings.title }}</div>
+          <div class="second_part_contain">
+            {% assign poster_image = block.settings.cover | image_url %}
+            {% if block.settings.video != blank %}
+              {{
+                block.settings.video
+                | video_tag:
+                  class: 'second_part_video',
+                  loop: true,
+                  muted: true,
+                  playsinline: true,
+                  preload: 'none',
+                  poster: poster_image,
+                  autoplay: true
+              }}
+            {% elsif block.settings.cover != blank %}
+              {% render 'picture-simple',
+                image: block.settings.cover,
+                image_mobile: block.settings.cover_mobile,
+                mobile_widths: '350,450,550,650',
+                mobile_dpr: 1,
+                class_str: 'second_part_video',
+                widths_sizes: '70vw'
+              %}
+              {% comment %}
+                {{-
+                  block.settings.cover
+                  | image_url: width: block.settings.cover.width
+                  | image_tag: alt: block.settings.cover.alt, class: 'second_part_video', loading: 'lazy'
+                -}}
+              {% endcomment %}
+            {% endif %}
+            <div class="second_part_contain_line">
+              <div class="second_part_subtitle">{{ block.settings.subtitle }}</div>
+              <div class="second_part_text">{{ block.settings.text }}</div>
+            </div>
+          </div>
+        </div>
+      {% when 'third_part' %}
+        <div class="third_part">
+          <div>
+            {% if block.settings.left_video != blank %}
+              {% assign poster_image = block.settings.left_image | image_url: width: block.settings.left_image.width %}
+              {{
+                block.settings.left_video
+                | video_tag:
+                  class: 'third_part_img',
+                  loop: true,
+                  muted: true,
+                  playsinline: true,
+                  preload: 'none',
+                  poster: poster_image,
+                  autoplay: true
+              }}
+            {% else %}
+              {% render 'picture-simple',
+                image: block.settings.left_image,
+                image_mobile: block.settings.left_image,
+                mobile_widths: '350,450,550,650',
+                mobile_dpr: 1,
+                class_str: 'third_part_img',
+                widths_sizes: '35vw'
+              %}
+              {% comment %}
+                {{-
+                  block.settings.left_image
+                  | image_url: width: block.settings.left_image.width
+                  | image_tag: alt: block.settings.left_image.alt, class: 'third_part_img', loading: 'lazy'
+                -}}
+              {% endcomment %}
+            {% endif %}
+            {% if block.settings.left_title != blank %}
+              <div class="third_part_title">{{ block.settings.left_title }}</div>
+            {% endif %}
+            <div class="third_part_text">{{ block.settings.left_text }}</div>
+          </div>
+          <div>
+            {% if block.settings.right_video != blank %}
+              {% assign poster_image = block.settings.right_image
+                | image_url: width: block.settings.right_image.width
+              %}
+              {{
+                block.settings.right_video
+                | video_tag:
+                  class: 'third_part_img',
+                  loop: true,
+                  muted: true,
+                  playsinline: true,
+                  preload: 'none',
+                  poster: poster_image,
+                  autoplay: true
+              }}
+            {% else %}
+              {% render 'picture-simple',
+                image: block.settings.right_image,
+                image_mobile: block.settings.right_image,
+                mobile_widths: '350,450,550,650',
+                mobile_dpr: 1,
+                class_str: 'third_part_img',
+                widths_sizes: '35vw'
+              %}
+              {% comment %}
+                {{-
+                  block.settings.right_image
+                  | image_url: width: block.settings.right_image.width
+                  | image_tag: alt: block.settings.right_image.alt, class: 'third_part_img', loading: 'lazy'
+                -}}
+              {% endcomment %}
+            {% endif %}
+            {% if block.settings.right_title != blank %}
+              <div class="third_part_title">{{ block.settings.right_title }}</div>
+            {% endif %}
+            <div class="third_part_text">{{ block.settings.right_text }}</div>
+          </div>
+        </div>
+    {%- endcase -%}
+  {% endfor %}
+</div>
+
+{% schema %}
+{
+  "name": "buypage section 2",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [],
+  "blocks": [
+    {
+      "type": "first_part",
+      "name": "first part",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "title",
+          "label": "title"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "text"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "image"
+        }
+      ]
+    },
+    {
+      "type": "second_part",
+      "name": "second part",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "title",
+          "label": "title"
+        },
+        {
+          "type": "textarea",
+          "id": "subtitle",
+          "label": "subtitle"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "text"
+        },
+        {
+          "type": "image_picker",
+          "id": "cover",
+          "label": "cover"
+        },
+        {
+          "type": "image_picker",
+          "id": "cover_mobile",
+          "label": "cover mobile"
+        },
+        {
+          "type": "video",
+          "id": "video",
+          "label": "video"
+        }
+      ]
+    },
+    {
+      "type": "third_part",
+      "name": "third part",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "left_title",
+          "label": "left title"
+        },
+        {
+          "type": "textarea",
+          "id": "left_text",
+          "label": "left text"
+        },
+        {
+          "type": "image_picker",
+          "id": "left_image",
+          "label": "left image"
+        },
+        {
+          "type": "video",
+          "id": "left_video",
+          "label": "left video"
+        },
+        {
+          "type": "textarea",
+          "id": "right_title",
+          "label": "right title"
+        },
+        {
+          "type": "textarea",
+          "id": "right_text",
+          "label": "right text"
+        },
+        {
+          "type": "image_picker",
+          "id": "right_image",
+          "label": "right image"
+        },
+        {
+          "type": "video",
+          "id": "right_video",
+          "label": "right video"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "buypage section 2"
+    }
+  ]
+}
+{% endschema %}

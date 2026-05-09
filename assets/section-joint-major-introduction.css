@@ -1,0 +1,169 @@
+@font-face {
+  font-family: 'DIN-BoldItalic';
+  src: url('https://cdn.shopify.com/s/files/1/0663/6742/2695/files/DINPro-BoldItalic.woff2?v=1744016875') format('woff2');
+  font-weight: 700;
+  font-style: italic;
+}
+
+.major_introduction {
+  width: 100%;
+  padding: 7.1875vw 20.78125vw 16.71875vw;
+}
+
+.major_introduction .major_introduction_title {
+  font-family: Dharma Gothic E;
+  font-weight: 400;
+  font-style: Regular;
+  font-size: 3.125vw;
+  leading-trim: NONE;
+  line-height: 3.125vw;
+  letter-spacing: 0%;
+  color: #FFf;
+  text-align: center;
+}
+
+.major_introduction .major_introduction_text {
+  font-family: Roboto;
+  font-weight: 500;
+  font-style: Medium;
+  font-size: clamp(14px, 0.833vw, 0.833vw);
+  leading-trim: NONE;
+  line-height: clamp(22px, 1.25vw, 1.25vw);
+  letter-spacing: 0.32px;
+  text-align: center;
+  color: rgba(255, 255, 255, .7);
+  width: 48.28125vw;
+  margin: 1.25vw auto 0;
+}
+
+.major_introduction .major_introduction_item {
+  display: flex;
+  align-items: center;
+  gap: 2.34375vw;
+  margin-top: 8.28125vw;
+}
+
+.major_introduction .major_introduction_item:nth-child(2n) {
+  flex-direction: row-reverse;
+}
+
+.major_introduction .major_introduction_item_info {
+  flex: 1;
+}
+
+.major_introduction .major_introduction_item_subtitle {
+  font-family: DIN-BoldItalic;
+  font-weight: 500;
+  font-style: Regular;
+  font-size: clamp(16px, 1.04167vw, 1.04167vw);
+  leading-trim: NONE;
+  line-height: clamp(20px, 1.25vw, 1.25vw);
+  letter-spacing: 0%;
+  vertical-align: middle;
+  color: #FF0055;
+}
+
+.major_introduction .major_introduction_item_title {
+  font-family: Dharma Gothic E;
+  font-weight: 400;
+  font-style: Regular;
+  font-size: 2.604167vw;
+  leading-trim: NONE;
+  line-height: 2.5vw;
+  letter-spacing: 0%;
+  vertical-align: middle;
+  text-transform: uppercase;
+  color: #fff;
+  margin-top: 0.3125vw;
+}
+
+.major_introduction .major_introduction_item_desc {
+  font-family: Roboto;
+  font-weight: 500;
+  font-style: Medium;
+  font-size: clamp(14px, 0.833vw, 0.833vw);
+  leading-trim: NONE;
+  line-height: clamp(22px, 1.25vw, 1.25vw);
+  letter-spacing: 0.32px;
+  color: rgba(255, 255, 255, .7);
+  margin-top: 0.9375vw;
+}
+
+.major_introduction .major_introduction_item_filebox {
+  flex: 0 0 auto;
+  width: 32.34375vw;
+  height: 20.78125vw;
+  border: 2px solid #FF0055;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.major_introduction .major_introduction_item_filebox_image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  transition: transform .4s ease-in-out;
+  user-select: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .major_introduction .major_introduction_item:hover .major_introduction_item_filebox_image {
+    transform: scale(1.1);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .major_introduction {
+    padding: 13.6vw 5.33vw 16vw;
+  }
+
+  .major_introduction .major_introduction_title {
+    font-size: 8vw;
+    line-height: 10.67vw;
+  }
+
+  .major_introduction .major_introduction_text {
+    width: 100%;
+    font-size: 14px;
+    line-height: 22px;
+    margin-top: 3.2vw;
+  }
+
+  .major_introduction .major_introduction_item {
+    flex-direction: column-reverse;
+    margin-top: 13.6vw;
+    gap: 5.6vw;
+  }
+
+  .major_introduction .major_introduction_item:nth-child(2n) {
+    flex-direction: column-reverse;
+  }
+
+  .major_introduction .major_introduction_text+.major_introduction_item {
+    margin-top: 8vw;
+  }
+
+  .major_introduction .major_introduction_item_filebox {
+    width: 100%;
+    height: 56vw;
+  }
+
+  .major_introduction .major_introduction_item_subtitle {
+    font-size: 18px;
+    line-height: 24px;
+    letter-spacing: 1%;
+  }
+
+  .major_introduction .major_introduction_item_title {
+    font-size: 8vw;
+    line-height: 10.67vw;
+    margin-top: 0.8vw;
+  }
+
+  .major_introduction .major_introduction_item_desc {
+    font-size: 14px;
+    line-height: 22px;
+    margin-top: 0.8vw;
+  }
+}

@@ -1,0 +1,434 @@
+{% comment %} {{ 'eventpage-discount.css' | asset_url | stylesheet_tag }} {% endcomment %}
+<style>
+  .ewc-event-section{
+    background: url('https://cdn.shopify.com/s/files/1/0716/1341/5637/files/EWC-event-prod-bgImg.webp?v=1752118211');
+    background-repeat: repeat-y;
+    background-size: cover;
+    padding-bottom: 200px;
+    padding-left: 16%;
+    padding-right: 16%;
+  }
+  img.image-pc, .chair-block-image-pc{
+    display: block;
+  }
+  img.image-mb, .chair-block-image-mb{
+    display: none;
+  }
+  .chair-block,
+  .desk-block {
+    padding-top: 130px;
+  }
+  .chair-block .chairs-cont-block,
+  .desk-block .desk-cont-block {
+    position: relative;
+  }
+
+  
+  .chair-block-title,
+  .desk-block-title{
+    font: 900 60px var(--font-family-1);
+    font-style: Italic;
+    color: #fff;
+    text-align: center;
+    width: 100%;
+    position: absolute;
+    transform: translateY(-30px);
+  }
+ 
+  .chairs-cont-block .chair-cont,
+  .desk-cont-block .desk-cont {
+    color: #fff;
+    text-align: center;
+    cursor: pointer;
+    position: absolute;
+    left: 50%;
+    bottom: 10%;
+    transform: translateX(-50%);
+  }
+  .chairs-cont-block .chair-cont .title,
+  .desk-cont-block .desk-cont .title {
+    font: 500 40px var(--font-family-1);
+    line-height: 1.4;
+  }
+  .chairs-cont-block .chair-cont .variants-cont,
+  .desk-cont-block .desk-cont .variants-cont {
+    font: 400 20px var(--font-family-1);
+  }
+  .chairs-cont-block .chair-cont .chair-prices,
+  .desk-cont-block .desk-cont .desk-prices{
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    margin: 20px 0;
+  }
+  .chairs-cont-block .chair-cont .chair-prices .discount-price,
+  .desk-cont-block .desk-cont .desk-prices .discount-price {
+    font: 500 40px var(--font-family-1);
+    margin-right: 9px;
+  }
+  .chairs-cont-block .chair-cont .chair-prices .prod-price,
+  .desk-cont-block .desk-cont .desk-prices .prod-price {
+    font: 400 20px var(--font-family-1);
+  }
+  .chairs-cont-block .chair-cont .chair-btns,
+  .desk-cont-block .desk-cont .desk-btns {
+    font: 600 24px var(--font-family-1);
+    color: #fff;
+    text-align: center;
+    background-color: #256ECA;
+    border-radius: 35px;
+    line-height: 2.6;
+    width: 370px;
+    cursor: pointer;
+    margin: auto;
+  }
+
+  
+  @media (max-width: 767px) {
+    img.image-pc, .chair-block-image-pc{
+      display: none;
+    }
+    img.image-mb, .chair-block-image-mb{
+      display: block;
+    }
+    .ewc-event-section{
+      padding-left: 10px;
+      padding-right: 10px;
+      padding-bottom: 100px;
+    }
+    .chair-block,
+    .desk-block{
+      padding-top: 90px;
+    }
+    .chair-block-title {
+      font: 900 30px var(--font-family-1);
+      width: 100%;
+      transform: translateY(-50px);
+    }
+    .desk-block-title{
+      width: 90%;
+      left: 5%;
+      font: 900 30px var(--font-family-1);
+      margin: auto;
+      transform: translateY(-20px);
+    }
+    .chairs-cont-block .chair-cont,
+    .desk-cont-block .desk-cont {
+      text-align: center;
+      width: 100%;
+      bottom: 20px;
+    }
+    .chairs-cont-block .chair-cont .title,
+    .desk-cont-block .desk-cont .title{
+      font-size: 20px;
+    }
+    .chairs-cont-block .chair-cont .variants-cont,
+    .desk-cont-block .desk-cont .variants-cont{
+      font-size: 12px;
+    }
+    .chairs-cont-block .chair-cont .chair-prices,
+    .desk-cont-block .desk-cont .desk-prices{
+      margin: 10px 0;
+    }
+    .chairs-cont-block .chair-cont .chair-prices .discount-price,
+    .desk-cont-block .desk-cont .desk-prices .discount-price{
+      font-size: 20px;
+    }
+    .chairs-cont-block .chair-cont .chair-prices .prod-price,
+    .desk-cont-block .desk-cont .desk-prices .prod-price{
+      font-size: 10px;
+    }
+    .chairs-cont-block .chair-cont .chair-btns,
+    .desk-cont-block .desk-cont .desk-btns{
+      font-size: 16px;
+      width: 80%;
+    }
+  }
+
+  /* IPad */
+  @media(min-width: 768px) and (max-width: 1024px){
+    .chair-block-title,
+    .desk-block-title{
+      top: 10%;
+      font-size: 40px;
+    }
+    .ewc-event-section{
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+    .chairs-cont-block .chair-cont .title,
+    .desk-cont-block .desk-cont .title{
+      font-size: 30px;
+    }
+    .chairs-cont-block .chair-cont .variants-cont,
+    .desk-cont-block .desk-cont .variants-cont{
+      font-size: 16px;
+    }
+    .chairs-cont-block .chair-cont .chair-prices,
+    .desk-cont-block .desk-cont .desk-prices{
+      margin: 10px 0;
+    }
+    .chairs-cont-block .chair-cont .chair-prices .discount-price,
+    .desk-cont-block .desk-cont .desk-prices .discount-price{
+      font-size: 20px;
+    }
+    .chairs-cont-block .chair-cont .chair-prices .prod-price,
+    .desk-cont-block .desk-cont .desk-prices .prod-price{
+      font-size: 12px;
+    }
+    .chairs-cont-block .chair-cont .chair-btns,
+    .desk-cont-block .desk-cont .desk-btns{
+      font-size: 18px;
+    }
+  }
+  @media(min-width: 1025px) and (max-width: 1480px){
+    .ewc-event-section{
+      padding-left: 60px;
+      padding-right: 60px;
+    }
+  }
+  @media(min-width: 1481px) and (max-width: 1600px){
+    .ewc-event-section{
+      padding-left: 16%;
+      padding-right: 16%;
+    }
+  }
+  /* small screen */
+  @media(min-width: 1025px) and (max-width: 1600px) {
+    .chair-block-title,
+    .desk-block-title {
+      font-size: 50px;
+    }
+    .chairs-cont-block .chair-cont .title,
+    .desk-cont-block .desk-cont .title{
+      font-size: 30px;
+    }
+    .chairs-cont-block .chair-cont .variants-cont,
+    .desk-cont-block .desk-cont .variants-cont{
+      font-size: 18px;
+    }
+    .chairs-cont-block .chair-cont .chair-prices,
+    .desk-cont-block .desk-cont .desk-prices{
+      margin: 15px 0;
+    }
+    .chairs-cont-block .chair-cont .chair-prices .discount-price,
+    .desk-cont-block .desk-cont .desk-prices .discount-price{
+      font-size: 30px;
+    }
+    .chairs-cont-block .chair-cont .chair-prices .prod-price,
+    .desk-cont-block .desk-cont .desk-prices .prod-price{
+      font-size: 15px;
+    }
+    .chairs-cont-block .chair-cont .chair-btns,
+    .desk-cont-block .desk-cont .desk-btns{
+      font-size: 18px;
+      line-height: 2;
+      width: 300px;
+    }
+  }
+</style>
+
+<section class="ewc-event-section">
+  <div class="chair-block">
+    {% for block in section.blocks %}
+      {% if block.type == "chairBlock" %}
+        <div class="chairs-cont-block target-link" data-url="{{ block.settings.blockLink }}">
+          <div class="chair-block-title">{{ block.settings.blockTitle }}</div>
+          
+          {% if block.settings.blockProdBgImage != blank %}
+            <div class="chair-block-image-pc">
+              <img src="{{ block.settings.blockProdBgImage | img_url:'master' }}" />
+            </div>
+          {% endif %}
+          {% if block.settings.blockProdBgImageMobile != blank %}
+            <div class="chair-block-image-mb">
+              <img src="{{ block.settings.blockProdBgImageMobile | img_url:'master' }}" />
+            </div>
+          {% endif %}
+          <div class="chair-cont">
+            <div class="title">{{ block.settings.blockProdTitle }}</div>
+            <div class="variants-cont">{{ block.settings.blockProdVariant }}</div>
+            <div class="chair-prices">
+              <span class="discount-price">{{ block.settings.blockProdSalePrice }}</span>
+              <span class="prod-price" style="{% if block.settings.blockProdSalePrice != blank %}text-decoration: line-through;{% endif %}">{{ block.settings.blockProdPrice }}</span>
+            </div>
+            <div class="chair-btns">{{ block.settings.blockProdButton }}</div>
+          </div>
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+  <!-- chari collection -->
+  {% render 'chairs-collection' %}
+  <div class="desk-block">
+    {% for block in section.blocks %}
+      {% if block.type == "deskBlock" %}
+        <div class="desk-cont-block target-link" data-url="{{ block.settings.blockLink }}">
+          <div class="desk-block-title">{{ block.settings.blockTitle }}</div>
+          {% if block.settings.blockDeskBgImage != blank %}
+            <div class="chair-block-image-pc">
+              <img src="{{ block.settings.blockDeskBgImage | img_url:'master' }}" />
+            </div>
+          {% endif %}
+          {% if block.settings.blockDeskBgImageMobile != blank %}
+            <div class="chair-block-image-mb">
+              <img src="{{ block.settings.blockDeskBgImageMobile | img_url:'master' }}" />
+            </div>
+          {% endif %}
+          <div class="desk-cont">
+            <div class="title">{{ block.settings.blockProdTitle }}</div>
+            <div class="variants-cont">{{ block.settings.blockProdVariant }}</div>
+            <div class="desk-prices">
+              <span class="discount-price">{{ block.settings.blockProdSalePrice }}</span>
+              <span class="prod-price" style="{% if block.settings.blockProdSalePrice != blank %}text-decoration: line-through;{% endif %}">{{ block.settings.blockProdPrice }}</span>
+            </div>
+            <div class="desk-btns">{{ block.settings.blockProdButton }}</div>
+          </div>
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+  <!-- desk collection -->
+  {% render 'desk-collection' %}
+</section>
+
+<script>
+  $(document).ready(function() {
+    $('.target-link').on('click', function() {
+      const linkurl = $(this).data('url')
+      console.log(linkurl)
+      if(linkurl){
+        window.location.href = linkurl
+      }
+    })
+  })
+</script>
+
+{% schema %}
+  {
+    "name": "EWC Event Collection",
+    "settings": [ ],
+    "blocks": [
+      {
+        "type": "chairBlock",
+        "name": "chairBlock",
+        "settings": [
+          {
+            "type": "text",
+            "id": "blockTitle",
+            "label": "block Title",
+            "default": "IN THE FIGHT FOR EWC GLORY"
+          },
+          {
+            "type": "image_picker",
+            "id": "blockProdBgImage",
+            "label": "block Chair Bg Image"
+          },
+          {
+            "type": "image_picker",
+            "id": "blockProdBgImageMobile",
+            "label": "block Chair Bg Image Mobile"
+          },
+          {
+            "type": "text",
+            "id": "blockProdTitle",
+            "label": "block Product Title",
+            "default": "Blacklyte Athena Pro"
+          },
+          {
+            "type": "image_picker",
+            "id": "blockTitleImage",
+            "label": "block Title Image",
+          },
+          {
+            "type": "text",
+            "id": "blockProdVariant",
+            "label": "Block Product Variant",
+            "default": "Black / Large / Leatherette"
+          },
+          {
+            "type": "text",
+            "id": "blockProdSalePrice",
+            "label": "Block Product Sale Price"
+          },
+          {
+            "type": "text",
+            "id": "blockProdPrice",
+            "label": "Block Product Price"
+          },
+          {
+            "type": "text",
+            "id": "blockProdButton",
+            "label": "Block Product Button",
+            "default": "Shop Now"
+          },
+          {
+            "type": "url",
+            "id": "blockLink",
+            "label": "Block Link URL"
+          }
+        ]
+      },
+      {
+        "type": "deskBlock",
+        "name": "deskBlock",
+        "settings": [
+          {
+            "type": "text",
+            "id": "blockTitle",
+            "label": "block Title",
+            "default": "PRO-LEVEL GAMING DESKS"
+          },
+          {
+            "type": "text",
+            "id": "blockProdTitle",
+            "label": "block Product Title",
+            "default": "Blacklyte Atlas Standing Desk"
+          },
+          {
+            "type": "image_picker",
+            "id": "blockDeskBgImage",
+            "label": "block Desk Bg Image"
+          },
+          {
+            "type": "image_picker",
+            "id": "blockDeskBgImageMobile",
+            "label": "block Desk Bg Image Mobile"
+          },
+          {
+            "type": "text",
+            "id": "blockProdVariant",
+            "label": "block Product Variant",
+            "default": "Black / Large"
+          },
+          {
+            "type": "text",
+            "id": "blockProdSalePrice",
+            "label": "block Product Sale Price"
+          },
+          {
+            "type": "text",
+            "id": "blockProdPrice",
+            "label": "block Product Price"
+          },
+          {
+            "type": "text",
+            "id": "blockProdButton",
+            "label": "block Product Button",
+            "default": "Shop Now"
+          },
+          {
+            "type": "url",
+            "id": "blockLink",
+            "label": "block Link URL"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "EWC Event Collection"
+      }
+    ]
+  }
+{% endschema %}

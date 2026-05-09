@@ -1,0 +1,181 @@
+<style>
+  .newsupport-mobile-cont{
+    height: 360px;
+    width: 240px;
+    max-height: 0;
+    max-width: 240px;
+    overflow: hidden;
+    transition: max-height 0.5s ease, opacity 0.4s ease;
+    position: absolute;
+    top: 59px;
+    opacity: 0;
+    background-color: #EBEBEB;
+    z-index: 999;
+    border: 1px solid #D4D4D8;
+  }
+  .newsupport-mobile-cont .title{
+    display: none;
+  }
+  .newsupport-mobile-cont .newsupport-prods{
+    display: flex;
+    gap: 20px;
+    flex-direction: column;
+    padding: 20px 23px;
+  }
+  .newsupport-mobile-cont .newsupport-prods .support_menu_items{
+    font: 500 16px var(--font-family-3);
+    color: #262629;
+  }
+  .newsupport-mobile-cont .newsupport-prods .support_menu_items:hover{
+    text-decoration: underline;
+  }
+  @media(max-width: 1024px) {
+    .newsupport-mobile-cont{
+        height: 100vh;
+        width: 100%;
+        max-height: 100vh;
+        max-width: 100%;
+        overflow: hidden;
+        transition: .5s;
+        position: absolute;
+        top: 0;
+        left: 100vw;
+        opacity: 0;
+        background-color: #fff;
+        z-index: 999;
+    }
+    .newsupport-mobile-cont.newsupport-mobile-cont-active{
+      left: 0;
+      opacity: 1;
+      height: 100vh;
+      width: 100%;
+      max-height: 100vh;
+      max-width: 100%;
+    }
+    .newsupport-mobile-cont .title{
+      display: block;
+      padding: 26px 20px;
+      border-bottom: 1px solid #F1F1F1;
+      position: relative;
+      cursor: pointer;
+    }
+    .newsupport-mobile-cont .title .icons svg{
+      width: 18px;
+      height: 18px;
+      fill: none;
+      stroke: none;
+    }
+    .newsupport-mobile-cont .title .header-title-text{
+        font: 500 16px var(--font-family-3);
+        color: #262629;
+        vertical-align: middle;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    .newsupport-mobile-cont .newsupport-prods{
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        padding: 26px 20px;
+        flex-wrap: wrap;
+        max-height: calc(100vh - 100px);
+        overflow-y: scroll;
+    }
+    .newsupport-mobile-cont .newsupport-prods .support_menu_items{
+        font: 500 16px var(--font-family-3);
+        color: #262629;
+        cursor: pointer;
+    }
+  }
+
+  @media(min-width: 1026px) and (max-width: 1600px){
+    .newsupport-mobile-cont .newsupport-prods .support_menu_items{
+      font-size: 14px;
+    }
+  }
+  
+</style>
+
+<div class="newsupport-mobile-cont">
+  <div class="title">
+    <span class="icons">
+      <svg width="12" height="20" viewBox="0 0 12 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M11 19L2 10L11 1" stroke="#262629" stroke-width="1.6"/>
+      </svg>
+    </span>
+    <span class="header-title-text">{{ section.settings.supportMenuTitle }}</span>
+  </div>
+  <div class="newsupport-prods">
+    {% for menu in section.settings.supportMenuMobile.links %}
+        <a href="{{ menu.url }}" class="support_menu_items">
+            {{ menu.title }}
+        </a>
+    {% endfor %}
+  </div>
+</div>
+{% comment %} <script>
+    function isMobile(){
+        return window.innerWidth >= 1024
+    }
+    window.addEventListener('resize', isDeskTop());
+
+
+    function isDeskTop(){
+        if(isMobile()){
+            {% comment %} support {% endcomment %}
+            $('.header-navigation .menu-lv-item').on('mouseenter', function() {
+              {% comment %} let currentMenuText = $(this).text().toLowerCase().trim() {% endcomment %}
+              const $this = $(this);
+              const isSecondLast = $this.is(':nth-last-child(2)');
+              if(isSecondLast){
+                  // this 就是当前的菜单元素
+                  let leftDistance = $(this).offset().left;
+                  $('.newsupport-mobile-cont').css({
+                  'opacity': 1,
+                  'left': $(this).offset().left - 40,
+                  'max-height': 'fit-content',
+                  'border-top': '1px solid #D4D4D8',
+                  'border-bottom': "1px solid #D4D4D8"
+                  })
+              } else {
+                  $('.newsupport-mobile-cont').css({
+                  'opacity': 0,
+                  'left': 0,
+                  'max-height': 0,
+                  'border-top': 'none',
+                  'border-bottom': "none"
+                  })
+              }
+            })
+
+            $('.newsupport-mobile-cont').on('mouseleave', function() {
+                $(this).css({
+                    'opacity': '0',
+                    'left': 0,
+                    'max-height': 0,
+                    'border-top': 'none',
+                    'border-bottom': "none"
+                })
+            })
+            $('.header-navigation .menu-lv-item').on('mouseleave', function() {
+              const $this = $(this);
+              const isSecondLast = $this.is(':nth-last-child(2)');
+              if(isSecondLast && !$('.newsupport-mobile-cont:hover').length) {
+                  $('.newsupport-mobile-cont').css({
+                      'opacity': '0',
+                      'max-height': '0',
+                      'border-top': 'none',
+                      'border-bottom': "none"
+                  })
+              }
+            })
+        }
+    }
+    
+    {% comment %} support menu {% endcomment %}
+    $('.newsupport-mobile-cont .title .icons').on('click', function(){
+        $('.newsupport-mobile-cont').removeClass('newsupport-mobile-cont-active')
+        $('body').removeClass('menu_open_mb')
+    })
+</script> {% endcomment %}

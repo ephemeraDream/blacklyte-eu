@@ -1,0 +1,211 @@
+{{ 'section-joint-wuchang-chair.css' | asset_url | stylesheet_tag }}
+<link
+  rel="stylesheet"
+  href="https://cdn.shopify.com/s/files/1/0663/6742/2695/files/swiper-bundle.min.css?v=1702624065"
+>
+
+<style>
+  .wuchang_chair {
+    background: url('{{ section.settings.background_img | image_url }}') no-repeat;
+    background-size: 100%;
+    background-position: center -1px;
+  }
+  .wuchang_chair_title {
+    background: url('{{ section.settings.title_bg | image_url }}') no-repeat;
+    background-size: 100%;
+  }
+  @media screen and (max-width: 1000px) {
+    .wuchang_chair {
+      background: url('{{ section.settings.background_img_mobile | image_url }}') no-repeat;
+    }
+  }
+</style>
+
+<div class="wuchang_chair">
+  <div class="wuchang_chair_title">{{ section.settings.title }}</div>
+  <img src="{{ section.settings.design_with | image_url }}" class="wuchang_chair_design_with">
+  {% comment %} <div class="wuchang_chair_text">{{ section.settings.text }}</div> {% endcomment %}
+  <div class="wuchang_chair_content">
+    <img src="{{ section.settings.chair_img | image_url }}" class="wuchang_chair_content_chair_img">
+    <div class="wuchang_chair_highlight">
+      <img src="{{ section.settings.highlight_bg | image_url }}" class="wuchang_chair_highlight_bg pc_show">
+      <img src="{{ section.settings.highlight_bg_mobile | image_url }}" class="wuchang_chair_highlight_bg pmd_show">
+      <div class="wuchang_chair_highlight_title">{{ section.settings.highlight_title }}</div>
+      <div class="wuchang_chair_highlight_text">{{ 'joint.key_highlights' | t }}</div>
+      <div class="wuchang_chair_highlight_line">
+        {% for block in section.blocks %}
+          <div class="wuchang_chair_highlight_item{% if forloop.first %} active{% endif %}">
+            {{ block.settings.icon }}
+          </div>
+        {% endfor %}
+      </div>
+      <div class="wuchang_chair_highlight_swiper swiper">
+        <div class="swiper-wrapper">
+          {% for block in section.blocks %}
+            <div class="swiper-slide">
+              <img src="{{ block.settings.image | image_url }}">
+              <div>
+                <div class="wuchang_chair_highlight_item_title">{{ block.settings.title }}</div>
+                <div class="wuchang_chair_highlight_item_text">{{ block.settings.text }}</div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+      <a
+        class="wuchang_chair_btn"
+        style="background: url('{{ section.settings.content_btn_bg | image_url }}') no-repeat; background-size: 100%;"
+        href="{{ section.settings.content_btn_link }}"
+      >
+        {{ section.settings.content_btn_text }}
+      </a>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdn.shopify.com/s/files/1/0663/6742/2695/files/swiper-bundle.min.js?v=1702624149"></script>
+<script>
+  const wuchang_chair_highlight_swiper = new Swiper('.wuchang_chair_highlight_swiper', {
+    loop: true,
+    slidesPerView: 1,
+    spaceBetween: 10,
+    allowTouchMove: false,
+  });
+
+  document.querySelectorAll('.wuchang_chair_highlight_item').forEach((item, index) => {
+    item.addEventListener('click', () => {
+      document.querySelector('.wuchang_chair_highlight_item.active').classList.remove('active');
+      item.classList.add('active');
+      wuchang_chair_highlight_swiper.slideTo(index);
+    });
+  });
+
+  (() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('in-view');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold: 0.3,
+      }
+    );
+
+    observer.observe(document.querySelector('.wuchang_chair_content'));
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "wuchang chair",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "background_img",
+      "label": "background image"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_img_mobile",
+      "label": "background image mobile"
+    },
+    {
+      "type": "image_picker",
+      "id": "title_bg",
+      "label": "title background"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "title"
+    },
+    {
+      "type": "text",
+      "id": "text",
+      "label": "text"
+    },
+    {
+      "type": "image_picker",
+      "id": "chair_img",
+      "label": "chair image"
+    },
+    {
+      "type": "image_picker",
+      "id": "highlight_bg",
+      "label": "highlight background"
+    },
+    {
+      "type": "image_picker",
+      "id": "highlight_bg_mobile",
+      "label": "highlight background mobile"
+    },
+    {
+      "type": "image_picker",
+      "id": "content_btn_bg",
+      "label": "content button background"
+    },
+    {
+      "type": "text",
+      "id": "content_btn_text",
+      "label": "content button text"
+    },
+    {
+      "type": "url",
+      "id": "content_btn_link",
+      "label": "content button link"
+    },
+    {
+      "type": "textarea",
+      "id": "highlight_title",
+      "label": "highlight title"
+    },
+    {
+      "type": "image_picker",
+      "id": "design_with",
+      "label": "design with"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "key_highlights",
+      "name": "Key Highlights",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "icon",
+          "label": "icon"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "image"
+        },
+        {
+          "type": "richtext",
+          "id": "title",
+          "label": "title"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "joint wuchang chair"
+    }
+  ]
+}
+{% endschema %}

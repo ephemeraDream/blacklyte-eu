@@ -1,0 +1,406 @@
+<style>
+    .section-{{ section.id }}{
+        padding-top: 110px;
+        padding-bottom: 40px;
+    }
+    .section-{{ section.id }} .container-full{
+        padding-left: 16%;
+        padding-right: 16%;
+    }
+    .section-{{ section.id }} .head-cont{
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+    .section-{{ section.id }} .section-title{
+        font-family: Poppins;
+        font-weight: 600;
+        font-style: SemiBold;
+        font-size: 40px;
+        line-height: 40px;
+        letter-spacing: 0%;
+        text-align: center;
+        vertical-align: middle;
+        color: #FFB91F;
+    }
+    .section-{{ section.id }} .section-desc{
+        font-family: Poppins;
+        font-weight: 500;
+        font-style: Medium;
+        font-size: 18px;
+        line-height: 18px;
+        letter-spacing: 0%;
+        text-align: center;
+        vertical-align: middle;
+        color: #fff;
+    }
+
+    .section-{{ section.id }} .brand-logo-lists{
+        margin-top: 53px;
+        display: flex;
+        gap: 60px;
+        padding-bottom: 40px;
+        border-bottom: 1px solid #EEFF00;
+    }
+    .section-{{ section.id }} .large-items img,
+    .section-{{ section.id }} .brand-logo-lists img{
+        height: auto;
+    }
+
+    .section-{{ section.id }} .large-items{
+        margin-top: 130px;
+        display: flex;
+        gap: 30px;
+    }
+    .section-{{ section.id }} .large-item-left{
+        width: calc(55% - 15px);
+    }
+    .section-{{ section.id }} .large-item-right{
+        width: calc(45% - 15px);
+        position: relative;
+    }
+
+    .section-{{ section.id }} .large-items .large-item-left-title{
+        font-family: Poppins;
+        font-weight: 600;
+        font-style: SemiBold;
+        font-size: 40px;
+        line-height: 50px;
+        letter-spacing: 0%;
+        color: #FFB91F;
+    }
+    .section-{{ section.id }} .large-items .large-item-left-desc{
+        font-family: Poppins;
+        font-weight: 500;
+        font-style: Medium;
+        font-size: 16px;
+        leading-trim: NONE;
+        line-height: 24px;
+        letter-spacing: 0%;
+        color: #fff;
+        margin: 10px 0 22px;
+    }
+    .section-{{ section.id }} .large-items .large-item-left-link{
+        font-family: Poppins;
+        font-weight: 500;
+        font-style: Medium;
+        font-size: 16px;
+        line-height: 24px;
+        letter-spacing: 0%;
+        vertical-align: middle;
+        color: #C2C2C2;
+        transition: all .35s ease;
+    }
+    .section-{{ section.id }} .large-items .large-item-left-link:hover svg{
+        transform: translateX(10px);
+    }
+    .section-{{ section.id }} .large-items .large-item-left-link .link-svg svg{
+        width: 30px;
+        vertical-align: baseline;
+    }
+    .section-{{ section.id }} .large-item-right .right-sec{
+        position: absolute;
+        left: -80%;
+        width: 100%;
+        top: 40%;
+    }
+    .section-{{ section.id }} .large-item-right .right-thi{
+        margin-top: 70px;
+        width: 80%;
+    }
+
+    {% comment %} Iphone {% endcomment %}
+    @media(max-width: 767px){
+        .section-{{ section.id }}{
+            padding-top: 37px;
+            padding-bottom: 40px;
+        }
+        .section-{{ section.id }} .container-full{
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+        .section-{{ section.id }} .large-items{
+            flex-direction: column-reverse;
+            margin-top: 24px;
+        }
+        .section-{{ section.id }} .large-item-left,
+        .section-{{ section.id }} .large-item-right{
+            width: 100%;
+        }
+
+        .section-{{ section.id }} .large-item-right .right-sec{
+            position: relative;
+            margin-top: 10px;
+            width: 60%;
+            left: 0;
+        }
+        .section-{{ section.id }} .large-item-right .right-thi{
+            margin-top: -30px;
+            width: 80%;
+            margin-left: 20%;
+        }
+        .section-{{ section.id }} .head-cont{
+            gap: 3px;
+        }
+        .section-{{ section.id }} .section-title{
+            font-size: 26px;
+            line-height: 30px;
+        }
+        .section-{{ section.id }} .section-desc{
+            font-size: 14px;
+            line-height: 18px;
+            width: 80%;
+            margin: auto;
+        }
+        .section-{{ section.id }} .brand-logo-lists{
+            margin-top: 10px;
+            gap: 20px;
+            padding-bottom: 35px;
+        }
+        .section-{{ section.id }} .large-items .large-item-left-title{
+            font-size: 26px;
+            line-height: 30px;
+        }
+        .section-{{ section.id }} .large-items .large-item-left-desc{
+            font-size: 14px;
+            line-height: 22px;
+            margin: 6px 0 15px;
+        }
+        .section-{{ section.id }} .large-items .large-item-left-link{
+            font-size: 16px;
+            line-height: 24px;
+        }
+    }
+    {% comment %} iPad {% endcomment %}
+    @media(min-width: 768px) and (max-width: 1024px){
+        .section-{{ section.id }} .container-full{
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+        .section-{{ section.id }} .large-items .large-item-left-title{
+            font-size: 30px;
+            line-height: 1.1;
+        }
+        .section-{{ section.id }} .large-items .large-item-left-desc{
+            font-size: 14px;
+            line-height: 20px;
+            margin: 10px 0 10px;
+        }
+        .section-{{ section.id }} .large-items .large-item-left-link{
+            font-size: 12px;
+            line-height: 18px;
+        }
+        .section-{{ section.id }} .large-items{
+            gap: 10px;
+        }
+        .section-{{ section.id }} .large-item-left,
+        .section-{{ section.id }} .large-item-right{
+            width: calc(50% - 5px);
+        }
+
+    }
+
+    @media(min-width: 1025px) and (max-width: 1480px){
+        .section-{{ section.id }} .container-full{
+            padding-left: 60px;
+            padding-right: 60px;
+        }
+        .section-{{ section.id }} .large-items .large-item-left-title{
+            font-size: 34px;
+            line-height: 40px;
+        }
+        .section-{{ section.id }} .large-items .large-item-left-desc{
+            font-size: 14px;
+            line-height: 20px;
+        }
+        .section-{{ section.id }} .large-items .large-item-left-link{
+            font-size: 12px;
+            line-height: normal;
+        }
+    }
+
+</style>
+
+<section class="section-{{ section.id }}" id="{{ section.id }}" data-section-id="{{ section.id }}">
+    {% liquid
+      assign section_bg_image = section.settings.sectionBgImage
+      assign section_bg_image_mb = section.settings.sectionBgImage_mb
+    %}
+    {% if section_bg_image != blank or section_bg_image_mb != blank %}
+        <style>
+            .section-{{ section.id }}{
+                background: #060606 url({{ section_bg_image | img_url: 'master' }});
+                background-size: cover;
+            }
+            @media(max-width: 768px){
+                .section-{{ section.id }}{
+                    background: url({{ section_bg_image_mb | img_url: 'master' }});
+                    background-size: cover;
+                }
+            }
+        </style>
+    {% endif %}
+    <div class="container-full">
+        <div class="head-cont">
+            {% if section.settings.sectionTitle != blank %}
+                <div class="section-title">{{ section.settings.sectionTitle }}</div>
+            {% endif %}
+            {% if section.settings.sectionDesc != blank %}
+                <div class="section-desc">{{ section.settings.sectionDesc }}</div>
+            {% endif %}
+        </div>
+        <div class="brand-logo-lists">
+            {% for block in section.blocks %}
+                {% if block.type == "logoItem" %}
+                    <div class="brand-item">
+                        <img srcset="{{ block.settings.partnerLogoItemImage | img_url: 'master' }}"
+                            height="{{ block.settings.partnerLogoItemImage.height }}"
+                            width="{{ block.settings.partnerLogoItemImage.width }}"
+                            alt="{{ block.settings.partnerLogoItemImage.alt }}" />
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+        <div class="large-items">
+            {% for block in section.blocks %}
+                {% if block.type == "largeImageItem" %}
+                    <div class="large-item-left">
+                        {% if block.settings.largeItemTitle != blank %}
+                            <div class="large-item-left-title">{{ block.settings.largeItemTitle }}</div>
+                        {% endif %}
+                        {% if block.settings.largeItemDesc != blank %}
+                            <div class="large-item-left-desc">{{ block.settings.largeItemDesc }}</div>
+                        {% endif %}
+                        {% if block.settings.largeItemLink != blank %}
+                            <a class="large-item-left-link" {% if block.settings.largeItemURL != blank %} href="{{ block.settings.largeItemURL }}" {% else %} aria-disabled="true" {% endif %}>
+                                {{ block.settings.largeItemLink }}
+                                <span class="link-svg">
+                                    <svg width="32" height="15" viewBox="0 0 32 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M31.7071 8.07039C32.0976 7.67986 32.0976 7.0467 31.7071 6.65617L25.3431 0.292213C24.9526 -0.0983109 24.3195 -0.0983109 23.9289 0.292213C23.5384 0.682738 23.5384 1.3159 23.9289 1.70643L29.5858 7.36328L23.9289 13.0201C23.5384 13.4107 23.5384 14.0438 23.9289 14.4343C24.3195 14.8249 24.9526 14.8249 25.3431 14.4343L31.7071 8.07039ZM0 7.36328V8.36328H31V7.36328V6.36328H0V7.36328Z" fill="#C2C2C2"/>
+                                    </svg>
+
+                                </span>
+                            </a>
+                        {% endif %}
+                    </div>
+                    <div class="large-item-right">
+                        {% if block.settings.largeItemImage != blank %}
+                            <div class="right-fi">
+                                <img srcset="{{ block.settings.largeItemImage | img_url: 'master' }}"
+                                    height="{{ block.settings.largeItemImage.height }}"
+                                    width="{{ block.settings.largeItemImage.width }}"
+                                    alt="{{ block.settings.largeItemImage.alt }}" />
+                            </div>
+                        {% endif %}
+                        {% if block.settings.largeItemCenterImage != blank %}
+                            <div class="right-sec">
+                                <img srcset="{{ block.settings.largeItemCenterImage | img_url: 'master' }}"
+                                    height="{{ block.settings.largeItemCenterImage.height }}"
+                                    width="{{ block.settings.largeItemCenterImage.width }}"
+                                    alt="{{ block.settings.largeItemCenterImage.alt }}" />
+                            </div>
+                        {% endif %}
+                        {% if block.settings.largeItemBottomImage != blank %}
+                            <div class="right-thi">
+                                <img srcset="{{ block.settings.largeItemBottomImage | img_url: 'master' }}"
+                                    height="{{ block.settings.largeItemBottomImage.height }}"
+                                    width="{{ block.settings.largeItemBottomImage.width }}"
+                                    alt="{{ block.settings.largeItemBottomImage.alt }}" />
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+{% schema %}
+{
+    "name": "gaming Event Partners",
+    "settings": [
+        {
+            "type": "image_picker",
+            "id": "sectionBgImage",
+            "label": "section Background Image"
+        },
+        {
+            "type": "image_picker",
+            "id": "sectionBgImage_mb",
+            "label": "section Background Image Mobile"
+        },
+        {
+            "type": "text",
+            "id": "sectionTitle",
+            "label": "section Title",
+            "default": "High Performance on World Stage"
+        },
+        {
+            "type": "text",
+            "id": "sectionDesc",
+            "label": "section Descripe",
+            "default": "Every second of comfort can decide the outcome of a team fight"
+        }
+    ],
+    "blocks": [
+        {
+            "type": "logoItem",
+            "name": "logoItem",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "partnerLogoItemImage",
+                    "label": "partner Logo Item Image"
+                }
+            ]
+        },
+        {
+            "type": "largeImageItem",
+            "name": "largeImageItem",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "largeItemImage",
+                    "label": "large Image Item"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "largeItemCenterImage",
+                    "label": "large Item Center Image"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "largeItemBottomImage",
+                    "label": "large Item Bottom Image"
+                },
+                {
+                    "type": "text",
+                    "id": "largeItemTitle",
+                    "label": "large Item Title"
+                },
+                {
+                    "type": "text",
+                    "id": "largeItemDesc",
+                    "label": "large Item Descripe"
+                },
+                {
+                    "type": "text",
+                    "id": "largeItemLink",
+                    "label": "large Item Link",
+                    "default": "EXPLORE BLACKLYTE GAMING CHAIRS"
+                },
+                {
+                    "type": "url",
+                    "id": "largeItemURL",
+                    "label": "large Item URL"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "gaming Event Partners"
+        }
+    ]
+}
+{% endschema %}

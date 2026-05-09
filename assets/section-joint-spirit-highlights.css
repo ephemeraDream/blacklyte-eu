@@ -1,0 +1,172 @@
+.spirit_highlights {
+  position: relative;
+  background-color: #0c0c0c;
+  padding: 10vw 20.625vw 13.59375vw;
+}
+
+.spirit_highlights .spirit_highlights_bg {
+  position: absolute;
+  width: 100%;
+  height: 32.5vw;
+  object-fit: cover;
+  object-position: center center;
+  top: 0;
+  left: 0;
+}
+
+.spirit_highlights .pmd_show {
+  display: none;
+}
+
+.spirit_highlights .spirit_highlights_title {
+  font-family: DINCond-Bold;
+  font-weight: 500;
+  font-style: Regular;
+  font-size: 3.125vw;
+  leading-trim: NONE;
+  line-height: 3.4375vw;
+  letter-spacing: 0.32px;
+  text-align: center;
+  background: linear-gradient(180deg, #FDEDCD 0%, #B6A583 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.spirit_highlights .spirit_highlights_text {
+  font-family: Roboto;
+  font-weight: 500;
+  font-style: Medium;
+  font-size: clamp(14px, 0.833vw, 0.833vw);
+  leading-trim: NONE;
+  line-height: clamp(20px, 1.145833vw, 1.145833vw);
+  letter-spacing: 0.32px;
+  text-align: center;
+  color: rgba(255, 255, 255, .7);
+  margin: 0.890625vw auto 0 auto;
+  width: 40.734375vw;
+}
+
+.spirit_highlights .spirit_highlights_swiper {
+  margin: 2.5vw -5px 0;
+}
+
+.spirit_highlights .spirit_highlights_swiper_item {
+  width: 58.28125vw;
+  height: 28.125vw;
+  margin: 0 5px;
+}
+
+.spirit_highlights .spirit_highlights_swiper_item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  transition: transform .4s ease-in-out;
+}
+
+.spirit_highlights .spirit_highlights_swiper .slick-arrow {
+  background: none;
+  border: none;
+  width: auto;
+  height: auto;
+  padding: 0;
+}
+
+.spirit_highlights .spirit_highlights_swiper .slick-arrow svg {
+  width: 1.09375vw;
+  height: auto;
+}
+
+.spirit_highlights .spirit_highlights_swiper .slick-arrow.slick-next {
+  right: 2.1875vw !important;
+}
+
+.spirit_highlights .spirit_highlights_swiper .slick-arrow.slick-prev {
+  left: 2.1875vw !important;
+}
+
+.spirit_highlights .spirit_highlights_swiper .slick-dots li button,
+.spirit_highlights .spirit_highlights_swiper .slider-dots li button {
+  width: 0.78125vw;
+  height: 0.78125vw;
+  border: none;
+  background-color: rgba(240, 224, 192, 0.2);
+}
+
+.spirit_highlights .spirit_highlights_swiper .slick-dots li,
+.spirit_highlights .spirit_highlights_swiper .slider-dots li {
+  margin: 0 0.3125vw;
+}
+
+.spirit_highlights .spirit_highlights_swiper .slick-dots li.slick-active button,
+.spirit_highlights .spirit_highlights_swiper .slider-dots li.active button {
+  background: #F0E0C0;
+}
+
+.spirit_highlights .spirit_highlights_swiper .slick-dots,
+.spirit_highlights .spirit_highlights_swiper .slider-dots {
+  bottom: -4.84375vw;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .spirit_highlights .spirit_highlights_swiper_item:hover img {
+    transform: scale(1.1);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .spirit_highlights .pc_show {
+    display: none;
+  }
+
+  .spirit_highlights {
+    background-color: #2A2A2A;
+    padding: 16.8vw 7.2vw 19.2vw;
+  }
+
+  .spirit_highlights .spirit_highlights_title {
+    font-size: 8vw;
+    line-height: 10.67vw;
+  }
+
+  .spirit_highlights .spirit_highlights_swiper {
+    margin: 9.6vw -5px 0;
+  }
+
+  .spirit_highlights .spirit_highlights_swiper_item {
+    width: 85.6vw;
+    height: 98.4vw;
+  }
+
+  .spirit_highlights .spirit_highlights_swiper .slick-arrow svg {
+    width: 2.4vw;
+  }
+
+  .spirit_highlights .spirit_highlights_swiper .slick-arrow.slick-next {
+    right: 4vw !important;
+  }
+
+  .spirit_highlights .spirit_highlights_swiper .slick-arrow.slick-prev {
+    left: 4vw !important;
+  }
+
+  .spirit_highlights .spirit_highlights_swiper .slick-dots li button,
+  .spirit_highlights .spirit_highlights_swiper .slider-dots li button {
+    width: 1.84vw;
+    height: 1.84vw;
+  }
+
+  .spirit_highlights .spirit_highlights_swiper .slick-dots li,
+  .spirit_highlights .spirit_highlights_swiper .slider-dots li {
+    margin: 0 0.76vw;
+  }
+
+  .spirit_highlights .spirit_highlights_swiper .slick-dots,
+  .spirit_highlights .spirit_highlights_swiper .slider-dots {
+    bottom: -9.84vw;
+  }
+
+  .spirit_highlights .spirit_highlights_text {
+    width: 100%;
+  }
+}

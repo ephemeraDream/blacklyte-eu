@@ -1,0 +1,396 @@
+<style>
+    .section-{{ section.id }} .container-full{
+        padding: 130px 0 0;
+    }
+
+    .section-{{ section.id }} .cont-header .section-title{
+        font-family: Poppins;
+        font-weight: 600;
+        font-style: SemiBold;
+        font-size: 40px;
+        line-height: 40px;
+        letter-spacing: 0%;
+        color: #262629;
+        text-align: center;
+    }
+    .section-{{ section.id }} .cont-header .section-desc{
+        font-family: Poppins;
+        font-weight: 500;
+        font-style: Medium;
+        font-size: 16px;
+        leading-trim: NONE;
+        line-height: 24px;
+        letter-spacing: 0%;
+        text-align: center;
+        color: #262629;
+        opacity: 0.7;
+        margin-top: 17px;
+    }
+
+    .section-{{ section.id }} .container-full .gallery-container {
+        display: grid;
+        gap: 8px;
+        grid-template-columns: 2fr 1fr 1fr;
+        grid-template-areas: 
+            "big small1 small2"
+            "big small3 small4";
+        margin-top: 38px;
+    }
+
+    .section-{{ section.id }} .container-full .gallery-item{
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+    }
+    .section-{{ section.id }} .container-full .gallery-item .item-wrapper {
+        position: relative;
+        width: 100%;
+        height: 100%;
+    }
+
+    
+    .section-{{ section.id }} .gallery-item img {
+        transition: transform 0.5s ease;
+    }
+
+   
+    .section-{{ section.id }} .item-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.4); 
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        opacity: 0; 
+        visibility: hidden;
+        transition: all 0.3s ease;
+        z-index: 2;
+    }
+
+    .section-{{ section.id }} .plus-icon {
+        width: 40px;
+        height: 40px;
+        background: #fff;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #000;
+        transform: scale(0.5);
+        transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .section-{{ section.id }} .plus-icon svg{
+        width: 40px;
+        height: 40px;
+    }
+
+   
+    .section-{{ section.id }} .gallery-item:hover .item-overlay {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .section-{{ section.id }} .gallery-item:hover .plus-icon {
+        transform: scale(1);
+    }
+
+    .section-{{ section.id }} .gallery-item:hover img {
+        transform: scale(1.05);
+    }
+
+    .section-{{ section.id }} .container-full .item-large { grid-area: big; }
+    .section-{{ section.id }} .container-full .item-small-1 { grid-area: small1; }
+    .section-{{ section.id }} .container-full .item-small-2 { grid-area: small2; }
+    .section-{{ section.id }} .container-full .item-small-3 { grid-area: small3; }
+    .section-{{ section.id }} .container-full .item-small-4 { grid-area: small4; }
+
+    
+    .section-{{ section.id }} .container-full .gallery-item img{
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+
+    .image-modal {
+        display: none;
+        position: fixed;
+        z-index: 9999;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0,0,0,0.85);
+        backdrop-filter: blur(5px); /* 毛玻璃效果 */
+        justify-content: center;
+        align-items: center;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+
+    .image-modal.is-active {
+        opacity: 1;
+    }
+
+    .image-modal .modal-content-wrapper {
+        position: relative;
+        max-width: 90%;
+        max-height: 90%;
+        transform: scale(0.9);
+        transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .image-modal.is-active .modal-content-wrapper {
+        transform: scale(1);
+    }
+
+    .image-modal .modal-content-wrapper img {
+        width: auto;
+        height: auto;
+        max-width: 100%;
+        max-height: 90vh;
+        border-radius: 4px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+
+    .image-modal .modal-close {
+        position: absolute;
+        top: 20px;
+        right: 30px;
+        color: #fff;
+        font-size: 20px;
+        cursor: pointer;
+        z-index: 10001;
+    }
+
+
+    {% comment %} iPhone {% endcomment %}
+    @media(max-width: 767px){
+        .section-{{ section.id }} .container-full{
+            padding: 40px 20px 0;
+        }
+        .section-{{ section.id }} .container-full .gallery-container {
+            grid-template-columns: 1fr 1fr;
+            grid-template-areas: "small1 small2" "big big" "small3 small4";
+            margin-top: 20px;
+        }
+        .section-{{ section.id }} .cont-header .section-title{
+            font-size: 24px;
+            line-height: 40px;
+        }
+        .section-{{ section.id }} .cont-header .section-desc{
+            font-size: 14px;
+            line-height: 20px;
+            margin-top: 0;
+        }
+        .section-{{ section.id }} .item-overlay{
+            display: none;
+        }
+    }
+
+    {% comment %} iPad {% endcomment %}
+    @media(min-width: 768px) and (max-width: 1024px){
+        .section-{{ section.id }} .container-full{
+            padding: 100px 0 0;
+        }
+    
+    }
+
+    {% comment %} small screen {% endcomment %}
+    @media(min-width: 1025px) and (max-width: 1480px){
+        .section-{{ section.id }} .container-full{
+            padding: 130px 0 0;
+        }
+    }
+</style>
+
+<div class="section-{{ section.id }}" id="{{ section.id }}" data-section-id="{{ section.id }}">
+    <div class="container-full">
+        {% if section.settings.sectionTitle != blank or section.settings.sectionDescripe != blank %}
+            <div class="cont-header">
+                {% if section.settings.sectionTitle != blank %}
+                    <h2 class="section-title">{{ section.settings.sectionTitle }}</h2>
+                {% endif %}
+                {% if section.settings.sectionDescripe != blank %}
+                    <div class="section-desc">{{ section.settings.sectionDescripe }}</div>
+                {% endif %}
+            </div>
+        {% endif %}
+        {% if section.blocks.size > 0 %}
+            <div class="gallery-container">
+                {% assign small_index = 0 %}
+                {% for block in section.blocks %}
+                    {% if block.type == "largeItem" %}
+                        <div class="gallery-item item-large" data-full-url="{{ block.settings.largeItemImage | img_url: 'master' }}">
+                            <div class="item-wrapper">
+                                <img
+                                    {% render 'lazyload',preview_img: block.settings.largeItemImage_s, class: true, enable_rtl: settings.enable_layout_rtl  %}
+                                    width="{{ block.settings.largeItemImage_s.width }}"
+                                    height="{{ block.settings.largeItemImage_s.height }}"
+                                    alt="{{ block.settings.largeItemImage_s.alt | escape }}"
+                                    loading="lazy">
+                                <div class="item-overlay">
+                                    <div class="plus-icon">
+                                        <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <circle opacity="0.98" cx="40" cy="40" r="40" fill="#EEEEEE"/>
+                                            <path d="M28 40H52" stroke="#676767" stroke-width="3" stroke-linecap="round"/>
+                                            <path d="M40 28L40 52" stroke="#676767" stroke-width="3" stroke-linecap="round"/>
+                                        </svg>
+
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    {% endif %}
+                    
+                    {% if block.type == "smallItem" %}
+                        {% assign small_index = small_index | plus: 1 %}
+                        <div class="gallery-item item-small-{{ small_index }}" data-full-url="{{ block.settings.smallItemImage | img_url: 'master' }}">
+                            <div class="item-wrapper">
+                                <img
+                                    {% render 'lazyload',preview_img: block.settings.smallItemImage_s, class: true, enable_rtl: settings.enable_layout_rtl  %}
+                                    width="{{ block.settings.smallItemImage_s.width }}"
+                                    height="{{ block.settings.smallItemImage_s.height }}"
+                                    alt="{{ block.settings.smallItemImage_s.alt | escape }}"
+                                    loading="lazy">
+                                <div class="item-overlay">
+                                    <div class="plus-icon">
+                                        <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <circle opacity="0.98" cx="40" cy="40" r="40" fill="#EEEEEE"/>
+                                            <path d="M28 40H52" stroke="#676767" stroke-width="3" stroke-linecap="round"/>
+                                            <path d="M40 28L40 52" stroke="#676767" stroke-width="3" stroke-linecap="round"/>
+                                        </svg>
+
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+            
+        {% endif %}
+    </div>
+    
+</div>
+
+<div id="imageModal" class="image-modal">
+    <span class="modal-close">&times;</span>
+    <div class="modal-content-wrapper">
+        <img id="modalImage" src="" alt="Zoomed View" width="auto" height="auto">
+        <div class="modal-loader"></div> 
+    </div>
+</div>
+
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const modal = document.getElementById('imageModal');
+        const modalImg = document.getElementById('modalImage');
+        const closeBtn = document.querySelector('.modal-close');
+
+        document.addEventListener('click', (e) => {
+            const isMobile = window.innerWidth <= 768;
+            let triggerElement = null;
+
+            if (isMobile) {
+                triggerElement = e.target.closest('.gallery-item');
+
+            } else {
+                triggerElement = e.target.closest('.plus-icon');
+
+            }
+
+            if (triggerElement) {
+                const parentItem = triggerElement.closest('.gallery-item');
+                const fullImageUrl = parentItem.dataset.fullUrl;
+
+                if (!fullImageUrl) return;
+
+                modal.style.display = "flex";
+                modal.offsetHeight; 
+                modal.classList.add('is-active');
+                modalImg.src = fullImageUrl;
+                document.body.style.overflow = 'hidden';
+            }
+        });
+
+      
+        const closeModal = () => {
+            modal.classList.remove('is-active');
+            setTimeout(() => { 
+                modal.style.display = "none";
+                modalImg.src = "";
+            }, 300);
+            document.body.style.overflow = '';
+        };
+
+        closeBtn.onclick = closeModal;
+        modal.onclick = (e) => { if (e.target === modal) closeModal(); };
+    });
+</script>
+
+{% schema %}
+{
+    "name": "Home WorkSpace Blocks",
+    "tag": "section",
+    "settings": [
+        {
+            "type": "text",
+            "id": "sectionTitle",
+            "label": "Section Title",
+            "default": "Workspaces by Blacklyte"
+        },
+        {
+            "type": "text",
+            "id": "sectionDescripe",
+            "label": "Section Descripe",
+            "default": "Experience ultimate gaming experience with our intelligent lighting interactive system"
+        }
+    ],
+    "blocks": [
+        {
+            "type": "largeItem",
+            "name": "largeItem",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "largeItemImage",
+                    "label": "Large Item Image"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "largeItemImage_s",
+                    "label": "Large Item Image Small"
+                }
+            ]
+        },
+        {
+            "type": "smallItem",
+            "name": "smallItem",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "smallItemImage",
+                    "label": "Small Item Image"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "smallItemImage_s",
+                    "label": "small Item Image Small"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "Home WorkSpace Blocks"
+        }
+    ]
+}
+{% endschema %}

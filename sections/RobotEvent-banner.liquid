@@ -1,0 +1,924 @@
+<style>
+
+    #conversation-badge,
+    .halo-recently-viewed-popup.is-show{
+        z-index: -99;
+    }
+    
+    
+    .robotevent-banner-section .robotevent-subscribe-item,
+    .robotevent-banner-section .robotevent-items {
+        position: relative;
+        width: 100%;
+        background-color: #000000;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        box-sizing: border-box;
+    }
+
+
+    .robotevent-banner-section .robotevent-subscribe-item .robot-background,
+    .robotevent-banner-section .robotevent-items .online-background{
+        width: 100%;
+        aspect-ratio: 375 / 750;
+    }
+
+   
+    .robotevent-banner-section .coming-soon-header,
+    .robotevent-banner-section .online-header {
+        text-align: center;
+        z-index: 2;
+        margin-bottom: 5vw;
+        position: absolute;
+        top: 80px;
+    }
+
+    .robotevent-banner-section .coming-soon-header{
+        top: 60px;
+    }
+
+    .robotevent-banner-section .coming-soon-text,
+    .robotevent-banner-section .online-text {
+        font-family: 'The 2K12';
+        font-weight: normal;
+        font-size: 10vw;
+        line-height: normal;
+        color: #FFFFFF;
+        margin: 0;
+        letter-spacing: 1vw;
+    }
+
+    .robotevent-banner-section .coming-soon-text{
+        letter-spacing: 0;
+    }
+
+    .robotevent-banner-section .coming-soon-countdown-time{
+        font-family: 'The 2K12';
+        font-weight: 400;
+        font-size: 5.43vw;
+        line-height: 1.2;
+        letter-spacing: 0%;
+        text-align: center;
+        vertical-align: middle;
+        color: transparent;
+        background: linear-gradient(90deg, #19D9C6 0%, #42A3FF 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        
+    }
+
+    .robotevent-banner-section .coming-soon-sub-text{
+        font-family: 'The 2K12';
+        font-weight: 400;
+        font-size: 5.33vw;
+        line-height: 1.4;
+        letter-spacing: 0%;
+        text-align: center;
+        vertical-align: middle;
+        color: #FFFFFF;
+        margin-bottom: 6.13vw;
+    }
+
+    .robotevent-banner-section .sub-intro,
+    .robotevent-banner-section .online-intro {
+        font-size: 3.8vw;
+        color: rgba(255, 255, 255, 0.7);
+        margin-top: 2vw;
+    }
+  
+    .robotevent-banner-section .subscribe-footer-form,
+    .robotevent-banner-section .online-footer-form {
+        position: absolute;
+        z-index: 2;
+        width: 100%;
+        margin-top: auto;
+        bottom: 20px; 
+    }
+
+    .robotevent-banner-section .form-inner-wrapper,
+    .robotevent-banner-section .online-form-inner-wrapper {
+        width: 100%;
+        border-radius: 4vw;
+        padding: 8vw 6vw;
+        box-sizing: border-box;
+    }
+
+    .robotevent-banner-section .online-form-inner-wrapper{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 5.81773vw;
+    }
+    .robotevent-banner-section .online-down-icon{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+
+    .robotevent-banner-section .online-down-icon svg{
+        width: 28px;
+        height: auto;
+    }
+    .robotevent-banner-section .online-down-icon svg:nth-of-type(1){
+        filter: drop-shadow(0 0 2px rgba(0, 255, 255, 0.8)) drop-shadow(0 0 1px rgba(0, 255, 255, 0.4));
+    }
+
+    .robotevent-banner-section .online-down-icon svg:nth-of-type(2){
+        opacity: 0.8;
+        filter: drop-shadow(0 0 8px rgba(0, 255, 255, 0.8)) drop-shadow(0 0 20px rgba(0, 255, 255, 0.4));
+    }
+  
+    .robotevent-banner-section .banner-email-input {
+        width: 100%;
+        height: 14vw;
+        background: #FFFFFF;
+        border-radius: 7vw;
+        border: none;
+        padding: 0 6vw;
+        font-size: 4vw;
+        margin-bottom: 4vw;
+        outline: none;
+        box-sizing: border-box;
+        text-align: center;
+    }
+
+ 
+    .robotevent-banner-section .banner-notify-btn,
+    .robotevent-banner-section .online-banner-notify-btn {
+        width: 100%;
+        height: 14vw;
+        background: linear-gradient(90deg, #19D9C6 0%, #42A3FF 100%);
+        border-radius: 7vw;
+        border: none;
+        color: #FFFFFF;
+        font-size: 4.5vw;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .robotevent-banner-section .header-note{
+        font-family: Poppins;
+        font-weight: 500;
+        font-size: 2.67vw;
+        line-height: 1.4;
+        letter-spacing: 0%;
+        text-align: center;
+        vertical-align: middle;
+        color: #FFFFFF;
+        margin-bottom: 4.27vw;
+    }
+
+    .robotevent-banner-section .footer-note{
+        font-size: 3.2vw;
+        line-height: 1.4;
+        color: rgba(255, 255, 255, 0.6);
+        margin-top: 4vw;
+        text-align: center;
+    }
+
+
+    .modal-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        backdrop-filter: blur(5px);
+        z-index: 9999;
+        justify-content: center;
+        align-items: center;
+    }
+
+  
+    .modal-content {
+        background: #000000;
+        width: 90%;
+        max-width: 450px;
+        padding: 40px 30px;
+        border-radius: 20px;
+        position: relative;
+        text-align: center;
+        color: #ffffff;
+        box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+        font-family: 'Poppins', sans-serif;
+    }
+
+ 
+    .modal-close {
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        background: #ffffff;
+        border: none;
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+    }
+
+    .modal-close svg{
+        width: 24px;
+        height: 24px;
+    }
+
+    .modal-title {
+        font-family: Roboto;
+        font-weight: 600;
+        font-size: 7.16vw;
+        line-height: 10.33vw;
+        letter-spacing: 0%;
+        text-align: center;
+        vertical-align: middle;
+        color: #ffffff;
+    }
+
+    .modal-text {
+        font-family: Roboto;
+        font-weight: 400;
+        font-size: 4.71637vw;
+        line-height: 1.4;
+        letter-spacing: 0%;
+        text-align: center;
+        vertical-align: middle;
+        color: #FFFFFF;
+        margin-top: 10px;
+    }
+
+    .modal-form{
+        margin-top: 10vw;
+    }
+
+    
+    .modal-input {
+        width: 100%;
+        height: 60px;
+        border-radius: 30px;
+        border: none;
+        padding: 0 25px;
+        font-size: 16px;
+        margin-bottom: 15px;
+        background: #ffffff;
+        color: #333;
+        box-sizing: border-box;
+        text-align: center;
+    }
+
+   
+    .modal-submit-btn {
+        width: 100%;
+        height: 60px;
+        border-radius: 30px;
+        border: none;
+        background: linear-gradient(90deg, #19D9C6 0%, #42A3FF 100%);
+        color: #ffffff;
+        font-size: 18px;
+        font-weight: 600;
+        cursor: pointer;
+        transition: transform 0.2s ease;
+    }
+
+    .modal-submit-btn:hover {
+        transform: scale(1.02);
+    }
+
+   
+    .modal-overlay.active {
+        display: flex;
+    }
+
+    .online-down-icon {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: -5px;
+    }
+
+  
+    .online-down-icon svg {
+        opacity: 0.2;
+        transition: opacity 0.3s ease;
+    }
+
+
+    .svg-1 {
+        animation: arrow-wave 2s infinite ease-in-out;
+    }
+
+    .svg-2 {
+        animation: arrow-wave 2s infinite ease-in-out 0.4s; 
+    }
+
+
+    @keyframes arrow-wave {
+        0% {
+            opacity: 0.1;
+        }
+        30% {
+            opacity: 1;
+        }
+        60% {
+            opacity: 1;
+        }
+        100% {
+            opacity: 0.1;
+        }
+    }
+
+    body.custom-success-modal-open{
+        overflow: hidden;
+    }
+
+    body.custom-success-modal-close .newsletter-success-modal.halo-popup[data-newsletter-success-modal]{
+        display: none !important;
+    }
+
+    .custom-modal-overlay {
+        position: fixed;
+        top: 0; left: 0; width: 100%; height: 100%;
+        background: rgba(0,0,0,0.8);
+        display: flex; justify-content: center; align-items: center;
+        z-index: 9999;
+    }
+
+    .custom-modal-content {
+        background: #fff;
+        width: 85vw;
+        padding: 8vw 5vw;
+        border-radius: 8vw;
+        text-align: center;
+        position: relative;
+        font-family: 'Inter', sans-serif;
+    }
+
+    .custom-success-close-modal {
+        position: absolute;
+        right: 5vw; top: 4vw;
+        font-size: 8vw; color: #000000; cursor: pointer;
+    }
+
+    .custom-success-modal-title {
+        font-size: 4vw;
+        line-height: 1.2;
+        font-family: Roboto;
+        font-weight: 600;
+        letter-spacing: 0%;
+        text-align: center;
+        vertical-align: middle;
+        color: #262629;
+    }
+
+    .custom-success-promo-code {
+        font-family: Roboto;
+        font-weight: 600;
+        font-size: 8.53vw;
+        line-height: 1.2;
+        letter-spacing: 0%;
+        text-align: center;
+        vertical-align: middle;
+        color: transparent;
+        background: linear-gradient(90deg, #19D9C6 0%, #42A3FF 100%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        margin: 4vw auto 6vw;
+    }
+
+    .custom-success-copy-btn {
+        width: 100%;
+        background: linear-gradient(90deg, #18d8bc 0%, #3ca0ff 100%);
+        color: #fff;
+        border: none;
+        padding: 4vw 0;
+        border-radius: 10vw;
+        font-size: 4vw;
+        font-weight: 600;
+        cursor: pointer;
+        margin-bottom: 6vw;
+
+    }
+
+    .custom-success-modal-footer {
+        font-size: 3.2vw;
+        color: #666;
+        line-height: 1.5;
+    }
+
+    .robotevent-banner-section .coming-soon-descriptions-cont{
+        font-family: 'The 2K12';
+        font-weight: 400;
+        font-size: 8.8vw;
+        line-height: 1.2;
+        letter-spacing: 0%;
+        text-align: center;
+        vertical-align: middle;
+        color: #FFFFFF;
+        margin-top: 4.2vw;
+    }
+
+    .robotevent-banner-section .coming-soon-precent-image picture,
+    .robotevent-banner-section .coming-soon-add-image picture{
+        display: inline-block;
+        width: 8.8vw;
+        vertical-align: middle;
+    }
+
+    .robotevent-banner-section .coming-soon-add-image + p{
+        display: inline;
+    }
+
+    
+
+</style>
+
+<div class="robotevent-banner-section" data-handle="{{ page.handle }}">
+    <div class="container-full">
+        {% for block in section.blocks %}
+            {% if block.type == "itemSubscripe" %}
+                <div class="robotevent-subscribe-item">
+                    {% if block.settings.itemMainImage != blank %}
+                        <div class="robot-background">
+                            {% render 'picture-simple',
+                                image: block.settings.itemMainImage,
+                                image_mobile: block.settings.itemMainImage,
+                                mobile_dpr: 2,
+                                loading: "eager"
+                            %}
+
+                        </div>
+                    {% endif %}
+                    
+
+                    <div class="coming-soon-header">
+                        {% if block.settings.itemSubscribeCountdown != blank %}
+                            <div class="coming-soon-countdown-time" data-countdowntime="{{ block.settings.itemSubscribeCountdown }}">00H:00M:00S</div>
+                        {% endif %}
+                        {% if block.settings.itemSubTitle != blank %}
+                            <div class="coming-soon-sub-text">{{ block.settings.itemSubTitle }}</div>
+                        {% endif %}
+                        {% if block.settings.itemTitle != blank %}
+                            <h2 class="coming-soon-text">{{ block.settings.itemTitle }}</h2>
+                        {% endif %}
+                        {% if block.settings.itemDescription != blank %}
+                            <div class="sub-intro">{{ block.settings.itemDescription }}</div>
+                        {% endif %}
+
+                        {% if block.settings.itemSubscribePrecentText != blank or block.settings.itemSubscribeAddInfo != blank %}
+                            <div class="coming-soon-descriptions-cont">
+                                <span>{{ block.settings.itemSubscribePrecentText }}</span>
+                                <span class="coming-soon-precent-image">
+                                    {% render 'picture-simple',
+                                        image: block.settings.itemSubscribePrecentImage,
+                                        image_mobile: block.settings.itemSubscribePrecentImage,
+                                        mobile_dpr: 2,
+                                        loading: "eager"
+                                    %}
+                                </span>
+                                
+                                <span>{{ block.settings.itemSubscribePrecentNextText }}</span>
+                                <div>
+                                    <span class="coming-soon-add-image">
+                                        {% render 'picture-simple',
+                                            image: block.settings.itemSubscribeAddImage,
+                                            image_mobile: block.settings.itemSubscribeAddImage,
+                                            mobile_dpr: 2,
+                                            loading: "eager"
+                                        %}
+                                    </span>
+                                    {{ block.settings.itemSubscribeAddInfo }}
+                                </div>
+                                
+                            </div>
+                        {% endif %}
+                        
+                        
+                    </div>
+
+                    <div class="subscribe-footer-form">
+                        <div class="form-inner-wrapper">
+                            {% if block.settings.itemSubscribePreInfo != blank %}
+                                <div class="header-note">{{ block.settings.itemSubscribePreInfo }}</div>
+                            {% endif %}
+                            
+                            {% form 'customer', id: 'BannerSubscribeForm' %}
+                                <input type="hidden" name="contact[tags]" value="AiRobot">
+                                <input type="email" 
+                                    name="contact[email]" 
+                                    class="banner-email-input" 
+                                    placeholder="{{ block.settings.itemSubscribePlaceholder }}" 
+                                    required>
+                                <button type="submit" class="banner-notify-btn">{{ block.settings.itemSubscribeButton }}</button>
+                            {% endform %}
+
+                            {% if block.settings.itemSubscribeInfo != blank %}
+                                <p class="footer-note">{{ block.settings.itemSubscribeInfo }}</p>
+                            {% endif %}
+                            
+                        </div>
+                    </div>
+                </div>
+            {% elsif block.type == "item" %}
+                <div class="robotevent-items">
+                    {% if block.settings.itemBlockMainImage != blank %}
+                        <div class="online-background">
+                            {% render 'picture-simple',
+                                image: block.settings.itemBlockMainImage,
+                                image_mobile: block.settings.itemBlockMainImage,
+                                mobile_dpr: 2,
+                                loading: "eager"
+                            %}
+                        </div>
+                    {% endif %}
+                    
+                    <div class="online-header">
+                        {% if block.settings.itemBlockTitle != blank %}
+                            <h2 class="online-text">{{ block.settings.itemBlockTitle }}</h2>
+                        {% endif %}
+                        {% if block.settings.itemBlockDescripe != blank %}
+                            <div class="online-intro">{{ block.settings.itemBlockDescripe }}</div>
+                        {% endif %}
+                        
+                        
+                    </div>
+                    
+                    <div class="online-footer-form">
+                        <div class="online-form-inner-wrapper">
+                            <p class="online-banner-notify-btn">{{ block.settings.itemBlockButton }}</p>
+                            <div class="online-down-icon">
+                                <svg width="53" height="33" viewBox="0 0 53 33" fill="none" xmlns="http://www.w3.org/2000/svg" class="svg-1">
+                                    <g filter="url(#filter0_d_26_98)">
+                                    <path d="M6.5 2.5L25.7912 21.7912C26.1818 22.1818 26.8149 22.1818 27.2054 21.7912L46.4967 2.5" stroke="white" stroke-width="8" stroke-linecap="round"/>
+                                    </g>
+                                    <defs>
+                                    <filter id="filter0_d_26_98" x="0" y="0" width="52.9967" height="32.5841" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                                    <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                                    <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                                    <feOffset dy="4"/>
+                                    <feGaussianBlur stdDeviation="2"/>
+                                    <feComposite in2="hardAlpha" operator="out"/>
+                                    <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+                                    <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_26_98"/>
+                                    <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_26_98" result="shape"/>
+                                    </filter>
+                                    </defs>
+                                </svg>
+
+                                <svg width="53" height="33" viewBox="0 0 53 33" fill="none" xmlns="http://www.w3.org/2000/svg" class="svg-2">
+                                    <g filter="url(#filter0_d_26_98)">
+                                    <path d="M6.5 2.5L25.7912 21.7912C26.1818 22.1818 26.8149 22.1818 27.2054 21.7912L46.4967 2.5" stroke="#27C6D9" stroke-width="8" stroke-linecap="round"/>
+                                    </g>
+                                    <defs>
+                                    <filter id="filter0_d_26_98" x="0" y="0" width="52.9967" height="32.5841" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                                    <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                                    <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                                    <feOffset dy="4"/>
+                                    <feGaussianBlur stdDeviation="2"/>
+                                    <feComposite in2="hardAlpha" operator="out"/>
+                                    <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+                                    <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_26_98"/>
+                                    <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_26_98" result="shape"/>
+                                    </filter>
+                                    </defs>
+                                </svg>
+
+
+
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>
+
+<div id="custom-success-modal" class="custom-modal-overlay" style="display: none;">
+  <div class="custom-modal-content">
+    <span class="custom-success-close-modal" onclick="closeCustomModal()">&times;</span>
+    <h3 class="custom-success-modal-title">{{ section.settings.exportSubscribeModalTitle }}</h3>
+    <div class="custom-success-promo-code" id="promo-code-text">{{ section.settings.exportSubscribeModalCode }}</div>
+    <button class="custom-success-copy-btn" onclick="copyCode()">{{ section.settings.exportSubscribeModalButton }}</button>
+    <div class="custom-success-modal-footer">
+      {{ section.settings.exportSubscribeModalNote }}
+    </div>
+  </div>
+</div>
+
+
+<div id="registerModal" class="modal-overlay">
+    <div class="modal-content">
+        <button class="modal-close" id="closeModalBtn">
+            <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M8.90136 8.90234L26.7051 26.7061" stroke="black" stroke-width="2"/>
+                <path d="M26.7061 8.90234L8.90234 26.7061" stroke="black" stroke-width="2"/>
+            </svg>
+
+        </button>
+
+        <h2 class="modal-title">{{ section.settings.modalItemTitle }}</h2>
+        <div class="modal-text">
+            {{ section.settings.modalItemDesc }}
+        </div>
+
+        <div class="modal-form">
+            {% form 'customer' %}
+                <input type="hidden" name="contact[tags]" value="AiRobot">
+                <input type="email" name="contact[email]" class="modal-input" placeholder="{{ section.settings.modalItemInputPlaceHolder }}" required>
+                <button type="submit" class="modal-submit-btn">{{ section.settings.modalItemButton }}</button>
+            {% endform %}
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const modal = document.getElementById('registerModal');
+        const openBtn = document.querySelector('.robotevent-banner-section .online-banner-notify-btn');
+        const closeBtn = document.getElementById('closeModalBtn');
+
+        if(!modal) return false;
+        if(!openBtn) return false;
+        if(!closeBtn) return false;
+
+
+       
+        openBtn.addEventListener('click', function() {
+            modal.classList.add('active');
+            $('body').removeClass('custom-success-modal-close')
+            document.body.style.overflow = 'hidden';
+        });
+
+       
+        closeBtn.addEventListener('click', function() {
+            modal.classList.remove('active');
+            document.body.style.overflow = '';
+        });
+
+        
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                modal.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+
+
+        const scrollIcon = document.querySelector('.robotevent-banner-section .online-down-icon svg');
+        
+        if (scrollIcon) {
+            scrollIcon.style.cursor = 'pointer';
+            
+            scrollIcon.addEventListener('click', function() {
+                window.scrollBy({
+                    top: window.innerHeight,
+                    left: 0,
+                    behavior: 'smooth'
+                });
+            });
+        }
+
+    });
+
+
+    document.addEventListener("DOMContentLoaded", function() {
+        if (window.location.href.indexOf('customer_posted=true') > -1) {
+            $('body').addClass('custom-success-modal-open')
+            $('body').addClass('custom-success-modal-close')
+            const modal = document.getElementById('custom-success-modal');
+            if (modal) {
+                modal.style.display = 'flex';
+            }
+        }
+
+    })
+
+    
+    function closeCustomModal() {
+        document.getElementById('custom-success-modal').style.display = 'none';
+        $('body').removeClass('custom-success-modal-open')
+        
+    }
+
+    
+    function copyCode() {
+        const codeText = document.getElementById('promo-code-text').innerText;
+        navigator.clipboard.writeText(codeText).then(() => {
+            const btn = document.querySelector('.custom-success-copy-btn');
+            btn.innerText = 'COPIED!';
+            setTimeout(() => { btn.innerText = 'COPY'; }, 2000);
+        });
+    }
+
+
+    (function() {
+        const countdownElement = document.querySelector('.robotevent-banner-section .coming-soon-countdown-time');
+        
+        if (!countdownElement) return;
+
+        const dateString = countdownElement.getAttribute('data-countdowntime');
+        const targetTime = new Date(dateString).getTime();
+
+        if (isNaN(targetTime)) {
+            console.error("Invalid date format in data-countdowntime");
+            return;
+        }
+
+        function updateCountdown() {
+            const now = new Date().getTime();
+            const distance = targetTime - now;
+
+
+            if (distance <= 0) {
+                countdownElement.innerHTML = "Event Concluded";
+                clearInterval(timer);
+                return;
+            }
+
+            const hours = Math.floor(distance / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            const format = (num) => num.toString().padStart(2, '0');
+            
+            countdownElement.innerHTML = `${format(hours)}H:${format(minutes)}M:${format(seconds)}S`;
+        }
+
+        updateCountdown();
+        const timer = setInterval(updateCountdown, 1000);
+
+    })();
+
+
+</script>
+
+
+
+{% schema %}
+{
+    "name": "Robot Event Banner",
+    "tag": "section",
+    "settings": [
+        {
+            "type": "text",
+            "id": "modalItemTitle",
+            "label": "item Block Modal Title"
+        },
+        {
+            "type": "richtext",
+            "id": "modalItemDesc",
+            "label": "item Block Modal Descripe"
+        },
+        {
+            "type": "text",
+            "id": "modalItemInputPlaceHolder",
+            "label": "item Block Modal Input placeholder"
+        },
+        {
+            "type": "text",
+            "id": "modalItemButton",
+            "label": "item Block Modal Button"
+        },
+        {
+            "type": "text",
+            "id": "exportSubscribeModalTitle",
+            "label": "export Subscribe Modal Title",
+            "default": "Your code is locked"
+        },
+        {
+            "type": "text",
+            "id": "exportSubscribeModalCode",
+            "label": "export Subscribe Modal Code",
+            "default": "LVLUP20"
+        },
+        {
+            "type": "text",
+            "id": "exportSubscribeModalButton",
+            "label": "export Subscribe Modal Button",
+            "default": "COPY"
+        },
+        {
+            "type": "richtext",
+            "id": "exportSubscribeModalNote",
+            "label": "export Subscribe Modal Note"
+        }
+    ],
+    "blocks": [
+        {
+            "type": "itemSubscripe",
+            "name": "itemSubscripe",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "itemMainImage",
+                    "label": "item Main Image"
+                },
+                {
+                    "type": "text",
+                    "id": "itemTitle",
+                    "label": "item Title"
+                },
+                {
+                    "type": "richtext",
+                    "id": "itemSubTitle",
+                    "label": "item Sub Title"
+                },
+                {
+                    "type": "richtext",
+                    "id": "itemDescription",
+                    "label": "item Description"
+                },
+                {
+                    "type": "text",
+                    "id": "itemSubscribePlaceholder",
+                    "label": "item Subscribe Placeholder"
+                },
+                {
+                    "type": "text",
+                    "id": "itemSubscribeButton",
+                    "label": "item Subscribe Button Text"
+                },
+                {
+                    "type": "richtext",
+                    "id": "itemSubscribePreInfo",
+                    "label": "item Subscribe Pre Information"
+                },
+                {
+                    "type": "text",
+                    "id": "itemSubscribeInfo",
+                    "label": "item Subscribe Information"
+                },
+                {
+                    "type": "text",
+                    "id": "itemSubscribeCountdown",
+                    "label": "item Subscribe Countdown"
+                },
+                {
+                    "type": "text",
+                    "id": "itemSubscribePrecentText",
+                    "label": "item Subscribe OFF"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "itemSubscribePrecentImage",
+                    "label": "item Subscribe Precent Image"
+                },
+                {
+                    "type": "text",
+                    "id": "itemSubscribePrecentNextText",
+                    "label": "item Subscribe Precent Next Text"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "itemSubscribeAddImage",
+                    "label": "item Subscribe Add Image"
+                },
+                {
+                    "type": "richtext",
+                    "id": "itemSubscribeAddInfo",
+                    "label": "item Subscribe Add Information"
+                }
+            ]
+        },
+        {
+            "type": "item",
+            "name": "item",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "itemBlockMainImage",
+                    "label": "item Block Main Image"
+                },
+                {
+                    "type": "text",
+                    "id": "itemBlockTitle",
+                    "label": "item Block Title"
+                },
+                {
+                    "type": "richtext",
+                    "id": "itemBlockDescripe",
+                    "label": "item Block Descripe"
+                },
+                {
+                    "type": "text",
+                    "id": "itemBlockButton",
+                    "label": "item Block Button"
+                }
+            ]
+        }
+        
+    ],
+    "presets": [{ "name": "Robot Event Banner" }],
+    "disabled_on": {
+        "groups": ["header", "footer"]
+    }
+}
+{% endschema %}

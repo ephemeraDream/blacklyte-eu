@@ -1,0 +1,120 @@
+{% comment %} 1. 获取基础推荐列表 {% endcomment %}
+{% assign recommend_products = shop.metafields.custom.cart_recommended_products.value %}
+
+{% if cart.items.size > 0 %}
+  {% assign first_prod = cart.items.first.product %}
+  {% if first_prod.metafields.custom.cart_recommended_products.value != blank %}
+    {% assign recommend_products = first_prod.metafields.custom.cart_recommended_products.value %}
+  {% endif %}
+  
+  {% comment %} 2. 遍历购物车，检测是否存在 chairs 或 desk {% endcomment %}
+  {% assign has_chairs = false %}
+  {% assign has_desk = false %}
+  
+  {% for item in cart.items %}
+    {% assign p_type = item.product.metafields.custom.product_type | downcase %}
+    {% if p_type contains 'chairs' %}
+      {% assign has_chairs = true %}
+    {% elsif p_type contains 'desk' %}
+      {% assign has_desk = true %}
+    {% endif %}
+  {% endfor %}
+
+{% endif %}
+
+{% if recommend_products != blank %}
+<script id="cart-recommend-data" type="application/json">
+[
+  {% for product in recommend_products %}
+    {
+      "title": {{ product.title | json }},
+      "url": {{ product.url | json }},
+      "price": {{ product.price | money | json }},
+      "image": {{ product.featured_image | image_url: width: 300 | json }},
+      "variant_id": {{ product.first_available_variant.id | json }}
+    }{% unless forloop.last %},{% endunless %}
+  {% endfor %}
+]
+</script>
+
+<div class="cart-recommend-module">
+    <div class="cart-recommend-module-title">
+        Improve your Blacklyte experience
+    </div>
+    <div class="cart-recommend-lists swiper">
+        <div class="swiper-wrapper">
+            {% for item in recommend_products %}
+                {% assign ownership = item.metafields.custom.product_ownership.value | downcase %}
+                {% assign is_match = false %}
+
+                {% if has_chairs and has_desk %}
+                    {% if ownership contains 'chairs' or ownership contains 'desk' %}
+                        {% assign is_match = true %}
+                    {% endif %}
+                {% elsif has_chairs %}
+                    {% if ownership contains 'chairs' %}
+                        {% assign is_match = true %}
+                    {% endif %}
+                {% elsif has_desk %}
+                    {% if ownership contains 'desk' %}
+                        {% assign is_match = true %}
+                    {% endif %}
+                {% else %}
+                    {% if ownership contains 'chairs' or ownership contains 'desk' %}
+                        {% assign is_match = true %}
+                    {% endif %}
+                {% endif %}
+
+                {% if is_match %}
+                    <div class="cart-recommed-item swiper-slide">                                                                                                                                                                                       
+                        <div class="cart-recommed-item-info">
+                            <div class="recommed-prod-title">{{ item.title }}</div>
+                            <div class="recommed-prod-price">
+                                {% assign discount = item.selected_or_first_available_variant.metafields.custom.discount_price.value %}
+                                <div class="recommed-prod-save-price {% if discount != blank %}recommed-prod-save-price-show{% endif %}">
+                                    {{-
+                                        item.selected_or_first_available_variant.price
+                                        | minus: item.selected_or_first_available_variant.metafields.custom.discount_price.value
+                                        | money
+                                    -}}
+                                </div>
+                                <div class="recommed-prod-origa-price {% if discount != blank %}recommed-prod-origa-price-text{% endif %}">{{ item.selected_or_first_available_variant.price | money }}</div>
+                            </div>
+                            <div class="recommed-prod-atc recommend-add" data-variant="{{item.selected_or_first_available_variant.id}}">
+                                {{ 'products.product.add_to_cart' | t }}           
+                            </div>
+                        </div>
+                        {% assign product_image = item.selected_or_first_available_variant.metafields.custom.addon_show_image | default: item.featured_image %}
+                        <img src="{{ product_image | img_url: 'master' }}"            
+                            width="{{ product_image.width }}"
+                            height="{{ product_image.height }}"
+                            alt="{{ product_image.alt }}" 
+                            class="cart-recommed-item-image" />
+                    </div>
+                {% endif %}
+                    
+            {% endfor %}
+        </div>
+    </div>
+    <div class="swiper-pagination"></div>
+    <div class="custom-pagina">
+        <div class="pre-pagination custom-btns">
+            <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="10.3814" cy="10.3814" r="9.88136" transform="matrix(-1 0 0 1 20.7627 0)" fill="white" stroke="#E8E8E8"/>
+                <path d="M11.4444 6.64844L7.4739 10.6189L11.4444 14.5893" stroke="black" stroke-width="1.4"/>
+            </svg>
+
+
+        </div>
+        <div class="next-pagination custom-btns">
+            <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="10.3814" cy="10.3814" r="9.88136" transform="matrix(-1 0 0 1 20.7627 0)" fill="white" stroke="#E8E8E8"/>
+                <path d="M8.95314 6.64844L12.9236 10.6189L8.95314 14.5893" stroke="black" stroke-width="1.4"/>
+            </svg>
+
+        </div>
+    </div>
+    
+</div>
+{% endif %}
+

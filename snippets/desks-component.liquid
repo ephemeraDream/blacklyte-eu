@@ -1,0 +1,49 @@
+
+<div class="prod_lists">
+  {% for product_card_product in collection.products %}
+    {%-liquid
+      assign variant_img = ''
+      for option in product_card_product.options_with_values
+          for variant in product_card_product.variants limit: 1
+              if variant.image != null  
+                  assign variant_img = variant.image
+              endif
+          endfor
+      endfor
+    -%}
+    
+    <div class="prod_item{% if product_card_product.metafields.custom.product_type == 'desk' %} desk-prod-item{% endif %}" data-product-id="{{ product_card_product.id }}"
+         style="{% if product_card_product.metafields.custom.product_type == 'desk' and product_card_product.metafields.custom.product_collaboration_partner == blank %}display: block; {% else %} display: none; {% endif %}">
+      <div class="container">
+         <div class="card-product">
+           {% render 'product-badge', product: product_card_product, class: 'card__badge', badge_detail: true, serial: serial %}
+           <div class="card-media card-media--adapt {% if product_card_product.media[1] != nil and settings.show_image_swap %} media--hover-effect{% endif%} media--loading-effect" style="padding-bottom: {{ 1.1 | times: 100 }}%;">
+              {% render 'image-product-card', product_card_product: product_card_product, variant_img: variant_img, has_video: false, loading: true %}
+              <a class="card-link" href="{{ product_card_product.url }}" title="{{ product_card_product.title | escape }}"></a>
+           </div>
+         </div>
+         <div class="prod_card_info">
+           <div class="prod_item_title">
+             <span>{{ product_card_product.title}}</span>
+           </div>
+           <div class="prod_item-variants">
+              {{ product_card_product.selected_or_first_available_variant.option3 }}
+           </div>
+           <div class="flex-1"></div>
+           <div class="prod_item_price">
+             <div class="price">
+               <span class="prod_item_sale_price">{{ product_card_product.selected_or_first_available_variant.price | money }}</span>
+             </div>
+             <a class="shop_now_btn" href="{{ product_card_product.url }}">{{ 'products.product.shop_now' | t }}</a>
+           </div>
+          </div>
+       </div>
+      {% if product_card_product.selected_or_first_available_variant.metafields.custom.discount_price.value != blank %}
+        <div class="prod-item-save-tag">
+          <span class="price-value">{{ product_card_product.selected_or_first_available_variant.metafields.custom.discount_price.value | money_without_currency | split: ',' | first }}</span>
+          <span>OFF</span>
+        </div>
+      {% endif %}
+    </div>
+  {% endfor %}
+</div>

@@ -1,0 +1,237 @@
+<style>
+    .section-{{ section.id }}{
+        background: #060708;
+    }
+    .section-{{ section.id }} .container-full{
+        padding-top: 50px;
+    }
+    .section-{{ section.id }} .large-image{
+        width: 100%;
+        padding-top: var(--pc-ratio);
+    }
+
+    .section-{{ section.id }} .large-image picture,
+    .section-{{ section.id }} .large-image img{
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+    .section-{{ section.id }} .large-image-cont img{
+        height: auto;
+    }
+
+    .section-{{ section.id }} .large-image-cont{
+        position: relative;
+    }
+    .section-{{ section.id }} .large-image-info{
+        position: absolute;
+        left: 16%;
+        top: 50%;
+        transform: translateY(-50%);
+
+    }
+
+    .section-{{ section.id }} .large-image-info .info-title{
+        font-family: Poppins;
+        font-weight: 400;
+        font-style: Regular;
+        font-size: 40px;
+        line-height: 50px;
+        letter-spacing: 0%;
+        color: #fff;
+    }
+
+    .section-{{ section.id }} .large-image-info .info-sub-title{
+        font-family: Poppins;
+        font-weight: 600;
+        font-style: SemiBold;
+        font-size: 40px;
+        line-height: 50px;
+        letter-spacing: 0%;
+        color: #fff;
+    }
+
+    .section-{{ section.id }} .large-image-info .info-button{
+        display: block;
+        font-family: Poppins;
+        font-weight: 400;
+        font-style: Regular;
+        font-size: 20px;
+        line-height: 26px;
+        letter-spacing: 0%;
+        text-align: center;
+        color: #fff;
+        padding: 10px 40px;
+        border-radius: 67px;
+        margin-top: 15px;
+        width: max-content;
+        overflow: hidden;
+        position: relative;
+    }
+    .section-{{ section.id }} .large-image-info .info-button:before{
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: -1;
+        padding: 1px;
+        background: linear-gradient(85.57deg, #2C2C2C 9.88%, rgba(255, 255, 255, 0.5) 54.4%, #FF5900 78.18%, rgba(255, 255, 255, 0.5) 99.79%);
+        
+        -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+        -webkit-mask-composite: xor;
+        mask-composite: exclude;
+        border-radius: 67px;
+    }
+    .section-{{ section.id }} .large-image-info .info-button:hover{
+        box-shadow: 0 0 4px #FF5900;
+    }
+
+
+    {% comment %} iPhone {% endcomment %}
+    @media(max-width: 768px){
+        .section-{{ section.id }} .large-image{
+            padding-top: var(--mb-ratio);
+        }
+        .section-{{ section.id }} .large-image-info{
+            left: 27px;
+        }
+        .section-{{ section.id }} .large-image-info .info-title{
+            font-size: 22px;
+            line-height: 32px;
+        }
+        .section-{{ section.id }} .large-image-info .info-sub-title{
+            font-size: 22px;
+            line-height: 32px;
+        }
+        .section-{{ section.id }} .large-image-info .info-button{
+            font-family: Poppins;
+            font-size: 16px;
+            line-height: 26px;
+            padding: 3px 18px;
+        }
+    
+    }
+
+    {% comment %} iPad {% endcomment %}
+    @media(min-width: 767px) and (max-width: 1024px){
+        .section-{{ section.id }} .large-image-info{
+            left: 10px;
+        }
+    }
+
+    {% comment %} small screen {% endcomment %}
+    @media(min-width: 1025px) and (max-width: 1480px){
+        .section-{{ section.id }} .large-image-info{
+            left: 60px;
+        }
+    }
+
+
+</style>
+
+<section class="section-{{ section.id }}" id="{{ section.id }}" data-section-id="{{ section.id }}">
+    <div class="container-full">
+        {% for block in section.blocks %}
+            {% if block.type == "largeImage" %}
+                {% liquid
+                    assign pc_ratio = 1 | divided_by: block.settings.mainImage.aspect_ratio | times: 100
+                    if block.settings.mainImage.presentation.focal_point != '50.0% 50.0%'
+                        assign pc_ratio = pc_ratio | times: 1.2
+                    endif
+
+                    assign mb_ratio = 1 | divided_by: block.settings.mainImage_mb.aspect_ratio | times: 100
+                    if block.settings.mainImage_mb.presentation.focal_point != '50.0% 50.0%'
+                        assign mb_ratio = mb_ratio | times: 1.2
+                    endif
+                %}
+                <div class="large-image-cont">
+                    <div class="large-image" style="--pc-ratio: {{ pc_ratio }}%;--mb-ratio: {{ mb_ratio }}%;">
+                        <picture>
+                            <source media="(max-width: 768px)"
+                                    srcset="{{ block.settings.mainImage_mb | image_url: width: 800 }}"
+                                    data-srcset="{{ block.settings.mainImage_mb | image_url: width: 800 }}">
+
+                            <img {% render 'lazyload',preview_img: block.settings.mainImage, class: true, enable_rtl: settings.enable_layout_rtl  %}
+                                width="{{ block.settings.mainImage.width }}"
+                                height="{{ block.settings.mainImage.height }}"
+                                alt="{{ block.settings.mainImage.alt | escape }}"
+                                loading="lazy"
+                                decoding="async"
+                                style="height: auto;"/>
+                                
+                        </picture>
+                    </div>
+                    <div class="large-image-info">
+                        {% if block.settings.itemTitle != blank %}
+                            <div class="info-title">{{ block.settings.itemTitle }}</div>
+                        {% endif %}
+                        {% if block.settings.itemSubTitle != blank %}
+                            <div class="info-sub-title">{{ block.settings.itemSubTitle }}</div>
+                        {% endif %}
+                        {% if block.settings.itemButton != blank %}
+                            <a class="info-button" {% if block.settings.itemBtnLink != blank %} href="{{ block.settings.itemBtnLink }}" {% else %} aria-disabled="true" {% endif %}>{{ block.settings.itemButton }}</a>
+                        {% endif %}
+                    </div>
+                    
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+</section>
+
+{% schema %}
+{
+    "name": "Fnatic Event Spord",
+    "settings": [],
+    "blocks": [
+        {
+            "type": "largeImage",
+            "name": "largeImage",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "mainImage",
+                    "label": "main Image"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "mainImage_mb",
+                    "label": "main Image Mobile"
+                },
+                {
+                    "type": "text",
+                    "id": "itemTitle",
+                    "label": "item Title",
+                    "default": "Athena pro"
+                },
+                {
+                    "type": "text",
+                    "id": "itemSubTitle",
+                    "label": "item Sub Title",
+                    "default": "Fnatic Edition "
+                },
+                {
+                    "type": "text",
+                    "id": "itemButton",
+                    "label": "item Button",
+                    "default": "Shop Now"
+                },
+                {
+                    "type": "url",
+                    "id": "itemBtnLink",
+                    "label": "item Button Link"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "Fnatic Event Spord"
+        }
+    ]
+}
+{% endschema %}

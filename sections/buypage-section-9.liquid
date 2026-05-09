@@ -1,0 +1,254 @@
+{{ 'buypage-section-9.css' | asset_url | stylesheet_tag }}
+
+<div class="buypage_section_9" id="{{section.settings.specId}}">
+  <div class="buypage_section_9_head">
+    <div class="buypage_section_9_title">{{ section.settings.title }}</div>
+    <div class="buypage_section_9_text">{{ section.settings.text }}</div>
+  </div>
+  <div class="buypage_section_9_slick_contain">
+    <div class="buypage_section_9_slick">
+      {%- for block in section.blocks -%}
+        <div class="buypage_section_9_slick_item">
+          {% assign list = '1,2,3,4' | split: ',' %}
+          <div class="buypage_section_9_slick_item_contain">
+            {% for item in list %}
+              {% assign image = 'image_' | append: item %}
+              {% assign image_mobile = 'image_' | append: item | append: '_mobile' %}
+              {% if block.settings[image] != blank %}
+                <div class="buypage_section_9_slick_item_contain_item">
+                  {% render 'picture-simple',
+                    image: block.settings[image],
+                    image_mobile: block.settings[image_mobile],
+                    mobile_widths: '350,450,550,650',
+                    mobile_dpr: 1
+                  %}
+                  {% comment %}
+                    {{-
+                      block.settings[image]
+                      | image_url: width: block.settings[image].width
+                      | image_tag: alt: block.settings[image].alt, class: 'pc_show', loading: 'lazy'
+                    -}}
+                    {% assign image_mobile = block.settings[image_mobile] | default: block.settings[image] %}
+                    {{-
+                      image_mobile
+                      | image_url: width: image_mobile.width
+                      | image_tag: alt: image_mobile.alt, class: 'pmd_show', loading: 'lazy'
+                    -}}
+                  {% endcomment %}
+                </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+          <div class="buypage_section_9_slick_item_dots">
+            {% for item in list %}
+              {% assign title = 'title_' | append: item %}
+              {% if block.settings[title] != blank %}
+                <div class="buypage_section_9_slick_item_dots_item{% if forloop.first %} active{% endif %}">
+                  {{ block.settings[title] }}
+                </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+    <div class="buypage_section_9_slick_prev hidden">
+      <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36" fill="none">
+        <circle cx="18" cy="18" r="18" fill="white"/>
+        <path d="M19.0654 14.1406L15.4289 17.7772L19.0654 21.4137" stroke="black" stroke-width="2"/>
+      </svg>
+    </div>
+    <div class="buypage_section_9_slick_next">
+      <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 36 36" fill="none">
+        <circle cx="18" cy="18" r="18" transform="matrix(-1 0 0 1 36 0)" fill="white"/>
+        <path d="M16.9346 14.1406L20.5711 17.7772L16.9346 21.4137" stroke="black" stroke-width="2"/>
+      </svg>
+    </div>
+  </div>
+</div>
+
+<script>
+  (function ($) {
+    const $section = $('#shopify-section-{{ section.id }}');
+    const $blocks = $section.find('.buypage_section_9_slick_item'); // 每个 block
+
+    // 遍历每个 block 独立初始化 slick
+    $blocks.each(function () {
+      const $block = $(this);
+      const $slider = $block.find('.buypage_section_9_slick_item_contain');
+      const $dots = $block.find('.buypage_section_9_slick_item_dots_item');
+
+      // 初始化 slick
+      $slider.slick({
+        variableWidth: true,
+        slidesToScroll: 1,
+        arrows: false,
+        dots: false,
+        infinite: false,
+        waitForAnimate: false,
+        adaptiveHeight: true,
+        draggable: false,
+        swipe: false,
+        touchMove: false,
+      });
+
+      // Slick 切换时更新 dots 高亮
+      $slider.on('afterChange', function (event, slick, currentSlide) {
+        $dots.removeClass('active').eq(currentSlide).addClass('active');
+      });
+
+      // 点击 dots 时切换到对应幻灯片
+      $dots.on('click', function () {
+        const index = $(this).index();
+        $slider.slick('slickGoTo', index);
+      });
+    });
+
+    const $slick = $section.find('.buypage_section_9_slick');
+    const $prev = $section.find('.buypage_section_9_slick_prev');
+    const $next = $section.find('.buypage_section_9_slick_next');
+
+    $slick.slick({
+      variableWidth: true,
+      slidesToScroll: 1,
+      arrows: false,
+      dots: false,
+      infinite: false,
+      waitForAnimate: false,
+      adaptiveHeight: true,
+      centerMode: true,
+      swipe: false,
+      touchMove: false,
+    });
+
+    // 更新按钮状态
+    function updateButtons(event, slick) {
+      if (event.target !== $slick[0]) return;
+
+      const current = slick.currentSlide;
+      const last = slick.slideCount - 1;
+
+      // 第一个
+      if (current === 0) {
+        $prev.addClass('hidden');
+      } else {
+        $prev.removeClass('hidden');
+      }
+
+      // 最后一个
+      if (current === last) {
+        $next.addClass('hidden');
+      } else {
+        $next.removeClass('hidden');
+      }
+    }
+
+    // slick 初始化 & 切换时触发
+    $slick.on('init reInit afterChange', updateButtons);
+
+    // 手动按钮点击
+    $prev.on('click', () => $slick.slick('slickPrev'));
+    $next.on('click', () => $slick.slick('slickNext'));
+  })(jQuery);
+</script>
+
+{% schema %}
+{
+  "name": "buypage section 9",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "specId",
+      "label": "specId"
+    },
+    {
+      "type": "textarea",
+      "id": "title",
+      "label": "title"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "text"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "first_part",
+      "name": "first part",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image_1",
+          "label": "image_1"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_1_mobile",
+          "label": "image_1_mobile"
+        },
+        {
+          "type": "text",
+          "id": "title_1",
+          "label": "title_1"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_2",
+          "label": "image_2"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_2_mobile",
+          "label": "image_2_mobile"
+        },
+        {
+          "type": "text",
+          "id": "title_2",
+          "label": "title_2"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_3",
+          "label": "image_3"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_3_mobile",
+          "label": "image_3_mobile"
+        },
+        {
+          "type": "text",
+          "id": "title_3",
+          "label": "title_3"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_4",
+          "label": "image_4"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_4_mobile",
+          "label": "image_4_mobile"
+        },
+        {
+          "type": "text",
+          "id": "title_4",
+          "label": "title_4"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "buypage section 9"
+    }
+  ]
+}
+{% endschema %}

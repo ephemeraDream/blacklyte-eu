@@ -1,0 +1,381 @@
+.buypage_section_6 {
+  background-color: #EBEBEB;
+  padding: 6.71875vw 15.625vw 0;
+}
+
+.buypage_section_6 .first_part_title,
+.buypage_section_6 .second_part_title {
+  font-family: Poppins;
+  font-weight: 600;
+  font-style: SemiBold;
+  font-size: 2.0833vw;
+  leading-trim: NONE;
+  line-height: 2.6041667vw;
+  letter-spacing: 0%;
+  color: #262629;
+  width: 32.96875vw;
+}
+
+.buypage_section_6 .first_part_text,
+.buypage_section_6 .second_part_text {
+  font-family: Poppins;
+  font-weight: 500;
+  font-style: Medium;
+  font-size: clamp(14px, 0.8333vw, 0.8333vw);
+  leading-trim: NONE;
+  line-height: clamp(21px, 1.25vw, 1.25vw);
+  letter-spacing: 0.32px;
+  color: rgba(38, 38, 41, 0.7);
+  margin-top: 0.3125vw;
+  width: 41.40625vw;
+}
+
+.buypage_section_6 .first_part_img {
+  width: 100%;
+  height: 29.21875vw;
+  position: relative;
+  margin-top: 1.71875vw;
+}
+
+.buypage_section_6 .first_part_img img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  border-radius: 1.25vw;
+  object-fit: cover;
+  object-position: center center;
+}
+
+.buypage_section_6 .first_part_img_extra {
+  position: absolute;
+  top: 2.65625vw;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3.75vw;
+  width: 100%;
+}
+
+.buypage_section_6 .first_part_img_extra_item {
+  display: flex;
+  align-items: center;
+  gap: 0.15625vw;
+  font-family: Poppins;
+  font-weight: 500;
+  font-style: Medium;
+  font-size: clamp(14px, 0.8333vw, 0.8333vw);
+  leading-trim: NONE;
+  line-height: clamp(24.5px, 1.45833vw, 1.45833vw);
+  letter-spacing: 0%;
+  vertical-align: middle;
+  color: #262629;
+}
+
+.buypage_section_6 .first_part_img_extra_item svg {
+  width: 1.40625vw;
+  height: 1.40625vw;
+}
+
+.buypage_section_6 .second_part {
+  margin-top: 6.71875vw;
+}
+
+.buypage_section_6 .second_part_text {
+  width: 43.90625vw;
+}
+
+.buypage_section_6 .second_part_contain {
+  margin-top: 1.875vw;
+  display: flex;
+  gap: 1.09375vw;
+}
+
+.buypage_section_6 .second_part_contain_left {
+  flex: 0 0 auto;
+  width: 29.375vw;
+  display: flex;
+  flex-direction: column;
+  gap: 1.09375vw;
+}
+
+.buypage_section_6 .second_part_contain_left_top,
+.buypage_section_6 .second_part_contain_left_bottom {
+  width: 100%;
+  height: 18.28125vw;
+  position: relative;
+}
+
+.buypage_section_6 .second_part_contain_left_top img,
+.buypage_section_6 .second_part_contain_left_bottom img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  border-radius: 1.25vw;
+}
+
+.buypage_section_6 .second_part_contain_left_top_info {
+  position: absolute;
+  top: 1.40625vw;
+  left: 1.40625vw;
+}
+
+.buypage_section_6 .second_part_contain_left_top_title,
+.buypage_section_6 .second_part_contain_right_box_title {
+  font-family: Poppins;
+  font-weight: 600;
+  font-style: SemiBold;
+  font-size: clamp(16px, 1.04167vw, 1.04167vw);
+  leading-trim: NONE;
+  line-height: clamp(40px, 2.6041667vw, 2.6041667vw);
+  letter-spacing: 0%;
+  color: #262629;
+}
+
+
+.buypage_section_6 .second_part_contain_left_top_text {
+  font-family: Poppins;
+  font-weight: 500;
+  font-style: Medium;
+  font-size: clamp(14px, 0.8333vw, 0.8333vw);
+  leading-trim: NONE;
+  line-height: clamp(21px, 1.25vw, 1.25vw);
+  letter-spacing: 0.32px;
+  color: rgba(38, 38, 41, 0.7);
+  margin-top: -0.46875vw;
+}
+
+.buypage_section_6 .second_part_contain_right {
+  flex: 1;
+  position: relative;
+}
+
+.buypage_section_6 .second_part_contain_right img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  border-radius: 1.25vw;
+}
+
+.buypage_section_6 .second_part_contain_right_box {
+  position: absolute;
+  width: 34.375vw;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  bottom: 2.5vw;
+  background-color: #fff;
+  padding: 0.9375vw 1.71875vw 0.9375vw 1.875vw;
+  border-radius: 0.78125vw;
+}
+
+.buypage_section_6 .second_part_contain_right_box_icon {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 0.3125vw;
+}
+
+.buypage_section_6 .second_part_contain_right_box_icon svg {
+  width: 1.09375vw;
+  height: 0.625vw;
+}
+
+.buypage_section_6 .second_part_contain_right_box_color {
+  margin-top: 0.15625vw;
+  display: flex;
+  gap: 0.3125vw;
+}
+
+.buypage_section_6 .second_part_contain_right_box_color_item {
+  flex: 1;
+  height: 0.625vw;
+  border-radius: 0.15625vw;
+  display: block;
+}
+
+.buypage_section_6 .second_part_contain_right_box_color_item:first-child {
+  background-color: #EE2F53;
+}
+
+.buypage_section_6 .second_part_contain_right_box_color_item:nth-child(2) {
+  background-color: #FFD789;
+}
+
+.buypage_section_6 .second_part_contain_right_box_color_item:last-child {
+  background-color: #48D67E;
+}
+
+.buypage_section_6 .second_part_contain_right_box_text {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: -0.3125vw;
+  font-family: Poppins;
+  font-weight: 500;
+  font-style: Medium;
+  font-size: clamp(14px, 0.8333vw, 0.8333vw);
+  leading-trim: NONE;
+  line-height: clamp(43.75px, 2.604167vw, 2.604167vw);
+  letter-spacing: 0%;
+  text-align: center;
+  color: rgba(38, 38, 41, 0.7);
+}
+
+.buypage_section_6 .pmd_show {
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  .buypage_section_6 {
+    padding: 12.8vw 5.6vw 0;
+  }
+
+  .buypage_section_6 .first_part_title,
+  .buypage_section_6 .second_part_title {
+    font-size: 6.4vw;
+    line-height: 8vw;
+    width: 100%;
+  }
+
+  .buypage_section_6 .first_part_text,
+  .buypage_section_6 .second_part_text {
+    width: 100%;
+    font-size: 3.733vw;
+    line-height: 6.4vw;
+    margin-top: 2.4vw;
+  }
+
+  .buypage_section_6 .second_part_text {
+    margin-top: 4vw;
+  }
+
+  .buypage_section_6 .first_part_img {
+    height: 114.4vw;
+    margin-top: 6.4vw;
+  }
+
+  .buypage_section_6 .first_part_img img,
+  .buypage_section_6 .second_part_contain_left_top img,
+  .buypage_section_6 .second_part_contain_left_bottom img,
+  .buypage_section_6 .second_part_contain_right img {
+    border-radius: 3.2vw;
+  }
+
+  .buypage_section_6 .first_part_img_extra {
+    top: 12.8vw;
+    gap: 7.2vw;
+    padding: 0 5.6vw;
+    align-items: flex-start;
+  }
+
+  .buypage_section_6 .first_part_img_extra_item {
+    gap: 1.6vw;
+    font-size: 3.733vw;
+    line-height: 5.33vw;
+    flex-wrap: wrap;
+  }
+
+  .buypage_section_6 .first_part_img_extra_item svg {
+    width: 7.2vw;
+    height: 7.2vw;
+  }
+
+  .buypage_section_6 .second_part {
+    margin-top: 16vw;
+  }
+
+  .buypage_section_6 .second_part_contain {
+    margin-top: 4vw;
+    gap: 4vw;
+    flex-wrap: wrap;
+  }
+
+  .buypage_section_6 .second_part_contain_left {
+    width: 100%;
+    gap: 4vw;
+  }
+
+  .buypage_section_6 .second_part_contain_left_top,
+  .buypage_section_6 .second_part_contain_left_bottom {
+    width: 100%;
+    height: 93.6vw;
+  }
+
+  .buypage_section_6 .second_part_contain_left_top_info {
+    top: 4vw;
+    left: 7.2vw;
+  }
+
+  .buypage_section_6 .second_part_contain_left_top_title,
+  .buypage_section_6 .second_part_contain_right_box_title {
+    font-size: 5.33;
+    line-height: 13.333vw;
+  }
+
+  .buypage_section_6 .second_part_contain_left_top_text {
+    font-size: 4.2667vw;
+    line-height: 6.4vw;
+    margin-top: -2.4vw;
+  }
+
+  .buypage_section_6 .second_part_contain_right {
+    width: 100%;
+    height: 93.6vw;
+  }
+
+  .buypage_section_6 .second_part_contain_right_box {
+    width: 86.4vw;
+    bottom: 5.6vw;
+    padding: 2.4vw 2.4vw 4vw 3.2vw;
+    border-radius: 4vw;
+  }
+
+  .buypage_section_6 .second_part_contain_right_box_title {
+    font-size: 3.7333vw;
+  }
+
+  .buypage_section_6 .second_part_contain_right_box_icon {
+    padding-right: .8vw;
+    margin-top: -6.4vw;
+  }
+
+  .buypage_section_6 .second_part_contain_right_box_icon svg {
+    width: 3.2vw;
+    height: 3.2vw;
+  }
+
+  .buypage_section_6 .second_part_contain_right_box_color {
+    margin-top: .8vw;
+    gap: .8vw;
+  }
+
+  .buypage_section_6 .second_part_contain_right_box_color_item {
+    height: 3.2vw;
+    border-radius: .8vw;
+  }
+
+  .buypage_section_6 .second_part_contain_right_box_text {
+    margin-top: 2.4vw;
+    font-size: 4.2667vw;
+    line-height: 100%;
+  }
+
+
+  .buypage_section_6 .pc_show {
+    display: none;
+  }
+
+  .buypage_section_6 .pmd_show {
+    display: block;
+  }
+}

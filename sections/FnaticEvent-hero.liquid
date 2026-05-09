@@ -1,0 +1,339 @@
+<style>
+    .section-{{ section.id }}{
+        background: #060708;
+        position: relative;
+    }
+    .section-{{ section.id }} .container-full{
+        padding: 100px 16%;
+    }
+    .section-{{ section.id }} .container-full .header-cont{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .section-{{ section.id }} .container-full .header-cont .head-title{
+        font-family: Poppins;
+        font-weight: 600;
+        font-style: SemiBold;
+        font-size: 36px;
+        line-height: 100%;
+        letter-spacing: 0%;
+        text-align: center;
+        color: #fff;
+    }
+    .section-{{ section.id }} .container-full .header-cont .head-sub-title{
+        font-family: Poppins;
+        font-weight: 500;
+        font-style: Medium;
+        font-size: 24px;
+        line-height: 30px;
+        letter-spacing: 0%;
+        text-align: center;
+        color: #E25301;
+        margin: 19px 0 18px;
+    }
+
+    .section-{{ section.id }} .container-full .header-cont .head-desc{
+        font-family: Poppins;
+        font-weight: 400;
+        font-style: Regular;
+        font-size: 16px;
+        line-height: 26px;
+        letter-spacing: 0%;
+        text-align: center;
+        color: #FFFFFF;
+    }
+
+    .section-{{ section.id }} .container-full .onlines-lists{
+        position: relative;
+        display: flex;
+        margin-top: 40px;
+    }
+    .section-{{ section.id }} .container-full .online-items{
+        width: 100%;
+        padding-top: var(--pc-ratio);
+    }
+
+    .section-{{ section.id }} .container-full .online-items picture,
+    .section-{{ section.id }} .container-full .online-items img{
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+    }
+
+    .section-{{ section.id }} .swiper-pagination-bullets.swiper-pagination-horizontal{
+        bottom: 50px;
+    }
+    .section-{{ section.id }} .swiper-pagination-bullet{
+        width: 55px;
+        height: 3px;
+        background: #FFFFFF33;
+        border-radius: 0;
+        border: none;
+    }
+    .section-{{ section.id }} .swiper-pagination-bullet.swiper-pagination-bullet-active{
+        background: #E25301;
+    }
+
+    .section-{{ section.id }} .pre-btn-icon.pagina-btn{
+        position: absolute;
+        left: calc(16% + 30px);
+        top: calc(50% + 50px);
+        z-index: 10;
+    }
+    .section-{{ section.id }} .pagina-btn svg{
+        width: 59px;
+        height: 59px;
+        cursor: pointer;
+    }
+
+    .section-{{ section.id }} .next-btn-icon.pagina-btn{
+        position: absolute;
+        right: calc(16% + 30px);
+        top: calc(50% + 50px);
+        z-index: 10;
+    }
+
+
+
+    @media(max-width: 767px){
+        .section-{{ section.id }} .container-full .online-items{
+            padding-top: var(--mb-ratio);
+        }
+        .section-{{ section.id }} .container-full{
+            padding: 50px 10px;
+        }
+        .section-{{ section.id }} .container-full .header-cont .head-title{
+            font-size: 22px;
+            line-height: 30px;
+        }
+        .section-{{ section.id }} .container-full .header-cont .head-sub-title{
+            font-size: 20px;
+            line-height: 30px;
+            margin: 5px 0 10px;
+        }
+        .section-{{ section.id }} .container-full .header-cont .head-desc{
+            font-size: 14px;
+            line-height: 26px;
+        }
+
+        .section-{{ section.id }} .swiper-pagination-bullets.swiper-pagination-horizontal{
+            bottom: 25px;
+        }
+        .section-{{ section.id }} .pre-btn-icon.pagina-btn,
+        .section-{{ section.id }} .next-btn-icon.pagina-btn{
+            display: none;
+        }
+    }
+
+    @media(min-width: 768px) and (max-width: 1024px){
+        .section-{{ section.id }} .container-full{
+            padding: 100px 10px;
+        }
+        .section-{{ section.id }} .pre-btn-icon.pagina-btn{
+            left: calc(10px + 30px);
+            top: calc(50% + 100px);
+        }
+        .section-{{ section.id }} .next-btn-icon.pagina-btn{
+            right: calc(10px + 30px);
+            top: calc(50% + 100px);
+        }
+        .section-{{ section.id }} .pagina-btn svg{
+            width: 20px;
+            height: 20px;
+        }
+        .section-{{ section.id }} .swiper-pagination-bullets.swiper-pagination-horizontal{
+            bottom: 70px;
+        }
+    }
+
+    @media(min-width: 1025px) and (max-width: 1480px){
+        .section-{{ section.id }} .container-full{
+            padding: 100px 60px;
+        }
+        .section-{{ section.id }} .pre-btn-icon.pagina-btn{
+            left: calc(60px + 30px);
+        }
+        .section-{{ section.id }} .next-btn-icon.pagina-btn{
+            right: calc(60px + 30px);
+        }
+        .section-{{ section.id }} .pagina-btn svg{
+            width: 30px;
+            height: 30px;
+        }
+    }
+</style>
+
+<section class="section-{{ section.id }} hreo-section" data-section="{{ section.id }}" id="{{ section.id }}">
+    <div class="container-full">
+        <div class="header-cont">
+            {% if section.settings.sectionTitle != blank %}
+                <div class="head-title">{{ section.settings.sectionTitle }}</div>
+            {% endif %}
+            {% if section.settings.sectionSubTitle != blank %}
+                <div class="head-sub-title">{{ section.settings.sectionSubTitle }}</div>
+            {% endif %}
+            {% if section.settings.sectionSubTitle != blank %}
+                <div class="head-desc">{{ section.settings.sectionDesc }}</div>
+            {% endif %}
+        </div>
+
+        <div class="onlines-lists swiper">
+            <div class="swiper-wrapper">
+                {% for block in section.blocks %}
+                    {% if block.type == "item" %}
+                        {% liquid
+                            assign pc_ratio = 1 | divided_by: block.settings.itemImage.aspect_ratio | times: 100
+                            if block.settings.itemImage.presentation.focal_point != '50.0% 50.0%'
+                                assign pc_ratio = pc_ratio | times: 1.2
+                            endif
+
+                            assign mb_ratio = 1 | divided_by: block.settings.itemImage_mb.aspect_ratio | times: 100
+                            if block.settings.itemImage_mb.presentation.focal_point != '50.0% 50.0%'
+                                assign mb_ratio = mb_ratio | times: 1.2
+                            endif
+                        %}
+                        <div class="online-items swiper-slide" style="--pc-ratio: {{ pc_ratio }}%;--mb-ratio: {{ mb_ratio }}%;">
+                            <picture>
+                                <source media="(max-width: 768px)"
+                                        srcset="{{ block.settings.itemImage_mb | image_url: width: 800 }}"
+                                        data-srcset="{{ block.settings.itemImage_mb | image_url: width: 800 }}">
+
+                                <img {% render 'lazyload',preview_img: block.settings.itemImage, class: true, enable_rtl: settings.enable_layout_rtl  %}
+                                    width="{{ block.settings.itemImage.width }}"
+                                    height="{{ block.settings.itemImage.height }}"
+                                    alt="{{ block.settings.itemImage.alt | escape }}"
+                                    loading="lazy"
+                                    decoding="async"
+                                    style="height: auto;"/>
+                            </picture>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div class="swiper-pagination"></div>
+    {% comment %} custom pagination {% endcomment %}
+    <div class="pre-btn-icon pagina-btn">
+        <svg width="59" height="59" viewBox="0 0 59 59" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="-0.5" y="0.5" width="58" height="58" rx="29" transform="matrix(-1 0 0 1 58 0)" fill="#060708" fill-opacity="0.3" stroke="url(#paint0_linear_10366_32822)"/>
+        <path d="M32.9989 41.9989L21 30L32.9989 18.0011" stroke="white" stroke-width="2"/>
+        <defs>
+        <linearGradient id="paint0_linear_10366_32822" x1="6.47342" y1="61.4659" x2="63.2864" y2="57.0636" gradientUnits="userSpaceOnUse">
+        <stop stop-color="#2C2C2C"/>
+        <stop offset="0.495192" stop-color="white" stop-opacity="0.5"/>
+        <stop offset="0.759615" stop-color="#FF5900"/>
+        <stop offset="1" stop-color="white" stop-opacity="0.5"/>
+        </linearGradient>
+        </defs>
+        </svg>
+
+    </div>
+    <div class="next-btn-icon pagina-btn">
+        <svg width="59" height="59" viewBox="0 0 59 59" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="0.5" y="0.5" width="58" height="58" rx="29" fill="#060708" fill-opacity="0.3" stroke="url(#paint0_linear_10366_32819)"/>
+        <path d="M26.0011 41.9989L38 30L26.0011 18.0011" stroke="white" stroke-width="2"/>
+        <defs>
+        <linearGradient id="paint0_linear_10366_32819" x1="6.47342" y1="61.4659" x2="63.2864" y2="57.0636" gradientUnits="userSpaceOnUse">
+        <stop stop-color="#2C2C2C"/>
+        <stop offset="0.495192" stop-color="white" stop-opacity="0.5"/>
+        <stop offset="0.759615" stop-color="#FF5900"/>
+        <stop offset="1" stop-color="white" stop-opacity="0.5"/>
+        </linearGradient>
+        </defs>
+        </svg>
+
+
+    </div>
+</section>
+
+<script>
+    $(document).ready(function(){
+        let heroSwiper = new Swiper('.hreo-section .onlines-lists', {
+            loop: true,
+            grabCursor : true,
+            simulateTouch: true,
+            slidesPerView : 1,
+            spaceBetween : 0,
+            pagination: {
+                el: '.hreo-section .swiper-pagination',
+                clickable :true,
+            },
+            breakpoints: { 
+                320: {
+                    slidesPerView: 1,
+                },
+                992: {
+                    slidesPerView: 1,
+                },
+                1400: {
+                    slidesPerView: 1,
+                }
+            }
+        })
+
+        {% comment %} prev {% endcomment %}
+        $('.hreo-section .pre-btn-icon').click(function(){
+            heroSwiper.slidePrev();
+        })
+
+
+        {% comment %} next {% endcomment %}
+        $('.hreo-section .next-btn-icon').click(function(){
+            heroSwiper.slideNext();
+        })
+    
+    })
+
+    
+</script>
+
+{% schema %}
+{
+    "name": "Fnatic Event Hero",
+    "settings": [
+
+        {
+            "type": "text",
+            "id": "sectionTitle",
+            "label": "section Title"
+        },
+        {
+            "type": "text",
+            "id": "sectionSubTitle",
+            "label": "section Sub Title"
+        },
+        {
+            "type": "textarea",
+            "id": "sectionDesc",
+            "label": "section Descripe"
+        }
+    ],
+    "blocks": [
+        {
+            "type": "item",
+            "name": "item",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "itemImage",
+                    "label": "item Image"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "itemImage_mb",
+                    "label": "item Image Mobile"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "Fnatic Event Hero"
+        }
+    ]
+}
+{% endschema %}

@@ -1,0 +1,57 @@
+{{ 'ergonomics-section-ten.css' | asset_url | stylesheet_tag }}
+
+<div class="ergonomics_section_ten">
+  <div class="ergonomics_section_ten_title">{{ section.settings.title }}</div>
+  <div class="ergonomics_section_ten_text">{{ section.settings.text }}</div>
+  {{-
+    section.settings.image
+    | image_url: width: section.settings.image.width
+    | image_tag: alt: section.settings.image.alt, class: 'ergonomics_section_ten_img'
+  -}}
+  <a class="ergonomics_section_ten_btn" href="{{ section.settings.button_link }}">
+    {{- section.settings.button_text -}}
+  </a>
+</div>
+
+{% schema %}
+{
+  "name": "ergonomics section ten",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "title",
+      "label": "title"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "text"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "image"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "button text"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "button link"
+    }
+  ],
+  "presets": [
+    {
+      "name": "ergonomics section ten"
+    }
+  ]
+}
+{% endschema %}

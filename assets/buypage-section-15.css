@@ -1,0 +1,140 @@
+.buypage_section_15 {
+  background-color: #EBEBEB;
+  padding: 0 15.625vw;
+}
+
+.buypage_section_15 .buypage_section_15_title {
+  font-family: Poppins;
+  font-weight: 600;
+  font-style: SemiBold;
+  font-size: 2.0833vw;
+  leading-trim: NONE;
+  line-height: 1.25;
+  letter-spacing: 0%;
+  color: #262629;
+  text-align: center;
+}
+
+.buypage_section_15 .buypage_section_15_text {
+  font-family: Poppins;
+  font-weight: 500;
+  font-style: Medium;
+  font-size: clamp(14px, 0.8333vw, 0.8333vw);
+  leading-trim: NONE;
+  line-height: 1.5;
+  letter-spacing: 0%;
+  text-align: center;
+  color: rgba(0, 0, 0, .7);
+  width: 50.671875vw;
+  margin: 0.359375vw auto 0;
+}
+
+.buypage_section_15 .buypage_section_15_certifications {
+  display: block;
+  width: auto;
+  height: 2.34375vw;
+  object-fit: cover;
+  object-position: center center;
+  margin: 1.25vw auto 0;
+}
+
+.buypage_section_15 .buypage_section_15_img_box {
+  width: 100%;
+  height: 26.046875vw;
+  border-radius: 0.8125vw;
+  overflow: hidden;
+  margin: 2.296875vw auto 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.buypage_section_15 .buypage_section_15_img,
+.buypage_section_15 .buypage_section_15_img_box picture {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+}
+
+.buypage_section_15 .buypage_section_15_info {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-top: 1.5625vw;
+  gap: 5.828125vw;
+}
+
+.buypage_section_15 .buypage_section_15_info_item {
+  flex: 1;
+}
+
+.buypage_section_15 .buypage_section_15_info_item_title {
+  font-family: Poppins;
+  font-weight: 600;
+  font-style: SemiBold;
+  font-size: 1.04166vw;
+  leading-trim: NONE;
+  line-height: 130%;
+  letter-spacing: 0%;
+  color: #262629;
+}
+
+.buypage_section_15 .buypage_section_15_info_item_text {
+  font-family: Poppins;
+  font-weight: 500;
+  font-style: Medium;
+  font-size: clamp(14px, 0.8333vw, 0.8333vw);
+  leading-trim: NONE;
+  line-height: 24px;
+  letter-spacing: 0%;
+  color: rgba(82, 82, 91, 0.7);
+  margin-top: 0.46875vw;
+}
+
+@media screen and (max-width: 768px) {
+  .buypage_section_15 {
+    padding: 5.33vw;
+  }
+
+  .buypage_section_15 .buypage_section_15_title {
+    font-size: 6.4vw;
+    line-height: 8vw;
+  }
+
+  .buypage_section_15 .buypage_section_15_text {
+    width: 100%;
+    font-size: 3.733vw;
+    line-height: 1.714285;
+  }
+
+  .buypage_section_15 .buypage_section_15_certifications {
+    height: 8vw;
+    margin-top: 4.266vw;
+  }
+
+  .buypage_section_15 .buypage_section_15_img_box {
+    height: 106.64vw;
+    border-radius: 4.24vw;
+  }
+
+  .buypage_section_15 .buypage_section_15_info {
+    flex-wrap: wrap;
+    margin-top: 5.33vw;
+  }
+
+  .buypage_section_15 .buypage_section_15_info_item {
+    flex: 0 0 100%;
+  }
+
+  .buypage_section_15 .buypage_section_15_info_item_title {
+    font-size: 4.2667vw;
+  }
+
+  .buypage_section_15 .buypage_section_15_info_item_text {
+    font-size: 3.733vw;
+    line-height: 1.714285;
+    margin-top: 1.84vw;
+  }
+}

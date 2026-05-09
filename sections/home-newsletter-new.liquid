@@ -1,0 +1,219 @@
+<style>
+    {% if request.page_type == 'index' %}
+        #sections--17951220924665__home_newsletter_new_UL9JmU {
+            display: none;
+        }
+    {% else %}
+        #sections--17951220924665__home_newsletter_new_UL9JmU {
+            display: block;
+        }
+    {% endif %}
+    .home-newsletter{
+        padding: 90px 16%;
+        border-bottom: 1px solid #B9B9B9;
+    }
+    .home-newsletter .container-full{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .home-newsletter .title-text{
+        font: 600 30px var(--font-family-3);
+        color: #262629;
+    }
+    .home-newsletter .desc-text{
+        font: 400 16px var(--font-family-3);
+        line-height: 1.4;
+        color: #76767F;
+        text-align: center;
+    }
+    .home-newsletter .input-cont{
+        margin-top: 26px;
+        display: flex;
+        gap: 17px;
+    }
+    .home-newsletter .newsletter-form__field-wrapper{
+        display: flex;
+        gap: 17px;
+    }
+    .home-newsletter .field__input.form-input-placeholder{
+        border: 1px solid #E3E3E3;
+        border-radius: 200px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        width: 546px;
+        background-color: #fff;
+    }
+    .home-newsletter .field__input.form-input-placeholder::placeholder{
+        font: 400 16px var(--font-family-3);
+        color: #C9C9C9;
+    }
+    .home-newsletter .button.newsletter-form__button{
+        font: 600 16px var(--fomt-family-3);
+        color: #fff;
+        background-color: #262629;
+        padding: 13px 38px;
+        border: none;
+        width: max-content;
+        min-width: max-content;
+        border-radius: 45px;
+    }
+    .home-newsletter .button.newsletter-form__button:hover{
+        background: #141415;
+    }
+    
+    @media(max-width: 767px){
+        .home-newsletter{
+            padding: 50px 10px;
+        }
+        .home-newsletter .title-text{
+            font-size: 24px;
+        }
+        .home-newsletter .desc-text{
+            font-size: 12px;
+        }
+        .home-newsletter .input-cont{
+            flex-direction: column;
+        }
+        .home-newsletter .newsletter-form__field-wrapper{
+            flex-direction: column;
+        }
+        .home-newsletter .field__input.form-input-placeholder{
+            width: 90vw;
+        }
+    }
+    @media(min-width: 1025px) and (max-width: 1480px){
+        .home-newsletter{
+            padding: 100px 60px;
+        }
+    }
+</style>
+
+<div id="{{ section.id }}" class="home-newsletter" style="background: {{ section.settings.sectionBackgroundColor }};">
+    <div class="container-full">
+        <div class="title-text">{{ section.settings.sectionTitle }}</div>
+        <div class="desc-text">{{ section.settings.sectionDescripe }}</div>
+        <div class="input-cont">
+            <newsletter-form class="newsletter-section-form newsletter-section-block">
+                {%- form 'customer', id: 'NewsletterSection', class: 'newsletter-block newsletter-form' -%}
+                <input type="hidden" name="contact[tags]" value="newsletter">
+                <div class="newsletter-form__field-wrapper">
+                    <div class="field">
+                        <label class="field__label hiddenLabels" for="NewsletterForm--{{ section.id }}">{{ 'newsletter.label' | t }}</label>
+                        <input id="NewsletterForm--{{ section.id }}" type="email" name="contact[email]" class="field__input form-input-placeholder" value="{{ form.email }}" aria-required="true" autocorrect="off" autocapitalize="off" autocomplete="email"{% if form.errors %} autofocus aria-invalid="true" aria-describedby="ContactFooter-error"{% elsif form.posted_successfully? %} aria-describedby="ContactFooter-success" {% endif %} placeholder="{{ section.settings.newletterInputPlaceholder }}" required="required">
+                    </div>
+                    <button data-open-newsletter-popup type="submit" class="button newsletter-form__button" name="commit" id="Subscribe-{{ section.id }}" aria-label="{{ 'newsletter.button_label' | t }}">{% if settings.enable_button_1_border_outside %}<span>{% endif %}{{ section.settings.newletterInputBtn }}{% if settings.enable_button_1_border_outside %}</span>{% endif %}</button>
+                </div>
+                {%- if form.errors -%}
+                    <div class="newsletter-form__message newsletter-form__message--error form__message" id="ContactFooter-error">
+                    {% render 'icon-error' -%}
+                    {{- form.errors.translated_fields.email | capitalize }}
+                    {{ form.errors.messages.email }}
+                    </div>
+                {%- endif -%}
+                {%- if form.posted_successfully? -%}
+                    <script>
+                    $(document).ready(function () {
+                        var newsletterSuccessPopup = (function () {
+                        var popup = $('.newsletter-success-modal');
+                        var close = popup.find('.close');
+                        var success = popup.find('.success');
+                        var error = popup.find('.error');
+                        var overlay = $('.background-overlay');
+                        popup.show();
+                        overlay.show();
+                        error.hide();
+                        success.show();
+                        close.off('click').on('click', function () {
+                            popup.fadeOut();
+                            overlay.hide();
+                        });
+                        overlay.off('click').on('click', function () {
+                            popup.fadeOut();
+                            overlay.hide();
+                        });
+                        })();
+                        var newURL = location.href.split('?')[0];
+                        window.history.pushState('object', document.title, newURL);
+                    });
+                    </script>
+                {% else %}
+                    <script>
+                    $(document).ready(function () {
+                        if (window.location.href.indexOf('newsletter&form_type=customer') > -1) {
+                        var newsletterSuccessPopup = (function () {
+                            var popup = $('.newsletter-success-modal');
+                            var close = popup.find('.close');
+                            var success = popup.find('.success');
+                            var error = popup.find('.error');
+                            var overlay = $('.background-overlay');
+                            popup.show();
+                            overlay.show();
+                            error.show();
+                            success.hide();
+                            close.off('click').on('click', function () {
+                            popup.fadeOut();
+                            overlay.hide();
+                            });
+                            overlay.off('click').on('click', function () {
+                            popup.fadeOut();
+                            overlay.hide();
+                            });
+                        })();
+                        var newURL = location.href.split('?')[0];
+                        window.history.pushState('object', document.title, newURL);
+                        }
+                    });
+                    </script>
+                {%- endif -%}
+                {%- endform -%}
+            </newsletter-form>
+        </div>
+    </div>
+</div>
+
+{% schema %}
+    {
+        "name": "Home Newsletter",
+        "tag": "section",
+        "settings": [
+            {
+                "type": "color",
+                "id": "sectionBackgroundColor",
+                "label": "section Background Color",
+                "default": "#E2E2E2"
+            },
+            {
+                "type": "text",
+                "id": "sectionTitle",
+                "label": "Section Title",
+                "default": "Get $30 off your first order!"
+            },
+            {
+                "type": "text",
+                "id": "sectionDescripe",
+                "label": "Section Descripe",
+                "default": "Subscribe to unlock and stay updated on Blacklyte special offers, new releases and more!"
+            },
+            {
+                "type": "text",
+                "id": "newletterInputPlaceholder",
+                "label": "newletter Input Placeholder",
+                "default": "Enter your email address"
+            },
+            {
+                "type": "text",
+                "id": "newletterInputBtn",
+                "label": "newletter Input Button",
+                "default": "SUBSCRIBE"
+            }
+        ],
+        "blocks": [],
+        "presets": [
+            {
+                "name": "Home Newsletter"
+            }
+        ]
+    }
+{% endschema %}

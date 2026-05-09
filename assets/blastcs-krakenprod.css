@@ -1,0 +1,144 @@
+#blastcs-kraken-section .item.item--largeImg .banner-sub-title{
+    font-family: Poppins;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 100%;
+    letter-spacing: 0%;
+
+}
+
+#blastcs-kraken-section .item.item--largeImg .banner-heading{
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 36px;
+    line-height: 1.4 !important;
+    color: #FFFFFF;
+    text-transform: uppercase;
+    
+    background-image: linear-gradient(180deg, transparent 60%, rgba(255, 122, 0, 0.7) 80%);
+    
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+
+    display: inline;
+    
+    background-color: transparent; 
+    box-shadow: none;
+}
+
+#blastcs-kraken-section .item.item--largeImg  .banner-text {
+    font-family: Poppins;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 1.4;
+    letter-spacing: 0%;
+    margin-top: 6px;
+}
+
+
+#blastcs-kraken-section .content-box--absolute.text-left .banner-button{
+    font-family: Poppins;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 120%;
+    letter-spacing: 0%;
+    text-align: center;
+    text-transform: uppercase;
+    border: none;
+    background: linear-gradient(90deg, rgba(237, 133, 59, 0) 6.4%, #ED853B 55.7%, rgba(237, 133, 59, 0) 97.14%);
+    transition: all .35s ease;
+}
+
+#blastcs-kraken-section .content-box--absolute.text-left .banner-button:hover{
+    box-shadow: 0 0 10px #ED853B;
+
+}
+
+#blastcs-kraken-section .content-box--absolute{
+    padding: 0;
+    left: 16%;
+}
+
+#blastcs-kraken-section .product-price-lists{
+    display: flex;
+    gap: 14px;
+    align-items: center;
+    margin-bottom: 20px;
+}
+#blastcs-kraken-section .product-price-lists .prod_item_discount_price,
+#blastcs-kraken-section .prod_item_sale_price{
+    font-family: Poppins;
+    font-weight: 600;
+    font-size: clamp(30px, 2.604vw, 50px);
+    line-height: 100%;
+    letter-spacing: normal; 
+
+    background: linear-gradient(180deg, #FFA75B 15.85%, #FF1E00 72.56%);
+    -webkit-background-clip: text;
+    background-clip: text;
+
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+
+}
+
+#blastcs-kraken-section .prod_item_sale_price.prod_item_sale_price_new{
+    font-family: Poppins;
+    font-weight: 500;
+    font-size: clamp(16px, 1.5625vw, 30px);
+    line-height: 100%;
+    letter-spacing: 0%;
+    text-decoration: line-through;
+    color: #FFFFFF85;
+    -webkit-text-fill-color: #ffffff85;
+    background: none;
+
+}
+
+
+@media(max-width: 767px){
+    #blastcs-kraken-section .content-box--absolute {
+        padding: 0 33px;
+        left: 50%;
+        top: auto;
+        bottom: 30px;
+        transform: translate(-50%, 0);
+    }
+    #blastcs-kraken-section .content-box--absolute.text-left .banner-button{
+        width: 90%;
+        max-width: 90%;
+
+    }
+    #blastcs-kraken-section .item.item--largeImg .banner-sub-title{
+        font-size: 14px;
+    }
+    #blastcs-kraken-section .item.item--largeImg .banner-heading{
+        font-size: 20px;
+        line-height: 1.4 !important;
+    }
+
+    #blastcs-kraken-section .item.item--largeImg .banner-text{
+        font-size: 16px;
+        margin-bottom: 14px;
+    }
+
+    #blastcs-kraken-section .product-price-lists{
+        justify-content: center;
+        gap: 6px;
+    }
+
+    #blastcs-kraken-section .product-price-lists .prod_item_discount_price{
+        font-size: 20px;
+    }
+    #blastcs-kraken-section .prod_item_sale_price.prod_item_sale_price_new{
+        font-size: 16px;
+    }
+}
+
+@media(min-width: 1025px) and (max-width: 1480px){
+    #blastcs-kraken-section .content-box--absolute{
+        left: 60px;
+    }
+
+}
+

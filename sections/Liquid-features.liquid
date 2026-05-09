@@ -1,0 +1,302 @@
+<style>
+    .section-feature-{{ section.id }}{
+        padding-top: 200px;
+        padding-bottom: 150px;
+        overflow: hidden;
+    }
+    .section-feature-{{ section.id }} .container-full{
+        padding-left: 16%;
+        padding-right: 16%;
+    }
+
+    .section-feature-{{ section.id }} .container-full .cont-block{
+        display: flex;
+        flex-direction: column;
+        gap: 80px;
+    }
+    .section-feature-{{ section.id }} .container-full .cont-block .feature-item{
+        display: flex;
+        gap: 100px;
+        align-items: center;
+    }
+    
+    .section-feature-{{ section.id }} .container-full .cont-block .feature-item img{
+        height: auto;
+    }
+    .section-feature-{{ section.id }} .container-full .cont-block .feature-item-right{
+        flex-direction: row-reverse;
+    }
+    .section-feature-{{ section.id }} .container-full .cont-block .feature-item .title_text{
+        font-family: DIN;
+        font-weight: 700;
+        font-style: Bold;
+        font-size: 30px;
+        line-height: 39px;
+        letter-spacing: -4%;
+        text-transform: uppercase;
+        color: #fff;
+    }
+    .section-feature-{{ section.id }} .container-full .cont-block .feature-item .desc_text,
+    .section-feature-{{ section.id }} .container-full .cont-block .feature-item .desc_text_2{
+        font-family: Poppins;
+        font-weight: 400;
+        font-style: Regular;
+        font-size: 16px;
+        line-height: 24px;
+        letter-spacing: 0%;
+        text-transform: capitalize;
+        color: #fff;
+    }
+    .section-feature-{{ section.id }} .container-full .cont-block .feature-item .desc_text{
+        margin-top: 12px;
+    }
+    .section-feature-{{ section.id }} .container-full .cont-block .feature-item .desc_text_2{
+        margin-top: 15px;
+    }
+    .section-feature-{{ section.id }} .container-full .cont-block .feature-item .feature-item-img,
+    .section-feature-{{ section.id }} .container-full .cont-block .feature-item .feature-item-text{
+        flex: 1;
+    }
+
+    .section-feature-{{ section.id }} .feature-item-img-pc{
+        display: block;
+    }
+    .section-feature-{{ section.id }} .feature-item-img-mb{
+        display: none;
+    }
+
+    .section-feature-{{ section.id }} .container-full .cont-block .feature-item.feature-item-more-cont{
+        position: relative;
+        padding-bottom: 200px;
+        align-items: flex-start;
+    }
+    .section-feature-{{ section.id }} .container-full .feature-item-more-cont .feature-item-img_2_pc{
+        position: absolute;
+        width: 60%;
+        top: 350px;
+        left: 30%;
+    }
+    .section-feature-{{ section.id }} .container-full .cont-block .feature-item.feature-item-more-cont .title_text{
+        margin-top: 40px;
+    }
+
+    @media(max-width: 767px){
+        .section-feature-{{ section.id }} {
+            padding-top: 50px;
+            padding-bottom: 50px;
+        }
+        .section-feature-{{ section.id }} .container-full{
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+        .section-feature-{{ section.id }} .container-full .cont-block .feature-item{
+            gap: 25px;
+            flex-direction: column-reverse;
+        }
+        .section-feature-{{ section.id }} .container-full .cont-block .feature-item .title_text{
+            font-size: 26px;
+            line-height: 39px;
+        }
+        .section-feature-{{ section.id }} .container-full .cont-block .feature-item .desc_text,
+        .section-feature-{{ section.id }} .container-full .cont-block .feature-item .desc_text_2{
+            font-size: 14px;
+            line-height: 22px;
+        }
+
+        .section-feature-{{ section.id }} .feature-item-img-pc{
+            display: none;
+        }
+        .section-feature-{{ section.id }} .feature-item-img-mb{
+            display: block;
+        }
+        .section-feature-{{ section.id }} .feature-item-more-cont .feature-item-img-mb{
+            width: 70%;
+        }
+        .section-feature-{{ section.id }} .container-full .feature-item-more-cont .feature-item-img_2_pc{
+            width: calc(100% - 30px);
+            top: auto;
+            left: 30px;
+            bottom: 30px;
+        }
+
+    }
+
+    {% comment %} iPad {% endcomment %}
+    @media(min-width: 768px) and (max-width: 1024px){
+        .section-feature-{{ section.id }}{
+            padding-top: 50px;
+            padding-bottom: 50px;
+        }
+        .section-feature-{{ section.id }} .container-full{
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+        .section-feature-{{ section.id }} .container-full .cont-block .feature-item{
+            gap: 50px;
+        }
+        .section-feature-{{ section.id }} .container-full .cont-block .feature-item .title_text{
+            font-size: 24px;
+        }
+        .section-feature-{{ section.id }} .container-full .cont-block .feature-item .desc_text,
+        .section-feature-{{ section.id }} .container-full .cont-block .feature-item .desc_text_2{
+            font-size: 12px;
+        }
+    }
+
+    {% comment %} small screen {% endcomment %}
+    @media(min-width: 1025px) and (max-width: 1480px){
+        .section-feature-{{ section.id }} .container-full{
+            padding-left: 60px;
+            padding-right: 60px;
+        }
+        .section-feature-{{ section.id }} .container-full .cont-block .feature-item.feature-item-more-cont .title_text{
+            font-size: 28px;
+        }
+        .section-feature-{{ section.id }} .container-full .cont-block .feature-item .desc_text,
+        .section-feature-{{ section.id }} .container-full .cont-block .feature-item .desc_text_2{
+            font-size: 14px;
+        }
+    }
+
+</style>
+
+<section class="section-feature-{{ section.id }}" id="{{ section.id }}" data-section-id="{{ section.id }}">
+    {%- liquid
+        assign bgImage = section.settings.sectionBgImage
+        assign bgImageMb = section.settings.sectionBgImage_mb
+    -%}
+
+    <style>
+        .section-feature-{{ section.id }} {
+            background-color: #001538;
+            background-image: url({{ bgImage | img_url: 'master' }});
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        @media (max-width: 767px) {
+            .section-feature-{{ section.id }} {
+                background-image: url({{ bgImageMb | img_url: 'master' }});
+            }
+        }
+    </style>
+    <div class="container-full">
+        <div class="cont-block">
+            {% for block in section.blocks %}
+                {% if block.type == "item" %}
+                    <div class="feature-item feature-item-{{ block.settings.featureDirector }} {% if block.settings.itemImage_2 != blank %} feature-item-more-cont{% endif %}">
+                        <div class="feature-item-img feature-item-img-pc">
+                            <img src="{{ block.settings.itemImage | img_url: 'master' }}"
+                                width="{{ block.settings.itemImage.width }}"
+                                height="{{ block.settings.itemImage.height }}"
+                                alt="{{ block.settings.itemImage.alt }}" />
+                        </div>
+                        <div class="feature-item-img feature-item-img-mb">
+                            <img src="{{ block.settings.itemImage_mb | img_url: 'master' }}"
+                                width="{{ block.settings.itemImage_mb.width }}"
+                                height="{{ block.settings.itemImage_mb.height }}"
+                                alt="{{ block.settings.itemImage_mb.alt }}" />
+                        </div>
+                        {% if block.settings.itemImage_2 != blank %}
+                            <div class="feature-item-img feature-item-img_2_pc">
+                                <img src="{{ block.settings.itemImage_2 | img_url: 'master' }}"
+                                    width="{{ block.settings.itemImage_2.width }}"
+                                    height="{{ block.settings.itemImage_2.height }}"
+                                    alt="{{ block.settings.itemImage_2.alt }}" />
+                            </div>
+                        {% endif %}
+                        
+                        
+                        <div class="feature-item-text">
+                            <div class="title_text">{{ block.settings.itemTitle }}</div>
+                            <div class="desc_text">{{ block.settings.itemDesc }}</div>
+                            <div class="desc_text_2">{{ block.settings.itemDesc_2 }}</div>
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+{% schema %}
+{
+    "name": "Liquid Features",
+    "settings": [
+        {
+            "type": "image_picker",
+            "id": "sectionBgImage",
+            "label": "section Background Image"
+        },
+        {
+            "type": "image_picker",
+            "id": "sectionBgImage_mb",
+            "label": "section Background Image Mobile"
+        }
+    ],
+    "blocks": [
+        {
+            "type": "item",
+            "name": "item",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "itemImage",
+                    "label": "feature Image 0"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "itemImage_mb",
+                    "label": "feature Image 0 Mobile"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "itemImage_2",
+                    "label": "feature Image 1"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "itemImage_2_mb",
+                    "label": "feature Image 2 Mobile"
+                },
+                {
+                    "type": "select",
+                    "id": "featureDirector",
+                    "label": "feature Director",
+                    "options": [
+                        {
+                            "value": "left",
+                            "label": "left"
+                        },
+                        {
+                            "value": "right",
+                            "label": "right"
+                        }
+                    ]
+                },
+                {
+                    "type": "text",
+                    "id": "itemTitle",
+                    "label": "feature Title"
+                },
+                {
+                    "type": "textarea",
+                    "id": "itemDesc",
+                    "label": "feature Desc"
+                },
+                {
+                    "type": "textarea",
+                    "id": "itemDesc_2",
+                    "label": "feature Desc 2"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "Liquid Features"
+        }
+    ]
+}
+{% endschema %}

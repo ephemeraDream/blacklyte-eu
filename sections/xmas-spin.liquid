@@ -1,0 +1,109 @@
+{{ 'xmas-2025.css' | asset_url | stylesheet_tag }}
+{{ 'bundle-card.css' | asset_url | stylesheet_tag }}
+
+<section class="section-{{ section.id }} xmas-event-section" id="{{ section.id }}" data-section-id="{{ section.id }}">
+  <div class="side-top-icon">{% render 'xmas-side-top-icon' %}</div>
+  <div class="container-full container-target-btns">
+    <div class="prod-target target-button target-button-active">
+      <div class="active-btn-svg">
+        {% render 'xmas-target-icon' %}
+      </div>
+      <div class="title-info">{{ section.settings.targetBtnTitle }}</div>
+      <div class="desc-info">
+        {{ section.settings.targetBtnDesc }}
+        <div>{{ section.settings['targetBtnDesc-2'] }}</div>
+      </div>
+      <div class="target-icon-svg">
+        <svg width="46" height="46" viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="23" cy="23" r="22" stroke="#0D2D24" stroke-width="2"/>
+          <path d="M36.8483 23.7071C37.2388 23.3166 37.2388 22.6834 36.8483 22.2929L30.4843 15.9289C30.0938 15.5384 29.4606 15.5384 29.0701 15.9289C28.6796 16.3195 28.6796 16.9526 29.0701 17.3431L34.727 23L29.0701 28.6569C28.6796 29.0474 28.6796 29.6805 29.0701 30.0711C29.4606 30.4616 30.0938 30.4616 30.4843 30.0711L36.8483 23.7071ZM9.85547 23V24H36.1412V23V22H9.85547V23Z" fill="#0D2D24"/>
+        </svg>
+
+      </div>
+    </div>
+    <div class="bundle-target target-button">
+      <div class="active-btn-svg">
+        {% render 'xmas-target-icon' %}
+      </div>
+      <div class="title-info">{{ section.settings.targetBundleTitle }}</div>
+      <div class="desc-info">
+        {{ section.settings.targetBundleDesc }}
+        <div>{{ section.settings['targetBundleDesc-2'] }}</div>
+      </div>
+      <div class="target-icon-svg">
+        <svg width="46" height="46" viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="23" cy="23" r="22" stroke="#0D2D24" stroke-width="2"/>
+          <path d="M36.8483 23.7071C37.2388 23.3166 37.2388 22.6834 36.8483 22.2929L30.4843 15.9289C30.0938 15.5384 29.4606 15.5384 29.0701 15.9289C28.6796 16.3195 28.6796 16.9526 29.0701 17.3431L34.727 23L29.0701 28.6569C28.6796 29.0474 28.6796 29.6805 29.0701 30.0711C29.4606 30.4616 30.0938 30.4616 30.4843 30.0711L36.8483 23.7071ZM9.85547 23V24H36.1412V23V22H9.85547V23Z" fill="#0D2D24"/>
+        </svg>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="container-full container-full-prods container-box">
+    {% comment %} {% content_for 'block', type: 'xmas-spin-item', id: 'xmas-spin-item' %} {% endcomment %}
+    {% content_for 'block', type: 'xmas-collections', id: 'xmas-collections' %}
+    {% content_for 'block', type: 'xmas-featured-prod', id: 'xmas-featured-prod' %}
+    {% content_for 'block', type: 'xmas-featured-prod', id: 'xmas-featured-prod-2' %}
+    {% content_for 'block', type: 'xmas-videos', id: 'xmas-video' %}
+    {% content_for 'block', type: 'xmas-warranty', id: 'xmas-warranty' %}
+    {% content_for 'block', type: 'xmas-reviews', id: 'xmas-reviews' %}
+  </div>
+  {% comment %} bundle {% endcomment %}
+  <div class="container-full container-full-prods container-box bundle-container hidden">
+    {% content_for 'blocks' %}
+  </div>
+</section>
+
+<script src="{{ 'xmas-2025.js' | asset_url  }}" defer></script>
+<script src="{{ 'bundle-card.js' | asset_url  }}" defer></script>
+
+{% schema %}
+{
+  "name": "xmax spin",
+  "settings": [
+    {
+      "type": "text",
+      "id": "targetBtnTitle",
+      "label": "Target Button Title",
+      "default": "LIMITED TIME OFFER"
+    },
+    {
+      "type": "text",
+      "id": "targetBtnDesc",
+      "label": "Target Button Descripe",
+      "default": "Massive savings on selected"
+    },
+    {
+      "type": "text",
+      "id": "targetBtnDesc-2",
+      "label": "Target Button Descripe 2",
+      "default": "products!"
+    },
+    {
+      "type": "text",
+      "id": "targetBundleTitle",
+      "label": "Target Bundle Title",
+      "default": "BUNDLE UP AND SAVE MORE"
+    },
+    {
+      "type": "text",
+      "id": "targetBundleDesc",
+      "label": "Target Bundle Descripe",
+      "default": "Extra $50 off for desks plus limited"
+    },
+    {
+      "type": "text",
+      "id": "targetBundleDesc-2",
+      "label": "Target Bundle Descripe 2",
+      "default": "exclusive gifts"
+    }
+  ],
+  "blocks": [{ "type": "bundle-card" }],
+  "presets": [
+    {
+      "name": "xmas spin"
+    }
+  ]
+}
+{% endschema %}

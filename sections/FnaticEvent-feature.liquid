@@ -1,0 +1,1236 @@
+<style>
+  .section-{{ section.id }} {
+      background: #060708;
+  }
+  .section-{{ section.id }} .container-full{
+      padding: 47px 16% 70px;
+  }
+
+  .section-{{ section.id }} .container-full .head-cont{
+      width: 100%;
+      padding: 75px 160px 67px;
+      position: relative;
+      z-index: 1;
+      border-radius: 67px;
+      overflow: hidden;
+  }
+
+  .section-{{ section.id }} .container-full .head-cont::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: -1;
+      padding: 1px;
+      background: linear-gradient(85.57deg, #2C2C2C 9.88%, rgba(255, 255, 255, 0.5) 54.4%, #FF5900 78.18%, rgba(255, 255, 255, 0.5) 99.79%);
+
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+
+      border-radius: 67px;
+  }
+  .section-{{ section.id }} .container-full .section-sub-title{
+      font-family: Poppins;
+      font-weight: 500;
+      font-style: Medium;
+      font-size: 20px;
+      line-height: 1.2;
+      letter-spacing: 0%;
+      text-align: center;
+      color: #fff;
+  }
+  .section-{{ section.id }} .container-full .section-title{
+      font-family: Poppins;
+      font-weight: 600;
+      font-style: SemiBold;
+      font-size: 30px;
+      line-height: 1.2;
+      letter-spacing: 0%;
+      text-align: center;
+      color: #E25301;
+      margin: 10px 0 10px;
+  }
+  .section-{{ section.id }} .container-full .section-desc{
+      font-family: Poppins;
+      font-weight: 400;
+      font-style: Regular;
+      font-size: 16px;
+      line-height: 26px;
+      letter-spacing: 0%;
+      text-align: center;
+      color: #FFFFFF;
+  }
+
+  .section-{{ section.id }} .container-full .item-head-cont{
+      font-family: Poppins;
+      font-weight: 600;
+      font-style: SemiBold;
+      font-size: 36px;
+      line-height: 100%;
+      letter-spacing: 0%;
+      text-align: center;
+      color: #fff;
+  }
+
+  .section-{{ section.id }} .container-full .feature-lists{
+      padding-top: 135px;
+  }
+
+  .section-{{ section.id }} .container-full .feature-lists img{
+      height: auto;
+  }
+  .section-{{ section.id }} .container-full .feature-lists .item-item-conts{
+      margin-top: 100px;
+      display: flex;
+      align-items: center;
+  }
+
+  .section-{{ section.id }} .container-full .feature-lists .item-item-conts .item-left,
+  .section-{{ section.id }} .container-full .feature-lists .item-item-conts .item-right{
+      width: 50%;
+  }
+  .section-{{ section.id }} .container-full .feature-lists .item-item-conts .item-right{
+      padding: 58px 50px 100px;
+      border-radius: 10px;
+      position: relative;
+      z-index: 1;
+      background: linear-gradient(360deg, rgba(0, 0, 0, 0.5) 0%, #000000 100%);
+  }
+  .section-{{ section.id }} .container-full .feature-lists .item-item-conts .item-right:before{
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      z-index: -1;
+      padding: 1px;
+      background: linear-gradient(85.57deg, #2C2C2C 9.88%, rgba(255, 255, 255, 0.5) 54.4%, #FF5900 78.18%, rgba(255, 255, 255, 0.5) 99.79%);
+
+      -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+
+      border-radius: 10px;
+  }
+
+
+  .section-{{ section.id }} .container-full .feature-lists .item-item-conts .item-right .item-prod-title{
+      font-family: Poppins;
+      font-weight: 500;
+      font-style: Medium;
+      font-size: 36px;
+      line-height: 100%;
+      letter-spacing: 0%;
+      color: #fff;
+  }
+
+  .section-{{ section.id }} .container-full .feature-lists .item-item-conts .item-right .item-prod-desc{
+      font-family: Poppins;
+      font-weight: 500;
+      font-style: Medium;
+      font-size: 16px;
+      line-height: normal;
+      letter-spacing: 0%;
+      text-transform: capitalize;
+      color: #fff;
+      margin-top: 10px;
+  }
+
+  .section-{{ section.id }} .container-full .feature-lists .item-item-conts .item-right .feature-svg svg{
+      width: 90%;
+      height: auto;
+      margin-top: 50px;
+  }
+  .section-{{ section.id }} .container-full .feature-lists .item-item-conts .item-right .feature-icon-lists{
+      display: flex;
+      gap: 18px;
+      margin-top: 13px;
+  }
+  .section-{{ section.id }} .container-full .feature-lists .item-item-conts .item-right .feature-icon-lists .icon-items{
+      width: calc((100% - 54px) / 4);
+      cursor: pointer;
+      position: relative;
+  }
+  .section-{{ section.id }} .container-full .feature-lists .item-item-conts .item-right .feature-icon-lists .icon-items svg{
+      height: 100%;
+      width: 100%;
+  }
+
+  .section-{{ section.id }} .container-full .feature-lists .item-item-conts .item-right .item-button{
+      display: block;
+      font-family: DIN;
+      font-weight: 500;
+      font-style: Medium;
+      font-size: 30px;
+      line-height: 100%;
+      letter-spacing: 0%;
+      color: #fff;
+      padding: 16px 0;
+      width: 100%;
+      background: #E25301;
+      margin-top: 63px;
+      text-align: center;
+      border-radius: 60px;
+      transition: all .35s ease;
+  }
+  .section-{{ section.id }} .container-full .feature-lists .item-item-conts .item-right .item-button[aria-disabled="true"]{
+      opacity: 0.3;
+      pointer-events: none;
+  }
+
+  .section-{{ section.id }} .container-full .feature-lists .item-item-conts .item-right .item-button:hover{
+      box-shadow: 0 0 10px #e25301;
+  }
+
+  .section-{{ section.id }} .container-full .feature-lists .icon-items .feature-info-cont{
+      position: absolute;
+      padding: 20px;
+      background: #fff;
+      left: 0;
+      width: 280px;
+      top: calc(100% + 10px);
+      border-radius: 5px;
+      opacity: 0;
+      z-index: -5;
+      transition: opacity 0.3s ease;
+  }
+
+  .section-{{ section.id }} .container-full .feature-lists .icon-items .feature-info-cont.active{
+      opacity: 1;
+      z-index: 2;
+  }
+
+  .feature-info-cont::before {
+      content: '';
+      position: absolute;
+      top: -20px;
+      left: 20px;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 10px;
+      border-color: transparent transparent #ffffff transparent;
+  }
+
+  .section-{{ section.id }} .container-full .feature-lists .feature-info-cont .info-title,
+  .section-{{ section.id }} .container-full .feature-lists .feature-info-cont .info-sub-title{
+      font-family: Poppins;
+      font-weight: 600;
+      font-style: SemiBold;
+      font-size: 10px;
+      line-height: 100%;
+      letter-spacing: 0%;
+      color: #262629;
+  }
+
+  .section-{{ section.id }} .container-full .feature-lists .feature-info-cont .info-sub-title{
+      margin-top: 6px;
+  }
+
+  .section-{{ section.id }} .container-full .feature-lists .feature-info-cont .line-center{
+      line-height: 0;
+      margin: 10px 0;
+  }
+
+  .section-{{ section.id }} .container-full .feature-lists .feature-info-cont .info-desc{
+      font-family: Poppins;
+      font-weight: 500;
+      font-style: Medium;
+      font-size: 10px;
+      line-height: inherit;
+      letter-spacing: 0%;
+      color: #262629;
+      opacity: 0.7;
+  }
+
+  .section-{{ section.id }} .container-full .feature-lists .icon-items.feature-item-active{
+      box-shadow: 1px 1px 6.5px 5px #E25301;
+  }
+
+  .section-{{ section.id }} .container-full .feature-lists .item-item-conts .item-right .feature-icon-lists .icon-items:nth-of-type(3) .feature-info-cont,
+  .section-{{ section.id }} .container-full .feature-lists .item-item-conts .item-right .feature-icon-lists .icon-items:nth-of-type(4) .feature-info-cont{
+      right: 0;
+      left: auto;
+  }
+
+  .section-{{ section.id }} .container-full .feature-lists .item-item-conts .item-right .feature-icon-lists .icon-items:nth-of-type(3) .feature-info-cont::before,
+  .section-{{ section.id }} .container-full .feature-lists .item-item-conts .item-right .feature-icon-lists .icon-items:nth-of-type(4) .feature-info-cont::before{
+      left: auto;
+      right: 20px;
+  }
+
+  .section-{{ section.id }} .item-prod-tag{
+      font-family: Poppins;
+      font-weight: 500;
+      font-style: Medium;
+      font-size: 20px;
+      line-height: 26px;
+      letter-spacing: 0%;
+      text-align: center;
+      color: #fff;
+      padding: 2px 13px;
+      background: #E25301;
+      margin-bottom: 50px;
+      width: max-content;
+  }
+
+  {% comment %} 购买跟随 {% endcomment %}
+  .sticky-dom-chair{
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background-color: #f5f5f5;
+      transform: translateZ(0);
+      transition: all .3s ease-in-out;
+      box-shadow: -.15625vw -.15625vw .15625vw #dfdfdf40;
+      padding: 13px 7.34375vw;
+      opacity: 0;
+      z-index: -1;
+      max-width: 100%;
+      overflow: hidden;
+  }
+  .sticky-dom-chair .prod-info{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+  }
+  .sticky-dom-chair .prod-info .prod-img .sticky_prod_variant_image{
+      width: 100%;
+      height: 100%;
+      background-color: #e5e5e5;
+      object-fit: contain;
+      object-position: center center;
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      opacity: 0;
+  }
+  .sticky-dom-chair .prod-info .prod-img .sticky_prod_variant_image.sticky_prod_variant_image_active{
+      opacity: 1;
+  }
+  .sticky-dom-chair .prod-info .prod-img .sticky_prod_variant_image.sticky_prod_variant_image_hidden{
+      opacity: 0;
+  }
+  .sticky-dom-chair .prod-info .left-cont{
+      display: flex;
+      align-items: center;
+      gap: 5px;
+  }
+  .sticky-dom-chair .prod-info .left-cont .prod-img{
+      position: relative;
+      width: 60px;
+      height: 60px;
+      border-radius: 10px;
+      overflow: hidden;
+  }
+  .sticky-dom-chair .prod-info .prod-title{
+      font-family: Poppins;
+      font-weight: 500;
+      font-style: Medium;
+      font-size: clamp(16px, .833vw, .833vw);
+      leading-trim: NONE;
+      line-height: 100%;
+      letter-spacing: 0%;
+      vertical-align: middle;
+      color: #262629;
+  }
+  .sticky-dom-chair .prod-info .price-sale-cont{
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+  }
+  .sticky-dom-chair .prod-info .discount-price-info,
+  .sticky-dom-chair .prod-info .origa-price{
+      font-family: Poppins;
+      font-weight: 500;
+      font-style: Medium;
+      font-size: clamp(20px, 1.25vw, 1.25vw);
+      leading-trim: NONE;
+      line-height: 100%;
+      letter-spacing: 0%;
+      vertical-align: middle;
+      color: #262629;
+  }
+  .sticky-dom-chair .prod-info .discount-price-info+.origa-price{
+      font-family: Poppins;
+      font-weight: 500;
+      font-style: Medium;
+      font-size: clamp(12px, .625vw, .625vw);
+      leading-trim: NONE;
+      line-height: clamp(14px, .729167vw, .729167vw);
+      letter-spacing: 0%;
+      vertical-align: middle;
+      text-decoration: line-through;
+      color: #26262980;
+      margin-left: .3125vw;
+  }
+  .sticky-dom-chair .prod-info .save-tag{
+      padding: 0 .3125vw;
+      background: #af1c1c;
+      border-radius: .15625vw;
+      color: #fff;
+      font-family: Poppins;
+      font-weight: 500;
+      font-style: Medium;
+      font-size: clamp(12px, .625vw, .625vw);
+      leading-trim: NONE;
+      letter-spacing: 0%;
+      display: flex;
+      align-items: center;
+      height: 1.145833vw;
+      min-height: 22px;
+      margin-left: .46875vw;
+  }
+  .sticky-dom-chair .price-cont{
+      display: flex;
+      align-items: center;
+      gap: 10px;
+  }
+  .sticky-dom-chair .price-cont .price-container-left{
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+  }
+  .sticky-dom-chair .price-cont .payment-info{
+      display: flex;
+      align-items: baseline;
+  }
+  .sticky-dom-chair .price-cont .payment-text-info{
+      display: flex;
+      align-items: baseline;
+      font-family: Poppins;
+      font-weight: 500;
+      font-style: Medium;
+      font-size: clamp(14px, .7291667vw, .7291667vw);
+      leading-trim: NONE;
+      line-height: clamp(18px, .9375vw, .9375vw);
+      letter-spacing: 0%;
+      vertical-align: middle;
+      color: #262629b3;
+      margin-top: .15625vw;
+      white-space: nowrap;
+  }
+  .sticky-dom-chair .price-cont .payment-logo img{
+      min-width: 42px;
+      width: 2.1875vw;
+      height: auto;
+      margin-left: .15625vw;
+  }
+  .sticky-dom-chair .prod-buy-it-now{
+      background: #262629;
+      color: #fff;
+      border: none;
+      position: relative;
+      width: 10.15625vw;
+      flex: 0 0 auto;
+      height: 2.65625vw;
+      min-height: 38px;
+      border-radius: 3.28125vw;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: Poppins;
+      font-weight: 500;
+      font-style: Medium;
+      font-size: clamp(14px, .7291667vw, .7291667vw);
+      line-height: 100%;
+      letter-spacing: 0%;
+      transition: all .4s ease-out;
+      text-transform: uppercase;
+  }
+  .sticky-dom-chair .prod-buy-it-now:hover{
+      box-shadow: 0 0 10px #262629;
+      opacity: 0.95;
+  }
+  .sticky-dom-chair .prod-buy-it-now:before{
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(120deg, #fff3 49.9%, #fff0 50%) no-repeat 100% 100%;
+      background-size: 300% 100%;
+      border-radius: 90px;
+      transition: background-position .4s ease-out;
+  }
+
+  {% comment %} iPhone {% endcomment %}
+  @media(max-width: 767px){
+      .section-{{ section.id }} .container-full-2{
+          padding-top: 34px;
+      }
+      .section-{{ section.id }} .container-full{
+          padding-left: 10px;
+          padding-right: 10px;
+      }
+      .section-{{ section.id }} .container-full .head-cont{
+          padding: 30px 19px 24px;
+      }
+      .section-{{ section.id }} .container-full .section-sub-title{
+          font-size: 16px;
+      }
+      .section-{{ section.id }} .container-full .section-title{
+          font-size: 20px;
+          line-height: 30px;
+      }
+      .section-{{ section.id }} .container-full .section-desc{
+          font-size: 14px;
+          line-height: 24px;
+      }
+      .section-{{ section.id }} .container-full .head-cont{
+          border-radius: 30px;
+      }
+      .section-{{ section.id }} .container-full .head-cont::before{
+          border-radius: 30px;
+      }
+
+      .section-{{ section.id }} .container-full .feature-lists .item-item-conts{
+          flex-direction: column;
+          margin-top: 20px;
+      }
+
+      .section-{{ section.id }} .container-full .feature-lists .item-item-conts .item-left,
+      .section-{{ section.id }} .container-full .feature-lists .item-item-conts .item-right{
+          width: 100%;
+      }
+      .section-{{ section.id }} .container-full .feature-lists{
+          margin-top: 0;
+          padding-top: 0;
+      }
+      .section-{{ section.id }} .container-full .item-head-cont{
+          font-size: 22px;
+          line-height: 30px;
+      }
+      .section-{{ section.id }} .container-full .feature-lists .item-item-conts .item-right{
+          padding: 27px;
+      }
+      .section-{{ section.id }} .container-full .feature-lists .item-item-conts .item-right .item-prod-title{
+          font-size: 20px;
+          line-height: 30px;
+      }
+      .section-{{ section.id }} .container-full .feature-lists .item-item-conts .item-right .item-prod-desc{
+          font-size: 14px;
+          line-height: 22px;
+      }
+      .section-{{ section.id }} .container-full .feature-lists .item-item-conts .item-right .feature-svg svg{
+          margin-top: 23px;
+      }
+      .section-{{ section.id }} .container-full .feature-lists .item-item-conts .item-right .item-button{
+          font-size: 20px;
+          line-height: normal;
+          padding-top: 10px;
+          padding-bottom: 10px;
+          margin-top: 35px;
+      }
+
+      .section-{{ section.id }} .container-full .feature-lists .item-item-conts .item-right .feature-icon-lists .icon-items:nth-of-type(2) .feature-info-cont{
+          transform: translateX(-60px);
+      }
+      .section-{{ section.id }} .container-full .feature-lists .item-item-conts .item-right .feature-icon-lists .icon-items:nth-of-type(2) .feature-info-cont::before{
+          left: 90px;
+      }
+
+      .section-{{ section.id }} .container-full .feature-lists .item-item-conts .item-right .feature-icon-lists .icon-items:nth-of-type(3) .feature-info-cont{
+          transform: translateX(60px);
+          right: 0;
+          left: auto;
+      }
+      .section-{{ section.id }} .container-full .feature-lists .item-item-conts .item-right .feature-icon-lists .icon-items:nth-of-type(3) .feature-info-cont::before{
+          right: calc(10% + 60px);
+      }
+
+      .section-{{ section.id }} .container-full .feature-lists .feature-info-cont .info-title,
+      .section-{{ section.id }} .container-full .feature-lists .feature-info-cont .info-sub-title{
+          font-size: 8px;
+      }
+
+      .section-{{ section.id }} .container-full .feature-lists .feature-info-cont .info-desc{
+          font-size: 9px;
+      }
+      .section-{{ section.id }} .container-full .feature-lists .icon-items .feature-info-cont{
+          top: auto;
+          bottom: calc(100% + 10px);
+      }
+      .feature-info-cont::before{
+          border-width: 5px;
+          top: auto;
+          bottom: -9px;
+          transform: rotate(180deg);
+      }
+      .section-{{ section.id }} .item-prod-tag{
+          font-size: 14px;
+          line-height: 26px;
+          padding: 4px;
+          margin-bottom: 10px;
+      }
+
+      {% comment %} 购买跟随 {% endcomment %}
+      .sticky-dom-chair{
+          padding: 10px;
+      }
+      .sticky-dom-chair .prod-info .prod-title{
+          font-size: 10px;
+          width: 110px;
+          line-height: 1.3;
+      }
+      .sticky-dom-chair .prod-info .discount-price-info{
+          font-size: clamp(16px, 1.25vw, 1.25vw);
+      }
+      .sticky-dom-chair .prod-info .origa-price{
+          font-size: clamp(10px, .625vw, .625vw);
+      }
+      .sticky-dom-chair .prod-info .save-tag{
+          font-size: clamp(10px, .625vw, .625vw);
+      }
+      .sticky-dom-chair .price-cont{
+          flex-direction: column;
+          gap: 5px;
+      }
+      .sticky-dom-chair .price-cont .price-container-left{
+          gap: 6px;
+      }
+      .sticky-dom-chair .price-cont .payment-info{
+          display: none;
+      }
+      .sticky-dom-chair .price-cont .payment-text-info{
+          font-size: clamp(10px, .7291667vw, .7291667vw);
+          white-space: normal;
+      }
+      .sticky-dom-chair .price-cont .payment-logo img{
+          min-width: 36px;
+          width: 1.1vw;
+      }
+      .sticky-dom-chair .prod-buy-it-now{
+          width: 100%;
+          height: 2vw;
+          font-size: 10px;
+          border-radius: 100px;
+      }
+      .sticky-dom-chair .prod-info .price-sale-cont{
+          gap: 4px;
+      }
+  }
+
+  {% comment %} iPad {% endcomment %}
+  @media(min-width: 768px) and (max-width: 1024px){
+      .section-{{ section.id }} .container-full{
+          padding-left: 10px;
+          padding-right: 10px;
+      }
+      .section-{{ section.id }} .container-full .head-cont{
+          padding: 50px 50px 60px;
+      }
+
+      {% comment %} 购买跟随 {% endcomment %}
+      .sticky-dom-chair{
+          padding: 10px;
+      }
+  }
+
+  {% comment %} small screen {% endcomment %}
+  @media(min-width: 1025px) and (max-width: 1480px){
+      .section-{{ section.id }} .container-full{
+          padding-left: 60px;
+          padding-right: 60px;
+      }
+
+      {% comment %} 购买跟随 {% endcomment %}
+      .sticky-dom-chair{
+          padding-left: 60px;
+          padding-right: 60px;
+      }
+  }
+</style>
+
+<section class="section-{{ section.id }}" data-section-id="{{ section.id }}" id="{{ section.id }}">
+  <div class="container-full">
+    <div class="head-cont">
+      {% if section.settings.sectionSubTitle != blank %}
+        <div class="section-sub-title">{{ section.settings.sectionSubTitle }}</div>
+      {% endif %}
+      {% if section.settings.sectionTitle != blank %}
+        <div class="section-title">{{ section.settings.sectionTitle }}</div>
+      {% endif %}
+      {% if section.settings.sectionDesc != blank %}
+        <div class="section-desc">{{ section.settings.sectionDesc }}</div>
+      {% endif %}
+    </div>
+  </div>
+  <div class="container-full-2 container-full">
+    <div class="feature-lists">
+      {% for block in section.blocks %}
+        {% if block.type == 'item' %}
+          {% if block.settings.blockItemBgImage != blank or block.settings.blockItemBgImage_mb != blank %}
+            <style>
+              .container-full-2{
+                  background-image: url({{ block.settings.blockItemBgImage | img_url: 'master' }});
+                  background-size: cover;
+                  background-position: center;
+                  background-repeat: no-repeat;
+              }
+
+              @media(max-width: 767px){
+                  .container-full-2{
+                      background-image: url({{ block.settings.blockItemBgImage_mb | img_url: 'master' }});
+                  }
+              }
+            </style>
+          {% endif %}
+          <div class="feature-item">
+            {% if block.settings.blockItemTitle != blank %}
+              <div class="item-head-cont">{{ block.settings.blockItemTitle }}</div>
+            {% endif %}
+            <div class="item-item-conts">
+              <div class="item-left" data-url="{{ block.settings.blockItemProd.url }}">
+                <picture>
+                  <source
+                    media="(max-width: 768px)"
+                    srcset="{{ block.settings.blockItemFeature_img_mb | image_url: width: 800 }}"
+                    data-srcset="{{ block.settings.blockItemFeature_img_mb | image_url: width: 800 }}"
+                  >
+
+                  <img
+                    {% render 'lazyload',
+                      preview_img: block.settings.blockItemFeature_img,
+                      class: true,
+                      enable_rtl: settings.enable_layout_rtl
+                    %}
+                    width="{{ block.settings.blockItemFeature_img.width }}"
+                    height="{{ block.settings.blockItemFeature_img.height }}"
+                    alt="{{ block.settings.blockItemFeature_img.alt | escape }}"
+                    loading="lazy"
+                    decoding="async"
+                    style="height: auto;"
+                  >
+                </picture>
+              </div>
+              <div class="item-right">
+                {% if block.settings.blockItemProductNewTag != blank %}
+                  <div class="item-prod-tag">{{ block.settings.blockItemProductNewTag }}</div>
+                {% endif %}
+                {% if block.settings.blockItemProductTitle != blank %}
+                  <div class="item-prod-title">{{ block.settings.blockItemProductTitle }}</div>
+                {% endif %}
+                {% if block.settings.blockItemProductDesc != blank %}
+                  <div class="item-prod-desc">{{ block.settings.blockItemProductDesc }}</div>
+                {% endif %}
+                <div class="feature-svg">
+                  <svg width="437" height="31" viewBox="0 0 437 31" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M14.17 8.256H4.654V15.068H12.766V16.836H4.654V25H2.678V6.488H14.17V8.256ZM26.2338 19.098H17.6018C17.6018 21.906 18.9278 23.518 21.3718 23.518C22.8538 23.518 23.7118 23.076 24.7258 22.062L25.9998 23.18C24.6998 24.48 23.5038 25.156 21.3198 25.156C17.9398 25.156 15.7298 23.128 15.7298 18.604C15.7298 14.47 17.7318 12.052 20.9818 12.052C24.2838 12.052 26.2338 14.444 26.2338 18.24V19.098ZM24.3618 17.694C24.3098 16.654 24.2578 16.264 23.9718 15.562C23.4778 14.392 22.3338 13.638 20.9818 13.638C19.6298 13.638 18.4858 14.392 17.9918 15.562C17.7058 16.264 17.6538 16.654 17.6018 17.694H24.3618ZM39.3449 25H37.4729V23.778C36.4329 24.818 35.4969 25.156 33.7809 25.156C32.0129 25.156 30.9729 24.818 30.1669 23.986C29.5429 23.362 29.2049 22.4 29.2049 21.386C29.2049 19.15 30.7649 17.694 33.6249 17.694H37.4729V16.472C37.4729 14.6 36.5369 13.664 34.1969 13.664C32.5589 13.664 31.7269 14.054 30.9729 15.12L29.6989 13.95C30.8429 12.468 32.1429 12.052 34.2229 12.052C37.6549 12.052 39.3449 13.534 39.3449 16.316V25ZM37.4729 20.476V19.098H33.8849C31.9609 19.098 31.0249 19.878 31.0249 21.36C31.0249 22.842 31.9349 23.544 33.9629 23.544C35.0549 23.544 36.0169 23.466 36.8229 22.686C37.2649 22.27 37.4729 21.542 37.4729 20.476ZM48.8185 25H47.4925C45.3085 25 44.2165 23.466 44.2165 21.568V13.716H42.6045V12.286H44.2165V8.282H46.0885V12.286H48.8185V13.716H46.0885V21.516C46.0885 22.686 46.6345 23.388 47.8305 23.388H48.8185V25ZM62.4693 25H60.6233V23.57C59.7133 24.61 58.4393 25.156 57.0093 25.156C55.6313 25.156 54.4873 24.74 53.7073 23.96C52.7973 23.076 52.4073 21.854 52.4073 20.372V12.208H54.2793V20.086C54.2793 22.348 55.4753 23.492 57.3993 23.492C59.3233 23.492 60.5973 22.322 60.5973 20.086V12.208H62.4693V25ZM75.6649 13.248L74.2869 14.652C73.5849 13.95 73.0649 13.716 72.0769 13.716C70.2049 13.716 69.0089 15.198 69.0089 17.148V25H67.1369V12.208H69.0089V13.768C69.7109 12.702 71.1149 12.052 72.5969 12.052C73.8189 12.052 74.7549 12.338 75.6649 13.248ZM86.9936 19.098H78.3616C78.3616 21.906 79.6876 23.518 82.1316 23.518C83.6136 23.518 84.4716 23.076 85.4856 22.062L86.7596 23.18C85.4596 24.48 84.2636 25.156 82.0796 25.156C78.6996 25.156 76.4896 23.128 76.4896 18.604C76.4896 14.47 78.4916 12.052 81.7416 12.052C85.0436 12.052 86.9936 14.444 86.9936 18.24V19.098ZM85.1216 17.694C85.0696 16.654 85.0176 16.264 84.7316 15.562C84.2376 14.392 83.0936 13.638 81.7416 13.638C80.3896 13.638 79.2456 14.392 78.7516 15.562C78.4656 16.264 78.4136 16.654 78.3616 17.694H85.1216ZM100.209 21.256C100.209 23.726 98.1027 25.156 95.0087 25.156C92.8507 25.156 91.1607 24.662 89.7567 23.31L91.0047 22.062C92.0187 23.128 93.3967 23.544 94.9827 23.544C97.0887 23.544 98.3887 22.79 98.3887 21.282C98.3887 20.164 97.7387 19.54 96.2567 19.41L94.1507 19.228C91.6547 19.02 90.3287 17.902 90.3287 15.796C90.3287 13.456 92.3047 12.052 95.0347 12.052C96.8547 12.052 98.4927 12.494 99.6367 13.43L98.4147 14.652C97.5047 13.95 96.3347 13.638 95.0087 13.638C93.1367 13.638 92.1487 14.444 92.1487 15.744C92.1487 16.836 92.7727 17.486 94.3847 17.616L96.4387 17.798C98.6747 18.006 100.209 18.864 100.209 21.256Z" fill="white"/>
+                    <path d="M114 18H437" stroke="white"/>
+                  </svg>
+                </div>
+
+                <div class="feature-icon-lists">
+                  <div class="icon-items">
+                    <div class="icon-svg-cont">{{ block.settings['featured-icon-1'] }}</div>
+                    <div class="feature-info-cont">
+                      {% if block.settings['featured-title'] != blank %}
+                        <div class="info-title">{{ block.settings['featured-title'] }}</div>
+                      {% endif %}
+                      {% if block.settings['featured-sub-title'] != blank %}
+                        <div class="info-sub-title">{{ block.settings['featured-sub-title'] }}</div>
+                      {% endif %}
+                      <div class="line-center">
+                        <svg width="281" height="1" viewBox="0 0 281 1" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M0 0.5H281" stroke="#E5E5E5"/>
+                        </svg>
+                      </div>
+                      {% if block.settings['featured-desc'] != blank %}
+                        <div class="info-desc">{{ block.settings['featured-desc'] }}</div>
+                      {% endif %}
+                    </div>
+                  </div>
+                  <div class="icon-items">
+                    <div class="icon-svg-cont">{{ block.settings['featured-icon-2'] }}</div>
+                    <div class="feature-info-cont">
+                      {% if block.settings['featured-title-2'] != blank %}
+                        <div class="info-title">{{ block.settings['featured-title-2'] }}</div>
+                      {% endif %}
+                      {% if block.settings['featured-sub-title-2'] != blank %}
+                        <div class="info-sub-title">{{ block.settings['featured-sub-title-2'] }}</div>
+                      {% endif %}
+                      <div class="line-center">
+                        <svg width="281" height="1" viewBox="0 0 281 1" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M0 0.5H281" stroke="#E5E5E5"/>
+                        </svg>
+                      </div>
+                      {% if block.settings['featured-desc-2'] != blank %}
+                        <div class="info-desc">{{ block.settings['featured-desc-2'] }}</div>
+                      {% endif %}
+                    </div>
+                  </div>
+                  <div class="icon-items">
+                    <div class="icon-svg-cont">{{ block.settings['featured-icon-3'] }}</div>
+                    <div class="feature-info-cont">
+                      {% if block.settings['featured-title-3'] != blank %}
+                        <div class="info-title">{{ block.settings['featured-title-3'] }}</div>
+                      {% endif %}
+                      {% if block.settings['featured-sub-title-3'] != blank %}
+                        <div class="info-sub-title">{{ block.settings['featured-sub-title-3'] }}</div>
+                      {% endif %}
+                      <div class="line-center">
+                        <svg width="281" height="1" viewBox="0 0 281 1" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M0 0.5H281" stroke="#E5E5E5"/>
+                        </svg>
+                      </div>
+                      {% if block.settings['featured-desc-3'] != blank %}
+                        <div class="info-desc">{{ block.settings['featured-desc-3'] }}</div>
+                      {% endif %}
+                    </div>
+                  </div>
+                  <div class="icon-items">
+                    <div class="icon-svg-cont">{{ block.settings['featured-icon-4'] }}</div>
+                    <div class="feature-info-cont">
+                      {% if block.settings['featured-title-4'] != blank %}
+                        <div class="info-title">{{ block.settings['featured-title-4'] }}</div>
+                      {% endif %}
+                      {% if block.settings['featured-sub-title-4'] != blank %}
+                        <div class="info-sub-title">{{ block.settings['featured-sub-title-4'] }}</div>
+                      {% endif %}
+                      <div class="line-center">
+                        <svg width="281" height="1" viewBox="0 0 281 1" fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path d="M0 0.5H281" stroke="#E5E5E5"/>
+                        </svg>
+                      </div>
+                      {% if block.settings['featured-desc-4'] != blank %}
+                        <div class="info-desc">{{ block.settings['featured-desc-4'] }}</div>
+                      {% endif %}
+                    </div>
+                  </div>
+                </div>
+
+                {% if block.settings.itemButton != blank %}
+                  <a
+                    class="item-button"
+                    {% if block.settings.blockItemProd != blank %}
+                      href="{{ block.settings.blockItemProdUrl }}"
+                    {% else %}
+                      aria-disabled="true"
+                    {% endif %}
+                  >
+                    {{- block.settings.itemButton -}}
+                  </a>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+  {% comment %} sticky container {% endcomment %}
+  {% if section.settings.stickyProduct != blank %}
+    <div class="sticky-dom-chair">
+      <div class="prod-info">
+        <div class="left-cont">
+          <div class="prod-img">
+            {% for variant in section.settings.stickyProduct.variants %}
+              <img
+                src="{{ variant.featured_image | img_url: 'master' }}"
+                data-variant="{{ variant.id }}"
+                class="sticky_prod_variant_image {% if forloop.first %}sticky_prod_variant_image_active{% else %}sticky_prod_variant_image_hidden{% endif %}"
+              >
+            {% endfor %}
+          </div>
+          <div class="prod-title">{{ section.settings.stickyProduct.title }}</div>
+        </div>
+        <div class="right-info">
+          <div class="price-cont">
+            <div class="price-container-left">
+              <div class="price-sale-cont">
+                {% if section.settings.stickyProduct.selected_or_first_available_variant.metafields.custom.discount_price.value
+                    != blank
+                %}
+                  <div class="discount-price-info">
+                    <span>
+                      {{
+                        section.settings.stickyProduct.selected_or_first_available_variant.price
+                        | minus: section.settings.stickyProduct.selected_or_first_available_variant.metafields.custom.discount_price.value
+                        | money_without_trailing_zeros
+                      }}
+                    </span>
+                  </div>
+                {% endif %}
+                <div class="origa-price">
+                  {{
+                    section.settings.stickyProduct.selected_or_first_available_variant.price
+                    | money_without_trailing_zeros
+                  }}
+                </div>
+                {% if section.settings.stickyProduct.selected_or_first_available_variant.metafields.custom.discount_price.value
+                    != blank
+                %}
+                  <div class="save-tag">
+                    Save
+                    {{
+                      section.settings.stickyProduct.selected_or_first_available_variant.metafields.custom.discount_price.value
+                      | money_without_trailing_zeros
+                    }}
+                  </div>
+                {% endif %}
+              </div>
+              <div class="payment-info">
+                <div class="payment-text-info">
+                  {{
+                    section.settings.stickyProduct.selected_or_first_available_variant.price
+                    | minus: section.settings.stickyProduct.selected_or_first_available_variant.metafields.custom.discount_price.value
+                    | divided_by: 12.0
+                    | round: 2
+                    | money_without_trailing_zeros
+                  }}
+                  {{ section.settings.paymentInfo }}
+                  {{
+                    section.settings.stickyProduct.selected_or_first_available_variant.price
+                    | minus: section.settings.stickyProduct.selected_or_first_available_variant.metafields.custom.discount_price.value
+                    | divided_by: 6.0
+                    | round: 2
+                    | money_without_trailing_zeros
+                  }}
+                  with
+                </div>
+                <span class="payment-logo">
+                  <img
+                    src="{{ section.settings.paymentLogo | img_url: 'master' }}"
+                    alt="{{ section.settings.paymentLogo.alt }}"
+                  >
+                </span>
+              </div>
+            </div>
+            <a
+              href="{{ section.settings.stickyProduct.url }}"
+              data-href="{{ section.settings.stickyProduct.url }}"
+              class="prod-buy-it-now"
+            >
+              {{ section.settings.paymentButton }}
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endif %}
+</section>
+
+<script>
+  (function () {
+    const chair = document.querySelector('.sticky-dom-chair');
+    if (!chair) return;
+
+    chair.style.opacity = '0';
+    chair.style.zIndex = '0';
+    chair.style.transition = 'opacity 0.35s ease';
+
+    let windowHeight = window.innerHeight;
+    let ticking = false;
+
+    function updateWindowHeight() {
+      windowHeight = window.innerHeight;
+    }
+
+    function onScroll() {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const scrollTop = window.scrollY || document.documentElement.scrollTop;
+          if (scrollTop >= 1.5 * windowHeight) {
+            console.log('scrollTop');
+            chair.style.opacity = '1';
+            chair.style.zIndex = '999';
+          } else {
+            chair.style.opacity = '0';
+            chair.style.zIndex = '0';
+          }
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', () => {
+      updateWindowHeight();
+      onScroll();
+    });
+
+    updateWindowHeight();
+    onScroll();
+  })();
+
+  (function () {
+    $('.sticky-dom-chair .prod-buy-it-now').on('click', function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      const url = $(this).data('href');
+      const variantId = $('.sticky-dom-chair .sticky_prod_variant_image_active').data('variant');
+      window.location.href = `${url}?variant=${variantId}`;
+    });
+  })();
+
+  $(document).ready(function () {
+    document.querySelectorAll('.feature-icon-lists .icon-items').forEach(function (item) {
+      const isMobile = window.matchMedia('only screen and (max-width: 768px)').matches;
+
+      function handleMouseOver() {
+        if (item.classList.contains('feature-item-active')) {
+          item.classList.remove('feature-item-active');
+        } else {
+          document.querySelectorAll('.feature-icon-lists .icon-items').forEach(function (featureItem) {
+            featureItem.classList.remove('feature-item-active');
+          });
+          item.classList.add('feature-item-active');
+        }
+
+        var target = item.querySelector('.feature-info-cont');
+        if (!target) return;
+
+        if (target.classList.contains('active')) {
+          target.classList.remove('active');
+          return;
+        }
+
+        document.querySelectorAll('.feature-info-cont.active').forEach(function (desc) {
+          desc.classList.remove('active');
+        });
+
+        target.classList.add('active');
+      }
+
+      function handleMouseOut() {
+        var target = item.querySelector('.feature-info-cont');
+        if (target) {
+          target.classList.remove('active');
+        }
+
+        item.classList.remove('feature-item-active');
+      }
+
+      if (isMobile) {
+        item.addEventListener('click', function () {
+          handleMouseOver();
+        });
+      } else {
+        item.addEventListener('mouseover', handleMouseOver);
+        item.addEventListener('mouseout', handleMouseOut);
+      }
+    });
+  });
+
+  $(document).ready(function () {
+    $('.feature-item .item-left').click(function () {
+      const url = $(this).data('url');
+      if (url) {
+        window.location.href = url;
+      }
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Fnatic Event Features",
+  "settings": [
+    {
+      "type": "text",
+      "id": "sectionTitle",
+      "label": "section Title",
+      "default": "You love games. You play, plan, and conquer with passion"
+    },
+    {
+      "type": "text",
+      "id": "sectionSubTitle",
+      "label": "section Sub Title",
+      "default": "And you know the greater the comfort, the higher the energy"
+    },
+    {
+      "type": "textarea",
+      "id": "sectionDesc",
+      "label": "section Descripe",
+      "default": "Introducing the Athena pro fnatic edition gaming chair fnaitic edition. A design of super teamwork, it integrates Blacklyte’s ergonomic expertise with Fnatic’s competitive excellence, delivering everything you need about gaming.Sit, play, and bring the best of your energy to win like a champion."
+    },
+    {
+      "type": "product",
+      "id": "stickyProduct",
+      "label": "sticky Product"
+    },
+    {
+      "type": "text",
+      "id": "paymentInfo",
+      "label": "payment Info"
+    },
+    {
+      "type": "image_picker",
+      "id": "paymentLogo",
+      "label": "payment Logo"
+    },
+    {
+      "type": "text",
+      "id": "paymentButton",
+      "label": "payment Button",
+      "default": "BUY IT NOW"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "item",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "blockItemBgImage",
+          "label": "block Item Background Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "blockItemBgImage_mb",
+          "label": "block Item Background Image Mobile"
+        },
+        {
+          "type": "text",
+          "id": "blockItemTitle",
+          "label": "block Item Title",
+          "default": "Peak Performance Throughout"
+        },
+        {
+          "type": "text",
+          "id": "blockItemDesc",
+          "label": "block Item Desc"
+        },
+        {
+          "type": "image_picker",
+          "id": "blockItemFeature_img",
+          "label": "block Item Feature Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "blockItemFeature_img_mb",
+          "label": "block Item Feature Image Mobile"
+        },
+        {
+          "type": "product",
+          "id": "blockItemProd",
+          "label": "block Item Product"
+        },
+        {
+          "type": "url",
+          "id": "blockItemProdUrl",
+          "label": "block Item Product Url"
+        },
+        {
+          "type": "text",
+          "id": "blockItemProductNewTag",
+          "label": "block Itemm Product New Tag",
+          "default": "New"
+        },
+        {
+          "type": "text",
+          "id": "blockItemProductTitle",
+          "label": "block Item Product Title",
+          "default": "Blacklyte Athena Pro Fnatic Edition"
+        },
+        {
+          "type": "text",
+          "id": "blockItemProductDesc",
+          "label": "block Item Product Descripe",
+          "default": "Shaped to keep you grounded, aligned, and comfortable."
+        },
+        {
+          "type": "textarea",
+          "id": "featured-icon-1",
+          "label": "featured Icon 1"
+        },
+        {
+          "type": "text",
+          "id": "featured-title",
+          "label": "product feature title 1"
+        },
+        {
+          "type": "text",
+          "id": "featured-sub-title",
+          "label": "product feature sub title 1"
+        },
+        {
+          "type": "text",
+          "id": "featured-desc",
+          "label": "product feature descripe 1"
+        },
+        {
+          "type": "textarea",
+          "id": "featured-icon-2",
+          "label": "featured Icon 2"
+        },
+        {
+          "type": "text",
+          "id": "featured-title-2",
+          "label": "product feature title 2"
+        },
+        {
+          "type": "text",
+          "id": "featured-sub-title-2",
+          "label": "product feature sub title 2"
+        },
+        {
+          "type": "text",
+          "id": "featured-desc-2",
+          "label": "product feature desc 2"
+        },
+        {
+          "type": "textarea",
+          "id": "featured-icon-3",
+          "label": "featured Icon 3"
+        },
+        {
+          "type": "text",
+          "id": "featured-title-3",
+          "label": "product feature title 3"
+        },
+        {
+          "type": "text",
+          "id": "featured-sub-title-3",
+          "label": "product feature sub title 3"
+        },
+        {
+          "type": "text",
+          "id": "featured-desc-3",
+          "label": "product feature desc 3"
+        },
+        {
+          "type": "textarea",
+          "id": "featured-icon-4",
+          "label": "featured Icon 4"
+        },
+        {
+          "type": "text",
+          "id": "featured-title-4",
+          "label": "feature title 4"
+        },
+        {
+          "type": "text",
+          "id": "featured-sub-title-4",
+          "label": "product feature sub title 4"
+        },
+        {
+          "type": "text",
+          "id": "featured-desc-4",
+          "label": "feature desc 4"
+        },
+        {
+          "type": "text",
+          "id": "itemButton",
+          "label": "block Item Button",
+          "default": "Shop Now"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Fnatic Event Features"
+    }
+  ]
+}
+{% endschema %}

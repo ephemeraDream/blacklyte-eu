@@ -1,0 +1,39 @@
+{% if request.page_type == 'index' %}
+  <link rel="alternate" hreflang="en-US" href="https://blacklyte.com/">
+  <link rel="alternate" hreflang="en-CA" href="https://blacklyte.ca/">
+  <link rel="alternate" hreflang="en-GB" href="https://blacklyte.uk/">
+  <link rel="alternate" hreflang="en-AU" href="https://blacklyte.au/">
+  <link rel="alternate" hreflang="ja-JP" href="https://blacklyte.jp/">
+  <link rel="alternate" hreflang="en-JP" href="https://blacklyte.jp/en">
+  <link rel="alternate" hreflang="de" href="https://blacklyte.eu/de">
+  <link rel="alternate" hreflang="fr" href="https://blacklyte.eu/fr">
+  <link rel="alternate" hreflang="es" href="https://blacklyte.eu/es">
+  <link rel="alternate" hreflang="it" href="https://blacklyte.eu/it">
+  <link rel="alternate" hreflang="en" href="https://blacklyte.eu/">
+  <link rel="alternate" hreflang="x-default" href="https://blacklyte.com/">
+{% else %}
+  {% capture cfh_new %}{{ content_for_header }}{% endcapture %}
+  {% assign xdefault_part = cfh_new | split: 'hreflang="x-default" href="' | last %}
+  {% assign xdefault_url = xdefault_part | split: '"' | first %}
+  {% assign xdefault_path = xdefault_url | remove: 'http://blacklyte.eu' | remove: 'https://blacklyte.eu' %}
+  {% if current_path == '/products/blacklyte-atlas-gaming-desk' %}
+    <link rel="alternate" hreflang="en-US" href="https://blacklyte.com/products/blacklyte-desk">
+    <link rel="alternate" hreflang="x-default" href="https://blacklyte.com/products/blacklyte-desk">
+    <link rel="alternate" hreflang="en-CA" href="https://blacklyte.ca{{ xdefault_path }}">
+    <link rel="alternate" hreflang="en-AU" href="https://blacklyte.au{{ xdefault_path }}">
+    <link rel="alternate" hreflang="en" href="https://blacklyte.eu{{ xdefault_path }}">
+  {% elsif current_path == '/pages/terms-conditions' %}
+    <link rel="alternate" hreflang="en-US" href="https://blacklyte.com/pages/terms-of-service">
+    <link rel="alternate" hreflang="x-default" href="https://blacklyte.com/pages/terms-of-service">
+    <link rel="alternate" hreflang="en-CA" href="https://blacklyte.ca{{ xdefault_path }}">
+    <link rel="alternate" hreflang="en-AU" href="https://blacklyte.au{{ xdefault_path }}">
+    <link rel="alternate" hreflang="en" href="https://blacklyte.eu{{ xdefault_path }}">
+  {% else %}
+    <link rel="alternate" hreflang="en" href="https://blacklyte.eu{{xdefault_path}}">
+    <link rel="alternate" hreflang="en-CA" href="https://blacklyte.ca{{xdefault_path}}">
+    <link rel="alternate" hreflang="en-GB" href="https://blacklyte.uk{{xdefault_path}}">
+    <link rel="alternate" hreflang="en-AU" href="https://blacklyte.au{{xdefault_path}}">
+    <link rel="alternate" hreflang="en-US" href="https://blacklyte.com{{xdefault_path}}">
+    <link rel="alternate" hreflang="x-default" href="https://blacklyte.com{{xdefault_path}}">
+  {%- endif -%}
+{%- endif -%}

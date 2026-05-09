@@ -1,0 +1,205 @@
+<style>
+  .payway_modal {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    background-color: #00000080;
+    display: none;
+    padding: 5vh 0;
+  }
+
+  .payway_modal .payway_modal_contain {
+    width: 810px;
+    max-height: 90vh;
+    position: relative;
+    left: 50%;
+    top: 50%;
+    transform: translateX(-50%) translateY(-50%);
+    background-color: #fff;
+    border-radius: 10px;
+  }
+
+  .payway_modal .payway_modal_head {
+    height: 5.556vh;
+    background-color: #f2f2f2;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 36px;
+    font-family: Poppins;
+    font-weight: 600;
+    font-style: SemiBold;
+    font-size: 20px;
+    leading-trim: NONE;
+    line-height: 100%;
+    letter-spacing: 0%;
+    color: #262629;
+    border-radius: 10px 10px 0 0;
+  }
+
+  .payway_modal .payway_modal_head svg {
+    cursor: pointer;
+    width: 26px;
+    height: 26px;
+  }
+
+  .payway_modal .payway_modal_body {
+    padding: 1.56vh 40px 7.04vh 40px;
+    overflow: auto;
+    max-height: calc(90vh - 5.556vh);
+  }
+
+  .payway_modal .payway_modal_body_title {
+    font-family: Poppins;
+    font-weight: 600;
+    font-style: SemiBold;
+    font-size: 16px;
+    leading-trim: NONE;
+    line-height: 100%;
+    letter-spacing: 0%;
+    color: #262629;
+    margin-top: 2.222vh;
+    margin-bottom: 0.833vh;
+  }
+
+  .payway_modal .payway_modal_body_subtitle {
+    font-family: Poppins;
+    font-weight: 600;
+    font-style: SemiBold;
+    font-size: 14px;
+    leading-trim: NONE;
+    line-height: 24px;
+    letter-spacing: 0%;
+    color: #262629;
+    margin-top: 0.463vh;
+  }
+
+  .payway_modal .payway_modal_body_text {
+    font-family: Poppins;
+    font-weight: 500;
+    font-style: Medium;
+    font-size: 14px;
+    leading-trim: NONE;
+    line-height: 20px;
+    letter-spacing: 0%;
+    color: rgba(38, 38, 41, 0.7);
+  }
+
+  .payway_modal .payway_modal_body_text p {
+    font-family: Poppins;
+    font-weight: 500;
+    font-style: Medium;
+    font-size: 14px;
+    leading-trim: NONE;
+    line-height: 26px;
+    letter-spacing: 0%;
+    color: #262629;
+  }
+
+  .payway_modal .payway_modal_body_text a {
+    text-decoration: underline;
+    color: rgba(38, 38, 41, 0.7);
+  }
+  /* IPhone */
+  @media (max-width: 768px) {
+    .payway_modal .payway_modal_contain {
+      width: 88%;
+    }
+    .payway_modal .payway_modal_head {
+      font-size: 16px;
+      line-height: 1.4;
+      padding: 0 15px;
+    }
+    .payway_modal .payway_modal_body {
+      padding-left: 15px;
+      padding-right: 15px;
+    }
+  }
+</style>
+
+<div class="payway_modal">
+  <div class="payway_modal_contain">
+    <div class="payway_modal_head">
+      <span>Pay over time with Klarna</span>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="37"
+        height="37"
+        viewBox="0 0 37 37"
+        fill="none"
+        id="close_payway_modal"
+      >
+        <path d="M27.5762 9.19141L9.19139 27.5762" stroke="#262626" stroke-width="2"/>
+        <path d="M9.19141 9.19336L27.5762 27.5781" stroke="#262626" stroke-width="2"/>
+      </svg>
+    </div>
+    <div class="payway_modal_body">
+      <div class="payway_modal_body_title">How to Pay with Klarna:</div>
+      <div class="payway_modal_body_text">
+        <p>1. Add to Cart – Select the product you wish to purchase and proceed to checkout.</p>
+        <p>2. Choose Klarna – Select Klarna as your payment option and you'll be redirected to Klarna's secure page.</p>
+        <p>3. Enter Your Details – Fill in your shipping information and personal details.</p>
+        <p>
+          4. Select Instalments – Klarna provides a real-time loan decision. Choose Pay Later in 3 interest-free
+          instalments and confirm.
+        </p>
+        <p>5. Complete Your Order – Review your order details, confirm, and you're done!</p>
+      </div>
+      <div class="payway_modal_body_title">Notes:</div>
+      <div class="payway_modal_body_subtitle">Klarna is not available for pre-order items.</div>
+      <div class="payway_modal_body_subtitle">
+        Currently, only the Pay Later in 3 interest-free instalments option is offered.
+      </div>
+      <div class="payway_modal_body_text">
+        For full terms and conditions, visit the
+        <a target="_blank" href="https://www.klarna.com/us/?grs=%2F&grr=empty">Klarna website</a>.
+      </div>
+      <div class="payway_modal_body_title">Important Information:</div>
+      <div class="payway_modal_body_text">
+        Klarna's Pay in 3 instalments and Pay Later in 30 days are credit agreements not regulated by the Financial
+        Conduct Authority (FCA). This means they may offer limited consumer protections compared to regulated credit
+        products. Borrowing more than you can afford or missing payments may affect your financial standing and future
+        credit options. These services are available only to UK residents aged 18 or over, and are subject to Klarna's
+        credit assessment. Klarna's terms and conditions apply, including possible late payment fees.
+      </div>
+      <div class="payway_modal_body_title">Why Choose Klarna?</div>
+      <div class="payway_modal_body_text">
+        <p>
+          1. Pay in 3 Interest-Free Instalments – Split your purchase into three equal payments, automatically charged
+          every 30 days. No credit checks, interest, or fees when you pay on time.
+        </p>
+        <p>
+          2. Safe and Secure – Your purchase is protected under Klarna's Buyer Protection policy, and modern safeguards
+          keep your information secure.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (() => {
+      const payway_modal = document.querySelector('.payway_modal');
+      if (payway_modal) {
+        document.querySelectorAll('.payway_btn').forEach((item) => {
+          item.addEventListener('click', () => {
+            payway_modal.style.display = 'block';
+            document.body.classList.add('compare-modals-show');
+          });
+        });
+        document.querySelector('#close_payway_modal').addEventListener('click', () => {
+          payway_modal.style.display = 'none';
+          document.body.classList.remove('compare-modals-show');
+        });
+        payway_modal.addEventListener('click', (e) => {
+          if (e.target === payway_modal) {
+            payway_modal.style.display = 'none';
+            document.body.classList.remove('compare-modals-show');
+          }
+        });
+      }
+    })();
+  </script>
+</div>

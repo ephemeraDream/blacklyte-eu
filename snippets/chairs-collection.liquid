@@ -1,0 +1,98 @@
+{{ 'chair-new-collection.css' | asset_url | stylesheet_tag }}
+
+<div class="prod_lists">
+  {% for product_card_product in collection.products %}
+    {%-liquid
+      assign variant_img = ''
+      for option in product_card_product.options_with_values
+          for variant in product_card_product.variants limit: 1
+              if variant.image != null  
+                  assign variant_img = variant.image
+              endif
+          endfor
+      endfor
+    -%}
+    <div class="prod_item{% if product_card_product.metafields.custom.product_type == 'chairs' %} chairs-prod-item{% endif %}" data-product-id="{{ product_card_product.id }}"
+         style="{% if product_card_product.metafields.custom.product_type == 'chairs' %}display: block; {% else %} display: none; {% endif %}">
+      <div class="container">
+         <div class="card-product">
+           {% render 'product-badge', product: product_card_product, class: 'card__badge', badge_detail: true, serial: serial %}
+           <div class="card-media card-media--adapt {% if product_card_product.media[1] != nil and settings.show_image_swap %} media--hover-effect{% endif%} media--loading-effect" style="padding-bottom: {{ 1.1 | times: 100 }}%;">
+              {% render 'image-product-card', product_card_product: product_card_product, variant_img: variant_img, has_video: false, loading: true %}
+              <a class="card-link" href="{{ product_card_product.url }}" title="{{ product_card_product.title | escape }}"></a>
+           </div>
+         </div>
+         <div class="prod_card_info">
+           <div class="prod_item_title">
+             <span>{{ product_card_product.title}}</span>
+           </div>
+           <div class="prod_item-variants">
+              {{ product_card_product.selected_or_first_available_variant.option3 }}
+           </div>
+           <div class="flex-1"></div>
+           <div class="prod_item_price">
+             <div class="price">
+               {% if product_card_product.selected_or_first_available_variant.metafields.custom.discount_price.value %}
+                 <span class="prod_item_discount_price">
+                   {{
+                      product_card_product.price
+                      | minus: product_card_product.selected_or_first_available_variant.metafields.custom.discount_price.value
+                      | money_without_currency
+                    }}
+                 </span>
+               {% endif %}
+               <span class="prod_item_sale_price {% if product_card_product.selected_or_first_available_variant.metafields.custom.discount_price.value != blank %}prod_item_sale_price_new{% endif %}">{{ product_card_product.selected_or_first_available_variant.price | money }}</span>
+             </div>
+             <a class="shop_now_btn" href="{{ product_card_product.url }}">{{ 'products.product.shop_now' | t }}</a>
+           </div>
+          </div>
+       </div>
+    </div>
+  {% endfor %}
+</div>
+
+<script>
+  $(document).ready(function() {
+    setTimeout(() => {
+      $('.prod_lists .prod_item.chairs-prod-item').each(function() {
+        let titleElement = $(this).find('.prod_item_title')
+        const itemVariantVal = $(this).find('.prod_item-variants')
+        let title = titleElement.text().trim()
+        let partsVal = title.split('-')
+          
+        if (partsVal[1]) {
+          const partsVal1 = partsVal[1].split('/')[0]?.trim()
+          const partsVal2 = partsVal[1].split('/')[1]?.trim()
+  
+          let prependTex = ''
+          if (partsVal1) {
+            if(partsVal2) {
+              prependTex = partsVal1 + ' / '
+              itemVariantVal.append(' / ' + partsVal2);
+            } else {
+              prependTex = partsVal1 + '   '
+            }
+            itemVariantVal.prepend(prependTex)
+            titleElement.text(partsVal[0].trim())
+          } else {
+            itemVariantVal.prepend(partsVal2)
+            titleElement.text(partsVal[0].trim())
+          }
+        }
+      })
+    }, 0)
+    
+    setTimeout(function() {
+      $('.prod_item_title').each(function() {
+        // 获取原文本
+        var txt = $(this).text().trim();
+        // 去掉最后的 ' Gaming Chair'，区分大小写
+        if (txt.endsWith(' Gaming Chair')) {
+          txt = txt.replace(/ Gaming Chair$/, '');
+          $(this).text(txt);
+        }
+      });
+    }, 0)
+    
+  });
+</script>

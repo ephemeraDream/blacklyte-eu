@@ -1,0 +1,139 @@
+<style>
+    .section-{{ section.id }} .container-full{
+        position: relative;
+    }
+    .section-{{ section.id }} .container-full img{
+        height: auto;
+    }
+
+    .section-{{ section.id }} .container-full .cont-area{
+        position: absolute;
+        bottom: 36px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .section-{{ section.id }} .container-full .cont-area .event-logos{
+        display: block;
+        width: 70%;
+        margin: auto;
+    }
+
+
+
+    {% comment %} iPad {% endcomment %}
+    @media(min-width: 768px) and (max-width: 1024px){ }
+
+    {% comment %} iPhone {% endcomment %}
+    @media(max-width: 767px){
+        .section-{{ section.id }} .container-full .cont-area .event-logos{
+            width: 100%;
+        }
+    }
+
+    {% comment %} small screen {% endcomment %}
+    @media(min-width: 1025px) and (max-width: 1480px){ }
+
+</style>
+
+<section class="section-{{ section.id }}" data-section-id="{{ section.id }}" id="{{ section.id }}">
+    <div class="container-full">
+        {% if section.settings.sectionImage != blank or section.settings.sectionImage_mb != blank %}
+            {% liquid
+                assign pc_ratio = 1 | divided_by: section.settings.sectionImage.aspect_ratio | times: 100
+                if section.settings.sectionImage.presentation.focal_point != '50.0% 50.0%'
+                    assign pc_ratio = pc_ratio | times: 1.2
+                endif
+
+                assign mb_ratio = 1 | divided_by: section.settings.sectionImage_mb.aspect_ratio | times: 100
+                if section.settings.sectionImage_mb.presentation.focal_point != '50.0% 50.0%'
+                    assign mb_ratio = mb_ratio | times: 1.2
+                endif
+            %}
+
+            <div class="large-image-cont">
+                <div class="large-image large-image-responsive" style="--pc-ratio: {{ pc_ratio }}%;--mb-ratio: {{ mb_ratio }}%;">
+                    <picture>
+                        <source media="(max-width: 768px)"
+                                srcset="{{ section.settings.sectionImage_mb | image_url: width: 800 }}"
+                                data-srcset="{{ section.settings.sectionImage_mb | image_url: width: 800 }}">
+
+                        <img {% render 'lazyload',preview_img: section.settings.sectionImage, class: true, enable_rtl: settings.enable_layout_rtl  %}
+                            width="{{ section.settings.sectionImage.width }}"
+                            height="{{ section.settings.sectionImage.height }}"
+                            alt="{{ section.settings.sectionImage.alt | escape }}"
+                            loading="lazy"
+                            decoding="async"
+                            style="height: auto;"/>
+                    </picture>
+                </div>
+            </div>
+        {% endif %}
+
+
+        {% if section.blocks.size > 0 %}
+            <div class="cont-area">
+                {% for block in section.blocks %}
+                    {% if block.type == "item" %}
+                        <picture class="event-logos">
+                            <source media="(max-width: 768px)"
+                                    data-srcset="{{ block.settings.partnersLogo_mb | image_url: width: 800 }}">
+
+                            <img {% render 'lazyload',preview_img: block.settings.partnersLogo, class: true, enable_rtl: settings.enable_layout_rtl  %}
+                                width="{{ block.settings.partnersLogo }}"
+                                height="{{ block.settings.partnersLogo.height }}"
+                                alt="{{ block.settings.partnersLogo.alt | escape }}"
+                                loading="lazy"
+                                decoding="async"
+                                style="height: auto;"/>
+                        </picture>
+                    {% endif %}
+
+                {% endfor %}
+            </div>
+            
+        {% endif %}
+        
+    </div>
+</section>
+
+{% schema %}
+{
+    "name": "Fnatic Events Banner",
+    "settings": [
+        {
+            "type": "image_picker",
+            "id": "sectionImage",
+            "label": "section Image"
+        },
+        {
+            "type": "image_picker",
+            "id": "sectionImage_mb",
+            "label": "section Image Mobile"
+        }
+    ],
+    "blocks": [
+        {
+            "type": "item",
+            "name": "item",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "partnersLogo",
+                    "label": "fnatic Partner Logo"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "partnersLogo_mb",
+                    "label": "fnatic Partner Logo Mobile"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "Fnatic Events Banner"
+        }
+    ]
+}
+{% endschema %}

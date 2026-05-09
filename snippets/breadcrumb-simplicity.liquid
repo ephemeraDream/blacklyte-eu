@@ -1,0 +1,83 @@
+{% assign found = false %}
+{% comment %} {% for collection in product.collections %}
+  {% if collection.handle == 'gaming-chairs' %}
+    {% assign found = true %}
+    {% assign chairs_collection = collection %}
+  {% endif %}
+{% endfor %} {% endcomment %}
+{% if product_type == 'desk' %}
+  {% assign found = true %}
+{% endif %}
+{% if product_type == 'chair' or product_type == 'chairs' %}
+  {% assign found = true %}
+{% endif %}
+{% if product_type == 'accessories' %}
+  {% assign found = true %}
+{% endif %}
+
+{% if found %}
+  <div class="breadcrumb_simplicity">
+    <nav aria-label="Breadcrumb">
+      <a href="{{ routes.root_url }}">Home</a>
+      {% comment %} {% if chairs_collection %}
+        <span> > </span>
+        <a href="{{ chairs_collection.url }}">{{ chairs_collection.title }}</a>
+      {% endif %} {% endcomment %}
+      {% if product_type == 'desk' %}
+        <span> > </span>
+        <a href="{{ routes.collections_url }}/desks">Desks</a>
+      {% endif %}
+      {% if product_type == 'chair' or product_type == 'chairs' %}
+        <span> > </span>
+        <a href="{{ routes.collections_url }}/gaming-chairs">Gaming Chairs</a>
+      {% endif %}
+      {% if product_type == 'accessories' %}
+        <span> > </span>
+        <a href="{{ routes.collections_url }}/accessories">Accessories</a>
+      {% endif %}
+
+      {% if product %}
+        <span> > </span>
+        <span>{{ product.title }}</span>
+      {% elsif article %}
+        <span> > </span>
+        <a href="{{ blog.url }}">{{ blog.title }}</a>
+        <span> > </span>
+        <span>{{ article.title }}</span>
+      {% elsif page %}
+        <span> > </span>
+        <span>{{ page.title }}</span>
+      {% endif %}
+    </nav>
+  </div>
+{% endif %}
+
+<style>
+  .breadcrumb_simplicity {
+    font-family: Roboto;
+    font-weight: 400;
+    font-style: Regular;
+    font-size: 14px;
+    leading-trim: NONE;
+    line-height: 22px;
+    letter-spacing: 0%;
+    vertical-align: middle;
+    color: rgba(38, 38, 41, 0.7);
+    margin-bottom: 14px;
+  }
+
+  .breadcrumb_simplicity nav {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0 12px;
+  }
+
+  .breadcrumb_simplicity nav a {
+    color: #262629;
+  }
+
+  .breadcrumb_simplicity nav a:hover {
+    text-decoration: underline;
+  }
+</style>

@@ -1,0 +1,94 @@
+<style>
+    .mobile_menu_list{
+        display: none;
+    }
+    @media(max-width: 1024px) {
+        .menu_list{
+            display: flex;
+            gap: 26px;
+            flex-direction: column;
+            padding: 0 20px;
+            margin-top: 10px;
+        }
+        .menu_list .menu_items{
+            display: flex;
+            justify-content: space-between;
+            cursor: pointer;
+        }
+        .menu_list .menu_items .menu_text{
+            font: 500 16px var(--font-family-1);
+            color: #262629;
+            flex: 1;
+        }
+        .menu_list .menu_items .menu_icons{
+            width: 10px;
+            height: 10px;
+            fill: none;
+            stroke: none;
+        }
+        .menu_list_fir{
+            margin-bottom: 26px;
+        }
+        .menu_list_fir:after{
+            content: '';
+            width: 100%;
+            height: 1px;
+            background-color: #E5E5E5;
+        }
+        .menu_list_sec{
+            margin-top: 26px;
+            margin-bottom: 26px;
+        }
+    }
+</style>
+
+
+<div class="mobile_menu_list" id="NavgationMenuMobile" data-navigation-menu-mobile>
+    <ul class="menu_list menu_list_fir">
+        {% for menu in section.settings.NavMenuMobile-1.links %}
+            <li class="menu_items">
+                {% comment %} <a {% if menu.url != '/' %} href="{{ menu.url }}" {% else %} href="javascript:void(0);" {% endif %}  class="menu_text">{{ menu.title }}</a> {% endcomment %}
+                <a href="{{ menu.url }}" class="menu_text">{{ menu.title }}</a>
+                <span class="menu_icons">
+                    <svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M1.28906 12L6.57813 6.71094L1.28906 1.42187" stroke="#262629" stroke-width="1.6"/>
+                    </svg>
+                </span>
+            </li>
+        {% endfor %}
+    </ul>
+    <ul class="menu_list menu_list_sec">
+        {% for menu in section.settings.NavMenuMobile-2.links %}
+            <li class="menu_items">
+                {% comment %} <a {% if menu.url != '/' %} href="{{ menu.url }}" {% else %} href="javascript:void(0);" {% endif %} class="menu_text">{{ menu.title }}</a> {% endcomment %}
+                <a href="{{ menu.url }}" class="menu_text">{{ menu.title }}</a>
+                <span class="menu_icons">
+                    <svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M1.28906 12L6.57813 6.71094L1.28906 1.42187" stroke="#262629" stroke-width="1.6"/>
+                    </svg>
+                </span>
+            </li>
+        {% endfor %}
+    </ul>
+    {% comment %}chairs {% endcomment %}
+    {% render 'header-naviga-chairs-collections-mb', section: section %}
+    {% comment %} desk {% endcomment %}
+    {% render 'header-navigation-desk', section: section %}
+    {% comment %} lighting {% endcomment %}
+    {% render 'header-navigation-lighting', section: section %}
+    {% comment %} accessory {% endcomment %}
+    {% render 'header-navigation-Accessories', section: section %}
+    {% comment %} new arrival {% endcomment %}
+    {% render 'header-navigation-NewArrival', section: section %}
+    {% comment %} support {% endcomment %}
+    {% render 'header-navigation-support', section: section %}
+    {% comment %} discover {% endcomment %}
+    {% render 'header-navigation-discover', section: section %}
+
+    {% comment %} compare chairs {% endcomment %}
+    {% render 'chair-compare-modal', compare_modal_products: section.settings.CompareChairsProductList %}
+    {% comment %} compare desk {% endcomment %}
+    {% render 'desk-compare-modal', compare_modal_products: section.settings.CompareDesksProductList %}
+
+</div>
+

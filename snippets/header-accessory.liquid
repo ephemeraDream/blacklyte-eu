@@ -1,0 +1,120 @@
+{% comment %}
+    accessory product list
+    and
+    New Arrival product list
+{% endcomment %}
+<style>
+    .all_product_list_collection{
+        display: flex;
+        gap: 30px;
+        flex-wrap: wrap;
+        max-width: 100%;
+        max-height: 530px;
+        overflow-y: scroll;
+        height: fit-content;
+        width: 100%;
+    }
+    .all_product_list_collection .product_item{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        cursor: pointer;
+        width: calc((100% - 90px) / 4);
+        position: relative;
+    }
+    .all_product_list_collection .product_item .product_main_image{
+        {% comment %} width: 160px;
+        height: 160px; {% endcomment %}
+        display: flex;
+        align-items: center;
+    }
+    .all_product_list_collection .product_item .product_main_image img{
+        height: 160px;
+        width: 160px;
+        object-fit: contain;
+    }
+    .all_product_list_collection .product_item .product_title{
+        font: 500 16px var(--font-family-1);
+        color: #333333;
+        line-height: 1.4;
+        max-width: 84%;
+        text-align: center;
+        flex: 1;
+    }
+    .all_product_list_collection .product_item .product_btns{
+        font: 400 16px var(--font-family-1);
+        color: #76767F;
+        margin-top: 14px;
+        text-decoration: underline;
+        text-underline-offset: 3px;
+    }
+    .all_product_list_collection .product_item .product_btns:hover{
+        color: #262629;
+    }
+    .all_product_list_collection .product_item .prod_item_tag{
+        font: 500 14px var(--font-family-1);
+        color: #fff;
+        padding: 5px 7px;
+        background-color: #DE2E39;
+        border-radius: 2px;
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+
+    /* small screen */
+    @media(min-width: 1026px) and (max-width: 1600px){
+        .all_product_list_collection{
+            max-height: 450px;
+        }
+        {% comment %} .all_product_list_collection .product_item .product_main_image{
+            width: 140px;
+            height: 140px;
+        } {% endcomment %}
+        .all_product_list_collection .product_item .product_main_image img{
+            width: 140px;
+            height: 140px;
+        }
+        .all_product_list_collection .product_item .product_title{
+            font-size: 14px;
+            max-width: 100%;
+        }
+        .all_product_list_collection .product_item .prod_item_tag{
+            font-size: 12px;
+            padding: 4px;
+        }
+    }
+</style>
+
+<div class="all_product_list_collection">
+    {% for product in products_collection %}
+        {% if product.available %}
+            {%-liquid
+                assign variant_img = product.selected_or_first_available_variant.featured_image | default: product.featured_image
+            -%}
+
+            <div class="product_item" data-url="{{ product.url }}">
+                <div class="product_main_image image-zoom">
+                    <img src="{{ variant_img | img_url: 'master' }}" loading="lazy" />
+                </div>
+                <div class="product_title">{{ product.title }}</div>
+                <div class="product_btns">
+                    <span class="buy_now_btn">Buy</span>
+                </div>
+                {% if isTag %}
+                    <div class="prod_item_tag">NEW</div>
+                {% endif %}
+            </div>
+
+        {% endif %}
+        
+    {% endfor %}
+</div>
+<script>
+    $('.all_product_list_collection .product_item').on('click', function() {
+        const link = $(this).data('url')
+        if(link) {
+            window.location.href = link
+        }
+    })
+</script>

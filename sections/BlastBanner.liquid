@@ -1,0 +1,273 @@
+<style>
+    .large-image-pc{
+        display: block;
+    }
+    .large-image-mb{
+        display: none;
+    }
+    .large-image-container{
+        position: relative;
+    }
+
+    .large-image-container .large-image img{
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+    .large-image-container .left-cont{
+        position: absolute;
+        top: 100px;
+        left: 16%;
+    }
+    .large-image-container .left-cont .years{
+        font: 700 46px 'DIN';
+        color: #fff;
+    }
+    .large-image-container .left-cont .parnter-1{
+        width: 28.65vw;
+        margin-top: 50px;
+    }
+    .large-image-container .left-cont .event-times{
+        font: 500 26px 'DIN';
+        color: #fff;
+        margin-top: 5vh;
+        line-height: 1.6;
+    }
+    .large-image-container .right-cont{ }
+    .large-image-container .right-cont .logos-cont{
+        width: 388px;
+        height: auto;
+        position: absolute;
+        top: 100px;
+        right: 16%;
+    }
+    .large-image-container .right-cont .parnter-2{
+        position: absolute;
+        right: 16%;
+        top: 280px;
+        font: 700 6.25vw 'DIN';
+        line-height: 1;
+        border: 1px solid transparent;
+        background: linear-gradient(100deg, #FFE197 20%, rgba(255, 255, 255, 1) 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    {% comment %} iPhone {% endcomment %}
+    @media(max-width: 767px){
+        .large-image-pc{
+            display: none;
+        }
+        .large-image-mb{
+            display: block;
+        }
+        .large-image-container .left-cont{
+            left: 10px;
+            top: 80px;
+        }
+        .large-image-container .left-cont .years{
+            font-size: 20px;
+        }
+        .large-image-container .right-cont .logos-cont{
+            right: 10px;
+            width: 50vw;
+            top: 80px;
+        }
+        .large-image-container .left-cont .parnter-1{
+            width: 60vw;
+            margin-top: 15vh;
+        }
+        .large-image-container .left-cont .event-times{
+            font-size: 14px;
+            margin-top: 20vh;
+        }
+        .large-image-container .right-cont .parnter-2{
+            right: 10px;
+            top: 55%;
+            font-size: 12vw;
+        }
+    }
+
+    {% comment %} iPad {% endcomment %}
+    @media(min-width: 768px) and (max-width: 1024px){
+        .large-image-container .left-cont{
+            left: 10px;
+            top: 40px;
+        }
+        .large-image-container .left-cont .years{
+            font-size: 20px;
+        }
+        .large-image-container .left-cont .parnter-1{
+            width: 36vw;
+            margin-top: 30px;
+        }
+        .large-image-container .left-cont .event-times{
+            font-size: 12px;
+            margin-top: 10px;
+        }
+        .large-image-container .right-cont .logos-cont{
+            width: 30vw;
+            top: 40px;
+            right: 10px;
+        }
+        .large-image-container .right-cont .parnter-2{
+            right: 10px;
+            top: 20vh;
+            font-size: 8vw;
+        }
+    }
+
+    {% comment %} small screen {% endcomment %}
+    @media(min-width: 1025px) and (max-width: 1490px){
+        .large-image-container .left-cont{
+            top: 50px;
+            left: 60px;
+        }
+        .large-image-container .left-cont .years{
+            font-size: 30px;
+        }
+        .large-image-container .left-cont .parnter-1{
+            width: 380px;
+        }
+        .large-image-container .left-cont .event-times{
+            font-size: 14px;
+        }
+        .large-image-container .right-cont .logos-cont{
+            width: 300px;
+            top: 50px;
+            right: 60px;
+        }
+        .large-image-container .right-cont .parnter-2{
+            right: 60px;
+            top: 160px;
+            font-size: 8vw;
+        }
+        
+    }
+
+</style>
+
+<section id={{ section.id }} data-section-id="{{ section.id }}">
+    <div class="container-full">
+        {% for block in section.blocks %}
+            {% if block.type == 'largeImage' %}
+                <div class="large-image-container">
+                    <div class="large-image large-image-pc" style="padding-top: {% unless block.settings.imageATpc.presentation.focal_point == '50.0% 50.0%' %}{{ 1 | divided_by: block.settings.imageATpc.aspect_ratio | times: 120 }}%{% else %}{{ 1 | divided_by: block.settings.imageATpc.aspect_ratio | times: 100 }}%{% endunless %}">
+                        <img src="{{ block.settings.imageATpc | img_url: 'master' }}">
+                    </div>
+                    <div class="large-image large-image-mb" style="padding-top: {% unless block.settings.imageMobile.presentation.focal_point == '50.0% 50.0%' %}{{ 1 | divided_by: block.settings.imageMobile.aspect_ratio | times: 120 }}%{% else %}{{ 1 | divided_by: block.settings.imageMobile.aspect_ratio | times: 100 }}%{% endunless %}">
+                        <img src="{{ block.settings.imageMobile | img_url: 'master' }}">
+                    </div>
+                    <div class="left-cont">
+                        <div class="years">{{ block.settings.eventYears }}</div>
+                        <div class="parnter-1">
+                            <img src="{{ block.settings.parnterBlastTitle | img_url: 'master' }}">
+                        </div>
+                        <div class="event-times">
+                            {{ block.settings.eventTimes }}
+                            <br/>
+                            {{ block.settings.eventTimes-1 }}
+                            <br/>
+                            {{ block.settings.eventTimes-2 }}
+                            <br/>
+                            {{ block.settings.eventTimes-3 }}
+                        </div>
+                    </div>
+                    <div class="right-cont">
+                        <div class="logos-cont">
+                            <img src="{{ block.settings.logoImage | img_url: 'master' }}">
+                        </div>
+                        <div class="parnter-2"> 
+                            <div class="rivals-title">
+                                {{ block.settings.parnterRivalTitle }}
+                            </div>
+                            {{ block.settings.parnterRivalDesc }}
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+</section>
+
+{% schema %}
+{
+    "name": "Blast Premier Banner",
+    "settings": [],
+    "blocks": [
+        {
+            "type": "largeImage",
+            "name": "largeImage",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "imageATpc",
+                    "label": "Web Image Banner"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "imageMobile",
+                    "label": "Image Banner Mobile"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "logoImage",
+                    "label": "Image Logo"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "parnterBlastTitle",
+                    "label": "Blast Title"
+                },
+                {
+                    "type": "text",
+                    "id": "parnterRivalTitle",
+                    "label": "Rival Title",
+                    "default": "Rivals"
+                },
+                {
+                    "type": "text",
+                    "id": "parnterRivalDesc",
+                    "label": "Rival Descripe",
+                    "default": "Season 2"
+                },
+                {
+                    "type": "text",
+                    "id": "eventYears",
+                    "label": "Event Years",
+                    "default": "2025"
+                },
+                {
+                    "type": "text",
+                    "id": "eventTimes",
+                    "label": "Event Times",
+                    "default": "-Nov 12 - 16"
+                },
+                {
+                    "type": "text",
+                    "id": "eventTimes-1",
+                    "label": "Event Times 1",
+                    "default": "-$350,000"
+                },
+                {
+                    "type": "text",
+                    "id": "eventTimes-2",
+                    "label": "Event Times 2",
+                    "default": "-8 teams"
+                },
+                {
+                    "type": "text",
+                    "id": "eventTimes-3",
+                    "label": "Event Times 3",
+                    "default": "-Hong Kong"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "Blast Premier Banner"
+        }
+    ]
+}
+{% endschema %}

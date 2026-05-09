@@ -1,0 +1,155 @@
+<style>
+    .section-{{ section.id }}{
+        padding-top: 100px;
+        padding-bottom: 50px;
+        background: #EBEBEB;
+    }
+    .section-{{ section.id }} .container-full{
+        padding-left: 16%;
+        padding-right: 16%;
+    }
+    .section-{{ section.id }} .head-cont .section-title{
+        font-family: Poppins;
+        font-weight: 600;
+        font-style: SemiBold;
+        font-size: 40px;
+        line-height: 100%;
+        letter-spacing: 0%;
+        color: #262629;
+        text-align: center;
+    }
+    .section-{{ section.id }} .container-full .cont-lists{
+        margin-top: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+    }
+    .section-{{ section.id }} .container-full .cont-lists .cont-item{
+        display: flex;
+        gap: 14px;
+        flex-direction: column;
+    }
+    .section-{{ section.id }} .container-full .cont-lists .cont-item .cont-item-title{
+        font-family: Roboto;
+        font-weight: 600;
+        font-style: SemiBold;
+        font-size: 16px;
+        line-height: 25.14px;
+        vertical-align: middle;
+        color: #262629;
+    }
+    .section-{{ section.id }} .container-full .cont-lists .cont-item .cont-item-desc{
+        font-family: Roboto;
+        font-weight: 400;
+        font-style: Regular;
+        font-size: 16px;
+        leading-trim: NONE;
+        line-height: 26px;
+        color: rgba(38, 38, 41, 0.7);
+    }
+
+
+    {% comment %} iPhone {% endcomment %}
+    @media(max-width: 767px){
+        .section-{{ section.id }}{
+            padding-top: 50px;
+        }
+        .section-{{ section.id }} .container-full{
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+        .section-{{ section.id }} .head-cont .section-title{
+            font-size: 24px;
+        }
+        .section-{{ section.id }} .container-full .cont-lists{
+            gap: 20px;
+        }
+        .section-{{ section.id }} .container-full .cont-lists .cont-item{
+            gap: 0;
+        }
+        .section-{{ section.id }} .container-full .cont-lists .cont-item .cont-item-title{
+            font-size: 14px;
+            line-height: 20px;
+        }
+        .section-{{ section.id }} .container-full .cont-lists .cont-item .cont-item-desc{
+            font-size: 12px;
+            line-height: 18px;
+        }
+    }
+
+    {% comment %} iPad {% endcomment %}
+    @media(min-width: 768px) and (max-width: 1024px){
+        .section-{{ section.id }} .container-full{
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+    }
+
+    @media(min-width: 1025px) and (max-width: 1480px){
+        .section-{{ section.id }} .container-full{
+            padding-left: 60px;
+            padding-right: 60px;
+        }
+    }
+</style>
+
+<section class="section-{{ section.id }}" id="{{ section.id }}" data-section-id="{{ section.id }}">
+    <div class="container-full">
+        <div class="head-cont">
+            {% if section.settings.sectionTitle != blank %}
+                <div class="section-title">{{ section.settings.sectionTitle }}</div>
+            {% endif %}
+        </div>
+        <div class="cont-lists">
+            {% for block in section.blocks %}
+                {% if block.type == "item" %}
+                    <div class="cont-item">
+                        {% if block.settings.itemTitle != blank %}
+                            <div class="cont-item-title">{{ block.settings.itemTitle }}</div>
+                        {% endif %}
+                        {% if block.settings.itemDesc != blank %}
+                            <div class="cont-item-desc">{{ block.settings.itemDesc }}</div>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+{% schema %}
+{
+    "name": "gaming Event FAQ",
+    "settings": [
+        {
+            "type": "text",
+            "id": "sectionTitle",
+            "label": "section Title",
+            "default": "FAQ"
+        }
+    ],
+    "blocks": [
+        {
+            "type": "item",
+            "name": "item",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "itemTitle",
+                    "label": "item Title"
+                },
+                {
+                    "type": "richtext",
+                    "id": "itemDesc",
+                    "label": "item Descripe"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "gaming Event FAQ"
+        }
+    ]
+}
+{% endschema %}

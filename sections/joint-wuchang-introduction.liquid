@@ -1,0 +1,332 @@
+{{ 'section-joint-wuchang-introduction.css' | asset_url | stylesheet_tag }}
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
+
+<style>
+  .wuchang_introduction {
+    background: url('{{ section.settings.background_img | image_url }}') no-repeat;
+    background-size: 100%;
+    background-position: center -1px;
+  }
+  @media screen and (max-width: 1000px) {
+    .wuchang_introduction {
+      background: url('{{ section.settings.background_img_mobile | image_url }}') no-repeat;
+    }
+  }
+</style>
+
+<div class="wuchang_introduction">
+  {%- for block in section.blocks -%}
+    {%- case block.type -%}
+      {%- when 'joint_summary' -%}
+        <div class="wuchang_introduction_summary">
+          <img src="{{ block.settings.image | image_url }}" class="wuchang_introduction_summary_img">
+          <div class="wuchang_introduction_summary_text">{{ block.settings.text }}</div>
+        </div>
+      {%- when 'joint_introduction' -%}
+        <div class="wuchang_introduction_main">
+          <div
+            class="wuchang_introduction_main_title"
+            style="background: url('{{ block.settings.title_bg | image_url }}') no-repeat; background-size: 100%;"
+          >
+            {{ block.settings.title }}
+          </div>
+          <div class="wuchang_introduction_main_text">{{ block.settings.text }}</div>
+          <div class="wuchang_introduction_main_content">
+            <img src="{{ block.settings.content_bg | image_url }}" class="wuchang_introduction_main_content_bg pc_show">
+            <img
+              src="{{ block.settings.content_bg_mobile | image_url }}"
+              class="wuchang_introduction_main_content_bg pmd_show"
+            >
+            <div class="wuchang_introduction_main_content_left">
+              <div class="wuchang_introduction_main_content_title">{{ block.settings.content_title }}</div>
+              <div class="wuchang_introduction_main_content_text">{{ block.settings.content_text }}</div>
+              <a
+                class="wuchang_introduction_main_btn"
+                style="background: url('{{ block.settings.content_btn_bg | image_url }}') no-repeat; background-size: 100%;"
+                href="{{ block.settings.content_btn_link }}"
+              >
+                {{ block.settings.content_btn_text }}
+              </a>
+            </div>
+            <div class="wuchang_introduction_main_content_right">
+              {% assign poster_image = block.settings.content_video_cover | image_url %}
+              {{
+                block.settings.content_video
+                | video_tag:
+                  class: 'wuchang_introduction_main_video',
+                  autoplay: true,
+                  loop: true,
+                  muted: true,
+                  playsinline: true,
+                  preload: 'none',
+                  poster: poster_image
+              }}
+            </div>
+          </div>
+        </div>
+      {%- when 'joint_swiper' -%}
+        <div class="wuchang_introduction_swiper">
+          <img src="{{ block.settings.swiper_bg | image_url }}" class="wuchang_introduction_swiper_bg">
+          <div class="swiper">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <img src="{{ block.settings.swiper_img_one | image_url }}">
+              </div>
+              <div class="swiper-slide">
+                <img src="{{ block.settings.swiper_img_two | image_url }}">
+              </div>
+              <div class="swiper-slide">
+                <img src="{{ block.settings.swiper_img_thr | image_url }}">
+              </div>
+            </div>
+          </div>
+          <div class="wuchang_introduction_swiper_title">{{ block.settings.title }}</div>
+          <div class="wuchang_introduction_swiper_text">{{ block.settings.text }}</div>
+        </div>
+    {%- endcase -%}
+  {%- endfor -%}
+</div>
+
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+<script>
+    {% comment %} new Swiper('.wuchang_introduction_swiper .swiper', {
+      loop: true,
+      centeredSlides: true,
+      slidesPerView: 'auto',
+      loopedSlides: 3,
+      initialSlide: 1,
+      loopAdditionalSlides: 0,
+      spaceBetween: 0,
+      watchSlidesProgress: true,
+    }); {% endcomment %}
+    jQuery(function ($) {
+    $(document).ready(function () {
+      const rev = $(".wuchang_introduction_swiper .swiper .swiper-wrapper");
+
+      rev
+        .on("init", function (event, slick, currentSlide) {
+          const cur = $(slick.$slides[slick.currentSlide]),
+            next = cur.next(),
+            next2 = cur.next().next(),
+            prev = cur.prev(),
+            prev2 = cur.prev().prev();
+          prev.addClass("slick-sprev");
+          next.addClass("slick-snext");
+          prev2.addClass("slick-sprev2");
+          next2.addClass("slick-snext2");
+          cur
+            .removeClass("slick-snext")
+            .removeClass("slick-sprev")
+            .removeClass("slick-snext2")
+            .removeClass("slick-sprev2");
+          slick.$prev = prev;
+          slick.$next = next;
+        })
+        .on("beforeChange", function (event, slick, currentSlide, nextSlide) {
+          const cur = $(slick.$slides[nextSlide]);
+          slick.$prev.removeClass("slick-sprev");
+          slick.$next.removeClass("slick-snext");
+          slick.$prev.prev().removeClass("slick-sprev2");
+          slick.$next.next().removeClass("slick-snext2");
+          (next = cur.next()), (prev = cur.prev());
+          //prev2.prev().prev();
+          //next2.next().next();
+          prev.addClass("slick-sprev");
+          next.addClass("slick-snext");
+          prev.prev().addClass("slick-sprev2");
+          next.next().addClass("slick-snext2");
+          slick.$prev = prev;
+          slick.$next = next;
+          cur
+            .removeClass("slick-next")
+            .removeClass("slick-sprev")
+            .removeClass("slick-next2")
+            .removeClass("slick-sprev2");
+        });
+
+      rev.slick({
+        speed: 1000,
+        arrows: true,
+        dots: true,
+        focusOnSelect: true,
+        infinite: true,
+        centerMode: true,
+        slidesPerRow: 1,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        initialSlide: 1,
+        centerPadding: "0",
+        swipe: true,
+        customPaging: function (slider, i) {
+          return "";
+        },
+      });
+    });
+
+    (() => {
+      const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('in-view');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.3,
+      });
+
+      observer.observe(document.querySelector('.wuchang_introduction_main_content'));
+    })()
+  });
+</script>
+
+{% schema %}
+{
+  "name": "wuchang introduction",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "background_img",
+      "label": "background image"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_img_mobile",
+      "label": "background image mobile"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "joint_summary",
+      "name": "joint summary",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "image"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "text"
+        }
+      ]
+    },
+    {
+      "type": "joint_introduction",
+      "name": "joint introduction",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "title_bg",
+          "label": "title background"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "title"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "text"
+        },
+        {
+          "type": "image_picker",
+          "id": "content_bg",
+          "label": "content background"
+        },
+        {
+          "type": "image_picker",
+          "id": "content_bg_mobile",
+          "label": "content background mobile"
+        },
+        {
+          "type": "richtext",
+          "id": "content_title",
+          "label": "content title"
+        },
+        {
+          "type": "richtext",
+          "id": "content_text",
+          "label": "content text"
+        },
+        {
+          "type": "image_picker",
+          "id": "content_btn_bg",
+          "label": "content button background"
+        },
+        {
+          "type": "text",
+          "id": "content_btn_text",
+          "label": "content button text"
+        },
+        {
+          "type": "url",
+          "id": "content_btn_link",
+          "label": "content button link"
+        },
+        {
+          "type": "image_picker",
+          "id": "content_video_cover",
+          "label": "content video cover"
+        },
+        {
+          "type": "video",
+          "id": "content_video",
+          "label": "content video"
+        }
+      ]
+    },
+    {
+      "type": "joint_swiper",
+      "name": "joint swiper",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "swiper_bg",
+          "label": "swiper background"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "title"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "text"
+        },
+        {
+          "type": "image_picker",
+          "id": "swiper_img_one",
+          "label": "swiper image one"
+        },
+        {
+          "type": "image_picker",
+          "id": "swiper_img_two",
+          "label": "swiper image two"
+        },
+        {
+          "type": "image_picker",
+          "id": "swiper_img_thr",
+          "label": "swiper image thr"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "joint wuchang introduction"
+    }
+  ]
+}
+{% endschema %}

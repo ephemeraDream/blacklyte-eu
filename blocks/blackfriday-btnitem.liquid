@@ -1,0 +1,27 @@
+<div class="cont-button-item {% if active %}cont-button-item-active{% endif %}">
+  <div class="item-btn-title">{{ block.settings.btnTitle }}</div>
+  <div class="item-btn-desc">{{ block.settings.btnDesc }}</div>
+</div>
+
+{% schema %}
+{
+  "name": "buttonItem",
+  "settings": [
+    {
+      "type": "text",
+      "id": "btnTitle",
+      "label": "Button Title"
+    },
+    {
+      "type": "text",
+      "id": "btnDesc",
+      "label": "Button Descripe"
+    }
+  ],
+  "presets": [
+    {
+      "name": "buttonItem"
+    }
+  ]
+}
+{% endschema %}

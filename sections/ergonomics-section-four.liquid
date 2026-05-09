@@ -1,0 +1,78 @@
+{{ 'ergonomics-section-four.css' | asset_url | stylesheet_tag }}
+
+<div class="ergonomics_section_four">
+  <div class="ergonomics_section_four_head">
+    <div>
+      <div class="ergonomics_section_four_title">{{ section.settings.title }}</div>
+      <div class="ergonomics_section_four_text">{{ section.settings.text }}</div>
+    </div>
+    {% comment %} {{-
+      section.settings.image
+      | image_url: width: section.settings.image.width
+      | image_tag: alt: section.settings.image.alt, class: 'ergonomics_section_four_img'
+    -}} {% endcomment %}
+  </div>
+  <div class="chair_techs_box">
+    {%- for block in section.blocks -%}
+      <div class="chair_techs_item">
+        {{-
+          block.settings.image
+          | image_url: width: block.settings.image.width
+          | image_tag: alt: block.settings.image.alt, class: 'chair_techs_item_img'
+        -}}
+        <div class="chair_techs_item_text">{{ block.settings.text }}</div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "ergonomics section four",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "title",
+      "label": "title"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "text"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "image"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "chair_techs",
+      "name": "Chair Techs",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "text"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "image"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "ergonomics section four"
+    }
+  ]
+}
+{% endschema %}

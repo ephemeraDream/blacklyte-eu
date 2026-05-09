@@ -1,0 +1,680 @@
+{{ 'topPick-component.css' | asset_url | stylesheet_tag }}
+{{ 'chair-component-new.css' | asset_url | stylesheet_tag }}
+{{ 'bundle-component-new.css' | asset_url | stylesheet_tag }}
+{{ 'desk-discount-price.css' | asset_url | stylesheet_tag }}
+<style>
+  .event-page-collections{
+    padding: 100px 0 200px;
+    background: #EFEFEF;
+  }
+  .event-page-collections .module-title{
+    font: 700 50px var(--font-family-1);
+    color: #262626;
+    margin: 0 auto 45px;
+    text-align: center;
+  }
+  .module-title.edition-module-title,
+  .module-title.desk-module-title,
+  .module-title.bundle-module-title,
+  .module-title.accessory-module-title{
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* IPhone */
+  @media(max-width: 767px) {
+    .event-page-collections{
+      padding: 50px 0 100px;
+    }
+    .event-page-collections .module-title{
+      font-size: 20px;
+      margin-bottom: 20px;
+    }
+    .module-title.edition-module-title,
+    .module-title.desk-module-title,
+    .module-title.bundle-module-title,
+    .module-title.accessory-module-title{
+      margin-top: 50px;
+    }
+  }
+  @media(min-width: 1025px) and (max-width: 1600px) {
+    .module-title.chairs-module-title span:after{
+      width: 45px;
+      height: 45px;
+    }
+  
+  }
+</style>
+
+
+<section class="event-page-collections" id="{{ section.id }}">
+  {% if section.settings.customHTMLCSS != blank %}
+      {{ section.settings.customHTMLCSS }}
+  {% endif %}
+  <div class="container-1570">
+    <!-- chairs -->
+    <div class="module-title chairs-module-title">
+      {% if section.settings.SectionTitlePre != blank %}
+        <img src="{{ section.settings.SectionTitlePre | img_url: 'master' }}" class="section-title-pre-icons" />
+      {% endif %}
+      {% if section.settings.sectionTitle != blank %}
+        <span>{{ section.settings.sectionTitle }}</span>
+      {% endif %}
+      {% if section.settings.sectionTitleNext != blank %}
+        <img src="{{ section.settings.sectionTitleNext | img_url: 'master' }}" class="section-title-next-icons" />  
+      {% endif %}
+      {% if section.settings.sectionDesc != blank %}
+        <span>{{ section.settings.sectionDesc }}</span>
+      {% endif %}
+    </div>
+    <div class="top-pick-module">
+      {% for block in section.blocks %}
+        {% if block.type == "topPickItem" %}
+            {% render 'top-pick-component', block: block %}
+        {% endif %}
+      {% endfor %}
+    </div>
+    {% for block in section.blocks %}
+      {% if block.type == 'chairCollection' %}
+        {% render 'chairs-component', block: block %}
+      {% endif %}
+    {% endfor %}
+    <!-- edition Chairs -->
+    <div class="module-title edition-module-title">
+      {% if section.settings.EditionSectionTitlePre != blank %}
+        <img src="{{ section.settings.EditionSectionTitlePre | img_url: 'master' }}" class="section-title-pre-icons" />
+      {% endif %}
+      {% if section.settings.EditionSectionTitle != blank %}
+        <span>{{ section.settings.EditionSectionTitle }}</span>
+      {% endif %}
+      {% if section.settings.EditionSectionTitleNext != blank %}
+        <img src="{{ section.settings.EditionSectionTitleNext | img_url: 'master' }}" class="section-title-next-icons" />  
+      {% endif %}
+      {% if section.settings.EditionSectionDesc != blank %}
+        <span>{{ section.settings.EditionSectionDesc }}</span>
+      {% endif %}
+    </div>
+    <div class="top-pick-module">
+      {% for block in section.blocks %}
+        {% if block.type == "EditionsTopPickItem" %}
+            {% render 'top-pick-component', block: block %}
+        {% endif %}
+      {% endfor %}
+    </div>
+    {% for block in section.blocks %}
+      {% if block.type == 'chairEditionCollection' %}
+        {% render 'chairs-edition-component', block: block %}
+      {% endif %}
+    {% endfor %}
+    <!-- desk -->
+    <div class="module-title desk-module-title">
+      {% if section.settings.DeskSectionTitlePre != blank %}
+        <img src="{{ section.settings.DeskSectionTitlePre | img_url: 'master' }}" class="section-title-pre-icons" />
+      {% endif %}
+      {% if section.settings.DeskSectionTitle != blank %}
+        <span>{{ section.settings.DeskSectionTitle }}</span>
+      {% endif %}
+      {% if section.settings.DeskSectionTitleNext != blank %}
+        <img src="{{ section.settings.DeskSectionTitleNext | img_url: 'master' }}" class="section-title-next-icons" />  
+      {% endif %}
+      {% if section.settings.DeskSectionDesc != blank %}
+        <span>{{ section.settings.DeskSectionDesc }}</span>
+      {% endif %}
+    </div>
+    <div class="top-pick-module">
+      {% for block in section.blocks %}
+        {% if block.type == "deskTopPickItem" %}
+            {% render 'top-pick-component', block: block %}
+        {% endif %}
+      {% endfor %}
+    </div>
+    {% for block in section.blocks %}
+      {% if block.type == 'deskCollection' %}
+        {% render 'desks-component', block: block %}
+      {% endif %}
+    {% endfor %}
+    <!-- bundle -->
+    <div class="module-title bundle-module-title">
+      {% if section.settings.BundleSectionTitlePre != blank %}
+        <img src="{{ section.settings.BundleSectionTitlePre | img_url: 'master' }}" class="section-title-pre-icons" />
+      {% endif %}
+      {% if section.settings.BundleSectionTitle != blank %}
+        <span>{{ section.settings.BundleSectionTitle }}</span>
+      {% endif %}
+      {% if section.settings.BundleSectionTitleNext != blank %}
+        <img src="{{ section.settings.BundleSectionTitleNext | img_url: 'master' }}" class="section-title-next-icons" />  
+      {% endif %}
+      {% if section.settings.BundleSectionDesc != blank %}
+        <span>{{ section.settings.BundleSectionDesc }}</span>
+      {% endif %}
+    </div>
+    {% for block in section.blocks %}
+      {% if block.type == 'bundleCollection' %}
+        {% render 'bundle-component', block: block %}
+      {% endif %}
+    {% endfor %}
+    <!-- Accessory -->
+    <div class="module-title accessory-module-title">
+      {% if section.settings.AccessorySectionTitlePre != blank %}
+        <img src="{{ section.settings.AccessorySectionTitlePre | img_url: 'master' }}" class="section-title-pre-icons" />
+      {% endif %}
+      {% if section.settings.AccessorySectionTitle != blank %}
+        <span>{{ section.settings.AccessorySectionTitle }}</span>
+      {% endif %}
+      {% if section.settings.AccessorySectionTitleNext != blank %}
+        <img src="{{ section.settings.AccessorySectionTitleNext | img_url: 'master' }}" class="section-title-next-icons" />  
+      {% endif %}
+      {% if section.settings.AccessorySectionDesc != blank %}
+        <span>{{ section.settings.AccessorySectionDesc }}</span>
+      {% endif %}
+    </div>
+    <div class="top-pick-module">
+      {% for block in section.blocks %}
+        {% if block.type == "AccessoryTopPickItem" %}
+            {% render 'top-pick-component', block: block %}
+        {% endif %}
+      {% endfor %}
+    </div>
+    {% for block in section.blocks %}
+      {% if block.type == 'AccessoryCollection' %}
+        {% render 'Accessories-component', block: block %}
+      {% endif %}
+    {% endfor %}
+  </div>
+</section>
+
+<script>
+  $(document).ready(function() {
+    // chairs
+    setTimeout(() => {
+      $('.prod_lists .prod_item.chairs-prod-item').each(function() {
+        let titleElement = $(this).find('.prod_item_title')
+        const itemVariantVal = $(this).find('.prod_item-variants')
+        let title = titleElement.text().trim()
+        let partsVal = title.split('-')
+          
+        if (partsVal[1]) {
+          const partsVal1 = partsVal[1].split('/')[0]?.trim()
+          const partsVal2 = partsVal[1].split('/')[1]?.trim()
+          
+          let prependTex = ''
+          if (partsVal1) {
+            if(partsVal2) {
+             
+              prependTex = partsVal1 + ' / '
+              itemVariantVal.append(' / ' + partsVal2);
+            } else {
+              prependTex = partsVal1 + '   '
+            }
+            itemVariantVal.prepend(prependTex)
+            titleElement.text(partsVal[0].trim())
+          } else {
+            itemVariantVal.prepend(partsVal2)
+            titleElement.text(partsVal[0].trim())
+          }
+        }
+      })
+    }, 0)
+    // desks
+    setTimeout(() => {
+      $('.prod_lists .prod_item.desk-prod-item').each(function() {
+        let titleElement = $(this).find('.prod_item_title')
+        const itemVariantVal = $(this).find('.prod_item-variants')
+        let title = titleElement.text().trim()
+        let partsVal = title.split('-')
+        if (partsVal[1]) {
+          itemVariantVal.prepend(partsVal[1])
+          titleElement.text(partsVal[0].trim())
+        }
+      })
+    }, 0)
+    
+    setTimeout(function() {
+      $('.prod_item_title').each(function() {
+        // old
+        var txt = $(this).text().trim();
+        // new
+        if (txt.endsWith(' Gaming Chair')) {
+          txt = txt.replace(/ Gaming Chair$/, '');
+          $(this).text(txt);
+        }
+      });
+    }, 0)
+    // replace ' '
+    setTimeout(() => {
+      $('.prod_lists .prod_item .prod_item_price .prod_item_discount_price').each(function() {
+        const originalText = $(this).text();
+        const noSpaces = originalText.replace(/\s+/g, '');
+        $(this).text(noSpaces);
+      })
+    }, 0)
+
+     // link
+    $('.but-link').on('click', function() {
+      const url = $(this).data('href')
+      window.location.href = url
+    })
+    $('.bundle-prod-items.bundle-cont-link').on('click', function() {
+      const url = $(this).data('href')
+      window.location.href = url
+    })
+  })
+</script>
+
+{% schema %}
+  {
+    "name": "Event Collection",
+    "settings": [
+      {
+        "type": "html",
+        "id": "customHTMLCSS",
+        "label": "custom HTML CSS"
+      },
+      {
+        "type": "header",
+        "content": "chairs container"
+      },
+      {
+        "type": "image_picker",
+        "id": "sectionBgImage",
+        "label": "Section Background Image"
+      },
+      {
+        "type": "image_picker",
+        "id": "SectionTitlePre",
+        "label": "Section Title Pre Image"
+      },
+      {
+        "type": "text",
+        "id": "sectionTitle",
+        "label": "Section Title",
+        "default": "Which Gaming Chair is Right For You"
+      },
+      {
+        "type": "image_picker",
+        "id": "SectionTitleNext",
+        "label": "Section Title Next Image"
+      },
+      {
+        "type": "text",
+        "id": "sectionDesc",
+        "label": "Section Descripe"
+      },
+      {
+        "type": "header",
+        "content": "Editions chairs container"
+      },
+      {
+        "type": "image_picker",
+        "id": "EditionSectionTitlePre",
+        "label": "Edition Section Title Pre"
+      },
+      {
+        "type": "text",
+        "id": "EditionSectionTitle",
+        "label": "Edition Section Title",
+        "default": "Limited Editions, Unlimited Deals!"
+      },
+      {
+        "type": "image_picker",
+        "id": "EditionSectionTitleNext",
+        "label": "Edition Section Title Next Image"
+      },
+      {
+        "type": "text",
+        "id": "EditionSectionDesc",
+        "label": "Edition Section Descripe"
+      },
+      {
+        "type": "header",
+        "content": "Desks chairs container"
+      },
+      {
+        "type": "image_picker",
+        "id": "DeskSectionTitlePre",
+        "label": "Edition Section Title Pre"
+      },
+      {
+        "type": "text",
+        "id": "DeskSectionTitle",
+        "label": "Edition Section Title",
+        "default": "Limited Editions, Unlimited Deals!"
+      },
+      {
+        "type": "image_picker",
+        "id": "DeskSectionTitleNext",
+        "label": "Edition Section Title Next Image"
+      },
+      {
+        "type": "text",
+        "id": "DeskSectionDesc",
+        "label": "Edition Section Descripe"
+      },
+      {
+        "type": "header",
+        "content": "Bundle chairs container"
+      },
+      {
+        "type": "image_picker",
+        "id": "BundleSectionTitlePre",
+        "label": "Bundle Section Title Pre Image"
+      },
+      {
+        "type": "text",
+        "id": "BundleSectionTitle",
+        "label": "Bundle Section Title",
+        "default": "Level Up Your Setup"
+      },
+      {
+        "type": "image_picker",
+        "id": "BundleSectionTitleNext",
+        "label": "Bundle Section Title Next Image"
+      },
+      {
+        "type": "text",
+        "id": "BundleSectionDesc",
+        "label": "Bundle Section Descripe",
+        "default": "Adjustable Gaming Desks, Never Miss it!"
+      },
+      {
+        "type": "header",
+        "content": "Accessory chairs container"
+      },
+      {
+        "type": "image_picker",
+        "id": "AccessorySectionTitlePre",
+        "label": "Accessory Section Title Pre Image"
+      },
+      {
+        "type": "text",
+        "id": "AccessorySectionTitle",
+        "label": "Accessory Section Title",
+        "default": "Level Up Your Setup"
+      },
+      {
+        "type": "image_picker",
+        "id": "AccessorySectionTitleNext",
+        "label": "Accessory Section Title Next Image"
+      },
+      {
+        "type": "text",
+        "id": "AccessorySectionDesc",
+        "label": "Accessory Section Descripe",
+        "default": "Adjustable Gaming Desks, Never Miss it!"
+      },
+    ],
+    "blocks": [
+      {
+        "type": "topPickItem",
+        "name": "topPickItem",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "topPickModuleBgImage",
+            "label": "Top Pick Module Background Image"
+          },
+          {
+            "type": "image_picker",
+            "id": "topPickProdImg",
+            "label": "Top Pick Prod Image"
+          },
+          {
+            "type": "text",
+            "id": "topPickProdTitle",
+            "label": "Top Pick Prod Title"
+          },
+          {
+            "type": "text",
+            "id": "topPickProdDesc",
+            "label": "Top Pick Prod Descripe"
+          },
+          {
+            "type": "text",
+            "id": "topPickProdDiscountPrice",
+            "label": "Top Pick Prod Discount Price"
+          },
+          {
+            "type": "text",
+            "id": "topPickProdSalePrice",
+            "label": "Top Pick Prod Sales Price"
+          },
+          {
+            "type": "url",
+            "id": "topPickProdLink",
+            "label": "Top Pick Prod Link"
+          },
+          {
+            "type": "product",
+            "id": "topPickProd",
+            "label": "Top Pick Product"
+          }
+        ]
+      },
+      {
+        "type": "chairCollection",
+        "name": "chairCollection",
+        "settings": [ ]
+      },
+      {
+        "type": "EditionsTopPickItem",
+        "name": "EditionsTopPickItem",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "topPickModuleBgImage",
+            "label": "Top Pick Module Background Image"
+          },
+          {
+            "type": "image_picker",
+            "id": "topPickProdImg",
+            "label": "Top Pick Prod Image"
+          },
+          {
+            "type": "text",
+            "id": "topPickProdTitle",
+            "label": "Top Pick Prod Title"
+          },
+          {
+            "type": "text",
+            "id": "topPickProdDesc",
+            "label": "Top Pick Prod Descripe"
+          },
+          {
+            "type": "text",
+            "id": "topPickProdDiscountPrice",
+            "label": "Top Pick Prod Discount Price"
+          },
+          {
+            "type": "text",
+            "id": "topPickProdSalePrice",
+            "label": "Top Pick Prod Sales Price"
+          },
+          {
+            "type": "text",
+            "id": "topEditionPickProdDiscountPrice",
+            "label": "Top Pick edition Prod Discount Price"
+          },
+          {
+            "type": "text",
+            "id": "topEditionProdSalePrice",
+            "label": "Top Edition Prod Sales Price"
+          },
+          {
+            "type": "url",
+            "id": "topPickProdLink",
+            "label": "Top Pick Prod Link"
+          },
+          {
+            "type": "product",
+            "id": "topPickProd",
+            "label": "Top Pick Product"
+          }
+        ]
+      },
+      {
+        "type": "chairEditionCollection",
+        "name": "chairEditionCollection",
+        "settings": [ ]
+      },
+      {
+        "type": "deskTopPickItem",
+        "name": "deskTopPickItem",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "topPickModuleBgImage",
+            "label": "Top Pick Module Background Image"
+          },
+          {
+            "type": "image_picker",
+            "id": "topPickProdImg",
+            "label": "Top Pick Prod Image"
+          },
+          {
+            "type": "text",
+            "id": "topPickProdTitle",
+            "label": "Top Pick Prod Title"
+          },
+          {
+            "type": "text",
+            "id": "topPickProdDesc",
+            "label": "Top Pick Prod Descripe"
+          },
+          {
+            "type": "text",
+            "id": "topPickProdDiscountPrice",
+            "label": "Top Pick Prod Discount Price"
+          },
+          {
+            "type": "text",
+            "id": "topPickProdSalePrice",
+            "label": "Top Pick Prod Sales Price"
+          },
+          {
+            "type": "url",
+            "id": "topPickProdLink",
+            "label": "Top Pick Prod Link"
+          },
+          {
+            "type": "product",
+            "id": "topPickProd",
+            "label": "Top Pick Product"
+          }
+        ]
+      },
+      {
+        "type": "deskCollection",
+        "name": "deskCollection",
+        "settings": [ ]
+      },
+      {
+        "type": "bundleCollection",
+        "name": "bundleCollection",
+        "settings": [
+          {
+            "type": "text",
+            "id": "bundleModuleClass",
+            "label": "Bundle Module Custom Class Name"
+          },
+          {
+            "type": "image_picker",
+            "id": "bundleItemChair",
+            "label": "bundle Item Chair"
+          },
+          {
+            "type": "text",
+            "id": "bundleItemTitle",
+            "label": "bundle Item Chair Title"
+          },
+          {
+            "type": "image_picker",
+            "id": "bundleItemDesk",
+            "label": "bundle Item Desk"
+          },
+          {
+            "type": "text",
+            "id": "bundleItemDeskTitle",
+            "label": "bundle Item Desk Title"
+          },
+          {
+            "type": "text",
+            "id": "bundleItemSalePrice",
+            "label": "bundle Item Sale Price"
+          },
+          {
+            "type": "text",
+            "id": "bundleItemDiscountPrice",
+            "label": "bundle Item Discount Price"
+          },
+          {
+            "type": "text",
+            "id": "bundleSaveTagPrices",
+            "label": "Bundle Save Tag Prices"
+          },
+          {
+            "type": "url",
+            "id": "bundleItemLink",
+            "label": "bundle Item Link"
+          }
+        ]
+      },
+      {
+        "type": "AccessoryTopPickItem",
+        "name": "AccessoryTopPickItem",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "topPickModuleBgImage",
+            "label": "Top Pick Module Background Image"
+          },
+          {
+            "type": "image_picker",
+            "id": "topPickProdImg",
+            "label": "Top Pick Prod Image"
+          },
+          {
+            "type": "text",
+            "id": "topPickProdTitle",
+            "label": "Top Pick Prod Title"
+          },
+          {
+            "type": "text",
+            "id": "topPickProdDesc",
+            "label": "Top Pick Prod Descripe"
+          },
+          {
+            "type": "text",
+            "id": "topPickProdDiscountPrice",
+            "label": "Top Pick Prod Discount Price"
+          },
+          {
+            "type": "text",
+            "id": "topPickProdSalePrice",
+            "label": "Top Pick Prod Sales Price"
+          },
+          {
+            "type": "url",
+            "id": "topPickProdLink",
+            "label": "Top Pick Prod Link"
+          },
+          {
+            "type": "product",
+            "id": "topPickProd",
+            "label": "Top Pick Product"
+          }
+        ]
+      },
+      {
+        "type": "AccessoryCollection",
+        "name": "AccessoryCollection",
+        "settings": [ ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Event Collection"
+      }
+    ]
+  }
+{% endschema %}

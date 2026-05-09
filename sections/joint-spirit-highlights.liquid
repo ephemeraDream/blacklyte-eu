@@ -1,0 +1,122 @@
+{{ 'section-joint-spirit-highlights.css' | asset_url | stylesheet_tag }}
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="https://cdn.shopify.com/s/files/1/0716/1341/5637/files/slick.css?v=1760406619"
+>
+
+{% comment %}
+  <style>
+    #shopify-section-{{ section.id }} {
+      margin-top: -6vw;
+    }
+  </style>
+{% endcomment %}
+
+<div class="spirit_highlights">
+  {{-
+    section.settings.background_img
+    | image_url: width: section.settings.background_img.width
+    | image_tag: alt: section.settings.title, class: 'spirit_highlights_bg pc_show'
+  -}}
+  {% assign file_image_mobile = section.settings.background_img_mobile | default: section.settings.background_img %}
+  {{-
+    file_image_mobile
+    | image_url: width: file_image_mobile.width
+    | image_tag: alt: section.settings.title, class: 'spirit_highlights_bg pmd_show'
+  -}}
+  <div class="spirit_highlights_title">{{ section.settings.title }}</div>
+  <div class="spirit_highlights_text">{{ section.settings.text }}</div>
+  <div class="spirit_highlights_swiper">
+    {% for block in section.blocks %}
+      <div class="spirit_highlights_swiper_item">
+        {{-
+          block.settings.image
+          | image_url: width: block.settings.image.width
+          | image_tag: alt: section.settings.title
+        -}}
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+<script>
+  (function ($) {
+    $(function () {
+        $('.spirit_highlights_swiper').slick({
+        arrows: true,
+        centerMode: true,
+        infinite: true,
+        variableWidth: true,
+        prevArrow: `<button class="slick-prev"><svg xmlns="http://www.w3.org/2000/svg" width="21" height="33" viewBox="0 0 21 33" fill="none">
+                    <path d="M0.568628 28.4483L4.55139 33L20.4824 16.5L4.55139 0L-0.000337601 3.98276L11.9479 16.5L0.568628 28.4483Z" fill="#F0E0C0"/>
+                    </svg></button>`,
+        nextArrow: `<button class="slick-next"><svg xmlns="http://www.w3.org/2000/svg" width="21" height="33" viewBox="0 0 21 33" fill="none">
+                    <path d="M0.568628 28.4483L4.55139 33L20.4824 16.5L4.55139 0L-0.000337601 3.98276L11.9479 16.5L0.568628 28.4483Z" fill="#F0E0C0"/>
+                    </svg></button>`,
+        dots: true,
+        {% comment %} responsive: [
+          {
+            breakpoint: 768,
+            settings: {
+              arrows: false,
+              slidesToShow: 1,
+            },
+          },
+        ], {% endcomment %}
+      });
+    });
+  })(jQuery);
+</script>
+
+{% schema %}
+{
+  "name": "spirit highlights",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "background_img",
+      "label": "background image"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_img_mobile",
+      "label": "background image mobile"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "title"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "text"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "swiper_item",
+      "name": "swiper item",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "image"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "joint spirit highlights"
+    }
+  ]
+}
+{% endschema %}

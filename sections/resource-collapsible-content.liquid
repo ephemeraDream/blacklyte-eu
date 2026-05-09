@@ -1,0 +1,87 @@
+{{ 'resource-collapse-cont.css' | asset_url | stylesheet_tag }}
+
+<div class="resource-collapse-cont" style="background: {{ section.settings.sectionBgColor }}">
+    <div class="container-full">
+        {% if section.settings.sectionTitle != blank %}
+            <div class="section-title">{{ section.settings.sectionTitle }}</div>
+        {% endif %}
+        {% if section.settings.enable_swiper_mode %}
+            <div class="swiper resource-collapse-swiper">
+                <div class="swiper-wrapper">
+        {% endif %}
+        
+        <div class="collapse-conts{% if section.settings.enable_swiper_mode %} swiper-slide{% endif %}">
+            <div class="cont-items">
+                {% content_for 'block',  type: "resource-faq-cont", id: 'resource-faq-cont-0' %}
+                
+            </div>
+        </div>
+
+        <div class="collapse-conts{% if section.settings.enable_swiper_mode %} swiper-slide{% endif %}">
+            <div class="cont-items">
+                {% content_for 'block',  type: "resource-faq-cont", id: 'resource-faq-cont-1' %}
+                
+            </div>
+        </div>
+
+        <div class="collapse-conts{% if section.settings.enable_swiper_mode %} swiper-slide{% endif %}">
+            <div class="cont-items">
+                {% content_for 'block',  type: "resource-faq-cont", id: 'resource-faq-cont-2' %}
+                
+            </div>
+        </div>
+
+
+        <div class="collapse-conts{% if section.settings.enable_swiper_mode %} swiper-slide{% endif %}">
+            <div class="cont-items">
+                {% content_for 'block',  type: "resource-faq-cont", id: 'resource-faq-cont-4' %}
+                
+            </div>
+        </div>
+
+        <div class="collapse-conts{% if section.settings.enable_swiper_mode %} swiper-slide{% endif %}">
+            <div class="cont-items">
+                {% content_for 'block',  type: "resource-faq-cont", id: 'resource-faq-cont-5' %}
+                
+            </div>
+        </div>
+                
+        {% if section.settings.enable_swiper_mode %}
+            </div>
+        </div>
+        {% endif %}
+    </div>
+
+</div>
+
+<script src="{{ 'resource-collapse-cont.js' | asset_url }}" defer="defer"></script>
+
+{% schema %}
+{
+    "name": "resource collapse cont",
+    "tag": "section",
+    "settings": [
+        {
+            "type": "color",
+            "id": "sectionBgColor",
+            "label": "section Background Color"
+        },
+        {
+            "type": "text",
+            "id": "sectionTitle",
+            "label": "sectionTitle"
+        },
+        {
+            "type": "checkbox",
+            "id": "enable_swiper_mode",
+            "label": "Enable Swiper Mode",
+            "default": false
+        }
+    ],
+    "presets": [
+        {
+            "name": "resource collapse cont"
+        }
+    ]
+}
+{% endschema %}

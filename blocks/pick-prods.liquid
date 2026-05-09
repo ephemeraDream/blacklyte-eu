@@ -1,0 +1,155 @@
+<style>
+    .collections-prods.pick-prod-module{
+        margin-top: 130px;
+    }
+    .pick-prod-module .module-head-cont{
+        margin-bottom: 30px;
+    }
+    #Handpicked-Essentials .prod_item:nth-child(n+9) {
+        display: none !important;
+    }
+
+    @media(max-width: 767px){
+        .collections-prods.pick-prod-module{
+            margin-top: 36px;
+        }
+       
+    }
+</style>
+<div class="collections-prods pick-prod-module" id="Handpicked-Essentials">
+    <div class="module-head-cont">
+        {% if block.settings.moduleTitle != blank %}
+            <div class="collection-title">{{ block.settings.moduleTitle }}</div>
+        {% endif %}
+        {% if block.settings.moduleDesc != blank %}
+            <div class="collection-desc">{{ block.settings.moduleDesc }}</div>
+        {% endif %}
+    </div>
+    <div class="collections-lists limit-items">
+      {%- for product_card_product in block.settings.moduleProductList.products -%}
+          {%- liquid
+              assign variant_img = ''
+              for option in product_card_product.options_with_values
+                  for variant in product_card_product.variants limit: 1
+                  if variant.image != null
+                      assign variant_img = variant.image
+                  endif
+                  endfor
+              endfor
+          -%}
+          
+          {%- if product_card_product.variants.size > 0 and product_card_product.has_only_default_variant != true -%}
+            <script>
+                window.quick_view_inven_array_{{ product_card_product.id }} = {
+                    {%- for variant in product_card_product.variants -%}
+                    '{{ variant.id }}': '{{ variant.inventory_quantity }}',
+                    {%- endfor -%}
+                };
+
+                window.quick_shop_policy_array_{{ product_card_product.id }} = {
+                    {%- for variant in product_card_product.variants -%}
+                    '{{ variant.id }}': '{{ variant.inventory_policy }}',
+                    {%- endfor -%}
+                };
+
+                window.cart_selling_array_{{ product_card_product.id }} = {
+                    {%- for variantProduct in product_card_product.variants -%}
+                        '{{ variantProduct.id }}': '{{ variantProduct.inventory_policy }}',
+                    {%- endfor -%}
+                };
+            </script>
+        {% endif %}
+
+          <div data-url="{{ product_card_product.url }}" class="prod_item has-data-url-link" data-product-id="{{ product_card_product.id }}" data-variant="{{ product_card_product.selected_or_first_available_variant | json | escape }}"
+          data-json-product='{"id": {{product_card_product.id}},"handle": "{{product_card_product.handle}}","media": {{product_card_product.media | json | escape}},"variants": {{ product_card_product.variants | json | escape}}}'>
+              <div class="container-prod card">
+                  <div class="card-product">
+                      {% render 'product-badge', product: product_card_product, class: 'card__badge', badge_detail: true, serial: serial %}
+                      <div class="card-media card-media--adapt {% if product_card_product.media[1] != nil and settings.show_image_swap %} media--hover-effect{% endif%} media--loading-effect" style="padding-bottom: {{ 1 | times: 100 }}%;">
+                          {% render 'image-product-card', product_card_product: product_card_product, variant_img: variant_img, has_video: false, loading: true %}
+                          
+                      
+                          <a class="card-link" href="{{ product_card_product.url }}" title="{{ product_card_product.title | escape }}"></a>
+                      </div>
+                  </div>
+                  <div class="prod_card_info">
+                      <div class="prod_item_series_name">
+                        {% if product_card_product.metafields.custom.series_name != blank %}
+                        {{ product_card_product.metafields.custom.series_name }}
+                        {% else %}
+                        {{ product_card_product.title }}
+                        {% endif %}
+                        
+                      </div>
+                      <div class="prod_item_title" style="display: none">
+                        <span>{{ product_card_product.title }}</span>
+                      </div>
+
+                      <div class="flex-1"></div>
+                      <div class="prod_item-variants">
+                        {% if product_card_product.options.size > 0 and product_card_product.options.first != 'Title' %}
+                          {{ product_card_product.selected_or_first_available_variant.option1 }}
+                          {% if product_card_product.selected_or_first_available_variant.option2 != blank %} / {% endif %}
+                          {% if product_card_product.selected_or_first_available_variant.option2 != blank %} {{ product_card_product.selected_or_first_available_variant.option2 }} {% endif %}
+                        {% endif %}
+                        </div>
+                        <div class="prod_item_price">
+                          <div class="price">
+                              {% if product_card_product.selected_or_first_available_variant.metafields.custom.discount_price.value %}
+                                  <span class="prod_item_discount_price">
+                                  {{
+                                  product_card_product.selected_or_first_available_variant.price
+                                  | minus: product_card_product.selected_or_first_available_variant.metafields.custom.discount_price.value
+                                  | money_without_currency
+                                  }}
+                                  </span>
+                              {% endif %}
+                              
+                              <span class="prod_item_sale_price{% if product_card_product.selected_or_first_available_variant.metafields.custom.discount_price.value %} prod_item_sale_price_new{% endif %}">{{ product_card_product.selected_or_first_available_variant.price | money }}</span>
+                          </div>
+                        </div>
+                        <div class="product-btns">
+                            <a class="shop_now_btn" href="{{ product_card_product.url }}">{{ 'products.product.shop_now' | t }}</a>
+                            <a class="atc_btn">{{ 'products.product.add_to_cart' | t }}</a>
+                        </div>
+                        
+                  </div>
+
+                  <div class="prod-sale-tag">{{ 'general.navigation.sale_label' | t }}</div>
+              </div>
+          </div>
+      {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "pick prods",
+  "class": "Innovation-Picks",
+  "settings": [
+    {
+        "type": "text",
+        "id": "moduleTitle",
+        "label": "module Title",
+        "default": "Innovation Picks"
+    },
+    {
+        "type": "text",
+        "id": "moduleDesc",
+        "label": "module Descripe",
+        "default": "Constantly evolving for a brighter, smarter life."
+    },
+    {
+        "type": "collection",
+        "id": "moduleProductList",
+        "label": "module Product List"
+    }
+  ],
+  "blocks": [ ],
+  "presets": [
+    {
+      "name": "pick prods"
+    }
+  ]
+}
+{% endschema %}

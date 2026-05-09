@@ -1,0 +1,65 @@
+{{ 'section-imgwall-simplicity.css' | asset_url | stylesheet_tag }}
+<link rel="stylesheet" href="{{ 'component-fancybox.css' | asset_url }}" media="print" onload="this.media='all'">
+<noscript>{{ 'component-fancybox.css' | asset_url | stylesheet_tag }}</noscript>
+
+<div class="imgwall_simplicity" id="{{ section.settings.specId }}">
+  {% for item in section.blocks %}
+    <div class="imgwall_simplicity_image_box">
+      {% assign srcset_1x = item.settings.image | image_url: width: 1920 | append: ' 1x, ' %}
+      {% assign srcset_2x = item.settings.image | image_url: width: 670 | append: ' 2x, ' %}
+      {% assign srcset_3x = item.settings.image | image_url: width: 670 | append: ' 3x, ' %}
+      {% assign srcset_init = srcset_1x | append: srcset_2x | append: srcset_3x %}
+      {% assign img_href = item.settings.image | image_url %}
+
+      <img
+        class="imgwall_simplicity_image lazy-img"
+        data-src="{{ item.settings.image | image_url: width: item.settings.image.width }}"
+        data-srcset="{{ srcset_init }}"
+        sizes="(min-width:769px) 45vw, 100vw"
+        alt="{{ item.settings.image.alt | default: product.title | escape }}"
+        loading="lazy"
+        width="{{ item.settings.image.width }}"
+        height="{{ item.settings.image.height }}"
+        href="{{ img_href }}"
+        data-fancybox="imgwall simplicity"
+      >
+    </div>
+  {% endfor %}
+</div>
+<script src="{{ 'fancybox.js' | asset_url }}" defer="defer"></script>
+{% schema %}
+{
+  "name": "imgwall simplicity",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "specId",
+      "label": "specId"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "imgItem",
+      "name": "img item",
+      "limit": 8,
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "image"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "imgwall simplicity"
+    }
+  ]
+}
+{% endschema %}

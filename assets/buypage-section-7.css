@@ -1,0 +1,223 @@
+.buypage_section_7 {
+  background-color: #EBEBEB;
+  padding: 6.71875vw 15.625vw 0;
+}
+
+.buypage_section_7 .first_part_title {
+  font-family: Poppins;
+  font-weight: 600;
+  font-style: SemiBold;
+  font-size: 2.0833vw;
+  leading-trim: NONE;
+  line-height: 2.6041667vw;
+  letter-spacing: 0%;
+  color: #262629;
+}
+
+.buypage_section_7 .first_part_text {
+  font-family: Poppins;
+  font-weight: 500;
+  font-style: Medium;
+  font-size: clamp(14px, 0.8333vw, 0.8333vw);
+  leading-trim: NONE;
+  line-height: clamp(21px, 1.25vw, 1.25vw);
+  letter-spacing: 0.32px;
+  color: rgba(38, 38, 41, 0.7);
+  margin-top: 1.25vw;
+}
+
+.buypage_section_7 .first_part_img {
+  width: 100%;
+  height: 31.25vw;
+  border-radius: 1.25vw;
+  object-fit: cover;
+  object-position: center center;
+  margin-top: 3.125vw;
+}
+
+.buypage_section_7 .second_part {
+  margin-top: 6.71875vw;
+}
+
+.buypage_section_7 .second_part_title {
+  font-family: Poppins;
+  font-weight: 600;
+  font-style: SemiBold;
+  font-size: 2.0833vw;
+  leading-trim: NONE;
+  line-height: 3.4375vw;
+  letter-spacing: 0.8px;
+  vertical-align: middle;
+  color: #262629;
+  text-align: center;
+}
+
+.buypage_section_7 .second_part_logo_img {
+  width: 16.71875vw;
+  height: 2.65625vw;
+  object-fit: cover;
+  object-position: center center;
+  margin: 0 auto;
+}
+
+.buypage_section_7 .second_part_contain {
+  display: flex;
+  align-items: center;
+  gap: 3.125vw;
+  margin-top: 3.4375vw;
+}
+
+.buypage_section_7 .second_part_contain picture {
+  flex: 0 0 auto;
+  width: 39.0625vw;
+  height: 29.0625vw;
+  object-fit: cover;
+  object-position: center center;
+  border-radius: 0.625vw;
+  overflow: hidden;
+}
+
+.buypage_section_7 .second_part_item+.second_part_item {
+  margin-top: 2.34375vw;
+}
+
+.buypage_section_7 .second_part_item_title {
+  font-family: Poppins;
+  font-weight: 600;
+  font-style: SemiBold;
+  font-size: clamp(16px, 0.9375vw, 0.9375vw);
+  leading-trim: NONE;
+  line-height: clamp(42px, 2.5vw, 2.5vw);
+  letter-spacing: 0%;
+  vertical-align: middle;
+  color: #262629;
+}
+
+.buypage_section_7 .second_part_item_text {
+  font-family: Poppins;
+  font-weight: 500;
+  font-style: Medium;
+  font-size: clamp(14px, 0.729167vw, 0.729167vw);
+  leading-trim: NONE;
+  line-height: clamp(20px, 1.041667vw, 1.041667vw);
+  letter-spacing: 0.32px;
+  vertical-align: middle;
+  color: rgba(38, 38, 41, 0.7);
+  margin-top: -0.3125vw;
+}
+
+.buypage_section_7 .second_part_subtitle {
+  font-family: Poppins;
+  font-weight: 600;
+  font-style: SemiBold;
+  font-size: 1.25vw;
+  leading-trim: NONE;
+  line-height: 2.5vw;
+  letter-spacing: 0%;
+  vertical-align: middle;
+  color: #262629;
+  text-align: center;
+}
+
+.buypage_section_7 .second_part_item_tip {
+  font-family: Poppins;
+  font-weight: 500;
+  font-style: Medium;
+  font-size: clamp(12px, 0.7291667vw, 0.7291667vw);
+  leading-trim: NONE;
+  line-height: clamp(17px, 1.04167vw, 1.04167vw);
+  letter-spacing: 0.32px;
+  vertical-align: middle;
+  color: rgba(38, 38, 41, 0.7);
+  margin-top: 1.5625vw;
+}
+
+.buypage_section_7 .pmd_show {
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  .buypage_section_7 {
+    padding: 15.2vw 5.6vw 0;
+  }
+
+  .buypage_section_7 .first_part_title {
+    font-size: 6.4vw;
+    line-height: 13.333vw;
+  }
+
+  .buypage_section_7 .first_part_text {
+    font-size: 3.7333vw;
+    line-height: 6.4vw;
+    margin-top: -0.8vw;
+  }
+
+  .buypage_section_7 .first_part_img {
+    height: 106.4vw;
+    border-radius: 3.2vw;
+    margin-top: 4.8vw;
+  }
+
+  .buypage_section_7 .second_part {
+    margin-top: 16vw;
+  }
+
+  .buypage_section_7 .second_part_title {
+    font-size: 6.4vw;
+    line-height: 100%;
+  }
+
+  .buypage_section_7 .second_part_logo_img {
+    width: 60vw;
+    height: 9.6vw;
+    margin: 1.6vw auto 0 auto;
+  }
+
+  .buypage_section_7 .second_part_contain {
+    flex-wrap: wrap;
+    gap: 4w;
+    margin-top: 4w;
+  }
+
+  .buypage_section_7 .second_part_left_img,
+  .buypage_section_7 .second_part_contain picture {
+    width: 100%;
+    height: 66.4vw;
+    border-radius: 3.2vw;
+  }
+
+  .buypage_section_7 .second_part_item+.second_part_item {
+    margin-top: 3.2vw;
+  }
+
+  .buypage_section_7 .second_part_item_title {
+    font-size: 4.8vw;
+    line-height: 12.8vw;
+  }
+
+  .buypage_section_7 .second_part_item_text {
+    font-size: 3.733vw;
+    line-height: 5.33vw;
+    margin-top: -2.4vw;
+  }
+
+  .buypage_section_7 .second_part_subtitle {
+    font-size: 3.733vw;
+    line-height: 1;
+    margin-bottom: 1.6vw;
+  }
+
+  .buypage_section_7 .second_part_item_tip {
+    font-size: 3.733vw;
+    line-height: 5.333vw;
+    margin-top: 3.44vw;
+  }
+
+  .buypage_section_7 .pc_show {
+    display: none;
+  }
+
+  .buypage_section_7 .pmd_show {
+    display: block;
+  }
+}

@@ -1,0 +1,492 @@
+<style>
+    .container-all{
+        padding-top: 89px;
+        padding-bottom: 70px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .container-all .tabs-cont{
+        display: flex;
+        width: 55vw;
+    }
+    .container-all .tabs-cont .tabs-items{
+        width: 50%;
+        display: flex;
+        flex-direction: column;
+        gap: 17px;
+        align-items: center;
+    }
+    .container-all .tabs-cont .tabs-items .item-active-line{
+        font-size: 0;
+        width: 100%;
+        height: 6px;
+        background: #290000;
+    }
+    .container-all .tabs-cont .tabs-items .item-active-line.item-active-line-active{
+        background: #770000;
+        position: relative;
+    }
+    .container-all .tabs-cont .tabs-items .item-active-line.item-active-line-active svg{
+        width: 26px;
+        height: 26px;
+        fill: none;
+        stroke: none;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+    }
+    .container-all .tabs-cont .tabs-items .item-active-line.item-active-line-active{
+        border-radius: 0 54px 54px 0;
+    }
+    .container-all .tabs-cont .tabs-items .item-active-line.item-active-line-next{
+        border-radius: 54px 0 0 54px;
+    }
+    .container-all .tabs-cont .item-title{
+        font: 600 26px var(--font-family-3);
+        color: #fff;
+    }
+    .container-all .tabs-cont .item-time{
+        font: 300 16px var(--font-family-3);
+        color: #fff;
+    }
+    .container-all .cont-titek-desc{
+        margin-top: 70px;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+    }
+    .container-all .cont-titek-desc .title-text{
+        font: 600 26px var(--font-family-3);
+        color: #fff;
+    }
+    .container-all .cont-titek-desc .desc-text{
+        font: 500 16px var(--font-family-3);
+        color: #fff;
+        text-align: center;
+    }
+
+    {% comment %} new {% endcomment %}
+     .section-{{ section.id }} .head-cont{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    .section-{{ section.id }} .head-cont-title{
+        font: 400 70px 'Anton';
+        color: #931717;
+        margin-top: 100px;
+    }
+    .section-{{ section.id }} .head-cont-desc{
+        font: 500 18px 'Poppins';
+        color: #fff;
+    }
+    .section-{{ section.id }} .tab-item-cont{
+        position: relative;
+        width: calc((100% - 300px) / 2);
+        cursor: pointer;
+    }
+    .section-{{ section.id }} .tab-item-cont .item-image.item-image-pc{
+        display: block;
+    }
+    .section-{{ section.id }} .tab-item-cont .item-image.item-image-mb{
+        display: none;
+    }
+    .section-{{ section.id }} .tab-item-cont .item-image img{
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: auto;
+    }
+    .section-{{ section.id }} .tab-container-block{
+        display: flex;
+        gap: 28px;
+        justify-content: center;
+        margin-top: 56px;
+    }
+    .section-{{ section.id }} .item-text-cont{
+        position: absolute;
+        bottom: 28px;
+        display: flex;
+        width: calc(100% - 60px);
+        justify-content: space-between;
+        left: 30px;
+        align-items: center;
+    }
+    .section-{{ section.id }} .item-text-cont .item-cont-title{
+        font: 700 18px 'Poppins';
+        color: #fff;
+    }
+    .section-{{ section.id }} .item-text-cont .item-cont-desc{
+        font: 400 18px 'Poppins';
+        color: #fff;
+    }
+    .section-{{ section.id }} .item-text-cont .right-c svg{
+        width: 46px;
+        height: 46px;
+        transition: all .35s ease;
+    }
+    .section-{{ section.id }} .tab-item-cont .right-c svg:hover circle{
+        fill: #fff;
+    }
+    .section-{{ section.id }} .tab-item-cont .right-c svg:hover path{
+        fill: #931717;
+    }
+    {% comment %} iPad {% endcomment %}
+    @media(min-width: 768px) and (max-width: 1024px){
+        .container-all .tabs-cont{
+            width: 80vw;
+        }
+        .container-all .tabs-cont .item-title{
+            font-size: 20px;
+        }
+        .container-all .tabs-cont .tabs-items{
+            gap: 10px;
+        }
+        .container-all .tabs-cont .tabs-items .item-active-line{
+            height: 4px;
+        }
+        .container-all .tabs-cont .item-time{
+            font-size: 14px;
+        }
+        .container-all .tabs-cont .tabs-items .item-active-line.item-active-line-active svg{
+            width: 18px;
+            height: 18px;
+        }
+        .container-all .cont-titek-desc{
+            margin-top: 50px;
+        }
+        .container-all .cont-titek-desc .title-text{
+            font-size: 22px;
+        }
+        .container-all .cont-titek-desc .desc-text{
+            font-size: 14px;
+        }
+        .section-{{ section.id }} .tab-item-cont{
+            width: calc((100% - 80px) / 2);
+        }
+        .section-{{ section.id }} .item-text-cont{
+            width: calc(100% - 40px);
+            left: 20px;
+        }
+    }
+    {% comment %} IPhone {% endcomment %}
+    @media(max-width: 767px){
+        .container-all{
+            padding-top: 50px;
+            padding-bottom: 50px;
+        }
+        .container-all .tabs-cont{
+            width: 90vw;
+        }
+        .container-all .tabs-cont .item-title{
+            font-size: 14px;
+        }
+        .container-all .tabs-cont .tabs-items{
+            gap: 10px;
+        }
+        .container-all .tabs-cont .tabs-items .item-active-line{
+            height: 3px;
+        }
+        .container-all .tabs-cont .tabs-items .item-active-line.item-active-line-active svg{
+            width: 14px;
+            height: 14px;
+        }
+        .container-all .tabs-cont .item-time{
+            font-size: 10px;
+        }
+        .container-all .cont-titek-desc{
+            margin-top: 30px;
+            gap: 8px;
+        }
+        .container-all .cont-titek-desc .title-text{
+            font-size: 18px;
+        }
+        .container-all .cont-titek-desc .desc-text{
+            font-size: 12px;
+            width: 90%;
+        }
+
+        {% comment %} new {% endcomment %}
+
+        .section-{{ section.id }} .tab-item-cont .item-image.item-image-pc{
+            display: none;
+        }
+        .section-{{ section.id }} .tab-item-cont .item-image.item-image-mb{
+            display: block;
+        }
+        .section-{{ section.id }} .head-cont-title{
+            font-size: 40px;
+            margin-top: 35px;
+        }
+        .section-{{ section.id }} .head-cont-desc{
+            font-size: 14px;
+            text-align: center;
+        }
+        .section-{{ section.id }} .tab-container-block{
+            flex-direction: column;
+            gap: 11px;
+            align-items: center;
+            margin-top: 10px;
+        }
+        .section-{{ section.id }} .tab-item-cont{
+            width: calc(100% - 20px);
+        }
+        .section-{{ section.id }} .item-text-cont{
+            width: calc(100% - 30px);
+            left: 15px;
+        }
+        .section-{{ section.id }} .item-text-cont{
+            bottom: 14px;
+        }
+        .section-{{ section.id }} .item-text-cont .item-cont-title{
+            font-size: 14px;
+        }
+        .section-{{ section.id }} .item-text-cont .item-cont-desc{
+            font-size: 12px;
+        }
+        .section-{{ section.id }} .item-text-cont .right-c svg{
+            width: 23px;
+            height: 23px;
+        }
+    }
+
+    @media (min-width: 1025px) and (max-width: 1480px){
+        .section-{{ section.id }} .tab-item-cont{
+            width: calc((100% - 120px) / 2);
+        }
+    }
+</style>
+
+<section id="{{ section.id }}" data-section-id="{{ section.id }}" class="section-{{ section.id }}">
+    {% liquid
+       assign sectionBgImage = section.settings.sectionBgImage
+    %}
+    {% if sectionBgImage != blank %}
+        <style>
+            .section-{{ section.id }}{
+                background-color: #000000;
+                background-image: url({{ sectionBgImage | img_url: 'master' }});
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+            }
+        </style>
+    {% else %}
+        <style>
+            .section-{{ section.id }}{
+                background-color: #000000;
+            }
+        </style>
+    {% endif %}
+
+    {% if section.settings.sectionTitle != blank or section.settings.sectionDesc != blank %}
+        <div class="head-cont">
+            {% if section.settings.sectionTitle != blank %}
+                <div class="head-cont-title">{{ section.settings.sectionTitle }}</div>
+            {% endif %}
+            {% if section.settings.sectionDesc != blank %}
+                <div class="head-cont-desc">{{ section.settings.sectionDesc }}</div>
+            {% endif %}
+        </div>
+    {% endif %}
+    <div class="tab-container-block">
+        {% for block in section.blocks %}
+            {% if block.type == "tabItem" %}
+                <div class="tab-item-cont">
+                    <div class="item-image item-image-pc" style="padding-top: {% unless block.settings.tabItemImage.presentation.focal_point == '50.0% 50.0%' %}{{ 1 | divided_by: block.settings.tabItemImage.aspect_ratio | times: 110 | append: '%' }}{% else %}{{ 1 | divided_by: block.settings.tabItemImage.aspect_ratio | times: 100 | append: '%' }}{% endunless %}" title="{{ block.settings.tabItemImage.alt | default: shop.name | escape }}">
+                        <img src="{{ block.settings.tabItemImage | img_url: 'master' }}"
+                            width="{{ block.settings.tabItemImage.width }}"
+                            height="{{ block.settings.tabItemImage.height }}"
+                            alt="{{ block.settings.tabItemImage.alt }}" />
+                    </div>
+                    <div class="item-image item-image-mb" style="padding-top: {% unless block.settings.tabItemImage_mb.presentation.focal_point == '50.0% 50.0%' %}{{ 1 | divided_by: block.settings.tabItemImage_mb.aspect_ratio | times: 110 | append: '%' }}{% else %}{{ 1 | divided_by: block.settings.tabItemImage_mb.aspect_ratio | times: 100 | append: '%' }}{% endunless %}" title="{{ block.settings.tabItemImage_mb.alt | default: shop.name | escape }}">
+                        <img src="{{ block.settings.tabItemImage_mb | img_url: 'master' }}"
+                            width="{{ block.settings.tabItemImage_mb.width }}"
+                            height="{{ block.settings.tabItemImage_mb.height }}"
+                            alt="{{ block.settings.tabItemImage_mb.alt }}" />
+                    </div>
+                    <div class="item-text-cont">
+                        <div class="left-c">
+                            <div class="item-cont-title">{{ block.settings.tabItemTitle }}</div>
+                            <div class="item-cont-desc">{{ block.settings.tabItemDesc }}</div>
+                        </div>
+                        <div class="right-c">
+                            <svg width="46" height="46" viewBox="0 0 46 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="23" cy="23" r="22" stroke="white" stroke-width="2"/>
+                                <path d="M36.8483 23.7071C37.2388 23.3166 37.2388 22.6834 36.8483 22.2929L30.4843 15.9289C30.0938 15.5384 29.4606 15.5384 29.0701 15.9289C28.6796 16.3195 28.6796 16.9526 29.0701 17.3431L34.727 23L29.0701 28.6569C28.6796 29.0474 28.6796 29.6805 29.0701 30.0711C29.4606 30.4616 30.0938 30.4616 30.4843 30.0711L36.8483 23.7071ZM9.85547 23V24H36.1412V23V22H9.85547V23Z" fill="white"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+    <div class="container-all">
+        <div class="tabs-cont">
+            <div class="tabs-items">
+                <div class="item-title">{{ section.settings.activeTabTitle }}</div>
+                <div class="item-active-line item-active-line-next">0</div>
+                <div class="item-time">{{ section.settings.activeTabTime }}</div>
+            </div>
+            <div class="tabs-items">
+                <div class="item-title">{{ section.settings.nextTabTitle }}</div>
+                <div class="item-active-line item-active-line-active">
+                    <svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M13 2C19.0751 2 24 6.92487 24 13C24 19.0751 19.0751 24 13 24C6.92487 24 2 19.0751 2 13C2 6.92487 6.92487 2 13 2Z" fill="#970000" stroke="#500000" stroke-width="4"/>
+                    </svg>
+                </div>
+                <div class="item-time">{{ section.settings.nextTabTime }}</div>
+            </div>
+        </div>
+        <div class="cont-titek-desc">
+            <div class="title-text">{{ section.settings.tabTitle }}</div>
+            <div class="desc-text">
+                <div>{{ section.settings.tabSubDescripe }}</div>
+                {{ section.settings.tabDescripe }}
+                <div>{{ section.settings.tabDescripe-2 }}</div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+
+    $('.tab-item-cont').on('click', function(){
+        {% comment %} --- 滚动到指定 ID --- {% endcomment %}
+        const target = $('#black-firday-section-target');
+        if (target.length > 0) {
+            $('html, body').animate({
+                scrollTop: target.offset().top
+            }, 500);
+        }
+
+        const index = $(this).index('.tab-item-cont');
+        const url = new URL(window.location.href);
+
+        const $boxes = $(".black-friday-container .container-box");
+        $boxes.addClass('hidden');
+        $boxes.eq(index).removeClass('hidden');
+
+        {% comment %} 如果点击的是索引为1的按钮（第二个，bundle） {% endcomment %}
+        if (index === 1) {
+            $('.filter-cont').addClass("hidden");
+            url.searchParams.set('tab', 'bundle'); 
+            
+        } else {
+            $('.filter-cont').removeClass("hidden");
+            {% comment %} 如果点击的是其他按钮，就移除 tab 参数（可选） {% endcomment %}
+            url.searchParams.delete('tab');
+        }
+        window.history.replaceState(null, '', url.toString());
+    
+    })
+</script>
+
+{% schema %}
+{
+    "name": "BlackFriday Tabs Progress",
+    "settings": [
+        {
+            "type": "image_picker",
+            "id": "sectionBgImage",
+            "label": "section background Image"
+        },
+        {
+            "type": "text",
+            "id": "sectionTitle",
+            "label": "section Title",
+            "default": "Black Friday Sale"
+        },
+        {
+            "type": "text",
+            "id": "sectionDesc",
+            "label": "section desc",
+            "default": "Save $100 for chairs | Save $150 for desks | Bundle Save Up to $500"
+        },
+        {
+            "type": "text",
+            "id": "activeTabTitle",
+            "label": "Active Tab Title",
+            "default": "Black Friday Sale"
+        },
+        {
+            "type": "text",
+            "id": "activeTabTime",
+            "label": "Active Tab Time",
+            "default": "Nov.1st-Nov.30th"
+        },
+        {
+            "type": "text",
+            "id": "nextTabTitle",
+            "label": "Next Tab Title",
+            "default": "Cyber Monday Sale"
+        },
+        {
+            "type": "text",
+            "id": "nextTabTime",
+            "label": "Next Tab Time",
+            "default": "Dec.1st-Dec.7th"
+        },
+        {
+            "type": "text",
+            "id": "tabTitle",
+            "label": "Title",
+            "default": "Our Black Friday is LIVE!"
+        },
+        {
+            "type": "text",
+            "id": "tabSubDescripe",
+            "label": "sub desc",
+            "default": "Order now, you will enjoy 30-day price protection and guaranteed faster shipping on early orders."
+        },
+        {
+            "type": "text",
+            "id": "tabDescripe",
+            "label": "description",
+            "default": "Act now - inventory is selling out and waiting will only push back your delivery!"
+        },
+        {
+            "type": "text",
+            "id": "tabDescripe-2",
+            "label": "description 2"
+        }
+    ],
+    "blocks": [
+        {
+            "type": "tabItem",
+            "name": "tabItem",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "tabItemImage",
+                    "label": "Tab Item Image"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "tabItemImage_mb",
+                    "label": "Tab Item Image Mobile"
+                },
+                {
+                    "type": "text",
+                    "id": "tabItemTitle",
+                    "label": "Tab Item Title"
+                },
+                {
+                    "type": "text",
+                    "id": "tabItemDesc",
+                    "label": "Tab Item Descripe"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "BlackFriday Tabs Progress"
+        }
+    ]
+}
+{% endschema %}

@@ -1,0 +1,264 @@
+{{ 'buypage-section-3.css' | asset_url | stylesheet_tag }}
+
+<div class="buypage_section_3">
+  {%- for block in section.blocks -%}
+    {%- case block.type -%}
+      {% when 'first_part' %}
+        <div class="first_part">
+          <div class="first_part_contain">
+            <div class="first_part_title">{{ block.settings.title }}</div>
+            {% assign poster_image = block.settings.cover | image_url %}
+            {% if block.settings.video != blank %}
+              {{
+                block.settings.video
+                | video_tag:
+                  class: 'first_part_video',
+                  loop: true,
+                  muted: true,
+                  playsinline: true,
+                  preload: 'none',
+                  poster: poster_image,
+                  autoplay: true
+              }}
+            {% else %}
+              {% render 'picture-simple',
+                image: block.settings.cover,
+                image_mobile: block.settings.cover_mobile,
+                mobile_widths: '350,450,550,650',
+                mobile_dpr: 1,
+                class_str: 'first_part_video',
+                widths_sizes: '70vw'
+              %}
+              {% comment %}
+                {{-
+                  block.settings.cover
+                  | image_url: width: block.settings.cover.width
+                  | image_tag: alt: block.settings.cover.alt, class: 'first_part_video', loading: 'lazy'
+                -}}
+              {% endcomment %}
+            {% endif %}
+            <div class="first_part_contain_line">
+              <div class="first_part_subtitle">{{ block.settings.subtitle }}</div>
+              <div class="first_part_text">{{ block.settings.text }}</div>
+            </div>
+          </div>
+        </div>
+      {%- when 'second_part' -%}
+        <div class="second_part">
+          {% assign list = '1,2,3' | split: ',' %}
+          {% for item in list %}
+            {% assign text = 'text_' | append: item %}
+            {% assign image = 'image_' | append: item %}
+            <div class="second_part_item">
+              {% render 'picture-simple',
+                image: block.settings[image],
+                image_mobile: block.settings[image],
+                mobile_widths: '350,450,550,650',
+                mobile_dpr: 1,
+                class_str: 'second_part_item_img',
+                widths_sizes: '30vw'
+              %}
+              {% comment %}
+                {{-
+                  block.settings[image]
+                  | image_url: width: block.settings[image].width
+                  | image_tag: alt: block.settings[image].alt, class: 'second_part_item_img', loading: 'lazy'
+                -}}
+              {% endcomment %}
+              <div class="second_part_item_text">{{ block.settings[text] }}</div>
+            </div>
+          {% endfor %}
+        </div>
+    {%- endcase -%}
+  {% endfor %}
+</div>
+
+{% assign script_init = blank %}
+{%- for block in section.blocks -%}
+  {%- case block.type -%}
+    {%- when 'second_part' -%}
+      {% if script_init == blank %}
+        {% assign script_init = true %}
+        <script>
+          (function ($) {
+            function initOrDestroySlick() {
+              const $slider = $('.buypage_section_3 .second_part');
+
+              if (window.innerWidth > 768) {
+                if (!$slider.hasClass('slick-initialized')) {
+                  $slider.slick({
+                    variableWidth: true,
+                    slidesToScroll: 1,
+                    arrows: false,
+                    waitForAnimate: false,
+                    infinite: false,
+                    centerMode: true,
+                  });
+                  blockTransform(document.querySelector('.buypage_section_3 .second_part .slick-track'));
+                }
+              } else {
+                if ($slider.hasClass('slick-initialized')) {
+                  $slider.slick('unslick');
+                }
+              }
+            }
+
+            function blockTransform(el) {
+              if (window.innerWidth <= 768) return;
+              const style = el.style;
+              let _transform = style.transform;
+
+              Object.defineProperty(style, 'transform', {
+                get() {
+                  return _transform;
+                },
+                set(v) {
+                  const list = el.closest('.slick-list');
+                  const parent = el.closest('.slick-initialized').parentNode;
+                  const track = el;
+                  const slides = track.children;
+
+                  if (!list || !slides.length) return;
+
+                  const wrapperWidth = list.clientWidth;
+                  const lastSlide = slides[slides.length - 1];
+                  const lastSlideWidth = lastSlide.offsetWidth + parseFloat(getComputedStyle(lastSlide).marginRight);
+                  const totalItems = slides.length;
+                  const contentWidth = lastSlideWidth * totalItems;
+                  let maxOffset = contentWidth - wrapperWidth;
+                  if (maxOffset < 0) maxOffset = 0;
+
+                  function clampTranslate() {
+                    if (!v || v === 'none') return;
+
+                    let currentX = null;
+
+                    let matchMatrix = v.match(/matrix\(1,\s*0,\s*0,\s*1,\s*(-?\d+)/);
+                    let match3d = v.match(/translate3d\(\s*(-?\d+)px/);
+
+                    if (matchMatrix) {
+                      currentX = parseInt(matchMatrix[1], 10);
+                    } else if (match3d) {
+                      currentX = parseInt(match3d[1], 10);
+                    } else {
+                      return;
+                    }
+
+                    if (currentX < -maxOffset) {
+                      _transform = `translate3d(${-maxOffset}px, 0, 0)`;
+                    } else {
+                      _transform = v;
+                    }
+
+                    style.setProperty('transform', _transform);
+                  }
+
+                  clampTranslate();
+                },
+              });
+            }
+
+            $(function () {
+              initOrDestroySlick();
+              let resizeTimer;
+              $(window).on('resize', function () {
+                clearTimeout(resizeTimer);
+                resizeTimer = setTimeout(initOrDestroySlick, 200);
+              });
+            });
+          })(jQuery);
+        </script>
+      {% endif %}
+  {%- endcase -%}
+{% endfor %}
+
+{% schema %}
+{
+  "name": "buypage section 3",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [],
+  "blocks": [
+    {
+      "type": "first_part",
+      "name": "first part",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "title",
+          "label": "title"
+        },
+        {
+          "type": "textarea",
+          "id": "subtitle",
+          "label": "subtitle"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "text"
+        },
+        {
+          "type": "image_picker",
+          "id": "cover",
+          "label": "cover"
+        },
+        {
+          "type": "image_picker",
+          "id": "cover_mobile",
+          "label": "cover mobile"
+        },
+        {
+          "type": "video",
+          "id": "video",
+          "label": "video"
+        }
+      ]
+    },
+    {
+      "type": "second_part",
+      "name": "second part",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "text_1",
+          "label": "text 1"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_1",
+          "label": "image 1"
+        },
+        {
+          "type": "textarea",
+          "id": "text_2",
+          "label": "text 2"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_2",
+          "label": "image 2"
+        },
+        {
+          "type": "textarea",
+          "id": "text_3",
+          "label": "text 3"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_3",
+          "label": "image 3"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "buypage section 3"
+    }
+  ]
+}
+{% endschema %}

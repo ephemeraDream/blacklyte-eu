@@ -1,0 +1,276 @@
+<style>
+    .section-{{ section.id }}{
+        padding-top: 100px;
+        padding-bottom: 100px;
+        background: #F3F3F3;
+    }
+    .section-{{ section.id }} .container-full{
+        padding-left: 16%;
+        padding-right: 16%;
+    }
+    .section-{{ section.id }} .head-cont{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+    .section-{{ section.id }} .head-cont .header-title{
+        font-family: Poppins;
+        font-weight: 600;
+        font-style: SemiBold;
+        font-size: 40px;
+        line-height: 50px;
+        letter-spacing: 0%;
+        text-align: center;
+        vertical-align: middle;
+        color: #262629;
+    }
+    .section-{{ section.id }} .head-cont .header-descripe{
+        font-family: Poppins;
+        font-weight: 500;
+        font-style: Medium;
+        font-size: 16px;
+        line-height: 24px;
+        letter-spacing: 0%;
+        text-align: center;
+        vertical-align: middle;
+        color: rgba(38, 38, 41, 0.7);
+    }
+    .section-{{ section.id }} .feature-lists{
+        display: flex;
+        flex-direction: column;
+        margin-top: 52px;
+        gap: 130px;
+    }
+    .section-{{ section.id }} .feature-lists .feature-item{
+        display: flex;
+        align-items: center;
+        gap: 50px;
+    }
+    .section-{{ section.id }} .feature-lists  .feature-item-right{
+        flex-direction: row-reverse;
+        gap: 80px;
+    }
+    .section-{{ section.id }} .feature-lists .feature-item img{
+        height: auto;
+    }
+    .section-{{ section.id }} .feature-lists .feature-item .item-left,
+    .section-{{ section.id }} .feature-lists .feature-item .item-right{
+        width: calc((100% - 38px) / 2);
+    }
+    .section-{{ section.id }} .feature-lists .feature-item .item-right{
+        gap: 10px;
+    }
+
+    .section-{{ section.id }} .feature-lists .feature-item .item-right-title{
+        font-family: Poppins;
+        font-weight: 600;
+        font-style: SemiBold;
+        font-size: 30px;
+        line-height: 1.4;
+        letter-spacing: 0%;
+        vertical-align: middle;
+        color: #262629;
+    }
+    .section-{{ section.id }} .feature-lists .feature-item .item-right-desc,
+    .section-{{ section.id }} .feature-lists .feature-item .item-right-desc-2{
+        font-family: Poppins;
+        font-weight: 500;
+        font-style: Medium;
+        font-size: 16px;
+        line-height: 24px;
+        letter-spacing: 0%;
+        vertical-align: middle;
+        color: rgba(38, 38, 41, 0.7);
+        margin-top: 10px;
+    }
+    .section-{{ section.id }} .feature-lists .feature-item .item-right-desc-2{
+        margin-top: 10px;
+    }
+
+    {% comment %} iPhone {% endcomment %}
+    @media(max-width: 767px){
+        .section-{{ section.id }}{
+            padding-top: 50px;
+            padding-bottom: 50px;
+        }
+        .section-{{ section.id }} .container-full{
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+        .section-{{ section.id }} .head-cont .header-title{
+            font-size: 24px;
+            line-height: 1.4;
+        }
+        .section-{{ section.id }} .head-cont .header-descripe{
+            font-size: 14px;
+            line-height: 20px;
+        }
+        .section-{{ section.id }} .feature-lists .feature-item{
+            gap: 20px;
+            flex-direction: column;  
+        }
+        .section-{{ section.id }} .feature-lists .feature-item .item-left,
+        .section-{{ section.id }} .feature-lists .feature-item .item-right{
+            width: 100%;
+        }
+        .section-{{ section.id }} .feature-lists{
+            gap: 50px;
+        }
+        .section-{{ section.id }} .feature-lists .feature-item .item-right-title{
+            font-size: 20px;
+        }
+        .section-{{ section.id }} .feature-lists .feature-item .item-right-desc,
+        .section-{{ section.id }} .feature-lists .feature-item .item-right-desc-2{
+            font-size: 14px;
+        }
+        
+    }
+
+    {% comment %} iPad {% endcomment %}
+    @media(min-width: 768px) and (max-width: 1024px){
+        .section-{{ section.id }} .container-full{
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+        .section-{{ section.id }} .head-cont .header-title{
+            font-size: 30px;
+            line-height: 1.4;
+        }
+        .section-{{ section.id }} .head-cont .header-descripe{
+            font-size: 14px;
+            line-height: 20px;
+        }
+        .section-{{ section.id }} .feature-lists .feature-item{
+            gap: 30px;
+        }
+        .section-{{ section.id }} .feature-lists .feature-item-right{
+            gap: 40px;
+        }
+        .section-{{ section.id }} .feature-lists .feature-item .item-right-title{
+            font-size: 18px;
+            line-height: 1.4;
+        }
+        .section-{{ section.id }} .feature-lists .feature-item .item-right-desc,
+        .section-{{ section.id }} .feature-lists .feature-item .item-right-desc-2{
+            font-size: 12px;
+            line-height: 18px;
+        }
+        .section-{{ section.id }} .feature-lists{
+            gap: 70px;
+        }
+    }
+
+    @media (min-width: 1025px) and (max-width: 1480px){
+        .section-{{ section.id }} .container-full{
+            padding-left: 60px;
+            padding-right: 60px;
+        }
+    }
+
+
+</style>
+
+<section class="section-{{ section.id }}" id="{{ section.id }}" data-section-id="{{ section.id }}">
+    <div class="container-full">
+        <div class="head-cont">
+            {% if section.settings.sectionTitle != blank %}
+                <div class="header-title">{{ section.settings.sectionTitle }}</div>
+            {% endif %}
+            {% if section.settings.sectionDescripe != blank %}
+                <div class="header-descripe">{{ section.settings.sectionDescripe }}</div>
+            {% endif %}
+        </div>
+        <div class="feature-lists">
+            {% for block in section.blocks %}
+                <div class="feature-item feature-item-{{ block.settings.itemdirector }}">
+                    <div class="item-left">
+                        <img srcset="{{ block.settings.itemFeatureImage | img_url: 'master' }}"
+                            width="{{ block.settings.itemFeatureImage.width }}"
+                            height="{{ block.settings.itemFeatureImage.height }}"
+                            alt="{{ block.settings.itemFeatureImage.alt }}" />
+                    </div>
+                    <div class="item-right">
+                        {% if block.settings.itemTitle != blank %}
+                            <div class="item-right-title">{{ block.settings.itemTitle }}</div>
+                        {% endif %}
+                        {% if block.settings.itemDesc != blank %}
+                            <div class="item-right-desc">{{ block.settings.itemDesc }}</div>
+                        {% endif %}
+                        {% if block.settings.itemSubDesc != blank %}
+                            <div class="item-right-desc-2">{{ block.settings.itemSubDesc }}</div>
+                        {% endif %}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+
+    </div>
+</section>
+
+{% schema %}
+{
+    "name": "gaming Event Features",
+    "settings": [
+        {
+            "type": "text",
+            "id": "sectionTitle",
+            "label": "section Title",
+            "default": "Settling only for the best gaming chair"
+        },
+        {
+            "type": "text",
+            "id": "sectionDescripe",
+            "label": "section Descripe",
+            "default": "Don't make do with a gaming chair — or any chair — that is not made to suit you. Discover what makes a Secretlab gaming chair the winning advantage for your work, play, and everything in between."
+        }
+    ],
+    "blocks": [
+        {
+            "type": "item",
+            "name": "item",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "itemFeatureImage",
+                    "label": "item Feature Image"
+                },
+                {
+                    "type": "text",
+                    "id": "itemTitle",
+                    "label": "item Feature Title"
+                },
+                {
+                    "type": "text",
+                    "id": "itemDesc",
+                    "label": "item Feature Descripe"
+                },
+                {
+                    "type": "text",
+                    "id": "itemSubDesc",
+                    "label": "item Feature Sub Descripe"
+                },
+                {
+                    "type": "select",
+                    "id": "itemdirector",
+                    "label": "item Select",
+                    "options": [
+                        {
+                            "value": "left",
+                            "label": "left"
+                        },
+                        {
+                            "value": "right",
+                            "label": "right"
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "gaming Event Features"
+        }
+    ]
+}
+{% endschema %}

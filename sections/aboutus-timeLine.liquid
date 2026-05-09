@@ -1,0 +1,133 @@
+<style>
+    .section-{{ section.id }}{
+        padding-top:  130px;
+        padding-bottom: 130px;
+        background: #EBEBEB;
+    }
+    .section-{{ section.id }} .container-full{
+        padding-left: 16%;
+        padding-right: 16%;
+    }
+    .section-{{ section.id }} .head{
+        margin-bottom: 20px;
+    }
+    .section-{{ section.id }} .head .section-title{
+        font-family: Poppins;
+        font-weight: 600;
+        font-size: 30px;
+        line-height: 100%;
+        letter-spacing: 0%;
+        text-align: center;
+        color: #262629;
+        text-align: center;
+    }
+
+    .section-{{ section.id }} .timeline img {
+        height: auto;
+    }
+    .section-{{ section.id }} .timeline .item-timeline-pc{
+        display: block;
+    }
+    .section-{{ section.id }} .timeline .item-timeline-mb{
+        display: none;
+    }
+
+
+
+    {% comment %} iPhone {% endcomment %}
+    @media(max-width: 767px){
+        .section-{{ section.id }}{
+            padding-top: 57px;
+            padding-bottom: 50px;
+        }
+        .section-{{ section.id }} .container-full{
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+        .section-{{ section.id }} .timeline .item-timeline-pc{
+            display: none;
+        }
+        .section-{{ section.id }} .timeline .item-timeline-mb{
+            display: block;
+            width: 90%;
+        }
+        .section-{{ section.id }} .head .section-title{
+            font-size: 26px;
+        }
+
+    }
+
+    {% comment %} iPad {% endcomment %}
+    @media(min-width: 768px) and (max-width: 1024px){
+        .section-{{ section.id }} .container-full{
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+    }
+
+
+    @media(min-width: 1025px) and (max-width: 1480px){
+        .section-{{ section.id }} .container-full{
+            padding-left: 60px;
+            padding-right: 60px;
+        }
+    }
+</style>
+
+<section class="section-{{ section.id }}" id="{{ section.id }}" data-section-id="{{ section.id }}">
+    <div class="container-full">
+        <div class="head">
+            {% if section.settings.sectionTitle != blank %}
+                <div class="section-title">{{ section.settings.sectionTitle }}</div>
+            {% endif %}
+        </div>
+        <div class="timeline">
+            {% if section.settings.itemTimelineImage != blank %}
+                <img srcset="{{ section.settings.itemTimelineImage | img_url: 'master' }}"
+                    height="{{ section.settings.itemTimelineImage.height }}"
+                    width="{{ section.settings.itemTimelineImage.width }}"
+                    alt="{{ section.settings.itemTimelineImage.alt }}"
+                    class="item-timeline-pc">
+            {% endif %}
+            {% if section.settings.itemTimelineImageMobile != blank %}
+                <img srcset="{{ section.settings.itemTimelineImageMobile | img_url: 'master' }}"
+                    height="{{ section.settings.itemTimelineImageMobile.height }}"
+                    width="{{ section.settings.itemTimelineImageMobile.width }}"
+                    alt="{{ section.settings.itemTimelineImageMobile.alt }}"
+                    class="item-timeline-mb" />
+            {% endif %}
+        </div>
+
+    </div>
+</section>
+
+
+{% schema %}
+{
+    "name": "aboutus TimeLine",
+    "settings": [
+        {
+            "type": "text",
+            "id": "sectionTitle",
+            "label": "section Title",
+            "default": "MileStones"
+        },
+        {
+            "type": "image_picker",
+            "id": "itemTimelineImage",
+            "label": "item Time Line Image"
+        },
+        {
+            "type": "image_picker",
+            "id": "itemTimelineImageMobile",
+            "label": "item Time Line Image Mobile"
+        }
+    ],
+    "blocks": [ ],
+    "presets": [
+        {
+            "name": "aboutus TimeLine"
+        }
+    ]
+}
+{% endschema %}

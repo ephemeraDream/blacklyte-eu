@@ -1,0 +1,92 @@
+.ergonomics_section_seven {
+  max-width: 100vw;
+  background-color: #ebebeb;
+  padding: 0 15.625vw;
+}
+
+.ergonomics_section_seven .ergonomics_section_seven_head {
+  padding-top: 6.09375vw;
+  display: flex;
+  align-items: flex-start;
+  gap: 3.90625vw;
+}
+
+.ergonomics_section_seven .ergonomics_section_seven_title {
+  font-family: Poppins;
+  font-weight: 600;
+  font-style: SemiBold;
+  font-size: 2.0833vw;
+  leading-trim: NONE;
+  line-height: 2.8125vw;
+  letter-spacing: 0%;
+  vertical-align: middle;
+  color: #262629;
+}
+
+.ergonomics_section_seven .ergonomics_section_seven_text {
+  flex: 0 0 auto;
+  width: 45vw;
+  font-family: Poppins;
+  font-weight: 500;
+  font-style: Medium;
+  font-size: clamp(14px, 0.9375vw, 0.9375vw);
+  leading-trim: NONE;
+  line-height: clamp(22px, 1.5625vw, 1.5625vw);
+  letter-spacing: 0%;
+  vertical-align: middle;
+  color: rgba(38, 38, 41, .7);
+}
+
+.ergonomics_section_seven .ergonomics_section_seven_contain {
+  margin-top: 2.34375vw;
+  padding-bottom: 6.25vw;
+  border-bottom: 1px solid #BFBFBF;
+  display: flex;
+  gap: 1.09375vw;
+}
+
+.ergonomics_section_seven .ergonomics_section_seven_contain_item {
+  flex: 1;
+}
+
+.ergonomics_section_seven .ergonomics_section_seven_contain_item_img {
+  width: 100%;
+  aspect-ratio: 1.0119;
+  background-color: #D9D9D9;
+  border-radius: 0.46875vw;
+  overflow: hidden;
+}
+
+.ergonomics_section_seven .ergonomics_section_seven_contain_item_img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  border-radius: 0.46875vw;
+}
+
+.ergonomics_section_seven .ergonomics_section_seven_contain_item_title {
+  font-family: Poppins;
+  font-weight: 600;
+  font-style: SemiBold;
+  font-size: 1.25vw;
+  leading-trim: NONE;
+  line-height: 1.875vw;
+  letter-spacing: 0%;
+  vertical-align: middle;
+  margin-top: 1.25vw;
+  color: #262629;
+}
+
+.ergonomics_section_seven .ergonomics_section_seven_contain_item_text {
+  font-family: Poppins;
+  font-weight: 500;
+  font-style: Medium;
+  font-size: clamp(14px, 0.9375vw, 0.9375vw);
+  leading-trim: NONE;
+  line-height: clamp(22px, 1.5625vw, 1.5625vw);
+  letter-spacing: 0%;
+  vertical-align: middle;
+  margin-top: 0.46875vw;
+  color: rgba(38, 38, 41, .7);
+}

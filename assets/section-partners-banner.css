@@ -1,0 +1,90 @@
+.partners_banner {
+  width: 100vw;
+  height: 47.395833vw;
+  overflow: hidden;
+  position: relative;
+}
+
+.partners_banner .partners_banner_contain {
+  display: flex;
+  height: 100%;
+  animation: scrollLeft 40s linear infinite;
+}
+
+.partners_banner .partners_banner_contain_item {
+  flex: 0 0 auto;
+  width: 33.33vw;
+  object-fit: cover;
+  object-position: center center;
+  height: 100%;
+}
+
+@keyframes scrollLeft {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(var(--scroll-width));
+  }
+}
+
+.partners_banner .partners_banner_info {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: #00000080;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  flex-direction: column;
+}
+
+.partners_banner .partners_banner_title {
+  font-family: Roboto;
+  font-weight: 700;
+  font-style: Bold;
+  font-size: 50px;
+  leading-trim: NONE;
+  line-height: 100%;
+  letter-spacing: 0%;
+  color: #FFFFFF;
+}
+
+.partners_banner .partners_banner_text {
+  font-family: Roboto;
+  font-weight: 500;
+  font-style: Medium;
+  font-size: 16px;
+  leading-trim: NONE;
+  line-height: 24px;
+  letter-spacing: 0.32px;
+  text-align: center;
+  color: rgba(255, 255, 255, .7);
+  margin-top: 0.9375vw;
+  width: 43.125vw;
+}
+
+@media screen and (max-width: 768px) {
+  .partners_banner {
+    height: 157.6vw;
+  }
+
+  .partners_banner .partners_banner_contain_item {
+    width: 66.66vw;
+  }
+
+  .partners_banner .partners_banner_title {
+    font-size: 30px;
+  }
+
+  .partners_banner .partners_banner_text {
+    width: 100%;
+    font-size: 14px;
+    line-height: 22px;
+    margin-top: 3.2vw;
+  }
+}

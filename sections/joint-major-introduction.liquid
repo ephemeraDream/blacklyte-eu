@@ -1,0 +1,101 @@
+{{ 'section-joint-major-introduction.css' | asset_url | stylesheet_tag }}
+
+<style>
+  .major_introduction {
+    background: url('{{ section.settings.background_img | image_url }}') no-repeat;
+    background-size: cover;
+    background-position: center center;
+  }
+  @media screen and (max-width: 1000px) {
+    .major_introduction {
+      background: url('{{ section.settings.background_img_mobile | image_url }}') no-repeat;
+    }
+  }
+</style>
+
+<div class="major_introduction">
+  <div class="major_introduction_title">{{ section.settings.title }}</div>
+  <div class="major_introduction_text">{{ section.settings.description }}</div>
+  {% for block in section.blocks %}
+    <div class="major_introduction_item">
+      <div class="major_introduction_item_info">
+        <div class="major_introduction_item_subtitle">{{ block.settings.sub_title }}</div>
+        <div class="major_introduction_item_title">{{ block.settings.title }}</div>
+        <div class="major_introduction_item_desc">{{ block.settings.description }}</div>
+      </div>
+      <div class="major_introduction_item_filebox">
+        {{-
+          block.settings.file_image
+          | image_url: width: block.settings.file_image.width
+          | image_tag: alt: block.settings.title, class: 'major_introduction_item_filebox_image'
+        -}}
+      </div>
+    </div>
+  {% endfor %}
+</div>
+
+{% schema %}
+{
+  "name": "major introduction",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "label": "title"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "description"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_img",
+      "label": "background image"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_img_mobile",
+      "label": "background image mobile"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "item",
+      "settings": [
+        {
+          "type": "richtext",
+          "id": "title",
+          "label": "title"
+        },
+        {
+          "type": "text",
+          "id": "sub_title",
+          "label": "sub title"
+        },
+        {
+          "type": "richtext",
+          "id": "description",
+          "label": "description"
+        },
+        {
+          "type": "image_picker",
+          "id": "file_image",
+          "label": "file image"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "major introduction"
+    }
+  ]
+}
+{% endschema %}

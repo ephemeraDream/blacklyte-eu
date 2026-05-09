@@ -1,0 +1,182 @@
+{{ 'buypage-section-10.css' | asset_url | stylesheet_tag }}
+
+<div class="buypage_section_10" id="{{section.settings.specId}}">
+  {%- for block in section.blocks -%}
+    {%- case block.type -%}
+      {% when 'first_part' %}
+        <div class="first_part">
+          <div class="first_part_title">{{ block.settings.title }}</div>
+          <div class="first_part_text">{{ block.settings.text }}</div>
+          <div class="first_part_content">
+            {% assign list = '1,2,3' | split: ',' %}
+            {% for item in list %}
+              {% assign image = 'image_' | append: item %}
+              {% assign angle = 'angle_' | append: item %}
+              {% assign title = 'title_' | append: item %}
+              <div
+                class="first_part_content_box {% if forloop.first %} active{% endif %}"
+                data-handle="{{ block.settings[title] | handle }}"
+              >
+                {% render 'picture-simple',
+                  image: block.settings[image],
+                  image_mobile: block.settings[image],
+                  mobile_widths: '350,450,550,650',
+                  mobile_dpr: 1,
+                  widths_sizes: '30vw'
+                %}
+                {% comment %}
+                  {{-
+                    block.settings[image]
+                    | image_url: width: block.settings[image].width
+                    | image_tag: alt: block.settings[image].alt
+                  -}}
+                {% endcomment %}
+                <div class="first_part_content_box_angle">{{ block.settings[angle] }}</div>
+              </div>
+            {% endfor %}
+            <div class="first_part_content_tab_box">
+              {% for item in list %}
+                {% assign title = 'title_' | append: item %}
+                {% assign text = 'text_' | append: item %}
+                <div
+                  class="first_part_content_tab {% if forloop.first %} active{% endif %}"
+                  data-handle="{{ block.settings[title] | handle }}"
+                >
+                  <div class="first_part_content_tab_title">{{ block.settings[title] }}</div>
+                  <div class="first_part_content_tab_text">{{ block.settings[text] }}</div>
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+    {%- endcase -%}
+  {% endfor %}
+</div>
+
+<script>
+  (() => {
+    document.querySelectorAll('#shopify-section-{{ section.id }} .first_part_content_tab').forEach((item) => {
+      item.addEventListener('click', (e) => {
+        const tab = e.target.closest('.first_part_content_tab');
+        if (!tab) return;
+        const handle = tab.dataset.handle;
+        const section = tab.closest('.buypage_section_10');
+        if (!section) return;
+        const tabs = section.querySelectorAll('.first_part_content_tab');
+        const boxes = section.querySelectorAll('.first_part_content_box');
+
+        tabs.forEach((t) => t.classList.remove('active'));
+        boxes.forEach((b) => b.classList.remove('active'));
+
+        tab.classList.add('active');
+
+        const targetBox = section.querySelector(`.first_part_content_box[data-handle="${handle}"]`);
+
+        if (targetBox) {
+          targetBox.classList.add('active');
+        }
+      });
+    });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "buypage section 10",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "specId",
+      "label": "specId"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "first_part",
+      "name": "first part",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "title",
+          "label": "title"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "text"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_1",
+          "label": "image 1"
+        },
+        {
+          "type": "text",
+          "id": "title_1",
+          "label": "title 1"
+        },
+        {
+          "type": "textarea",
+          "id": "text_1",
+          "label": "text 1"
+        },
+        {
+          "type": "text",
+          "id": "angle_1",
+          "label": "angle 1"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_2",
+          "label": "image 2"
+        },
+        {
+          "type": "text",
+          "id": "title_2",
+          "label": "title 2"
+        },
+        {
+          "type": "textarea",
+          "id": "text_2",
+          "label": "text 2"
+        },
+        {
+          "type": "text",
+          "id": "angle_2",
+          "label": "angle 2"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_3",
+          "label": "image 3"
+        },
+        {
+          "type": "text",
+          "id": "title_3",
+          "label": "title 3"
+        },
+        {
+          "type": "textarea",
+          "id": "text_3",
+          "label": "text 3"
+        },
+        {
+          "type": "text",
+          "id": "angle_3",
+          "label": "angle 3"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "buypage section 10"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,1354 @@
+/* athena pro black */
+#CollectionSection-template--17951219319033__product-grid [data-variant-id="45814724002041"] .card-price .price__last .price-item {
+  font-size: 14px;
+  text-decoration: line-through;
+}
+#CollectionSection-template--17951219319033__product-grid [data-variant-id="45814724002041"] .card-price .price__last:before {
+  content: '€449.00';
+  font-size: 16px;
+  color: #dc2625;
+  margin-righ: 6px;
+}
+/* athena black */
+#CollectionSection-template--17951219319033__product-grid [data-variant-id="45814720200953"] .card-price .price__last .price-item {
+  font-size: 14px;
+  text-decoration: line-through;
+}
+#CollectionSection-template--17951219319033__product-grid [data-variant-id="45814720200953"] .card-price .price__last:before {
+  content: '€359.00';
+  font-size: 16px;
+  color: #dc2625;
+  margin-right: 6px;
+}
+/* kraken black */
+#CollectionSection-template--17951219319033__product-grid [data-variant-id="45607220216057"] .card-price .price__last .price-item {
+  font-size: 14px;
+  text-decoration: line-through;
+}
+#CollectionSection-template--17951219319033__product-grid [data-variant-id="45607220216057"] .card-price .price__last:before {
+  content: '€469.00';
+  font-size: 16px;
+  color: #dc2625;
+  margin-right: 6px;
+}
+/* kraken pro black */
+#CollectionSection-template--17951219319033__product-grid [data-variant-id="45458536956153"] .card-price .price__last .price-item {
+  font-size: 14px;
+  text-decoration: line-through;
+}
+#CollectionSection-template--17951219319033__product-grid [data-variant-id="45458536956153"] .card-price .price__last:before {
+  content: '€539.00';
+  font-size: 16px;
+  color: #dc2625;
+  margin-right: 6px;
+}
+/* athena x white */
+#CollectionSection-template--17951219319033__product-grid [data-variant-id="45007065317625"] .card-price .price__last .price-item {
+  font-size: 14px;
+  text-decoration: line-through;
+}
+#CollectionSection-template--17951219319033__product-grid [data-variant-id="45007065317625"] .card-price .price__last:before {
+  content: '€339.00';
+  font-size: 16px;
+  color: #dc2625;
+  margin-right: 6px;
+}
+/* pixel */
+#CollectionSection-template--17951219319033__product-grid [data-variant-id="45623071310073"] .card-price .price__last .price-item {
+  font-size: 14px;
+  text-decoration: line-through;
+}
+#CollectionSection-template--17951219319033__product-grid [data-variant-id="45623071310073"] .card-price .price__last:before {
+  content: '€89.00';
+  font-size: 16px;
+  color: #dc2625;
+  margin-right: 6px;
+}
+
+
+/* r6活动赛事左上角logo */
+#shopify-section-template--17951219319033__product-grid .card-product .card-media {
+  background: #f2f2f2 url('https://cdn.shopify.com/s/files/1/0599/2867/4417/files/product_gaming_gif.gif?v=1737682770') no-repeat;
+  background-size: 5vw;
+  background-position: top left;
+}
+.cursor-wrapper+.productView-images-wrapper .productView-image {
+  background: url('https://cdn.shopify.com/s/files/1/0599/2867/4417/files/product_gaming_gif.gif?v=1737682770') no-repeat;
+  background-size: 130px 130px;
+  background-position: top left;
+}
+
+/* xmas logo icons */
+.header-nav-plain .header-logo.header-item {
+  position: relative;
+}
+.header-nav-plain .header-logo.header-item:before {
+  content: '';
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  background: url('https://cdn.shopify.com/s/files/1/0871/5006/8018/files/xmas_logo_icons.png?v=1733798934') no-repeat;
+  background-size: cover;
+  position: absolute;
+  left: -14px;
+  top: -8px;
+  z-index: 10;
+  transition: background .4s ease;
+}
+.header-mobile .header-mobile__item.header-mobile__item--logo .header-mobile--icon {
+  position: relative;
+}
+.header-mobile .header-mobile__item.header-mobile__item--logo .header-mobile--icon:before {
+  content: "";
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background: url('https://cdn.shopify.com/s/files/1/0871/5006/8018/files/xmas_logo_icons.png?v=1733798934') no-repeat;
+  background-size: cover;
+  position: absolute;
+  left: -10px;
+  top: 6px;
+}
+/* end xmas logo icons */
+/* 产品列表页 */
+#CollectionSection-template--17951219319033__product-grid .product-item .card-media {
+  box-shadow: 0 0 12px 2px #0000001a;
+}
+/* Athena X */
+#CollectionSection-template--17951219319033__product-grid .product-item[data-product-id="8337380999417"] .card-media {
+  background: url('https://cdn.shopify.com/s/files/1/0702/4053/4777/files/xmas_Athenax_eu_collection.jpg?v=1733809709') no-repeat;
+  background-size: cover;
+}
+/* Athena x pink */
+#CollectionSection-template--17951219319033__product-grid [data-variant-id="45007065350393"] .product-item[data-product-id="8337380999417"] .card-media {
+  background: url('https://cdn.shopify.com/s/files/1/0702/4053/4777/files/xmas_AthenaX_pink.jpg?v=1733967834') no-repeat;
+  background-size: cover;
+}
+/* Athena */
+#CollectionSection-template--17951219319033__product-grid .product-item[data-product-id="8507519664377"] .card-media {
+  background: url('https://cdn.shopify.com/s/files/1/0702/4053/4777/files/xmas_Athena_eu_collection.jpg?v=1733809730') no-repeat;
+  background-size: cover;
+}
+/* Athena pro */
+#CollectionSection-template--17951219319033__product-grid .product-item[data-product-id="8507519729913"] .card-media {
+  background: url('https://cdn.shopify.com/s/files/1/0702/4053/4777/files/xmas_AthenaPro_eu_collection.jpg?v=1733809705') no-repeat;
+  background-size: cover;
+}
+/* Kraken */
+#CollectionSection-template--17951219319033__product-grid .product-item[data-product-id="8507519762681"] .card-media {
+  background: url('https://cdn.shopify.com/s/files/1/0702/4053/4777/files/xmas_Kraken_eu_collection.jpg?v=1733809718') no-repeat;
+  background-size: cover;
+}
+/* Kraken pro */
+#CollectionSection-template--17951219319033__product-grid .product-item[data-product-id="8507519795449"] .card-media {
+  background: url('https://cdn.shopify.com/s/files/1/0702/4053/4777/files/xmas_KrakenPro_eu_collection.jpg?v=1733809734') no-repeat;
+  background-size: cover;
+}
+/* desk */
+#CollectionSection-template--17951219319033__product-grid .product-item[data-product-id="8337387159801"] .card-media {
+  background: url('https://cdn.shopify.com/s/files/1/0702/4053/4777/files/xmas_Atlas_eu_collection.jpg?v=1733809714') no-repeat;
+  background-size: cover;
+}
+/* pixel */
+#CollectionSection-template--17951219319033__product-grid .product-item[data-product-id="8575320719609"] .card-media {
+  background: url('https://cdn.shopify.com/s/files/1/0702/4053/4777/files/xmas_pixelLed_eu_collection.jpg?v=1733809722') no-repeat;
+  background-size: cover;
+}
+
+#CollectionSection-template--17951219319033__product-grid .card-swatch .item .item-wrapper {
+  border: 1px solid #f2f2f2;
+}
+
+/* 单个商品 */
+/* athena x */
+#ProductSection-template--17951220564217__main .cursor-wrapper+.productView-images-wrapper .productView-image {
+    background: url('https://cdn.shopify.com/s/files/1/0702/4053/4777/files/xmas_AthenaX_items.jpg?v=1733818319') no-repeat;
+    background-size: 90% 90%;
+    background-position: center;
+}
+#ProductSection-template--17951220564217__main .productView-thumbnail .productView-thumbnail-link,
+#ProductSection-template--18346561601785__main .productView-thumbnail .productView-thumbnail-link,
+#ProductSection-template--18346561536249__main .productView-thumbnail .productView-thumbnail-link {
+  border: 1px solid #094A35;
+}
+#ProductSection-template--17951220564217__main .slick-arrow svg,
+#ProductSection-template--18346561601785__main .slick-arrow svg,
+#ProductSection-template--18346561536249__main .slick-arrow svg {
+  fill: #fff !important;
+}
+
+#ProductSection-template--18346561569017__main #halloween_settings,
+#ProductSection-template--18346561601785__main #halloween_settings,
+#ProductSection-template--18346561536249__main #halloween_settings,
+#ProductSection-template--17951220531449__main #halloween_settings,
+#ProductSection-template--18141738533113__main #halloween_settings {
+  text-decoration: line-through;
+}
+/* athena pro */
+#ProductSection-template--18346561601785__main .cursor-wrapper+.productView-images-wrapper .productView-image {
+  background: url('https://cdn.shopify.com/s/files/1/0702/4053/4777/files/xmas_AthenaPro_items.jpg?v=1733818319') no-repeat;
+  background-size: 90% 90%;
+  background-position: center;
+}
+/* kraken */
+#ProductSection-template--18346561569017__main .cursor-wrapper+.productView-images-wrapper .productView-image {
+  background: url('https://cdn.shopify.com/s/files/1/0702/4053/4777/files/xmas_Kraken_items.jpg?v=1733818319') no-repeat;
+  background-size: 90% 90%;
+  background-position: center;
+}
+/* kraken pro */
+#ProductSection-template--18346567074041__main .cursor-wrapper+.productView-images-wrapper .productView-image {
+  /* background: url('https://cdn.shopify.com/s/files/1/0702/4053/4777/files/xmas_KrakenPro_items.jpg?v=1733818319') no-repeat; */
+  background: url('https://cdn.shopify.com/s/files/1/0663/6742/2695/files/xmas_krakenpro_ces_eu.jpg?v=1734088174') no-repeat;
+  background-size: 90% 90%;
+  background-position: center;
+}
+#ProductSection-template--18346567074041__main .productView-thumbnail .productView-thumbnail-link,
+#ProductSection-template--18346561569017__main .productView-thumbnail .productView-thumbnail-link {
+  background: url('https://cdn.shopify.com/s/files/1/0663/6742/2695/files/krakenpro_product_links_bgImg.png?v=1731313520') no-repeat;
+  background-size: cover;
+}
+#ProductSection-template--18346567074041__main #halloween_settings {
+  text-decoration: line-through;
+}
+/* athena */
+#ProductSection-template--18346561536249__main .cursor-wrapper+.productView-images-wrapper .productView-image {
+  background: url('https://cdn.shopify.com/s/files/1/0702/4053/4777/files/xmas_Athena_items.jpg?v=1733818319') no-repeat;
+  background-size: 90% 90%;
+  background-position: center;
+}
+/* desk */
+#ProductSection-template--17951220531449__main .cursor-wrapper+.productView-images-wrapper .productView-image {
+  background: url('https://cdn.shopify.com/s/files/1/0702/4053/4777/files/xmas_Atlasdesk_items.jpg?v=1733818319') no-repeat;
+  background-size: 90% 100%;
+  background-position: center;
+}
+/* black friday athena x */
+#shopify-section-template--17951220564217__main {
+  background: url('https://cdn.shopify.com/s/files/1/0663/6742/2695/files/xmas_productItem_bgImg_fir.png?v=1733649354') no-repeat;
+  background-size: cover;
+}
+#shopify-section-template--17951220564217__main #ProductSection-template--17951220564217__main .breadcrumb a,
+#shopify-section-template--17951220564217__main #ProductSection-template--17951220564217__main .breadcrumb span.separate span,
+#shopify-section-template--17951220564217__main #ProductSection-template--17951220564217__main .breadcrumb span.separate svg,
+#shopify-section-template--17951220564217__main #ProductSection-template--17951220564217__main .product_info_descripe_text.productView-title,
+#shopify-section-template--17951220564217__main #ProductSection-template--17951220564217__main .vari_selected_info .title,
+#shopify-section-template--17951220564217__main #ProductSection-template--17951220564217__main .product_selected_list .form__label,
+#shopify-section-template--17951220564217__main #ProductSection-template--17951220564217__main .price-item_title,
+#shopify-section-template--17951220564217__main #ProductSection-template--17951220564217__main .price_list_last .price-item.price-item--sale,
+#shopify-section-template--17951220564217__main #ProductSection-template--17951220564217__main .options_number_and_price .total_price {
+  color: #D6AF7C !important;
+  fill: #D6AF7C !important;
+}
+
+#shopify-section-template--17951220564217__brand_slider_pNXBMM .halo-block-header .title .text,
+#shopify-section-template--17951220564217__brand_slider_pNXBMM .section-block-template--17951220564217__brand_slider_pNXBMM .halo-block-header .rte,
+#shopify-section-template--17951220564217__brand_slider_U6hCPV .section-block-template--17951220564217__brand_slider_U6hCPV .halo-item .text,
+#shopify-section-template--17951220564217__image_banner_ptkAnB #halo-image-banner-template--17951220564217__image_banner_ptkAnB .type-item--special .banner-heading,
+#shopify-section-template--17951220564217__image_banner_FB4VC6 .halo-block-header .title .text,
+#shopify-section-template--17951220564217__brand_slider_KmkVTy .halo-block-header .title .text,
+#shopify-section-template--17951220564217__rich_text_FAbYJg .rich-text__blocks h2 {
+  background: linear-gradient(90deg, #F9DBBF 0%, #CFAA67 100%) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  color: transparent;
+}
+#shopify-section-template--17951220564217__173106054122335821 .shopify-app-block {
+  background: url('https://cdn.shopify.com/s/files/1/0702/4053/4777/files/xmas_productItem_bgImg_fou2.png?v=1733724801') no-repeat !important;
+  background-size: cover !important;
+}
+#shopify-section-template--17951220564217__main #ProductSection-template--17951220564217__main .complementary-products-slider .product-item{
+  border-color: #197356;
+}
+#shopify-section-template--17951220564217__main #ProductSection-template--17951220564217__main .add-ons-products_in_details .product-item,
+#shopify-section-template--17951220564217__main #ProductSection-template--17951220564217__main .vari_selected_info{
+  border-color: rgba(81, 81, 81, 0.5);
+}
+#shopify-section-template--17951220564217__main #ProductSection-template--17951220564217__main .bottom_line {
+  background-color: rgba(81, 81, 81, 0.5);
+}
+#shopify-section-template--17951220564217__main #ProductSection-template--17951220564217__main #product_custom_ID .product__text.des:after {
+  background: url('https://cdn.shopify.com/s/files/1/0663/6742/2695/files/halloween_afterpay_icon_1806d9b4-3fd7-49f2-b8e5-67fa0c7a0ad8.png?v=1729495906') no-repeat;
+  width: 120px;
+  height: 25px;
+  background-size: cover;
+}
+#shopify-section-template--17951220564217__main #ProductSection-template--17951220564217__main #product-price-8337380999417 .ergonomics {
+  background: url('https://cdn.shopify.com/s/files/1/0663/6742/2695/files/xmas_productItem_ergonomics_bgImg.png?v=1733650114') no-repeat;
+  background-size: 100% 100%;
+  border: none;
+  position: relative;
+  margin-top: 30px;
+}
+#shopify-section-template--17951220564217__main #ProductSection-template--17951220564217__main #product-price-8337380999417 .ergonomics:after {
+  content: '';
+  display: inline-block;
+  width: 167px;
+  height: 167px;
+  background: url('https://cdn.shopify.com/s/files/1/0599/2867/4417/files/xmas_productItem_ergonomics_icons.png?v=1733722292') no-repeat;
+  background-size: cover;
+  position: absolute;
+  top: -50%;
+  right: 0;
+}
+#shopify-section-template--17951220564217__main #ProductSection-template--17951220564217__main #product-price-8337380999417 .ergonomics .ergonomics_left_bag_svg svg {
+  fill: none;
+  stroke: none;
+}
+#shopify-section-template--17951220564217__main #ProductSection-template--17951220564217__main #product-price-8337380999417 .ergonomics .ergonomics_left_bag_svg svg path {
+  stroke: #18181B;
+}
+#shopify-section-template--17951220564217__main #ProductSection-template--17951220564217__main #product-price-8337380999417 .ergonomics,
+#shopify-section-template--17951220564217__main #ProductSection-template--17951220564217__main #product-price-8337380999417 .ergonomics_product_variants .form__label{
+  color: #18181B !important;
+}
+/* athena x 划线价与售价 */
+#shopify-section-template--17951220564217__main #ProductSection-template--17951220564217__main #product-price-8337380999417 .ergonomics_right_price {
+  /* font-size: 28px;
+  text-decoration: line-through;
+  font-weight: 500; */
+  color: #B80212;
+  font-size: 40px;
+}
+/* Athena X Pink */
+#shopify-section-template--18742675833081__main #ProductSection-template--18742675833081__main #product-price-8657985863929 .ergonomics_right_price {
+  color: #18181B;
+  font-size: 28px;
+  text-decoration: line-through;
+  font-weight: 500;
+}
+
+#shopify-section-template--18742675833081__main #ProductSection-template--18742675833081__main #product-price-8657985863929 .ergonomics_right_price:before {
+  content: '€319';
+  display: inline-block;
+  font-size: 40px;
+  color: #B80212;
+  margin-right: 10px;
+  font-weight: 700;
+}
+/* end athena x 划线价与售价 */
+
+#shopify-section-template--17951220564217__main #ProductSection-template--17951220564217__main .breadcrumb span:not(.separate) {
+  color: rgba(255, 255, 255, 0.75) !important;
+}
+#shopify-section-template--17951220564217__main #ProductSection-template--17951220564217__main #desktop_title_container .productView-title,
+#shopify-section-template--17951220564217__main #ProductSection-template--17951220564217__main .product-form__input .form__label,
+#shopify-section-template--17951220564217__main #ProductSection-template--17951220564217__main .add-ons-form_title{
+  background: linear-gradient(90deg, #F9DBBF 0%, #CFAA67 100%);
+  -webkit-background-clip: text;  /* Safari */
+  background-clip: text;  /* Chrome, Firefox */
+  color: transparent;
+}
+#shopify-section-template--17951220564217__main #ProductSection-template--17951220564217__main .product-form__radio:checked+.product-form__label .text {
+  border-color: #197356;
+  box-shadow: 0px 0px 5.5px 1px #F8C786;
+  color: #D6AF7C;
+  background-color: #022C1E;
+}
+
+#shopify-section-template--17951220564217__main #ProductSection-template--17951220564217__main .product-form__swatch .product-form__label {
+  border-color: #197356;
+}
+#shopify-section-template--17951220564217__main #ProductSection-template--17951220564217__main .product-form__swatch .product-form__radio:checked+.product-form__label {
+  border-color: #197356;
+  box-shadow: 0px 0px 5.5px 1px #F8C786;
+  color: #D6AF7C;
+}
+#shopify-section-template--17951220564217__main #ProductSection-template--17951220564217__main .product-form__label .pattern_price_text {
+  color: #D6AF7C !important;
+}
+
+#shopify-section-template--17951220564217__main #ProductSection-template--17951220564217__main #complementary-product-data .complementary-products-slider .product {
+  color: #D6AF7C !important;
+}
+#shopify-section-template--17951220564217__main #ProductSection-template--17951220564217__main #complementary-product-data .complementary-products-description {
+  background-color: #022C1E !important;
+  
+}
+#shopify-section-template--17951220564217__main #ProductSection-template--17951220564217__main #complementary-product-data .complementary-products-description .add-ons-form_descripe,
+#shopify-section-template--17951220564217__main #ProductSection-template--17951220564217__main #product_custom_ID .product-customInformation__content .title,
+#shopify-section-template--17951220564217__main #ProductSection-template--17951220564217__main #product_custom_ID .product-customInformation__content .des {
+  color: #D6AF7C !important;
+}
+#shopify-section-template--17951220564217__main #ProductSection-template--17951220564217__main #product_custom_ID {
+  background-color: #053626;
+}
+#shopify-section-template--17951220564217__main #ProductSection-template--17951220564217__main .halo-productView-right .productView-moreItem:nth-last-of-type(-n+4) .product-customInformation__content .title {
+  color: #fff !important;
+}
+#shopify-section-template--17951220564217__main #ProductSection-template--17951220564217__main #product-add-to-cart {
+  background: linear-gradient(90deg, #F9DBBF 0%, #CFAA67 100%);
+  color: #022C1E;
+  border-color: #CFAA67;
+  padding-top: 21px;
+  padding-bottom: 21px;
+}
+
+#shopify-section-template--17951220564217__main #ProductSection-template--17951220564217__main #product-buy-it-now {
+  border-color: #0E563F;
+  color: #D6AF7C;
+  background-color: #022C1E;
+  padding-top: 21px;
+  padding-bottom: 21px;
+  margin-top: 20px;
+}
+#shopify-section-template--17951220564217__main .product-customInformation__icon svg path {
+  stroke: #fff;
+}
+#shopify-section-template--17951220564217__main #ProductSection-template--17951220564217__main .product_form_label_index {
+  display: none;
+}
+#shopify-section-template--17951220564217__main #ProductSection-template--17951220564217__main .product-form__input .form__label:before,
+#shopify-section-template--17951220564217__main #ProductSection-template--17951220564217__main .add-ons-form_title:before {
+  content: '';
+  display: inline-block;
+  width: 57px;
+  height: 61px;
+  background: url('https://cdn.shopify.com/s/files/1/0663/6742/2695/files/xmas_label_icons.png?v=1733650055') no-repeat;
+  background-size: cover;
+  vertical-align: middle;
+}
+#shopify-section-template--17951220564217__brand_slider_U6hCPV .brand-slider .halo-item .description,
+#shopify-section-template--17951220564217__image_banner_ptkAnB #halo-image-banner-template--17951220564217__image_banner_ptkAnB .item .banner-text{
+  color: #D6AF7C;
+}
+
+#shopify-section-template--17951220564217__image_banner_ptkAnB,
+#shopify-section-template--17951220564217__rich_text_FAbYJg,
+#shopify-section-template--17951220564217__173106054122335821,
+#shopify-section-template--17951220564217__image_banner_FB4VC6,
+#shopify-section-template--17951220564217__spotlight_block_CXHkDb,
+#shopify-section-template--17695867109607__custom_image_text_iYhg8U {
+  margin-top: -1px;
+}
+#shopify-section-template--17951220564217__image_banner_ptkAnB #halo-image-banner-template--17951220564217__image_banner_ptkAnB .type-item--special .banner-item {
+  border: 2px solid #136230;
+}
+
+/* end black friday athena x */
+
+/* black friday athena */
+#shopify-section-template--18346561536249__main {
+  background: url('https://cdn.shopify.com/s/files/1/0663/6742/2695/files/xmas_productItem_bgImg_fir.png?v=1733649354') no-repeat;
+  background-size: cover;
+}
+#shopify-section-template--18346561536249__main #ProductSection-template--18346561536249__main .breadcrumb a,
+#shopify-section-template--18346561536249__main #ProductSection-template--18346561536249__main .breadcrumb span.separate span,
+#shopify-section-template--18346561536249__main #ProductSection-template--18346561536249__main .breadcrumb span.separate svg,
+#shopify-section-template--18346561536249__main #ProductSection-template--18346561536249__main .product_info_descripe_text.productView-title,
+#shopify-section-template--18346561536249__main #ProductSection-template--18346561536249__main .vari_selected_info .title,
+#shopify-section-template--18346561536249__main #ProductSection-template--18346561536249__main .product_selected_list .form__label,
+#shopify-section-template--18346561536249__main #ProductSection-template--18346561536249__main .price-item_title,
+#shopify-section-template--18346561536249__main #ProductSection-template--18346561536249__main .price_list_last .price-item.price-item--sale,
+#shopify-section-template--18346561536249__main #ProductSection-template--18346561536249__main .options_number_and_price .total_price {
+  color: #D6AF7C !important;
+  fill: #D6AF7C !important;
+}
+
+#shopify-section-template--18346561536249__main #ProductSection-template--18346561536249__main .coupon_modal .coupon_modal_title,
+#shopify-section-template--18346561536249__main #ProductSection-template--18346561536249__main .coupon_modal .coupon_modal_desc,
+#shopify-section-template--18346561601785__brand_slider_pNXBMM .section-block-template--18346561601785__brand_slider_pNXBMM .halo-block-header .title,
+#shopify-section-template--18346561536249__image_banner_M4AYNM .halo-block-header .title .text,
+#shopify-section-template--18346561536249__brand_slider_mY9mUH .halo-block-header .title .text,
+#shopify-section-template--18346561536249__brand_slider_pNXBMM .section-block-template--18346561536249__brand_slider_pNXBMM .halo-block-header .title .text {
+  background: linear-gradient(90deg, #F9DBBF 0%, #CFAA67 100%) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  color: transparent;
+}
+#shopify-section-template--18346561601785__image_banner_ptkAnB #halo-image-banner-template--18346561601785__image_banner_ptkAnB .item .banner-text{
+  color: #CFAA67;
+}
+#shopify-section-template--18346561601785__image_banner_ptkAnB #halo-image-banner-template--18346561601785__image_banner_ptkAnB .type-item--special .banner-item {
+  border: 2px solid #136230;
+}
+
+#shopify-section-template--18346561536249__main #ProductSection-template--18346561536249__main .complementary-products-slider .product-item{
+  border-color: #197356;
+}
+#shopify-section-template--18346561536249__main #ProductSection-template--18346561536249__main .add-ons-products_in_details .product-item,
+#shopify-section-template--18346561536249__main #ProductSection-template--18346561536249__main .vari_selected_info{
+  border-color: rgba(81, 81, 81, 0.5);
+}
+#shopify-section-template--18346561536249__main #ProductSection-template--18346561536249__main .bottom_line {
+  background-color: rgba(81, 81, 81, 0.5);
+}
+#shopify-section-template--18346561536249__main #ProductSection-template--18346561536249__main #product_custom_ID .product__text.des:after {
+  background: url('https://cdn.shopify.com/s/files/1/0663/6742/2695/files/halloween_afterpay_icon_1806d9b4-3fd7-49f2-b8e5-67fa0c7a0ad8.png?v=1729495906') no-repeat;
+  width: 120px;
+  height: 25px;
+  background-size: cover;
+}
+#shopify-section-template--18346561536249__main #ProductSection-template--18346561536249__main #product-price-8507519664377 .ergonomics {
+  background: url('https://cdn.shopify.com/s/files/1/0663/6742/2695/files/xmas_productItem_ergonomics_bgImg.png?v=1733650114') no-repeat;
+  background-size: 100% 100%;
+  border: none;
+  position: relative;
+  margin-top: 30px;
+}
+#shopify-section-template--18346561536249__main #ProductSection-template--18346561536249__main #product-price-8507519664377 .ergonomics:after {
+  content: '';
+  display: inline-block;
+  width: 167px;
+  height: 167px;
+  background: url('https://cdn.shopify.com/s/files/1/0599/2867/4417/files/xmas_productItem_ergonomics_icons.png?v=1733722292') no-repeat;
+  background-size: cover;
+  position: absolute;
+  top: -50%;
+  right: 0;
+}
+#shopify-section-template--18346561536249__main #ProductSection-template--18346561536249__main #product-price-8507519664377 .ergonomics .ergonomics_left_bag_svg svg {
+  fill: none;
+  stroke: none;
+}
+#shopify-section-template--18346561536249__main #ProductSection-template--18346561536249__main #product-price-8507519664377 .ergonomics .ergonomics_left_bag_svg svg path {
+  stroke: #18181B;
+}
+#shopify-section-template--18346561536249__main #ProductSection-template--18346561536249__main #product-price-8507519664377 .ergonomics,
+#shopify-section-template--18346561536249__main #ProductSection-template--18346561536249__main #product-price-8507519664377 .ergonomics_product_variants .form__label{
+  color: #18181B !important;
+}
+/* Athena 划线价与售价 */
+#shopify-section-template--18346561536249__main #ProductSection-template--18346561536249__main #product-price-8507519664377 .ergonomics_right_price {
+  color: #18181B;
+  font-size: 28px;
+  text-decoration: line-through;
+  font-weight: 500;
+}
+#shopify-section-template--18346561536249__main #ProductSection-template--18346561536249__main #product-price-8507519664377 .ergonomics_right_price:before {
+  content: '€359';
+  display: inline-block;
+  font-size: 40px;
+  color: #B80212;
+  margin-right: 10px;
+  font-weight: 700;
+}
+/* end Athena 划线价与售价 */
+
+#shopify-section-template--18346561536249__main #ProductSection-template--18346561536249__main .breadcrumb span:not(.separate) {
+  color: rgba(255, 255, 255, 0.75) !important;
+}
+#shopify-section-template--18346561536249__main #ProductSection-template--18346561536249__main #desktop_title_container .productView-title,
+#shopify-section-template--18346561536249__main #ProductSection-template--18346561536249__main .product-form__input .form__label,
+#shopify-section-template--18346561536249__main #ProductSection-template--18346561536249__main .add-ons-form_title{
+  background: linear-gradient(90deg, #F9DBBF 0%, #CFAA67 100%);
+  -webkit-background-clip: text;  /* Safari */
+  background-clip: text;  /* Chrome, Firefox */
+  color: transparent;
+}
+#shopify-section-template--18346561536249__main #ProductSection-template--18346561536249__main .product-form__radio:checked+.product-form__label .text {
+  border-color: #197356;
+  box-shadow: 0px 0px 5.5px 1px #F8C786;
+  color: #D6AF7C;
+  background-color: #022C1E;
+}
+#shopify-section-template--18346561536249__main #ProductSection-template--18346561536249__main .product-form__label .text {
+  border-color: #197356;
+  color: #D6AF7C;
+  background-color: #022C1E;
+}
+
+#shopify-section-template--18346561536249__main #ProductSection-template--18346561536249__main .product-form__swatch .product-form__label {
+  border-color: #197356;
+}
+#shopify-section-template--18346561536249__main #ProductSection-template--18346561536249__main .product-form__swatch .product-form__radio:checked+.product-form__label {
+  border-color: #197356;
+  box-shadow: 0px 0px 5.5px 1px #F8C786;
+  color: #D6AF7C;
+}
+#shopify-section-template--18346561536249__main #ProductSection-template--18346561536249__main .product-form__label .pattern_price_text {
+  color: #D6AF7C !important;
+}
+
+#shopify-section-template--18346561536249__main #ProductSection-template--18346561536249__main #complementary-product-data .complementary-products-slider .product {
+  color: #D6AF7C !important;
+}
+#shopify-section-template--18346561536249__main #ProductSection-template--18346561536249__main #complementary-product-data .complementary-products-description {
+  background-color: #022C1E !important;
+  
+}
+#shopify-section-template--18346561536249__main #ProductSection-template--18346561536249__main #complementary-product-data .complementary-products-description .add-ons-form_descripe,
+#shopify-section-template--18346561536249__main #ProductSection-template--18346561536249__main #product_custom_ID .product-customInformation__content .title,
+#shopify-section-template--18346561536249__main #ProductSection-template--18346561536249__main #product_custom_ID .product-customInformation__content .des {
+  color: #D6AF7C !important;
+}
+#shopify-section-template--18346561536249__main #ProductSection-template--18346561536249__main #product_custom_ID {
+  background-color: 053626;
+}
+#shopify-section-template--18346561536249__main #ProductSection-template--18346561536249__main .halo-productView-right .productView-moreItem:nth-last-of-type(-n+4) .product-customInformation__content .title {
+  color: #fff !important;
+}
+#shopify-section-template--18346561536249__main #ProductSection-template--18346561536249__main #product-add-to-cart {
+  background: linear-gradient(90deg, #F9DBBF 0%, #CFAA67 100%);
+  color: #022C1E;
+  border-color: #CFAA67;
+  padding-top: 21px;
+  padding-bottom: 21px;
+}
+
+#shopify-section-template--18346561536249__main #ProductSection-template--18346561536249__main #product-buy-it-now {
+  border-color: #0E563F;
+  color: #D6AF7C;
+  background-color: #022C1E;
+  padding-top: 21px;
+  padding-bottom: 21px;
+  margin-top: 20px;
+}
+#shopify-section-template--18346561536249__main .product-customInformation__icon svg path {
+  stroke: #fff;
+}
+#shopify-section-template--18346561536249__main #ProductSection-template--18346561536249__main .product_form_label_index {
+  display: none;
+}
+#shopify-section-template--18346561536249__main #ProductSection-template--18346561536249__main .product-form__input .form__label:before,
+#shopify-section-template--18346561536249__main #ProductSection-template--18346561536249__main .add-ons-form_title:before {
+  content: '';
+  display: inline-block;
+  width: 57px;
+  height: 61px;
+  background: url('https://cdn.shopify.com/s/files/1/0663/6742/2695/files/xmas_label_icons.png?v=1733650055') no-repeat;
+  background-size: cover;
+  vertical-align: middle;
+}
+
+/* end black friday athena */
+
+/* black friday athena pro */
+#shopify-section-template--18346561601785__main {
+  background: url('https://cdn.shopify.com/s/files/1/0663/6742/2695/files/xmas_productItem_bgImg_fir.png?v=1733649354') no-repeat;
+  background-size: cover;
+}
+#shopify-section-template--18346561601785__main #ProductSection-template--18346561601785__main .breadcrumb a,
+#shopify-section-template--18346561601785__main #ProductSection-template--18346561601785__main .breadcrumb span.separate span,
+#shopify-section-template--18346561601785__main #ProductSection-template--18346561601785__main .breadcrumb span.separate svg,
+#shopify-section-template--18346561601785__main #ProductSection-template--18346561601785__main .product_info_descripe_text.productView-title,
+#shopify-section-template--18346561601785__main #ProductSection-template--18346561601785__main .vari_selected_info .title,
+#shopify-section-template--18346561601785__main #ProductSection-template--18346561601785__main .product_selected_list .form__label,
+#shopify-section-template--18346561601785__main #ProductSection-template--18346561601785__main .price-item_title,
+#shopify-section-template--18346561601785__main #ProductSection-template--18346561601785__main .price_list_last .price-item.price-item--sale,
+#shopify-section-template--18346561601785__main #ProductSection-template--18346561601785__main .options_number_and_price .total_price {
+  color: #D6AF7C !important;
+  fill: #D6AF7C !important;
+}
+
+#shopify-section-template--18346561536249__brand_slider_U6hCPV .section-block-template--18346561536249__brand_slider_U6hCPV .halo-item .text,
+#shopify-section-template--18346561536249__image_banner_ptkAnB #halo-image-banner-template--18346561536249__image_banner_ptkAnB .type-item--special .banner-heading,
+#shopify-section-template--18346561601785__image_banner_PCjX6r .halo-block-header .title .text,
+#shopify-section-template--18346561601785__brand_slider_TJCR9e .halo-block-header .title .text,
+#shopify-section-template--18346561601785__brand_slider_pNXBMM .halo-block-header .title .text,
+#shopify-section-template--18346561601785__brand_slider_U6hCPV .section-block-template--18346561601785__brand_slider_U6hCPV .halo-item .text,
+#shopify-section-template--18346561601785__image_banner_ptkAnB #halo-image-banner-template--18346561601785__image_banner_ptkAnB .type-item--special .banner-heading,
+#shopify-section-template--18346561601785__spotlight_block_Xyxaqy .section-block-template--18346561601785__spotlight_block_Xyxaqy .halo-block-header .title .text,
+#shopify-section-template--18346561536249__spotlight_block_Xyxaqy .section-block-template--18346561536249__spotlight_block_Xyxaqy .halo-block-header .title .text {
+  background: linear-gradient(90deg, #F9DBBF 0%, #CFAA67 100%) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  color: transparent;
+}
+#shopify-section-template--18346561536249__brand_slider_pNXBMM .section-block-template--18346561536249__brand_slider_pNXBMM .halo-block-header .rte,
+#shopify-section-template--18346561536249__brand_slider_U6hCPV .brand-slider .halo-item .description,
+#shopify-section-template--18346561536249__image_banner_ptkAnB #halo-image-banner-template--18346561536249__image_banner_ptkAnB .item .banner-text,
+#shopify-section-template--18346561601785__brand_slider_U6hCPV .brand-slider .halo-item .description,
+#shopify-section-template--18346561601785__image_banner_ptkAnB #halo-image-banner-template--18346561601785__image_banner_ptkAnB .item .banner-text,
+#shopify-section-template--18346561601785__brand_slider_pNXBMM .rte.subtext-brand {
+  color: #CFAA67;
+}
+#shopify-section-template--18346561536249__image_banner_ptkAnB #halo-image-banner-template--18346561536249__image_banner_ptkAnB .type-item--special .banner-item {
+  border: 2px solid #D11639;
+}
+
+#shopify-section-template--18346561601785__main #ProductSection-template--18346561601785__main .complementary-products-slider .product-item{
+  border-color: #197356;
+}
+#shopify-section-template--18346561601785__main #ProductSection-template--18346561601785__main .add-ons-products_in_details .product-item,
+#shopify-section-template--18346561601785__main #ProductSection-template--18346561601785__main .vari_selected_info{
+  border-color: rgba(81, 81, 81, 0.5);
+}
+#shopify-section-template--18346561601785__main #ProductSection-template--18346561601785__main .bottom_line {
+  background-color: rgba(81, 81, 81, 0.5);
+}
+#shopify-section-template--18346561601785__main #ProductSection-template--18346561601785__main #product_custom_ID .product__text.des:after {
+  background: url('https://cdn.shopify.com/s/files/1/0663/6742/2695/files/halloween_afterpay_icon_1806d9b4-3fd7-49f2-b8e5-67fa0c7a0ad8.png?v=1729495906') no-repeat;
+  width: 120px;
+  height: 25px;
+  background-size: cover;
+}
+#shopify-section-template--18346561601785__main #ProductSection-template--18346561601785__main #product-price-8507519729913 .ergonomics {
+  background: url('https://cdn.shopify.com/s/files/1/0663/6742/2695/files/xmas_productItem_ergonomics_bgImg.png?v=1733650114') no-repeat;
+  background-size: 100% 100%;
+  border: none;
+  position: relative;
+  margin-top: 30px;
+}
+#shopify-section-template--18346561601785__main #ProductSection-template--18346561601785__main #product-price-8507519729913 .ergonomics:after {
+  content: '';
+  display: inline-block;
+  width: 167px;
+  height: 167px;
+  background: url('https://cdn.shopify.com/s/files/1/0599/2867/4417/files/xmas_productItem_ergonomics_icons.png?v=1733722292') no-repeat;
+  background-size: cover;
+  position: absolute;
+  top: -50%;
+  right: 0;
+}
+#shopify-section-template--18346561601785__main #ProductSection-template--18346561601785__main #product-price-8507519729913 .ergonomics .ergonomics_left_bag_svg svg {
+  fill: none;
+  stroke: none;
+}
+#shopify-section-template--18346561601785__main #ProductSection-template--18346561601785__main #product-price-8507519729913 .ergonomics .ergonomics_left_bag_svg svg path {
+  stroke: #18181B;
+}
+#shopify-section-template--18346561601785__main #ProductSection-template--18346561601785__main #product-price-8507519729913 .ergonomics,
+#shopify-section-template--18346561601785__main #ProductSection-template--18346561601785__main #product-price-8507519729913 .ergonomics_product_variants .form__label{
+  color: #18181B !important;
+}
+/* athena pro 划线价与售价 */
+#shopify-section-template--18346561601785__main #ProductSection-template--18346561601785__main #product-price-8507519729913 .ergonomics_right_price {
+  color: #18181B;
+  font-size: 28px;
+  text-decoration: line-through;
+  font-weight: 500;
+}
+#shopify-section-template--18346561601785__main #ProductSection-template--18346561601785__main #product-price-8507519729913 .ergonomics_right_price:before {
+  content: '€419';
+  display: inline-block;
+  font-size: 40px;
+  color: #B80212;
+  margin-right: 10px;
+  font-weight: 700;
+}
+/* end athena pro 划线价与售价 */
+
+#shopify-section-template--18346561601785__main #ProductSection-template--18346561601785__main .breadcrumb span:not(.separate) {
+  color: rgba(255, 255, 255, 0.75) !important;
+}
+#shopify-section-template--18346561601785__main #ProductSection-template--18346561601785__main #desktop_title_container .productView-title,
+#shopify-section-template--18346561601785__main #ProductSection-template--18346561601785__main .product-form__input .form__label,
+#shopify-section-template--18346561601785__main #ProductSection-template--18346561601785__main .add-ons-form_title{
+  background: linear-gradient(90deg, #F9DBBF 0%, #CFAA67 100%);
+  -webkit-background-clip: text;  /* Safari */
+  background-clip: text;  /* Chrome, Firefox */
+  color: transparent;
+}
+#shopify-section-template--18346561601785__main #ProductSection-template--18346561601785__main .product-form__radio:checked+.product-form__label .text {
+  border-color: #197356;
+  box-shadow: 0px 0px 5.5px 1px #F8C786;
+  color: #D6AF7C;
+  background-color: #022C1E;
+}
+#shopify-section-template--18346561601785__main #ProductSection-template--18346561601785__main .product-form__label .text {
+  border-color: #197356;
+  color: #D6AF7C;
+  background-color: #022C1E;
+}
+
+#shopify-section-template--18346561601785__main #ProductSection-template--18346561601785__main .product-form__swatch .product-form__label {
+  border-color: #197356;
+}
+#shopify-section-template--18346561601785__main #ProductSection-template--18346561601785__main .product-form__swatch .product-form__radio:checked+.product-form__label {
+  border-color: #197356;
+  box-shadow: 0px 0px 5.5px 1px #F8C786;
+  color: #D6AF7C;
+}
+#shopify-section-template--18346561601785__main #ProductSection-template--18346561601785__main .product-form__label .pattern_price_text {
+  color: #D6AF7C !important;
+}
+
+#shopify-section-template--18346561601785__main #ProductSection-template--18346561601785__main #complementary-product-data .complementary-products-slider .product {
+  color: #D6AF7C !important;
+}
+#shopify-section-template--18346561601785__main #ProductSection-template--18346561601785__main #complementary-product-data .complementary-products-description {
+  background-color: #053626 !important;
+  
+}
+#shopify-section-template--18346561601785__main #ProductSection-template--18346561601785__main #complementary-product-data .complementary-products-description .add-ons-form_descripe,
+#shopify-section-template--18346561601785__main #ProductSection-template--18346561601785__main #product_custom_ID .product-customInformation__content .title,
+#shopify-section-template--18346561601785__main #ProductSection-template--18346561601785__main #product_custom_ID .product-customInformation__content .des {
+  color: #D6AF7C !important;
+}
+#shopify-section-template--18346561601785__main #ProductSection-template--18346561601785__main #product_custom_ID {
+  background-color: #290000;
+}
+#shopify-section-template--18346561601785__main #ProductSection-template--18346561601785__main .halo-productView-right .productView-moreItem:nth-last-of-type(-n+4) .product-customInformation__content .title {
+  color: #fff !important;
+}
+#shopify-section-template--18346561601785__main #ProductSection-template--18346561601785__main #product-add-to-cart {
+  background: linear-gradient(90deg, #F9DBBF 0%, #CFAA67 100%);
+  color: #022C1E;
+  border-color: #CFAA67;
+  padding-top: 21px;
+  padding-bottom: 21px;
+}
+
+#shopify-section-template--18346561601785__main #ProductSection-template--18346561601785__main #product-buy-it-now {
+   border-color: #0E563F;
+  color: #D6AF7C;
+  background-color: #022C1E;
+  padding-top: 21px;
+  padding-bottom: 21px;
+  margin-top: 20px;
+}
+#shopify-section-template--18346561601785__main .product-customInformation__icon svg path {
+  stroke: #fff;
+}
+#shopify-section-template--18346561601785__main #ProductSection-template--18346561601785__main .product_form_label_index {
+  display: none;
+}
+#shopify-section-template--18346561601785__main #ProductSection-template--18346561601785__main .product-form__input .form__label:before,
+#shopify-section-template--18346561601785__main #ProductSection-template--18346561601785__main .add-ons-form_title:before {
+  content: '';
+  display: inline-block;
+  width: 57px;
+  height: 61px;
+  background: url('https://cdn.shopify.com/s/files/1/0663/6742/2695/files/xmas_label_icons.png?v=1733650055') no-repeat;
+  background-size: cover;
+  vertical-align: middle;
+}
+/* end black friday athena pro */
+
+/* r6 major kraken pro */
+#shopify-section-template--18346567074041__main,
+/* kraken */
+#shopify-section-template--18346561569017__main
+/* end kraken */
+{
+  background: url('https://cdn.shopify.com/s/files/1/0663/6742/2695/files/krakenpro_major_bgImg_fi.png?v=1731305448') no-repeat;
+  background-size: cover;
+}
+#shopify-section-template--18346567074041__main #ProductSection-template--18346567074041__main .breadcrumb a,
+#shopify-section-template--18346567074041__main #ProductSection-template--18346567074041__main .breadcrumb span.separate span,
+#shopify-section-template--18346567074041__main #ProductSection-template--18346567074041__main .breadcrumb span.separate svg,
+#shopify-section-template--18346567074041__main #ProductSection-template--18346567074041__main .product_info_descripe_text.productView-title,
+#shopify-section-template--18346567074041__main #ProductSection-template--18346567074041__main .vari_selected_info .title,
+#shopify-section-template--18346567074041__main #ProductSection-template--18346567074041__main .coupon_modal .coupon_modal_title,
+#shopify-section-template--18346567074041__main #ProductSection-template--18346567074041__main .coupon_modal .coupon_modal_desc,
+#shopify-section-template--18346567074041__main #ProductSection-template--18346567074041__main .product_selected_list .form__label,
+#shopify-section-template--18346567074041__main #ProductSection-template--18346567074041__main .price-item_title,
+#shopify-section-template--18346567074041__main #ProductSection-template--18346567074041__main .price_list_last .price-item.price-item--sale,
+#shopify-section-template--18346567074041__main #ProductSection-template--18346567074041__main .options_number_and_price .total_price,
+#shopify-section-template--18346567074041__brand_slider_U6hCPV .section-block-template--18346567074041__brand_slider_U6hCPV .halo-item .text,
+#shopify-section-template--18346567074041__image_banner_ptkAnB #halo-image-banner-template--18346567074041__image_banner_ptkAnB .type-item--special .banner-heading,
+#shopify-section-template--18346567074041__brand_slider_pNXBMM .section-block-template--18346567074041__brand_slider_pNXBMM .halo-block-header .title,
+#shopify-section-template--18346567074041__brand_slider_pNXBMM .section-block-template--18346567074041__brand_slider_pNXBMM .halo-block-header .rte,
+/* kraken */
+#shopify-section-template--18346561569017__main #ProductSection-template--18346561569017__main .breadcrumb a,
+#shopify-section-template--18346561569017__main #ProductSection-template--18346561569017__main .breadcrumb span.separate span,
+#shopify-section-template--18346561569017__main #ProductSection-template--18346561569017__main .breadcrumb span.separate svg,
+#shopify-section-template--18346561569017__main #ProductSection-template--18346561569017__main .product_info_descripe_text.productView-title,
+#shopify-section-template--18346561569017__main #ProductSection-template--18346561569017__main .vari_selected_info .title,
+#shopify-section-template--18346561569017__main #ProductSection-template--18346561569017__main .coupon_modal .coupon_modal_title,
+#shopify-section-template--18346561569017__main #ProductSection-template--18346561569017__main .coupon_modal .coupon_modal_desc,
+#shopify-section-template--18346561569017__main #ProductSection-template--18346561569017__main .product_selected_list .form__label,
+#shopify-section-template--18346561569017__main #ProductSection-template--18346561569017__main .price-item_title,
+#shopify-section-template--18346561569017__main #ProductSection-template--18346561569017__main .price_list_last .price-item.price-item--sale,
+#shopify-section-template--18346561569017__main #ProductSection-template--18346561569017__main .options_number_and_price .total_price,
+#shopify-section-template--18346561569017__brand_slider_pNXBMM .section-block-template--18346561569017__brand_slider_pNXBMM .halo-block-header .title,
+#shopify-section-template--18346561569017__brand_slider_pNXBMM .section-block-template--18346561569017__brand_slider_pNXBMM .halo-block-header .rte,
+#shopify-section-template--18346561569017__brand_slider_U6hCPV .section-block-template--18346561569017__brand_slider_U6hCPV .halo-item .text,
+#shopify-section-template--18346561569017__image_banner_ptkAnB #halo-image-banner-template--18346561569017__image_banner_ptkAnB .banner-heading
+/* end kraken */
+{
+  color: #fff !important;
+  fill: #fff !important;
+}
+#shopify-section-template--18346567074041__brand_slider_U6hCPV .section-block-template--18346567074041__brand_slider_U6hCPV .halo-item .description,
+#shopify-section-template--18346567074041__image_banner_ptkAnB #halo-image-banner-template--18346567074041__image_banner_ptkAnB .item .banner-text,
+/* kraken */
+#shopify-section-template--18346561569017__brand_slider_U6hCPV .brand-slider .halo-item .description,
+#shopify-section-template--18346561569017__image_banner_ptkAnB #halo-image-banner-template--18346561569017__image_banner_ptkAnB .item .banner-text
+/* end kraken */
+{
+  color: #DBDBDB;
+}
+#shopify-section-template--18346567074041__main #ProductSection-template--18346567074041__main .breadcrumb span:not(.separate),
+/* kraken */
+#shopify-section-template--18346561569017__main #ProductSection-template--18346561569017__main .breadcrumb span:not(.separate)
+/* end kraken */
+{
+  color: rgba(255, 255, 255, 0.75) !important;
+}
+#shopify-section-template--18346567074041__main #ProductSection-template--18346567074041__main #desktop_title_container .productView-title,
+#shopify-section-template--18346567074041__main #ProductSection-template--18346567074041__main .product-form__input .form__label,
+#shopify-section-template--18346567074041__main #ProductSection-template--18346567074041__main .add-ons-form_title,
+/* kraken */
+#shopify-section-template--18346561569017__main #ProductSection-template--18346561569017__main #desktop_title_container .productView-title,
+#shopify-section-template--18346561569017__main #ProductSection-template--18346561569017__main .product-form__input .form__label,
+#shopify-section-template--18346561569017__main #ProductSection-template--18346561569017__main .add-ons-form_title
+/* end kraken */
+{
+  color: #C29B65;
+}
+
+
+#shopify-section-template--18346567074041__main #ProductSection-template--18346567074041__main .complementary-products-slider .product-item,
+/* kraken */
+#shopify-section-template--18346561569017__main #ProductSection-template--18346561569017__main .complementary-products-slider .product-item
+/* end kraken */
+{
+  border-color: #393735;
+}
+#shopify-section-template--18346567074041__main #ProductSection-template--18346567074041__main .add-ons-products_in_details .product-item,
+#shopify-section-template--18346567074041__main #ProductSection-template--18346567074041__main .vari_selected_info,
+/* kraken */
+#shopify-section-template--18346561569017__main #ProductSection-template--18346561569017__main .add-ons-products_in_details .product-item,
+#shopify-section-template--18346561569017__main #ProductSection-template--18346561569017__main .vari_selected_info
+/* end kraken */
+{
+  border-color: rgba(81, 81, 81, 0.5);
+}
+#shopify-section-template--18346567074041__main #ProductSection-template--18346567074041__main .bottom_line,
+/* kraken */
+#shopify-section-template--18346561569017__main #ProductSection-template--18346561569017__main .bottom_line
+/* end kraken */
+{
+  background-color: rgba(81, 81, 81, 0.5);
+}
+
+
+#shopify-section-template--18346567074041__main #ProductSection-template--18346567074041__main #product-price-8507519795449 .ergonomics,
+/* kraken */
+#shopify-section-template--18346561569017__main #ProductSection-template--18346561569017__main #product-price-8507519762681 .ergonomics
+/* end kraken */
+{
+  background: url('https://cdn.shopify.com/s/files/1/0663/6742/2695/files/krakenpro_ergomation_bgImg.png?v=1731311332') no-repeat;
+  background-size: 100% 100%;
+  border: none;
+  position: relative;
+}
+
+#shopify-section-template--18346567074041__main #ProductSection-template--18346567074041__main #product-price-8507519795449 .ergonomics .ergonomics_left_bag_svg svg,
+/* kraken */
+#shopify-section-template--18346561569017__main #ProductSection-template--18346561569017__main #product-price-8507519762681 .ergonomics .ergonomics_left_bag_svg svg
+/* end kraken */
+{
+  fill: none;
+  stroke: none;
+}
+#shopify-section-template--18346567074041__main #ProductSection-template--18346567074041__main #product-price-8507519795449 .ergonomics .ergonomics_left_bag_svg svg path,
+/* kraken */
+#shopify-section-template--18346561569017__main #ProductSection-template--18346561569017__main #product-price-8507519762681 .ergonomics .ergonomics_left_bag_svg svg path
+/* end kraken */
+{
+  stroke: #FFF7E4;
+}
+#shopify-section-template--18346567074041__main #ProductSection-template--18346567074041__main #product-price-8507519795449 .ergonomics,
+#shopify-section-template--18346567074041__main #ProductSection-template--18346567074041__main #product-price-8507519795449 .ergonomics_product_variants .form__label,
+/* kraken */
+#shopify-section-template--18346561569017__main #ProductSection-template--18346561569017__main #product-price-8507519762681 .ergonomics,
+#shopify-section-template--18346561569017__main #ProductSection-template--18346561569017__main #product-price-8507519762681 .ergonomics_product_variants .form__label
+/* end kraken */
+{
+  color: #FFF7E4 !important;
+}
+/* kraken pro 划线价与售价 && kraken 划线价与售价 */
+#shopify-section-template--18346567074041__main #ProductSection-template--18346567074041__main #product-price-8507519795449 .ergonomics_right_price,
+#shopify-section-template--18346561569017__main #ProductSection-template--18346561569017__main #product-price-8507519762681 .ergonomics_right_price {
+  color: rgba(255, 247, 228, 0.7);
+  font-size: 28px;
+  text-decoration: line-through;
+  font-weight: 500;
+}
+#shopify-section-template--18346567074041__main #ProductSection-template--18346567074041__main #product-price-8507519795449 .ergonomics_right_price:before {
+  content: '€499';
+  display: inline-block;
+  font-size: 40px;
+  color: #d5b77d;
+  margin-right: 10px;
+  font-weight: 700;
+}
+#shopify-section-template--18346561569017__main #ProductSection-template--18346561569017__main #product-price-8507519762681 .ergonomics_right_price:before {
+  content: '€429';
+  display: inline-block;
+  font-size: 40px;
+  color: #d5b77d;
+  margin-right: 10px;
+  font-weight: 700;
+}
+
+
+#shopify-section-template--18346567074041__main #ProductSection-template--18346567074041__main .product_form_label_index,
+/* kraken */
+#shopify-section-template--18346561569017__main #ProductSection-template--18346561569017__main .product_form_label_index
+/* end kraken */
+{
+  display: none;
+}
+#shopify-section-template--18346567074041__main #ProductSection-template--18346567074041__main .product-form__input .form__label:before,
+#shopify-section-template--18346567074041__main #ProductSection-template--18346567074041__main .add-ons-form_title:before,
+/* kraken */
+#shopify-section-template--18346561569017__main #ProductSection-template--18346561569017__main .product-form__input .form__label:before,
+#shopify-section-template--18346561569017__main #ProductSection-template--18346561569017__main .add-ons-form_title:before
+/* end kraken */
+{
+  content: '';
+  display: inline-block;
+  width: 104px;
+  height: 70px;
+  background: url('https://cdn.shopify.com/s/files/1/0663/6742/2695/files/krakenpro_formLabel_icons.png?v=1731311667') no-repeat;
+  background-size: cover;
+  vertical-align: middle;
+}
+#shopify-section-template--18346567074041__main #ProductSection-template--18346567074041__main .product-form__radio:checked+.product-form__label .text,
+/* kraken */
+#shopify-section-template--18346561569017__main #ProductSection-template--18346561569017__main .product-form__radio:checked+.product-form__label .text
+/* end kraken */
+{
+  border-color: #C29B65;
+  box-shadow: 0px 0px 5.5px 1px #C29B65;
+  color: #FFF7E4;
+  background-color: #221D19;
+}
+
+
+#shopify-section-template--18346567074041__main #ProductSection-template--18346567074041__main .product-form__swatch .product-form__label,
+/* kraken */
+#shopify-section-template--18346561569017__main #ProductSection-template--18346561569017__main .product-form__swatch .product-form__label
+/* end kraken */
+{
+  border-color: #393735;
+}
+#shopify-section-template--18346567074041__main #ProductSection-template--18346567074041__main .product-form__swatch .product-form__radio:checked+.product-form__label,
+/* kraken */
+#shopify-section-template--18346561569017__main #ProductSection-template--18346561569017__main .product-form__swatch .product-form__radio:checked+.product-form__label
+/* end kraken */
+{
+  border-color: #C29B65;
+  box-shadow: 0px 0px 5.5px 1px #C29B65;
+  color: #FFF7E4;
+}
+#shopify-section-template--18346567074041__main #ProductSection-template--18346567074041__main .product-form__label .pattern_price_text,
+/* kraken */
+#shopify-section-template--18346561569017__main #ProductSection-template--18346561569017__main .product-form__label .pattern_price_text
+/* end kraken */
+{
+  color: #FFF7E4 !important;
+}
+
+#shopify-section-template--18346567074041__main #ProductSection-template--18346567074041__main #complementary-product-data .complementary-products-slider .product,
+/* kraken */
+#shopify-section-template--18346561569017__main #ProductSection-template--18346561569017__main #complementary-product-data .complementary-products-slider .product
+/* end kraken */
+{
+  color: #FFF7E4 !important;
+}
+#shopify-section-template--18346567074041__main #ProductSection-template--18346567074041__main #complementary-product-data .complementary-products-description,
+/* kraken */
+#shopify-section-template--18346561569017__main #ProductSection-template--18346561569017__main #complementary-product-data .complementary-products-description
+/* end kraken */
+{
+  background-color: #221d19 !important;
+  
+}
+#shopify-section-template--18346567074041__main #ProductSection-template--18346567074041__main #product_custom_ID,
+/* kraken */
+#shopify-section-template--18346561569017__main #ProductSection-template--18346561569017__main #product_custom_ID
+/* end kraken */
+{
+  background-color: #221D19;
+}
+#shopify-section-template--18346567074041__main #ProductSection-template--18346567074041__main #product_custom_ID .product-customInformation__content .title,
+#shopify-section-template--18346567074041__main #ProductSection-template--18346567074041__main #product_custom_ID .product-customInformation__content .des,
+/* kraken */
+#shopify-section-template--18346561569017__main #ProductSection-template--18346561569017__main #product_custom_ID .product-customInformation__content .title,
+#shopify-section-template--18346561569017__main #ProductSection-template--18346561569017__main #product_custom_ID .product-customInformation__content .des
+/* end kraken */
+{
+  color: #FFE2E2 !important;
+}
+#shopify-section-template--18346567074041__main #ProductSection-template--18346567074041__main #complementary-product-data .complementary-products-description .add-ons-form_descripe,
+/* kraken */
+#shopify-section-template--18346561569017__main #ProductSection-template--18346561569017__main #complementary-product-data .complementary-products-description .add-ons-form_descripe
+/* end kraken */
+{
+  color: #ffffff !important;
+}
+#shopify-section-template--18346567074041__main #ProductSection-template--18346567074041__main #product-add-to-cart,
+/* kraken */
+#shopify-section-template--18346561569017__main #ProductSection-template--18346561569017__main #product-add-to-cart
+/* end kraken */
+{
+  background-color: #C29B65;
+  color: #fff;
+  border-color: #C29B65;
+  padding-top: 21px;
+  padding-bottom: 21px;
+}
+#shopify-section-template--18346567074041__main #ProductSection-template--18346567074041__main #product-buy-it-now,
+/* kraken */
+#shopify-section-template--18346561569017__main #ProductSection-template--18346561569017__main #product-buy-it-now
+/* end kraken */
+{
+  background-color: rgba(255, 255, 255, 0);
+  color: #C29B65;
+  border-color: #C29B65;
+  padding-top: 21px;
+  padding-bottom: 21px;
+}
+#shopify-section-template--18346567074041__main .product-customInformation__icon svg path,
+/* kraken */
+#shopify-section-template--18346561569017__main .product-customInformation__icon svg path
+/* end kraken */
+{
+  stroke: #fff;
+}
+#shopify-section-template--18346567074041__main #ProductSection-template--18346567074041__main .halo-productView-right .productView-moreItem:nth-last-of-type(-n+4) .product-customInformation__content .title,
+/* kraken */
+#shopify-section-template--18346561569017__main #ProductSection-template--18346561569017__main .halo-productView-right .productView-moreItem:nth-last-of-type(-n+4) .product-customInformation__content .title
+/* end kraken */
+{
+  color: #fff !important;
+}
+#shopify-section-template--18346567074041__main #ProductSection-template--18346567074041__main .productView-thumbnail-wrapper .slick-arrow svg,
+/* kraken */
+#shopify-section-template--18346561569017__main #ProductSection-template--18346561569017__main .productView-thumbnail-wrapper .slick-arrow svg
+/* end kraken */
+{
+  fill: #fff !important;
+}
+#shopify-section-template--18346567074041__main #ProductSection-template--18346567074041__main #product_custom_ID .product__text.des:after,
+/* kraken */
+#shopify-section-template--18346561569017__main #ProductSection-template--18346561569017__main #product_custom_ID .product__text.des:after
+/* end kraken */
+{
+  background: url('https://cdn.shopify.com/s/files/1/0663/6742/2695/files/halloween_afterpay_icon_1806d9b4-3fd7-49f2-b8e5-67fa0c7a0ad8.png?v=1729495906') no-repeat;
+  width: 120px;
+  height: 25px;
+  background-size: cover;
+}
+#shopify-section-template--18346567074041__image_banner_JpEfVV,
+#shopify-section-template--18346567074041__image_banner_ptkAnB {
+  margin-top: -1px;
+}
+#shopify-section-template--18346567074041__image_banner_ptkAnB #halo-image-banner-template--18346567074041__image_banner_ptkAnB .banner-item .img-box,
+#shopify-section-template--18346561569017__image_banner_ptkAnB #halo-image-banner-template--18346561569017__image_banner_ptkAnB .banner-item .img-box {
+  border: 3px solid #C29B65;
+}
+
+
+/* end r6 major kraken pro */
+
+@media (max-width: 767px) {
+  .cursor-wrapper+.productView-images-wrapper .productView-image {
+    border: 1px solid rgba(81, 81, 81, 0.5);
+    background-size: 100% 100% !important;
+  }
+  #ProductSection-template--18742675833081__main .cursor-wrapper+.productView-images-wrapper .productView-image {
+    border: none;
+  }
+  #CollectionSection-template--17951219319033__product-grid .card-swatch {
+    bottom: 150px !important;
+  }
+  #shopify-section-template--18584482808057__brand_slider_rkGDdy {
+    margin-top: -2px;
+  }
+  /* black friday */
+  #halo-image-banner-template--18576461627641__image_banner_kUDzYP .black_friday_krathpro_product .black_friday_krathpro_price {
+    font-size: 35px;
+  }
+  #halo-image-banner-template--18576461627641__image_banner_kUDzYP .black_friday_krathpro_product .black_friday_krathpro_comprice {
+    font-size: 20px;
+  }
+  #shopify-section-template--18576461627641__spotlight_block_EL4dcJ .section-block-template--18189317046503__spotlight_block_EL4dcJ .halo-block-header .title,
+  #shopify-section-template--18576461627641__spotlight_block_EL4dcJ .section-block-template--18189317046503__spotlight_block_EL4dcJ .halo-block-header .rte{
+    margin-bottom: 10px;
+  }
+  #shopify-section-template--18576461627641__spotlight_block_EL4dcJ .spotlight-block .content.align-items--center {
+    padding-top: 0px;
+  }
+  #shopify-section-template--18576461627641__spotlight_block_EL4dcJ .spotlight-block .halo-row .halo-item{
+    width: 70% !important;
+  }
+  #halo-image-banner-template--18576461627641__image_banner_kUDzYP .item .banner-text:after {
+    width: 90%;
+  }
+  #halo-image-banner-template--18576461627641__image_banner_kUDzYP .item--specialImg .banner-btn--style2 {
+    font-size: 20px;
+    width: 240px !important;
+    height: 50px;
+  }
+  #halo-image-banner-template--18576461627641__image_banner_kUDzYP .item--specialImg .banner-btn--style2:before {
+    font-size: 20px;
+    left: 11px;
+  }
+  #halo-image-banner-template--18576461627641__image_banner_kUDzYP .item--specialImg .banner-btn--style2 span {
+    right: 11px;
+  }
+  #shopify-section-template--18189317046503__image_banner_ty8mwK #halo-image-banner-template--18189317046503__image_banner_ty8mwK .banner-sub-title {
+    margin-bottom: 20px;
+  }
+  /* end black friday */
+  /* athena x black friday */
+    #shopify-section-template--17951220564217__main {
+      background-position: center;
+    }
+  #shopify-section-template--17951220564217__main #ProductSection-template--17951220564217__main .breadcrumb a,
+  #shopify-section-template--17951220564217__main #ProductSection-template--17951220564217__main .breadcrumb span.separate span,
+  #shopify-section-template--17951220564217__main #ProductSection-template--17951220564217__main .breadcrumb span.separate svg,
+  #shopify-section-template--17951220564217__main #ProductSection-template--17951220564217__main .product_info_descripe_text.productView-title{
+    color: #D6AF7C !important;
+    fill: #D6AF7C !important;
+  }
+  #shopify-section-template--17951220564217__main #ProductSection-template--17951220564217__main .breadcrumb-container.style--line_clamp_1,
+  #shopify-section-template--17951220564217__main #ProductSection-template--17951220564217__main .productView-moreItem.moreItem-breadcrumb .breadcrumb-bg,
+  #shopify-section-template--18742675833081__main #ProductSection-template--18742675833081__main .breadcrumb-container.style--line_clamp_1,
+  #shopify-section-template--18742675833081__main #ProductSection-template--18742675833081__main .productView-moreItem.moreItem-breadcrumb .breadcrumb-bg {
+    background-color: transparent !important;
+  }
+  #shopify-section-template--17951220564217__main #ProductSection-template--17951220564217__main #mb_title_container .productView-title {
+    background: linear-gradient(90deg, #F9DBBF 0%, #CFAA67 100%);
+      -webkit-background-clip: text;  /* Safari */
+      background-clip: text;  /* Chrome, Firefox */
+      color: transparent;
+  }
+  #ProductSection-template--17951220564217__main .cursor-wrapper+.productView-images-wrapper .productView-image {
+    background-size: 100% 100%;
+  }
+  #shopify-section-template--17951220564217__main #ProductSection-template--17951220564217__main .product_info_descripe_text.productView-title {
+    margin-bottom: 10px;
+  }
+ 
+  /* end athena x black friday */
+  /* black friday athena */
+    #shopify-section-template--18346561536249__main {
+      background-position: center;
+    }
+    #shopify-section-template--18346561536249__main #ProductSection-template--18346561536249__main .breadcrumb a,
+    #shopify-section-template--18346561536249__main #ProductSection-template--18346561536249__main .breadcrumb span.separate span,
+    #shopify-section-template--18346561536249__main #ProductSection-template--18346561536249__main .breadcrumb span.separate svg,
+    #shopify-section-template--18346561536249__main #ProductSection-template--18346561536249__main .product_info_descripe_text.productView-title{
+      color: #D6AF7C !important;
+      fill: #D6AF7C !important;
+    }
+    #shopify-section-template--18346561536249__main #ProductSection-template--18346561536249__main .breadcrumb-container.style--line_clamp_1,
+    #shopify-section-template--18346561536249__main #ProductSection-template--18346561536249__main .productView-moreItem.moreItem-breadcrumb .breadcrumb-bg{
+      background-color: transparent !important;
+    }
+    #shopify-section-template--18346561536249__main #ProductSection-template--18346561536249__main #mb_title_container .productView-title {
+      /* color: #C60001; */
+      background: linear-gradient(90deg, #F9DBBF 0%, #CFAA67 100%);
+      -webkit-background-clip: text;  /* Safari */
+      background-clip: text;  /* Chrome, Firefox */
+      color: transparent;
+    }
+    #ProductSection-template--18346561536249__main .cursor-wrapper+.productView-images-wrapper .productView-image {
+      background-size: 100% 100%;
+    }
+    #shopify-section-template--18346561536249__main #ProductSection-template--18346561536249__main .product_info_descripe_text.productView-title {
+      margin-bottom: 10px;
+    }
+  /* end black friday athena */
+
+  /* black friday athena pro */
+      #shopify-section-template--18346561601785__main {
+        background-position: center;
+      }
+      #shopify-section-template--18346561601785__main #ProductSection-template--18346561601785__main .breadcrumb a,
+      #shopify-section-template--18346561601785__main #ProductSection-template--18346561601785__main .breadcrumb span.separate span,
+      #shopify-section-template--18346561601785__main #ProductSection-template--18346561601785__main .breadcrumb span.separate svg,
+      #shopify-section-template--18346561601785__main #ProductSection-template--18346561601785__main .product_info_descripe_text.productView-title{
+         color: #D6AF7C !important;
+          fill: #D6AF7C !important;
+      }
+      #shopify-section-template--18346561601785__main #ProductSection-template--18346561601785__main .breadcrumb-container.style--line_clamp_1,
+      #shopify-section-template--18346561601785__main #ProductSection-template--18346561601785__main .productView-moreItem.moreItem-breadcrumb .breadcrumb-bg{
+        background-color: transparent !important;
+      }
+      #shopify-section-template--18346561601785__main #ProductSection-template--18346561601785__main #mb_title_container .productView-title {
+        background: linear-gradient(90deg, #F9DBBF 0%, #CFAA67 100%);
+        -webkit-background-clip: text;  /* Safari */
+        background-clip: text;  /* Chrome, Firefox */
+        color: transparent;
+      }
+      #ProductSection-template--18346561601785__main .cursor-wrapper+.productView-images-wrapper .productView-image {
+        background-size: 100% 100%;
+      }
+      #shopify-section-template--18346561601785__main #ProductSection-template--18346561601785__main .product_info_descripe_text.productView-title {
+        margin-bottom: 10px;
+      }
+  /* end black friday athena pro */
+  
+  /* r6 major kraken pro */
+  #shopify-section-template--18346567074041__main #ProductSection-template--18346567074041__main .breadcrumb a,
+  #shopify-section-template--18346567074041__main #ProductSection-template--18346567074041__main .breadcrumb span.separate span,
+  #shopify-section-template--18346567074041__main #ProductSection-template--18346567074041__main .breadcrumb span.separate svg,
+  #shopify-section-template--18346567074041__main #ProductSection-template--18346567074041__main .product_info_descripe_text.productView-title,
+  /* kraken */
+  #shopify-section-template--18346561569017__main #ProductSection-template--18346561569017__main .breadcrumb a,
+  #shopify-section-template--18346561569017__main #ProductSection-template--18346561569017__main .breadcrumb span.separate span,
+  #shopify-section-template--18346561569017__main #ProductSection-template--18346561569017__main .breadcrumb span.separate svg,
+  #shopify-section-template--18346561569017__main #ProductSection-template--18346561569017__main .product_info_descripe_text.productView-title
+  /* end kraken */
+  {
+    color: #fff !important;
+    fill: #fff !important;
+  }
+  #shopify-section-template--18346567074041__main #ProductSection-template--18346567074041__main .breadcrumb-container.style--line_clamp_1,
+  #shopify-section-template--18346567074041__main #ProductSection-template--18346567074041__main .productView-moreItem.moreItem-breadcrumb .breadcrumb-bg,
+  /* kraken */
+  #shopify-section-template--18346561569017__main #ProductSection-template--18346561569017__main .breadcrumb-container.style--line_clamp_1,
+  #shopify-section-template--18346561569017__main #ProductSection-template--18346561569017__main .productView-moreItem.moreItem-breadcrumb .breadcrumb-bg
+  /* end kraken */
+  {
+    background-color: transparent !important;
+  }
+  #shopify-section-template--18346567074041__main #ProductSection-template--18346567074041__main #mb_title_container .productView-title,
+  /* kraken */
+  #shopify-section-template--18346561569017__main #ProductSection-template--18346561569017__main #mb_title_container .productView-title
+  /* end kraken */
+  {
+    color: #C29B65;
+  }
+  #shopify-section-template--18346567074041__main #ProductSection-template--18346567074041__main #mb_descripe_container,
+  /* kraken */
+  #shopify-section-template--18346561569017__main #ProductSection-template--18346561569017__main #mb_descripe_container
+  /* end kraken */
+  {
+    margin-bottom: 10px;
+  }
+  #shopify-section-template--18346567074041__main,
+  #shopify-section-template--18346561569017__main {
+    background-position: right;
+  }
+  #shopify-section-template--18346567074041__image_banner_ptkAnB #halo-image-banner-template--18346567074041__image_banner_ptkAnB {
+    background-position: center !important;
+  }
+  #shopify-section-template--18346567074041__main #ProductSection-template--18346567074041__main .product-form__input .form__label:before,
+  #shopify-section-template--18346567074041__main #ProductSection-template--18346567074041__main .add-ons-form_title:before,
+  /* kraken */
+  #shopify-section-template--18346561569017__main #ProductSection-template--18346561569017__main .product-form__input .form__label:before,
+  #shopify-section-template--18346561569017__main #ProductSection-template--18346561569017__main .add-ons-form_title:before
+  /* end kraken */
+  {
+    width: 52px;
+    height: 36px;
+  }
+  #ProductSection-template--18346561569017__main .cursor-wrapper+.productView-images-wrapper .productView-image {
+    background-size: 100% 100%;
+  }
+  /* 划线价与售价 */
+  #shopify-section-template--18346561536249__main #ProductSection-template--18346561536249__main #product-price-8507519664377 .ergonomics:after,
+  #shopify-section-template--18346561601785__main #ProductSection-template--18346561601785__main #product-price-8507519729913 .ergonomics:after,
+  #shopify-section-template--17951220564217__main #ProductSection-template--17951220564217__main #product-price-8337380999417 .ergonomics:after {
+      width: 120px;
+      height: 120px;
+      top: -40%;
+  }
+  #shopify-section-template--18346567074041__main #ProductSection-template--18346567074041__main #product-price-8507519795449 .ergonomics_right_price:before,
+  #shopify-section-template--18346561569017__main #ProductSection-template--18346561569017__main #product-price-8507519762681 .ergonomics_right_price:before,
+  #shopify-section-template--18346561601785__main #ProductSection-template--18346561601785__main #product-price-8507519729913 .ergonomics_right_price:before,
+  #shopify-section-template--18346561536249__main #ProductSection-template--18346561536249__main #product-price-8507519664377 .ergonomics_right_price:before,
+  #shopify-section-template--18742675833081__main #ProductSection-template--18742675833081__main #product-price-8657985863929 .ergonomics_right_price:before {
+    font-size: 34px;
+    margin-right: 4px;
+  }
+  #shopify-section-template--18346567074041__main #ProductSection-template--18346567074041__main #product-price-8507519795449 .ergonomics_right_price,
+  #shopify-section-template--18346561569017__main #ProductSection-template--18346561569017__main #product-price-8507519762681 .ergonomics_right_price,
+  #shopify-section-template--18346561601785__main #ProductSection-template--18346561601785__main #product-price-8507519729913 .ergonomics_right_price,
+  #shopify-section-template--18346561536249__main #ProductSection-template--18346561536249__main #product-price-8507519664377 .ergonomics_right_price,
+  #shopify-section-template--18742675833081__main #ProductSection-template--18742675833081__main #product-price-8657985863929 .ergonomics_right_price {
+    font-size: 22px;
+  }
+  /* end 划线价与售价 */
+  
+  /* end r6 kraken pro */
+}

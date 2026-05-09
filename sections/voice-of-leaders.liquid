@@ -1,0 +1,198 @@
+{% stylesheet %}
+  .voice_of_leaders {
+    background-color: #ebebeb;
+    padding: 7.65625vw 0;
+    overflow: hidden;
+  }
+
+  .voice_of_leaders .voice_of_leaders_title {
+    font-family: Poppins;
+    font-weight: 600;
+    font-style: SemiBold;
+    font-size: 2.08333vw;
+    leading-trim: CAP_HEIGHT;
+    line-height: 1;
+    letter-spacing: 0%;
+    text-align: center;
+  }
+
+  .voice_of_leaders .voice_of_leaders_first {
+    display: inline-flex;
+    gap: 1.046875vw;
+    margin-top: 2.921875vw;
+    animation: scrollLeft 30s linear infinite;
+  }
+
+  .voice_of_leaders .voice_of_leaders_second {
+    display: inline-flex;
+    gap: 1.046875vw;
+    margin-top: 1.046875vw;
+    animation: scrollRight 30s linear infinite;
+  }
+
+  .voice_of_leaders .voice_of_leaders_first_img,
+  .voice_of_leaders .voice_of_leaders_second_img {
+    width: 26.765625vw;
+    height: 15.671875vw;
+    object-fit: cover;
+    object-position: center center;
+  }
+
+  @media screen and (max-width: 768px) {
+    .voice_of_leaders .voice_of_leaders_title {
+      font-size: 6vw;
+      line-height: 8vw;
+    }
+
+    .voice_of_leaders .voice_of_leaders_first_img,
+    .voice_of_leaders .voice_of_leaders_second_img {
+      width: 43.76vw;
+      height: 25.6vw;
+    }
+
+    .voice_of_leaders .voice_of_leaders_first {
+      gap: 1.84vw;
+      margin-top: 5.6vw;
+    }
+
+    .voice_of_leaders .voice_of_leaders_second {
+      gap: 1.84vw;
+      margin-top: 1.84vw;
+    }
+  }
+
+  @keyframes scrollLeft {
+    0% {
+      transform: translateX(0);
+    }
+
+    100% {
+      transform: translateX(var(--scroll-width));
+    }
+  }
+
+  @keyframes scrollRight {
+    0% {
+      transform: translateX(0);
+    }
+
+    100% {
+      transform: translateX(var(--scroll-width));
+    }
+  }
+{% endstylesheet %}
+
+<div class="voice_of_leaders" id="{{ section.settings.specId }}">
+  <h2 class="voice_of_leaders_title">{{ section.settings.title }}</h2>
+  <div class="voice_of_leaders_first">
+    {%- for block in section.blocks -%}
+      {%- case block.type -%}
+        {% when 'first' %}
+          {{-
+            block.settings.image
+            | image_url: width: block.settings.image.width
+            | image_tag: alt: block.settings.image.alt, class: 'voice_of_leaders_first_img'
+          -}}
+      {%- endcase -%}
+    {% endfor %}
+    {%- for block in section.blocks -%}
+      {%- case block.type -%}
+        {% when 'first' %}
+          {{-
+            block.settings.image
+            | image_url: width: block.settings.image.width
+            | image_tag: alt: block.settings.image.alt, class: 'voice_of_leaders_first_img'
+          -}}
+      {%- endcase -%}
+    {% endfor %}
+  </div>
+  <div class="voice_of_leaders_second">
+    {%- for block in section.blocks -%}
+      {%- case block.type -%}
+        {% when 'second' %}
+          {{-
+            block.settings.image
+            | image_url: width: block.settings.image.width
+            | image_tag: alt: block.settings.image.alt, class: 'voice_of_leaders_second_img'
+          -}}
+      {%- endcase -%}
+    {% endfor %}
+    {%- for block in section.blocks -%}
+      {%- case block.type -%}
+        {% when 'second' %}
+          {{-
+            block.settings.image
+            | image_url: width: block.settings.image.width
+            | image_tag: alt: block.settings.image.alt, class: 'voice_of_leaders_second_img'
+          -}}
+      {%- endcase -%}
+    {% endfor %}
+  </div>
+</div>
+
+{% javascript %}
+  (() => {
+    // 左行（往左滚）
+    const row1 = document.querySelector('.voice_of_leaders_first');
+    const w1 = row1.scrollWidth / 2;
+    row1.style.setProperty('--scroll-width', `-${w1}px`);
+
+    // 右行（往右滚）
+    const row2 = document.querySelector('.voice_of_leaders_second');
+    const w2 = row2.scrollWidth / 2;
+    row2.style.setProperty('--scroll-width', `${w2}px`);
+    row2.style.setProperty('justify-content', 'flex-end');
+  })();
+{% endjavascript %}
+
+{% schema %}
+{
+  "name": "voice of leaders",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "specId",
+      "label": "specId"
+    },
+    {
+      "type": "textarea",
+      "id": "title",
+      "label": "title"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "first",
+      "name": "first",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "image"
+        }
+      ]
+    },
+    {
+      "type": "second",
+      "name": "second",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "image"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "voice of leaders"
+    }
+  ]
+}
+{% endschema %}

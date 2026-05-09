@@ -1,0 +1,397 @@
+<style>
+    {% liquid
+      assign section_title_color = section.settings.sectionTitleColor
+    %}
+    .section-temp-{{ section.id }}{
+        padding-top: 160px;
+        padding-bottom: 90px;
+    }
+    .section-temp-{{ section.id }} .container-full{
+        padding-left: 16%;
+        padding-right: 16%;
+    }
+    .section-temp-{{ section.id }} .container-full .section-title{
+        font: 700 46px 'DIN';
+        color: {{ section_title_color }};
+        margin: auto;
+        text-align: center;
+        position: relative;
+        z-index: 1;
+    }
+    .section-temp-{{ section.id }} .container-full .section-title .section-title-icon{
+        position: absolute;
+        width: 50%;
+        top: 15px;
+        left: 50%;
+        transform: translateX(-50%);
+        z-index: -1;
+    }
+    .section-temp-{{ section.id }} .container-full .section-title .section-title-icon svg{
+        width: 100%;
+        height: auto;
+    }
+
+    .section-temp-{{ section.id }} .container-full .brand_lists{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        width: 50%;
+        margin: 45px auto 0;
+        column-gap: 22px;
+    }
+
+    .section-temp-{{ section.id }} .container-full .features-lists{
+        display: flex;
+        flex-direction: column;
+        margin-top: 80px;
+        gap: 120px;
+    }
+    .section-temp-{{ section.id }} .container-full .features-lists .features-items{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 50px;
+    }
+    .section-temp-{{ section.id }} .container-full .features-lists .features-items .item-image,
+    .section-temp-{{ section.id }} .container-full .features-lists .features-items .item-cont{
+        flex: 1;
+    }
+    .section-temp-{{ section.id }} .container-full .features-lists .features-items-right{
+        flex-direction: row-reverse;
+    }
+    .section-temp-{{ section.id }} .container-full .features-lists .features-items .feature-item-sub-title{
+        font: 700 20px 'DIN';
+        color: #ED1C24;
+    }
+    .section-temp-{{ section.id }} .container-full .features-lists .features-items .feature-item-title{
+        font: 500 32px 'DIN';
+        line-height: 1.2;
+        color: #fff;
+        margin-top: 10px;
+    }
+    .section-temp-{{ section.id }} .container-full .features-lists .features-items .feature-item-desc{
+        font: 400 16px 'Roboto';
+        color: #fff;
+        margin-top: 24px;
+        line-height: 1.5;
+    }
+    .section-temp-{{ section.id }} .container-full .features-lists .features-items img{
+        height: auto;
+    }
+
+
+    {% comment %} iPhone {% endcomment %}
+    @media(max-width: 767px){
+        .section-temp-{{ section.id }} {
+            padding-top: 50px;
+            padding-bottom: 50px;
+        }
+        .section-temp-{{ section.id }} .container-full{
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+        .section-temp-{{ section.id }} .container-full .section-title{
+            font-size: 18px;
+        }
+
+        .section-temp-{{ section.id }} .container-full .features-lists .features-items{
+            flex-direction: column;
+            gap: 20px;
+        }
+        .section-temp-{{ section.id }} .container-full .brand_lists{
+            width: 100%;
+            margin-top: 24px;
+        }
+        .section-temp-{{ section.id }} .container-full .features-lists{
+            margin-top: 30px;
+            gap: 40px;
+        }
+        .section-temp-{{ section.id }} .container-full .features-lists .features-items .feature-item-sub-title{
+            font-size: 14px;
+        }
+        .section-temp-{{ section.id }} .container-full .features-lists .features-items .feature-item-title{
+            font-size: 18px;
+        }
+        .section-temp-{{ section.id }} .container-full .features-lists .features-items .feature-item-desc{
+            font-size: 14px;
+            margin-top: 10px;
+        }
+        .section-temp-{{ section.id }} .container-full .section-title .section-title-icon{
+            width: 90%;
+            top: 6px;
+        }
+
+    
+    }
+
+    {% comment %} iPad {% endcomment %}
+    @media(min-width: 768px) and (max-width: 1024px){
+        .section-temp-{{ section.id }}{
+            padding-top: 50px;
+            padding-bottom: 50px;
+        }
+        .section-temp-{{ section.id }} .container-full{
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+        .section-temp-{{ section.id }} .container-full .section-title{
+            font-size: 30px;
+        }
+        .section-temp-{{ section.id }} .container-full .features-lists .features-items{
+            gap: 30px;
+        }
+        .section-temp-{{ section.id }} .container-full .features-lists .features-items .feature-item-sub-title{
+            font-size: 18px;
+        }
+        .section-temp-{{ section.id }} .container-full .features-lists .features-items .feature-item-title{
+            font-size: 20px;
+            margin-top: 0;
+        }
+        .section-temp-{{ section.id }} .container-full .features-lists .features-items .feature-item-desc{
+            font-size: 12px;
+            margin-top: 10px;
+        }
+    }
+
+    {% comment %} small screen {% endcomment %}
+    @media(min-width: 1025px) and (max-width: 1480px){
+        .section-temp-{{ section.id }} .container-full{
+            padding-left: 60px;
+            padding-right: 60px;
+        }
+    }
+</style>
+
+
+<div id="{{ section.id }}" class="section-temp-{{ section.id }}" data-section-id="{{ section.id }}">
+    {%- liquid
+        assign bgImage = section.settings.sectionBgImage
+        assign bgImageMb = section.settings.sectionBgImage_mb
+    -%}
+
+    <style>
+        .section-temp-{{ section.id }} {
+            background: #030409 url("{{ bgImage | image_url: width: 1920 }}") no-repeat center / cover;
+        }
+
+        @media (max-width: 767px) {
+            .section-temp-{{ section.id }} {
+                background-image: url({{ bgImageMb | image_url: width: 768 }});
+            }
+        }
+    </style>
+    <div class="container-full">
+        {% if section.settings.sectionTitle != blank %}
+            <div class="section-title">
+                {% if section.settings.sectionTitleIconShow %}
+                    <span class="section-title-icon">
+                        <svg width="632" height="35" viewBox="0 0 632 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <g opacity="0.7" filter="url(#filter0_f_7845_32192)">
+                            <path d="M626 29H17.2561L6 6H626V29Z" fill="url(#paint0_linear_7845_32192)"/>
+                            </g>
+                            <defs>
+                            <filter id="filter0_f_7845_32192" x="0" y="0" width="632" height="35" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                            <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                            <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+                            <feGaussianBlur stdDeviation="3" result="effect1_foregroundBlur_7845_32192"/>
+                            </filter>
+                            <linearGradient id="paint0_linear_7845_32192" x1="6" y1="17.5" x2="598.064" y2="17.5" gradientUnits="userSpaceOnUse">
+                            <stop stop-color="#CC3101" stop-opacity="0.1"/>
+                            <stop offset="0.5" stop-color="#ED1C24"/>
+                            <stop offset="1" stop-color="#992501" stop-opacity="0.1"/>
+                            </linearGradient>
+                            </defs>
+                        </svg>
+                    </span>
+                {% endif %}
+                
+                {{ section.settings.sectionTitle }}
+            </div>
+        {% endif %}
+
+        {% if section.settings.isShowBrandLists %}
+            <div class="brand_lists">
+                {% for block in section.blocks %}
+                    {% if block.type == "brandItem" %}
+                        <div class="brand-item">
+                            {% render 'picture-simple',
+                                image: block.settings.brandItemIcon,
+                                image_mobile: block.settings.brandItemIcon_mb,
+                                mobile_dpr: 2,
+                                loading: "eager"
+                            %}
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        {% endif %}
+        
+        <div class="features-lists">
+            {% for block in section.blocks %}
+                {% if block.type == "item" %}
+                    {% liquid
+                        assign feature_item_title_color = block.settings.itemTitleColor
+                        assign feature_item_sub_title_color = block.settings.itemSubTitleColor
+                        assign feature_item_desc_color = block.settings.itemDescColor
+                    %}
+                    <style>
+                        .section-temp-{{ section.id }} .container-full .features-lists .features-items .feature-item-sub-title{
+                            color: {{ feature_item_sub_title_color }}
+                        }
+                        .section-temp-{{ section.id }} .container-full .features-lists .features-items .feature-item-title{
+                            color: {{ feature_item_title_color }}
+                        }
+                        .section-temp-{{ section.id }} .container-full .features-lists .features-items .feature-item-desc{
+                            color: {{ feature_item_desc_color }}
+                        }
+                    </style>
+                    <div class="features-items{% if block.settings.itemDirector != blank %} features-items-{{ block.settings.itemDirector }}{% endif %}">
+                        <div class="item-image">
+                            <img src="{{ block.settings.itemMainImage | image_url: width: 1200 }}"
+                                width="{{ block.settings.itemMainImage.width }}"
+                                height="{{ block.settings.itemMainImage.height }}"
+                                alt="{{ block.settings.itemMainImage.alt }}" />
+                        </div>
+                        <div class="item-cont">
+                            {% if block.settings.itemSubTitle != blank %}
+                                <div class="feature-item-sub-title">{{ block.settings.itemSubTitle }}</div>
+                            {% endif %}
+                            {% if block.settings.itemTitle != blank %}
+                                <div class="feature-item-title">{{ block.settings.itemTitle }}</div>
+                            {% endif %}
+                            {% if block.settings.itemDescripe != blank %}
+                                <div class="feature-item-desc">{{ block.settings.itemDescripe }}</div>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endif %}
+                
+            {% endfor %}
+        </div>
+    </div>
+
+</div>
+
+{% schema %}
+{
+    "name": "Major Features",
+    "tag": "section",
+    "settings": [
+        {
+            "type": "image_picker",
+            "id": "sectionBgImage",
+            "label": "section Background Image"
+        },
+        {
+            "type": "image_picker",
+            "id": "sectionBgImage_mb",
+            "label": "section Background Image Mobile"
+        },
+        {
+            "type": "text",
+            "id": "sectionTitle",
+            "label": "section Title"
+        },
+        {
+            "type": "color",
+            "id": "sectionTitleColor",
+            "label": "section Title Color",
+            "default": "#fff"
+        
+        },
+        {
+            "type": "checkbox",
+            "id": "sectionTitleIconShow",
+            "label": "section Title Icon Show",
+            "default": true
+        },
+        {
+            "type": "checkbox",
+            "id": "isShowBrandLists",
+            "label": "is Show Brand Lists",
+            "default": false
+        }
+    ],
+    "blocks": [
+        {
+            "type": "item",
+            "name": "item",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "itemMainImage",
+                    "label": "Item Main Image"
+                },
+                {
+                    "type": "select",
+                    "id": "itemDirector",
+                    "label": "Item Director",
+                    "options": [
+                        {
+                            "value": "left",
+                            "label": "left"
+                        },
+                        {
+                            "value": "right",
+                            "label": "right"
+                        }
+                    ]
+                },
+                {
+                    "type": "text",
+                    "id": "itemTitle",
+                    "label": "Item Title"
+                },
+                {
+                    "type": "color",
+                    "id": "itemTitleColor",
+                    "label": "item Title Color",
+                    "default": "#fff"
+                },
+                {
+                    "type": "text",
+                    "id": "itemSubTitle",
+                    "label": "Item Sub Title"
+                },
+                {
+                    "type": "color",
+                    "id": "itemSubTitleColor",
+                    "label": "item Sub Title Color",
+                    "default": "#ED1C24"
+                },
+                {
+                    "type": "textarea",
+                    "id": "itemDescripe",
+                    "label": "Item Desc"
+                },
+                {
+                    "type": "color",
+                    "id": "itemDescColor",
+                    "label": "Item Desc Color",
+                    "default": "#fff"
+                }
+            ]
+        },
+        {
+            "type": "brandItem",
+            "name": "brandItem",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "brandItemIcon",
+                    "label": "brand Item Icon"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "brandItemIcon_mb",
+                    "label": "brand Item Icon Mobile"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "Major Features"
+        }
+    ]
+}
+{% endschema %}

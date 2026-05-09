@@ -1,0 +1,131 @@
+{% comment %}
+    accessory product list
+    and
+    New Arrival product list
+{% endcomment %}
+<style>
+    .all-newArrival_product_list_collection{
+        display: flex;
+        gap: 30px;
+        flex-wrap: wrap;
+        max-width: 100%;
+        max-height: 530px;
+        overflow-y: scroll;
+        height: fit-content;
+        width: 100%;
+    }
+    .all-newArrival_product_list_collection .product_item{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        cursor: pointer;
+        width: calc((100% - 90px) / 4);
+        position: relative;
+    }
+    .all-newArrival_product_list_collection .product_item .product_main_image{
+        width: 160px;
+        height: 160px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .all-newArrival_product_list_collection .product_item .product_main_image img{
+        height: 100%;
+        object-fit: contain;
+    }
+    .all-newArrival_product_list_collection .product_item .product_title{
+        font: 500 16px var(--font-family-1);
+        color: #333333;
+        line-height: 1.4;
+        max-width: 84%;
+        text-align: center;
+        flex: 1;
+    }
+    .all-newArrival_product_list_collection .product_item .product_btns{
+        font: 400 16px var(--font-family-1);
+        color: #76767F;
+        margin-top: 14px;
+        text-decoration: underline;
+        text-underline-offset: 3px;
+    }
+    .all-newArrival_product_list_collection .product_item .product_btns:hover{
+        color: #262629;
+    }
+    .all-newArrival_product_list_collection .product_item .prod_item_tag {
+        font: 500 14px var(--font-family-1);
+        color: #fff;
+        padding: 5px 7px;
+        background-color: #DE2E39;
+        border-radius: 2px;
+        position: absolute;
+        right: 0;
+        top: 0;
+    }
+
+    /* small screen */
+    @media(min-width: 1026px) and (max-width: 1600px){
+        .all-newArrival_product_list_collection{
+            max-height: 450px;
+        }
+        .all-newArrival_product_list_collection .product_item .product_main_image{
+            width: 140px;
+            height: 140px;
+        }
+        .all-newArrival_product_list_collection .product_item .product_title{
+            font-size: 14px;
+            max-width: 100%;
+        }
+        .all-newArrival_product_list_collection .product_item .prod_item_tag{
+            font-size: 12px;
+            padding: 4px;
+        }
+    }
+</style>
+
+<div class="all-newArrival_product_list_collection">
+    {% for product in products_collection %}
+        {% for prodVariant in product.variants %}
+            {% assign publish_at_time = prodVariant.metafields.custom.published_at_time %}
+            {% assign is_within_two_weeks = false %}
+
+            {% if publish_at_time %}
+                {% assign now = 'now' | date: '%s' %}
+                {% assign publish_at_timestamp = publish_at_time | date: '%s' %}
+                {% assign diff_seconds = now | minus: publish_at_timestamp %}
+                {% assign diff_days = diff_seconds | divided_by: 86400 %}
+
+                {% if diff_days <= 14 %}
+                    {% assign is_within_two_weeks = true %}
+                {% endif %}
+            {% endif %}
+
+            {% if prodVariant.available and prodVariant.inventory_quantity > 0 and prodVariant.metafields.custom.isnewarrivalvisible.value == true %}
+                <div class="product_item" data-url="{{ product.url }}?variant={{ prodVariant.id }}">
+                    <div class="product_main_image image-zoom">
+                        {% if prodVariant.featured_image %}
+                            <img src="{{ prodVariant.featured_image | img_url: 'master' }}" loading="lazy" />
+                        {% else %}
+                            <img src="{{ product.featured_image | img_url: 'master' }}" loading="lazy" />
+                        {% endif %}
+                    </div>
+                    <div class="product_title">{{ product.title }}</div>
+                    <div class="product_btns">
+                        <span class="buy_now_btn">Buy</span>
+                    </div>
+                    {% if isTag and is_within_two_weeks %}
+                        <div class="prod_item_tag">NEW</div>
+                    {% endif %}
+                </div>
+            {% endif %}
+        {% endfor %}
+        
+    {% endfor %}
+</div>
+<script>
+    $('.product_item').on('click', function() {
+        const link = $(this).data('url')
+        if(link) {
+            window.location.href = link
+        }
+    })
+</script>

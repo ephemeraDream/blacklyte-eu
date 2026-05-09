@@ -1,0 +1,654 @@
+{% for currency in shop.enabled_currencies %}
+  {% if currency.iso_code == shop.currency %}
+    {%- assign currency_symbol = currency.symbol -%}
+    {% break %}
+  {% endif %}
+{% endfor %}
+
+<div class="bundle_card">
+  <div class="bundle_card_cover">
+    {{-
+      block.settings.image
+      | image_url: width: section.settings.image.width
+      | image_tag: alt: section.settings.image.alt
+    -}}
+    {% if block.settings.free_product_list != blank %}
+      <div class="bundle_card_freebox">
+        {% for product in block.settings.free_product_list %}
+          <div class="bundle_card_freebox_item">
+            {{- product.featured_image | image_url: width: 120 | image_tag: alt: product.featured_image.alt -}}
+            <div class="bundle_card_freebox_item_tag">Free</div>
+          </div>
+        {% endfor %}
+      </div>
+    {% endif %}
+  </div>
+  <div class="bundle_card_title">{{ block.settings.title }}</div>
+  <div class="bundle_card_bundlelist">
+    <div class="bundle_card_bundlelist_contain">
+      {% for product in block.settings.bundle_product_list %}
+        {% if block.settings.only_white %}
+          {% if product.metafields.custom.product_type == 'chairs' %}
+            {% for variant in product.variants %}
+              {% for option in variant.options %}
+                {% if option.id == 3448446877945 %}
+                  {% assign white_variants = variant %}
+                {% endif %}
+              {% endfor %}
+            {% endfor %}
+            {% comment %} {% assign white_variants = product.variants | where: 'option2', 'White' | where: 'available' %} {% endcomment %}
+          {% elsif product.metafields.custom.product_type == 'desk' %}
+            {% assign is_found = false %}
+            {% for variant in product.variants %}
+              {% for option in variant.options %}
+                {% if option.id == 3048505573625 and variant.available and is_found == false %}
+                  {% assign white_variants = variant %}
+                  {% assign is_found = true %}
+                {% endif %}
+              {% endfor %}
+            {% endfor %}
+            {% comment %} {% assign white_variants = product.variants | where: 'option1', 'White' | where: 'available' %} {% endcomment %}
+          {% elsif product.id == 8920095391993 %}
+            {% for variant in product.variants %}
+              {% for option in variant.options %}
+                {% if option.id == 3281713987833 and variant.available %}
+                  {% assign white_variants = variant %}
+                {% endif %}
+              {% endfor %}
+            {% endfor %}
+          {% endif %}
+          {% assign first_variant = white_variants %}
+        {% else %}
+          {% assign first_variant = product.selected_or_first_available_variant %}
+        {% endif %}
+        {% assign featured_image = first_variant.featured_image | default: product.featured_image %}
+        {{- featured_image | image_url: width: 120 | image_tag: alt: featured_image.alt -}}
+      {% endfor %}
+    </div>
+    <div class="bundle_card_bundlelist_text">
+      View all {{ block.settings.bundle_product_list.count }} products in this bundle >
+    </div>
+  </div>
+  <div class="bundle_card_text">{{ block.settings.text }}</div>
+  <div class="bundle_card_btn">
+    {{ block.settings.button_text }}
+    <svg xmlns="http://www.w3.org/2000/svg" width="7" height="11" viewBox="0 0 7 11" fill="none">
+      <path d="M0.566406 0.566406L5.47339 5.47339L0.566406 10.3804" stroke="white" stroke-width="1.6"/>
+    </svg>
+  </div>
+</div>
+<div class="bundle_card_modal">
+  <div class="bundle_card_modal_mask"></div>
+  <div class="bundle_card_modal_contain">
+    <div class="bundle_card_modal_head">
+      Customize your {{ block.settings.title }}
+      <svg
+        width="40"
+        height="40"
+        viewBox="0 0 40 40"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        class="bundle_card_modal_close"
+      >
+        <rect width="40" height="40" rx="20" fill="#A1A1AA"></rect><path d="M14.1074 14.3159L20 20.2085M25.8926 26.101L20 20.2085M20 20.2085L25.8926 14.3159M20 20.2085L14.1074 26.101" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"></path>
+      </svg>
+    </div>
+    <div class="bundle_card_modal_body">
+      <div class="bundle_card_modal_body_left">
+        {% for product in block.settings.bundle_product_list %}
+          {% assign product_single = false %}
+          {% if product.id == 8507512553721 or product.title contains '250ml' %}
+            {% assign product_single = true %}
+          {% endif %}
+          {% if block.settings.only_white %}
+            {% if product.metafields.custom.product_type == 'chairs' %}
+              {% for variant in product.variants %}
+                {% for option in variant.options %}
+                  {% if option.id == 3448446877945 %}
+                    {% assign white_variants = variant %}
+                  {% endif %}
+                {% endfor %}
+              {% endfor %}
+              {% comment %} {% assign white_variants = product.variants | where: 'option2', 'White' | where: 'available' %} {% endcomment %}
+            {% elsif product.metafields.custom.product_type == 'desk' %}
+              {% assign is_found = false %}
+              {% for variant in product.variants %}
+                {% for option in variant.options %}
+                  {% if option.id == 3048505573625 and variant.available and is_found == false %}
+                    {% assign white_variants = variant %}
+                    {% assign is_found = true %}
+                  {% endif %}
+                {% endfor %}
+              {% endfor %}
+              {% comment %} {% assign white_variants = product.variants | where: 'option1', 'White' | where: 'available' %} {% endcomment %}
+            {% elsif product.id == 8920095391993 %}
+              {% for variant in product.variants %}
+                {% for option in variant.options %}
+                  {% if option.id == 3281713987833 and variant.available %}
+                    {% assign white_variants = variant %}
+                  {% endif %}
+                {% endfor %}
+              {% endfor %}
+            {% endif %}
+            {% assign first_variant = white_variants %}
+          {% else %}
+            {% assign first_variant = product.selected_or_first_available_variant %}
+          {% endif %}
+          <div
+            class="bundle_card_modal_product{% if product_single %} bundle_card_modal_product_single{% endif %}"
+            data-id="{{ first_variant.id }}"
+            data-type="{{ product.metafields.custom.product_type }}"
+          >
+            <script type="application/json" class="bundle_card_modal_product_data">
+              {
+                "product": {{ product | json }},
+                "symbol": {{ currency_symbol | json }}
+              }
+            </script>
+            {% assign featured_image = first_variant.featured_image | default: product.featured_image %}
+            <img
+              src="{{ featured_image | image_url: width:120 }}"
+              width="100%"
+              height="100%"
+              class="bundle_card_modal_product_img"
+              alt="{{ featured_image.alt }}"
+            >
+            <div>
+              <div class="bundle_card_modal_product_title">
+                {{ product.title }}
+                <div class="bundle_card_modal_product_price">
+                  {% if product.metafields.custom.product_type == 'chairs' %}
+                    {% if block.settings.only_white %}
+                      {{ first_variant.price | minus: 11000 | money_without_trailing_zeros }}
+                    {% else %}
+                      {% comment %} {% if first_variant.option2 == 'Camo' %}
+                        {{ first_variant.price | money_without_trailing_zeros }}
+                      {% else %}
+                        {{ first_variant.price | minus: 10000 | money_without_trailing_zeros }}
+                      {% endif %} {% endcomment %}
+                      {{ first_variant.price | minus: 11000 | money_without_trailing_zeros }}
+                    {% endif %}
+                  {% elsif product.metafields.custom.product_type == 'desk' %}
+                    {{ first_variant.price | minus: 18000 | money_without_trailing_zeros }}
+                  {% elsif product.id == 8920095391993 %}
+                    {{ product.selected_or_first_available_variant.price | minus: 3000 | money_without_trailing_zeros }}
+                  {% elsif product.id == 8507512553721 %}
+                    {{ product.selected_or_first_available_variant.price | minus: 2000 | money_without_trailing_zeros }}
+                  {% elsif product.title contains '250ml' %}
+                    {{ product.selected_or_first_available_variant.price | minus: 450 | money_without_trailing_zeros }}
+                  {% endif %}
+                  <span
+                    class="
+                      bundle_card_modal_product_price_op
+                      {% comment %} {% if product.metafields.custom.product_type == 'chairs' and first_variant.option2 == 'Camo' and block.settings.only_white != true %} hidden{% endif %} {% endcomment %}
+                      {% comment %} {% if product.metafields.custom.product_type == 'desk' %}
+                       {% if product.selected_or_first_available_variant.option2 == 'Extra Large' or product.selected_or_first_available_variant.option2 == 'Medium' %} hidden{% endif %}
+                      {% endif %}
+                      {% if product.metafields.custom.product_type == 'desk' and block.settings.only_white == true %} hidden{% endif %}{% endcomment %}
+                    "
+                  >
+                    {{- first_variant.price | money_without_trailing_zeros -}}
+                  </span>
+                </div>
+              </div>
+              {% if product.metafields.custom.product_type == 'chairs' %}
+                <div class="bundle_card_modal_product_option" data-type="Color">
+                  <div class="bundle_card_modal_product_option_title">1.Choose your color</div>
+                  <div class="bundle_card_modal_product_option_text">
+                    Selected:
+                    <span>
+                      {{- first_variant.option2 | append: ' - ' | append: first_variant.option1 -}}
+                    </span>
+                  </div>
+                  <div class="bundle_card_modal_product_option_itembox">
+                    {% assign available_variants = product.variants | where: 'available' %}
+                    {% if block.settings.only_white %}
+                      {%- assign only_white = '' | split: '' -%}
+                      {% for variant in available_variants %}
+                        {% assign index = forloop.index0 %}
+                        {% for option in variant.options %}
+                          {% if option.id == 3448446877945 %}
+                            {%- assign only_white = available_variants | slice: index | concat: only_white -%}
+                          {% endif %}
+                        {% endfor %}
+                      {% endfor %}
+                      {% assign available_variants = only_white %}
+                      {% comment %} {% assign available_variants = available_variants | where: 'option2', 'White' %} {% endcomment %}
+                    {% endif %}
+                    {% for variant in available_variants %}
+                      {% assign is_white = false %}
+                      {% for option in variant.options -%}
+                        {% if option.id == 3448446877945 %}
+                          {% assign is_white = true %}
+                        {% endif %}
+                      {%- endfor %}
+                      {% if variant.id != 47060263698681
+                        and variant.id != 47060263731449
+                        and variant.id != 47060263665913
+                        and variant.id != 47060263633145
+                        and variant.id != 46846302945529
+                        and variant.id != 47060263600377
+                        and variant.id != 46846302978297
+                        and variant.id != 46846303011065
+                        and variant.id != 46846303043833
+                        and variant.id != 47273728049401
+                      %}
+                        {% assign is_current = false %}
+                        {% if first_variant.option1 == variant.option1 and first_variant.option2 == variant.option2 %}
+                          {% assign is_current = true %}
+                        {% endif %}
+                        <div
+                          data-id="{{ variant.id }}"
+                          data-color="{{ variant.option2 }}"
+                          data-material="{{ variant.option1 }}"
+                          class="bundle_card_modal_product_option_item{% if is_current %} bundle_card_modal_product_option_item_active{% endif %}{% if block.settings.no_white and is_white %} hidden{% endif %}"
+                        >
+                          {{-
+                            variant.featured_image
+                            | image_url: width: 140
+                            | image_tag: alt: variant.title, title: variant.title
+                          -}}
+                        </div>
+                      {% endif %}
+                      {% comment %}
+                        {% unless variant.option2 contains 'Edition' or variant.option2 contains 'edition' %}
+                          {% assign is_current = false %}
+                          {% if first_variant.option1 == variant.option1 and first_variant.option2 == variant.option2 %}
+                            {% assign is_current = true %}
+                          {% endif %}
+                          <div
+                            data-id="{{ variant.id }}"
+                            data-color="{{ variant.option2 }}"
+                            data-material="{{ variant.option1 }}"
+                            class="bundle_card_modal_product_option_item{% if is_current %} bundle_card_modal_product_option_item_active{% endif %}{% if block.settings.no_white and variant.option2 == "White" %} hidden{% endif %}"
+                          >
+                            {{-
+                              variant.featured_image
+                              | image_url: width: 140
+                              | image_tag: alt: variant.title, title: variant.title
+                            -}}
+                          </div>
+                        {% endunless %}
+                      {% endcomment %}
+                    {% endfor %}
+                  </div>
+                </div>
+              {% elsif product.metafields.custom.product_type == 'desk' %}
+                {% for option in product.options_with_values %}
+                  {%- case option.name -%}
+                    {%- when 'Color' -%}
+                      {% if option.values.size > 1 %}
+                        <div class="bundle_card_modal_product_option" data-type="{{ option.name }}">
+                          <div class="bundle_card_modal_product_option_title">1.Choose your color</div>
+                          <div class="bundle_card_modal_product_option_text">
+                            Selected: <span>{{ first_variant.option1 }}</span>
+                          </div>
+                          <div class="bundle_card_modal_product_option_itembox">
+                            {% assign option_values = option.values %}
+                            {% if block.settings.only_white %}
+                              {%- assign only_white = '' | split: '' -%}
+                              {% for option_item in option.values %}
+                                {% if option_item.id == 3048505573625 %}
+                                  {%- assign only_white = option.values | slice: forloop.index0 | concat: only_white -%}
+                                {% endif %}
+                              {% endfor %}
+                              {% assign option_values = only_white %}
+                              {% comment %} {% assign option_values = option.values | where: 'name', 'White' %} {% endcomment %}
+                            {% endif %}
+                            {% for value in option_values %}
+                              {% assign is_white = false %}
+                              {% if value.id == 3048505573625 %}
+                                {% assign is_white = true %}
+                              {% endif %}
+                              {% liquid
+                                assign variant = value.variant
+                                if value.variant.available == false or value.variant.available == blank
+                                  if product.metafields.custom.product_type == 'desk'
+                                    assign available_variant = product.variants | where: 'option1', value | where: 'available'
+                                  else
+                                    assign available_variant = product.variants | where: 'option2', value | where: 'available'
+                                  endif
+                                  if available_variant.size > 0
+                                    assign variant = available_variant[0]
+                                  endif
+                                endif
+                              %}
+                              {% unless value.variant.available == blank and available_variant.size == 0 %}
+                                <div
+                                  data-id="{{ variant.id }}"
+                                  data-value="{{ value }}"
+                                  class="bundle_card_modal_product_option_item{% if value.selected or block.settings.only_white %} bundle_card_modal_product_option_item_active{% endif %}{% if block.settings.no_white and is_white %} hidden{% endif %}"
+                                >
+                                  {{-
+                                    variant.featured_image
+                                    | image_url: width: 140
+                                    | image_tag: alt: variant.title, title: variant.title
+                                  -}}
+                                </div>
+                              {% endunless %}
+                            {% endfor %}
+                          </div>
+                        </div>
+                      {% endif %}
+                    {%- when 'Size' -%}
+                      {% if option.values.size > 1 %}
+                        <div class="bundle_card_modal_product_option" data-type="{{ option.name }}">
+                          <div class="bundle_card_modal_product_option_title">2.Choose your size</div>
+                          <div class="bundle_card_modal_product_option_text">
+                            {% assign size_object = '' %}
+                            {% for size in product.metafields.custom.product_size.value %}
+                              {% if size.name == first_variant.option2 %}
+                                {% assign size_object = size %}
+                              {% endif %}
+                            {% endfor %}
+                            Selected:
+                            <span>
+                              {{- first_variant.option2 | append: ' ' -}}
+                              {{- size_object.size | replace: '\', '' -}}
+                            </span>
+                          </div>
+                          <div class="bundle_card_modal_product_option_itembox">
+                            {% if block.settings.only_white %}
+                              {% assign active_init = false %}
+                              {% for value in option.values %}
+                                {% assign size_object = '' %}
+                                {% for size in product.metafields.custom.product_size.value %}
+                                  {% if size.name == value %}
+                                    {% assign size_object = size %}
+                                  {% endif %}
+                                {% endfor %}
+                                {% assign is_available = true %}
+                                {% comment %}
+                                  {% assign variant = product.variants
+                                    | where: 'option2', value
+                                    | where: 'option1', 'White'
+                                    | where: 'available'
+                                  %}
+                                {% endcomment %}
+                                {% assign variants = product.variants | where: 'option2', value | where: 'available' %}
+                                {%- assign available_variants = '' | split: '' -%}
+                                {% for variant in variants %}
+                                  {% for option in variant.options %}
+                                    {% if option.id == 3048505573625 %}
+                                      {%- assign available_variants = variants
+                                        | slice: forloop.index0
+                                        | concat: available_variants
+                                      -%}
+                                    {% endif %}
+                                  {% endfor %}
+                                {% endfor %}
+                                {% if available_variants.size == 0 %}
+                                  {% assign is_available = false %}
+                                {% endif %}
+                                <div
+                                  data-index="{{ forloop.index0 }}"
+                                  data-id="{{ variant.id }}"
+                                  data-value="{{ value }}"
+                                  data-size="{{ size_object.size | replace: '\"', '/' }}"
+                                  data-size-format="{{ size_object.size_format_in | replace: '\"', '/' }}"
+                                  class="bundle_card_modal_product_option_item{% unless is_available %} hidden{% endunless %}{% if active_init == false and is_available %} bundle_card_modal_product_option_item_active{% endif %}"
+                                >
+                                  <div>
+                                    <span>
+                                      {{ value }}
+                                    </span>
+                                    {% if size_object != blank %}
+                                      <div>
+                                        {{ size_object.size | replace: '\', '' }}
+                                      </div>
+                                    {% endif %}
+                                  </div>
+                                </div>
+                                {% if is_available %}
+                                  {% assign active_init = true %}
+                                {% endif %}
+                              {% endfor %}
+                            {% else %}
+                              {% for value in option.values %}
+                                {% liquid
+                                  assign variant = value.variant
+                                  if value.variant.available == false or value.variant.available == blank
+                                    if product.metafields.custom.product_type == 'desk'
+                                      assign available_variant = product.variants | where: 'option2', value | where: 'available'
+                                    endif
+                                    if available_variant.size > 0
+                                      assign variant = available_variant[0]
+                                    endif
+                                  endif
+                                %}
+                                {% assign size_object = '' %}
+                                {% for size in product.metafields.custom.product_size.value %}
+                                  {% if size.name == value %}
+                                    {% assign size_object = size %}
+                                  {% endif %}
+                                {% endfor %}
+                                {% unless value.variant.available == blank and available_variant.size == 0 %}
+                                  <div
+                                    data-index="{{ forloop.index0 }}"
+                                    data-id="{{ variant.id }}"
+                                    data-value="{{ value }}"
+                                    data-size="{{ size_object.size | replace: '\"', '/' }}"
+                                    data-size-format="{{ size_object.size_format_in | replace: '\"', '/' }}"
+                                    class="bundle_card_modal_product_option_item{% unless value.variant.available %} bundle_card_modal_product_option_item_diasbled{% endunless %}{% if value.selected %} bundle_card_modal_product_option_item_active{% endif %}"
+                                  >
+                                    <div>
+                                      <span>
+                                        {{ value }}
+                                      </span>
+                                      {% if size_object != blank %}
+                                        <div>
+                                          {{ size_object.size | replace: '\', '' }}
+                                        </div>
+                                      {% endif %}
+                                    </div>
+                                  </div>
+                                {% endunless %}
+                              {% endfor %}
+                            {% endif %}
+                          </div>
+                        </div>
+                      {% endif %}
+                  {%- endcase -%}
+                {% endfor %}
+              {% elsif product.id == 8920095391993 %}
+                <div class="bundle_card_modal_product_option" data-type="Color">
+                  <div class="bundle_card_modal_product_option_title">1.Choose your color</div>
+                  <div class="bundle_card_modal_product_option_text">
+                    Selected: <span>{{ first_variant.option1 }}</span>
+                  </div>
+                  <div class="bundle_card_modal_product_option_itembox">
+                    {% assign available_variants = product.variants | where: 'available' %}
+                    {% if block.settings.only_white %}
+                      {%- assign only_white = '' | split: '' -%}
+                      {% for variant in available_variants %}
+                        {% assign index = forloop.index0 %}
+                        {% for option in variant.options %}
+                          {% if option.id == 3281713987833 %}
+                            {%- assign only_white = available_variants | slice: index | concat: only_white -%}
+                          {% endif %}
+                        {% endfor %}
+                      {% endfor %}
+                      {% assign available_variants = only_white %}
+                      {% comment %} {% assign available_variants = available_variants | where: 'option1', 'White' %} {% endcomment %}
+                    {% endif %}
+                    {% for variant in available_variants %}
+                      {% assign is_white = false %}
+                      {% for option in variant.options -%}
+                        {% if option.id == 3281713987833 %}
+                          {% assign is_white = true %}
+                        {% endif %}
+                      {%- endfor %}
+                      {% assign is_current = false %}
+                      {% if first_variant.option1 == variant.option1 %}
+                        {% assign is_current = true %}
+                      {% endif %}
+                      <div
+                        data-id="{{ variant.id }}"
+                        data-color="{{ variant.option1 }}"
+                        class="bundle_card_modal_product_option_item{% if is_current %} bundle_card_modal_product_option_item_active{% endif %}{% if block.settings.no_white and is_white %} hidden{% endif %}"
+                      >
+                        {{-
+                          variant.featured_image
+                          | image_url: width: 140
+                          | image_tag: alt: variant.title, title: variant.title
+                        -}}
+                      </div>
+                    {% endfor %}
+                  </div>
+                </div>
+              {% endif %}
+            </div>
+          </div>
+        {% endfor %}
+        {% if block.settings.free_product_list != blank %}
+          <div class="bundle_card_modal_freebox_title">Limited Time Offer Gifts with Purchase</div>
+          <div class="bundle_card_modal_freebox">
+            {% for product in block.settings.free_product_list %}
+              <div
+                class="bundle_card_modal_freebox_item"
+                data-id="{{ product.selected_or_first_available_variant.id }}"
+              >
+                {{- product.featured_image | image_url: width: 120 | image_tag: alt: product.featured_image.alt -}}
+                <div>
+                  <div class="bundle_card_modal_freebox_item_tag">Free</div>
+                  <div class="bundle_card_modal_freebox_item_title">{{ product.title }}</div>
+                  <div class="bundle_card_modal_freebox_item_text">
+                    {% if product.selected_or_first_available_variant.options.size > 0
+                      and product.selected_or_first_available_variant.options.first != 'Default Title'
+                    %}
+                      {{ product.selected_or_first_available_variant.options | join: ' | ' }}
+                    {% endif %}
+                    （Worth {{ product.price | money_without_trailing_zeros }}）
+                  </div>
+                </div>
+              </div>
+            {% endfor %}
+          </div>
+        {% endif %}
+      </div>
+      <div class="bundle_card_modal_body_right">
+        <div class="bundle_card_modal_body_right_title">Bundle Promotion</div>
+        <div class="bundle_card_modal_salebox">
+          <div class="bundle_card_modal_salebox_list">
+            <span>{{ block.settings.title }}</span>
+            <span class="bundle_card_modal_salebox_list_price">
+              {{- block.settings.bundle_save | money_without_trailing_zeros -}}
+            </span>
+          </div>
+          {% if block.settings.free_product_list != blank %}
+            {% for product in block.settings.free_product_list %}
+              <div class="bundle_card_modal_salebox_list">
+                <div><span class="bundle_card_modal_salebox_list_tag">Free</span> {{ product.title }}</div>
+                <div>
+                  {{ 0 | money_without_trailing_zeros }}
+                  <span class="bundle_card_modal_salebox_list_op">
+                    {{- product.price | money_without_trailing_zeros -}}
+                  </span>
+                </div>
+              </div>
+            {% endfor %}
+          {% endif %}
+        </div>
+        <div class="bundle_card_modal_saletotal">
+          <span>Total Savings</span>
+          <div>
+            {% liquid
+              assign total_save = block.settings.bundle_save
+              for product in block.settings.free_product_list
+                assign total_save = total_save | plus: product.price
+              endfor
+              assign total_price = 0
+              for product in block.settings.bundle_product_list
+                if block.settings.only_white
+                  if product.metafields.custom.product_type == 'chairs'
+                    assign white_variants = product.variants | where: 'option2', 'White' | where: 'available'
+                  elsif product.metafields.custom.product_type == 'desk' or product.title contains 'Atlas Monitor Arm'
+                    assign white_variants = product.variants | where: 'option1', 'White' | where: 'available'
+                  endif
+                  assign first_variant = white_variants[0]
+                else
+                  assign first_variant = product.selected_or_first_available_variant
+                endif
+                assign total_price = total_price | plus: first_variant.price
+              endfor
+              for product in block.settings.free_product_list
+                assign total_price = total_price | plus: product.price
+              endfor
+            %}
+            <div>
+              You save
+              <span class="bundle_card_modal_saletotal_save">{{ total_save | money_without_trailing_zeros }}</span>
+            </div>
+            <div class="bundle_card_modal_saletotal_text">
+              <span class="bundle_card_modal_saletotal_op">Was {{ total_price | money_without_trailing_zeros }}</span>
+              <span class="bundle_card_modal_saletotal_dp">
+                {{- total_price | minus: total_save | money_without_trailing_zeros -}}
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="bundle_card_modal_btn">ADD TO CART</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "bundle card",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "image"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "title"
+    },
+    {
+      "type": "text",
+      "id": "text",
+      "label": "text"
+    },
+    {
+      "type": "text",
+      "id": "button_text",
+      "label": "button text"
+    },
+    {
+      "type": "product_list",
+      "id": "bundle_product_list",
+      "label": "bundle product list"
+    },
+    {
+      "type": "product_list",
+      "id": "free_product_list",
+      "label": "free product list"
+    },
+    {
+      "type": "text",
+      "id": "bundle_save",
+      "label": "bundle save"
+    },
+    {
+      "type": "checkbox",
+      "id": "only_white",
+      "label": "only white",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "no_white",
+      "label": "no white",
+      "default": false
+    }
+  ],
+  "presets": [
+    {
+      "name": "bundle card"
+    }
+  ]
+}
+{% endschema %}

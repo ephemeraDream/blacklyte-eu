@@ -1,0 +1,258 @@
+.compare-chairs-module .productGrid.column-5 .product.compare_chair_prod{
+    width: 60%;
+  }
+  .compare-chairs-module .productGrid.column-5 .product{
+    padding-left: 8.5px !important;
+    padding-right: 8.5px !important;
+  }
+  div.all-gaming-chairs-new-collections.compare-chairs-module .collection{
+    background-color: #fff;
+  }
+  div.all-gaming-chairs-new-collections.compare-chairs-module .card-product{
+    background-color: #F5F5F5 !important;
+  }
+  div.all-gaming-chairs-new-collections.compare-chairs-module .card-media{
+    padding-bottom: 91% !important;
+  }
+  .compare-chairs-module .productGrid.column-5 .product .product-item{
+    border: 1px solid #EDEFF2;
+    border-radius: 6px;
+  }
+  .product.compare_chair_prod .compare_chair_module {
+    display: flex;
+    border: 1px solid #EDEFF2;
+    background-color: #F5F5F5;
+    border-radius: 6px;
+    justify-content: space-between;
+    align-items: center;
+    overflow: hidden;
+    /* height: -webkit-fill-available; */
+  }
+  .product.compare_chair_prod .compare_chair_module .compare_chairs_left{
+    width: 50%;
+    /* height: 100%; */
+    overflow: hidden;
+  }
+  .product.compare_chair_prod .compare_chair_module .compare_chairs_left img.image-pc{
+    display: block;
+  }
+  .product.compare_chair_prod .compare_chair_module .compare_chairs_left img.image-mb{
+    display: none;
+  }
+  .product.compare_chair_prod .compare_chair_module .compare_chairs_left img{
+    /* height: 100%; */
+    object-fit: cover;
+    transition: transform .3s ease-in-out;
+  }
+
+  .product.compare_chair_prod .compare_chair_module:hover .compare_chairs_left img{
+    transform: scale(1.1);
+  }
+  
+  .product.compare_chair_prod .compare_chair_module .compare_chairs_right{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    padding-left: 50px;
+    padding-right: 150px;
+  }
+  .product.compare_chair_prod .compare_chair_module .compare_chairs_right .compare_subtitle{
+    font: 500 14px var(--font-family-1);
+    color: #262629;
+  }
+  .product.compare_chair_prod .compare_chair_module .compare_chairs_right .compare_title{
+    font: 600 20px var(--font-family-1);
+    color: #262629;
+    margin-top: 9px;
+  }
+  .product.compare_chair_prod .compare_chair_module .compare_chairs_right .compare_descr{
+    font: 400 14px var(--font-family-1);
+    color: #262629;
+    margin-top: 14px;
+    line-height: 1.6;
+  }
+  .product.compare_chair_prod .compare_chair_module .compare_chairs_right .compare_button{
+    font: 500 14px var(--font-family-1);
+    color: #DE2E39;
+    margin-top: 42px;
+    display: flex;
+    gap: 10px;
+    cursor: pointer;
+  }
+  .product.compare_chair_prod .compare_chair_module .compare_chairs_right .compare_button .text{ }
+  .product.compare_chair_prod .compare_chair_module .compare_chairs_right .compare_button .icon svg{
+    width: auto;
+    height: auto;
+    fill: none;
+    stroke: none;
+    vertical-align: baseline;
+    transition: all .3s ease-in-out;
+  }
+  /* .product.compare_chair_prod .compare_chair_module .compare_chairs_right .compare_button:hover .icon svg{
+    transform: rotate(180deg);
+  } */
+  .compare-chairs-module .productGrid.column-5 .product:nth-child(-n+4),
+  .compare-chairs-module .productGrid.column-5 .product:nth-child(-n+5),
+  .compare-chairs-module .productGrid.column-5 .product {
+    margin-top: 30px;
+  }
+  div.all-gaming-chairs-new-collections.compare-chairs-module .collection .card-information{
+    padding: 10px 10px 0 18px;
+  }
+  div.all-gaming-chairs-new-collections.compare-chairs-module .card-title{
+    font:500 14px var(--font-family-1);
+    color: #262628;
+  }
+  div.all-gaming-chairs-new-collections.compare-chairs-module .collection_all_variant_name{
+    font: 400 14px var(--font-family-1);
+    color: #57575B;
+    margin-bottom: 0;
+    line-height: 1.4;
+  }
+  div.all-gaming-chairs-new-collections.compare-chairs-module .price-item{
+    font: 500 16px var(--font-family-1);
+    /* color: #DE2E39; */
+  }
+  div.all-gaming-chairs-new-collections.compare-chairs-module .card-price{
+    margin-top: 6px;
+  }
+  
+
+  @media(max-width: 767px) {
+    .compare-chairs-module .productGrid.column-5 .product.compare_chair_prod{
+      width: 100%;
+    }
+    .compare-chairs-module .productGrid.column-5 .product{
+      padding-left: 4px !important;
+      padding-right: 4px !important;
+      margin-top: 10px !important;
+    }
+    .compare-chairs-module .productGrid.column-5 .product .product-item,
+    .product.compare_chair_prod .compare_chair_module {
+      border-radius: 3px;
+    }
+    .product.compare_chair_prod .compare_chair_module{
+      flex-direction: column;
+    }
+    .product.compare_chair_prod .compare_chair_module .compare_chairs_left,
+    .product.compare_chair_prod .compare_chair_module .compare_chairs_right{
+      width: 100%;
+    }
+    .product.compare_chair_prod .compare_chair_module .compare_chairs_right{
+      padding: 23px 20px 19px 16px;
+    }
+    .product.compare_chair_prod .compare_chair_module .compare_chairs_right .compare_subtitle{
+      font-size: 10px;
+    }
+    .product.compare_chair_prod .compare_chair_module .compare_chairs_right .compare_title{
+      font-size: 16px;
+      margin-top: 5px;
+    }
+    .product.compare_chair_prod .compare_chair_module .compare_chairs_right .compare_descr{
+      font-size: 12px;
+      margin-top: 7px;
+    }
+    .product.compare_chair_prod .compare_chair_module .compare_chairs_right .compare_button{
+      margin-top: 18px;
+      font-size: 14px;
+    }
+    .product.compare_chair_prod .compare_chair_module .compare_chairs_left img.image-pc{
+      display: none;
+    }
+    .product.compare_chair_prod .compare_chair_module .compare_chairs_left img.image-mb{
+      display: block;
+    }
+    div.all-gaming-chairs-new-collections.compare-chairs-module .card-title,
+    div.all-gaming-chairs-new-collections.compare-chairs-module .price-item {
+      font-size: 11px;
+    }
+    div.all-gaming-chairs-new-collections.compare-chairs-module .collection_all_variant_name{
+      font-size: 9px;
+      line-height: 2;
+    }
+    div.all-gaming-chairs-new-collections.compare-chairs-module .collection .card-information{
+      padding: 10px;
+    }
+    div.all-gaming-chairs-new-collections.compare-chairs-module .card-media{
+      padding-bottom: 110% !important;
+    }
+    
+  }
+  @media(min-width: 768px) and (max-width: 990px) {
+    .compare-chairs-module .productGrid.column-5 .product.compare_chair_prod{
+      width: 100%;
+    }
+  }
+  @media (min-width: 991px) and (max-width: 1100px) {
+    .compare-chairs-module .productGrid.column-5 .product.compare_chair_prod{
+      width: 100%;
+    }
+  }
+  @media (min-width: 1101px) and (max-width: 1299px){
+    .compare-chairs-module .productGrid.column-5 .product.compare_chair_prod{
+      width: calc((100% / 3) * 2);
+    }
+    .product.compare_chair_prod .compare_chair_module .compare_chairs_right{
+      padding-left: 20px;
+      padding-right: 20px;
+    }
+  }
+
+  @media(min-width: 1300px) and (max-width: 1600px) {
+    .compare-chairs-module .productGrid.column-5 .product.compare_chair_prod{
+      width: 75%;
+    }
+  }
+
+  @media(min-width: 768px) and (max-width: 1024px) {
+    .product.compare_chair_prod .compare_chair_module .compare_chairs_right{
+      padding-left: 14px;
+      padding-right: 20px;
+    }
+    .product.compare_chair_prod .compare_chair_module .compare_chairs_right .compare_subtitle{
+      font-size: 10px;
+    }
+    .product.compare_chair_prod .compare_chair_module .compare_chairs_right .compare_title{
+      font-size: 14px;
+      margin-top: 4px;
+    }
+    .product.compare_chair_prod .compare_chair_module .compare_chairs_right .compare_descr{
+      font-size: 8px;
+      margin-top: 5px;
+    }
+    .product.compare_chair_prod .compare_chair_module .compare_chairs_right .compare_button{
+      font-size: 8px;
+      margin-top: 20px;
+    }
+    .product.compare_chair_prod .compare_chair_module .compare_chairs_right .compare_button .icon svg{
+      width: 7px;
+      height: 7px;
+    }
+    .product.compare_chair_prod .compare_chair_module .compare_chairs_right .compare_button{
+      gap: 4px;
+    }
+  }
+  @media(min-width: 2000px) {
+    .compare-chairs-module .productGrid.column-5 .product.compare_chair_prod{
+      width: 40%;
+    }
+    .product.compare_chair_prod .compare_chair_module .compare_chairs_right{
+      padding-left: 30px;
+      padding-right: 80px;
+    }
+    div.all-gaming-chairs-new-collections.compare-chairs-module .card-media{
+      padding-bottom: 100% !important;
+    }
+    div.all-gaming-chairs-new-collections.compare-chairs-module .card-title,
+    div.all-gaming-chairs-new-collections.compare-chairs-module .collection_all_variant_name {
+      font-size: 16px;
+      line-height: 1.4;
+    }
+    div.all-gaming-chairs-new-collections.compare-chairs-module .price-item{
+      font-size: 18px;
+      line-height: 1.4;
+    }
+    div.all-gaming-chairs-new-collections.compare-chairs-module .card-price{
+      margin-top: 10px;
+    }
+  }

@@ -1,0 +1,441 @@
+<style>
+    .section-{{ section.id }}{
+        padding-top: 134px;
+        background: #EBEBEB;
+    }
+    .section-{{ section.id }} .container-full{
+        padding-left: 16%;
+        padding-right: 16%;
+    }
+    .section-{{ section.id }} .container-full .head-cont{
+        display: flex;
+        gap: 100px;
+        margin-bottom: 33px;
+    }
+    .section-{{ section.id }} .section-title,
+    .section-{{ section.id }} .section-sub-title{
+        font-family: Poppins;
+        font-weight: 600;
+        font-size: 30px;
+        line-height: normal;
+        letter-spacing: 0%;
+        color: #262629;
+    }
+    .section-{{ section.id }} .section-sub-title{
+        white-space: nowrap;
+    }
+    .section-{{ section.id }} .section-desc,
+    .section-{{ section.id }} .section-sub-desc{
+        font-family: Poppins;
+        font-weight: 500;
+        font-style: Medium;
+        font-size: 16px;
+        line-height: 26px;
+        letter-spacing: 0%;
+        color: rgba(38, 38, 41, 0.7);
+    }
+    .section-{{ section.id }} .section-sub-desc{
+        margin-top: 20px;
+    }
+    .section-{{ section.id }} .cont-lists .cont-large{
+        position: relative;
+    }
+    .section-{{ section.id }} .cont-lists .large-item-cont-pc,
+    .section-{{ section.id }} .cont-lists .left-cont-pc,
+    .section-{{ section.id }} .small-item .left-cont-pc{
+        display: block;
+    }
+    .section-{{ section.id }} .cont-lists .large-item-cont-mb,
+    .section-{{ section.id }} .cont-lists .large-item-cont-mb,
+    .section-{{ section.id }} .small-item .left-cont-mb{
+        display: none;
+    }
+
+    .section-{{ section.id }} .cont-lists .large-item-cont img{
+        height: auto;
+        position: absolute;
+        top: 0;
+    }
+    .section-{{ section.id }} .cont-lists .left-cont{
+        position: relative;
+    }
+    .section-{{ section.id }} .cont-lists .left-cont img{
+        height: auto;
+        max-width: 580px;
+    }
+    .section-{{ section.id }} .cont-small-lists .small-item{
+        display: flex;
+        gap: 170px;
+        flex-direction: row-reverse;
+        align-items: center;
+    }
+    .section-{{ section.id }} .cont-small-lists-line-2 .small-item{
+        gap: 75px;
+        flex-direction: row;
+    }
+    .section-{{ section.id }} .cont-small-lists .small-item img{
+        height: auto;
+    }
+    .section-{{ section.id }} .cont-small-lists-line-2 .small-item .small-item-logo{
+        width: 204px;
+        margin-top: 20px;
+    }
+    .section-{{ section.id }} .cont-small-lists{
+        margin-top: 130px;
+    }
+    .section-{{ section.id }} .cont-small-lists-line-2{
+        margin-top: 100px;
+    }
+    .section-{{ section.id }} .cont-small-lists .small-item .right-cont{
+        width: 50%;
+    }
+    .section-{{ section.id }} .cont-small-lists-line-2 .small-item .right-cont{
+        width: 60%;
+    }
+    .section-{{ section.id }} .cont-small-lists .small-item .right-cont .right-cont-title,
+    .section-{{ section.id }} .cont-small-lists .small-item .right-cont .right-cont-desc{
+        font-family: Poppins;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 26px;
+        letter-spacing: 0%;
+        color: rgba(38, 38, 41, 0.7);
+    }
+    .section-{{ section.id }} .cont-small-lists .small-item .right-cont .right-cont-desc{
+        margin-top: 20px;
+    }
+    
+
+    {% comment %} iPhone {% endcomment %}
+    @media(max-width: 768px){
+        .section-{{ section.id }}{
+            padding-top: 50px;
+        }
+        .section-{{ section.id }} .container-full{
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+        .section-{{ section.id }} .cont-lists .large-item-cont-pc,
+        .section-{{ section.id }} .cont-lists .left-cont-pc,
+        .section-{{ section.id }} .small-item .left-cont-pc{
+            display: none;
+        }
+        .section-{{ section.id }} .cont-lists .large-item-cont-mb,
+        .section-{{ section.id }} .cont-lists .large-item-cont-mb,
+        .section-{{ section.id }} .small-item .left-cont-mb{
+            display: block;
+        }
+
+        .section-{{ section.id }} .container-full .head-cont{
+            gap: 10px;
+            flex-direction: column;
+            margin-bottom: 20px;
+        }
+        .section-{{ section.id }} .section-title,
+        .section-{{ section.id }} .section-sub-title{
+            font-size: 20px;
+        }
+        .section-{{ section.id }} .section-desc,
+        .section-{{ section.id }} .section-sub-desc{
+            font-size: 14px;
+            line-height: 24px;
+            margin-top: 0;
+        }
+        .section-{{ section.id }} .cont-small-lists .small-item{
+            gap: 10px;
+            flex-direction: column-reverse;
+        }
+        .section-{{ section.id }} .cont-small-lists{
+            margin-top: 44px;
+        }
+        .section-{{ section.id }} .cont-small-lists .small-item .right-cont{
+            width: 100%;
+        }
+        .section-{{ section.id }} .cont-lists .left-cont img{
+            max-width: 100%;
+        }
+        .section-{{ section.id }} .cont-small-lists .small-item .right-cont .right-cont-title,
+        .section-{{ section.id }} .cont-small-lists .small-item .right-cont .right-cont-desc{
+            font-size: 14px;
+            line-height: 24px;
+        }
+        .section-{{ section.id }} .cont-small-lists-line-2 .small-item .small-item-logo{
+            width: 100px;
+            margin-top: 10px;
+        }
+    
+    }
+
+    {% comment %} iPad {% endcomment %}
+    @media(min-width: 768px) and (max-width: 1024px){
+        .section-{{ section.id }} .container-full{
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+        .section-{{ section.id }} .cont-small-lists .small-item{
+            gap: 100px;
+        }
+        .section-{{ section.id }} .cont-small-lists .small-item .right-cont{
+            width: 70%;
+        }
+        .section-{{ section.id }} .container-full .head-cont{
+            gap: 20px;
+            flex-direction: column;
+        }
+    
+    }
+
+    @media(min-width: 1025px) and (max-width: 1480px){
+        .section-{{ section.id }} .container-full{
+            padding-left: 60px;
+            padding-right: 60px;
+        }
+    }
+
+</style>
+
+<section class="section-{{ section.id }}" id="{{ section.id }}" data-section-id="{{ section.id }}">
+    <div class="container-full">
+        <div class="head-cont">
+            {% if section.settings.sectionTitle != blank or section.settings.sectionSubTitle != blank %}
+                <div class="head-left">
+                    {% if section.settings.sectionTitle != blank %}
+                        <div class="section-title">{{ section.settings.sectionTitle }}</div>
+                    {% endif %}
+                    {% if section.settings.sectionSubTitle != blank %}
+                        <div class="section-sub-title">{{ section.settings.sectionSubTitle }}</div>
+                    {% endif %}
+                </div>
+            {% endif %}
+            {% if section.settings.sectionDesc != blank or section.settings.sectionSubDesc != blank %}
+                <div class="head-right">
+                    {% if section.settings.sectionDesc != blank %}
+                        <div class="section-desc">{{ section.settings.sectionDesc }}</div>
+                    {% endif %}
+                    {% if section.settings.sectionSubDesc != blank %}
+                        <div class="section-sub-desc">{{ section.settings.sectionSubDesc }}</div>
+                    {% endif %}
+                </div>
+            {% endif %}
+        </div>
+        <div class="cont-lists">
+            <div class="cont-large">
+                {% for block in section.blocks %}
+                    {% if block.type == "largeItem" %}
+                        <div class="large-item-cont large-item-cont-pc" style="padding-top: {% unless block.settings.largeItemImage.presentation.focal_point == '50.0% 50.0%' %}{{ 1 | divided_by: block.settings.largeItemImage.aspect_ratio | times: 120 }}%{% else %}{{ 1 | divided_by: block.settings.largeItemImage.aspect_ratio | times: 100 }}%{% endunless %}">
+                            <img srcset="{{ block.settings.largeItemImage | img_url: 'master' }}"
+                                height="{{ block.settings.largeItemImage.height }}"
+                                width="{{ block.settings.largeItemImage.width }}"
+                                alt="{{ block.settings.largeItemImage.alt }}" />
+                        </div>
+                        <div class="large-item-cont large-item-cont-mb" style="padding-top: {% unless block.settings.largeItemImageMobile.presentation.focal_point == '50.0% 50.0%' %}{{ 1 | divided_by: block.settings.largeItemImageMobile.aspect_ratio | times: 120 }}%{% else %}{{ 1 | divided_by: block.settings.largeItemImageMobile.aspect_ratio | times: 100 }}%{% endunless %}">
+                            <img srcset="{{ block.settings.largeItemImageMobile | img_url: 'master' }}"
+                                height="{{ block.settings.largeItemImageMobile.height }}"
+                                width="{{ block.settings.largeItemImageMobile.width }}"
+                                alt="{{ block.settings.largeItemImageMobile.alt }}" />
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+            <div class="cont-small-lists">
+                {% for block in section.blocks %}
+                    {% if block.type == "smallItem" %}
+                        <div class="small-item">
+                            {% if block.settings.smallItemImage != blank or block.settings.smallItemImagemb != blank %}
+                                <div class="left-cont left-cont-pc">
+                                    <img srcset="{{ block.settings.smallItemImage | img_url: 'master' }}"
+                                        width="{{ block.settings.smallItemImage.width }}"
+                                        height="{{ block.settings.smallItemImage.height }}"
+                                        alt="{{ block.settings.smallItemImage.alt }}" />
+                                </div>
+                                <div class="left-cont left-cont-mb">
+                                    <img srcset="{{ block.settings.smallItemImagemb | img_url: 'master' }}"
+                                        width="{{ block.settings.smallItemImagemb.width }}"
+                                        height="{{ block.settings.smallItemImagemb.height }}"
+                                        alt="{{ block.settings.smallItemImagemb.alt }}" />
+                                </div>
+                            {% endif %}
+                            {% if block.settings.smallItemTitle != blank or block.settings.smallItemDesc != blank %}
+                                <div class="right-cont">
+                                    {% if block.settings.smallItemTitle != blank %}
+                                        <div class="right-cont-title">{{ block.settings.smallItemTitle }}</div>
+                                    {% endif %}
+                                    {% if block.settings.smallItemDesc != blank %}
+                                        <div class="right-cont-desc">{{ block.settings.smallItemDesc }}</div>
+                                    {% endif %}
+                                    {% if block.settings.smallItemLogo != blank %}
+                                        <div class="small-item-logo">
+                                            <img src="{{ block.settings.smallItemLogo | img_url: 'master' }}"
+                                                width="{{ block.settings.smallItemLogo.width }}"
+                                                height="{{ block.settings.smallItemLogo.height }}"
+                                                alt="{{ block.settings.smallItemLogo.alt }}" />
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            {% endif %}
+                            
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+            <div class="cont-small-lists cont-small-lists-line-2">
+                {% for block in section.blocks %}
+                    {% if block.type == "smallItemLine2" %}
+                        <div class="small-item">
+                            {% if block.settings.smallItemImage != blank or block.settings.smallItemImagemb != blank %}
+                                <div class="left-cont left-cont-pc">
+                                    <img srcset="{{ block.settings.smallItemImage | img_url: 'master' }}"
+                                        width="{{ block.settings.smallItemImage.width }}"
+                                        height="{{ block.settings.smallItemImage.height }}"
+                                        alt="{{ block.settings.smallItemImage.alt }}" />
+                                </div>
+                                <div class="left-cont left-cont-mb">
+                                    <img srcset="{{ block.settings.smallItemImagemb | img_url: 'master' }}"
+                                        width="{{ block.settings.smallItemImagemb.width }}"
+                                        height="{{ block.settings.smallItemImagemb.height }}"
+                                        alt="{{ block.settings.smallItemImagemb.alt }}" />
+                                </div>
+                            {% endif %}
+                            {% if block.settings.smallItemTitle != blank or block.settings.smallItemDesc != blank %}
+                                <div class="right-cont">
+                                    {% if block.settings.smallItemTitle != blank %}
+                                        <div class="right-cont-title">{{ block.settings.smallItemTitle }}</div>
+                                    {% endif %}
+                                    {% if block.settings.smallItemDesc != blank %}
+                                        <div class="right-cont-desc">{{ block.settings.smallItemDesc }}</div>
+                                    {% endif %}
+                                    {% if block.settings.smallItemLogo != blank %}
+                                        <div class="small-item-logo">
+                                            <img src="{{ block.settings.smallItemLogo | img_url: 'master' }}"
+                                                width="{{ block.settings.smallItemLogo.width }}"
+                                                height="{{ block.settings.smallItemLogo.height }}"
+                                                alt="{{ block.settings.smallItemLogo.alt }}" />
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            {% endif %}
+                            
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+
+{% schema %}
+{
+    "name": "aboutus Brand Story",
+    "settings": [
+        {
+            "type": "text",
+            "id": "sectionTitle",
+            "label": "section Title",
+            "default": "Our Story"
+        },
+        {
+            "type": "text",
+            "id": "sectionSubTitle",
+            "label": "section Sub Title",
+            "default": "Blacklyte – Freedom to Innovate"
+        },
+        {
+            "type": "text",
+            "id": "sectionDesc",
+            "label": "section Descripe",
+            "default": "At Blacklyte, our journey began with a simple yet powerful realization: sitting shouldn’t hold you back. Our founder, Alex, a tech innovator with years at DJI and Narwal, struggled with chronic back pain from long hours at the desk."
+        },
+        {
+            "type": "text",
+            "id": "sectionSubDesc",
+            "label": "section Sub Descripe",
+            "default": "Determined to find a better way, Alex assembled a team of robotics and ergonomic experts to create something truly new—a chair that moves with you, not against you."
+        }
+    ],
+    "blocks": [
+        {
+            "type": "largeItem",
+            "name": "largeItem",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "largeItemImage",
+                    "label": "large Item Image"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "largeItemImageMobile",
+                    "label": "large Item Image Mobile"
+                }
+            ]
+        },
+        {
+            "type": "smallItem",
+            "name": "smallItem",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "smallItemImage",
+                    "label": "small Item Image"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "smallItemImagemb",
+                    "label": "small Item Image Mobile"
+                },
+                {
+                    "type": "text",
+                    "id": "smallItemTitle",
+                    "label": "small Item Title"
+                },
+                {
+                    "type": "text",
+                    "id": "smallItemDesc",
+                    "label": "small Item Desc"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "smallItemLogo",
+                    "label": "small Item Logo"
+                }
+            ]
+        },
+        {
+            "type": "smallItemLine2",
+            "name": "smallItemLine2",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "smallItemImage",
+                    "label": "small Item Image"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "smallItemImagemb",
+                    "label": "small Item Image Mobile"
+                },
+                {
+                    "type": "text",
+                    "id": "smallItemTitle",
+                    "label": "small Item Title"
+                },
+                {
+                    "type": "text",
+                    "id": "smallItemDesc",
+                    "label": "small Item Desc"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "smallItemLogo",
+                    "label": "small Item Logo"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "aboutus Brand Story"
+        }
+    ]
+}
+{% endschema %}

@@ -1,0 +1,135 @@
+.collection_banner {
+  width: 100vw;
+  height: 28.28125vw;
+  position: relative;
+}
+
+.collection_banner .collection_banner_image {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  object-fit: cover;
+  object-position: left center;
+}
+
+.collection_banner .pmd_show {
+  display: none;
+}
+
+.collection_banner .collection_banner_contain {
+  width: 38.4375vw;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  right: 10.9375vw;
+}
+
+.collection_banner .collection_banner_contain_text {
+  font-family: Roboto;
+  font-weight: 400;
+  font-style: Regular;
+  font-size: 0.833vw;
+  leading-trim: NONE;
+  line-height: 1.25vw;
+  letter-spacing: 0%;
+  color: #DEDEDE;
+}
+
+.collection_banner .collection_banner_features {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: stretch;
+  gap: 1.5625vw 1.25vw;
+  margin-top: 2.5vw;
+  width: 29vw;
+}
+
+.collection_banner .collection_banner_feature svg {
+  width: auto;
+  height: 2.34375vw;
+}
+
+.collection_banner .collection_banner_feature_text {
+  font-family: Roboto;
+  font-weight: 400;
+  font-style: Regular;
+  font-size: 0.625vw;
+  leading-trim: NONE;
+  line-height: 0.833vw;
+  letter-spacing: 0%;
+  text-align: center;
+  color: #E9E9E9;
+}
+
+.collection_banner .collection_banner_feature {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.46875vw;
+  width: 6.25vw;
+}
+
+@media screen and (max-width: 768px) {
+  .collection_banner .pmd_show {
+    display: block;
+  }
+
+  .collection_banner .pc_show {
+    display: none;
+  }
+
+  .collection_banner .collection_banner_image {
+    position: static;
+  }
+
+  .collection_banner .collection_banner_contain {
+    position: static;
+    transform: none;
+    background-color: #242527;
+    width: 100%;
+    padding: 6.4vw 5.33vw 14.4vw;
+  }
+
+  .collection_banner {
+    height: auto;
+  }
+
+  .collection_banner .collection_banner_contain_text {
+    font-family: Roboto;
+    font-weight: 400;
+    font-style: Regular;
+    font-size: 3.733vw;
+    leading-trim: NONE;
+    line-height: 6.4vw;
+    letter-spacing: 0%;
+    text-align: center;
+  }
+
+  .collection_banner .collection_banner_features {
+    width: 100%;
+    margin-top: 8vw;
+    gap: 8vw 2.4vw;
+  }
+
+  .collection_banner .collection_banner_feature {
+    width: calc(50% - 1.2vw);
+    gap: 2.4vw;
+  }
+
+  .collection_banner .collection_banner_feature svg {
+    height: 12vw;
+  }
+
+  .collection_banner .collection_banner_feature_text {
+    font-family: Roboto;
+    font-weight: 400;
+    font-style: Regular;
+    font-size: 3.2vw;
+    leading-trim: NONE;
+    line-height: 4.267vw;
+    letter-spacing: 0%;
+    text-align: center;
+  }
+}

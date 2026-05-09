@@ -1,0 +1,138 @@
+<div class="feature-modules">
+    <div class="feature-module">
+        <div class="module-head">
+            {% if block.settings.blockTitle != blank %}
+                <div class="block-title">{{ block.settings.blockTitle }}</div>
+            {% endif %}
+            {% if block.settings.blockDescripe != blank %}
+                <div class="block-desc-text">{{ block.settings.blockDescripe }}</div>
+            {% endif %}
+        </div>
+        <div class="feature-prod">
+            <div class="feature-left">
+                {% if block.settings.featuredImage != blank %}
+                    <img src="{{ block.settings.featuredImage | img_url: 'master' }}"
+                        width="{{ block.settings.featuredImage.width }}"
+                        height="{{ block.settings.featuredImage.height }}"
+                        alt="{{ block.settings.featuredImage.alt }}" />
+                {% endif %}
+            </div>
+            <div class="feature-right">
+                {% if block.settings.blockProdTitle != blank %}
+                    <div class="block-prod-title">{{ block.settings.blockProdTitle }}</div>
+                {% endif %}
+                {% if block.settings.blockProdDesc != blank %}
+                    <div class="block-prod-desc">{{ block.settings.blockProdDesc }}</div>
+                {% endif %}
+                {% if block.settings.blockProdDesc-2 != blank %}
+                    <div class="block-prod-desc-2">{{ block.settings.blockProdDesc-2 }}</div>
+                {% endif %}
+                {% if block.settings.blockProd != blank %}
+                    <div class="block-prod-prices">
+                        {% if block.settings.blockProdDiscountPrice != blank %}
+                            <div class="block-prod-discount-price">
+                                {{ block.settings.blockProd.selected_or_first_available_variant.price 
+                                    | minus: block.settings.blockProdDiscountPrice
+                                    | money }}
+                            </div>
+                        {% else %}
+                            {% if block.settings.blockProd.selected_or_first_available_variant.metafields.custom.discount_price.value != blank %}
+                                <div class="block-prod-discount-price">
+                                    {{ block.settings.blockProd.selected_or_first_available_variant.price 
+                                        | minus: block.settings.blockProd.selected_or_first_available_variant.metafields.custom.discount_price.value 
+                                        | money }}
+                                </div>
+                            {% endif %}
+                        {% endif %}
+                        <div class="block-prod-sale-price {% if block.settings.blockProdDiscountPrice != blank or block.settings.blockProd.selected_or_first_available_variant.metafields.custom.discount_price.value != blank %}block-prod-sale-price-text{% endif %}">{{ block.settings.blockProd.selected_or_first_available_variant.price | money }}</div>
+                    </div>
+                {% endif %}
+                {% if block.settings.blockBuyBtn != blank or block.settings.blockLearnMoreBtn != blank %}
+                    <div class="block-prod-btns">
+                        <div class="buy-now prod-btn has-data-url-link" data-url="{% if block.settings.blockProdBuynowLink != blank %} {{ block.settings.blockProdBuynowLink }} {% else %} {{ block.settings.blockProd.url }} {% endif %}">{{ block.settings.blockBuyBtn }}</div>
+                        <div class="learn-more prod-btn has-data-url-link" data-url="{{ block.settings.blockProdLearnmoreLink }}">{{ block.settings.blockLearnMoreBtn }}</div>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% schema %}
+{
+    "name": "featuredProd",
+    "settings": [
+        {
+            "type": "image_picker",
+            "id": "featuredImage",
+            "label": "Featured Image"
+        },
+        {
+            "type": "text",
+            "id": "blockTitle",
+            "label": "Block Title"
+        },
+        {
+            "type": "textarea",
+            "id": "blockDescripe",
+            "label": "Block Descripe"
+        },
+        {
+            "type": "product",
+            "id": "blockProd",
+            "label": "Block Product"
+        },
+        {
+            "type": "text",
+            "id": "blockProdTitle",
+            "label": "Block Product Title"
+        },
+        {
+            "type": "textarea",
+            "id": "blockProdDesc",
+            "label": "Block Product Descripe"
+        },
+        {
+            "type": "textarea",
+            "id": "blockProdDesc-2",
+            "label": "Block Product Descripe 2"
+        },
+        {
+            "type": "text",
+            "id": "blockBuyBtn",
+            "label": "Block Buy Button",
+            "default": "Shop now"
+        },
+        {
+            "type": "url",
+            "id": "blockProdBuynowLink",
+            "label": "block Product Buynow Link"
+        },
+        {
+            "type": "text",
+            "id": "blockLearnMoreBtn",
+            "label": "Learn more",
+            "default": "Learn more"
+        },
+        {
+            "type": "url",
+            "id": "blockProdLearnmoreLink",
+            "label": "block Product Learnmore Link"
+        },
+        {
+            "type": "text",
+            "id": "blockProdSalePrice",
+            "label": "block Prod Sale Price"
+        },
+        {
+            "type": "text",
+            "id": "blockProdDiscountPrice",
+            "label": "block Prod Discount Price"
+        }
+    ],
+    "presets": [
+        {
+            "name": "featuredProd"
+        }
+    ]
+}
+{% endschema %}

@@ -1,0 +1,881 @@
+<style>
+
+    .ai-robot-subscribe-section{ }
+
+    .ai-robot-subscribe-section .container-full{
+        padding: 0 16% 100px;
+    
+    }
+
+    .ai-robot-subscribe-section .subsc-head-cont{
+        padding-top: 140px;
+        display: flex;
+        text-align: center;
+        flex-direction: column;
+        gap: 0.8288vh;
+    }
+
+    .ai-robot-subscribe-section .subsc-head-cont .subsc-section-title {
+        font-family: Poppins;
+        font-weight: 500;
+        font-size: 1.5625vw;
+        line-height: 2.6042vw;
+        letter-spacing: 0%;
+        text-align: center;
+        vertical-align: middle;
+        color: #FFFFFF;
+    }
+
+    .ai-robot-subscribe-section .subsc-head-cont .subsc-section-desc {
+        font-family: Poppins;
+        font-weight: 400;
+        font-size: 0.8333vw;
+        line-height: 1.3542vw;
+        letter-spacing: 0%;
+        text-align: center;
+        vertical-align: middle;
+        color: #FFFFFF;
+    }
+
+    .ai-robot-subscribe-section .subsc-large-image-container{
+        display: flex;
+        gap: 48px;
+        align-items: center;
+        padding: 32px;
+        border: 1px solid #D4D4D43D;
+        border-radius: 28px;
+        margin-top: 48px;
+        position: relative;
+    }
+
+    .ai-robot-subscribe-section .subsc-large-image-container .subsc-image-left{
+        width: 52%;
+    }
+
+    .ai-robot-subscribe-section .subsc-image-right .right-title {
+        font-family: Poppins;
+        font-weight: 500;
+        font-size: 1.5625vw;
+        line-height: 2.6042vw;
+        letter-spacing: 0%;
+        vertical-align: middle;
+        color: #FFFFFF;
+    }
+
+    .ai-robot-subscribe-section .subsc-image-right .right-desc {
+        font-family: Poppins;
+        font-weight: 400;
+        font-size: 0.8333vw;
+        line-height: 1.25vw;
+        letter-spacing: 0%;
+        vertical-align: middle;
+        color: #FFFFFF;
+    }
+
+    .ai-robot-subscribe-section .subsc-image-right .right-prices-cont{
+        margin-top: 14px;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .ai-robot-subscribe-section .subsc-image-right .right-discount-price,
+    .ai-robot-subscribe-section .subsc-image-right .right-original-price {
+        font-family: Poppins;
+        font-weight: 500;
+        font-size: 1.5625vw;
+        line-height: 2.6042vw;
+        letter-spacing: 0%;
+        vertical-align: middle;
+        color: #FFFFFF;
+    }
+
+    .ai-robot-subscribe-section .subsc-image-right .right-original-discount-price {
+        font-family: Poppins;
+        font-weight: 400;
+        font-size: 1.5625vw;
+        line-height: 1.3542vw;
+        letter-spacing: 0%;
+        vertical-align: middle;
+        text-decoration: line-through;
+        color: #76767F;
+    }
+
+
+    .ai-robot-subscribe-section .subsc-image-right .right-buttons{
+        font-family: Poppins;
+        font-weight: 500;
+        font-size: 20px;
+        line-height: 50px;
+        letter-spacing: 0%;
+        vertical-align: middle;
+        color: #FFFFFF;
+        background: #403DED;
+        padding: 6px 120px;
+        border-radius: 100px;
+        margin-top: 32px;
+        cursor: pointer;
+        transition: all .45s ease;
+        text-align: center;
+    }
+
+    .ai-robot-subscribe-section .subsc-image-right .right-buttons:hover{
+        box-shadow: 0 0 10px #403DED;
+    }
+
+    .ai-robot-subscribe-section .subsc-item-tag{
+        font-family: Poppins;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 26px;
+        letter-spacing: 0%;
+        vertical-align: middle;
+        color: #FFFFFF;
+        background: #EBA83B;
+        border-radius: 30px;
+        padding: 4px 20px;
+        position: absolute;
+        right: 15px;
+        top: 19px;
+    }
+
+    .ai-robot-subscribe-section .subsc-small-image-container{
+        margin-top: 56px;
+    }
+
+    .ai-robot-subscribe-section .right-count-down-cont{
+        margin-top: 28px;
+    }
+
+    .ai-robot-subscribe-section .right-count-down-cont .right-countdown-title{
+        font-family: Poppins;
+        font-weight: 500;
+        font-size: 20px;
+        line-height: 50px;
+        letter-spacing: 0%;
+        vertical-align: middle;
+        color: #FFFFFF;
+    }
+
+    .ai-robot-subscribe-section .countdown-wrapper{
+        display: flex;
+        margin-top: 20px;
+        gap: 20px;
+    }
+    
+    .ai-robot-subscribe-section .countdown-wrapper .time-group{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .ai-robot-subscribe-section .countdown-wrapper .time-group .num{
+        font-family: Poppins;
+        font-weight: 500;
+        font-size: 30px;
+        letter-spacing: 14%;
+        vertical-align: middle;
+        color: #FFFFFF;
+    }
+
+    .ai-robot-subscribe-section .countdown-wrapper .time-group .label{
+        font-family: Poppins;
+        font-weight: 400;
+        font-style: Regular;
+        font-size: 16px;
+        letter-spacing: 0%;
+        vertical-align: middle;
+        color: #76767F;
+        margin-top: 20px;
+    }
+
+    .ai-robot-subscribe-section .countdown-wrapper .separator{
+        color: #FFFFFF;
+        font-size: 30px;
+    }
+
+    
+    .modal-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.6);
+        z-index: 9999;
+        justify-content: center;
+        align-items: center;
+    }
+
+   
+    .subscribe-modal-content {
+        background: #FFFFFF;
+        width: 40.1563vw;
+        height: 17.7083vw;
+        border-radius: 18px;
+        position: relative;
+        padding: 2.6042vw;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        box-sizing: border-box;
+    }
+
+
+    .modal-close-btn {
+        position: absolute;
+        top: 1.0417vw;
+        right: 1.0417vw;
+        width: 1.5625vw;
+        height: 1.5625vw;
+        background: #CCCCCC;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 5px;
+    }
+
+    .modal-close-btn svg {
+        width: 100%;
+        height: 100%;
+    }
+
+ 
+    .modal-title {
+        font-family: 'Poppins', sans-serif;
+        font-weight: 500;
+        font-size: 1.5625vw;
+        color: #202020;
+        margin: 0 0 0.7813vw 0;
+        text-align: center;
+    }
+
+    .modal-desc {
+        font-family: 'Poppins', sans-serif;
+        font-size: 0.8333vw;
+        color: #414141;;
+        text-align: center;
+        max-width: 80%;
+        line-height: 1.5;
+        margin-bottom: 2.0833vw;
+    }
+
+ 
+    .modal-form {
+        width: 100%;
+    }
+
+    .input-group {
+        display: flex;
+        gap: 0.5208vw;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .input-group input {
+        width: 23.4375vw;
+        height: 3.125vw;
+        border: 1px solid #E5E5E5;
+        border-radius: 3.125vw;
+        padding: 0 1.5625vw;
+        font-size: 0.8333vw;
+        outline: none;
+    }
+
+    .subscribe-btn {
+        background: #403DED;
+        color: #FFFFFF;
+        border: none;
+        border-radius: 3.125vw;
+        padding: 0 2.0833vw;
+        height: 3.125vw;
+        font-weight: 600;
+        font-size: 0.8333vw;
+        cursor: pointer;
+        transition: background 0.3s;
+    }
+
+    .subscribe-btn:hover {
+        background: #2525D1;
+    }
+
+    .ai-robot-subscribe-section .feature-list{
+        display: flex;
+        flex-direction: column;
+        gap: 2vw;
+    
+    }
+
+    .ai-robot-subscribe-section .feature-list .item-title{
+        font-family: Poppins;
+        font-weight: 500;
+        font-size: 2.0833vw;
+        line-height: 1.2;
+        letter-spacing: 0%;
+        vertical-align: middle;
+        color: #FFFFFF;
+    }
+
+    .ai-robot-subscribe-section .feature-list .item-desc{
+        font-family: Roboto;
+        font-weight: 500;
+        font-size: 1.67vw;
+        line-height: 1.4;
+        letter-spacing: 0.32px;
+        vertical-align: middle;
+        color: #FFFFFF;
+        opacity: 0.7;
+    }
+
+
+
+
+
+
+
+    @media(max-width: 767px){
+
+        .ai-robot-subscribe-section .container-full{
+            padding: 0 20px 46px;
+            
+        }
+        
+        .ai-robot-subscribe-section .subsc-head-cont{
+            padding-top: 58px;
+            gap: 0.4288vh;        
+        }
+
+        .ai-robot-subscribe-section .subsc-head-cont .subsc-section-title {
+            font-family: Poppins;
+            font-weight: 500;
+            font-size: 6.67vw;
+            line-height: 1.4;
+            letter-spacing: 0%;
+            text-align: center;
+            vertical-align: middle;
+            color: #FFFFFF;
+        }
+
+        .ai-robot-subscribe-section .subsc-head-cont .subsc-section-desc {
+            font-size: 4.2667vw;
+            line-height: 6.4vw;
+        }
+
+        .ai-robot-subscribe-section .subsc-large-image-container{
+            margin-top: 20px;
+            flex-direction: column;
+            padding: 13px 13px 50px 10px;
+            gap: 5.33vw;
+        }
+
+        .ai-robot-subscribe-section .subsc-large-image-container .subsc-image-left{
+            width: 100%;
+        }
+
+        .ai-robot-subscribe-section .subsc-image-right {
+            width: stretch;
+        }
+
+        .ai-robot-subscribe-section .subsc-image-right .right-title{
+            font-size: 26px;
+            line-height: 50px;
+        }
+        .ai-robot-subscribe-section .subsc-image-right .right-desc{
+            font-size: 16px;
+            line-height: 24px;
+        }
+
+        .ai-robot-subscribe-section .subsc-image-right .right-prices-cont{
+            gap: 4px;
+        
+        }
+
+        .ai-robot-subscribe-section .subsc-image-right .right-discount-price, 
+        .ai-robot-subscribe-section .subsc-image-right .right-original-price{
+            font-size: 26px;
+            line-height: 50px;
+        }
+
+        .ai-robot-subscribe-section .subsc-small-image-container{
+            margin-top: 20px;
+        }
+
+        .ai-robot-subscribe-section .subsc-item-tag{
+            font-size: 14px;
+            line-height: 26px;
+        }
+
+        .ai-robot-subscribe-section .right-count-down-cont{
+            margin-top: 0;
+        }
+
+        .subscribe-modal-content {
+            width: 90vw;
+            height: auto;
+            padding: 40px 20px;
+        }
+        .modal-title { font-size: 5vw; }
+        .modal-desc { font-size: 3.5vw; max-width: 100%; }
+        .input-group { flex-direction: column; gap: 2.5208vw; }
+        .input-group input, .subscribe-btn {
+            width: 100%;
+            height: 50px;
+            font-size: 4vw;
+        }
+        .modal-close-btn{
+            width: 6.5625vw;
+            height: 6.5625vw;
+        }
+
+        .ai-robot-subscribe-section .feature-list{
+            display: flex;
+            flex-direction: column;
+            gap: 4.8vw;
+        }
+
+        .ai-robot-subscribe-section .feature-list .item-title{
+            font-family: Poppins;
+            font-weight: 500;
+            font-size: 4vw;
+            line-height: 8vw;
+            letter-spacing: 0%;
+            vertical-align: middle;
+            color: #FFFFFF;
+        }
+
+        .ai-robot-subscribe-section .feature-list .item-desc{
+            font-family: Roboto;
+            font-weight: 500;
+            font-size: 2.67vw;
+            line-height: 4vw;
+            letter-spacing: 0.32px;
+            vertical-align: middle;
+            color: #FFFFFF;
+            opacity: 0.7;
+        }
+
+
+    }
+
+
+    @media(min-width: 1025px) and (max-width: 1480px){
+        .ai-robot-subscribe-section .container-full{
+            padding: 0 60px;
+        }
+    
+    
+    }
+
+</style>
+
+<div class="ai-robot-subscribe-section">
+    {% liquid
+      assign section_bg_image = section.settings.sectionBgImage
+      assign section_bg_image_mb = section.settings.sectionBgImage_mb
+    %}
+
+    <style>
+        .ai-robot-subscribe-section .container-full{
+            {% if section_bg_image != blank %}
+                background-image: url('{{ section_bg_image | img_url: "1920x" }}');
+            {% else %}
+                background-color: #000;
+            {% endif %}
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            width: 100%;
+            position: relative;
+            aspect-ratio: 1920 / 1820;
+            
+        }
+
+        @media(max-width: 767px){
+            .ai-robot-subscribe-section .container-full{
+                {% if section_bg_image_mb != blank %}
+                    background-image: url('{{ section_bg_image_mb | img_url: "800x" }}');
+                {% elsif section_bg_image != blank %}
+                    background-image: url('{{ section_bg_image | img_url: "800x" }}');
+                {% endif %}
+                background-size: cover;
+                background-position: center;
+                
+            }
+        }
+
+    </style>
+    <div class="container-full">
+        {% if section.settings.sectionTitle != blank or section.settings.sectionDescription != blank %}
+            <div class="subsc-head-cont">
+                {% if section.settings.sectionTitle != blank %}
+                    <div class="subsc-section-title">{{ section.settings.sectionTitle }}</div>
+                {% endif %}
+
+                {% if section.settings.sectionDescription != blank %}
+                    <div class="subsc-section-desc">{{ section.settings.sectionDescription }}</div>
+                {% endif %}
+            </div>
+        {% endif %}
+
+        {% for block in section.blocks %}
+            {% if block.type == "item" %}
+                <div class="subsc-large-image-container">
+                    {% if block.settings.itemMainImage != blank or block.settings.itemMainImage_mb != blank %}
+                        <div class="subsc-image-left">
+                            {% render 'picture-simple',
+                                image: block.settings.itemMainImage,
+                                image_mobile: block.settings.itemMainImage_mb,
+                                mobile_dpr: 2,
+                                loading: "eager"
+                            %}
+                        </div>
+                    {% endif %}
+                    <div class="subsc-image-right">
+                        {% if block.settings.itemTitle != blank %}
+                            <div class="right-title">{{ block.settings.itemTitle }}</div>
+                        {% endif %}
+                        {% if block.settings.itemDescription != blank %}
+                            <div class="right-desc">{{ block.settings.itemDescription }}</div>
+                        {% endif %}
+                        {% if block.settings.itemDiscountPrice != blank or block.settings.itemOriginalPrice != blank %}
+                            <div class="right-prices-cont">
+                                {% if block.settings.itemDiscountPrice != blank %}
+                                    <span class="right-discount-price">{{ block.settings.itemDiscountPrice }}</span>
+                                {% endif %}
+                                {% if block.settings.itemOriginalPrice != blank %}
+                                    <span class="right-original-price{% if block.settings.itemDiscountPrice != blank %} right-original-discount-price{% endif %}">{{ block.settings.itemOriginalPrice }}</span>
+                                {% endif %}
+                            </div>
+                        {% endif %}
+
+                        {% if block.settings.countdownTitle != blank or block.settings.countdownTime != blank %}
+                            <div class="right-count-down-cont">
+                                {% if block.settings.countdownTitle != blank %}
+                                    <div class="right-countdown-title">{{ block.settings.countdownTitle }}</div>
+                                {% endif %}
+
+                                {% if block.settings.countdownTime != blank %}
+                                    <div class="right-countdown-times" data-countdown-time="{{ block.settings.countdownTime }}"></div>
+                                {% endif %}
+                            </div>
+                        {% endif %}
+
+                        {% if block.settings.itemButton != blank %}
+                            <div class="right-buttons">{{ block.settings.itemButton }}</div>
+                        {% endif %}
+                    </div>
+                    {% if block.settings.itemTagText != blank %}
+                        <div class="subsc-item-tag">{{ block.settings.itemTagText }}</div>
+                    {% endif %}
+
+                    {% if block.settings.itemFeatureInfoFir != blank %}
+                        <div class="feature-list">
+                            <div class="feature-item">
+                                <h3 class="item-title">{{ block.settings.itemFeatureInfoFir }}</h3>
+                                <div class="item-desc">
+                                    {{ block.settings.itemFeatureInfoFirDesc }}
+                                </div>
+                            </div>
+
+                            <div class="feature-item">
+                                <h3 class="item-title">{{ block.settings.itemFeatureInfoSec }}</h3>
+                                <div class="item-desc">
+                                    {{ block.settings.itemFeatureInfoSecDesc }}
+                                </div>
+                            </div>
+
+                            <div class="feature-item">
+                                <h3 class="item-title">{{ block.settings.itemFeatureInfoThird }}</h3>
+                                <div class="item-desc">
+                                    {{ block.settings.itemFeatureInfoThirdDesc }}
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+
+            {% elsif block.type == "smallImageItem" %}
+                <div class="subsc-small-image-container">
+                    {% if block.settings.smallItemMainImage != blank or block.settings.smallItemMainImage_mb != blank %}
+                        {% render 'picture-simple',
+                            image: block.settings.smallItemMainImage,
+                            image_mobile: block.settings.smallItemMainImage_mb,
+                            mobile_dpr: 2,
+                            loading: "eager"
+                        %}
+                    {% endif %}
+                </div>
+
+            {% endif %}
+        {% endfor %}
+
+    </div>
+</div>
+
+<div id="subscribe-modal-overlay" class="modal-overlay">
+    <div class="subscribe-modal-content">
+        <button class="modal-close-btn" id="close-subscribe-modal">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M18 6L6 18M6 6L18 18" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </button>
+
+        <h2 class="modal-title">{{ section.settings.itemSubscTitle }}</h2>
+        <p class="modal-desc">{{ section.settings.itemSubscDescripe }}</p>
+
+        {% form 'customer', class: 'modal-form' %}
+            <div class="input-group">
+                <input type="hidden" name="contact[tags]" value="AiRobot">
+                <input type="email" name="contact[email]" placeholder="Enter your email address" required>
+                <button type="submit" class="subscribe-btn">{{ section.settings.itemSubscButton }}</button>
+            </div>
+        {% endform %}
+    </div>
+</div>
+
+<script>
+    (function() {
+
+        function initCountdown() {
+            const countdownElements = document.querySelectorAll('.right-countdown-times');
+
+            countdownElements.forEach(container => {
+                const endTimeStr = container.getAttribute('data-countdown-time');
+                if (!endTimeStr) return;
+
+                const endTime = new Date(endTimeStr).getTime();
+
+                const update = () => {
+                const now = new Date().getTime();
+                const distance = endTime - now;
+
+                if (distance < 0) {
+                    container.innerHTML = "EXPIRED";
+                    return;
+                }
+
+            
+                const hours = Math.floor((distance / (1000 * 60 * 60)));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            
+                const fH = hours.toString().padStart(2, '0');
+                const fM = minutes.toString().padStart(2, '0');
+                const fS = seconds.toString().padStart(2, '0');
+
+                
+                container.innerHTML = `
+                    <div class="countdown-wrapper">
+                    <div class="time-group">
+                        <span class="num">${fH}</span>
+                        <span class="label">Hour</span>
+                    </div>
+                    <span class="separator">:</span>
+                    <div class="time-group">
+                        <span class="num">${fM}</span>
+                        <span class="label">Minums</span>
+                    </div>
+                    <span class="separator">:</span>
+                    <div class="time-group">
+                        <span class="num">${fS}</span>
+                        <span class="label">Secords</span>
+                    </div>
+                    </div>
+                `;
+                };
+
+                update();
+                {% comment %} setInterval(update, 1000); {% endcomment %}
+            });
+        }
+
+        const modal = document.getElementById('subscribe-modal-overlay');
+        const openBtn = document.querySelector('.ai-robot-subscribe-section .subsc-image-right .right-buttons');
+        const closeBtn = document.getElementById('close-subscribe-modal');
+
+
+        if(!modal) return false;
+        if(!openBtn) return false;
+        if(!closeBtn) return false;
+
+    
+        openBtn.addEventListener('click', () => {
+            modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        });
+
+        
+        const hideModal = () => {
+            modal.style.display = 'none';
+            document.body.style.overflow = '';
+        };
+
+        closeBtn.addEventListener('click', hideModal);
+
+    
+        window.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                hideModal();
+            }
+        });
+    })();
+
+</script>
+
+
+{% schema %}
+{
+    "name": "AiRobot Subscribe",
+    "tag": "section",
+    "settings": [
+        {
+            "type": "image_picker",
+            "id": "sectionBgImage",
+            "label": "section Background Image"
+        },
+        {
+            "type": "image_picker",
+            "id": "sectionBgImage_mb",
+            "label": "section Background Image Mobile"
+        },
+        {
+            "type": "text",
+            "id": "sectionTitle",
+            "label": "section Title",
+            "default": "First batch reservation, exclusive number"
+        },
+        {
+            "type": "richtext",
+            "id": "sectionDescription",
+            "label": "section Description"
+        },
+        {
+            "type": "text",
+            "id": "itemSubscTitle",
+            "label": "item subscribe modal Title"
+        },
+        {
+            "type": "richtext",
+            "id": "itemSubscDescripe",
+            "label": "item subscribe modal Descripe"
+        },
+        {
+            "type": "text",
+            "id": "itemSubscButton",
+            "label": "item Subscribe Modal Button"
+        }
+    ],
+    "blocks": [
+        {
+            "type": "item",
+            "name": "item",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "itemMainImage",
+                    "label": "subscribe Item Main Image"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "itemMainImage_mb",
+                    "label": "subscribe Item Main Image Mobile"
+                },
+                {
+                    "type": "text",
+                    "id": "itemTitle",
+                    "label": "subscribe Item Title"
+                },
+                {
+                    "type": "richtext",
+                    "id": "itemDescription",
+                    "label": "subscribe Item Desc"
+                },
+                {
+                    "type": "text",
+                    "id": "itemDiscountPrice",
+                    "label": "subscribe Item Discount Price"
+                },
+                {
+                    "type": "text",
+                    "id": "itemOriginalPrice",
+                    "label": "subscribe Item Original Price"
+                },
+                {
+                    "type": "text",
+                    "id": "countdownTitle",
+                    "label": "subscribe Item Countdown Title"
+                },
+                {
+                    "type": "text",
+                    "id": "countdownTime",
+                    "label": "subscribe Item Countdown Time"
+                },
+                {
+                    "type": "text",
+                    "id": "itemButton",
+                    "label": "item Button",
+                    "default": "Reserve"
+                },
+                {
+                    "type": "text",
+                    "id": "itemTagText",
+                    "label": "item Tag Text"
+                },
+                {
+                    "type": "richtext",
+                    "id": "itemFeatureInfoFir",
+                    "label": "item Feature Info First Title"
+                },
+                {
+                    "type": "richtext",
+                    "id": "itemFeatureInfoFirDesc",
+                    "label": "item Feature Info First Desc"
+                },
+                {
+                    "type": "richtext",
+                    "id": "itemFeatureInfoSec",
+                    "label": "item Feature Info Sec Title"
+                },
+                {
+                    "type": "richtext",
+                    "id": "itemFeatureInfoSecDesc",
+                    "label": "item Feature Info Sec Desc"
+                },
+                {
+                    "type": "richtext",
+                    "id": "itemFeatureInfoThird",
+                    "label": "item Feature Info Third Title"
+                },
+                {
+                    "type": "richtext",
+                    "id": "itemFeatureInfoThirdDesc",
+                    "label": "item Feature Info Third Desc"
+                },
+            ]
+        },
+        {
+            "type": "smallImageItem",
+            "name": "smallImageItem",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "smallItemMainImage",
+                    "label": "small Item Main Image"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "smallItemMainImage_mb",
+                    "label": "small Item Main Image Mobile"
+                }
+            ]
+        }
+    ],
+    "presets": [{ "name": "AiRobot Subscribe" }]
+}
+{% endschema %}

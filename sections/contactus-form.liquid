@@ -1,0 +1,317 @@
+<style>
+    .section-{{ section.id }}{
+        background: #DEDEDE;
+    }
+
+    .section-{{ section.id }} .container-full{
+        padding: 0 16%;
+    }
+    .section-{{ section.id }} .container-full .form-cont{
+        display: flex;
+        padding: 116px 0 85px;
+        justify-content: space-between;
+    }
+    .section-{{ section.id }} .container-full .form-cont .form-title{
+        font-family: Roboto;
+        font-weight: 600;
+        font-style: SemiBold;
+        font-size: 30px;
+        line-height: 34px;
+        letter-spacing: 0%;
+        vertical-align: middle;
+        color: #262629;
+    }
+
+    .section-{{ section.id }} .container-full .form-cont .left-info{
+        width: calc(50% - 34px);
+    }
+    .section-{{ section.id }} .container-full .form-cont .center-info svg{
+        height: 100%;
+        width: 1px;
+    }
+    .section-{{ section.id }} .container-full .form-cont .right-info{
+        width: calc(50% - 31px);
+    }
+    .section-{{ section.id }} .container-full .form-cont .right-info .right-info-cont{
+        padding: 40px 60px 56px 34px;
+        background: #2626290D;
+    }
+
+    .section-{{ section.id }} .container-full .form-cont .cont-info-title{
+        font-family: Roboto;
+        font-weight: 500;
+        font-style: Medium;
+        font-size: 24px;
+        line-height: normal;
+        letter-spacing: 0%;
+        vertical-align: middle;
+        color: #262629;
+    }
+    .section-{{ section.id }} .container-full .form-cont .cont-info-desc{
+        margin-top: 34px;
+    }
+    .section-{{ section.id }} .container-full .form-cont .cont-info-sub-desc{
+        margin-top: 25px;
+    }
+    .section-{{ section.id }} .container-full .form-cont .cont-info-desc,
+    .section-{{ section.id }} .container-full .form-cont .cont-info-sub-desc{
+        font-family: Roboto;
+        font-weight: 400;
+        font-style: Regular;
+        font-size: 16px;
+        line-height: 18px;
+        letter-spacing: 0%;
+        vertical-align: middle;
+        color: #52525B;
+    }
+
+    .section-{{ section.id }} .container-full .info-item{
+        display: flex;
+        gap: 10px;
+        align-items: center;
+    }
+
+    .section-{{ section.id }} .container-full .info-item .info-item-icon svg{
+        width: 20px;
+        height: 20px;
+    }
+
+    .section-{{ section.id }} .container-full .info-item .info-item-title{
+        font-family: Roboto;
+        font-weight: 400;
+        font-style: Regular;
+        font-size: 16px;
+        line-height: normal;
+        letter-spacing: 0%;
+        vertical-align: middle;
+        color: #262629;
+    }
+    .section-{{ section.id }} .container-full .cont-lists{
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        margin-top: 35px;
+    }
+
+    {% comment %} form 表单 {% endcomment %}
+    .section-{{ section.id }} .container-full .contact-form{
+        margin-top: 25px;
+    }
+    .section-{{ section.id }} .container-full .contact-form .form-label{
+        font-family: Roboto;
+        font-weight: 400;
+        font-style: Regular;
+        font-size: 16px;
+        line-height: 18px;
+        letter-spacing: 0%;
+        vertical-align: middle;
+        color: #52525B;
+        margin-bottom: 10px;
+        display: flex;
+        gap: 6px;
+    }
+    .section-{{ section.id }} .container-full .contact-form .form-input{
+        margin-bottom: 40px;
+        background: #EBEBEB;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        resize: vertical;
+    }
+    .section-{{ section.id }} .container-full .contact-form .red-asterisk{
+        color: #DD2A32;
+    }
+
+    .section-{{ section.id }} .container-full .contact-form .button.button--primary{
+        background: #262629;
+        color: #fff;
+        border-radius: 38px;
+        font-family: Roboto;
+        font-weight: 500;
+        font-style: Medium;
+        font-size: 24px;
+        letter-spacing: 0%;
+        vertical-align: middle;
+        border: none;
+        width: 260px;
+        margin: initial;
+        transition: all .5s ease;
+        padding-top: 19px;
+        padding-bottom: 19px;
+    }
+    .section-{{ section.id }} .container-full .contact-form .button.button--primary:hover{
+        box-shadow: 0 0 10px #262629;
+    }
+    
+
+
+    {% comment %} iPhone {% endcomment %}
+    @media(max-width: 767px) {
+        .section-{{ section.id }} .container-full{
+            padding: 0 10px;
+        }
+        .section-{{ section.id }} .container-full .form-cont .form-title{
+            font-size: 26px;
+        }
+        .section-{{ section.id }} .container-full .form-cont{
+            flex-direction: column;
+            padding: 50px 0 0;
+        }
+        .section-{{ section.id }} .container-full .form-cont .center-info{
+            display: none;
+        }
+        .section-{{ section.id }} .container-full .form-cont .left-info{
+            width: 100%;
+        }
+        .section-{{ section.id }} .container-full .form-cont .right-info{
+            width: 100%;
+        }
+        .section-{{ section.id }} .container-full .form-cont .right-info .right-info-cont{
+            padding: 45px 0 44px;
+            background: none;
+        }
+        .section-{{ section.id }} .container-full .contact-form .button.button--primary{
+            font-size: 20px;
+            width: 260px;
+            margin: auto;
+            padding-top: 10px;
+            padding-bottom: 10px;
+        }
+        .section-{{ section.id }} .container-full .contact-form .form-input{
+            margin-bottom: 16px;
+        }
+        .section-{{ section.id }} .container-full .form-cont .cont-info-desc{
+            margin-top: 16px;
+        }
+        .section-{{ section.id }} .container-full .cont-lists{
+            margin-top: 24px;
+        }
+        .section-{{ section.id }} .container-full .contact-form{
+            margin-top: 16px;
+        }
+    }
+
+    {% comment %} iPad {% endcomment %}
+    @media(min-width: 768px) and (max-width: 1024px){
+        .section-{{ section.id }} .container-full{
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+    }
+    
+
+    {% comment %} small screen {% endcomment %}
+    @media(min-width: 1025px) and (max-width: 1480px){
+        .section-{{ section.id }} .container-full{
+            padding-left: 60px;
+            padding-right: 60px;
+        }
+    }
+</style>
+
+<section class="section-{{ section.id }}" id="{{ section.id }}" data-section-id="{{ section.id }}">
+    <div class="container-full">
+        <div class="form-cont">
+            <div class="left-info">
+                {% if section.settings.formTitle != blank %}
+                    <div class="form-title">{{ section.settings.formTitle }}</div>
+                {% endif %}
+                {% render 'contact-form', section: section %}
+            </div>
+            <div class="center-info">
+                <svg width="1" height="773" viewBox="0 0 1 773" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0.5 0V773" stroke="#ADADAD"/>
+                </svg>
+            </div>
+            <div class="right-info">
+                <div class="right-info-cont">
+                    {% if section.settings.contInfoTitle != blank %}
+                        <div class="cont-info-title">{{ section.settings.contInfoTitle }}</div>
+                    {% endif %}
+                    {% if section.settings.contInfoDesc != blank %}
+                        <div class="cont-info-desc">{{ section.settings.contInfoDesc }}</div>
+                    {% endif %}
+                    {% if section.settings.contInfoSubDesc != blank %}
+                        <div class="cont-info-sub-desc">{{ section.settings.contInfoSubDesc }}</div>
+                    {% endif %}
+                    {% if section.blocks.size > 0 %}
+                        <div class="cont-lists">
+                            {% for block in section.blocks %}
+                                {% if block.type == "contInfoItem" %}
+                                    <div class="info-item">
+                                        {% if block.settings.itemIcon != blank %}
+                                            <div class="info-item-icon">
+                                                {{ block.settings.itemIcon }}
+                                            </div>
+                                        {% endif %}
+                                        {% if block.settings.itemTitle != blank %}
+                                            <div class="info-item-title">
+                                                {{ block.settings.itemTitle }}
+                                            </div>
+                                        {% endif %}
+                                    </div>
+                                {% endif %}
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</section>
+
+{% schema %}
+{
+    "name": "contact us Form",
+    "settings": [
+        {
+            "type": "text",
+            "id": "formTitle",
+            "label": "form Title",
+            "default": "Contact Information"
+        },
+        {
+            "type": "text",
+            "id": "contInfoTitle",
+            "label": "contact Info Title",
+            "default": "Contact Us"
+        },
+        {
+            "type": "text",
+            "id": "contInfoDesc",
+            "label": "contact Info Desc 1",
+            "default": "We will provide you with professional product support and customer service. "
+        },
+        {
+            "type": "text",
+            "id": "contInfoSubDesc",
+            "label": "contact Info Sub Desc",
+            "default": "We will aim to respond to all inquiries within 5-7 business days."
+        }
+    ],
+    "blocks": [
+        {
+            "type": "contInfoItem",
+            "name": "contInfoItem",
+            "settings": [
+                {
+                    "type": "textarea",
+                    "id": "itemIcon",
+                    "label": "cont Info Item Icon"
+                },
+                {
+                    "type": "text",
+                    "id": "itemTitle",
+                    "label": "cont Info Item Title"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "contact us Form"
+        }
+    ]
+}
+{% endschema %}

@@ -1,0 +1,170 @@
+{{ 'section-joint-spirit-chair.css' | asset_url | stylesheet_tag }}
+
+<div class="spirit_chair">
+  {{-
+    section.settings.background_img
+    | image_url: width: section.settings.background_img.width
+    | image_tag: alt: section.settings.title, class: 'spirit_chair_bg pc_show'
+  -}}
+  {% assign file_image_mobile = section.settings.background_img_mobile | default: section.settings.background_img %}
+  {{-
+    file_image_mobile
+    | image_url: width: file_image_mobile.width
+    | image_tag: alt: section.settings.title, class: 'spirit_chair_bg pmd_show'
+  -}}
+  <div class="spirit_chair_title">{{ section.settings.title }}</div>
+  <div class="spirit_chair_text">{{ section.settings.text }}</div>
+  <div class="spirit_chair_content">
+    <div class="spirit_chair_highlight">
+      <div class="spirit_chair_highlight_title">{{ section.settings.chair_name }}</div>
+      <div class="spirit_chair_highlight_text">{{ 'joint.key_highlights' | t }}</div>
+      <div class="spirit_chair_highlight_line">
+        {% assign highlights = section.blocks | where: 'type', 'key_highlights' %}
+        {% for block in highlights %}
+          <div
+            class="spirit_chair_highlight_item{% if forloop.first %} active{% endif %}"
+            data-index="{{ forloop.index0 }}"
+          >
+            {{ block.settings.icon }}
+          </div>
+        {% endfor %}
+      </div>
+      <div class="spirit_chair_highlight_swiper">
+        {% for block in section.blocks %}
+          {% if block.type == 'key_highlights' %}
+            <div class="spirit_chair_highlight_swiper_item">
+              {{-
+                block.settings.image
+                | image_url: width: block.settings.image.width
+                | image_tag: alt: block.settings.title
+              -}}
+              <div>
+                <div class="spirit_chair_highlight_item_title">{{ block.settings.title }}</div>
+                <div class="spirit_chair_highlight_item_text">{{ block.settings.text }}</div>
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+      <a
+        class="spirit_chair_btn"
+        href="{{ section.settings.content_btn_link }}"
+      >
+        {{ section.settings.content_btn_text }}
+      </a>
+    </div>
+    {{-
+      section.settings.chair_img
+      | image_url: width: section.settings.chair_img.width
+      | image_tag: alt: section.settings.chair_title, class: 'spirit_chair_content_chair_img'
+    -}}
+  </div>
+</div>
+
+<script>
+  (function ($) {
+    $(function () {
+      const $slider = $('.spirit_chair_highlight_swiper').slick({
+        infinite: true,
+        arrows: false,
+        touchMove: false,
+        draggable: false,
+        waitForAnimate: false,
+      });
+
+      $(document).on('click', '.spirit_chair_highlight_item', function () {
+        const index = $(this).data('index');
+
+        $slider.slick('slickGoTo', index);
+
+        $(this).addClass('active').siblings().removeClass('active');
+      });
+    });
+  })(jQuery);
+</script>
+
+{% schema %}
+{
+  "name": "spirit chair",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "background_img",
+      "label": "background image"
+    },
+    {
+      "type": "image_picker",
+      "id": "background_img_mobile",
+      "label": "background image mobile"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "title"
+    },
+    {
+      "type": "text",
+      "id": "text",
+      "label": "text"
+    },
+    {
+      "type": "image_picker",
+      "id": "chair_img",
+      "label": "chair image"
+    },
+    {
+      "type": "text",
+      "id": "chair_name",
+      "label": "chair name"
+    },
+    {
+      "type": "text",
+      "id": "content_btn_text",
+      "label": "content button text"
+    },
+    {
+      "type": "url",
+      "id": "content_btn_link",
+      "label": "content button link"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "key_highlights",
+      "name": "Key Highlights",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "icon",
+          "label": "icon"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "image"
+        },
+        {
+          "type": "richtext",
+          "id": "title",
+          "label": "title"
+        },
+        {
+          "type": "richtext",
+          "id": "text",
+          "label": "text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "joint spirit chair"
+    }
+  ]
+}
+{% endschema %}

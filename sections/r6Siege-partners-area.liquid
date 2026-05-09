@@ -1,0 +1,309 @@
+<style>
+    .siege-partner-reviews-area .container-full{
+        padding: 100px 16% 68px;
+    }
+    .siege-partner-reviews-area .head-cont{
+        text-align: center;
+        margin-top: 20px;
+    }
+    .siege-partner-reviews-area .section-title{
+        font-family: Poppins;
+        font-weight: 600;
+        font-style: SemiBold;
+        font-size: 40px;
+        line-height: 1.2;
+        letter-spacing: 0%;
+        text-align: center;
+        color: #8D959E;
+    }
+
+    .siege-partner-reviews-area .brands-lists{
+        margin-top: 45px;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        column-gap: 45px;
+    }
+
+    .siege-partner-reviews-area .brands-lists .brand-item{
+        display: flex;
+        gap: 35px;
+        flex-direction: column;
+    }
+
+    .siege-partner-reviews-area .brands-lists .brand-item .items-desc{
+        font-family: Poppins;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 21px;
+        letter-spacing: 0%;
+        text-align: center;
+        color: #8D959E;
+    }
+
+    .siege-partner-reviews-area .reviews-logos-area{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: auto;
+        font-family: Roboto;
+        font-weight: 500;
+        font-size: 18px;
+        letter-spacing: 0%;
+        text-align: center;
+        color: #8D959E;
+        cursor: pointer;
+        width: max-content;
+    }
+
+    .siege-partner-reviews-area .reviews-stars svg{
+        width: 10vw;
+        height: auto;
+        margin: 0 10px;
+    }
+
+    .siege-partner-reviews-area .reviews-logos svg{
+        width: 18px;
+        height: auto;
+        margin: 0 4px;
+    }
+
+    {% comment %} iPhone {% endcomment %}
+    @media(max-width: 767px){
+        .siege-partner-reviews-area .container-full{
+            padding: 43px 10px 60px;
+        }
+
+        .siege-partner-reviews-area .head-cont{
+            margin-top: 20px;
+        }
+
+        .siege-partner-reviews-area .section-title{
+            font-size: 26px;
+        }
+        
+        .siege-partner-reviews-area .brands-lists{
+            margin-top: 20px;
+            row-gap: 20px;
+            grid-template-columns: 1fr;
+        }
+
+        .siege-partner-reviews-area .brands-lists .brand-item{
+            gap: 0;
+        }
+
+        .siege-partner-reviews-area .brands-lists .brand-item picture{
+            width: 220px;
+            margin: auto;
+        }
+
+        .siege-partner-reviews-area .brands-lists .brand-item .items-desc{
+            width: 80%;
+            margin: auto;
+        }
+
+        .siege-partner-reviews-area .reviews-logos-area{
+            font-size: 14px;
+        }
+
+        .siege-partner-reviews-area .reviews-stars svg{
+            width: 20vw;
+            margin: 0 5px;
+        }
+    
+    }
+
+    {% comment %} iPad {% endcomment %}
+     @media(min-width: 768px) and (max-width: 1024px){
+        .siege-partner-reviews-area .container-full{
+            padding-left: 10px;
+            padding-right: 10px;
+        
+        }
+    
+    }
+
+
+     {% comment %} small screen {% endcomment %}
+    @media(min-width: 1025px) and (max-width: 1480px){
+        .siege-partner-reviews-area .container-full{
+            padding-left: 60px;
+            padding-right: 60px;
+        }
+    
+    }
+</style>
+<div class="siege-partner-reviews-area" data-section-id="{{ section.id }}">
+    {% liquid
+      assign section_bg_image = section.settings.sectionBgImage
+      assign section_bg_image_mb = section.settings.sectionBgImageMobile
+    %}
+    <style>
+        .siege-partner-reviews-area {
+            background: #030409 url("{{ section_bg_image | image_url: width: 1920 }}") no-repeat center / cover;
+        }
+
+        @media (max-width: 767px) {
+            .siege-partner-reviews-area {
+                background-image: url({{ section_bg_image_mb | image_url: width: 768 }});
+            }
+        }
+    </style>
+
+    <div class="container-full">
+        {% if section.settings.reviewLogo != blank %}
+            <a class="reviews-logos-area" {% if section.settings.reviewLink != blank %} href="{{ section.settings.reviewLink }}" {% else %} aria-disabled="true" {% endif %}>
+                {% if section.settings.reviewTitle != blank %}
+                    <span>{{ section.settings.reviewTitle }}</span>
+                {% endif %}
+                {% if section.settings.reviewIcon != blank %}
+                    <span class="reviews-stars">
+                        <svg width="129" height="22" viewBox="0 0 129 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <rect width="21.5" height="21.5" fill="#00B67A"/>
+                            <path d="M18.8562 9.06635H12.5687L10.6266 3.1875L8.67764 9.06684L2.39062 9.06045L7.48261 12.6971L5.53462 18.5696L10.6266 14.9388L15.7127 18.5696L13.7706 12.6971L18.8562 9.06635Z" fill="white"/>
+                            <path d="M14.2056 14.0249L13.7685 12.6953L10.625 14.937L14.2056 14.0249Z" fill="#A4A4A4"/>
+                            <rect x="26.2812" width="21.5" height="21.5" fill="#00B67A"/>
+                            <path d="M45.1375 9.06635H38.85L36.9079 3.1875L34.9589 9.06684L28.6719 9.06045L33.7639 12.6971L31.8159 18.5696L36.9079 14.9388L41.994 18.5696L40.0519 12.6971L45.1375 9.06635Z" fill="white"/>
+                            <path d="M40.4869 14.0249L40.0498 12.6953L36.9062 14.937L40.4869 14.0249Z" fill="#A4A4A4"/>
+                            <rect x="52.5547" width="21.5" height="21.5" fill="#00B67A"/>
+                            <path d="M71.4109 9.06635H65.1234L63.1813 3.1875L61.2323 9.06684L54.9453 9.06045L60.0373 12.6971L58.0893 18.5696L63.1813 14.9388L68.2674 18.5696L66.3253 12.6971L71.4109 9.06635Z" fill="white"/>
+                            <path d="M66.7603 14.0249L66.3232 12.6953L63.1797 14.937L66.7603 14.0249Z" fill="#A4A4A4"/>
+                            <rect x="78.8359" width="21.5" height="21.5" fill="#00B67A"/>
+                            <path d="M97.6921 9.06635H91.4046L89.4625 3.1875L87.5136 9.06684L81.2266 9.06045L86.3185 12.6971L84.3706 18.5696L89.4625 14.9388L94.5486 18.5696L92.6065 12.6971L97.6921 9.06635Z" fill="white"/>
+                            <path d="M93.0416 14.0249L92.6044 12.6953L89.4609 14.937L93.0416 14.0249Z" fill="#A4A4A4"/>
+                            <rect x="107.5" width="21.5" height="21.5" fill="black" fill-opacity="0.8"/>
+                            <rect x="107.5" width="11.1481" height="21.5" fill="#00B67A"/>
+                            <path d="M126.356 9.06629H120.069L118.65 3.32812L116.178 9.06678L109.891 9.06039L114.983 12.697L113.035 18.5695L118.127 14.9387L123.213 18.5695L121.271 12.697L126.356 9.06629Z" fill="white"/>
+                            <path d="M121.706 14.0249L121.269 12.6953L118.125 14.937L121.706 14.0249Z" fill="#A4A4A4"/>
+                        </svg>
+                    </span>
+                {% endif %}
+                {% if section.settings.reviewSubInfo != blank %}
+                    <span style="text-decoration: underline;">{{ section.settings.reviewSubInfo }}</span>
+                {% endif %}
+                {% if section.settings.reviewLogo != blank %}
+                    <span class="reviews-logos">
+                        <svg width="19" height="18" viewBox="0 0 19 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M18.5368 6.61836H11.4584L9.27201 0L7.07787 6.61891L0 6.61172L5.73252 10.7058L3.53949 17.317L9.27201 13.2295L14.9979 17.317L12.8115 10.7058L18.5368 6.61836Z" fill="#02B57B"/>
+                            <path d="M13.3045 12.2L12.8124 10.7031L9.27344 13.2268L13.3045 12.2Z" fill="#126849"/>
+                        </svg>
+                    </span>
+                {% endif %}
+                {% if section.settings.reviewLogoName != blank %}
+                    <span>{{ section.settings.reviewLogoName }}</span>
+                {% endif %}
+            </a>
+        {% endif %}
+
+
+        {% if section.settings.sectionTitle != blank %}
+            <div class="head-cont">
+                <div class="section-title">{{ section.settings.sectionTitle }}</div>
+            </div>
+        {% endif %}
+
+        {% if section.blocks.size > 0 %}
+            <div class="brands-lists">
+                {% for block in section.blocks %}
+                  {% if block.type == "item" %}
+                    <div class="brand-item">
+                        {% render 'picture-simple',
+                            image: block.settings.itemImage,
+                            image_mobile: block.settings.itemImage_mb,
+                            mobile_dpr: 2,
+                            loading: "eager"
+                        %}
+                        {% if block.settings.itemDesc != blank %}
+                            <div class="items-desc">{{ block.settings.itemDesc }}</div>
+                        {% endif %}
+                    </div>
+                  {% endif %}
+                {% endfor %}
+            </div>
+        {% endif %}    
+
+        
+    </div>
+</div>
+
+{% schema %}
+{
+    "name": "r6Siege Partners Area",
+    "tag": "section",
+    "settings": [
+        {
+            "type": "image_picker",
+            "id": "sectionBgImage",
+            "label": "section Background Image"
+        },
+        {
+            "type": "image_picker",
+            "id": "sectionBgImageMobile",
+            "label": "section Background Image Mobile"
+        },
+        {
+            "type": "text",
+            "id": "sectionTitle",
+            "label": "section Title",
+            "default": "We're featured on"
+        },
+        {
+            "type": "text",
+            "id": "reviewTitle",
+            "label": "review Title"
+        },
+        {
+            "type": "text",
+            "id": "reviewIcon",
+            "label": "review Icon"
+        },
+        {
+            "type": "text",
+            "id": "reviewSubInfo",
+            "label": "review Sub Info"
+        },
+        {
+            "type": "text",
+            "id": "reviewLogo",
+            "label": "review Partner Logo"
+        },
+        {
+            "type": "text",
+            "id": "reviewLogoName",
+            "label": "review Logo Name"
+        },
+        {
+            "type": "url",
+            "id": "reviewLink",
+            "label": "review Link"
+        }
+    ],
+    "blocks": [
+        {
+            "type": "item",
+            "name": "item",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "itemImage",
+                    "label": "item Image"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "itemImage_mb",
+                    "label": "item Image Mobile"
+                },
+                {
+                    "type": "text",
+                    "id": "itemDesc",
+                    "label": "item Descripe"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "r6Siege Partners Area"
+        }
+    ]
+}
+{% endschema %}

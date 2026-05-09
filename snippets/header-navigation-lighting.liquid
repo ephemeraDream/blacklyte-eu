@@ -1,0 +1,123 @@
+<style>
+  @media(max-width: 1024px) {
+    .light-mobile-cont{
+        height: 100vh;
+        width: 100%;
+        max-height: 100vh;
+        max-width: 100%;
+        overflow: hidden;
+        transition: .5s;
+        position: absolute;
+        top: 0;
+        left: 100vw;
+        opacity: 0;
+        background-color: #fff;
+        z-index: 999;
+    }
+    .light-mobile-cont.light-mobile-cont-active{
+      left: 0;
+      opacity: 1;
+    }
+    .light-mobile-cont .title{
+      padding: 26px 20px;
+      border-bottom: 1px solid #F1F1F1;
+      position: relative;
+      cursor: pointer;
+    }
+    .light-mobile-cont .title .icons svg{
+      width: 13px;
+      height: 13px;
+      fill: none;
+      stroke: none;
+    }
+    .light-mobile-cont .title .header-title-text{
+        font: 500 16px var(--font-family-1);
+        color: #262629;
+        vertical-align: middle;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    .light-mobile-cont .lights-prods{
+        display: flex;
+        gap: 18px;
+        padding: 26px 20px;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        max-height: calc(100vh - 100px);
+        overflow-y: scroll;
+    }
+    .light-mobile-cont .lights-prods .cont-light-items{
+        display: flex;
+        gap: 10px;
+        padding: 20px;
+        flex-direction: column;
+        width: calc((100% - 18px) / 2);
+        justify-content: center;
+        align-items: center;
+    }
+    .light-mobile-cont .lights-prods .cont-light-items .item-left{
+        width: 140px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .light-mobile-cont .lights-prods .cont-light-items .item-right .right-title{
+        font: 500 16px var(--font-family-1);
+        color: #262629;
+        text-align: center;
+    }
+    .light-mobile-cont .lights-prods .cont-light-items .item-right .right-btns{
+        text-align: center;
+    }
+    .light-mobile-cont .lights-prods .cont-light-items .item-right .right-btns .single-btn-click{
+        font: 400 16px var(--font-family-1);
+        color: #76767F;
+        text-decoration: underline;
+        margin-top: 15px;
+        text-align: center;
+    }
+  }
+  
+</style>
+
+<div class="light-mobile-cont">
+  <div class="title">
+    <span class="icons">
+      <svg width="12" height="20" viewBox="0 0 12 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M11 19L2 10L11 1" stroke="#262629" stroke-width="1.6"/>
+      </svg>
+    </span>
+    <span class="header-title-text">{{ section.settings.LightingMenuTitle }}</span>
+  </div>
+  <div class="lights-prods">
+    {% for product in section.settings.lightingProductList %}
+        <div class="cont-light-items">
+          <div class="item-left">
+            <img src="{{ product.featured_image | img_url: "master" }}" loading="lazy">
+          </div>
+          <div class="item-right">
+            <div class="right-title">{{ product.title }}</div>
+            <div class="right-btns">
+              <span class="single-btn-click" data-href="{{ product.url }}">Buy</span>
+            </div>
+          </div>
+        </div>
+    {% endfor %}
+  </div>
+</div>
+<script>
+    {% comment %} close {% endcomment %}
+    $('.light-mobile-cont .title .icons').on('click', function(){
+        $('.light-mobile-cont').removeClass('light-mobile-cont-active')
+        $('body').removeClass('menu_open_mb')
+    })
+    {% comment %} click button {% endcomment %}
+    $('.light-mobile-cont .lights-prods .cont-light-items .item-right .right-btns .single-btn-click').on('click', function(){
+        const link = $(this).data('href')
+        if(link){
+            window.location.href = link
+        }
+    })
+</script>

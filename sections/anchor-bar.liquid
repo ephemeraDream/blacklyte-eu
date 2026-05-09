@@ -1,0 +1,187 @@
+{{ 'section-anchor-bar.css' | asset_url | stylesheet_tag }}
+
+<style>
+  #shopify-section-{{ section.id }}.is-sticky {
+    position: sticky;
+    top: 100px;
+    z-index: 99;
+  }
+  @media screen and (min-width: 768px) and (max-width: 1024px) {
+    #shopify-section-{{ section.id }}.is-sticky {
+      position: sticky;
+      top: 40px;
+      z-index: 99;
+    }
+    #shopify-section-{{ section.id }}.is-sticky.up {
+      top: 90px;
+    }
+  }
+  @media screen and (max-width: 767px) {
+    #shopify-section-{{ section.id }}.is-sticky {
+      position: sticky;
+      top: 0;
+      z-index: 99;
+    }
+    #shopify-section-{{ section.id }}.is-sticky.up {
+      top: 50px;
+    }
+  }
+</style>
+
+<div class="anchor_bar" id="{{ section.settings.specId }}">
+  {% for item in section.blocks %}
+    <a class="anchor_bar_item{% if forloop.first %} active{% endif %}" href="#{{ item.settings.anchorId }}">
+      {{- item.settings.title -}}
+    </a>
+  {% endfor %}
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const anchorItems = document.querySelectorAll('.anchor_bar_item');
+    const anchor_bar = document.querySelector('#shopify-section-{{ section.id }}');
+
+    // 点击跳转
+    anchorItems.forEach((item) => {
+      item.addEventListener('click', function (e) {
+        e.preventDefault(); // 阻止默认锚点行为
+
+        if (item.classList.contains('active')) return;
+
+        // 切换 active
+        document.querySelector('.anchor_bar_item.active')?.classList.remove('active');
+        item.classList.add('active');
+
+        // 获取目标元素
+        const targetId = item.getAttribute('href').substring(1);
+        const targetEl = document.getElementById(targetId);
+        if (!targetEl) return;
+
+        // 导航栏高度
+        const navHeight = anchor_bar.offsetHeight;
+
+        // 滚动位置
+        const targetTop =
+          window.innerWidth > 768
+            ? targetEl.getBoundingClientRect().top + window.pageYOffset - navHeight - 100
+            : targetEl.getBoundingClientRect().top + window.pageYOffset - navHeight;
+
+        window.scrollTo({
+          top: targetTop,
+          behavior: 'smooth',
+        });
+      });
+    });
+
+    // 滚动时高亮逻辑
+    const sections = Array.from(anchorItems).map((item) => {
+      const id = item.getAttribute('href').substring(1);
+      return document.getElementById(id);
+    });
+
+    function onScrollHighlight() {
+      const navHeight = anchor_bar.offsetHeight;
+      let currentIndex = 0;
+
+      sections.forEach((section, index) => {
+        if (!section) return;
+        const sectionTop =
+          window.innerWidth > 768 ? section.offsetTop - navHeight - 140 : section.offsetTop - navHeight - 80; // 提前 40px
+        if (window.scrollY >= sectionTop) {
+          currentIndex = index;
+        }
+      });
+
+      // 更新 active
+      anchorItems.forEach((item, idx) => {
+        if (idx === currentIndex) {
+          if (!item.classList.contains('active')) {
+            item.classList.add('active');
+            // 移动端时保证可见
+            item.scrollIntoView({
+              behavior: 'smooth',
+              inline: 'center',
+              block: 'nearest',
+            });
+          }
+        } else {
+          item.classList.remove('active');
+        }
+      });
+    }
+
+    // 滚动 sticky 控制 + 高亮控制
+    let ticking = false;
+    let lastScrollTop = 0;
+    function onScroll() {
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      if (!ticking) {
+        window.requestAnimationFrame(function () {
+          // sticky 控制
+          if (window.scrollY >= 100) {
+            anchor_bar.classList.add('is-sticky');
+          } else {
+            anchor_bar.classList.remove('is-sticky');
+          }
+          if (scrollTop > lastScrollTop) {
+            anchor_bar.classList.remove('up');
+          } else if (scrollTop < lastScrollTop) {
+            anchor_bar.classList.add('up');
+          }
+          lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+
+          // 高亮控制
+          onScrollHighlight();
+
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }
+
+    window.addEventListener('scroll', onScroll);
+
+    onScroll();
+  });
+</script>
+
+{% schema %}
+{
+  "name": "anchor bar",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "specId",
+      "label": "specId"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "title"
+        },
+        {
+          "type": "text",
+          "id": "anchorId",
+          "label": "anchorId"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "anchor bar"
+    }
+  ]
+}
+{% endschema %}

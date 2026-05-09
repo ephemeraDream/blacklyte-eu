@@ -1,0 +1,443 @@
+<div class="collections-prods">
+  <div class="collections-head collections-head-blast-bounty">
+    {% if block.settings.blockTitle != blank %}
+      <div class="collection-title">{{ block.settings.blockTitle }}</div>
+    {% endif %}
+    {% if block.settings.blockDesc != blank %}
+      <div class="collection-desc">{{ block.settings.blockDesc }}</div>
+    {% endif %}
+    {% if block.settings.blockCountDown != blank %}
+      <div class="collection-countdown" data-end="{{ block.settings.blockCountDown }}">
+        <div class="countdown-item">
+          <span class="count-times" data-type="days">00</span>
+          <span class="count-unit">{{ block.settings.blockCountDownDay }}</span>
+        </div>
+        <div class="countdown-split">:</div>
+
+        <div class="countdown-item">
+          <span class="count-times" data-type="hours">00</span>
+          <span class="count-unit">{{ block.settings.blockCountDownHrs }}</span>
+        </div>
+        <div class="countdown-split">:</div>
+
+        <div class="countdown-item">
+          <span class="count-times" data-type="mins">00</span>
+          <span class="count-unit">{{ block.settings.blockCountDownMins }}</span>
+        </div>
+        <div class="countdown-split">:</div>
+
+        <div class="countdown-item">
+          <span class="count-times" data-type="secs">00</span>
+          <span class="count-unit">{{ block.settings.blockCountDownSecs }}</span>
+        </div>
+      </div>
+    {% endif %}
+  </div>
+  {% if block.settings.blockFeatureProd != blank %}
+    <div class="collections-features-prod">
+      <div class="coll-feature-left">
+        {% if block.settings.collFeatureImage != blank %}
+          <img
+            src="{{ block.settings.collFeatureImage | image_url: width: 650 }}"
+            width="{{ block.settings.collFeatureImage.width }}"
+            height="{{ block.settings.collFeatureImage.height }}"
+            alt="{{ block.settings.collFeatureImage.alt }}"
+          >
+        {% endif %}
+      </div>
+      <div class="coll-feature-right">
+        {% assign product_options = block.settings.blockFeatureProdVariants | split: ',' %}
+        {% assign product_variant = block.settings.blockFeatureProd.selected_or_first_available_variant %}
+
+        {% for variant in block.settings.blockFeatureProd.variants %}
+          {% assign match = true %}
+
+          {% if product_options.size > 0 %}
+            {% if variant.option1 != product_options[0] %}
+              {% assign match = false %}
+            {% endif %}
+          {% endif %}
+
+          {% if product_options.size > 1 %}
+            {% if variant.option2 != product_options[1] %}
+              {% assign match = false %}
+            {% endif %}
+          {% endif %}
+
+          {% if product_options.size > 2 %}
+            {% if variant.option3 != product_options[2] %}
+              {% assign match = false %}
+            {% endif %}
+          {% endif %}
+
+          {% if match %}
+            {% assign product_variant = variant %}
+            {% break %}
+          {% endif %}
+        {% endfor %}
+
+
+        {% if block.settings.blockFeatureProdTitle != blank %}
+          <div class="block-prod-title">{{ block.settings.blockFeatureProdTitle }}</div>
+        {% endif %}
+        {% if block.settings.blockFeatureProdSubTitle != blank %}
+          <div class="block-prod-sub-title">{{ block.settings.blockFeatureProdSubTitle }}</div>
+        {% endif %}
+        {% if block.settings.blockFeatureProdDesc != blank %}
+          <div class="block-prod-desc">{{ block.settings.blockFeatureProdDesc }}</div>
+        {% endif %}
+        {% if block.settings['blockFeatureProdDesc-2'] != blank %}
+          <div class="block-prod-desc-2">{{ block.settings['blockFeatureProdDesc-2'] }}</div>
+        {% endif %}
+        {% if block.settings.blockFeatureProd != blank %}
+          <div class="block-prod-prices">
+            {% if product_variant.metafields.custom.discount_price.value
+                != blank
+            %}
+              <div class="block-prod-discount-price">
+                {{
+                  product_variant.price
+                  | minus: product_variant.metafields.custom.discount_price.value
+                  | money
+                }}
+              </div>
+            {% endif %}
+            <div class="block-prod-sale-price {% if product_variant.metafields.custom.discount_price.value != blank %}block-prod-sale-price-text{% endif %}">
+              {{ product_variant.price | money }}
+            </div>
+          </div>
+        {% endif %}
+        {% if block.settings['blockFeatureProdBtn-1'] != blank or block.settings['blockFeatureProdBtn-2'] != blank %}
+            
+          <div class="block-prod-btns">
+            {% if block.settings['blockFeatureProdBtn-1'] != blank %}
+              <div class="buy-now prod-btn has-data-url-link" data-url="{{ block.settings.blockFeatureProd.url }}?variant={{ product_variant.id }}">
+                {{ block.settings['blockFeatureProdBtn-1'] }}
+              </div>
+            {% endif %}
+            
+            {% if block.settings['blockFeatureProdBtn-2'] != blank %}
+              <div class="learn-more prod-btn has-data-url-link" data-url="{{ block.settings.blockFeatureProdBtn-2-link }}">
+                {{ block.settings['blockFeatureProdBtn-2'] }}
+              </div>
+            {% endif %}
+
+            {% if block.settings.blockFeatureProdATCBtn != blank %}
+                    
+                <div class="learn-more prod-btn prod-atc-btn" data-variant-id="{{ product_variant.id }}">
+                    {{ block.settings.blockFeatureProdATCBtn }}
+                </div>
+            {% endif %}
+            
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  {% endif %}
+  {% if block.settings.showProductLists %}
+    <div class="collections-lists limit-items">
+      {%- for product_card_product in collection.products -%}
+        {%- liquid
+          assign variant_img = ''
+          for option in product_card_product.options_with_values
+            for variant in product_card_product.variants limit: 1
+              if variant.image != null
+                assign variant_img = variant.image
+              endif
+            endfor
+          endfor
+        -%}
+
+        {%- if product_card_product.variants.size > 0 and product_card_product.has_only_default_variant != true -%}
+            <script>
+                window.quick_view_inven_array_{{ product_card_product.id }} = {
+                    {%- for variant in product_card_product.variants -%}
+                    '{{ variant.id }}': '{{ variant.inventory_quantity }}',
+                    {%- endfor -%}
+                };
+
+                window.quick_shop_policy_array_{{ product_card_product.id }} = {
+                    {%- for variant in product_card_product.variants -%}
+                    '{{ variant.id }}': '{{ variant.inventory_policy }}',
+                    {%- endfor -%}
+                };
+
+                window.cart_selling_array_{{ product_card_product.id }} = {
+                    {%- for variantProduct in product_card_product.variants -%}
+                        '{{ variantProduct.id }}': '{{ variantProduct.inventory_policy }}',
+                    {%- endfor -%}
+                };
+            </script>
+        {% endif %}
+
+        <div
+          data-url="{{ product_card_product.url }}?variant={{ product_card_product.selected_or_first_available_variant.id }}"
+          class="prod_item has-data-url-link"
+          data-product-id="{{ product_card_product.id }}"
+          data-variant="{{ variant | json }}"
+        >
+          <div class="container-prod">
+            <div class="card-product">
+              {% render 'product-badge',
+                product: product_card_product,
+                class: 'card__badge',
+                badge_detail: true,
+                serial: serial
+              %}
+              <div
+                class="card-media card-media--adapt {% if product_card_product.media[1] != nil and settings.show_image_swap %} media--hover-effect{% endif%} media--loading-effect"
+                style="padding-bottom: {{ 1.1 | times: 100 }}%;"
+              >
+                {% render 'image-product-card',
+                  product_card_product: product_card_product,
+                  variant_img: product.selected_or_first_available_variant.featured_media,
+                  has_video: false,
+                  loading: true
+                %}
+
+                <a
+                  class="card-link"
+                  href="{{ product_card_product.url }}"
+                  title="{{ product_card_product.title | escape }}"
+                ></a>
+              </div>
+            </div>
+            <div class="prod_card_info">
+              <div class="prod_item_series_name">
+                  {% if product_card_product.metafields.custom.series_name != blank %}
+                  {{ product_card_product.metafields.custom.series_name }}
+                  {% else %}
+                  {{ product_card_product.title }}
+                  {% endif %}
+                  
+              </div>
+              <div class="prod_item_title" style="display: none">
+                  <span>{{ product_card_product.title }}</span>
+              </div>
+              
+              <div class="flex-1"></div>
+              <div class="prod_item-variants">
+                {% if product_card_product.options.size > 0 and product_card_product.options.first != 'Title' %}
+                  {{ product_card_product.selected_or_first_available_variant.option1 }}
+                  {% if product_card_product.selected_or_first_available_variant.option2 != blank %} / {% endif %}
+                  {% if product_card_product.selected_or_first_available_variant.option2 != blank %}
+                    {{ product_card_product.selected_or_first_available_variant.option2 }}
+                  {% endif %}
+                {% endif %}
+              </div>
+              <div class="prod_item_price">
+                <div class="price">
+                  {% if product_card_product.selected_or_first_available_variant.metafields.custom.discount_price.value %}
+                    <span class="prod_item_discount_price">
+                      {{
+                        product_card_product.selected_or_first_available_variant.price
+                        | minus: product_card_product.selected_or_first_available_variant.metafields.custom.discount_price.value
+                        | money_without_currency
+                      }}
+                    </span>
+                  {% endif %}
+
+                  <span class="prod_item_sale_price{% if product_card_product.selected_or_first_available_variant.metafields.custom.discount_price.value %} prod_item_sale_price_new{% endif %}">
+                    {{- product_card_product.selected_or_first_available_variant.price | money -}}
+                  </span>
+                </div>
+              </div>
+              <a class="shop_now_btn" href="{{ product_card_product.url }}">{{ 'products.product.shop_now' | t }}</a>
+            </div>
+
+            {% comment %} {% if product_card_product.selected_or_first_available_variant.metafields.custom.discount_price.value != blank %} {% endcomment %}
+            <div class="prod-sale-tag">SALE</div>
+            {% comment %} {% endif %} {% endcomment %}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+  
+  <div class="disocunt-price-lists" style="display: none;">
+    {% for currency in shop.enabled_currencies %}
+      {% if currency.iso_code == shop.currency %}
+        {%- assign currency_symbol = currency.symbol -%}
+        {% break %}
+      {% endif %}
+    {% endfor %}
+
+    {% for product in collection.products %}
+      {% for variant in product.variants %}
+        {% if variant.available %}
+          <div class="variant-box" data-variant-id="{{ variant.id }}" data-current-amount="{{ currency_symbol }}">
+            <span class="discount-price">{{ variant.metafields.custom.discount_price.value }}</span>
+            <span class="orgina-price">{{ variant.price }}</span>
+          </div>
+        {% endif %}
+      {% endfor %}
+    {% endfor %}
+  </div>
+  <div class="variant-total-cont">
+    {% assign total_available_variants = 0 %}
+
+    {% for product in collection.products %}
+      {% for variant in product.variants %}
+        {% if variant.available and variant.metafields.custom.visibility != 'hidden' %}
+          {% assign total_available_variants = total_available_variants | plus: 1 %}
+        {% endif %}
+      {% endfor %}
+    {% endfor %}
+
+    <div class="prod-total-cont">
+      <span class="prod-total-cont-pc">
+        {{- block.settings.blockViewCount }}
+        {{ total_available_variants }} products</span
+      >
+      <span class="prod-total-cont-mb">
+        {{- block.settings.blockViewCount_mb }}
+        {{ total_available_variants }} products</span
+      >
+    </div>
+    <div class="line-bottom">
+      <div
+        class="line-bottom-active"
+        style="width: {{ 12 | times: 100.0 | divided_by: total_available_variants }}%"
+      ></div>
+      <div
+        class="line-bottom-active line-bottom-active-mb"
+        style="width: {{ 6 | times: 100.0 | divided_by: total_available_variants }}%"
+      ></div>
+    </div>
+    <div class="prod-total-button">
+      {{ block.settings.blockViewAll }}
+    </div>
+  </div>
+</div>
+{% schema %}
+{
+  "name": "collectionProd",
+  "settings": [
+    {
+      "type": "text",
+      "id": "blockTitle",
+      "label": "collection block title"
+    },
+    {
+      "type": "text",
+      "id": "blockDesc",
+      "label": "collection block desc"
+    },
+    {
+      "type": "text",
+      "id": "blockCountDown",
+      "label": "collection block CountDown"
+    },
+    {
+      "type": "text",
+      "id": "blockCountDownDay",
+      "label": "collection Block CountDown Day",
+      "default": "Day"
+    },
+    {
+      "type": "text",
+      "id": "blockCountDownHrs",
+      "label": "collection Block CountDown Hrs",
+      "default": "Hrs"
+    },
+    {
+      "type": "text",
+      "id": "blockCountDownMins",
+      "label": "collection Block CountDown Mins",
+      "default": "Mins"
+    },
+    {
+      "type": "text",
+      "id": "blockCountDownSecs",
+      "label": "collection Block CountDown Secs",
+      "default": "Secs"
+    },
+    {
+      "type": "product",
+      "id": "blockFeatureProd",
+      "label": "collection Block Featured Product"
+    },
+    {
+      "type": "image_picker",
+      "id": "collFeatureImage",
+      "label": "collection Block Featured Product Image"
+    },
+    {
+      "type": "text",
+      "id": "blockFeatureProdTitle",
+      "label": "collection Block Featured Product Title"
+    },
+    {
+      "type": "text",
+      "id": "blockFeatureProdSubTitle",
+      "label": "collection Block Featured Product Sub Title"
+    },
+    {
+      "type": "textarea",
+      "id": "blockFeatureProdDesc",
+      "label": "collection Block Featured Product Descripe"
+    },
+    {
+      "type": "textarea",
+      "id": "blockFeatureProdDesc-2",
+      "label": "collection Block Featured Product Descripe-2"
+    },
+    {
+      "type": "text",
+      "id": "blockFeatureProdBtn-1",
+      "label": "collection Block Featured Product buy now",
+      "default": "Shop now"
+    },
+    {
+      "type": "text",
+      "id": "blockFeatureProdBtn-2",
+      "label": "collection Block Featured Product learn more",
+      "default": "Learn more"
+    },
+    {
+      "type": "url",
+      "id": "blockFeatureProdBtn-2-link",
+      "label": "collection Block Featured Product learn more Link"
+    },
+    {
+      "type": "text",
+      "id": "blockFeatureProdVariants",
+      "label": "block Feature Product Variants"
+    },
+    {
+      "type": "text",
+      "id": "blockFeatureProdATCBtn",
+      "label": "collection Block Featured Product Add To Cart"
+    },
+    {
+      "type": "checkbox",
+      "id": "showProductLists",
+      "label": "show Product Lists",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "blockViewCount",
+      "label": "collection Block View Count",
+      "default": "Viewing 12 of "
+    },
+    {
+      "type": "text",
+      "id": "blockViewCount_mb",
+      "label": "collection Block View Count Mobile",
+      "default": "Viewing 6 of "
+    },
+    {
+      "type": "text",
+      "id": "blockViewAll",
+      "label": "collection Block View All",
+      "default": "View more +"
+    }
+  ],
+  "presets": [
+    {
+      "name": "collectionProd"
+    }
+  ]
+}
+{% endschema %}

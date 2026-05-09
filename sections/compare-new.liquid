@@ -1,0 +1,137 @@
+{{ 'compare-new.css' | asset_url | stylesheet_tag }}
+
+{% if section.settings.product != blank %}
+  {% assign product = section.settings.product %}
+{% endif %}
+{% assign product_compare = product.metafields.custom.product_compare.value %}
+{% assign active_index = 0 %}
+
+<div
+  class="compare_new{% if product.metafields.custom.product_type == 'desk' %} compare_new_desk{% endif %}"
+  id="{{section.settings.specId}}"
+>
+  <div class="compare_new_title">{{ section.settings.title }}</div>
+  <div class="compare_new_text">{{ section.settings.text }}</div>
+  <div class="compare_new_product">
+    <div class="compare_new_product_item pc_show"></div>
+    {% for item in product_compare.product_list.value %}
+      {% if item.metafields.custom.series_name == product.metafields.custom.series_name %}
+        {% assign active_index = forloop.index0 %}
+      {% endif %}
+      <div class="compare_new_product_item{% if item.metafields.custom.series_name == product.metafields.custom.series_name %} compare_new_product_item_active{% endif %}{% if product.title contains 'Kraken' %} compare_new_product_item_spec{% endif %}">
+        <img
+          width="100%"
+          height="100%"
+          src="{{ item.selected_or_first_available_variant.featured_image | image_url: width:424 }}"
+          alt="{{ item.title }}"
+          loading="lazy"
+        >
+        <div class="compare_new_product_item_contain">
+          {% if product.metafields.custom.product_type == 'chairs' %}
+            {% if product.title contains 'Athena' %}
+              <div class="compare_new_product_item_name">
+                {% if item.metafields.custom.series_name contains 'Pro' %}
+                  Pro
+                {%- else %}
+                  Base
+                {% endif %}
+              </div>
+            {% else %}
+              <div class="compare_new_product_item_name">{{ item.metafields.custom.series_name }}</div>
+            {% endif %}
+          {% else %}
+            <div class="compare_new_product_item_name">{{ item.title }}</div>
+          {% endif %}
+          <div class="compare_new_product_item_price">
+            {% assign min_price = blank %}
+            {% for variant in item.variants %}
+              {% if variant.available %}
+                {% if min_price == blank or variant.price < min_price %}
+                  {% assign min_price = variant.price %}
+                {% endif %}
+              {% endif %}
+            {% endfor %}
+            {{ 'products.product.text.from' | t -}}
+            {{- min_price | default: item.price | money_without_trailing_zeros }}
+          </div>
+        </div>
+        {% if product.metafields.custom.product_type == 'desk' or product.title contains 'Kraken' %}
+          {% unless item.metafields.custom.series_name == product.metafields.custom.series_name %}
+            <a href="{{ item.url }}" class="compare_new_product_item_btn">{{ 'general.common.buy_now_btn' | t }}</a>
+          {% endunless %}
+        {% endif %}
+      </div>
+    {% endfor %}
+  </div>
+  {% for data in product_compare.compare_data.value.data %}
+    <div class="compare_new_item{% if product.metafields.custom.product_type == 'desk' and "2,3,4" contains forloop.index %} compare_new_item_spec{% endif %}">
+      <div class="compare_new_item_box">
+        <div class="compare_new_item_title pc_show">{{ data.label }}</div>
+        {% for value in data.value %}
+          <div class="compare_new_item_contain{% if active_index == forloop.index0 %} compare_new_item_contain_active{% endif %}">
+            <div class="compare_new_item_title_mobile">{{ data.label }}</div>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="30"
+              height="30"
+              viewBox="0 0 30 30"
+              fill="none"
+              class="compare_new_item_contain_icon"
+            >
+              <path d="M5.24961 15.5205L11.4799 21.7508L24.7504 8.48028" stroke="#262629" stroke-opacity="0.7" stroke-width="3"/>
+            </svg>
+            <div class="compare_new_item_text">
+              {{ value }}
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  {% endfor %}
+  <div class="compare_new_bottom">
+    <div class="compare_new_bottom_item pc_show"></div>
+    {% for item in product_compare.product_list.value %}
+      <div
+        class="compare_new_bottom_item{% if item.metafields.custom.series_name == product.metafields.custom.series_name %} compare_new_bottom_item_active{% endif %}"
+      ></div>
+    {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "compare new",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "specId",
+      "label": "specId"
+    },
+    {
+      "type": "textarea",
+      "id": "title",
+      "label": "title"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "text"
+    },
+    {
+      "type": "product",
+      "id": "product",
+      "label": "product"
+    }
+  ],
+  "presets": [
+    {
+      "name": "compare new"
+    }
+  ]
+}
+{% endschema %}

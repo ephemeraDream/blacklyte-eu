@@ -1,0 +1,256 @@
+<style>
+    .section-{{ section.id }}{
+        padding-top: 123px;
+        background: #EBEBEB;
+    }
+    .section-{{ section.id }} .container-full{
+        padding-left: 16%;
+    }
+    .section-{{ section.id }} .head-cont .title{
+        font-family: Poppins;
+        font-weight: 600;
+        font-style: SemiBold;
+        font-size: 40px;
+        line-height: 100%;
+        letter-spacing: 0%;
+        color: #262629;
+        text-align: center;
+    }
+    .section-{{ section.id }} .review-lists{
+        display: flex;
+        margin-top: 34px;
+        padding-bottom: 50px;
+    }
+    .section-{{ section.id }} .review-lists .review-item-image img{
+        height: auto;
+    }
+    .section-{{ section.id }} .review-item{
+        border-radius: 24px;
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        height: auto;
+    }
+    .section-{{ section.id }} .review-lists .star-cont{
+        display: flex;
+        gap: 7px;
+    }
+    .section-{{ section.id }} .review-lists .star-cont svg{
+        width: 18px;
+        height: 18px;
+    }
+    .section-{{ section.id }} .review-cont{
+        padding: 30px;
+        border: 1px solid rgba(147, 147, 147, 0.4);
+        border-bottom-left-radius: 24px;
+        border-bottom-right-radius: 24px;
+        flex: 1;
+    }
+    .section-{{ section.id }} .review-cont .review-cont-title{
+        font-family: Roboto;
+        font-weight: 600;
+        font-style: SemiBold;
+        font-size: 22px;
+        leading-trim: NONE;
+        line-height: 100%;
+        letter-spacing: 0%;
+        color: #262629;
+        margin: 15px auto;
+    }
+    .section-{{ section.id }} .review-cont .review-cont-desc{
+        font-family: Roboto;
+        font-weight: 400;
+        font-style: Regular;
+        font-size: 16px;
+        line-height: 24px;
+        letter-spacing: 0%;
+        color: #262629;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .section-{{ section.id }} .swiper-pagination-bullet{
+        width: 31px;
+        height: 3px;
+        border: none;
+        border-radius: 0;
+        background: #262629;
+    }
+
+    {% comment %} iPhone {% endcomment %}
+    @media(max-width: 767px){
+        .section-{{ section.id }}{
+            padding-top: 50px;
+        }
+        .section-{{ section.id }} .container-full{
+            padding-left: 10px;
+        }
+        .section-{{ section.id }} .review-item{
+            border-radius: 12px;
+        }
+        .section-{{ section.id }} .review-cont{
+            padding: 14px;
+            border-bottom-left-radius: 12px;
+            border-bottom-right-radius: 12px;
+        }
+        .section-{{ section.id }} .review-lists .star-cont svg{
+            width: 10px;
+            height: 10px;
+        }
+        .section-{{ section.id }} .review-cont .review-cont-title{
+            font-size: 14px;
+            margin: 10px auto;
+        }
+        .section-{{ section.id }} .review-cont .review-cont-desc{
+            font-size: 12px;
+            line-height: 1.5;
+        }
+        .section-{{ section.id }} .swiper-pagination-bullet{
+            width: 8px;
+            height: 8px;
+            border-radius: 100%;
+            background: #262629;
+        }
+        .section-{{ section.id }} .head-cont .title{
+            font-size: 26px;
+            line-height: 30px;
+            white-space: normal;
+            padding-right: 10px;
+        }
+        
+    }
+    {% comment %} iPad {% endcomment %}
+    @media(min-width: 768px) and (max-width: 1024px){
+        .section-{{ section.id }} .container-full{
+            padding-left: 10px;
+        }
+    
+    }
+
+    @media(min-width: 1025px) and (max-width: 1480px){
+        .section-{{ section.id }} .container-full{
+            padding-left: 60px;
+        }
+    }
+</style>
+
+<section class="section-{{ section.id }} reviews-module" id="{{ section.id }}" data-section-id="{{ section.id }}">
+    <div class="container-full">
+        <div class="head-cont">
+            {% if section.settings.sectionTitle != blank %}
+                <div class="title">{{ section.settings.sectionTitle }}</div>
+            {% endif %}
+        </div>
+        <div class="review-lists swiper">
+            <div class="swiper-wrapper">
+                {% for block in section.blocks %}
+                    {% if block.type == 'item' %}
+                        <div class="review-item swiper-slide">
+                            <div class="review-item-image">
+                                <img src="{{ block.settings.reviewItemImage | img_url: 'master' }}"
+                                    width="{{ block.settings.reviewItemImage.width }}"
+                                    height="{{ block.settings.reviewItemImage.height }}"
+                                    alt="{{ block.settings.reviewItemImage.alt }}" />
+                            </div>
+                            <div class="review-cont">
+                                <div class="star-cont">
+                                    {% for i in (1..5) %}
+                                        <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M6.58109 0.52895C6.95668 -0.18058 7.9731 -0.180581 8.3487 0.52895L9.97145 3.59444C10.1161 3.86763 10.3789 4.05859 10.6834 4.11171L14.1003 4.70775C14.8912 4.8457 15.2053 5.81238 14.6465 6.38885L12.2325 8.87946C12.0174 9.10142 11.917 9.4104 11.9606 9.71642L12.4496 13.1503C12.5628 13.9451 11.7405 14.5425 11.0196 14.1893L7.90491 12.6631C7.62733 12.527 7.30245 12.527 7.02488 12.6631L3.9102 14.1893C3.18928 14.5425 2.36698 13.9451 2.48017 13.1503L2.96918 9.71642C3.01277 9.4104 2.91237 9.10142 2.69724 8.87946L0.283243 6.38885C-0.275495 5.81238 0.0385956 4.8457 0.829465 4.70775L4.24637 4.11171C4.55089 4.05859 4.81372 3.86763 4.95834 3.59444L6.58109 0.52895Z" fill="#EE5025"/>
+                                        </svg>
+                                    {% endfor %}
+                                </div>
+                                {% if block.settings.reviewItemTitle != blank %}
+                                    <div class="review-cont-title">{{ block.settings.reviewItemTitle }}</div>
+                                {% endif %}
+                                <div class="flex-1"></div>
+                                {% if block.settings.reviewItemDesc != blank %}
+                                    <div class="review-cont-desc">{{ block.settings.reviewItemDesc }}</div>
+                                {% endif %}
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </div>
+</section>
+
+<script>
+    $(document).ready(function () {
+        new Swiper('.reviews-module .review-lists',{
+            loop: true,
+            grabCursor : true,
+            slidesPerView : 3.5,
+            spaceBetween : 16,
+            slidesPerGroup: 3,
+            pagination: {
+                el: '.reviews-module .swiper-pagination',
+                clickable :true,
+            },
+            breakpoints: {
+                320: {
+                    slidesPerView: 1.4,
+                    slidesPerGroup: 1,
+                },
+                768: {
+                    slidesPerView: 1.4,
+                },
+                992: {
+                    slidesPerView: 3.5,
+                },
+                1280: {
+                    slidesPerView: 3.5,
+                }
+            }
+        })
+        
+    })
+</script>
+
+{% schema %}
+{
+    "name": "gaming Event Reviews",
+    "settings": [
+        {
+            "type": "text",
+            "id": "sectionTitle",
+            "label": "section Title",
+            "default": "What 200,000+ Gamers are Saying"
+        }
+    ],
+    "blocks": [
+        {
+            "type": "item",
+            "name": "item",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "reviewItemImage",
+                    "label": "review Item Image"
+                },
+                {
+                    "type": "text",
+                    "id": "reviewItemTitle",
+                    "label": "review Item Title",
+                    "default": "Best chair I've Had"
+                },
+                {
+                    "type": "textarea",
+                    "id": "reviewItemDesc",
+                    "label": "review Item Descripe",
+                    "default": "Excellent chair! Fabric feels better after 2 weeks of usage, lumbar support keeps my lower back in check after hours and hours of sitting."
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "gaming Event Reviews"
+        }
+    ]
+}
+{% endschema %}

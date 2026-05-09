@@ -1,0 +1,182 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "product_information_simplicity_A8DKzG": {
+      "type": "product-information-simplicity",
+      "blocks": {
+        "judge_me_reviews_preview_badge_yVhA8R": {
+          "type": "shopify://apps/judge-me-reviews/blocks/preview_badge/61ccd3b1-a9f2-4160-9fe9-4fec8413e5d8",
+          "disabled": true,
+          "settings": {}
+        },
+        "product_extra_info_XCWwCD": {
+          "type": "productExtraInfo",
+          "settings": {
+            "text_one": "<div>\n      <p class=\"size_large\">Austin Major Special Offer: $200 Off! </p>\n      <p>*Cannot be combined with other promo codes.</p>\n    </div>",
+            "enable_text_one": false,
+            "text_two": "<p>\n     30 Days Easy Return Policy: Changed your mind? Send it back within 30 days for refund. \n      <a id=\"refund_policy_btn\" title=\"Refund Policy\">View return Policy ></a>\n    </p>",
+            "text_thr": "<div>\n      <p class=\"size_large\">Shop with an Expert. We're here to help.</p>\n      <a class=\"chat_now\">Chat with our experts now ></a>\n    </div>"
+          }
+        },
+        "extra_desc_JHP4Ug": {
+          "type": "extra_desc",
+          "settings": {
+            "html": "<div class=\"product_infor_simplicity_right_extra_desc\">\n  <div class=\"metafield-rich_text_field\">\n    <p>Specifications</p>\n    <ul>\n      <li>Mineral Oil: 15%, Palm Wax: 8%, Beeswax: 12%, Water: 65%</li>\n      <li>Transparent Milky Color</li>\n      <li>250ML</li>\n      <li>Odorless</li>\n      <li>PH: Neutral</li>\n      <li>Density: 0.98</li>\n      <li>Shelf Life: 3 Years</li>\n      <li>Non-Flammable & Non-Explosive</li>\n      <li>Oxidizing Agents: None</li>\n    </ul>\n    <p>Directions of Use:</p>\n    <div>\n      1. Clean First: Ensure surface is clean and dry, better with leather\n      cleaner first.\n    </div>\n    <div>2. Shake Well: Shake the bottle before use.</div>\n    <div>3. Apply Conditioner: Spray onto a clean microfiber cloth.</div>\n    <div>\n      4. Massage in Circles: Gently rub in a circular motion over the leather.\n    </div>\n    <div>\n      5. Buff to Shine: Use a clean cloth to buff the surface to a smooth, shiny\n      finish.\n    </div>\n    <div>6. Allow to Dry: Let the surface air dry completely.</div>\n    <div>\n      7. Repeat Regularly: Use regularly to keep leather soft and protected.\n    </div>\n    <p>Precautions:</p>\n    <ul>\n      <li>\n        Keep the container sealed and store in a cool, dry, well-ventilated\n        area, away from oxidizing agents.\n      </li>\n      <li>\n        Wipe gently; avoid excessive friction to prevent damaging the leather.\n      </li>\n      <li>\n        Stains that have been present for a long time may be difficult to\n        remove.\n      </li>\n      <li>Keep out of reach of children and pets.</li>\n      <li>\n        In case of eye contact, rinse with plenty of water for at least 15\n        minutes and seek medical attention immediately.\n      </li>\n      <li>\n        Hazardous characteristics: Flammable liquid when exposed to flame or\n        high heat.\n      </li>\n    </ul>\n  </div>\n</div>"
+          }
+        },
+        "product_extra_info_bottom_YjDHHV": {
+          "type": "productExtraInfoBottom",
+          "settings": {
+            "text_one": "<div>\n      <p>[[preorder_info]]</p>\n      <p>Free Shipping on All Orders</p>\n    </div>",
+            "text_two": "<div>\n      <p>30-Day Returns Policy</p>\n      <p>3-Year Warranty Protection</p>\n    </div>",
+            "text_thr": "<div class=\"flex_full\">Global Support</div>"
+          }
+        }
+      },
+      "block_order": [
+        "judge_me_reviews_preview_badge_yVhA8R",
+        "product_extra_info_XCWwCD",
+        "extra_desc_JHP4Ug",
+        "product_extra_info_bottom_YjDHHV"
+      ],
+      "settings": {
+        "show_compare": "false",
+        "spec_hidden": "true",
+        "show_degree": "false",
+        "product_type": "peripheral",
+        "img_show_type": "thumb",
+        "show_anchor_bar": false,
+        "show_compare_modal": true
+      }
+    },
+    "collapsible_content_TUTAeg": {
+      "type": "collapsible-content",
+      "blocks": {
+        "content_eCYE4f": {
+          "type": "content",
+          "settings": {
+            "header_title_before_iconSvg": "",
+            "heading": "1. How do I track my order?",
+            "content": "<p>Once your order ships, you'll receive a shipping confirmation email and tracking number, so you can follow your package as it makes its way to you. However, tracking information can take up to 24 hours to update, so don’t worry if it doesn't show up immediately. We recommend tracking your order and ensuring that you’re home on the day of delivery to receive your order.</p>",
+            "page": "",
+            "show_header_title_before_icon": false
+          }
+        },
+        "content_9eHHaf": {
+          "type": "content",
+          "settings": {
+            "header_title_before_iconSvg": "",
+            "heading": "2. When Will My Order be Shipped?",
+            "content": "<p>Inventory orders are typically shipped the next business day and will be delivered within 1-5 business days.  For more information, please check our Shipping and Return Policy.</p>",
+            "page": "",
+            "show_header_title_before_icon": false
+          }
+        },
+        "content_QWGbwc": {
+          "type": "content",
+          "settings": {
+            "header_title_before_iconSvg": "",
+            "heading": "3. My order has been shipped. Can I change or cancel my order?",
+            "content": "<p>Unfortunately, we’re unable to cancel your order once it ships.</p>",
+            "page": "",
+            "show_header_title_before_icon": false
+          }
+        },
+        "content_Pwid9D": {
+          "type": "content",
+          "settings": {
+            "header_title_before_iconSvg": "",
+            "heading": "4. Can I exchange my Order？",
+            "content": "<p>For the most efficient resolution to obtain the item you desire, we recommend returning the original item. Once your return is approved, we encourage you to proceed with a separate purchase for the new item.  For more information, please check our Return & Refund Policy.</p>",
+            "page": "",
+            "show_header_title_before_icon": false
+          }
+        },
+        "content_MymLbR": {
+          "type": "content",
+          "settings": {
+            "header_title_before_iconSvg": "",
+            "heading": "5. How will my order be delivered?",
+            "content": "<p>We deliver your order straight to your address via DX. You’ll receive an email with a tracking number when your order ships, so you can easily track your order. Please ensure that you’re home on the day of delivery to receive your order.</p>",
+            "page": "",
+            "show_header_title_before_icon": false
+          }
+        },
+        "content_WXVwgc": {
+          "type": "content",
+          "settings": {
+            "header_title_before_iconSvg": "",
+            "heading": "6. What do I do if I face an issue with my purchase?",
+            "content": "<p>In the unlikely event that you come across any damaged, defective or missing parts, please contact us at <a href=\"mailto:support@blacklyte.com\" title=\"mailto:support@blacklyte.com\">support@blacklyte.com </a>with a photo of the affected area and your order number. Our support specialists will do their best to assist you.</p>",
+            "page": "",
+            "show_header_title_before_icon": false
+          }
+        }
+      },
+      "block_order": [
+        "content_eCYE4f",
+        "content_9eHHaf",
+        "content_QWGbwc",
+        "content_Pwid9D",
+        "content_MymLbR",
+        "content_WXVwgc"
+      ],
+      "custom_css": [
+        ".faqs-item {border-top: 1px solid #e6e6e6; font-family: Roboto;}",
+        ".collapsible-grid__item {border-bottom: 1px solid #e6e6e6;}",
+        ".collapsible-content {width: 100%; padding: 0 18.75vw;}",
+        ".halo-block-header {padding: 0 18.75vw;}",
+        ".halo-block-header h3 {font-family: Roboto; font-weight: 700;}",
+        ".card-body {color: #646669; font-size: 14px; font-weight: 400;}",
+        "@media screen and (max-width: 768px) {.collapsible-content {padding: 0 5.33vw; } .halo-block-header {padding: 0 5.33vw; }}"
+      ],
+      "settings": {
+        "id_section": "faq",
+        "container": "fullwidth",
+        "padding_full_width": 50,
+        "mg_top_desktop": 100,
+        "mg_top_tablet": 50,
+        "mg_top_mobile": 40,
+        "mg_bottom_desktop": 100,
+        "mg_bottom_tablet": 50,
+        "mg_bottom_mobile": 40,
+        "collapsible_bg": "#ffffff",
+        "collapsible_bg_gradient": "",
+        "collapsible_title": "FAQ",
+        "color_title": "#000000",
+        "fontsize_title": 32,
+        "fontsize_title_mb": 24,
+        "collapsible_des": "",
+        "color_des": "#3c3c3c",
+        "fontsize_des": 16,
+        "fontsize_des_mb": 12,
+        "max_width_des": 700,
+        "title_align": "left",
+        "enable_image_right": false,
+        "bg_content_color": "#ffffff",
+        "title_color": "#000000",
+        "content_color": "#000000",
+        "icon_color": "#000000",
+        "border_color": "#000000",
+        "font-size_heading": 16,
+        "font-size_content": 16,
+        "font-size_content_line-height": 22,
+        "font-size_heading_mb": 12,
+        "font-size_content_mb": 12,
+        "font-size_content_line-height_mb": 18
+      }
+    }
+  },
+  "order": [
+    "product_information_simplicity_A8DKzG",
+    "collapsible_content_TUTAeg"
+  ]
+}

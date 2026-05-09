@@ -1,0 +1,41 @@
+<div class="resource-faq-item">
+    <div class="resource-titles">
+        <span class="resource-title-icon">
+            <svg width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M8 2C11.3125 2 14 4.6875 14 8C14 11.3125 11.3125 14 8 14C4.6875 14 2 11.3125 2 8C2 4.6875 4.6875 2 8 2ZM8 1C4.1375 1 1 4.1375 1 8C1 11.8625 4.1375 15 8 15C11.8625 15 15 11.8625 15 8C15 4.1375 11.8625 1 8 1ZM8.5 12H7.5V11H8.5V12ZM8.675 8.825L8.5875 8.9C8.5375 8.9375 8.5 9.025 8.5 9.1V10.0125H7.5V9.1C7.5 8.7125 7.675 8.35 7.9625 8.1125L8.05 8.0375C8.925 7.3375 9.35 6.975 9.35 6.35C9.35 5.6 8.75 5 8 5C7.225 5 6.65 5.575 6.65 6.35H5.65C5.65 5.0375 6.6875 4 8 4C9.3 4 10.35 5.05 10.35 6.35C10.35 7.4875 9.575 8.1125 8.675 8.825Z" fill="#999999"></path>
+            </svg>
+        </span>
+        <span class="resource-title-text">{{ block.settings.faqItemTitle }}</span>
+        <span class="resource-desc-icon">
+            <svg aria-hidden="true" focusable="false" role="presentation" data-name="Layer 1" id="Layer_1" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+                <polygon points="150.46 478 129.86 456.5 339.11 256 129.86 55.49 150.46 34 382.14 256 150.46 478"></polygon>
+            </svg>
+        </span>
+    </div>
+    <div class="resource-desc">
+        <div class="resource-desc-card">
+            {{ block.settings.faqItemDesc }}
+        </div>
+        
+    </div>
+</div>
+{% schema %}
+{
+    "name": "resource faq item",
+    "settings": [
+        {
+            "type": "richtext",
+            "id": "faqItemTitle",
+            "label": "faq Item Title"
+        },
+        {
+            "type": "richtext",
+            "id": "faqItemDesc",
+            "label": "faq Item Desc"
+        }
+    ],
+    "presets": [{
+        "name": "resource faq item"
+    }]
+}
+{% endschema %}

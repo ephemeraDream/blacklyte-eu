@@ -1,0 +1,74 @@
+{{ 'ergonomics-section-seven.css' | asset_url | stylesheet_tag }}
+
+<div class="ergonomics_section_seven">
+  <div class="ergonomics_section_seven_head">
+    <div class="ergonomics_section_seven_title">{{ section.settings.title }}</div>
+    <div class="ergonomics_section_seven_text">{{ section.settings.text }}</div>
+  </div>
+  <div class="ergonomics_section_seven_contain">
+    {% for block in section.blocks %}
+      <div class="ergonomics_section_seven_contain_item">
+        <div class="ergonomics_section_seven_contain_item_img">
+          {{-
+            block.settings.image
+            | image_url: width: block.settings.image.width
+            | image_tag: alt: block.settings.image.alt
+          -}}
+        </div>
+        <div class="ergonomics_section_seven_contain_item_title">{{ block.settings.title }}</div>
+        <div class="ergonomics_section_seven_contain_item_text">{{ block.settings.text }}</div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "ergonomics section seven",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "title",
+      "label": "title"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "text"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "item",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "image"
+        },
+        {
+          "type": "textarea",
+          "id": "title",
+          "label": "title"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "ergonomics section seven"
+    }
+  ]
+}
+{% endschema %}

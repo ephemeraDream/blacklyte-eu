@@ -1,0 +1,93 @@
+.cart_coupon_contain {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.cart_coupon_contain_item {
+    padding: 7px 9px;
+    background-color: #ededed;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.cart_coupon_contain_item .delete_discount_icon {
+    fill: #262629b3;
+    stroke: #262629b3;
+    width: 14px;
+    height: 14px;
+    cursor: pointer;
+}
+
+.cart_coupon_tip_box {
+    font-family: Roboto;
+    font-weight: 400;
+    font-style: Regular;
+    font-size: 14px;
+    leading-trim: NONE;
+    line-height: 21px;
+    letter-spacing: 0%;
+    vertical-align: middle;
+    color: #d91c1c;
+    padding: 8px 0 4px;
+}
+
+
+.side-cart-reason-container{
+    background-color: #F8F8F8;
+    padding: 23px 30px 29px;
+    margin-top: 18px;
+}
+.side-cart-reason-container .side-cart-reason-container-title{
+    font-family: Poppins;
+    font-weight: 500;
+    font-style: Medium;
+    font-size: 16px;
+    line-height: 1.4;
+    letter-spacing: 0%;
+    color: #262629;
+}
+.side-cart-reason-container ul{
+    list-style-type: none;
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    column-gap: 20px;
+    row-gap: 17px;
+}
+.side-cart-reason-container ul li .icon svg{
+    width: 20px;
+    height: 20px;
+}
+.side-cart-reason-container ul li{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.side-cart-reason-container ul li .value{
+    font-family: Poppins;
+    font-weight: 400;
+    font-style: Regular;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 0%;
+    vertical-align: middle;
+    color: #262629;
+}
+
+@media(max-width: 767px){
+    .side-cart-reason-container ul{
+        grid-template-columns: 1fr 1fr;
+        margin-top: 10px;
+        row-gap: 10px;
+        column-gap: 10px;
+    }
+    .side-cart-reason-container{
+        padding: 15px 20px 20px;
+
+    }
+}

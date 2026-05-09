@@ -1,0 +1,281 @@
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="https://cdn.shopify.com/s/files/1/0716/1341/5637/files/slick.css?v=1760406619"
+>
+
+<style>
+    .section-{{ section.id }} {
+        padding-top: 140px;
+        padding-bottom: 137px;
+        background: #060606;
+    }
+
+    .section-{{ section.id }} .head-cont .title{
+        font-family: Poppins;
+        font-weight: 600;
+        font-style: SemiBold;
+        font-size: 40px;
+        line-height: 50px;
+        letter-spacing: 0%;
+        color: #FFB91F;
+        text-align: center;
+        margin-bottom: 22px;
+    }
+    .section-{{ section.id }} .slide-lists .slide-item{
+        display: flex;
+        align-items: center;
+        position: relative;
+    }
+    .section-{{ section.id }} .slide-lists .slide-item .slide-item-image{
+        width: 62.5%;
+    }
+    .section-{{ section.id }} .slide-lists .slide-item .slide-item-image img{
+        height: auto;
+    }
+    .section-{{ section.id }} .slide-lists .slide-cont{
+        display: flex;
+        flex-direction: column-reverse;
+        gap: 22px;
+        padding: 5px 0 15px 35px;
+        flex: 1;
+        border-left: 2px solid #969696;
+        position: absolute;
+        left: 55%;
+    }
+    .section-{{ section.id }} .slide-lists .slide-cont .slide-cont-title{
+        font-family: Poppins;
+        font-weight: 500;
+        font-style: Medium;
+        font-size: 26px;
+        line-height: 36px;
+        letter-spacing: 0%;
+        vertical-align: middle;
+        color: #fff;
+        width: 80%;
+    }
+    .section-{{ section.id }} .slide-lists .slide-cont .slide-cont-desc{
+        font-family: Poppins;
+        font-weight: 400;
+        font-style: Regular;
+        font-size: 20px;
+        line-height: 30px;
+        letter-spacing: 0%;
+        vertical-align: middle;
+        color: #fff;
+        width: 70%;
+    }
+
+    .section-{{ section.id }} .slide-for-lists{
+        display: flex;
+        justify-content: center;
+        padding-left: 15vw;
+        padding-right: 15vw;
+        border-top: 1px solid #606060;
+        border-bottom: 1px solid #606060;
+    }
+    .section-{{ section.id }} .slide-for-lists .slick-for-item:nth-of-type(1){
+        border-left: 1px solid #606060;
+    }
+    .section-{{ section.id }} .slide-for-lists .slick-for-item:not(.slick-cloned):last-of-type {
+        border-right: 1px solid #606060;
+    }
+
+    .section-{{ section.id }} .slide-for-lists .slick-for-item{
+        border-right: 1px solid #606060;
+        cursor: pointer;
+    }
+    .section-{{ section.id }} .slide-for-lists .slick-for-item .slick-foritem-img img{
+        height: 100%;
+        object-fit: contain;
+    }
+    .section-{{ section.id }} .slide-for-lists .slick-for-item.slick-current{
+        opacity: 0.6;
+    }
+
+    {% comment %} iPhone {% endcomment %}
+    @media(max-width: 767px){
+        .section-{{ section.id }} {
+            padding-top: 38px;
+            padding-bottom: 60px;
+        }
+    
+        .section-{{ section.id }} .head-cont .title{
+            font-size: 26px;
+            line-height: 30px;
+        }
+        .section-{{ section.id }} .slide-lists .slide-item{
+            flex-direction: column;
+        }
+        .section-{{ section.id }} .slide-lists .slide-item .slide-item-image{
+            width: 100%;
+        }
+        .section-{{ section.id }} .slide-lists .slide-cont{
+            position: initial;
+            margin-left: 35px;
+            padding-left: 22px;
+        }
+        .section-{{ section.id }} .slide-lists .slide-cont .slide-cont-desc{
+            font-size: 14px;
+            line-height: 20px;
+        }
+        .section-{{ section.id }} .slide-lists .slide-cont .slide-cont-title{
+            font-size: 20px;
+            line-height: 30px;
+        }
+        .section-{{ section.id }} .slide-for-lists{
+            margin-top: 20px;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+
+    }
+
+    {% comment %} iPad {% endcomment %}
+    @media(min-width: 768px) and (max-width: 1024px){
+        .section-{{ section.id }} .slide-lists .slide-item .slide-item-image{
+            width: 56%;
+        }
+        .section-{{ section.id }} .slide-lists .slide-cont{
+            gap: 10px;
+            left: 46%;
+        }
+        .section-{{ section.id }} .slide-lists .slide-cont .slide-cont-title{
+            font-size: 20px;
+            line-height: 30px;
+        }
+        .section-{{ section.id }} .slide-lists .slide-cont .slide-cont-desc{
+            font-size: 14px;
+            line-height: 22px;
+        }
+        .section-{{ section.id }} .slide-for-lists{
+            padding-left: 5vw;
+            padding-right: 5vw;
+        }
+        
+    }
+
+    @media(min-width: 1025px) and (max-width: 1480px){ }
+
+</style>
+
+<section class="section-{{ section.id }}" id="{{ section.id }}" data-section-id="{{ section.id }}">
+    <div class="container-full">
+        <div class="head-cont">
+            {% if section.settings.sectionTitle != blank %}
+                <div class="title">{{ section.settings.sectionTitle }}</div>
+            {% endif %}
+        </div>
+        <div class="slide-lists">
+            {% for block in section.blocks %}
+                {% if block.type == "item" %}
+                    <div class="slide-item">
+                        {% if block.settings.largeImage != blank %}
+                            <div class="slide-item-image">
+                                <img srcset="{{ block.settings.largeImage | img_url: 'master' }}"
+                                    width="{{ block.settings.largeImage.width }}"
+                                    height="{{ block.settings.largeImage.height }}"
+                                    alt="{{ block.settings.largeImage.alt }}" />
+                            </div>
+                        {% endif %}
+                        {% if block.settings.itemTitle != blank or block.settings.itemDescripe != blank %}
+                            <div class="slide-cont">
+                                {% if block.settings.itemTitle != blank %}
+                                    <div class="slide-cont-title">{{ block.settings.itemTitle }}</div>
+                                {% endif %}
+                                {% if block.settings.itemDescripe != blank %}
+                                    <div class="slide-cont-desc">{{ block.settings.itemDescripe }}</div>
+                                {% endif %}
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+        <div class="slide-for-lists">
+            {% for block in section.blocks %}
+                {% if block.type == "item" %}
+                    <div class="slick-for-item">
+                        {% if block.settings.largeImage != blank %}
+                            <div class="slick-foritem-img">
+                                <img srcset="{{ block.settings.largeImage | img_url: 'master' }}"
+                                    width="{{ block.settings.largeImage.width }}"
+                                    height="{{ block.settings.largeImage.height }}"
+                                    alt="{{ block.settings.largeImage.alt }}" />
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<script>
+    $(document).ready(function (){
+        $('.slide-lists').slick({
+            slidesToShow: 1,
+            slidesToScroll: 1,
+            arrows: false,
+            fade: true,
+            asNavFor: '.slide-for-lists'
+        });
+        $('.slide-for-lists').slick({
+            slidesToShow: 4,
+            slidesToScroll: 1,
+            asNavFor: '.slide-lists',
+            dots: false,
+            centerMode: false,
+            focusOnSelect: true,
+            arrows: false
+        });
+    })
+</script>
+
+{% schema %}
+{
+    "name": "gaming Event Business",
+    "settings": [
+        {
+            "type": "text",
+            "id": "sectionTitle",
+            "label": "section Title",
+            "default": "Used by the best in the business"
+        }
+    ],
+    "blocks": [
+        {
+            "type": "item",
+            "name": "item",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "largeImage",
+                    "label": "Item Large Image"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "slickForImage",
+                    "label": "Item Slick Image"
+                },
+                {
+                    "type": "text",
+                    "id": "itemTitle",
+                    "label": "Item Title",
+                    "default": "Steve Arhancet, Co-CEO of Team Liquid"
+                },
+                {
+                    "type": "text",
+                    "id": "itemDescripe",
+                    "label": "Item Descripetion"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "gaming Event Business"
+        }
+    ]
+}
+{% endschema %}

@@ -1,0 +1,77 @@
+<style>
+    .section-{{ section.id }}{
+        background: #001538;
+        overflow: hidden;
+    }
+    .section-{{ section.id }} .cont img{
+        height: auto;
+    }
+    .section-{{ section.id }} .large_image_pc{
+        display: block;
+    }
+    .section-{{ section.id }} .large_image_mb{
+        display: none;
+    }
+
+    @media(max-width: 767px){
+        .section-{{ section.id }} .large_image_pc{
+            display: none;
+        }
+        .section-{{ section.id }} .large_image_mb{
+            display: block;
+        }
+    }
+</style>
+
+<section class="section-{{ section.id }}" id="{{ section.id }}" data-section-id="{{ section.id }}">
+    <div class="container-full">
+        <div class="cont">
+            {% for block in section.blocks %}
+                {% if block.type == 'item' %}
+                    <div class="large_image large_image_pc">
+                        <img src="{{ block.settings.itemImage | img_url: 'master' }}"
+                            width="{{ block.settings.itemImage.width }}"
+                            height="{{ block.settings.itemImage.height }}"
+                            alt="{{ block.settings.itemImage.alt }}" />
+                    </div>
+                    <div class="large_image large_image_mb">
+                        <img src="{{ block.settings.itemImageMobile | img_url: 'master' }}"
+                            width="{{ block.settings.itemImageMobile.width }}"
+                            height="{{ block.settings.itemImageMobile.height }}"
+                            alt="{{ block.settings.itemImageMobile.alt }}" />
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+{% schema %}
+{
+    "name": "Liquid Large Image",
+    "settings":[],
+    "blocks": [
+        {
+            "type": "item",
+            "name": "item",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "itemImage",
+                    "label": "Item Image"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "itemImageMobile",
+                    "label": "Item Image Mobile"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "Liquid Large Image"
+        }
+    ] 
+}
+{% endschema %}

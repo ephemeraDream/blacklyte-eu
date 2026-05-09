@@ -1,0 +1,264 @@
+{{ 'ergonomics-section-one.css' | asset_url | stylesheet_tag }}
+
+<div class="ergonomics_section_one">
+  {%- for block in section.blocks -%}
+    {%- case block.type -%}
+      {% when 'first_part' %}
+        <div class="first_part">
+          <div class="first_part_title">{{ block.settings.title }}</div>
+          <div class="first_part_text">{{ block.settings.text }}</div>
+          {{-
+            block.settings.image
+            | image_url: width: block.settings.image.width
+            | image_tag: alt: block.settings.image.alt, class: 'first_part_img'
+          -}}
+        </div>
+      {%- when 'third_part' -%}
+        <div class="third_part">
+          <div class="third_part_title">{{ block.settings.title }}</div>
+          <div class="third_part_text">{{ block.settings.text }}</div>
+          {{-
+            block.settings.image
+            | image_url: width: block.settings.image.width
+            | image_tag: alt: block.settings.image.alt, class: 'third_part_img'
+          -}}
+          <div class="third_part_image_text">{{ block.settings.image_text }}</div>
+        </div>
+      {%- when 'second_part' -%}
+        <div class="second_part">
+          <div class="second_part_title">{{ block.settings.title }}</div>
+          <div class="second_part_text">{{ block.settings.text }}</div>
+          <div class="second_part_iconbox">
+            {% assign list = '1,2,3' | split: ',' %}
+            {% for item in list %}
+              {% assign text = 'icon_text_' | append: item %}
+              {% assign image = 'image_' | append: item %}
+              <div class="second_part_iconbox_item">
+                {{-
+                  block.settings[image]
+                  | image_url: width: block.settings[image].width
+                  | image_tag: alt: block.settings[image].alt
+                -}}
+                <div class="second_part_iconbox_item_text">{{ block.settings[text] }}</div>
+              </div>
+            {% endfor %}
+          </div>
+          <div class="second_part_flexbox">
+            <div class="second_part_left_text">{{ block.settings.left_text }}</div>
+            {{-
+              block.settings.image
+              | image_url: width: block.settings.image.width
+              | image_tag: alt: block.settings.image.alt, class: 'second_part_img'
+            -}}
+          </div>
+        </div>
+    {%- endcase -%}
+  {%- endfor -%}
+  <div class="num_item_box">
+    {%- for block in section.blocks -%}
+      {%- case block.type -%}
+        {%- when 'num_item' -%}
+          <div class="num_item_box_item">
+            <div class="num_item_box_item_title">{{ block.settings.title }}</div>
+            <div class="num_item_box_item_number">
+              <div class="num_item_box_item_number_txt" data-target="{{ block.settings.number }}">
+                {{ block.settings.number }}
+              </div>
+              <div>{{ block.settings.number_symbol }}</div>
+            </div>
+          </div>
+      {%- endcase -%}
+    {%- endfor -%}
+  </div>
+</div>
+
+<script>
+  (() => {
+    function animateCount(el, target, duration = 2000) {
+      // 去掉千位分隔符
+      const targetValue = target.replace(/,/g, '');
+      const parsedTarget = parseInt(targetValue, 10);
+
+      let currentValue = 0;
+      const increment = parsedTarget / (duration / 1000); // 每秒增加的数量
+      const startTime = performance.now();
+
+      function update(now) {
+        const elapsed = now - startTime;
+        currentValue = Math.min(Math.floor((elapsed * increment) / 1000), parsedTarget); // 递增直到目标值
+
+        // 使用 Intl.NumberFormat 处理千位分隔符
+        const formattedValue = new Intl.NumberFormat().format(currentValue);
+        el.textContent = formattedValue;
+
+        if (currentValue < parsedTarget) {
+          requestAnimationFrame(update);
+        }
+      }
+
+      requestAnimationFrame(update);
+    }
+
+    const observer = new IntersectionObserver(
+      (entries, observer) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            const el = entry.target;
+            animateCount(el, el.dataset.target);
+            observer.unobserve(el);
+          }
+        });
+      },
+      {
+        threshold: 0.5,
+      }
+    );
+
+    document.querySelectorAll('#shopify-section-{{ section.id }} .num_item_box_item_number_txt').forEach((el) => {
+      observer.observe(el);
+    });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "ergonomics section one",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [],
+  "blocks": [
+    {
+      "type": "first_part",
+      "name": "first part",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "title",
+          "label": "title"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "text"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "image"
+        }
+      ]
+    },
+    {
+      "type": "second_part",
+      "name": "second part",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "title",
+          "label": "title"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "text"
+        },
+        {
+          "type": "textarea",
+          "id": "left_text",
+          "label": "left text"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "image"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_1",
+          "label": "image 1"
+        },
+        {
+          "type": "textarea",
+          "id": "icon_text_1",
+          "label": "icon text 1"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_2",
+          "label": "image 2"
+        },
+        {
+          "type": "textarea",
+          "id": "icon_text_2",
+          "label": "icon text 2"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_3",
+          "label": "image 3"
+        },
+        {
+          "type": "textarea",
+          "id": "icon_text_3",
+          "label": "icon text 3"
+        }
+      ]
+    },
+    {
+      "type": "third_part",
+      "name": "third part",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "title",
+          "label": "title"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "text"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "image"
+        },
+        {
+          "type": "textarea",
+          "id": "image_text",
+          "label": "image text"
+        }
+      ]
+    },
+    {
+      "type": "num_item",
+      "name": "number item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "title"
+        },
+        {
+          "type": "text",
+          "id": "number",
+          "label": "number"
+        },
+        {
+          "type": "text",
+          "id": "number_symbol",
+          "label": "number symbol"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "ergonomics section one"
+    }
+  ]
+}
+{% endschema %}

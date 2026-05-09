@@ -1,0 +1,437 @@
+.wuchang_chair {
+  width: 100%;
+  padding-top: 6.71875vw;
+  height: 64vw;
+  user-select: none;
+}
+
+.wuchang_chair_title {
+  width: 633px;
+  height: 118px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: Dharma Gothic E;
+  font-weight: 700;
+  font-style: Bold;
+  font-size: 60px;
+  leading-trim: NONE;
+  line-height: 100%;
+  letter-spacing: 0%;
+  color: #fff;
+}
+
+.wuchang_chair_text {
+  font-family: Roboto;
+  font-weight: 500;
+  font-style: Medium;
+  font-size: 16px;
+  leading-trim: NONE;
+  line-height: 24px;
+  letter-spacing: 0.32px;
+  text-align: center;
+  color: rgba(255, 255, 255, .7);
+  margin-top: -0.46875vw;
+}
+
+.wuchang_chair_content {
+  display: flex;
+  gap: 1.09375vw;
+}
+
+.wuchang_chair_content_chair_img {
+  width: 33.4375vw;
+  height: 38.75vw;
+  object-fit: contain;
+  object-position: center center;
+  margin-top: 5.46875vw;
+  margin-left: 13.75vw;
+  opacity: 0;
+  transform: translateX(-100px);
+  transition: all 1s ease;
+}
+
+.wuchang_chair_highlight {
+  position: relative;
+  width: 46.875vw;
+  height: 44.0625vw;
+  padding-top: 5.65625vw;
+  padding-left: 4.21875vw;
+  opacity: 0;
+  transform: translateX(100px);
+  transition: all 1s ease;
+}
+
+.wuchang_chair_highlight_bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+
+.wuchang_chair_highlight_title {
+  font-family: Dharma Gothic E;
+  font-weight: 400;
+  font-style: Regular;
+  font-size: 50px;
+  leading-trim: NONE;
+  line-height: 100%;
+  letter-spacing: 0%;
+  color: #820000;
+  position: relative;
+  z-index: 1;
+}
+
+.wuchang_chair_highlight_text {
+  font-family: DINCond-Bold;
+  font-weight: 500;
+  font-style: Regular;
+  font-size: 26px;
+  leading-trim: NONE;
+  line-height: 100%;
+  letter-spacing: 0%;
+  color: #820000;
+  margin-top: 2.34375vw;
+  position: relative;
+  z-index: 1;
+}
+
+.wuchang_chair_highlight_line {
+  display: flex;
+  gap: 0.9375vw;
+  margin-top: 1.5625vw;
+  z-index: 1;
+  position: relative;
+}
+
+.wuchang_chair_highlight_item {
+  width: 5vw;
+  height: 5vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: url("https://cdn.shopify.com/s/files/1/0716/1341/5637/files/joint-wuchang-highlight-item-bg.webp?v=1753261339") no-repeat;
+  background-size: 100%;
+  cursor: pointer;
+  position: relative;
+}
+
+.wuchang_chair_highlight_item.active::before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border: 1px solid #BE1616;
+}
+
+.wuchang_chair_highlight_item:nth-child(1) svg {
+  width: 3.125vw;
+  height: 2.34375vw;
+}
+
+.wuchang_chair_highlight_item:nth-child(2) svg {
+  width: 3.125vw;
+  height: 3.59375vw;
+}
+
+.wuchang_chair_highlight_item:nth-child(3) svg {
+  width: 3.4375vw;
+  height: 2.96875vw;
+}
+
+.wuchang_chair_highlight_item:nth-child(4) svg {
+  width: 3.59375vw;
+  height: 2.96875vw;
+}
+
+.wuchang_chair_highlight_item.active svg path {
+  stroke-opacity: 1
+}
+
+.wuchang_chair_highlight_swiper.swiper {
+  margin: 0;
+  margin-top: 1.875vw;
+  width: 24.53125vw;
+}
+
+.wuchang_chair_highlight_swiper .swiper-slide {
+  display: flex;
+  gap: 1.09375vw;
+}
+
+.wuchang_chair_highlight_swiper .swiper-slide img {
+  width: 12.34375vw;
+  height: 8.28125vw;
+  object-fit: contain;
+  object-position: center center;
+}
+
+.wuchang_chair_highlight_swiper .swiper-slide img+div {
+  flex: 1;
+}
+
+.wuchang_chair_highlight_item_title {
+  font-family: DINCond-Bold;
+  font-weight: 500;
+  font-style: Regular;
+  font-size: 26px;
+  leading-trim: NONE;
+  line-height: 100%;
+  letter-spacing: 0%;
+  color: #820000;
+  margin-top: 0.78125vw;
+}
+
+.wuchang_chair_highlight_item_text {
+  font-family: Roboto;
+  font-weight: 500;
+  font-style: Medium;
+  font-size: 16px;
+  leading-trim: NONE;
+  line-height: 22px;
+  letter-spacing: 0.32px;
+  color: rgba(130, 0, 0, .7);
+  margin-top: 0.46875vw;
+}
+
+.wuchang_chair_btn {
+  width: 368px;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: DINCond-Bold;
+  font-weight: 500;
+  font-style: Regular;
+  font-size: 30px;
+  leading-trim: NONE;
+  line-height: 100%;
+  letter-spacing: 0%;
+  color: #fff;
+  margin-top: 0.46875vw;
+  margin-left: 2.03125vw;
+  position: relative;
+  z-index: 1;
+}
+
+.wuchang_chair_btn:hover {
+  color: #fff;
+}
+
+.wuchang_chair .pmd_show {
+  display: none;
+}
+
+.wuchang_chair_content.in-view .wuchang_chair_content_chair_img,
+.wuchang_chair_content.in-view .wuchang_chair_highlight {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.wuchang_chair_design_with {
+  width: 385px;
+  margin: 0 auto;
+}
+
+@media screen and (min-width: 2000px) {
+  .wuchang_chair_highlight_text {
+    margin-top: 3.34375vw;
+  }
+
+  .wuchang_chair_btn {
+    margin-top: 1.46875vw;
+    margin-left: 5.03125vw;
+  }
+
+  .wuchang_chair_highlight {
+    padding-top: 6.65625vw;
+  }
+}
+
+@media screen and (max-width: 1900px) {
+  .wuchang_chair_highlight_title {
+    font-size: 38px;
+  }
+
+  .wuchang_chair_highlight_item_title {
+    font-size: 18px;
+  }
+
+  .wuchang_chair_highlight_item_text {
+    font-size: 14px;
+    line-height: 21px;
+  }
+
+  .wuchang_chair_highlight_swiper.swiper {
+    width: 26.53125vw;
+  }
+
+  .wuchang_chair_btn {
+    width: 276px;
+    height: 112px;
+    margin-top: 0;
+    margin-left: 3.03125vw;
+  }
+}
+
+@media screen and (max-width: 1400px) {
+  .wuchang_chair_highlight_title {
+    font-size: 26px;
+  }
+
+  .wuchang_chair_highlight_text {
+    font-size: 14px;
+  }
+
+  .wuchang_chair_highlight_swiper .swiper-slide img {
+    width: 10.34375vw;
+  }
+
+  .wuchang_chair_highlight_item_title {
+    font-size: 14px;
+  }
+
+  .wuchang_chair_highlight_item_text {
+    font-size: 10px;
+    line-height: 15px;
+  }
+
+  .wuchang_chair_btn {
+    width: 196px;
+    height: 80px;
+    font-size: 24px;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .wuchang_chair .pmd_show {
+    display: block;
+  }
+
+  .wuchang_chair .pc_show {
+    display: none;
+  }
+
+  .wuchang_chair {
+    height: 246.93vw;
+    padding-top: 20.53vw;
+  }
+
+  .wuchang_chair_title {
+    width: 287px;
+    height: 52px;
+    font-size: 30px;
+  }
+
+  .wuchang_chair_text {
+    font-size: 14px;
+    line-height: 22px;
+  }
+
+  .wuchang_chair_content {
+    flex-wrap: wrap;
+    gap: 0;
+  }
+
+  .wuchang_chair_content_chair_img {
+    width: 80.533vw;
+    margin: 5.6vw auto 0;
+    height: auto;
+  }
+
+  .wuchang_chair_highlight {
+    width: 92.267vw;
+    margin-left: 2.13vw;
+    top: -9vw;
+    height: 110.93vw;
+    padding-top: 8.8vw;
+    padding-left: 10.93vw;
+    transform: translate(5.603vw);
+  }
+
+  .wuchang_chair_highlight_title {
+    font-size: 30px;
+  }
+
+  .wuchang_chair_highlight_text {
+    font-size: 16px;
+    margin-top: 10.2vw;
+  }
+
+  .wuchang_chair_highlight_item {
+    width: 14.4vw;
+    height: 14.4vw;
+  }
+
+  .wuchang_chair_highlight_line {
+    margin-top: 3.73vw;
+    gap: 2.4vw;
+  }
+
+  .wuchang_chair_highlight_item:nth-child(1) svg {
+    width: 8.8vw;
+    height: 6.67vw;
+  }
+
+  .wuchang_chair_highlight_item:nth-child(2) svg {
+    width: 9.33vw;
+    height: 10.13vw;
+  }
+
+  .wuchang_chair_highlight_item:nth-child(3) svg {
+    width: 9.867vw;
+    height: 8.53vw;
+  }
+
+  .wuchang_chair_highlight_item:nth-child(4) svg {
+    width: 10.13vw;
+    height: 8.53vw;
+  }
+
+  .wuchang_chair_highlight_swiper.swiper {
+    margin-top: 5.6vw;
+    width: 80vw;
+  }
+
+  .wuchang_chair_highlight_swiper .swiper-slide img {
+    width: 35.2vw;
+    height: auto;
+  }
+
+  .wuchang_chair_highlight_swiper .swiper-slide {
+    gap: 2.4vw;
+  }
+
+  .wuchang_chair_highlight_item_title {
+    font-size: 18px;
+  }
+
+  .wuchang_chair_highlight_item_text {
+    font-size: 12px;
+    line-height: 16px;
+    margin-top: 1.067vw;
+  }
+
+  .wuchang_chair_btn {
+    width: 54.4vw;
+    height: 22.13vw;
+    font-size: 20px;
+    margin-left: 5.87vw;
+  }
+
+  .wuchang_chair_design_with {
+    width: 220px;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .wuchang_chair_highlight_text {
+    margin-top: 4.2vw;
+  }
+
+  .wuchang_chair_highlight_swiper.swiper {
+    margin-top: 2.6vw;
+  }
+}

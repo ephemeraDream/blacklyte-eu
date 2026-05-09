@@ -1,0 +1,93 @@
+{{ 'section-text-btn-img-simplicity.css' | asset_url | stylesheet_tag }}
+
+<div class="textbtnimg_simplicity">
+  <div class="textbtnimg_simplicity_left">
+    <div class="textbtnimg_simplicity_title">{{ section.settings.title }}</div>
+    <div class="textbtnimg_simplicity_text">{{ section.settings.text }}</div>
+    <div class="textbtnimg_simplicity_btnbox">
+      {% for block in section.blocks %}
+        <a class="textbtnimg_simplicity_btnitem" href="{{ block.settings.link }}">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M18.3257 6.74642H18.12C17.3887 3.86984 14.8645 1.86621 11.9743 1.86621C9.08406 1.86621 6.55905 3.86984 5.8286 6.74728H5.62209C2.5518 6.74728 0.0634766 9.30642 0.0634766 12.4612C0.0634766 15.616 2.5518 18.1751 5.62209 18.1751H6.41569C6.85516 18.1751 7.20929 17.8099 7.20929 17.3576C7.20929 16.9071 6.85516 16.5393 6.41569 16.5393H5.62209C3.43073 16.5393 1.65153 14.7106 1.65153 12.4586C1.65153 10.2058 3.43073 8.37715 5.62209 8.37715C5.85249 8.37715 6.08545 8.39848 6.31329 8.44285C6.42062 8.46496 6.53141 8.46423 6.63844 8.44071C6.74547 8.41719 6.84635 8.3714 6.93452 8.30632C7.02371 8.239 7.09834 8.15432 7.15393 8.05738C7.20951 7.96044 7.24489 7.85325 7.25793 7.74226C7.59329 5.32562 9.60289 3.53362 11.9743 3.53362C14.3457 3.53362 16.357 5.32562 16.6907 7.74226C16.7037 7.85303 16.739 7.96002 16.7945 8.0568C16.8499 8.15358 16.9243 8.23816 17.0132 8.30547C17.1933 8.43773 17.4186 8.48808 17.6353 8.44285C17.8632 8.39848 18.0961 8.37715 18.3291 8.37715C20.5204 8.37715 22.2988 10.2058 22.2988 12.4586C22.2988 14.7114 20.5204 16.5393 18.3291 16.5393H17.5321C17.4262 16.5407 17.3216 16.5631 17.2244 16.605C17.1271 16.6469 17.0391 16.7077 16.9654 16.7837C16.8916 16.8597 16.8336 16.9496 16.7947 17.048C16.7558 17.1465 16.7367 17.2517 16.7385 17.3576C16.7385 17.8073 17.0926 18.1751 17.5321 18.1751H18.3291C21.396 18.1751 23.8868 15.6151 23.8868 12.4612C23.8817 9.30386 21.3934 6.74642 18.3257 6.74642Z" fill="#262629"/>
+            <path d="M14.2581 18.3078L12.8193 19.7482V14.4951C12.8193 14.0428 12.4405 13.6768 11.9728 13.6768C11.5069 13.6768 11.1255 14.042 11.1255 14.4951V19.8011L9.63214 18.3087C9.47102 18.1606 9.25892 18.0805 9.04014 18.0852C8.82137 18.0898 8.61286 18.1788 8.45818 18.3336C8.30351 18.4884 8.21464 18.697 8.21014 18.9157C8.20564 19.1345 8.28587 19.3466 8.43406 19.5076L11.2586 22.3321C11.3564 22.4637 11.49 22.5643 11.6434 22.622C11.7968 22.6796 11.9637 22.6919 12.1239 22.6572C12.2445 22.6362 12.3591 22.5894 12.46 22.52C12.5609 22.4507 12.6456 22.3604 12.7084 22.2553L15.4578 19.5076C15.6085 19.3469 15.6907 19.134 15.6872 18.9138C15.6836 18.6936 15.5946 18.4834 15.4389 18.3276C15.2831 18.1719 15.0729 18.0829 14.8527 18.0793C14.6325 18.0758 14.4196 18.158 14.2589 18.3087L14.2581 18.3078Z" fill="#262629"/>
+          </svg>
+          {{ block.settings.btn_text }}
+        </a>
+      {% endfor %}
+    </div>
+  </div>
+  <div class="textbtnimg_simplicity_img">
+    {{-
+      section.settings.file_image
+      | image_url: width: section.settings.file_image.width
+      | image_tag: alt: section.settings.title, class: 'pc_show'
+    -}}
+    {% assign file_image_mobile = section.settings.file_image_mobile | default: section.settings.file_image %}
+    {{-
+      file_image_mobile
+      | image_url: width: file_image_mobile.width
+      | image_tag: alt: section.settings.title, class: 'pmd_show'
+    -}}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "textbtnimg simplicity",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "specId",
+      "label": "specId"
+    },
+    {
+      "type": "textarea",
+      "id": "title",
+      "label": "title"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "text"
+    },
+    {
+      "type": "image_picker",
+      "id": "file_image",
+      "label": "file image"
+    },
+    {
+      "type": "image_picker",
+      "id": "file_image_mobile",
+      "label": "file image mobile"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "btn_text",
+          "label": "button text"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "textbtnimg simplicity"
+    }
+  ]
+}
+{% endschema %}

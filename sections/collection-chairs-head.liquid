@@ -1,0 +1,691 @@
+<style>
+  body.upholstery-modal-show {
+    overflow: hidden;
+    padding-inline-end: 0;
+  }
+  .new-chairs-collection-section {
+  }
+  .new-chairs-collection-section .header-cont {
+    padding: 32px 60px;
+    border-bottom: 1px solid rgba(153, 153, 153, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    background: #F5F5F5;
+  }
+  .new-chairs-collection-section .header-cont .header-menu {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+  }
+  .new-chairs-collection-section .header-cont .header-menu .header-title-cont {
+    position: relative;
+    font: 500 30px var(--font-family-3);
+    color: #262629;
+  }
+  .new-chairs-collection-section .header-cont .header-menu .menu-icon {
+    margin-left: 10px;
+  }
+  .new-chairs-collection-section .header-cont .header-menu .menu-icon svg {
+    width: auto;
+    height: auto;
+    fill: none;
+    stroke: none;
+  }
+  .new-chairs-collection-section .header-cont .compare-cont-modal {
+    font: 500 20px var(--font-family-3);
+    color: #262629;
+    display: flex;
+    gap: 30px;
+  }
+  .new-chairs-collection-section .header-cont .compare-cont-modal .compare-upholstery,
+  .new-chairs-collection-section .header-cont .compare-cont-modal .compare-models {
+    cursor: pointer;
+  }
+  .new-chairs-collection-section .header-cont .compare-cont-modal .icon svg{
+    width:auto;
+    height: auto;
+  }
+  .new-chairs-collection-section .header-cont .compare-cont-modal .compare-upholstery:hover .icon svg,
+  .new-chairs-collection-section .header-cont .compare-cont-modal .compare-models:hover .icon svg {
+    transform: rotate(180deg);
+  }
+  .tag-dropdown-cont {
+    position: absolute;
+    top: 50px;
+    background-color: #f5f5f5;
+  }
+  .show_popup_list-opacity-0.tag-dropdown-cont {
+    opacity: 0;
+  }
+  .menu-item-text {
+    font: 500 20px var(--font-family-3);
+    color: #262629;
+  }
+  .new-chairs-collection-section .menu-icon-mobile {
+    display: none;
+  }
+  .show_popup_lists {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 20px;
+    position: absolute;
+    top: 102px;
+    left: 60px;
+    background-color: #f5f5f5;
+    z-index: -1;
+    opacity: 0;
+    padding: 20px 100px 20px 10px;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+    transition-property: all !important;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1) !important;
+    transition-duration: 150ms !important;
+    border: 1px solid #E4E4E4;
+  }
+  .show_popup_lists .popup_item.popup_item_active {
+    font-weight: 700;
+  }
+
+  /* IPhone */
+  @media (max-width: 767px) {
+    .new-chairs-collection-section .header-cont {
+      padding: 20px 10px;
+      display: flex;
+      justify-content: center;
+    }
+    .new-chairs-collection-section .header-cont .header-menu .header-title-cont {
+      font-size: 18px;
+    }
+    .new-chairs-collection-section .header-cont .header-menu .menu-icon {
+      margin-left: 4px;
+    }
+    .new-chairs-collection-section .header-cont .compare-cont-modal {
+      /* font-size: 14px;
+      gap: 10px;
+      flex-direction: column;
+      align-items: end; */
+      display: none;
+    }
+
+    .new-chairs-collection-section .menu-icon-mobile {
+      display: flex;
+      justify-content: space-between;
+      padding: 20px 10px 10px;
+      align-items: center;
+      position: relative;
+    }
+    .new-chairs-collection-section .menu-icon-mobile .menu-icon-left {
+      font: 600 12px var(--font-family-3);
+      color: #de2e39;
+      cursor: pointer;
+    }
+    .menu-icon-pop {
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      width: 100%;
+      z-index: 100;
+      background: #fff;
+      box-shadow: 0px 4px 4px 0px #00000040;
+      top: 48px;
+      left: 0;
+      height: 0;
+      opacity: 0;
+      z-index: -1;
+      transition: all 0.25s ease-in-out;
+    }
+    .menu-icon-pop .menu-icon-pop-upholstery,
+    .menu-icon-pop .menu-icon-pop-comparemodal {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      padding: 10px 54px 10px 26px;
+      border-top: 1px solid rgba(153, 153, 153, 0.5);
+    }
+    .menu-icon-pop .compare-modal-upholstery-mb,
+    .menu-icon-pop .compare-modal-mb {
+      max-width: 48px;
+      margin-right: 28px;
+    }
+    .menu-icon-pop .compare-modal-icon {
+      margin-left: 10px;
+    }
+    .menu-icon-mobile .menu-icon-right {
+      display: flex;
+      align-items: end;
+      gap: 5px;
+    }
+    .menu-icon-mobile .menu-icon-right .icon-pre svg {
+      width: 18px;
+      height: 18px;
+      fill: none;
+      stroke: none;
+    }
+    .menu-icon-mobile .menu-icon-right .icon-next svg {
+      width: 12px;
+      height: 12px;
+      fill: none;
+      stroke: none;
+    }
+    .show_popup_lists {
+      top: 62px;
+      left: 50%;
+      transform: translateX(-50%);
+      white-space: nowrap;
+    }
+
+    .new-chairs-collection-section .header-cont .header-menu .menu-icon svg {
+      width: 14px;
+    }
+  }
+  /* IPad */
+  @media (min-width: 768px) and (max-width: 1024px) {
+    .new-chairs-collection-section .menu-icon-mobile {
+      display: none;
+    }
+    .new-chairs-collection-section .header-cont .header-menu .header-title-cont {
+      font-size: 20px;
+    }
+    .new-chairs-collection-section .header-cont .compare-cont-modal {
+      font-size: 10px;
+    }
+  }
+</style>
+
+<section class="new-chairs-collection-section">
+  <div class="header-cont">
+    <div class="header-menu">
+      <div class="header-title-cont">
+        {{ section.settings.headerTitle }}
+        <div class="tag-dropdown-cont show_popup_list-opacity-0">
+          {% for block in section.blocks %}
+            {% if block.type == 'menuLists' %}
+              <span class="menu-item-text" data-url="{{ block.settings.itemLink }}">{{ block.settings.itemName }}</span>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+      <span class="menu-icon">
+        <svg width="24" height="15" viewBox="0 0 24 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M22 2L12 12L2 2" stroke="#262629" stroke-width="3"/>
+        </svg>
+      </span>
+    </div>
+    <!-- 下拉选项 -->
+    <div class="show_popup_lists">
+      <a
+        class="popup_item{% if section.settings.active_item == section.settings.item1 %} popup_item_active{% endif %}"
+        {% if section.settings.active_item == section.settings.item1 %}
+          href="javascript:void(0);"
+        {% else %}
+          href="{{ section.settings.item1Link }}"
+        {% endif %}
+      >
+        {{- section.settings.item1 -}}
+      </a>
+      <a
+        class="popup_item{% if section.settings.active_item == section.settings.item2 %} popup_item_active{% endif %}"
+        {% if section.settings.active_item == section.settings.item2 %}
+          href="javascript:void(0);"
+        {% else %}
+          href="{{ section.settings.item2Link }}"
+        {% endif %}
+      >
+        {{- section.settings.item2 -}}
+      </a>
+      {% if section.settings.item3 != blank %}
+        <a
+          class="popup_item{% if section.settings.active_item == section.settings.item3 %} popup_item_active{% endif %}"
+          {% if section.settings.active_item == section.settings.item3 %}
+            href="javascript:void(0);"
+          {% else %}
+            href="{{ section.settings.item3Link }}"
+          {% endif %}
+        >
+          {{- section.settings.item3 -}}
+        </a>
+      {% endif %}
+      {% if section.settings.item4 != blank %}
+        <a
+          class="popup_item{% if section.settings.active_item == section.settings.item4 %} popup_item_active{% endif %}"
+          {% if section.settings.active_item == section.settings.item4 %}
+            href="javascript:void(0);"
+          {% else %}
+            href="{{ section.settings.item4Link }}"
+          {% endif %}
+        >
+          {{- section.settings.item4 -}}
+        </a>
+      {% endif %}
+      {% if section.settings.item5 != blank %}
+        <a
+          class="popup_item{% if section.settings.active_item == section.settings.item5 %} popup_item_active{% endif %}"
+          {% if section.settings.active_item == section.settings.item5 %}
+            href="javascript:void(0);"
+          {% else %}
+            href="{{ section.settings.item5Link }}"
+          {% endif %}
+        >
+          {{- section.settings.item5 -}}
+        </a>
+      {% endif %}
+    </div>
+    <div class="compare-cont-modal">
+      {% if section.settings.compareUpholsteryText != blank %}
+        <div class="compare-upholstery">
+          <span class="text">{{ section.settings.compareUpholsteryText }}</span>
+          <span class="icon">{{ section.settings.compareUpholsteryIcon }}</span>
+        </div>
+      {% endif %}
+      {% if section.settings.show_compareModal %}
+        <div class="compare-models show_{{section.settings.compareModalType}}_compare_modal">
+          <span class="text">{{ section.settings.compareModalText }}</span>
+          <span class="icon">{{ section.settings.compareModalIcon }}</span>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+  <!-- filter -->
+  <div class="collection-filters">
+    {% if section.settings.show_filter == 'true' %}
+      {% liquid
+        assign sort_by = collection.sort_by | default: collection.default_sort_by
+        assign sidebar_type = 'vertical'
+        assign show_filter = true
+        assign show_sorting = true
+        assign show_sidebar_collapse = true
+        assign sidebar_collapse_default = 'close'
+        assign filter_swatch = ''
+        assign filter_swatch_type = 'color'
+        assign filter_rectangle = ''
+        assign has_sidebar = true
+        assign show_item_per_page = false
+        assign show_view_as = false
+        assign products_per_page = '20'
+        assign layout = '4'
+        assign sort_options = collection.sort_options
+        assign sidebar_layout = 'layout_1'
+        assign sidebar_position = 'left'
+      %}
+      <div class="all_product_toolbar_container" id="CollectionSection-{{ section.id }}">
+        {{ 'component-main-sidebar.css' | asset_url | stylesheet_tag }}
+        <div
+          class="page-sidebar page-sidebar-{{ sidebar_position }} page-sidebar--{{ sidebar_type }} sidebar--{{ sidebar_layout }} mobile_sidebar_container"
+          id="halo-sidebar"
+        >
+          <button type="button" class="halo-sidebar-close" data-close-sidebar role="button">
+            <span class="visually-hidden">{{ 'general.common.close' | t }}</span> {% render 'icon-close' %}
+          </button>
+          <div class="halo-sidebar-header text-left{% if settings.banner_animation == 'effect_fade_up' %} scroll-trigger animate--slide-in{% endif %}">
+            <span class="title">{{ 'sections.sidebar.title' | t }}</span>
+          </div>
+          <div class="halo-sidebar-wrapper custom-scrollbar{% if settings.banner_animation == 'effect_fade_up' %} scroll-trigger animate--slide-in{% endif %}">
+            {% render 'collection-sidebar',
+              results: collection,
+              section: section,
+              sort_by: sort_by,
+              sidebar_type: sidebar_type,
+              show_filter: show_filter,
+              show_sorting: show_sorting,
+              show_collapse: show_sidebar_collapse,
+              sidebar_collapse: sidebar_collapse_default,
+              filter_swatch: filter_swatch,
+              filter_swatch_type: filter_swatch_type,
+              filter_rectangle: filter_rectangle
+            %}
+          </div>
+        </div>
+        {% render 'toolbar',
+          has_sidebar: has_sidebar,
+          show_sorting: show_sorting,
+          show_item_per_page: show_item_per_page,
+          show_view_as: show_view_as,
+          products_per_page: products_per_page,
+          layout: layout,
+          sort_by: sort_by,
+          sort_options: sort_options
+        %}
+      </div>
+    {% endif %}
+  </div>
+  {% if section.settings.show_compareModal and section.settings.show_compareUpholsteryText %}
+    <div class="menu-icon-mobile">
+      <div class="menu-icon-left">
+        <span class="text">{{ section.settings.compareModalMobile }}</span>
+      </div>
+      <div class="menu-icon-right">
+        <span class="icon-pre">
+          <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M15.1667 16.9173V19.2507L14 18.5507V13.4173L9.33333 8.16732H19.8333L15.1667 13.3007V16.9173ZM17.5 14.4673L25.6667 5.83398H3.5L11.6667 14.4673V19.834L17.5 23.334V14.4673Z" fill="#262629"/>
+          </svg>
+        </span>
+        <span class="text">{{ section.settings.compareModalMobileSort }}</span>
+        <span class="icon-next">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g clip-path="url(#clip0_16641_15380)">
+            <path d="M18 6L10 14L2 6" stroke="#333333" stroke-width="3"/>
+            </g>
+            <defs>
+            <clipPath id="clip0_16641_15380">
+            <rect width="20" height="20" fill="white" transform="translate(20) rotate(90)"/>
+            </clipPath>
+            </defs>
+          </svg>
+        </span>
+      </div>
+      <div class="menu-icon-pop">
+        {% if section.settings.show_compareUpholsteryText and section.settings.compareUpholsteryText != blank %}
+          <div class="menu-icon-pop-upholstery">
+            <span class="compare-modal-upholstery-mb">
+              <img src="{{ section.settings.compareUpholsteryImage | img_url: 'master' }}">
+            </span>
+            <span>{{ section.settings.compareUpholsteryText }}</span>
+            <span class="compare-modal-icon">
+              <svg width="31" height="31" viewBox="0 0 31 31" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0 15.5H31" stroke="#262629" stroke-width="3"/>
+                <path d="M15.5 0L15.5 31" stroke="#262629" stroke-width="3"/>
+              </svg>
+            </span>
+          </div>
+        {% endif %}
+        <div class="menu-icon-pop-comparemodal show_{{section.settings.compareModalType}}_compare_modal">
+          <span class="compare-modal-mb">
+            <img src="{{ section.settings.compareModalImage | img_url: 'master' }}">
+          </span>
+          <span>{{ section.settings.compareModalText }}</span>
+          <span class="compare-modal-icon">
+            <svg width="31" height="31" viewBox="0 0 31 31" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M0 15.5H31" stroke="#262629" stroke-width="3"/>
+              <path d="M15.5 0L15.5 31" stroke="#262629" stroke-width="3"/>
+            </svg>
+          </span>
+        </div>
+      </div>
+    </div>
+  {% endif %}
+</section>
+{% render 'compare-upholstery-modal', section: section %}
+{% if section.settings.compareModalType == 'chair' %}
+  {% render 'chair-compare-modal', compare_modal_products: section.settings.compareModalProduct %}
+{% else %}
+  {% render 'desk-compare-modal', compare_modal_products: section.settings.compareModalProduct %}
+{% endif %}
+
+<script>
+  $('.compare-cont-modal .compare-upholstery').on('click', function () {
+    $('body').addClass('upholstery-modal-show');
+  });
+  $('.menu-icon-pop .menu-icon-pop-upholstery').on('click', function () {
+    $('body').addClass('upholstery-modal-show');
+  });
+  $('.upholstery-modal .upholstery-modal-title .close-icon').on('click', function () {
+    $('body').removeClass('upholstery-modal-show');
+  });
+  $('.upholstery-modal-cont .upholstery-btns').on('click', function () {
+    $('body').removeClass('upholstery-modal-show');
+  });
+  // click show menu lists
+  $('.new-chairs-collection-section .header-cont .header-menu').on('click', function (e) {
+    e.stopPropagation(); // 阻止冒泡，防止触发 body 的点击事件
+
+    let $popup = $('.show_popup_lists');
+    let isVisible = $popup.css('opacity') === '1';
+
+    if (isVisible) {
+      $popup.css({ opacity: 0, 'z-index': 0 });
+    } else {
+      $popup.css({ opacity: 1, 'z-index': 100 });
+    }
+  });
+
+  // 点击菜单本身不关闭（阻止冒泡）
+  $('.show_popup_lists').on('click', function (e) {
+    e.stopPropagation();
+  });
+
+  // 点击 body 时关闭菜单
+  $('body').on('click', function () {
+    $('.show_popup_lists').css({ opacity: 0, 'z-index': 0 });
+  });
+  // 移动端点击显示下拉选项
+  $('.new-chairs-collection-section .menu-icon-mobile .menu-icon-left').on('click', function () {
+    let menuIconPopOpacity = $('.menu-icon-pop').css('opacity');
+    if (menuIconPopOpacity == '1') {
+      $('.menu-icon-pop').css({ 'z-index': -1, height: 0, opacity: 0 });
+    } else {
+      $('.menu-icon-pop').css({ 'z-index': 100, height: 'max-content', opacity: 1 });
+    }
+  });
+</script>
+{% schema %}
+{
+  "name": "Chairs Collection Head",
+  "settings": [
+    {
+      "type": "text",
+      "id": "headerTitle",
+      "label": "Header Title",
+      "default": "All Gaming Chairs"
+    },
+    {
+      "type": "image_picker",
+      "id": "compareUpholsteryImage",
+      "label": "compare Upholstery Image"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_compareUpholsteryText",
+      "label": "show compare Upholstery Title",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "compareUpholsteryText",
+      "label": "compare Upholstery Title",
+      "default": "How to choose your upholstery"
+    },
+    {
+      "type": "textarea",
+      "id": "compareUpholsteryIcon",
+      "label": "Compare Upholstery Icon"
+    },
+    {
+      "type": "image_picker",
+      "id": "compareModalImage",
+      "label": "compare Modal Image"
+    },
+    {
+      "type": "text",
+      "id": "compareModalText",
+      "label": "compare Modals Title",
+      "default": "Compare Models"
+    },
+    {
+      "type": "textarea",
+      "id": "compareModalIcon",
+      "label": "Compare Modals Icon"
+    },
+    {
+      "type": "text",
+      "id": "compareModalTitle",
+      "label": "Compare Modal Title",
+      "default": "Which upholstery should you choose?"
+    },
+    {
+      "type": "text",
+      "id": "compareModalDesc",
+      "label": "Compare Modal Desc",
+      "default": "Our upholstery materials are developed in-house to strike the perfect balance between tactile comfort and long-term durability. By sourcing premium leatherette and fabrics from around the world, we studied the most desirable qualities of each to craft upholstery that meets — and often exceeds — the standards of today’s best gaming chairs."
+    },
+    {
+      "type": "product_list",
+      "id": "compareModalProduct",
+      "label": "Compare Modal Product"
+    },
+    {
+      "type": "select",
+      "id": "compareModalType",
+      "label": "Compare Modal Type",
+      "options": [
+        {
+          "value": "chair",
+          "label": "chair"
+        },
+        {
+          "value": "desk",
+          "label": "desk"
+        }
+      ],
+      "default": "chair"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_compareModal",
+      "label": "show compare Modal",
+      "default": true
+    },
+    {
+      "type": "text",
+      "id": "compareModalMobile",
+      "label": "Compare Modal Mobile",
+      "default": "Need Help Shopping?"
+    },
+    {
+      "type": "text",
+      "id": "compareModalMobileSort",
+      "label": "compare Modal Mobile Sort",
+      "default": "FILTER BY"
+    },
+    {
+      "type": "header",
+      "content": "header Lists"
+    },
+    {
+      "type": "text",
+      "id": "item1",
+      "label": "Header Item first",
+      "default": "Shop All Products"
+    },
+    {
+      "type": "url",
+      "id": "item1Link",
+      "label": "Header Item 1 Link"
+    },
+    {
+      "type": "text",
+      "id": "item2",
+      "label": "Header Item second",
+      "default": "Gaming Chair"
+    },
+    {
+      "type": "url",
+      "id": "item2Link",
+      "label": "Header Item 2 Link"
+    },
+    {
+      "type": "text",
+      "id": "item3",
+      "label": "Header Item third",
+      "default": "Desks"
+    },
+    {
+      "type": "url",
+      "id": "item3Link",
+      "label": "Header Item 3 Link"
+    },
+    {
+      "type": "text",
+      "id": "item4",
+      "label": "Header Item fourth",
+      "default": "All Lighting"
+    },
+    {
+      "type": "url",
+      "id": "item4Link",
+      "label": "Header Item 4 Link"
+    },
+    {
+      "type": "text",
+      "id": "item5",
+      "label": "Header Item fifth",
+      "default": "All Lighting"
+    },
+    {
+      "type": "url",
+      "id": "item5Link",
+      "label": "Header Item 5 Link"
+    },
+    {
+      "type": "text",
+      "id": "active_item",
+      "label": "active item"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "menuLists",
+      "name": "menuLists",
+      "settings": [
+        {
+          "type": "text",
+          "id": "itemName",
+          "label": "Menu Item Name"
+        },
+        {
+          "type": "url",
+          "id": "itemLink",
+          "label": "Menu Item Link"
+        }
+      ]
+    },
+    {
+      "type": "blockItem",
+      "name": "blockItem",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "blockItemImage",
+          "label": "block Item Image"
+        },
+        {
+          "type": "text",
+          "id": "blockItemTitle",
+          "label": "block Item Title",
+          "default": "Blacklyte Original Leather"
+        },
+        {
+          "type": "text",
+          "id": "blockItemDesc",
+          "label": "block Item Descripe",
+          "default": "Our signature synthetic leather, available in black and yellow  Sleek, resilient, and easy to maintain"
+        },
+        {
+          "type": "text",
+          "id": "blockItemCont1",
+          "label": "block Item Cont 1",
+          "default": "Tested to be far more durable than standard PU leather"
+        },
+        {
+          "type": "text",
+          "id": "blockItemCont2",
+          "label": "block Item Cont 2",
+          "default": "Naturally resistant to stains"
+        },
+        {
+          "type": "text",
+          "id": "blockItemCont3",
+          "label": "block Item Cont 3",
+          "default": "SOFTNESS"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Chairs Collection Head"
+    }
+  ]
+}
+{% endschema %}

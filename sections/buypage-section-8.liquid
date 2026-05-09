@@ -1,0 +1,247 @@
+{{ 'buypage-section-8.css' | asset_url | stylesheet_tag }}
+
+<div class="buypage_section_8" id="{{section.settings.specId}}">
+  {%- for block in section.blocks -%}
+    {%- case block.type -%}
+      {% when 'first_part' %}
+        <div class="first_part">
+          <div class="first_part_head">
+            <div class="first_part_title">{{ block.settings.title }}</div>
+            <div class="first_part_text">{{ block.settings.text }}</div>
+          </div>
+          <div class="first_part_slick">
+            {% assign list = '1,2,3' | split: ',' %}
+            <div class="first_part_slick_contain">
+              {% for item in list %}
+                {% assign image = 'image_' | append: item %}
+                {% assign image_mobile = 'image_' | append: item | append: '_mobile' %}
+                <div class="first_part_slick_item">
+                  {% render 'picture-simple',
+                    image: block.settings[image],
+                    image_mobile: block.settings[image_mobile],
+                    mobile_widths: '350,450,550,650',
+                    mobile_dpr: 1
+                  %}
+                  {% comment %}
+                    {{-
+                      block.settings[image]
+                      | image_url: width: block.settings[image].width
+                      | image_tag: alt: block.settings[image].alt, class: 'pc_show', loading: 'lazy'
+                    -}}
+                    {% assign image_mobile = block.settings[image_mobile] | default: block.settings[image] %}
+                    {{-
+                      image_mobile
+                      | image_url: width: image_mobile.width
+                      | image_tag: alt: image_mobile.alt, class: 'pmd_show', loading: 'lazy'
+                    -}}
+                  {% endcomment %}
+                </div>
+              {% endfor %}
+            </div>
+            <div class="first_part_slick_dots">
+              {% for item in list %}
+                {% assign title = 'title_' | append: item %}
+                <div class="first_part_slick_dots_item{% if forloop.first %} active{% endif %}">
+                  {{ block.settings[title] }}
+                </div>
+              {% endfor %}
+            </div>
+          </div>
+        </div>
+      {%- when 'second_part' -%}
+        <div class="second_part">
+          <div class="second_part_title">{{ block.settings.title }}</div>
+          <div class="second_part_text">{{ block.settings.text }}</div>
+          <div class="second_part_contain">
+            {% assign list = '1,2,3' | split: ',' %}
+            {% for item in list %}
+              {% assign image = 'image_' | append: item %}
+              {% assign image_mobile = 'image_' | append: item | append: '_mobile' %}
+              {% assign text = 'text_' | append: item %}
+              <div class="second_part_contain_item">
+                {% render 'picture-simple',
+                  image: block.settings[image],
+                  image_mobile: block.settings[image_mobile],
+                  mobile_widths: '350,450,550,650',
+                  mobile_dpr: 1
+                %}
+                {% comment %}
+                  {{-
+                    block.settings[image]
+                    | image_url: width: block.settings[image].width
+                    | image_tag: alt: block.settings[image].alt, class: 'pc_show', loading: 'lazy'
+                  -}}
+                  {% assign image_mobile = block.settings[image_mobile] | default: block.settings[image] %}
+                  {{-
+                    image_mobile
+                    | image_url: width: image_mobile.width
+                    | image_tag: alt: image_mobile.alt, class: 'pmd_show', loading: 'lazy'
+                  -}}
+                {% endcomment %}
+                {% if block.settings[text] != blank %}
+                  <div class="second_part_contain_item_text">{{ block.settings[text] }}</div>
+                {% endif %}
+              </div>
+            {% endfor %}
+          </div>
+        </div>
+    {%- endcase -%}
+  {% endfor %}
+</div>
+
+<script>
+  (function ($) {
+    const $section = $('#shopify-section-{{ section.id }}');
+    const $slider = $section.find('.buypage_section_8 .first_part_slick_contain');
+    const $dots = $section.find('.buypage_section_8 .first_part_slick_dots_item');
+
+    // 初始化 slick
+    $slider.slick({
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      arrows: false,
+      dots: false,
+      infinite: false,
+      waitForAnimate: false,
+      adaptiveHeight: true,
+    });
+
+    // Slick 切换时更新 dots 高亮
+    $slider.on('afterChange', function (event, slick, currentSlide) {
+      $dots.removeClass('active').eq(currentSlide).addClass('active');
+    });
+
+    // 点击 dots 时切换到对应幻灯片
+    $dots.on('click', function () {
+      const index = $(this).index();
+      $slider.slick('slickGoTo', index);
+    });
+  })(jQuery);
+</script>
+
+{% schema %}
+{
+  "name": "buypage section 8",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "specId",
+      "label": "specId"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "first_part",
+      "name": "first part",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "title",
+          "label": "title"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "text"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_1",
+          "label": "image_1"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_1_mobile",
+          "label": "image_1_mobile"
+        },
+        {
+          "type": "text",
+          "id": "title_1",
+          "label": "title_1"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_2",
+          "label": "image_2"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_2_mobile",
+          "label": "image_2_mobile"
+        },
+        {
+          "type": "text",
+          "id": "title_2",
+          "label": "title_2"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_3",
+          "label": "image_3"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_3_mobile",
+          "label": "image_3_mobile"
+        },
+        {
+          "type": "text",
+          "id": "title_3",
+          "label": "title_3"
+        }
+      ]
+    },
+    {
+      "type": "second_part",
+      "name": "second part",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "title",
+          "label": "title"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "text"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_1",
+          "label": "image_1"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_2",
+          "label": "image_2"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_3",
+          "label": "image_3"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_3_mobile",
+          "label": "image_3_mobile"
+        },
+        {
+          "type": "text",
+          "id": "text_3",
+          "label": "text_3"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "buypage section 8"
+    }
+  ]
+}
+{% endschema %}

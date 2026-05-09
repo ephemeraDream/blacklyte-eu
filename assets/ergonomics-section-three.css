@@ -1,0 +1,259 @@
+.ergonomics_section_three {
+  max-width: 100vw;
+  background-color: #ebebeb;
+  padding: 7.65625vw 15.625vw 0;
+}
+
+.ergonomics_section_three .first_part_title {
+  font-family: Poppins;
+  font-weight: 600;
+  font-style: SemiBold;
+  font-size: 2.08333vw;
+  leading-trim: NONE;
+  line-height: 2.5vw;
+  letter-spacing: 0%;
+  vertical-align: middle;
+  color: #262629;
+  text-align: center;
+}
+
+.ergonomics_section_three .first_part_text {
+  font-family: Poppins;
+  font-weight: 500;
+  font-style: Medium;
+  font-size: clamp(14px, 0.833vw, 0.833vw);
+  leading-trim: NONE;
+  line-height: clamp(22px, 1.25vw, 1.25vw);
+  letter-spacing: 0%;
+  vertical-align: middle;
+  margin-top: 0.625vw;
+  color: rgba(38, 38, 41, .7);
+  text-align: center;
+}
+
+.ergonomics_section_three .first_part_img {
+  width: 100%;
+  height: 24.53125vw;
+  object-fit: cover;
+  object-position: center center;
+  border-radius: 0.46875vw;
+  margin-top: 2.1875vw;
+}
+
+.ergonomics_section_three .second_part {
+  display: flex;
+  align-items: center;
+  margin-top: 5.9375vw;
+  gap: 2.96875vw;
+}
+
+.ergonomics_section_three .second_part_img {
+  width: 31.25vw;
+  height: 21.40625vw;
+  object-fit: cover;
+  object-position: center center;
+  border-radius: 1.25vw;
+}
+
+.ergonomics_section_three .second_part_content {
+  width: 28.28125vw;
+}
+
+.ergonomics_section_three .second_part_title {
+  font-family: Poppins;
+  font-weight: 600;
+  font-style: SemiBold;
+  font-size: 2.08333vw;
+  leading-trim: NONE;
+  line-height: 2.5vw;
+  letter-spacing: 0%;
+  vertical-align: middle;
+  color: #262629;
+}
+
+.ergonomics_section_three .second_part_text {
+  font-family: Poppins;
+  font-weight: 500;
+  font-style: Medium;
+  font-size: clamp(14px, 0.833vw, 0.833vw);
+  leading-trim: NONE;
+  line-height: clamp(22px, 1.25vw, 1.25vw);
+  letter-spacing: 0%;
+  vertical-align: middle;
+  margin-top: 0.625vw;
+  color: rgba(38, 38, 41, .7);
+  margin-top: 0.9375vw;
+}
+
+.ergonomics_section_three .third_part_head {
+  display: flex;
+  align-items: flex-start;
+  gap: 5.15625vw;
+  margin-top: 5.46875vw;
+}
+
+.ergonomics_section_three .third_part_title {
+  font-family: Poppins;
+  font-weight: 600;
+  font-style: SemiBold;
+  font-size: 2.08333vw;
+  leading-trim: NONE;
+  line-height: 2.5vw;
+  letter-spacing: 0%;
+  vertical-align: middle;
+  color: #262629;
+}
+
+.ergonomics_section_three .third_part_text {
+  font-family: Poppins;
+  font-weight: 500;
+  font-style: Medium;
+  font-size: clamp(14px, 0.833vw, 0.833vw);
+  leading-trim: NONE;
+  line-height: clamp(22px, 1.25vw, 1.25vw);
+  letter-spacing: 0%;
+  vertical-align: middle;
+  color: #262629;
+  flex: 0 0 auto;
+  width: 41.09375vw;
+}
+
+.ergonomics_section_three .third_part_body {
+  display: flex;
+  align-items: center;
+  gap: 7.1875vw;
+  margin-top: 5.46875vw;
+}
+
+.ergonomics_section_three .third_part_left_text {
+  font-family: Poppins;
+  font-weight: 500;
+  font-style: Medium;
+  font-size: clamp(14px, 0.9375vw, 0.9375vw);
+  leading-trim: NONE;
+  line-height: clamp(22px, 1.45833vw, 1.45833vw);
+  letter-spacing: 0%;
+  vertical-align: middle;
+  color: rgba(38, 38, 41, .7);
+}
+
+.ergonomics_section_three .third_part_left_text b {
+  font-family: Poppins;
+  font-weight: 600;
+  font-style: SemiBold;
+  font-size: clamp(16px, 1.04167vw, 1.04167vw);
+  leading-trim: NONE;
+  line-height: 3.125vw;
+  letter-spacing: 0%;
+  vertical-align: middle;
+  margin-top: 0.78125vw;
+  display: block;
+  color: #262629;
+}
+
+.ergonomics_section_three .third_part_left_text p {
+  margin-top: -0.625vw;
+}
+
+.ergonomics_section_three .third_part_img {
+  width: 38.75vw;
+  height: 43.90625vw;
+  object-fit: cover;
+  object-position: center center;
+  border-radius: 1.25vw;
+  background-color: #1A1C20;
+}
+
+@media screen and (max-width: 768px) {
+  .ergonomics_section_three {
+    padding: 14.4vw 5.6vw 0;
+  }
+
+  .ergonomics_section_three .first_part_title {
+    font-size: 6.4vw;
+    line-height: 8vw;
+  }
+
+  .ergonomics_section_three .first_part_text {
+    font-size: 3.733vw;
+    line-height: 6.4vw;
+    margin-top: 0.8vw;
+  }
+
+  .ergonomics_section_three .first_part_img {
+    height: 80vw;
+    border-radius: 2.4vw;
+    margin-top: 3.2vw;
+  }
+
+  .ergonomics_section_three .second_part {
+    flex-wrap: wrap;
+    margin-top: 12.8vw;
+    gap: 8.8vw;
+    flex-direction: column-reverse;
+  }
+
+  .ergonomics_section_three .second_part_img {
+    height: 72vw;
+    border-radius: 3.2vw;
+    width: 100%;
+  }
+
+  .ergonomics_section_three .second_part_content {
+    width: 100%;
+  }
+
+  .ergonomics_section_three .second_part_title {
+    font-size: 6.4vw;
+    line-height: 8vw;
+  }
+
+  .ergonomics_section_three .second_part_text {
+    font-size: 3.733vw;
+    line-height: 6.4vw;
+    margin-top: 3.2vw;
+  }
+
+  .ergonomics_section_three .third_part_head {
+    margin-top: 11.2vw;
+    flex-wrap: wrap;
+    gap: 2.4vw;
+  }
+
+  .ergonomics_section_three .third_part_title {
+    font-size: 6.4vw;
+    line-height: 8vw;
+  }
+
+  .ergonomics_section_three .third_part_text {
+    width: 100%;
+    font-size: 3.733vw;
+    line-height: 6.4vw;
+  }
+
+  .ergonomics_section_three .third_part_body {
+    flex-direction: column-reverse;
+    margin-top: 3.2vw;
+    gap: 3.2vw;
+  }
+
+  .ergonomics_section_three .third_part_img {
+    height: 101.6vw;
+    border-radius: 3.2vw;
+    width: 100%;
+  }
+
+  .ergonomics_section_three .third_part_left_text {
+    font-size: 3.733vw;
+    line-height: 6.4vw;
+  }
+
+  .ergonomics_section_three .third_part_left_text b {
+    font-size: 4.2667vw;
+    line-height: 16vw;
+  }
+
+  .ergonomics_section_three .third_part_left_text p {
+    margin-top: -2.4vw;
+  }
+}

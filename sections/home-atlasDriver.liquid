@@ -1,0 +1,147 @@
+
+<style>
+    .home-atlas-driver{
+        padding: 100px 16%;
+    }
+    .home-atlas-driver .container-full{
+        background: linear-gradient(180deg, #D0E1FF 0%, #F7F9FF 100%);
+        border-radius: 24px;
+        padding: 70px;
+        display: flex;
+        gap: 92px;
+    }
+    .home-atlas-driver .container-full .left-cont{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .home-atlas-driver .container-full .right-cont{
+        width: 50%;
+        padding: 10px;
+    }
+    .home-atlas-driver .container-full .left-cont .titles{
+        font: 600 40px var(--font-family-1);
+        color: #262629;
+    }
+    .home-atlas-driver .container-full .left-cont .descripes{
+        margin-top: 8px;
+        font: 400 16px var(--font-family-1);
+        line-height: 1.4;
+        color: #262629;
+    }
+    .home-atlas-driver .container-full .left-cont .btns{
+        margin-top: 38px;
+        font: 500 16px var(--font-family-1);
+        background-color: #262629;
+        color: #fff;
+        padding: 15px 32px;
+        border-radius: 45px;
+        width: fit-content;
+        white-space: nowrap;
+        cursor: pointer;
+        transition: all .4s ease-in-out;
+        overflow: hidden;
+        border: 1px solid #262629;
+    }
+    .home-atlas-driver .container-full .left-cont .btns:hover{
+        background-color: rgba(38, 38, 41, 0);
+        color: #262629;
+    }
+    /* IPhone */
+    @media(max-width: 767px){
+        .home-atlas-driver{
+            padding: 50px 10px;
+        }
+        .home-atlas-driver .container-full{
+            padding: 30px;
+            gap: 20px;
+            flex-direction: column;
+        }
+        .home-atlas-driver .container-full .right-cont{
+            width: 100%;
+        }
+        .home-atlas-driver .container-full .left-cont{
+            align-items: center;
+        }
+        .home-atlas-driver .container-full .left-cont .titles{
+            font-size: 18px;
+        }
+        .home-atlas-driver .container-full .left-cont .descripes{
+            font-size: 14px;
+            text-align: center;
+        }
+        .home-atlas-driver .container-full .left-cont .btns{
+            margin-top: 20px;
+            font-size: 12px;
+            padding: 12px 30px;
+        }
+    }
+    /* IPad */
+    @media(min-width: 768px) and (max-width: 1024px){
+        .home-atlas-driver{
+            padding: 50px 10px;
+        }
+    }
+    /* small screen */
+    @media(min-width: 1025px)and(max-width: 1600px){ }
+    /* large screen */
+    @media(min-width: 2000px){ }
+    @media(min-width: 1025px) and (max-width: 1480px){
+        .home-atlas-driver{
+            padding: 100px 60px;
+        }
+    }
+</style>
+
+<section id="{{ section.id }}" class="home-atlas-driver">
+    <div class="container-full">
+        <div class="left-cont">
+            <div class="titles">{{ section.settings.sectionTitle }}</div>
+            <div class="descripes">{{section.settings.sectionDescripe }}</div>
+            <a {% if section.settings.sectionLink != blank %} href="{{ section.settings.sectionLink }}" {% else %} aria-disabled="true" {% endif %} class="btns">{{ section.settings.sectionButton }}</a>
+        </div>
+        <div class="right-cont image-zoom">
+            <img src="{{ section.settings.sectionMainImage | img_url: 'master' }}" alt="{{ section.settings.sectionMainImage.alt | escape }}">
+        </div>
+    </div>
+</section>
+
+{% schema %}
+    {
+        "name": "Home Atlas Driver",
+        "settings": [
+            {
+                "type": "text",
+                "id": "sectionTitle",
+                "label": "section Title"
+            },
+            {
+                "type": "text",
+                "id": "sectionDescripe",
+                "label": "section descripe"
+            },
+            {
+                "type": "text",
+                "id": "sectionButton",
+                "label": "section button",
+                "default": "Learn More"
+            },
+            {
+                "type": "url",
+                "id": "sectionLink",
+                "label": "section Link Url"
+            },
+            {
+                "type": "image_picker",
+                "id": "sectionMainImage",
+                "label": "section Main Image"
+            }
+        ],
+        "blocks": [ ],
+        "presets": [
+            {
+                "name": "Home Atlas Driver"
+            }
+        ]
+    }
+{% endschema %}

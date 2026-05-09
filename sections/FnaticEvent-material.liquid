@@ -1,0 +1,387 @@
+<style>
+
+    .section-{{ section.id }} {
+        background: #060708;
+    }
+    .section-{{ section.id }} .container-full{
+        padding-top: 90px;
+        padding-bottom: 100px;
+    }
+    .section-{{ section.id }} .header-container{
+        width: calc(100% - 32%);
+        margin: auto;
+    }
+    .section-{{ section.id }} .section-head-title{
+        font-family: Poppins;
+        font-weight: 600;
+        font-style: SemiBold;
+        font-size: 36px;
+        line-height: 66px;
+        letter-spacing: 0%;
+        text-align: center;
+        color: #fff;
+    }
+    .section-{{ section.id }} .section-head-desc{
+        font-family: Poppins;
+        font-weight: 400;
+        font-style: Regular;
+        font-size: 16px;
+        line-height: 26px;
+        letter-spacing: 0%;
+        text-align: center;
+        color: #fff;
+        margin-top: 10px;
+    }
+
+    .section-{{ section.id }} .section-line{
+        margin: 47px 0;
+        line-height: 0;
+    }
+    .section-{{ section.id }} .section-line svg{
+        width: 100%;
+        height: 1px;
+    }
+
+    .section-{{ section.id }} .cont-lists{
+        {% comment %} margin-left: 16%; {% endcomment %}
+        display: flex;
+    }
+
+    .section-{{ section.id }} .cont-lists img{
+        height: auto;
+    }
+
+    .section-{{ section.id }} .btns-cont{
+        margin-top: 40px;
+        display: flex;
+        justify-content: flex-end;
+        width: calc(100% - 16%);
+    }
+    .section-{{ section.id }} .cont-item-text{
+        font-family: Poppins;
+        font-weight: 500;
+        font-style: Medium;
+        font-size: 16px;
+        line-height: 26px;
+        letter-spacing: 0%;
+        color: #fff;
+        margin-top: 27px;
+    }
+    .section-{{ section.id }} .pre-btn,
+    .section-{{ section.id }} .next-btn{
+        width: auto;
+        height: auto;
+        cursor: pointer;
+    }
+    .section-{{ section.id }} .pre-btn svg,
+    .section-{{ section.id }} .next-btn svg{
+        width: 100%;
+        height: 100%;
+    }
+
+    {% comment %} iPad {% endcomment %}
+    @media(min-width: 768px) and (max-width: 1024px){
+        .section-{{ section.id }} .header-container{
+            width: calc(100% - 20px);
+        }
+        {% comment %} .section-{{ section.id }} .cont-lists{ {% endcomment %}
+            {% comment %} margin-left: 20px; {% endcomment %}
+            {% comment %} margin-right: 20px; {% endcomment %}
+        {% comment %} } {% endcomment %}
+        .section-{{ section.id }} .btns-cont{
+            width: calc(100% - 10px);
+        }
+    }
+    {% comment %} iPhone {% endcomment %}
+    @media(max-width: 767px){
+        .section-{{ section.id }} .header-container{
+            width: calc(100% - 20px);
+        }
+        .section-{{ section.id }} .container-full{
+            padding-top: 50px;
+            padding-bottom: 50px;
+        }
+        {% comment %} .section-{{ section.id }} .cont-lists{ {% endcomment %}
+            {% comment %} margin-left: 20px; {% endcomment %}
+            {% comment %} margin-right: 17px; {% endcomment %}
+        {% comment %} } {% endcomment %}
+        .section-{{ section.id }} .btns-cont{
+            width: 100%;
+            justify-content: center;
+        }
+
+        .section-{{ section.id }} .pre-btn svg,
+        .section-{{ section.id }} .next-btn svg{
+            width: 70px;
+            height: 34px;
+        }
+
+        .section-{{ section.id }} .section-head-title{
+            font-size: 22px;
+            line-height: normal;
+        }
+        .section-{{ section.id }} .section-head-desc{
+            font-size: 14px;
+        }
+        .section-{{ section.id }} .section-line{
+            margin: 37px 0 17px;
+        }
+        .section-{{ section.id }} .cont-item-text{
+            font-size: 14px;
+            line-height: 26px;
+            margin-top: 10px;
+        }
+    }
+
+    @media(min-width: 1025px) and (max-width: 1480px){
+        .section-{{ section.id }} .header-container{
+            width: calc(100% - 120px);
+        }
+        {% comment %} .section-{{ section.id }} .cont-lists{
+            margin-left: 60px;
+        } {% endcomment %}
+        .section-{{ section.id }} .btns-cont{
+            width: calc(100% - 60px);
+        }
+    }
+</style>
+
+<section class="section-{{ section.id }} material-section" id="{{ section.id }}" data-section-id="{{ section.id }}">
+    <div class="container-full">
+        <div class="header-container">
+            {% if section.settings.sectionTitle != blank %}
+                <div class="section-head-title">{{ section.settings.sectionTitle }}</div>
+            {% endif %}
+            {% if section.settings.sectionDescripe != blank %}
+                <div class="section-head-desc">{{ section.settings.sectionDescripe }}</div>
+            {% endif %}
+        </div>
+        {% if section.settings.sectionLine %}
+            <div class="section-line">
+                <svg width="1920" height="1" viewBox="0 0 1920 1" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0 0.5H1920" stroke="#505050"/>
+                </svg>
+            </div>
+        {% endif %}
+        <div class="cont-lists swiper">
+            <div class="swiper-wrapper">
+                {% for block in section.blocks %}
+                    {% if block.type == "item" %}
+                        <div class="cont-item swiper-slide">
+                            <picture>
+                                <source media="(max-width: 768px)"
+                                        srcset="{{ block.settings.itemImage_mb | image_url: width: 800 }}"
+                                        data-srcset="{{ block.settings.itemImage_mb | image_url: width: 800 }}">
+
+                                <img {% render 'lazyload',preview_img: block.settings.itemImage, class: true, enable_rtl: settings.enable_layout_rtl  %}
+                                    width="{{ block.settings.itemImage.width }}"
+                                    height="{{ block.settings.itemImage.height }}"
+                                    alt="{{ block.settings.itemImage.alt | escape }}"
+                                    loading="lazy"
+                                    decoding="async"
+                                    style="height: auto;"/>
+                                    
+                            </picture>
+
+                            {% if block.settings.itemTitle != blank %}
+                                <div class="cont-item-text">
+                                    {{ block.settings.itemTitle }}
+                                </div>
+                            {% endif %}
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+            
+        </div>
+        <div class="btns-cont">
+            <div class="pre-btn">
+                <svg width="109" height="58" viewBox="0 0 109 58" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g filter="url(#filter0_d_10366_32757)">
+                    <rect x="4" width="101" height="50" rx="25" fill="#060708"/>
+                    <rect x="4.5" y="0.5" width="100" height="49" rx="24.5" stroke="url(#paint0_linear_10366_32757)" stroke-linejoin="round"/>
+                    </g>
+                    <path d="M54.6066 35.6066L44 25L54.6066 14.3934" stroke="#EC5401" stroke-width="2" stroke-linecap="round"/>
+                    <defs>
+                    <filter id="filter0_d_10366_32757" x="0" y="0" width="109" height="58" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                    <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                    <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                    <feOffset dy="4"/>
+                    <feGaussianBlur stdDeviation="2"/>
+                    <feComposite in2="hardAlpha" operator="out"/>
+                    <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+                    <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_10366_32757"/>
+                    <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_10366_32757" result="shape"/>
+                    </filter>
+                    <linearGradient id="paint0_linear_10366_32757" x1="26.0886" y1="-13.9719" x2="35.2931" y2="67.9086" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#2C2C2C"/>
+                    <stop offset="0.322115" stop-color="white" stop-opacity="0.5"/>
+                    <stop offset="0.649038" stop-color="#FF5900"/>
+                    <stop offset="1" stop-color="white" stop-opacity="0.5"/>
+                    </linearGradient>
+                    </defs>
+                </svg>
+
+
+            </div>
+            <div class="next-btn">
+                <svg width="109" height="58" viewBox="0 0 109 58" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <g filter="url(#filter0_d_10366_32754)">
+                    <rect x="4" width="101" height="50" rx="25" fill="#060708"/>
+                    <rect x="4.5" y="0.5" width="100" height="49" rx="24.5" stroke="url(#paint0_linear_10366_32754)" stroke-linejoin="round"/>
+                    </g>
+                    <path d="M53.3934 35.6066L64 25L53.3934 14.3934" stroke="#EC5401" stroke-width="2" stroke-linecap="round"/>
+                    <defs>
+                    <filter id="filter0_d_10366_32754" x="0" y="0" width="109" height="58" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                    <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                    <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
+                    <feOffset dy="4"/>
+                    <feGaussianBlur stdDeviation="2"/>
+                    <feComposite in2="hardAlpha" operator="out"/>
+                    <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
+                    <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_10366_32754"/>
+                    <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_10366_32754" result="shape"/>
+                    </filter>
+                    <linearGradient id="paint0_linear_10366_32754" x1="26.0886" y1="-13.9719" x2="35.2931" y2="67.9086" gradientUnits="userSpaceOnUse">
+                    <stop stop-color="#2C2C2C"/>
+                    <stop offset="0.322115" stop-color="white" stop-opacity="0.5"/>
+                    <stop offset="0.649038" stop-color="#FF5900"/>
+                    <stop offset="1" stop-color="white" stop-opacity="0.5"/>
+                    </linearGradient>
+                    </defs>
+                </svg>
+
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    $(function () {
+        let materialSwiper = null;
+
+        function getOffset() {
+            const w = window.innerWidth;
+            if (w >= 1025 && w <= 1480) return 60;
+            return Math.round(w * 0.16);
+        }
+
+        function toggleBtnState(swiper) {
+            const instance = swiper || this; 
+            if (!instance || !instance.el) return;
+
+            const $preBtn = $('.material-section .btns-cont .pre-btn');
+            const $nextBtn = $('.material-section .btns-cont .next-btn');
+
+            $preBtn.css({
+                opacity: instance.isBeginning ? 0.3 : 1,
+                pointerEvents: instance.isBeginning ? 'none' : 'auto'
+            });
+            $nextBtn.css({
+                opacity: instance.isEnd ? 0.3 : 1,
+                pointerEvents: instance.isEnd ? 'none' : 'auto'
+            });
+        }
+
+
+        $('.material-section .cont-lists').css('margin-left', '0')
+
+      
+        materialSwiper = new Swiper('.material-section .cont-lists', {
+            loop: false,
+            grabCursor: true,
+            simulateTouch: true,
+            slidesPerView: 2.3,
+            slidesPerGroup: 1,
+            spaceBetween: 20,
+            slidesOffsetBefore: getOffset(),
+            slidesOffsetAfter: 100,
+            breakpoints: {
+                320: {
+                    slidesPerView: 1,
+                    slidesPerGroup: 1,
+                    spaceBetween: 10,
+                    slidesOffsetBefore: 10,
+                    slidesOffsetAfter: 0,
+                    centeredSlides: false
+                },
+                992: {
+                    slidesPerView: 2.3,
+                    slidesOffsetBefore: getOffset(),
+                    slidesOffsetAfter: 100
+                }
+            },
+            on: {
+                init: function(){
+                    toggleBtnState(this)
+                },
+                slideChange: function(){
+                    toggleBtnState(this)
+                } 
+            }
+        });
+
+
+        $('.material-section .btns-cont .pre-btn').on('click', function() {
+            if (materialSwiper) materialSwiper.slidePrev();
+        });
+        $('.material-section .btns-cont .next-btn').on('click', function() {
+            if (materialSwiper) materialSwiper.slideNext();
+        });
+    });
+</script>
+
+{% schema %}
+{
+    "name": "Fnatic Event Material",
+    "settings": [
+        {
+            "type": "text",
+            "id": "sectionTitle",
+            "label": "section Title",
+            "default": "Sculpted for performance"
+        },
+        {
+            "type": "text",
+            "id": "sectionDescripe",
+            "label": "section desc",
+            "default": "Inspired by the single-piece MonoCell chassis at the heart of every McLaren supercar, the limited edition Secretlab McLaren MonoCell Edition distills the uncompromising strength, lightness, and rigidity of carbon fiber into a single form."
+        },
+        {
+            "type": "checkbox",
+            "id": "sectionLine",
+            "label": "section Line",
+            "default": false
+        }
+    ],
+    "blocks": [
+        {
+            "type": "item",
+            "name": "item",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "itemImage",
+                    "label": "item Image"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "itemImage_mb",
+                    "label": "item Image Mobile"
+                },
+                {
+                    "type": "text",
+                    "id": "itemTitle",
+                    "label": "item Title"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "Fnatic Event Material"
+        }
+    ]
+}
+{% endschema %}

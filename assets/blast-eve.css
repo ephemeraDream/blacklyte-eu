@@ -1,0 +1,1228 @@
+
+/* blast event page */
+#shopify-section-template--18553392234745__product-grid {
+  background: url("https://cdn.shopify.com/s/files/1/0663/6742/2695/files/products_collection_block_bgImg.png?v=1729823525") no-repeat;
+  background-size: cover;
+}
+#shopify-section-template--18553392234745__product-grid .product-item .card-media>img {
+  transform: translateY(20px);
+}
+#shopify-section-template--18553392234745__product-grid .container-full {
+  position: relative;
+}
+#shopify-section-template--18553392234745__product-grid .container-full:before{
+  content: '';
+  display: inline-block;
+  width: 200px;
+  height: 220px;
+  background: url('https://cdn.shopify.com/s/files/1/0663/6742/2695/files/blast_product_event_bgLeftB.png?v=1730098579') no-repeat;
+  background-size: cover;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 10;
+}
+#shopify-section-template--18553392234745__product-grid #CollectionSection-template--18553392234745__product-grid {
+  position: relative;
+}
+#shopify-section-template--18553392234745__product-grid #CollectionSection-template--18553392234745__product-grid:before{
+  content: '';
+  display: inline-block;
+  width: 160px;
+  height: 300px;
+  background: url('https://cdn.shopify.com/s/files/1/0663/6742/2695/files/blast_products_events_bgImageLT.png?v=1730100183') no-repeat;
+  background-size: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 10;
+}
+#shopify-section-template--18553392234745__product-grid #CollectionSection-template--18553392234745__product-grid:after{
+  content: '';
+  display: inline-block;
+  width: 180px;
+  height: 280px;
+  background: url('https://cdn.shopify.com/s/files/1/0663/6742/2695/files/blast_products_ev_bgImage_rCenter.png?v=1730100493') no-repeat;
+  background-size: cover;
+  position: absolute;
+  top: 50%;
+  margin-top: -140px;
+  right: 0px;
+}
+
+#shopify-section-template--18553392234745__product-grid .container-full:after{
+  content: '';
+  display: inline-block;
+  width: 140px;
+  height: 160px;
+  background: url('https://cdn.shopify.com/s/files/1/0663/6742/2695/files/blast_product_event_bgLeftB_right.png?v=1730099549') no-repeat;
+  background-size: cover;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+
+#shopify-section-template--18553392234745__product-grid .collection .card-swatch {
+  bottom: 120px;
+}
+#shopify-section-template--18553392234745__product-grid #CollectionSection-template--18553392234745__product-grid .card-product {
+  background: none;
+}
+#shopify-section-template--18553392234745__product-grid #CollectionSection-template--18553392234745__product-grid .product-item .card-media {
+  background: url('https://cdn.shopify.com/s/files/1/0663/6742/2695/files/product_items_bgImg.png?v=1730273696') no-repeat;
+  background-size: 100% 100%;
+  background-position: 0 6px;
+}
+#shopify-section-template--18553392234745__product-grid #CollectionSection-template--18553392234745__product-grid .collection .card-information {
+  background-color: #FFFFF1;
+  padding: 14px 10px 10px;
+}
+#shopify-section-template--18553392234745__product-grid #CollectionSection-template--18553392234745__product-grid .collection .card-action .button {
+  display: none;
+}
+#shopify-section-template--18553392234745__product-grid #CollectionSection-template--18553392234745__product-grid .collection .card-swatch .item {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+/* common */
+#shopify-section-template--18553392234745__product-grid #CollectionSection-template--18553392234745__product-grid .collection .product-item .card-action {
+  position: relative;
+}
+#shopify-section-template--18553392234745__product-grid #CollectionSection-template--18553392234745__product-grid .collection .product-item .card-action:after {
+  display: inline-block;
+  width: auto;
+  height: auto;
+  background-color: #e8e831;
+  color: #0f1014;
+  padding: 10px;
+  border-radius: 2px;
+  cursor: pointer;
+  position: absolute;
+  right: 1%;
+  bottom: 1%;
+}
+/* Athena X */
+#shopify-section-template--18553392234745__product-grid #CollectionSection-template--18553392234745__product-grid .collection .product-item[data-product-id="8337380999417"] .card-action:after {
+  content: "Save €60 >";
+}
+/* Athena */
+#shopify-section-template--18553392234745__product-grid #CollectionSection-template--18553392234745__product-grid .collection .product-item[data-product-id="8507519664377"] .card-action:after {
+  content: "Save €50 >";
+}
+/* Athena pro */
+#shopify-section-template--18553392234745__product-grid #CollectionSection-template--18553392234745__product-grid .collection .product-item[data-product-id="8507519729913"] .card-action:after {
+  content: "Save €80 >";
+}
+/* Kraken */
+#shopify-section-template--18553392234745__product-grid #CollectionSection-template--18553392234745__product-grid .collection .product-item[data-product-id="8507519762681"] .card-action:after {
+  content: "Save €90 >";
+}
+/* Kraken pro */
+#shopify-section-template--18553392234745__product-grid #CollectionSection-template--18553392234745__product-grid .collection .product-item[data-product-id="8507519795449"] .card-action:after {
+  content: "Save €100 >";
+}
+/* desk */
+#shopify-section-template--18553392234745__product-grid #CollectionSection-template--18553392234745__product-grid .collection .product-item[data-product-id="8337387159801"] .card-action:after {
+  content: "Save €150 >";
+}
+
+#shopify-section-template--18176944079079__brand_slider_4z8LFz #brands-template--18176944079079__brand_slider_4z8LFz .halo-item .description:before,
+#shopify-section-template--18176944079079__brand_slider_4z8LFz #brands-template--18176944079079__brand_slider_4z8LFz .halo-item .description:after {
+  content: '';
+  display: inline-block;
+  background: url('https://cdn.shopify.com/s/files/1/0663/6742/2695/files/blast_products_ev_icons.png?v=1730104726') no-repeat;
+  background-size: cover;
+  width: 10px;
+  height: 23px;
+  vertical-align: text-top;
+  margin: 0 10px;
+}
+#shopify-section-template--18176944079079__brand_slider_4z8LFz #brands-template--18176944079079__brand_slider_4z8LFz .halo-item:hover .text {
+  text-decoration: none;
+}
+#shopify-section-template--18553392234745__image_banner_ty8mwK #halo-image-banner-template--18553392234745__image_banner_ty8mwK .item .banner-text {
+ max-width: 960px;
+ margin-left: auto;
+ margin-right: auto;
+}
+
+/* blast fall final 2024 page */
+#shopify-section-template--18420940472569__image_banner_eFdCEj {
+  background: url('https://cdn.shopify.com/s/files/1/0663/6742/2695/files/blast_fall_final_first_modal_bgImg.png?v=1730254656') no-repeat;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+#shopify-section-template--18420940472569__image_banner_eFdCEj:after {
+  content: '';
+  width: 400px;
+  height: 500px;
+  background: url('https://cdn.shopify.com/s/files/1/0663/6742/2695/files/blast_fall_final_rcperson.png?v=1730257108') no-repeat;
+  background-size: cover;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  transform: translateY(-50%);
+}
+#shopify-section-template--18420940472569__spotlight_block_jqz7Yd {
+  background: url('https://cdn.shopify.com/s/files/1/0663/6742/2695/files/blast_fall_final_second_modal_bgImg.png?v=1730255025') no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+#shopify-section-template--18420940472569__image_banner_GPM8nm {
+  background: url('https://cdn.shopify.com/s/files/1/0663/6742/2695/files/blast_fall_final_third_modal_bgImg.png?v=1730255016') no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+#shopify-section-template--18420940472569__collapsible_content_YBNe7c {
+  background: url('https://cdn.shopify.com/s/files/1/0663/6742/2695/files/blast_fall_final_fouth_modal_bgImg.png?v=1730255037') no-repeat;
+  background-size: cover;
+  background-position: left bottom;
+}
+#shopify-section-template--18420940472569__image_banner_jtaPXN {
+  background: url('https://cdn.shopify.com/s/files/1/0663/6742/2695/files/blast_fall_final_fifth_modal_bgImg.png?v=1730255031') no-repeat;
+  background-size: cover;
+  background-position: left;
+}
+#shopify-section-template--18420940472569__featured_product_mtJJJ3 {
+  background: url('https://cdn.shopify.com/s/files/1/0663/6742/2695/files/blast_fall_final_sixth_modal_bgImg.png?v=1730255044') no-repeat;
+  background-size: cover;
+  background-position: left;
+}
+#shopify-section-template--18420940472569__image_banner_tchwki {
+  background: url('https://cdn.shopify.com/s/files/1/0663/6742/2695/files/blast_fall_final_seventh_modal_bgImg.png?v=1730255067') no-repeat;
+  background-size: cover;
+  background-position: right;
+}
+#shopify-section-template--18420940472569__image_banner_bBzyzQ {
+  background: url('https://cdn.shopify.com/s/files/1/0663/6742/2695/files/blast_fall_final_eighth_modal_bgImg.png?v=1730256617') no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+#shopify-section-template--18420940472569__image_banner_8YW3bE {
+  background: url('https://cdn.shopify.com/s/files/1/0663/6742/2695/files/blast_fall_final_ninth_modal_bgImg.png?v=1730256624') no-repeat;
+  background-size: cover;
+  background-position: right;
+  position: relative;
+}
+#shopify-section-template--18420940472569__image_banner_8YW3bE:after {
+  content: '';
+  width: 400px;
+  height: 400px;
+  background: url('https://cdn.shopify.com/s/files/1/0663/6742/2695/files/blast_fall_final_rbperson.png?v=1730257108') no-repeat;
+  background-size: cover;
+  position: absolute;
+  top: 0;
+  right: 0;
+  transform: translateY(-100px);
+}
+
+/* black friday page */
+#shopify-section-template--18576461627641__product-grid #CollectionSection-template--18576461627641__product-grid .card-product {
+  background: url('https://cdn.shopify.com/s/files/1/0663/6742/2695/files/black_friday_product_bgImg.png?v=1730440793') no-repeat;
+  background-size: 100% calc(100% + 1px);
+}
+#shopify-section-template--18576461627641__product-grid #CollectionSection-template--18576461627641__product-grid .media--loading-effect {
+  background: none !important;
+}
+#shopify-section-template--18189317046503__featured_product_aFKaPP {
+  background: url('https://cdn.shopify.com/s/files/1/0663/6742/2695/files/black_friday_bgImg_first.png?v=1730441818') no-repeat;
+  background: cover;
+}
+#shopify-section-template--18189317046503__featured_product_aFKaPP .featured-product .halo-productView-right {
+  padding-left: 0;
+  padding-top: 50px;
+}
+#shopify-section-template--18576461627641__product-grid {
+  background: url('https://cdn.shopify.com/s/files/1/0663/6742/2695/files/black_friday_bgImg_second.png?v=1730441819') no-repeat;
+  background-size: cover;
+}
+#shopify-section-template--18576461627641__product-grid .card-title {
+  color: #000;
+}
+#shopify-section-template--18576461627641__product-grid .collection .card-information {
+  background-color: #FEECEA;
+  box-shadow: 0px 0px 12px 2px #0000001A;
+}
+#shopify-section-template--18576461627641__product-grid #CollectionSection-template--18576461627641__product-grid .collection .card-action .button {
+  display: none;
+}
+#shopify-section-template--18576461627641__product-grid #CollectionSection-template--18576461627641__product-grid .card-swatch {
+  bottom: 120px;
+}
+#shopify-section-template--18576461627641__collapsible_content_zKGWrG {
+  background: url('https://cdn.shopify.com/s/files/1/0663/6742/2695/files/black_friday_bgImg_fouth.png?v=1730441817') no-repeat;
+  background-size: cover;
+}
+
+#halo-image-banner-template--18576461627641__image_banner_kUDzYP .black_friday_krathpro_product:before {
+  content: 'Low Stock';
+  display: block;
+  font-size: 20px;
+  font-weight: 500;
+  color: #F4002C;
+  height: 32px;
+  margin-left: 10px;
+}
+
+#halo-image-banner-template--18576461627641__image_banner_kUDzYP .item .banner-text:after {
+  content: '';
+  display: block;
+  width: 70%;
+  height: 30px;
+  background: url('https://cdn.shopify.com/s/files/1/0702/4053/4777/files/black_friday_sale__progress_eu.png?v=1732678583') no-repeat;
+  background-size: contain;
+}
+#shopify-section-template--18189317046503__featured_product_aFKaPP #ProductSection-template--18189317046503__featured_product_aFKaPP .moreItem-productText {
+  border-bottom: none;
+}
+#halo-image-banner-template--18576461627641__image_banner_kUDzYP .banner-sub-title:after {
+  content: 'Limited Time';
+  display: inline-block;
+  padding: 2px 10px;
+  background-color: #EA8F4E;
+  color: #fff;
+  font-size: 12px;
+  vertical-align: middle;
+  margin-left: 10px;
+  border-radius: 2px;
+}
+#halo-image-banner-template--18576461627641__image_banner_kUDzYP .item--specialImg .banner-btn--style2 {
+  font-size: 26px;
+  padding: 10px;
+  background: url('https://cdn.shopify.com/s/files/1/0663/6742/2695/files/black_friday_quick_btn.png?v=1730703421') no-repeat !important;
+  background-size: 100% 100% !important;
+  position: relative;
+  width: 350px !important;
+  height: 62px;
+  font-weight: 500 !important;
+}
+#halo-image-banner-template--18576461627641__image_banner_kUDzYP .item--specialImg .banner-btn--style2:before {
+  content: ' €130 OFF ';
+  font-size: 26px;
+  color: #F4002C;
+  vertical-align: middle;
+  position: absolute;
+  left: 22px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+#halo-image-banner-template--18576461627641__image_banner_kUDzYP .item--specialImg .banner-btn--style2 span {
+  position: absolute;
+  right: 22px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+#shopify-section-template--18189317046503__featured_product_aFKaPP #ProductSection-template--18189317046503__featured_product_aFKaPP #quick_to_product_shop {
+  font-size: 0px;
+}
+#shopify-section-template--18576461627641__spotlight_block_EL4dcJ .spotlight-inner .spotlight-button.enable-transparnet span {
+  text-decoration: none;
+}
+.spotlight-inner.enable-transparnet.text-center .spotlight-button.button[aria-disabled=true]{
+  opacity: 1;
+}
+#shopify-section-template--18576461627641__spotlight_block_EL4dcJ #spotlight-template--18576461627641__spotlight_block_EL4dcJ .spotlight-inner .title.custom-text-style {
+  background-color: #18191b;
+  margin-bottom: 0px;
+  padding: 10px 0px;
+}
+#shopify-section-template--18576461627641__spotlight_block_EL4dcJ #spotlight-template--18576461627641__spotlight_block_EL4dcJ .spotlight-inner .title.custom-text-style:after{
+  content: '';
+  display: inline-block;
+  width: 90%;
+  height: 1px;
+  background-color: #444444;
+}
+#shopify-section-template--18576461627641__spotlight_block_EL4dcJ #spotlight-template--18576461627641__spotlight_block_EL4dcJ .spotlight-inner .des {
+  background-color: #18191b;
+  margin-top: 0px !important;
+  padding: 10px 0;
+}
+/* common */
+#shopify-section-template--18576461627641__product-grid #CollectionSection-template--18576461627641__product-grid .collection .product-item .card-action {
+  position: relative;
+}
+#shopify-section-template--18576461627641__product-grid #CollectionSection-template--18576461627641__product-grid .collection .product-item .card-action:after {
+  display: inline-block;
+  width: auto;
+  height: auto;
+  background-color: #F4002C;
+  color: #ffffff;
+  padding: 10px;
+  border-radius: 2px;
+  cursor: pointer;
+  position: absolute;
+  right: 1%;
+  bottom: 1%;
+}
+/* Athena X */
+#shopify-section-template--18576461627641__product-grid #CollectionSection-template--18576461627641__product-grid .collection .product-item[data-product-id="8337380999417"] .card-action:after {
+  content: "Save €60 >";
+  
+}
+/* Athena */
+#shopify-section-template--18576461627641__product-grid #CollectionSection-template--18576461627641__product-grid .collection .product-item[data-product-id="8507519664377"] .card-action:after {
+  content: "Save €50 >";
+}
+/* Athena pro */
+#shopify-section-template--18576461627641__product-grid #CollectionSection-template--18576461627641__product-grid .collection .product-item[data-product-id="8507519729913"] .card-action:after {
+  content: "Save €100 >";
+}
+/* Kraken */
+#shopify-section-template--18576461627641__product-grid #CollectionSection-template--18576461627641__product-grid .collection .product-item[data-product-id="8507519762681"] .card-action:after {
+  content: "Save €90 >";
+}
+/* Kraken pro */
+#shopify-section-template--18576461627641__product-grid #CollectionSection-template--18576461627641__product-grid .collection .product-item[data-product-id="8507519795449"] .card-action:after {
+  content: "Save €130 >";
+}
+/* desk */
+#shopify-section-template--18576461627641__product-grid #CollectionSection-template--18576461627641__product-grid .collection .product-item[data-product-id="8337387159801"] .card-action:after {
+  content: "Save €150 >";
+}
+/* pixel */
+#shopify-section-template--18576461627641__product-grid #CollectionSection-template--18576461627641__product-grid .collection .product-item[data-product-id="8575320719609"] .card-action:after {
+  content: "Save €30 >";
+}
+
+
+#halo-image-banner-template--18576461627641__image_banner_kUDzYP .halo-block-header .rte:after {
+  content: ' Limited Units Only.';
+  color: #fff;
+  font-size: 24px;
+}
+#halo-image-banner-template--18576461627641__image_banner_kUDzYP .black_friday_krathpro_product .black_friday_krathpro_price {
+  display: inline-block;
+  color: #fff;
+  font-size: 38px;
+  margin-right: 8px;
+  margin-top: 20px;
+}
+#halo-image-banner-template--18576461627641__image_banner_kUDzYP .black_friday_krathpro_product .black_friday_krathpro_comprice {
+  color: rgba(255, 255, 255, 0.8); font-size: 24px;text-decoration: line-through;
+}
+
+/* end black friday page */
+
+/* cyber monday page */
+#shopify-section-template--18675038519545__product-grid #CollectionSection-template--18675038519545__product-grid .card-product {
+  background: url('https://cdn.shopify.com/s/files/1/0663/6742/2695/files/black_friday_product_bgImg.png?v=1730440793') no-repeat;
+  background-size: 100% calc(100% + 1px);
+}
+#shopify-section-template--18675038519545__product-grid #CollectionSection-template--18675038519545__product-grid .media--loading-effect {
+  background: none !important;
+}
+#shopify-section-template--18189317046503__featured_product_aFKaPP {
+  background: url('https://cdn.shopify.com/s/files/1/0663/6742/2695/files/black_friday_bgImg_first.png?v=1730441818') no-repeat;
+  background: cover;
+}
+#shopify-section-template--18189317046503__featured_product_aFKaPP .featured-product .halo-productView-right {
+  padding-left: 0;
+  padding-top: 50px;
+}
+#shopify-section-template--18675038519545__product-grid {
+  background: url('https://cdn.shopify.com/s/files/1/0663/6742/2695/files/black_friday_bgImg_second.png?v=1730441819') no-repeat;
+  background-size: cover;
+}
+#shopify-section-template--18675038519545__product-grid .card-title {
+  color: #000;
+}
+#shopify-section-template--18675038519545__product-grid .collection .card-information {
+  background-color: #FEECEA;
+  box-shadow: 0px 0px 12px 2px #0000001A;
+}
+#shopify-section-template--18675038519545__product-grid #CollectionSection-template--18675038519545__product-grid .collection .card-action .button {
+  display: none;
+}
+#shopify-section-template--18675038519545__product-grid #CollectionSection-template--18675038519545__product-grid .card-swatch {
+  bottom: 120px;
+}
+#shopify-section-template--18576461627641__collapsible_content_zKGWrG {
+  background: url('https://cdn.shopify.com/s/files/1/0663/6742/2695/files/black_friday_bgImg_fouth.png?v=1730441817') no-repeat;
+  background-size: cover;
+}
+
+#halo-image-banner-template--18675038519545__image_banner_kUDzYP .black_friday_krathpro_product:before {
+  content: 'Low Stock';
+  display: block;
+  font-size: 20px;
+  font-weight: 500;
+  color: #F4002C;
+  height: 32px;
+  margin-left: 10px;
+}
+
+#halo-image-banner-template--18675038519545__image_banner_kUDzYP .item .banner-text:after {
+  content: '';
+  display: block;
+  width: 70%;
+  height: 30px;
+  background: url('https://cdn.shopify.com/s/files/1/0702/4053/4777/files/black_friday_sale__progress_eu.png?v=1732678583') no-repeat;
+  background-size: contain;
+}
+#shopify-section-template--18189317046503__featured_product_aFKaPP #ProductSection-template--18189317046503__featured_product_aFKaPP .moreItem-productText {
+  border-bottom: none;
+}
+#halo-image-banner-template--18675038519545__image_banner_kUDzYP .banner-sub-title:after {
+  content: 'Limited Time';
+  display: inline-block;
+  padding: 2px 10px;
+  background-color: #EA8F4E;
+  color: #fff;
+  font-size: 12px;
+  vertical-align: middle;
+  margin-left: 10px;
+  border-radius: 2px;
+}
+#halo-image-banner-template--18675038519545__image_banner_kUDzYP .item--specialImg .banner-btn--style2 {
+  font-size: 26px;
+  padding: 10px;
+  background: url('https://cdn.shopify.com/s/files/1/0663/6742/2695/files/black_friday_quick_btn.png?v=1730703421') no-repeat !important;
+  background-size: 100% 100% !important;
+  position: relative;
+  width: 350px !important;
+  height: 62px;
+  font-weight: 500 !important;
+}
+#halo-image-banner-template--18675038519545__image_banner_kUDzYP .item--specialImg .banner-btn--style2:before {
+  content: ' €100 OFF ';
+  font-size: 26px;
+  color: #F4002C;
+  vertical-align: middle;
+  position: absolute;
+  left: 22px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+#halo-image-banner-template--18675038519545__image_banner_kUDzYP .item--specialImg .banner-btn--style2 span {
+  position: absolute;
+  right: 22px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+#shopify-section-template--18189317046503__featured_product_aFKaPP #ProductSection-template--18189317046503__featured_product_aFKaPP #quick_to_product_shop {
+  font-size: 0px;
+}
+#shopify-section-template--18675038519545__spotlight_block_EL4dcJ .spotlight-inner .spotlight-button.enable-transparnet span {
+  text-decoration: none;
+}
+.spotlight-inner.enable-transparnet.text-center .spotlight-button.button[aria-disabled=true]{
+  opacity: 1;
+}
+#shopify-section-template--18675038519545__spotlight_block_EL4dcJ #spotlight-template--18675038519545__spotlight_block_EL4dcJ .spotlight-inner .title.custom-text-style {
+  background-color: #18191b;
+  margin-bottom: 0px;
+  padding: 10px 0px;
+}
+#shopify-section-template--18675038519545__spotlight_block_EL4dcJ #spotlight-template--18675038519545__spotlight_block_EL4dcJ .spotlight-inner .title.custom-text-style:after{
+  content: '';
+  display: inline-block;
+  width: 90%;
+  height: 1px;
+  background-color: #444444;
+}
+#shopify-section-template--18675038519545__spotlight_block_EL4dcJ #spotlight-template--18675038519545__spotlight_block_EL4dcJ .spotlight-inner .des {
+  background-color: #18191b;
+  margin-top: 0px !important;
+  padding: 10px 0;
+}
+/* common */
+#shopify-section-template--18675038519545__product-grid #CollectionSection-template--18675038519545__product-grid .collection .product-item .card-action {
+  position: relative;
+}
+#shopify-section-template--18675038519545__product-grid #CollectionSection-template--18675038519545__product-grid .collection .product-item .card-action:after {
+  display: inline-block;
+  width: auto;
+  height: auto;
+  background-color: #F4002C;
+  color: #ffffff;
+  padding: 10px;
+  border-radius: 2px;
+  cursor: pointer;
+  position: absolute;
+  right: 1%;
+  bottom: 1%;
+}
+/* Athena X */
+/* #shopify-section-template--18675038519545__product-grid #CollectionSection-template--18675038519545__product-grid .collection .product-item[data-product-id="8337380999417"] .card-action:after {
+  content: "Save €60 >";
+  
+} */
+/* Athena */
+#shopify-section-template--18675038519545__product-grid #CollectionSection-template--18675038519545__product-grid .collection .product-item[data-product-id="8507519664377"] .card-action:after {
+  content: "Save €40 >";
+}
+/* Athena pro */
+#shopify-section-template--18675038519545__product-grid #CollectionSection-template--18675038519545__product-grid .collection .product-item[data-product-id="8507519729913"] .card-action:after {
+  content: "Save €80 >";
+}
+/* Kraken */
+#shopify-section-template--18675038519545__product-grid #CollectionSection-template--18675038519545__product-grid .collection .product-item[data-product-id="8507519762681"] .card-action:after {
+  content: "Save €90 >";
+}
+/* Kraken pro */
+#shopify-section-template--18675038519545__product-grid #CollectionSection-template--18675038519545__product-grid .collection .product-item[data-product-id="8507519795449"] .card-action:after {
+  content: "Save €100 >";
+}
+/* desk */
+#shopify-section-template--18675038519545__product-grid #CollectionSection-template--18675038519545__product-grid .collection .product-item[data-product-id="8337387159801"] .card-action:after {
+  content: "Save €150 >";
+}
+/* pixel */
+#shopify-section-template--18675038519545__product-grid #CollectionSection-template--18675038519545__product-grid .collection .product-item[data-product-id="8575320719609"] .card-action:after {
+  content: "Save €30 >";
+}
+#halo-image-banner-template--18675038519545__image_banner_kUDzYP .halo-block-header .rte:after {
+  content: ' Limited Units Only.';
+  color: #fff;
+  font-size: 24px;
+}
+#halo-image-banner-template--18675038519545__image_banner_kUDzYP .black_friday_krathpro_product .black_friday_krathpro_price {
+  display: inline-block;
+  color: #fff;
+  font-size: 38px;
+  margin-right: 8px;
+  margin-top: 20px;
+}
+#halo-image-banner-template--18675038519545__image_banner_kUDzYP .black_friday_krathpro_product .black_friday_krathpro_comprice {
+  color: rgba(255, 255, 255, 0.8); font-size: 24px;text-decoration: line-through;
+}
+#shopify-section-template--18675038519545__collapsible_content_zKGWrG {
+  background: url('https://cdn.shopify.com/s/files/1/0663/6742/2695/files/black_friday_bgImg_fouth.png?v=1730441817') no-repeat;
+  background-size: cover;
+}
+
+/* end cyber monday page */
+
+
+
+/* r6 major */
+#shopify-section-template--18584482808057__slidable_spotlight_PpqmFG,
+#shopify-section-template--18584482808057__image_banner_cjjJpX,
+#shopify-section-template--18584482808057__spotlight_block_9Lg86D,
+#shopify-section-template--18584482808057__image_banner_8YW3bE {
+  margin-top: -1px;
+}
+/* end r6 major */
+
+/* red bull page */
+#shopify-section-template--18623044026617__image_banner_cjjJpX #halo-image-banner-template--18623044026617__image_banner_cjjJpX {
+  border-top: 2px solid #DB0A40;
+  border-bottom: 2px solid #DB0A40;
+}
+
+/* Athena X Pink */
+#shopify-section-template--17951220564217__main #ProductSection-template--17951220564217__main #product-price-8337380999417 .athenax_black_price.ergonomics_right_price,
+#shopify-section-template--17951220564217__main #ProductSection-template--17951220564217__main #product-price-8337380999417 .athenax_white_price.ergonomics_right_price,
+#shopify-section-template--18346561601785__main #ProductSection-template--18346561601785__main #product-price-8507519729913 .athenapro_black_price.ergonomics_right_price,
+#shopify-section-template--18346561536249__main #ProductSection-template--18346561536249__main #product-price-8507519664377 .athena_black_price.ergonomics_right_price,
+#shopify-section-template--18346561569017__main #ProductSection-template--18346561569017__main #product-price-8507519762681 .kraken_black_price.ergonomics_right_price,
+#shopify-section-template--18346567074041__main #ProductSection-template--18346567074041__main #product-price-8507519795449 .krakenpro_black_price.ergonomics_right_price,
+#shopify-section-template--18141738533113__main #ProductSection-template--18141738533113__main #product-price-8575320719609 .pixelArtLed_price.ergonomics_right_price,
+#shopify-section-template--17951220531449__main #ProductSection-template--17951220531449__main #product-price-8337387159801 .atlasdesk_price.ergonomics_right_price,
+#shopify-section-template--18742675833081__main #ProductSection-template--18742675833081__main #product-price-8657985863929 .ergonomics_right_price {
+  color: #18181B;
+  font-size: 28px;
+  text-decoration: line-through;
+  font-weight: 500;
+}
+
+#shopify-section-template--18742675833081__main #ProductSection-template--18742675833081__main #product-price-8657985863929 .ergonomics_right_price:before {
+  content: '€319';
+  display: inline-block;
+  font-size: 40px;
+  color: #B80212;
+  margin-right: 10px;
+  font-weight: 700;
+}
+#shopify-section-template--17951220564217__main #ProductSection-template--17951220564217__main #product-price-8337380999417 .athenax_black_price.ergonomics_right_price:before {
+  content: '€339';
+  display: inline-block;
+  font-size: 40px;
+  color: #B80212;
+  margin-right: 10px;
+  font-weight: 700;
+}
+#shopify-section-template--17951220564217__main #ProductSection-template--17951220564217__main #product-price-8337380999417 .athenax_white_price.ergonomics_right_price:before {
+  content: '€319';
+  display: inline-block;
+  font-size: 40px;
+  color: #B80212;
+  margin-right: 10px;
+  font-weight: 700;
+}
+#shopify-section-template--18346561601785__main #ProductSection-template--18346561601785__main #product-price-8507519729913 .athenapro_black_price.ergonomics_right_price:before {
+  content: '€449';
+  display: inline-block;
+  font-size: 40px;
+  color: #B80212;
+  margin-right: 10px;
+  font-weight: 700;
+}
+#shopify-section-template--18346561536249__main #ProductSection-template--18346561536249__main #product-price-8507519664377 .athena_black_price.ergonomics_right_price:before {
+  content: '€359';
+  display: inline-block;
+  font-size: 40px;
+  color: #B80212;
+  margin-right: 10px;
+  font-weight: 700;
+}
+#shopify-section-template--18346561569017__main #ProductSection-template--18346561569017__main #product-price-8507519762681 .kraken_black_price.ergonomics_right_price:before {
+  content: '€469';
+  display: inline-block;
+  font-size: 40px;
+  color: #B80212;
+  margin-right: 10px;
+  font-weight: 700;
+}
+#shopify-section-template--18346567074041__main #ProductSection-template--18346567074041__main #product-price-8507519795449 .krakenpro_black_price.ergonomics_right_price:before {
+  content: '€539';
+  display: inline-block;
+  font-size: 40px;
+  color: #B80212;
+  margin-right: 10px;
+  font-weight: 700;
+}
+#shopify-section-template--18141738533113__main #ProductSection-template--18141738533113__main #product-price-8575320719609 .pixelArtLed_price.ergonomics_right_price:before {
+  content: '€89';
+  display: inline-block;
+  font-size: 40px;
+  color: #B80212;
+  margin-right: 10px;
+  font-weight: 700;
+}
+#shopify-section-template--17951220531449__main #ProductSection-template--17951220531449__main #product-price-8337387159801 .atlasdesk_price.ergonomics_right_price:before {
+  content: '€899';
+  display: inline-block;
+  font-size: 40px;
+  color: #B80212;
+  margin-right: 10px;
+  font-weight: 700;
+}
+
+
+@media (min-width: 768px) {
+  #shopify-section-template--18623044026617__image_banner_cjjJpX #halo-image-banner-template--18623044026617__image_banner_cjjJpX .is-slide > .slick-dots {
+      left: -10%;
+      bottom: auto;
+      top: 50%;
+      width: 10px;
+      transform: translate(-50%, -50%);
+  }
+  #shopify-section-template--18623044026617__image_banner_cjjJpX .slick-dots li {
+    margin: 0 0 30px 0;
+  }
+  #shopify-section-template--18623044026617__image_banner_cjjJpX .slick-dots li button {
+      width: 120px;
+      height: 60px;
+      border-radius: 4px;
+  }
+  #shopify-section-template--18623044026617__image_banner_cjjJpX .slick-dots li:before {
+    color: #fff;
+    font-size: 18px;
+    font-weight: 500;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    left: 50%;
+    white-space: nowrap;
+    cursor: pointer;
+  }
+  #shopify-section-template--18623044026617__image_banner_cjjJpX .slick-dots li:first-child {
+    position: relative;
+  }
+  #shopify-section-template--18623044026617__image_banner_cjjJpX .slick-dots li:first-child:before {
+    content: "Kraken Pro";
+  }
+  #shopify-section-template--18623044026617__image_banner_cjjJpX .slick-dots li:nth-of-type(2):before {
+    content: "Kraken";
+  }
+  #shopify-section-template--18623044026617__image_banner_cjjJpX .slick-dots li:nth-of-type(3):before {
+    content: "Athena Pro";
+  }
+  #shopify-section-template--18623044026617__image_banner_cjjJpX .slick-dots li:nth-of-type(4):before {
+    content: "Athena";
+  }
+  #shopify-section-template--18623044026617__image_banner_cjjJpX .slick-dots li:nth-of-type(5):before {
+    content: "Athena X";
+  }
+  #shopify-section-template--18623044026617__image_banner_cjjJpX .slick-dots li.slick-active button {
+    background-color: #fff;
+  }
+  #shopify-section-template--18623044026617__image_banner_cjjJpX .slick-dots li.slick-active:before {
+    color: #db0a40;
+  }
+}
+
+/* end red bull page */
+
+/* xmas event page */
+#shopify-section-template--18697338028281__product-grid {
+  background: url('https://cdn.shopify.com/s/files/1/0663/6742/2695/files/xmas_eventpage_bgImg_sec.png?v=1733473323') no-repeat;
+  background-size: cover;
+  margin-top: -1px;
+}
+#shopify-section-template--18697338028281__product-grid #CollectionSection-template--18697338028281__product-grid .card-media {
+  background: url('https://cdn.shopify.com/s/files/1/0663/6742/2695/files/xmas_eventpage_bgImg_common.jpg?v=1733623134') no-repeat;
+  background-size: 100% 100%;
+  background-position: center;
+}
+#shopify-section-template--18697338028281__product-grid #CollectionSection-template--18697338028281__product-grid .collection .card-information {
+  box-shadow: none;
+}
+#shopify-section-template--18697338028281__product-grid #CollectionSection-template--18697338028281__product-grid .card-action {
+  display: none;
+}
+#shopify-section-template--18697338028281__product-grid #CollectionSection-template--18697338028281__product-grid .card-title {
+  color: #D6AF7C;
+  font-size: 20px;
+  min-height: 66px;
+}
+#shopify-section-template--18697338028281__product-grid #CollectionSection-template--18697338028281__product-grid .card-information__wrapper {
+  text-align: center;
+}
+#shopify-section-template--18697338028281__product-grid #CollectionSection-template--18697338028281__product-grid .card-information__wrapper .card-price {
+  justify-content: center;
+  flex-direction: column;
+}
+#shopify-section-template--18697338028281__product-grid #CollectionSection-template--18697338028281__product-grid .price-item.price-item--regular {
+  font-size: 18px;
+  color: #D6AF7C;
+  font-weight: 400;
+  text-decoration: line-through;
+}
+#shopify-section-template--18697338028281__product-grid #CollectionSection-template--18697338028281__product-grid .collection_shop_now_img {
+  width: 100%;
+  height: 12px;
+  margin-top: 20px;
+}
+#shopify-section-template--18697338028281__product-grid #CollectionSection-template--18697338028281__product-grid .collection_shop_now_button {
+  font-size: 18px;
+  color: #7a0603;
+  background: linear-gradient(90deg, #F9DBBF 0%, #CFAA67 100%);
+  width: 199px;
+  padding: 15px 0;
+  margin-top: 20px;
+  cursor: pointer;
+  border-radius: 2px;
+  margin-left: auto;
+  margin-right: auto;
+}
+/* common */
+#shopify-section-template--18697338028281__product-grid #CollectionSection-template--18697338028281__product-grid .price__regular .price__last {
+  position: relative;
+}
+#shopify-section-template--18697338028281__product-grid #CollectionSection-template--18697338028281__product-grid .price__regular .price__last:before {
+  font-weight: 600;
+  font-size: 30px;
+  color: #D6AF7C;
+  margin-right: 4px;
+}
+#shopify-section-template--18697338028281__product-grid #CollectionSection-template--18697338028281__product-grid .price__regular .price__last:after {
+  font-size: 16px;
+  font-weight: 500;
+  padding: 4px 0px;
+  width: 80px;
+  color: #D6AF7C;
+  background: #B80212;
+  position: absolute;
+  bottom: 26px;
+  left: calc(50% + 5px);
+  border-radius: 4px;
+}
+/* Athena */
+#shopify-section-template--18697338028281__product-grid #CollectionSection-template--18697338028281__product-grid .product-item[data-product-id="8507519664377"] .price__regular .price__last:before {
+  content: '€359';
+}
+#shopify-section-template--18697338028281__product-grid #CollectionSection-template--18697338028281__product-grid .product-item[data-product-id="8507519664377"] .price__regular .price__last:after {
+  content: 'save €40';
+}
+/* Athena Pro */
+#shopify-section-template--18697338028281__product-grid #CollectionSection-template--18697338028281__product-grid .product-item[data-product-id="8507519729913"] .price__regular .price__last:before {
+  content: '€419';
+}
+#shopify-section-template--18697338028281__product-grid #CollectionSection-template--18697338028281__product-grid .product-item[data-product-id="8507519729913"] .price__regular .price__last:after {
+  content: 'save €80';
+}
+/* Athena X */
+#shopify-section-template--18697338028281__product-grid #CollectionSection-template--18697338028281__product-grid .product-item[data-product-id="8337380999417"] .price-item.price-item--regular {
+  /* content: '€329'; */
+  text-decoration: none;
+}
+/* Athena X Pink */
+#shopify-section-template--18697338028281__product-grid #CollectionSection-template--18697338028281__product-grid [data-variant-id="45007065350393"] .product-item[data-product-id="8337380999417"] .price-item.price-item--regular {
+  text-decoration: line-through;
+}
+#shopify-section-template--18697338028281__product-grid #CollectionSection-template--18697338028281__product-grid [data-variant-id="45007065350393"] .product-item[data-product-id="8337380999417"] .price__regular .price__last:before {
+  content: '€319';
+}
+#shopify-section-template--18697338028281__product-grid #CollectionSection-template--18697338028281__product-grid [data-variant-id="45007065350393"] .product-item[data-product-id="8337380999417"] .price__regular .price__last:after {
+  content: 'save €50';
+}
+
+/* Kraken Pro */
+#shopify-section-template--18697338028281__product-grid #CollectionSection-template--18697338028281__product-grid .product-item[data-product-id="8507519795449"] .price__regular .price__last:before {
+  content: '€499';
+}
+#shopify-section-template--18697338028281__product-grid #CollectionSection-template--18697338028281__product-grid .product-item[data-product-id="8507519795449"] .price__regular .price__last:after {
+  content: 'save €100';
+}
+/* Kraken */
+#shopify-section-template--18697338028281__product-grid #CollectionSection-template--18697338028281__product-grid .product-item[data-product-id="8507519762681"] .price__regular .price__last:before {
+  content: '€429';
+}
+#shopify-section-template--18697338028281__product-grid #CollectionSection-template--18697338028281__product-grid .product-item[data-product-id="8507519762681"] .price__regular .price__last:after {
+  content: 'save €90';
+}
+/* desk */
+#shopify-section-template--18697338028281__product-grid #CollectionSection-template--18697338028281__product-grid .product-item[data-product-id="8337387159801"] .price__regular .price__last:before {
+  content: '€849';
+}
+#shopify-section-template--18697338028281__product-grid #CollectionSection-template--18697338028281__product-grid .product-item[data-product-id="8337387159801"] .price__regular .price__last:after {
+  content: 'save €150';
+}
+/* pixel */
+#shopify-section-template--18697338028281__product-grid #CollectionSection-template--18697338028281__product-grid .product-item[data-product-id="8575320719609"] .price__regular .price__last:before {
+  content: '€89';
+}
+#shopify-section-template--18697338028281__product-grid #CollectionSection-template--18697338028281__product-grid .product-item[data-product-id="8575320719609"] .price__regular .price__last:after {
+  content: 'save €30';
+}
+
+#shopify-section-template--18697338028281__custom_text_block_G967GT .section-block-template--18697338028281__custom_text_block_G967GT .halo-block-header .title .text {
+  margin-top: 50px;
+  margin-bottom: 20px;
+  background: linear-gradient(90deg, #F9DBBF 0%, #CFAA67 100%);
+  -webkit-background-clip: text;  /* Safari */
+  background-clip: text;  /* Chrome, Firefox */
+  color: transparent;
+}
+
+#shopify-section-template--18697338028281__spotlight_block_EL4dcJ .section-block-template--18697338028281__spotlight_block_EL4dcJ .halo-block-header .title .text {
+  background: linear-gradient(90deg, #F9DBBF 0%, #CFAA67 100%);
+  -webkit-background-clip: text;  /* Safari */
+  background-clip: text;  /* Chrome, Firefox */
+  color: transparent;
+}
+
+#shopify-section-template--18697338028281__spotlight_block_EL4dcJ {
+  background: url('https://cdn.shopify.com/s/files/1/0663/6742/2695/files/xmas_eventpage_bgImg_thi.png?v=1733473323') no-repeat;
+  background-size: cover;
+}
+
+#shopify-section-template--18697338028281__spotlight_block_EL4dcJ .spotlight-inner .title.custom-text-style {
+  background-color: #012519;
+  margin-top: 0;
+  margin-bottom: 0;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+#shopify-section-template--18697338028281__spotlight_block_EL4dcJ .spotlight-inner .des {
+  background-color: #012519;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  position: relative;
+  margin-top: 0;
+}
+#shopify-section-template--18697338028281__spotlight_block_EL4dcJ .spotlight-inner .des:before {
+  content: "";
+  display: inline-block;
+  width: 70%;
+  height: 1px;
+  background-color: #044731;
+  position: absolute;
+  top: 0;
+  left: 15%;
+}
+
+#shopify-section-template--18697338028281__blacklyte_home_guarantee_6FThk6 {
+  margin-top: -1px;
+}
+#shopify-section-template--18697338028281__blacklyte_home_guarantee_6FThk6 .blavklyte-guarantee {
+  background: url('https://cdn.shopify.com/s/files/1/0663/6742/2695/files/xmas_eventpage_bgImg_fou.png?v=1733478425') no-repeat;
+  background-size: cover;
+  background-position: bottom;
+}
+#shopify-section-template--18697338028281__blacklyte_home_guarantee_6FThk6 .blavklyte-guarantee .guarantee-wrapper {
+  background-color: #022F20;
+}
+#shopify-section-template--18697338028281__blacklyte_home_guarantee_6FThk6 .guarantee-title {
+  background: linear-gradient(90deg, #F9DBBF 0%, #CFAA67 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+#shopify-section-template--18697338028281__blacklyte_home_guarantee_6FThk6 .blavklyte-guarantee .info-title,
+#shopify-section-template--18697338028281__blacklyte_home_guarantee_6FThk6 .blavklyte-guarantee .info-text {
+  color: #ffffff;
+}
+/* end xmas event page */
+#shopify-section-template--18346567074041__spotlight_block_Xyxaqy .spotlight-inner .title.custom-text-style,
+#shopify-section-template--18346561569017__spotlight_block_Xyxaqy .spotlight-inner .title.custom-text-style,
+#shopify-section-template--18346561536249__spotlight_block_Xyxaqy .spotlight-inner .title.custom-text-style,
+#shopify-section-template--18346561601785__spotlight_block_Xyxaqy .spotlight-inner .title.custom-text-style {
+  background-color: #fff;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+#shopify-section-template--18346567074041__spotlight_block_Xyxaqy .spotlight-inner .des,
+#shopify-section-template--18346561569017__spotlight_block_Xyxaqy .spotlight-inner .des,
+#shopify-section-template--18346561536249__spotlight_block_Xyxaqy .spotlight-inner .des,
+#shopify-section-template--18346561601785__spotlight_block_Xyxaqy .spotlight-inner .des {
+  background-color: #fff;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  position: relative;
+}
+
+#shopify-section-template--18346567074041__spotlight_block_Xyxaqy .spotlight-inner .des:before,
+#shopify-section-template--18346561536249__spotlight_block_Xyxaqy .spotlight-inner .des:before,
+#shopify-section-template--18346561569017__spotlight_block_Xyxaqy .spotlight-inner .des:before,
+#shopify-section-template--18346561601785__spotlight_block_Xyxaqy .spotlight-inner .des:before {
+  content: '';
+  display: inline-block;
+  width: 70%;
+  height: 1px;
+  background-color: #c7c7c7;
+  position: absolute;
+  top: 0;
+  left: 15%;
+}
+/* div.all-gaming-chairs-new-collections#CollectionSection-template--17951219319033__product-grid .card-media {
+  background: url('https://cdn.shopify.com/s/files/1/0702/4053/4777/files/collections-bgimg.png?v=1742870888') no-repeat;
+  background-size: 100px 100px;
+  background-position: 10px 10px;
+} */
+@media (max-width: 767px) {
+  /* div.all-gaming-chairs-new-collections#CollectionSection-template--17951219319033__product-grid .card-media {
+    background-size: 50px 50px;
+  } */
+  
+  #shopify-section-template--17951220564217__main #ProductSection-template--17951220564217__main #product-price-8337380999417 .athenax_black_price.ergonomics_right_price,
+  #shopify-section-template--17951220564217__main #ProductSection-template--17951220564217__main #product-price-8337380999417 .athenax_white_price.ergonomics_right_price,
+  #shopify-section-template--18346561601785__main #ProductSection-template--18346561601785__main #product-price-8507519729913 .athenapro_black_price.ergonomics_right_price,
+  #shopify-section-template--18346561536249__main #ProductSection-template--18346561536249__main #product-price-8507519664377 .athena_black_price.ergonomics_right_price,
+  #shopify-section-template--18346561569017__main #ProductSection-template--18346561569017__main #product-price-8507519762681 .kraken_black_price.ergonomics_right_price,
+  #shopify-section-template--18346567074041__main #ProductSection-template--18346567074041__main #product-price-8507519795449 .krakenpro_black_price.ergonomics_right_price,
+  #shopify-section-template--18141738533113__main #ProductSection-template--18141738533113__main #product-price-8575320719609 .pixelArtLed_price.ergonomics_right_price,
+  #shopify-section-template--17951220531449__main #ProductSection-template--17951220531449__main #product-price-8337387159801 .atlasdesk_price.ergonomics_right_price,
+  #shopify-section-template--18742675833081__main #ProductSection-template--18742675833081__main #product-price-8657985863929 .ergonomics_right_price {
+    font-size: 22px;
+  }
+  
+  #shopify-section-template--17951220564217__main #ProductSection-template--17951220564217__main #product-price-8337380999417 .athenax_black_price.ergonomics_right_price:before,
+  #shopify-section-template--17951220564217__main #ProductSection-template--17951220564217__main #product-price-8337380999417 .athenax_white_price.ergonomics_right_price:before,
+  #shopify-section-template--18346561601785__main #ProductSection-template--18346561601785__main #product-price-8507519729913 .athenapro_black_price.ergonomics_right_price:before,
+  #shopify-section-template--18346561536249__main #ProductSection-template--18346561536249__main #product-price-8507519664377 .athena_black_price.ergonomics_right_price:before,
+  #shopify-section-template--18346561569017__main #ProductSection-template--18346561569017__main #product-price-8507519762681 .kraken_black_price.ergonomics_right_price:before,
+  #shopify-section-template--18346567074041__main #ProductSection-template--18346567074041__main #product-price-8507519795449 .krakenpro_black_price.ergonomics_right_price:before,
+  #shopify-section-template--18141738533113__main #ProductSection-template--18141738533113__main #product-price-8575320719609 .pixelArtLed_price.ergonomics_right_price:before,
+  #shopify-section-template--17951220531449__main #ProductSection-template--17951220531449__main #product-price-8337387159801 .atlasdesk_price.ergonomics_right_price:before,
+  #shopify-section-template--18742675833081__main #ProductSection-template--18742675833081__main #product-price-8657985863929 .ergonomics_right_price:before {
+  font-size: 34px;
+  margin-left: 4px;
+}
+  #shopify-section-template--17951219319033__product-grid .card-product .card-media {
+    background-size: 10vw;
+  }
+  .cursor-wrapper+.productView-images-wrapper .productView-image {
+    background-size: 100px 100px;
+  }
+  
+   #shopify-section-template--18346567074041__spotlight_block_Xyxaqy .spotlight-block .halo-row .halo-item,
+  #shopify-section-template--18346561569017__spotlight_block_Xyxaqy .spotlight-block .halo-row .halo-item,
+  #shopify-section-template--18346561536249__spotlight_block_Xyxaqy .spotlight-block .halo-row .halo-item,
+  #shopify-section-template--18346561601785__spotlight_block_Xyxaqy .spotlight-block .halo-row .halo-item {
+    width: 70% !important;
+  }
+  /* blast 产品列表页 */
+  #shopify-section-template--18553392234745__product-grid #CollectionSection-template--18553392234745__product-grid .collection .product-item .card-action:after{
+    font-size: 12px;
+    right: 0;
+    padding: 5px;
+    bottom: 0;
+  }
+  #shopify-section-template--18553392234745__product-grid #CollectionSection-template--18553392234745__product-grid:before,
+  #shopify-section-template--18553392234745__product-grid #CollectionSection-template--18553392234745__product-grid:after,
+  #shopify-section-template--18553392234745__product-grid .container-full:before,
+  #shopify-section-template--18553392234745__product-grid .container-full:after {
+    display: none;
+  }
+  #shopify-section-template--18553392234745__image_banner_ty8mwK #halo-image-banner-template--18553392234745__image_banner_ty8mwK .content-box--absolute.align-items--bottom {
+    bottom: 50px;
+  }
+  #shopify-section-template--18553392234745__image_banner_ty8mwK #halo-image-banner-template--18553392234745__image_banner_ty8mwK .item .banner-text {
+    line-height: 28px;
+  }
+  #shopify-section-template--18553392234745__image_banner_ty8mwK #halo-image-banner-template--18553392234745__image_banner_ty8mwK .banner-sub-title {
+    margin-bottom: 20px;
+    line-height: 1.2;
+  }
+  #shopify-section-template--18553392234745__image_banner_ty8mwK #halo-image-banner-template--18553392234745__image_banner_ty8mwK .banner-heading {
+    line-height: 34px !important;
+    margin-bottom: 20px;
+    font-size: 38px;
+  }
+  #ProductSection-template--18742675833081__main .breadcrumb-container.style--line_clamp_1,
+  #ProductSection-template--18742675833081__main .productView-moreItem.moreItem-breadcrumb .breadcrumb-bg {
+    background: none;
+  }
+  
+  
+
+  /* cyber monday page */
+        #halo-image-banner-template--18675038519545__image_banner_kUDzYP .black_friday_krathpro_product .black_friday_krathpro_price {
+          font-size: 35px;
+        }
+        #halo-image-banner-template--18675038519545__image_banner_kUDzYP .black_friday_krathpro_product .black_friday_krathpro_comprice {
+          font-size: 20px;
+        }
+        #shopify-section-template--18675038519545__spotlight_block_EL4dcJ .section-block-template--18189317046503__spotlight_block_EL4dcJ .halo-block-header .title,
+        #shopify-section-template--18675038519545__spotlight_block_EL4dcJ .section-block-template--18189317046503__spotlight_block_EL4dcJ .halo-block-header .rte{
+          margin-bottom: 10px;
+        }
+        #shopify-section-template--18675038519545__spotlight_block_EL4dcJ .spotlight-block .content.align-items--center {
+          padding-top: 0px;
+        }
+        #shopify-section-template--18675038519545__spotlight_block_EL4dcJ .spotlight-block .halo-row .halo-item{
+          width: 70% !important;
+        }
+        #halo-image-banner-template--18675038519545__image_banner_kUDzYP .item .banner-text:after {
+          width: 90%;
+        }
+        #halo-image-banner-template--18675038519545__image_banner_kUDzYP .item--specialImg .banner-btn--style2 {
+          font-size: 20px;
+          width: 240px !important;
+          height: 50px;
+        }
+        #halo-image-banner-template--18675038519545__image_banner_kUDzYP .item--specialImg .banner-btn--style2:before {
+          font-size: 20px;
+          left: 11px;
+        }
+        #halo-image-banner-template--18675038519545__image_banner_kUDzYP .item--specialImg .banner-btn--style2 span {
+          right: 11px;
+        }
+        #shopify-section-template--18189317046503__image_banner_ty8mwK #halo-image-banner-template--18189317046503__image_banner_ty8mwK .banner-sub-title {
+          margin-bottom: 20px;
+        }
+  /* end cyber monday page */
+  
+  
+
+  /* red bull */
+  #shopify-section-template--18623044026617__image_banner_cjjJpX .slideshow .slick-dots {
+    bottom: 10px;
+  }
+  #shopify-section-template--18623044026617__image_banner_cjjJpX .slick-dots li {
+    width: auto;
+    height: auto;
+  }
+    #shopify-section-template--18623044026617__image_banner_cjjJpX .slick-dots li button {
+        width: 60px;
+        height: 40px;
+        border-radius: 4px;
+    }
+    #shopify-section-template--18623044026617__image_banner_cjjJpX .slick-dots li:before {
+      color: #fff;
+      font-size: 10px;
+      font-weight: 500;
+      position: absolute;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      z-index: 10;
+      left: 50%;
+      white-space: nowrap;
+      cursor: pointer;
+    }
+    #shopify-section-template--18623044026617__image_banner_cjjJpX .slick-dots li:first-child {
+      position: relative;
+    }
+    #shopify-section-template--18623044026617__image_banner_cjjJpX .slick-dots li:first-child:before {
+      content: "Kraken Pro";
+    }
+    #shopify-section-template--18623044026617__image_banner_cjjJpX .slick-dots li:nth-of-type(2):before {
+      content: "Kraken";
+    }
+    #shopify-section-template--18623044026617__image_banner_cjjJpX .slick-dots li:nth-of-type(3):before {
+      content: "Athena Pro";
+    }
+    #shopify-section-template--18623044026617__image_banner_cjjJpX .slick-dots li:nth-of-type(4):before {
+      content: "Athena";
+    }
+    #shopify-section-template--18623044026617__image_banner_cjjJpX .slick-dots li:nth-of-type(5):before {
+      content: "Athena X";
+    }
+    #shopify-section-template--18623044026617__image_banner_cjjJpX .slick-dots li.slick-active button {
+      background-color: #fff;
+    }
+    #shopify-section-template--18623044026617__image_banner_cjjJpX .slick-dots li.slick-active:before {
+      color: #db0a40;
+    }
+  /* end red bull */
+  /* xmas event page */
+  #shopify-section-template--18697338028281__product-grid #CollectionSection-template--18697338028281__product-grid .price__regular .price__last:before {
+    font-size: 18px;
+  }
+  #shopify-section-template--18697338028281__product-grid #CollectionSection-template--18697338028281__product-grid .price-item.price-item--regular {
+    font-size: 14px;
+  }
+  #shopify-section-template--18697338028281__product-grid #CollectionSection-template--18697338028281__product-grid .price__regular .price__last:after {
+    font-size: 11px;
+    padding: 2px 0px;
+    width: 60px;
+    left: calc(50% - 5px);
+  }
+  #shopify-section-template--18697338028281__product-grid #CollectionSection-template--18697338028281__product-grid .collection_shop_now_img {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+  }
+  #shopify-section-template--18697338028281__product-grid #CollectionSection-template--18697338028281__product-grid .collection_shop_now_button {
+    width: 130px;
+    font-size: 15px;
+    margin-top: 10px;
+    padding: 10px 0;
+  }
+  #shopify-section-template--18697338028281__product-grid #CollectionSection-template--18697338028281__product-grid .card-title {
+    font-size: 14px;
+  }
+  #shopify-section-template--18697338028281__spotlight_block_EL4dcJ .spotlight-block .halo-row .halo-item {
+    width: 70%;
+  }
+  /* xmas event page */
+}
+@media (min-width: 1920px) {
+  #shopify-section-template--18553392234745__image_banner_ty8mwK .content-box--absolute.align-items--bottom {
+    padding-bottom: 120px;
+  }
+  #shopify-section-template--18553392234745__image_banner_ty8mwK #halo-image-banner-template--18553392234745__image_banner_ty8mwK .banner-sub-title {
+    margin-bottom: 20px;
+  }
+}
+@media (min-width: 2000px) {
+  #shopify-section-template--18553392234745__image_banner_ty8mwK #halo-image-banner-template--18553392234745__image_banner_ty8mwK .content-box--absolute {
+    width: 1800px;
+  }
+  #shopify-section-template--18553392234745__image_banner_ty8mwK #halo-image-banner-template--18553392234745__image_banner_ty8mwK .banner-sub-title {
+    font-size: 2vw;
+    margin-bottom: 40px;
+  }
+  #shopify-section-template--18553392234745__image_banner_ty8mwK #halo-image-banner-template--18553392234745__image_banner_ty8mwK .banner-heading {
+    font-size: 3vw;
+    margin-bottom: 40px;
+    line-height: 86px !important;
+  }
+  #shopify-section-template--18553392234745__image_banner_ty8mwK #halo-image-banner-template--18553392234745__image_banner_ty8mwK .item .banner-text {
+    font-size: 1.5vw;
+    margin-bottom: 40px;
+    line-height: 1.2;
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}

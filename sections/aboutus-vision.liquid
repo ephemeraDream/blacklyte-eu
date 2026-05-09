@@ -1,0 +1,243 @@
+<style>
+    .section-{{ section.id }}{
+        padding-top: 90px;
+        background: #EBEBEB;
+    }
+    .section-{{ section.id }} .container-full{
+        padding-left: 16%;
+        padding-right: 16%;
+    }
+    .section-{{ section.id }} .head-cont{
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+    }
+    .section-{{ section.id }} .head-cont .section-title{
+        font-family: Poppins;
+        font-weight: 500;
+        font-style: Medium;
+        font-size: 20px;
+        line-height: 100%;
+        letter-spacing: 0%;
+        text-align: center;
+        color: #262629;
+    }
+    .section-{{ section.id }} .head-cont .section-desc{
+        font-family: Poppins;
+        font-weight: 600;
+        font-style: SemiBold;
+        font-size: 30px;
+        line-height: 100%;
+        letter-spacing: 0%;
+        text-align: center;
+        color: 262629;
+        margin-top: 10px;
+    }
+    .section-{{ section.id }} .cont-lists{
+        display: flex;
+        gap: 16px;
+        margin-top: 39px;
+    }
+    .section-{{ section.id }} .cont-lists .cont-item{
+        width: calc((100% - 32px) / 3);
+        border: 1px solid #C3C3C3;
+        border-radius: 24px;
+        overflow: hidden;
+        position: relative;
+    }
+    .section-{{ section.id }} .cont-lists .cont-item img{
+        height: auto;
+        position: absolute;
+        top: 0;
+    }
+    .section-{{ section.id }} .cont-lists .cont-item .item-cont{
+        padding: 28px;
+    }
+    .section-{{ section.id }} .cont-lists .cont-item .item-cont-title{
+        font-family: Poppins;
+        font-weight: 600;
+        font-size: 22px;
+        line-height: 100%;
+        color: #262629;
+    }
+    .section-{{ section.id }} .cont-lists .cont-item .item-cont-desc{
+        font-family: Poppins;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 24px;
+        color: #262629;
+        margin-top: 14px;
+    }
+
+    {% comment %} iPhone {% endcomment %}
+    @media(max-width: 767px){
+        .section-{{ section.id }}{
+            padding-top: 50px;
+            padding-bottom: 50px;
+        }
+        .section-{{ section.id }} .container-full{
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+        .section-{{ section.id }} .head-cont .section-title{
+            font-size: 14px;
+        }
+        .section-{{ section.id }} .head-cont .section-desc{
+            font-size: 26px;
+        }
+        .section-{{ section.id }} .cont-lists{
+            flex-direction: column;
+        }
+        .section-{{ section.id }} .cont-lists .cont-item{
+            width: 100%;
+        }
+        .section-{{ section.id }} .cont-lists .cont-item .item-cont{
+            padding: 20px;
+        }
+        .section-{{ section.id }} .slick-dots,
+        .section-{{ section.id }} .slider-dots{
+            bottom: -30px;
+        }
+        .section-{{ section.id }} .slick-dots li button,
+        .section-{{ section.id }} .slider-dots li button{
+            border: none;
+            background: #D9D9D9;
+        }
+        .section-{{ section.id }} .slick-dots li.slick-active button,
+        .section-{{ section.id }} .slider-dots li.active button{
+            background: #262629;
+        }
+    }
+
+    {% comment %} iPad {% endcomment %}
+    @media(min-width: 768px) and (max-width: 1024px){
+        .section-{{ section.id }} .container-full{
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+        .section-{{ section.id }} .cont-lists .cont-item .item-cont{
+            padding: 16px 10px 20px 10px;
+        }
+    }
+
+    @media(min-width: 1025px) and (max-width: 1480px){
+        .section-{{ section.id }} .container-full{
+            padding-left: 60px;
+            padding-right: 60px;
+        }
+    }
+
+</style>
+
+<section class="section-{{ section.id }}" id="{{ section.id }}" data-section-id="{{ section.id }}">
+    <div class="container-full">
+        <div class="head-cont">
+            {% if section.settings.sectionTitle != blank %}
+                <div class="section-title">{{ section.settings.sectionTitle }}</div>
+            {% endif %}
+            {% if section.settings.sectionDesc != blank %}
+                <div class="section-desc">{{ section.settings.sectionDesc }}</div>
+            {% endif %}
+        </div>
+        <div class="cont-lists">
+            {% for block in section.blocks %}
+                {% if block.type == "item" %}
+                    <div class="cont-item">
+                        <div class="item-image" style="padding-top: {% unless block.settings.itemImage.presentation.focal_point == '50.0% 50.0%' %}{{ 1 | divided_by: block.settings.itemImage.aspect_ratio | times: 120 }}%{% else %}{{ 1 | divided_by: block.settings.itemImage.aspect_ratio | times: 100 }}%{% endunless %}">
+                            <img srcset="{{ block.settings.itemImage | img_url: 'master' }}" 
+                                height="{{ block.settings.itemImage.height }}"
+                                width="{{ block.settings.itemImage.width }}"
+                                alt="{{ block.settings.itemImage.alt }}" />
+                        </div>
+                        <div class="item-cont">
+                            {% if block.settings.itemTitle != blank %}
+                                <div class="item-cont-title">{{ block.settings.itemTitle }}</div>
+                            {% endif %}
+                            {% if block.settings.itemDesc != blank %}
+                                <div class="item-cont-desc">{{ block.settings.itemDesc }}</div>
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<script>
+    const mq = window.matchMedia('(max-width: 768px)');
+    const $list = $('.cont-lists');
+
+    function handleResponsive(e) {
+        if (e.matches) {
+            if (!$list.hasClass('slick-initialized')) {
+                $list.slick({
+                    slidesToShow: 1,
+                    slidesToScroll: 1,
+                    infinite: true,
+                    arrows: false,
+                    dots: true,
+                    swipe: true,
+                    touchMove: true
+                });
+            }
+        } else {
+            if ($list.hasClass('slick-initialized')) {
+                $list.slick('unslick');
+            }
+        }
+    }
+
+    mq.addEventListener('change', handleResponsive);
+    handleResponsive(mq);
+
+    
+</script>
+
+{% schema %}
+{
+    "name": "aboutus vision",
+    "settings": [
+        {
+            "type": "text",
+            "id": "sectionTitle",
+            "label": "section Title",
+            "default": "Our philosophy"
+        },
+        {
+            "type": "text",
+            "id": "sectionDesc",
+            "label": "section Desc",
+            "default": "MORETHANJUST GAMES"
+        }
+    ],
+    "blocks": [
+        {
+            "type": "item",
+            "name": "item",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "itemImage",
+                    "label": "item Image"
+                },
+                {
+                    "type": "text",
+                    "id": "itemTitle",
+                    "label": "item Title"
+                },
+                {
+                    "type": "text",
+                    "id": "itemDesc",
+                    "label": "item Desc"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "aboutus vision"
+        }
+    ]
+}
+{% endschema %}

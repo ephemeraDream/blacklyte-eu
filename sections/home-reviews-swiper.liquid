@@ -1,0 +1,693 @@
+{% comment %} product reviews {% endcomment %}
+<style>
+    .reviews-swiper-container{
+        padding: 130px 0 100px;
+        background: #fff;
+    }
+    .reviews-swiper-container .container-full-cont{
+        max-width: 66%;
+        margin: 0 auto;
+        position: relative;
+    }
+
+    .reviews-swiper-container .container-full-cont .hero-section{
+        text-align: center;
+    }
+    .reviews-swiper-container .container-full-cont .hero-section .section-sub-title{
+        font: 600 40px var(--font-family-3);
+        line-height: 1;
+        color: #262629;
+    }
+    .reviews-swiper-container .container-full-cont .hero-section .section-title{
+        font: 500 10vw var(--font-family-3);
+        color: #262629;
+        line-height: 1.2;
+    }
+    .reviews-swiper-container .container-full-cont .hero-section .section-desc{
+        font: 500 16px var(--font-family-3);
+        line-height: 1.2;
+        color: #262629;
+        opacity: 0.7;
+    }
+    .reviews-swiper-container .container-full-cont .cont-section{
+        margin-top: 100px;
+        display: flex;
+        gap: 17px;
+        max-height: 1700px;
+        overflow: hidden;
+        position: relative;
+    }
+    .reviews-swiper-container .container-full-cont .cont-section:before{
+        display: inline-block;
+        content: '';
+        width: 100%;
+        height: 220px;
+        background: linear-gradient(180deg, #fff 0%, rgba(255, 255, 255, 0) 100%);
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 99;
+    }
+    .reviews-swiper-container .container-full-cont:after{
+        display: inline-block;
+        content: '';
+        width: 100%;
+        height: 220px;
+        background: linear-gradient(0deg, #fff 0%, rgba(255, 255, 255, 0) 100%);
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        z-index: 99;
+    }
+    .reviews-swiper-container .container-full-cont .cont-section .cont-left,
+    .reviews-swiper-container .container-full-cont .cont-section .cont-center,
+    .reviews-swiper-container .container-full-cont .cont-section .cont-right{
+        display: flex;
+        gap: 20px;
+        flex-direction: column;
+        width: calc((100% - 34px) / 3);
+    }
+    .reviews-swiper-container .swiper-wrapper {
+        transition-timing-function: linear !important;
+    }
+    .reviews-swiper-container .swiper-slide{
+        height: max-content !important; 
+    }
+    .reviews-swiper-container .container-full-cont .cont-section .prod-list-container{
+        border-radius: 24px;
+        display: flex;
+        flex-direction: column;
+        position: relative;
+        overflow: hidden;
+    }
+    .reviews-swiper-container .container-full-cont .cont-section .prod-list-container .prod-cont{
+        padding: 25px 20px;
+        border-left: 1px solid #B9B9B9;
+        border-right: 1px solid #B9B9B9;
+        border-bottom: 1px solid #B9B9B9;
+        border-radius: 0 0 24px 24px;
+    }
+    .reviews-swiper-container .container-full-cont .cont-section .prod-list-container .prod-cont-icons{
+        display: flex;
+        gap: 6px;
+    }
+    .reviews-swiper-container .container-full-cont .cont-section .prod-list-container .prod-cont-icons .star--icon svg{
+        width: 16px;
+        height: 16px;
+    }
+    .reviews-swiper-container .container-full-cont .cont-section .prod-list-container .prod-cont-title{
+        font: 600 22px var(--font-family-3);
+        line-height: 1.4;
+        color: #262629;
+        margin-top: 14px;
+    }
+    .reviews-swiper-container .container-full-cont .cont-section .prod-list-container .prod-cont-desc{
+        font: 400 16px var(--font-family-3);
+        line-height: 1.4;
+        color: #262629;
+        margin-top: 15px;
+    }
+    .reviews-swiper-container .container-full-cont .cont-section .prod-list-container .prod-image img{
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+    .reviews-swiper-container .learn-more-btns{
+        display: none;
+    }
+
+    .reviews-swiper-container .container-full-cont .cont-section .prod-list-container .prod-cont-name-cont{
+        font-family: Roboto;
+        font-weight: 500;
+        font-style: Medium;
+        font-size: 22px;
+        leading-trim: NONE;
+        line-height: 100%;
+        letter-spacing: 0%;
+        color: #262629;
+        display: flex;
+        gap: 17px;
+        margin-top: 20px;
+        align-items: center;
+    }
+    .reviews-swiper-container .container-full-cont .cont-section .prod-list-container .prod-cont-name-cont svg{
+        width: 23px;
+        height: 23px;
+    }
+    .reviews-swiper-container .container-full-cont .cont-section .prod-list-container .prod-cont-country{
+        font-family: Roboto;
+        font-weight: 400;
+        font-style: Regular;
+        font-size: 16px;
+        leading-trim: NONE;
+        line-height: 24px;
+        letter-spacing: 0%;
+        color: #76767F;
+        margin-top: 10px;
+    }
+
+
+    {% comment %} IPhone {% endcomment %}
+    @media(max-width: 767px){
+        .reviews-swiper-container{
+            padding: 50px 0;
+        }
+        .reviews-swiper-container .container-full-cont{
+            max-width: 100%;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+        .reviews-swiper-container .container-full-cont .cont-section{
+            flex-direction: column;
+            margin-top: 40px;
+            transition: all .5s ease-in-out;
+        }
+        .reviews-swiper-container .container-full-cont .cont-section.cont-section-max-height{
+            max-height: max-content;
+        }
+        .reviews-swiper-container .container-full-cont .hero-section .section-sub-title{
+            font-size: 24px;
+        }
+        .reviews-swiper-container .container-full-cont .hero-section .section-desc{
+            font-size: 14px;
+            line-height: 1.4;
+        }
+        .reviews-swiper-container .container-full-cont .cont-section .prod-list-container .prod-cont{
+            padding: 15px;
+        }
+        .reviews-swiper-container .container-full-cont .cont-section .prod-list-container .prod-cont-title{
+            font-size: 16px;
+            margin-top: 10px;
+            line-height: 1.2;
+        }
+        .reviews-swiper-container .container-full-cont .cont-section .prod-list-container .prod-cont-desc{
+            font-size: 12px;
+            line-height: 1.7;
+            margin-top: 10px;
+        }
+        .reviews-swiper-container .learn-more-btns{
+            display: flex;
+            font: 500 16px var(--font-family-3);
+            color: #fff;
+            padding: 10px 5px 10px 24px;
+            background: #262629;
+            z-index: 100;
+            position: absolute;
+            left: 50%;
+            bottom: -20px;
+            transform: translateX(-50%);
+            gap: 10px;
+            border-radius: 30px;
+            align-items: center;
+        }
+        .reviews-swiper-container .learn-more-btns .learn-more-icon svg{
+            width: 30px;
+            height: 30px;
+        }
+        .reviews-swiper-container .learn-more-btns.learn-more-btns-less .learn-more-icon{
+            transform: rotate(180deg);
+        }
+        .reviews-swiper-container .container-full-cont .cont-section:before,
+        .reviews-swiper-container .container-full-cont:after {
+            height: 100px;
+        }
+        .reviews-swiper-container .container-full-cont .cont-section .cont-left,
+        .reviews-swiper-container .container-full-cont .cont-section .cont-center,
+        .reviews-swiper-container .container-full-cont .cont-section .cont-right{
+            width: 100%;
+        }
+        .reviews-swiper-container .swiper-wrapper{
+            height: max-content !important;
+            gap: 20px;
+            flex-direction: column;
+        }
+        .reviews-swiper-container .container-full-cont .hero-section .section-title{
+            font-size: 12vw;
+            line-height: 1.6;
+        }
+        .reviews-swiper-container .container-full-cont .cont-section .cont-center,
+        .reviews-swiper-container .container-full-cont .cont-section .cont-right{
+            display: none !important;
+        }
+        .reviews-swiper-container .container-full-cont .cont-section .prod-list-container .prod-cont-name-cont{
+            font-size: 14px;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        .reviews-swiper-container .container-full-cont .cont-section .prod-list-container .prod-cont-name-cont svg{
+            width: 16px;
+            height: 16px;
+        }
+        .reviews-swiper-container .container-full-cont .cont-section .prod-list-container .prod-cont-country{
+            font-size: 12px;
+            line-height: normal;
+            margin-top: 6px;
+        }
+    }
+
+    {% comment %} IPad {% endcomment %}
+    @media(min-width: 768px) and (max-width: 1024px){
+        .reviews-swiper-container .container-full-cont{
+            max-width: 100%;
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+        .reviews-swiper-container .container-full-cont .hero-section .section-sub-title{
+            font-size: 20px;
+        }
+        .reviews-swiper-container .container-full-cont .hero-section .section-title{
+            font-size: 5vw;
+        }
+        .reviews-swiper-container .container-full-cont .hero-section .section-desc{
+            font-size: 12px;
+            line-height: 1.4;
+        }
+        .reviews-swiper-container .container-full-cont .cont-section{
+            gap: 10px;
+        }
+        .reviews-swiper-container .container-full-cont .cont-section .cont-left,
+        .reviews-swiper-container .container-full-cont .cont-section .cont-center,
+        .reviews-swiper-container .container-full-cont .cont-section .cont-right{
+            gap: 10px;
+        }
+        .reviews-swiper-container .container-full-cont .cont-section .prod-list-container .prod-cont{
+            padding: 14px 9px;
+        }
+        .reviews-swiper-container .container-full-cont .cont-section .prod-list-container .prod-cont-icons .star--icon svg{
+            width: 10px;
+            height: 10px;
+        }
+        .reviews-swiper-container .container-full-cont .cont-section .prod-list-container .prod-cont-title{
+            font-size: 14px;
+            margin-top: 10px;
+        }
+        .reviews-swiper-container .container-full-cont .cont-section .prod-list-container .prod-cont-desc{
+            font-size: 12px;
+            margin-top: 10px;
+        }
+        
+    }
+
+    {% comment %} small screen {% endcomment %}
+    @media(min-width: 1025px) and (max-width: 1480px){
+        .reviews-swiper-container .container-full-cont{
+            max-width: 100%;
+            padding-left: 60px;
+            padding-right: 60px;
+        }
+        .reviews-swiper-container .container-full-cont .cont-section .prod-list-container .prod-cont{
+            padding: 20px 15px;
+        }
+        .reviews-swiper-container .container-full-cont .cont-section .prod-list-container .prod-cont-title{
+            font-size: 20px;
+            line-height: 1.2;
+            margin-top: 10px;
+        }
+        .reviews-swiper-container .container-full-cont .cont-section .prod-list-container .prod-cont-desc{
+            font-size: 14px;
+            margin-top: 12px;
+        }
+    }
+</style>
+
+<div class="reviews-swiper-container">
+    <div class="container-full-cont">
+        <div class="hero-section">
+            {% if section.settings.sectionSubTitle != blank %}
+                <div class="section-sub-title">{{ section.settings.sectionSubTitle }}</div>
+            {% endif %}
+            {% if section.settings.sectionTitle != blank %}
+                <div class="section-title">{{ section.settings.sectionTitle }}</div>
+            {% endif %}
+            {% if section.settings.sectionDescripe != blank %}
+                <div class="section-desc">{{ section.settings.sectionDescripe }}</div>
+            {% endif %}
+        </div>
+        <div class="cont-section">
+            <div class="cont-left swiper">
+                <div class="swiper-wrapper">
+                    {% for block in section.blocks %}
+                        {% if block.type == "leftItem" %}
+                            <div class="left-prod-container prod-list-container swiper-slide">
+                                <div class="prod-image" style="padding-top: {% unless block.settings.reviewItemImage.presentation.focal_point == '50.0% 50.0%' %}{{ 1 | divided_by: block.settings.reviewItemImage.aspect_ratio | times: 120 }}%{% else %}{{ 1 | divided_by: block.settings.reviewItemImage.aspect_ratio | times: 100 }}%{% endunless %}">
+                                    <img src="{{ block.settings.reviewItemImage | img_url: 'master' }}" alt="{{ block.settings.reviewItemImage.alt }}" />
+                                </div>
+                                <div class="prod-cont">
+                                    <div class="prod-cont-icons">
+                                        {% assign num = block.settings.rating %}
+                                        {% for i in (1..num) limit:5 %}
+                                            <span class="star--icon">
+                                                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M5.90533 1.28676C6.28092 0.577232 7.29734 0.577232 7.67294 1.28676L9.07469 3.93477C9.21931 4.20796 9.48214 4.39892 9.78665 4.45204L12.7382 4.96691C13.5291 5.10486 13.8432 6.07153 13.2844 6.64801L11.1992 8.79943C10.9841 9.02139 10.8837 9.33037 10.9273 9.63639L11.3497 12.6026C11.4629 13.3974 10.6406 13.9948 9.91965 13.6416L7.22915 12.3232C6.95157 12.1872 6.62669 12.1872 6.34911 12.3232L3.65861 13.6416C2.9377 13.9948 2.1154 13.3974 2.22859 12.6026L2.65101 9.63639C2.69459 9.33037 2.59419 9.02139 2.37906 8.79943L0.29382 6.64801C-0.264918 6.07153 0.0491732 5.10486 0.840043 4.96691L3.79161 4.45204C4.09613 4.39892 4.35896 4.20796 4.50358 3.93477L5.90533 1.28676Z" fill="#EE5025"/>
+                                                </svg>
+                                            </span>
+                                        {% endfor %}
+                                    </div>
+                                    <div class="prod-cont-title">{{ block.settings.reviewItemTitle }}</div>
+                                    <div class="prod-cont-desc">{{ block.settings.reviewItemDesc }}</div>
+                                    {% if block.settings.reviewItemName != blank %}
+                                        <div class="prod-cont-name-cont">
+                                            {{ block.settings.reviewItemName }}
+                                            <span class="name-icon">
+                                                <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <circle cx="11.5" cy="11.5" r="11.5" fill="#059669"/>
+                                                    <path d="M6 11.3203L9.99693 15.3172L17.3153 7.99888" stroke="white" stroke-width="1.2"/>
+                                                </svg>
+
+                                            </span>
+                                        </div>
+                                    {% endif %}
+                                    {% if block.settings.reviewItemCountry != blank %}
+                                        <div class="prod-cont-country">
+                                            {{ block.settings.reviewItemCountry }}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="cont-center swiper">
+                <div class="swiper-wrapper">
+                    {% for block in section.blocks %}
+                        {% if block.type == "item" %}
+                            <div class="prod-container prod-list-container swiper-slide">
+                                <div class="prod-image" style="padding-top: {% unless block.settings.reviewItemImage.presentation.focal_point == '50.0% 50.0%' %}{{ 1 | divided_by: block.settings.reviewItemImage.aspect_ratio | times: 120 }}%{% else %}{{ 1 | divided_by: block.settings.reviewItemImage.aspect_ratio | times: 100 }}%{% endunless %}">
+                                    <img src="{{ block.settings.reviewItemImage | img_url: 'master' }}" alt="{{ block.settings.reviewItemImage.alt }}" />
+                                </div>
+                                <div class="prod-cont">
+                                    <div class="prod-cont-icons">
+                                        {% assign num = block.settings.rating %}
+                                        {% for i in (1..num) limit:5 %}
+                                            <span class="star--icon">
+                                                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M5.90533 1.28676C6.28092 0.577232 7.29734 0.577232 7.67294 1.28676L9.07469 3.93477C9.21931 4.20796 9.48214 4.39892 9.78665 4.45204L12.7382 4.96691C13.5291 5.10486 13.8432 6.07153 13.2844 6.64801L11.1992 8.79943C10.9841 9.02139 10.8837 9.33037 10.9273 9.63639L11.3497 12.6026C11.4629 13.3974 10.6406 13.9948 9.91965 13.6416L7.22915 12.3232C6.95157 12.1872 6.62669 12.1872 6.34911 12.3232L3.65861 13.6416C2.9377 13.9948 2.1154 13.3974 2.22859 12.6026L2.65101 9.63639C2.69459 9.33037 2.59419 9.02139 2.37906 8.79943L0.29382 6.64801C-0.264918 6.07153 0.0491732 5.10486 0.840043 4.96691L3.79161 4.45204C4.09613 4.39892 4.35896 4.20796 4.50358 3.93477L5.90533 1.28676Z" fill="#EE5025"/>
+                                                </svg>
+                                            </span>
+                                        {% endfor %}
+                                    </div>
+                                    <div class="prod-cont-title">{{ block.settings.reviewItemTitle }}</div>
+                                    <div class="prod-cont-desc">{{ block.settings.reviewItemDesc }}</div>
+                                    {% if block.settings.reviewItemName != blank %}
+                                        <div class="prod-cont-name-cont">
+                                            {{ block.settings.reviewItemName }}
+                                            <span class="name-icon">
+                                                <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <circle cx="11.5" cy="11.5" r="11.5" fill="#059669"/>
+                                                    <path d="M6 11.3203L9.99693 15.3172L17.3153 7.99888" stroke="white" stroke-width="1.2"/>
+                                                </svg>
+
+                                            </span>
+                                        </div>
+                                    {% endif %}
+                                    {% if block.settings.reviewItemCountry != blank %}
+                                        <div class="prod-cont-country">
+                                            {{ block.settings.reviewItemCountry }}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="cont-right swiper">
+                <div class="swiper-wrapper">
+                    {% for block in section.blocks %}
+                        {% if block.type == "rightItem" %}
+                            <div class="right-prod-container prod-list-container swiper-slide">
+                                <div class="prod-image" style="padding-top: {% unless block.settings.reviewItemImage.presentation.focal_point == '50.0% 50.0%' %}{{ 1 | divided_by: block.settings.reviewItemImage.aspect_ratio | times: 120 }}%{% else %}{{ 1 | divided_by: block.settings.reviewItemImage.aspect_ratio | times: 100 }}%{% endunless %}">
+                                    <img src="{{ block.settings.reviewItemImage | img_url: 'master' }}" alt="{{ block.settings.reviewItemImage.alt }}" />
+                                </div>
+                                <div class="prod-cont">
+                                    <div class="prod-cont-icons">
+                                        {% assign num = block.settings.rating %}
+                                        {% for i in (1..num) limit:5 %}
+                                            <span class="star--icon">
+                                                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M5.90533 1.28676C6.28092 0.577232 7.29734 0.577232 7.67294 1.28676L9.07469 3.93477C9.21931 4.20796 9.48214 4.39892 9.78665 4.45204L12.7382 4.96691C13.5291 5.10486 13.8432 6.07153 13.2844 6.64801L11.1992 8.79943C10.9841 9.02139 10.8837 9.33037 10.9273 9.63639L11.3497 12.6026C11.4629 13.3974 10.6406 13.9948 9.91965 13.6416L7.22915 12.3232C6.95157 12.1872 6.62669 12.1872 6.34911 12.3232L3.65861 13.6416C2.9377 13.9948 2.1154 13.3974 2.22859 12.6026L2.65101 9.63639C2.69459 9.33037 2.59419 9.02139 2.37906 8.79943L0.29382 6.64801C-0.264918 6.07153 0.0491732 5.10486 0.840043 4.96691L3.79161 4.45204C4.09613 4.39892 4.35896 4.20796 4.50358 3.93477L5.90533 1.28676Z" fill="#EE5025"/>
+                                                </svg>
+                                            </span>
+                                        {% endfor %}
+                                    </div>
+                                    <div class="prod-cont-title">{{ block.settings.reviewItemTitle }}</div>
+                                    <div class="prod-cont-desc">{{ block.settings.reviewItemDesc }}</div>
+                                    {% if block.settings.reviewItemName != blank %}
+                                        <div class="prod-cont-name-cont">
+                                            {{ block.settings.reviewItemName }}
+                                            <span class="name-icon">
+                                                <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <circle cx="11.5" cy="11.5" r="11.5" fill="#059669"/>
+                                                    <path d="M6 11.3203L9.99693 15.3172L17.3153 7.99888" stroke="white" stroke-width="1.2"/>
+                                                </svg>
+
+                                            </span>
+                                        </div>
+                                    {% endif %}
+                                    {% if block.settings.reviewItemCountry != blank %}
+                                        <div class="prod-cont-country">
+                                            {{ block.settings.reviewItemCountry }}
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        {% comment %} learn more {% endcomment %}
+        <div class="learn-more-btns">
+            <span class="text">{{ section.settings.sectionLearnMore }}</span>
+            <span class="learn-more-icon">
+                <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="15" cy="15" r="15" fill="white"/>
+                    <path d="M14.6464 21.3536C14.8417 21.5488 15.1583 21.5488 15.3536 21.3536L18.5355 18.1716C18.7308 17.9763 18.7308 17.6597 18.5355 17.4645C18.3403 17.2692 18.0237 17.2692 17.8284 17.4645L15 20.2929L12.1716 17.4645C11.9763 17.2692 11.6597 17.2692 11.4645 17.4645C11.2692 17.6597 11.2692 17.9763 11.4645 18.1716L14.6464 21.3536ZM15 8L14.5 8L14.5 21L15 21L15.5 21L15.5 8L15 8Z" fill="#262629"/>
+                </svg>
+            </span>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function(){
+        $('.reviews-swiper-container .learn-more-btns').on('click', function(){
+            if($('.reviews-swiper-container .container-full-cont .cont-section').hasClass('cont-section-max-height')){
+                $('.reviews-swiper-container .container-full-cont .cont-section').removeClass('cont-section-max-height')
+                $(this).removeClass('learn-more-btns-less')
+                $('.reviews-swiper-container .learn-more-btns .text').text('Learn more')
+            } else {
+                $('.reviews-swiper-container .container-full-cont .cont-section').addClass('cont-section-max-height')
+                $(this).addClass('learn-more-btns-less')
+                $('.reviews-swiper-container .learn-more-btns .text').text('Show less')
+            }
+            
+        })
+
+        if(window.innerWidth > 1024){
+            {% comment %} 左侧 swiper {% endcomment %}
+            new Swiper('.reviews-swiper-container .container-full-cont .cont-section .cont-left', {
+                direction: 'vertical',
+                loop: true,
+                observer: true,
+                observeParents: true,
+                slidesPerView: 3,
+                spaceBetween: 18,
+                speed: 10000,
+                autoplay: {
+                    delay: 0,
+                    disableOnInteraction: false,
+                    pauseOnMouseEnter: true
+                }
+            });
+
+            {% comment %} 中间 swiper {% endcomment %}
+            new Swiper('.reviews-swiper-container .container-full-cont .cont-section .cont-center', {
+                direction: 'vertical',
+                loop: true,
+                observer: true,
+                observeParents: true,
+                slidesPerView: 3,
+                spaceBetween: 18,
+                speed: 10000,
+                autoplay: {
+                    delay: 0,
+                    disableOnInteraction: false,
+                    reverseDirection: true,
+                    pauseOnMouseEnter: true
+                }
+            });
+
+            {% comment %} 右侧 swiper {% endcomment %}
+            new Swiper('.reviews-swiper-container .container-full-cont .cont-section .cont-right', {
+                direction: 'vertical',
+                loop: true,
+                observer: true,
+                observeParents: true,
+                slidesPerView: 3,
+                spaceBetween: 18,
+                speed: 10000,
+                autoplay: {
+                    delay: 0,
+                    disableOnInteraction: false,
+                    pauseOnMouseEnter: true
+                }
+            });
+
+
+        }
+    })
+    
+</script>
+
+{% schema %}
+{
+  "name": "Home Reviews Swiper",
+  "tag": "section",
+  "settings": [
+    {
+        "type": "text",
+        "id": "sectionTitle",
+        "label": "Section Title"
+    },
+    {
+        "type": "text",
+        "id": "sectionSubTitle",
+        "label": "Section Sub Title"
+    },
+    {
+        "type": "text",
+        "id": "sectionDescripe",
+        "label": "Section Descripe"
+    },
+    {
+        "type": "text",
+        "id": "sectionLearnMore",
+        "label": "Section Buttons",
+        "default": "Learn More"
+    }
+  ],
+  "blocks": [
+    {
+        "type": "leftItem",
+        "name": "leftItem",
+        "settings": [
+            {
+                "type": "image_picker",
+                "id": "reviewItemImage",
+                "label": "reviews Item Image"
+            },
+            {
+                "type": "text",
+                "id": "reviewItemTitle",
+                "label": "reviews Item Title"
+            },
+            {
+                "type": "text",
+                "id": "reviewItemDesc",
+                "label": "reviews Item Descripe"
+            },
+            {
+                "type": "number",
+                "id": "rating",
+                "label": "Rating (Star):",
+                "info": "More than 5 defaults to 5",
+                "default": 5
+            },
+            {
+                "type": "text",
+                "id": "reviewItemName",
+                "label": "reviews Item Name"
+            },
+            {
+                "type": "text",
+                "id": "reviewItemCountry",
+                "label": "reviews Item Country"
+            }
+        ]
+    },
+    {
+        "type": "item",
+        "name": "item",
+        "settings": [
+            {
+                "type": "image_picker",
+                "id": "reviewItemImage",
+                "label": "reviews Item Image"
+            },
+            {
+                "type": "text",
+                "id": "reviewItemTitle",
+                "label": "reviews Item Title"
+            },
+            {
+                "type": "text",
+                "id": "reviewItemDesc",
+                "label": "reviews Item Descripe"
+            },
+            {
+                "type": "number",
+                "id": "rating",
+                "label": "Rating (Star):",
+                "info": "More than 5 defaults to 5",
+                "default": 5
+            },
+            {
+                "type": "text",
+                "id": "reviewItemName",
+                "label": "reviews Item Name"
+            },
+            {
+                "type": "text",
+                "id": "reviewItemCountry",
+                "label": "reviews Item Country"
+            }
+        ]
+    },
+    {
+        "type": "rightItem",
+        "name": "rightItem",
+        "settings": [
+            {
+                "type": "image_picker",
+                "id": "reviewItemImage",
+                "label": "reviews Item Image"
+            },
+            {
+                "type": "text",
+                "id": "reviewItemTitle",
+                "label": "reviews Item Title"
+            },
+            {
+                "type": "text",
+                "id": "reviewItemDesc",
+                "label": "reviews Item Descripe"
+            },
+            {
+                "type": "number",
+                "id": "rating",
+                "label": "Rating (Star):",
+                "info": "More than 5 defaults to 5",
+                "default": 5
+            },
+            {
+                "type": "text",
+                "id": "reviewItemName",
+                "label": "reviews Item Name"
+            },
+            {
+                "type": "text",
+                "id": "reviewItemCountry",
+                "label": "reviews Item Country"
+            }
+        ]
+    }
+  ],
+  "presets": [
+    {
+        "name": "Home Reviews Swiper"
+    }
+  ]
+}
+{% endschema %}

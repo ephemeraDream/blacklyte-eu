@@ -1,0 +1,248 @@
+<style>
+    .large-image-pc{
+        display: block;
+    }
+    .large-image-mb{
+        display: none;
+    }
+    .large-image-container{
+        position: relative;
+    }
+
+    .large-image-container .large-image img{
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+    .section-{{ section.id }} .large-image-cont {
+        position: absolute;
+        top: 50%;
+        left: 16%;
+        transform: translateY(-50%);
+    }
+    .section-{{ section.id }} .large-image-cont .large-image-logo{
+        width: 350px;
+        height: auto;
+    }
+    .section-{{ section.id }} .large-image-cont .large-image-logo img{
+        height: auto;
+    }
+    .section-{{ section.id }} .large-image-cont .large-image-title,
+    .section-{{ section.id }} .large-image-cont .large-image-sub-title{
+        font: 700 42px 'DIN';
+        color: #fff;
+    }
+    .section-{{ section.id }} .large-image-cont .large-image-title{
+        background: linear-gradient(175.98deg, #FFFFFF 17.21%, #D4D4D4 45.06%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+    }
+    .section-{{ section.id }} .large-image-cont .large-image-sub-title{
+        position: relative;
+        background: linear-gradient(188.89deg, #FFFFFF 21.04%, #D5D5D5 82.32%);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+    }
+    .section-{{ section.id }} .large-image-cont .large-image-sub-title .sub-title-svg{
+        display: inline-block;
+        height: auto;
+        position: absolute;
+        left: -10px;
+        bottom: -50%;
+        transform: translateY(-10px);
+        z-index: -1;
+    }
+    .section-{{ section.id }} .large-image-cont .large-image-sub-title .sub-title-svg svg{
+        height: auto;
+        width: auto;
+    }
+    .section-{{ section.id }} .large-image-cont .large-image-desc{
+        font: 500 20px 'DIN';
+        color: #fff;
+        margin-top: 16%;
+    }
+    
+
+    {% comment %} iPhone {% endcomment %}
+    @media(max-width: 767px){
+        .large-image-pc{
+            display: none;
+        }
+        .large-image-mb{
+            display: block;
+        }
+        .section-{{ section.id }} .large-image-cont .large-image-sub-title .sub-title-svg{
+            display: none;
+        }
+
+        .section-{{ section.id }} .large-image-cont .large-image-logo{
+            width: 200px;
+            margin: auto;
+        }
+        .section-{{ section.id }} .large-image-cont .large-image-title{
+            font-size: 24px;
+            margin-top: 30px;
+        }
+        .section-{{ section.id }} .large-image-cont {
+            top: auto;
+            left: 50%;
+            transform: translateX(-50%);
+            bottom: 28.5px;
+            text-align: center;
+            width: 100%;
+        }
+        .section-{{ section.id }} .large-image-cont .large-image-sub-title{
+            font-size: 22px;
+        }
+        .section-{{ section.id }} .large-image-cont .large-image-desc{
+            font-size: 10px;
+            margin-top: 20px;
+        }
+        
+    }
+
+    {% comment %} iPad {% endcomment %}
+    @media(min-width: 768px) and (max-width: 1024px){
+        .section-{{ section.id }} .large-image-cont .large-image-sub-title .sub-title-svg{
+            display: none;
+        }
+        .section-{{ section.id }} .large-image-cont{
+            left: 10px;
+        }
+        .section-{{ section.id }} .large-image-cont .large-image-logo{
+            width: 200px;
+        }
+        .section-{{ section.id }} .large-image-cont .large-image-title,
+        .section-{{ section.id }} .large-image-cont .large-image-sub-title{
+            font-size: 45px;
+            line-height: 1.2;
+        }
+        .section-{{ section.id }} .large-image-cont .large-image-desc{
+            font-size: 14px;
+        }
+        .section-{{ section.id }} .large-image-cont .large-image-title,
+        .section-{{ section.id }} .large-image-cont .large-image-sub-title{
+            font-size: 20px;
+        }
+    }
+
+    {% comment %} small screen {% endcomment %}
+    @media(min-width: 1025px) and (max-width: 1490px){
+        .section-{{ section.id }} .large-image-cont{
+            left: 60px;
+        }
+    }
+
+</style>
+
+<section id={{ section.id }} data-section-id="{{ section.id }}" class="section-{{ section.id }}">
+    <div class="container-full">
+        {% for block in section.blocks %}
+            {% if block.type == 'largeImage' %}
+                <div class="large-image-container">
+                    <div class="large-image large-image-pc" style="padding-top: {% unless block.settings.imageATpc.presentation.focal_point == '50.0% 50.0%' %}{{ 1 | divided_by: block.settings.imageATpc.aspect_ratio | times: 120 }}%{% else %}{{ 1 | divided_by: block.settings.imageATpc.aspect_ratio | times: 100 }}%{% endunless %}">
+                        <img src="{{ block.settings.imageATpc | img_url: 'master' }}">
+                    </div>
+                    <div class="large-image large-image-mb" style="padding-top: {% unless block.settings.imageMobile.presentation.focal_point == '50.0% 50.0%' %}{{ 1 | divided_by: block.settings.imageMobile.aspect_ratio | times: 120 }}%{% else %}{{ 1 | divided_by: block.settings.imageMobile.aspect_ratio | times: 100 }}%{% endunless %}">
+                        <img src="{{ block.settings.imageMobile | img_url: 'master' }}">
+                    </div>
+                    {% comment %} logo {% endcomment %}
+                    <div class="large-image-cont">
+                        {% if block.settings.logoImage != blank %}
+                            <div class="large-image-logo">
+                                <img src="{{ block.settings.logoImage | img_url: 'master' }}"
+                                    width="{{ block.settings.logoImage.width }}"
+                                    height="{{ block.settings.logoImage.height }}"
+                                    alt="{{ block.settings.logoImage.alt }}" />
+                            </div>
+                        {% endif %}
+                        {% if block.settings.title != blank %}
+                            <div class="large-image-title">
+                                {{ block.settings.title }}
+                            </div>
+                        {% endif %}
+                        {% if block.settings.subTitle != blank %}
+                            <div class="large-image-sub-title">
+                                <span class="sub-title-svg">
+                                    <svg width="991" height="29" viewBox="0 0 991 29" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path opacity="0.6" d="M991 29H20.4933L0 0H970.507L991 29Z" fill="url(#paint0_linear_7845_31897)"/>
+                                        <path d="M62 29H20.7927L0 0H41.2073L62 29Z" fill="#ED1C24"/>
+                                        <defs>
+                                        <linearGradient id="paint0_linear_7845_31897" x1="0" y1="14.5" x2="1124.29" y2="14.5" gradientUnits="userSpaceOnUse">
+                                        <stop stop-color="#D40000"/>
+                                        <stop offset="1" stop-color="#D40000" stop-opacity="0"/>
+                                        </linearGradient>
+                                        </defs>
+                                    </svg>
+
+                                </span>
+                                <span>{{ block.settings.subTitle }}</span>
+                                
+                            </div>
+                        {% endif %}
+                        {% if block.settings.descripe != blank %}
+                            <div class="large-image-desc">
+                                {{  block.settings.descripe }}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+</section>
+
+{% schema %}
+{
+    "name": "Major Banner",
+    "settings": [],
+    "blocks": [
+        {
+            "type": "largeImage",
+            "name": "largeImage",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "imageATpc",
+                    "label": "Web Image Banner"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "imageMobile",
+                    "label": "Image Banner Mobile"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "logoImage",
+                    "label": "Image Logo"
+                },
+                {
+                    "type": "text",
+                    "id": "title",
+                    "label": "event title",
+                    "default": "StarLadder"
+                },
+                {
+                    "type": "text",
+                    "id": "subTitle",
+                    "label": "event sub title",
+                    "default": "Budapest Major 2025 Finals"
+                },
+                {
+                    "type": "textarea",
+                    "id": "descripe",
+                    "label": "event description",
+                    "default": "Nov 24 - Dec 14 |  $1,250,000  |  32 teams  |  MVM Dome, Budapest, HU"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "Major Banner"
+        }
+    ]
+}
+{% endschema %}

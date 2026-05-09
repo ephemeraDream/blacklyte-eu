@@ -1,0 +1,183 @@
+{{ 'react3D.css' | asset_url | stylesheet_tag }}
+
+<div id="root" 
+     data-title="{{ section.settings.title }}"
+     data-background-color="{{ section.settings.background_color }}"
+     data-show-header="{{ section.settings.show_header }}">
+</div>
+
+
+<!-- 这里包含您的React应用的JS文件 -->
+{{ 'react3D.js' | asset_url | script_tag }}
+<script type="text/javascript">
+  window.reactAppSettings = {
+    title: {{ section.settings.title | json }},
+    backgroundColor: {{ section.settings.background_color | json }},
+    showHeader: {{ section.settings.show_header | json }}
+  };
+  
+</script>
+
+<script>
+  $(document).ready(function() {
+    // 监听第一个按钮的点击事件
+    $('button[id=":r0:"]').on('click', function() {
+      window.location.href = '/products/blacklyte-kraken-gaming-chair';
+    });
+    
+    $('button[id=":r2:"]').on('click', function() {
+      window.location.href = '/products/blacklyte-kraken-gaming-chair';
+    });
+
+    // 监听第二个按钮的点击事件
+    $('button[id=":r1:"]').on('click', function() {
+      window.location.href = '/products/blacklyte-kraken-pro-gaming-chair';
+    });
+
+    
+    $('button[id=":r3:"]').on('click', function() {
+      window.location.href = '/products/blacklyte-kraken-pro-gaming-chair';
+    });
+
+    $('.MuiStack-root.css-1orv6po:nth-of-type(1) .MuiStack-root.css-1liar1t:nth-of-type(2) .MuiTypography-root.MuiTypography-subTitle.css-1pg3c8r').text('18.7"-21.1" (47.5-53.5cm)')   // pc
+    $('.MuiStack-root.css-1orv6po:nth-of-type(1) .MuiStack-root.css-cs6exo:nth-of-type(2) .MuiTypography-root.MuiTypography-subTitle.css-1pg3c8r').text('18.7"-21.1" (47.5-53.5cm)')    // mb
+    $('.MuiStack-root.css-1orv6po:nth-of-type(1) .MuiStack-root.css-1liar1t:nth-of-type(3) .MuiTypography-root.MuiTypography-subTitle.css-1pg3c8r').css('padding-bottom', '26px')       // pc
+    
+    $('.MuiStack-root.css-1orv6po:nth-of-type(1) .MuiStack-root.css-1liar1t:nth-of-type(4) .MuiTypography-root.MuiTypography-subTitle.css-1pg3c8r').css('padding-bottom', '52px')       // pc
+    $('.MuiStack-root.css-1orv6po:nth-of-type(1) .MuiStack-root.css-cs6exo:nth-of-type(4) .MuiTypography-root.MuiTypography-subTitle.css-1pg3c8r').css('padding-bottom', '39px')       // mb
+
+    $('.MuiStack-root.css-1orv6po:nth-of-type(2) .MuiTypography-root.MuiTypography-subTitle.css-1890cpo').text('Athena pro')
+    $('.MuiStack-root.css-1orv6po:nth-of-type(2) .MuiTypography-root.MuiTypography-subTitle.css-1rpuzc4').text('€499.00')
+    $('.MuiStack-root.css-1orv6po:nth-of-type(2) .MuiStack-root.css-1liar1t:nth-of-type(2) .MuiTypography-root.MuiTypography-subTitle.css-1pg3c8r').text('18.7"-21.1" (47.5-53.5cm)')    // pc
+    $('.MuiStack-root.css-1orv6po:nth-of-type(2) .MuiStack-root.css-cs6exo:nth-of-type(2) .MuiTypography-root.MuiTypography-subTitle.css-1pg3c8r').text('18.7"-21.1" (47.5-53.5cm)')    // mb
+    $('.MuiStack-root.css-1orv6po:nth-of-type(2) .MuiStack-root.css-1liar1t:nth-of-type(3) .MuiTypography-root.MuiTypography-subTitle.css-1pg3c8r').text('4D Detachable Magnetic Armrest')    // pc
+    $('.MuiStack-root.css-1orv6po:nth-of-type(2) .MuiStack-root.css-cs6exo:nth-of-type(3) .MuiTypography-root.MuiTypography-subTitle.css-1pg3c8r').text('4D Detachable Magnetic Armrest')    // mb
+    $('.MuiStack-root.css-1orv6po:nth-of-type(2) .MuiStack-root.css-1liar1t:nth-of-type(4) .MuiTypography-root.MuiTypography-subTitle.css-1pg3c8r').text('4-Way Built-in Adjustment Up-Down & In-Out')   // pc
+    $('.MuiStack-root.css-1orv6po:nth-of-type(2) .MuiStack-root.css-cs6exo:nth-of-type(4) .MuiTypography-root.MuiTypography-subTitle.css-1pg3c8r').text('4-Way Built-in Adjustment Up-Down & In-Out')   // mb
+    
+    $('.MuiStack-root.css-1orv6po:nth-of-type(2) .MuiStack-root.css-1liar1t:nth-of-type(4) .MuiTypography-root.MuiTypography-subTitle.css-1pg3c8r').css('padding-bottom', '52px')    // pc
+    $('.MuiStack-root.css-1orv6po:nth-of-type(2) .MuiStack-root.css-cs6exo:nth-of-type(4) .MuiTypography-root.MuiTypography-subTitle.css-1pg3c8r').css('padding-bottom', '26px')    // mb
+    $('.MuiStack-root.css-1orv6po:nth-of-type(2) .MuiStack-root.css-1liar1t:nth-of-type(6) .MuiTypography-root.MuiTypography-subTitle.css-1pg3c8r').text('50mm PU Casters')    // pc
+    $('.MuiStack-root.css-1orv6po:nth-of-type(2) .MuiStack-root.css-cs6exo:nth-of-type(6) .MuiTypography-root.MuiTypography-subTitle.css-1pg3c8r').text('50mm PU Casters')    // mb
+    
+    $('.MuiStack-root.css-1orv6po:nth-of-type(3) .MuiTypography-root.MuiTypography-subTitle.css-1890cpo').text('Kraken')
+    $('.MuiStack-root.css-1orv6po:nth-of-type(3) .MuiTypography-root.MuiTypography-subTitle.css-1rpuzc4').text('€519.00')
+    $('.MuiStack-root.css-1orv6po:nth-of-type(3) .MuiStack-root.css-1liar1t:nth-of-type(3) .MuiTypography-root.MuiTypography-subTitle.css-1pg3c8r').css('padding-bottom', '26px')
+    $('.MuiStack-root.css-1orv6po:nth-of-type(3) .MuiStack-root.css-1liar1t:nth-of-type(4) .MuiTypography-root.MuiTypography-subTitle.css-1pg3c8r').css('padding-bottom', '52px')  // pc
+    $('.MuiStack-root.css-1orv6po:nth-of-type(3) .MuiStack-root.css-cs6exo:nth-of-type(4) .MuiTypography-root.MuiTypography-subTitle.css-1pg3c8r').css('padding-bottom', '39px')  // mb
+    
+    $('.MuiStack-root.css-1orv6po:nth-of-type(4) .MuiTypography-root.MuiTypography-subTitle.css-1890cpo').text('Kraken pro')
+    $('.MuiStack-root.css-1orv6po:nth-of-type(4) .MuiTypography-root.MuiTypography-subTitle.css-1rpuzc4').text('€599.00')
+    $('.MuiStack-root.css-1orv6po:nth-of-type(4) .MuiStack-root.css-1liar1t:nth-of-type(3) .MuiTypography-root.MuiTypography-subTitle.css-1pg3c8r').text('4D Detachable Magnetic Armrest')   // pc
+    $('.MuiStack-root.css-1orv6po:nth-of-type(4) .MuiStack-root.css-cs6exo:nth-of-type(3) .MuiTypography-root.MuiTypography-subTitle.css-1pg3c8r').text('4D Detachable Magnetic Armrest')   // mb
+    
+    $('.MuiStack-root.css-1orv6po:nth-of-type(4) .MuiStack-root.css-1liar1t:nth-of-type(4) .MuiTypography-root.MuiTypography-subTitle.css-1pg3c8r').text('Dynamic Air Lumbar Support System Adjustable Ergonomic Lumbar Support In-Out')    // pc
+    $('.MuiStack-root.css-1orv6po:nth-of-type(4) .MuiStack-root.css-cs6exo:nth-of-type(4) .MuiTypography-root.MuiTypography-subTitle.css-1pg3c8r').text('Dynamic Air Lumbar Support System Adjustable Ergonomic Lumbar Support In-Out')    // mb
+    
+    $('.MuiStack-root.css-1orv6po:nth-of-type(4) .MuiStack-root.css-1liar1t:nth-of-type(6) .MuiTypography-root.MuiTypography-subTitle.css-1pg3c8r').text('50mm PU Casters')   // pc
+    $('.MuiStack-root.css-1orv6po:nth-of-type(4) .MuiStack-root.css-cs6exo:nth-of-type(6) .MuiTypography-root.MuiTypography-subTitle.css-1pg3c8r').text('50mm PU Casters')   // mb
+
+    $('.MuiStack-root.css-v7upqu div[style*="cursor: pointer"]').on('click', function () {
+      // 获取当前点击按钮的父级容器
+      var parentDiv = $(this).closest('.MuiStack-root');
+
+      console.log('button click')
+  
+      // 查找产品名称
+      var productName = parentDiv.find('.MuiTypography-root.MuiTypography-subTitle').first().text().trim();
+  
+      // 根据产品名称匹配跳转 URL
+      var url = '';
+      switch (productName) {
+        case 'Athena':
+          url = '/products/blacklyte-athena-gaming-chair';
+          break;
+        case 'Athena pro':
+          url = '/products/blacklyte-athena-pro-gaming-chair';
+          break;
+        case 'Kraken':
+          url = '/products/blacklyte-kraken-gaming-chair';
+          break;
+        case 'Kraken pro':
+          url = '/products/blacklyte-kraken-pro-gaming-chair';
+          break;
+        default:
+          console.warn('Unknown product:', productName);
+          return;
+      }
+  
+      // 跳转到对应 URL
+      window.location.href = url;
+    });
+
+    $('.MuiStack-root.css-ekew79 div[style*="cursor: pointer"]').on('click', function () {
+      // 获取当前点击按钮的父级容器
+      var parentDiv = $(this).closest('.MuiStack-root');
+  
+      // 查找产品名称
+      var productName = parentDiv.find('.MuiTypography-root.MuiTypography-subTitle').first().text().trim();
+  
+      // 根据产品名称匹配跳转 URL
+      var url = '';
+      switch (productName) {
+        case 'Athena':
+          url = '/products/blacklyte-athena-gaming-chair';
+          break;
+        case 'Athena pro':
+          url = '/products/blacklyte-athena-pro-gaming-chair';
+          break;
+        case 'Kraken':
+          url = '/products/blacklyte-kraken-gaming-chair';
+          break;
+        case 'Kraken pro':
+          url = '/products/blacklyte-kraken-pro-gaming-chair';
+          break;
+        default:
+          console.warn('Unknown product:', productName);
+          return;
+      }
+  
+      // 跳转到对应 URL
+      window.location.href = url;
+    });
+  });
+
+</script>
+
+{% schema %}
+{
+  "name": "React App Settings212",
+  "settings": [
+    {
+      "type": "text",
+      "id": "reactAppText",
+      "label": "App Title",
+      "default": "My React App"
+    },
+    {
+      "type": "color",
+      "id": "background_color",
+      "label": "Background Color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_header",
+      "label": "Show Header",
+      "default": true
+    }
+  ],
+  "presets": [
+    {
+      "name": "React App",
+      "category": "Custom"
+    }
+  ]
+}
+{% endschema %}
+
+{% stylesheet %}
+{% endstylesheet %}
+
+{% javascript %}
+{% endjavascript %}

@@ -1,0 +1,150 @@
+{{ 'buypage-section-14.css' | asset_url | stylesheet_tag }}
+
+<div class="buypage_section_14" id="{{section.settings.specId}}">
+  <div class="buypage_section_14_head">
+    <div class="buypage_section_14_head_title">{{ section.settings.title }}</div>
+    <div class="buypage_section_14_head_text">{{ section.settings.text }}</div>
+  </div>
+  <div class="buypage_section_14_body">
+    <div class="buypage_section_14_body_left">
+      {% for block in section.blocks %}
+        {% assign product = block.settings.product %}
+        <div class="buypage_section_14_product">
+          {{- product.featured_image | image_url: width: 200 | image_tag: alt: product.featured_image.alt -}}
+          <div>
+            <div class="buypage_section_14_product_title">{{ product.title }}</div>
+            <div class="buypage_section_14_product_text">{{ block.settings.text }}</div>
+            <a href="{{ product.url }}" class="buypage_section_14_product_btn"
+              >VIEW PRODUCT
+              <svg xmlns="http://www.w3.org/2000/svg" width="31" height="12" viewBox="0 0 31 12" fill="none">
+                <path d="M30.5303 6.05377C30.8232 5.76087 30.8232 5.286 30.5303 4.99311L25.7574 0.220137C25.4645 -0.0727568 24.9896 -0.0727568 24.6967 0.220137C24.4038 0.51303 24.4038 0.987904 24.6967 1.2808L28.9393 5.52344L24.6967 9.76608C24.4038 10.059 24.4038 10.5338 24.6967 10.8267C24.9896 11.1196 25.4645 11.1196 25.7574 10.8267L30.5303 6.05377ZM0 5.52344V6.27344H30V5.52344V4.77344H0V5.52344Z" fill="#262629"/>
+              </svg>
+            </a>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+    <div class="buypage_section_14_body_right">
+      <div class="buypage_section_14_body_right_slick">
+        {% for block in section.blocks %}
+          <div>
+            {{-
+              block.settings.image
+              | image_url: width: block.settings.image.width
+              | image_tag: alt: block.settings.image.alt
+            -}}
+          </div>
+        {% endfor %}
+      </div>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="50"
+        height="50"
+        viewBox="0 0 50 50"
+        fill="none"
+        class="buypage_section_14_body_right_slick_prev"
+      >
+        <circle cx="25" cy="25" r="24.5" fill="white" stroke="#E6E6E6"/>
+        <path d="M29.4844 17L20.9991 25.4853L29.4844 33.9706" stroke="black" stroke-width="2"/>
+      </svg>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="50"
+        height="50"
+        viewBox="0 0 50 50"
+        fill="none"
+        class="buypage_section_14_body_right_slick_next"
+      >
+        <circle cx="25" cy="25" r="24.5" transform="matrix(-1 0 0 1 50 0)" fill="white" stroke="#E6E6E6"/>
+        <path d="M23.4844 17L31.9697 25.4853L23.4844 33.9706" stroke="black" stroke-width="2"/>
+      </svg>
+    </div>
+  </div>
+</div>
+
+<script>
+  (function ($) {
+    const $section = $('#shopify-section-{{ section.id }}');
+    const $slider = $section.find('.buypage_section_14_body_right_slick');
+    const $prev = $section.find('.buypage_section_14_body_right_slick_prev');
+    const $next = $section.find('.buypage_section_14_body_right_slick_next');
+
+    $slider.slick({
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      arrows: false,
+      dots: false,
+      waitForAnimate: false,
+      adaptiveHeight: true,
+    });
+
+    /* =====================
+      
+    ====================== */
+    $prev.on('click', function () {
+      if ($(this).hasClass('disabled')) return;
+      $slider.slick('slickPrev');
+    });
+
+    $next.on('click', function () {
+      if ($(this).hasClass('disabled')) return;
+      $slider.slick('slickNext');
+    });
+  })(jQuery);
+</script>
+
+{% schema %}
+{
+  "name": "buypage section 14",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "specId",
+      "label": "specId"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "title"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "text"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "item",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "image"
+        },
+        {
+          "type": "product",
+          "id": "product",
+          "label": "product"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "buypage section 14"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,337 @@
+<style>
+    .header-navigation-discover{
+        width: 100%;
+        max-width: 100%;
+        background-color: #EBEBEB;
+        max-height: 0;
+        overflow: hidden;
+        opacity: 1;
+        transition: max-height 0.5s ease, opacity 0.4s ease;
+        position: absolute;
+        top: 59px;
+        left: 0;
+        z-index: 999;
+    }
+    .header-navigation-discover-container{
+        display: flex;
+        padding: 24px 0 48px;
+    }
+    .discover-tips-menu{
+        width: 200px;
+        padding-left: 35px;
+        padding-right: 35px;
+        border-left: 1px solid #D8D8D8;
+        border-right: 1px solid #D8D8D8;
+    }
+    .discover-aboutus-menu{
+        width: 240px;
+        padding-left: 35px;
+    }
+    .header-navigation-discover .title-text{
+        font: 500 16px var(--font-family-3);
+        color: #76767F;
+        white-space: nowrap;
+    }
+    .header-navigation-discover .discover-active-cont{
+        padding-right: 35px;
+        padding-bottom: 48px;
+    }
+    .header-navigation-discover .discover-active-cont-list{
+        display: flex;
+        gap: 10px;
+        margin-top: 22px;
+        padding-bottom: 40px;
+    }
+    .header-navigation-discover .discover-active-cont-list .active-img{
+        border-radius: 10px;
+        cursor: pointer;
+        overflow: hidden;
+    }
+    .header-navigation-discover .discover-active-cont-list img{
+        max-height: 150px;
+    }
+    .header-navigation-discover .discover-tips-menu .menus-list-tips,
+    .header-navigation-discover .discover-aboutus-menu .menus-list-abouts{
+        font: 500 16px var(--font-family-3);
+        color: #262629;
+        margin-top: 20px;
+        display: flex;
+        gap: 20px;
+        flex-direction: column;
+        cursor: pointer;
+    }
+    .header-navigation-discover .discover-tips-menu .menus-list-tips .discover-tips-menus:hover,
+    .header-navigation-discover .discover-aboutus-menu .menus-list-abouts .discover-abouts-menus:hover{
+        text-decoration: underline;
+        text-underline-offset: 3px;
+    }
+    .discover-mobile-cont .title{
+        display: none;
+    }
+
+    .header-navigation-discover .swiper-pagination{
+        bottom: 20px;
+    }
+
+    .header-navigation-discover .swiper-pagination-bullet{
+        width: 7px;
+        height: 7px;
+        margin: 0 2.3px;
+        background: #262629;
+    }
+
+    .header-navigation-discover .swiper-pagination-bullet.swiper-pagination-bullet-active{
+        background: #262629;
+    }
+
+    /* IPad */
+    @media(max-width: 1024px){
+        .discover-mobile-cont{
+            height: 100vh;
+            width: 100%;
+            max-height: 100vh;
+            max-width: 100%;
+            overflow: hidden;
+            transition: .5s;
+            position: absolute;
+            top: 0;
+            left: 100vw;
+            opacity: 0;
+            background-color: #fff;
+            z-index: 999;
+        }
+        .discover-mobile-cont.discover-mobile-cont-active{
+            left: 0;
+            opacity: 1;
+            height: 100vh;
+            width: 100%;
+            max-height: 100vh;
+            max-width: 100%;
+        }
+        .discover-mobile-cont .title{
+            display: block;
+            padding: 26px 20px;
+            border-bottom: 1px solid #F1F1F1;
+            position: relative;
+            cursor: pointer;
+        }
+        .discover-mobile-cont .title .icons svg{
+            width: 18px;
+            height: 18px;
+            fill: none;
+            stroke: none;
+        }
+        .discover-mobile-cont .title .header-title-text{
+            font: 500 16px var(--font-family-3);
+            color: #262629;
+            vertical-align: middle;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .discover-mobile-cont .header-navigation-discover-container{
+            flex-direction: column;
+            padding-left: 20px;
+            padding-right: 0;
+        }
+        .discover-mobile-cont .discover-tips-menu,
+        .discover-mobile-cont .discover-aboutus-menu{
+            border: none;
+            padding-left: 0;
+            padding-right: 0;
+            width: 100%;
+        }
+        .discover-mobile-cont .discover-tips-menu{
+            border-bottom: 1px solid #F1F1F1;
+            padding-bottom: 20px;
+        }
+        .discover-mobile-cont .discover-aboutus-menu{
+            padding-top: 20px;
+        }
+        .header-navigation-discover.discover-mobile-cont .discover-active-cont{
+            padding-bottom: 0;
+            padding-right: 0;
+        }
+        .header-navigation-discover.discover-mobile-cont .discover-tips-menu .menus-list-tips,
+        .header-navigation-discover.discover-mobile-cont .discover-aboutus-menu .menus-list-abouts{
+            margin-top: 20px;
+            gap: 20px;
+        }
+    
+    
+    }
+    /* small screen */
+    @media(min-width: 1026px) and (max-width: 1600px){
+        .header-navigation-discover .title-text,
+        .header-navigation-discover .discover-tips-menu .menus-list-tips,
+        .header-navigation-discover .discover-aboutus-menu .menus-list-abouts{
+            font-size: 14px;
+        }
+    }
+    
+    /* large screen */
+    @media(min-width: 2000px){
+        .header-navigation-discover .title-text,
+        .header-navigation-discover .discover-tips-menu .menus-list-tips,
+        .header-navigation-discover .discover-aboutus-menu .menus-list-abouts{
+            font-size: 16px;
+        }
+    }
+
+    @media screen and (min-width: 1025px){
+        .header-navigation-discover-container{
+            max-width: 100%;
+            padding-left: 16%;
+            padding-right: 16%;
+        }
+    }
+    @media (min-width: 1025px) and (max-width: 1480px){
+        .header-navigation-discover-container{
+            max-width: 100%;
+            padding-left: 60px;
+            padding-right: 60px;
+        }
+    }
+
+</style>
+
+<div class="header-navigation-discover discover-mobile-cont">
+    <div class="title">
+        <span class="icons">
+        <svg width="12" height="20" viewBox="0 0 12 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M11 19L2 10L11 1" stroke="#262629" stroke-width="1.6"/>
+        </svg>
+        </span>
+        <span class="header-title-text">{{ section.settings.discoverMenuTitleMobile }}</span>
+    </div>
+    <div class="container-1570 header-navigation-discover-container">
+        <div class="discover-active-cont">
+            <div class="discover-active-cont-title title-text">{{ section.settings.discoverActiveTitle }}</div>
+            <div class="discover-active-cont-list swiper">
+                <div class="swiper-wrapper">
+                    {% for block in section.blocks %}
+                        {% if block.type == "discoverItems" %}
+                            <div class="active-img image-zoom swiper-slide">
+                                <img src="{{ block.settings.discoverActiveImageMobile | img_url: 'master' }}" class="discover-image-mb" loading="lazy" />
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+                <div class="swiper-pagination"></div>
+            </div>
+            
+        </div>
+        {% comment %} discover new & tips {% endcomment %}
+        <div class="discover-tips-menu">
+            {% if section.settings.discoverTipsTitle != blank %}
+                <div class="discover-tips-menu-title title-text">{{ section.settings.discoverTipsTitle }}</div>
+            {% endif %}
+            <div class="menus-list-tips">
+                {% for menu in section.settings.DiscoverTipMenuList.links %}
+                    <div class="discover-tips-menus" data-url="{{ menu.url }}">{{ menu.title }}</div>
+                {% endfor %}
+            </div>
+        </div>
+        {% comment %} discover about {% endcomment %}
+        <div class="discover-aboutus-menu">
+            {% if section.settings.discoverAboutTitle != blank %}
+                <div class="discover-aboutus-menu-title title-text">{{ section.settings.discoverAboutTitle }}</div>
+            {% endif %}
+            <div class="menus-list-abouts">
+                {% for menu in section.settings.DiscoverAboutMenuList.links %}
+                    <div class="discover-abouts-menus" data-url="{{ menu.url }}">{{ menu.title }}</div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function(){
+        function isMobile(){
+            return window.innerWidth >= 1024
+        }
+        window.addEventListener('resize', isDeskTop());
+
+        function isDeskTop(){
+            if(isMobile()){
+                {% comment %} hover discover menu {% endcomment %}
+                $('.header-navigation .menu-lv-item').on('mouseenter', function() {
+                    let currentMenuText = $(this).text().toLowerCase().trim()
+                    if(currentMenuText == 'discover') {
+                        $('.header-navigation-discover').css({
+                            'opacity': '1',
+                            'max-height': 'fit-content',
+                            'border-top': '1px solid #D4D4D8',
+                            'border-bottom': "1px solid #D4D4D8"
+                        })
+                    } else {
+                        $('.header-navigation-discover').css({
+                            'opacity': '0',
+                            'max-height': 0,
+                            'border-top': 'none',
+                            'border-bottom': "none"
+                        })
+                    }
+                })
+                $('.header-navigation-discover').on('mouseleave', function(){
+                    $(this).css({
+                        'opacity': '0',
+                        'max-height': 0,
+                        'border-top': 'none',
+                        'border-bottom': "none"
+                    })
+                })
+                $('.header-navigation .menu-lv-item').on('mouseleave', function() {
+                    if($(this).text().toLowerCase().trim() == 'discover' && !$('.header-navigation-discover:hover').length) {
+                        $('.header-navigation-discover').css({
+                            'opacity': '0',
+                            'max-height': '0',
+                            'border-top': 'none',
+                            'border-bottom': "none"
+                        })
+                    }
+                })
+            
+            }
+        }
+        
+        {% comment %} click menu {% endcomment %}
+        $('.discover-mobile-cont .title .icons').on('click', function(){
+            $('.discover-mobile-cont').removeClass('discover-mobile-cont-active')
+            $('body').removeClass('menu_open_mb')
+        })
+
+        $('.header-navigation-discover .discover-tips-menu .menus-list-tips .discover-tips-menus').on('click', function(){
+            const linkurl = $(this).data('url')
+            if(linkurl){
+                window.location.href = linkurl
+            }
+        })
+        $('.header-navigation-discover .discover-aboutus-menu .menus-list-abouts .discover-abouts-menus').on('click', function(){
+            const linkshref = $(this).data('url')
+            if(linkshref){
+                window.location.href = linkshref
+            }
+        })
+
+        new Swiper('.header-navigation-discover .discover-active-cont-list', {
+            loop: false,
+            grabCursor: true,
+            slidesPerView: 1.5,
+            spaceBetween: 8,
+            pagination: {
+                el: '.header-navigation-discover .swiper-pagination',
+                clickable: true,
+            },
+            breakpoints: {
+                320: { slidesPerView: 1.5 },
+                768: { slidesPerView: 1.5 },
+                992: { slidesPerView: 1.5 }
+            },
+        })
+    })
+    
+
+
+</script>

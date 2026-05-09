@@ -1,0 +1,393 @@
+<style>
+    .section-block-{{ section.id }} .large-image-container .large-image-pc{
+        display: block;
+    }
+    .section-block-{{ section.id }} .large-image-container .large-image-mb{
+        display: none;
+    }
+    .section-block-{{ section.id }} .large-image-container{
+        position: relative;
+        overflow: hidden;
+    }
+    .section-block-{{ section.id }} .large-image-container .large-image img{
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: auto;
+    }
+    .section-block-{{ section.id }} .large-image-cont{
+        position: absolute;
+        width: 58%;
+        text-align: left;
+        left: 16%;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+    .section-block-{{ section.id }} .large-image-cont-title{
+        font-family: Anton;
+        font-weight: 400;
+        font-style: Regular;
+        font-size: 40px;
+        line-height: 1.4;
+        letter-spacing: 0%;
+        color: #fff;
+    }
+    .section-block-{{ section.id }} .large-image-cont-desc{
+        font-family: Roboto;
+        font-weight: 400;
+        font-style: Regular;
+        font-size: 16px;
+        line-height: normal;
+        letter-spacing: 0%;
+        vertical-align: middle;
+        color: #fff;
+        margin-top: 6px;
+        text-align: left;
+    }
+    .section-block-{{ section.id }} .large-image-cont-title-2{
+        font-family: Roboto;
+        font-weight: 400;
+        font-style: Regular;
+        font-size: 16px;
+        line-height: normal;
+        letter-spacing: 0%;
+        vertical-align: middle;
+        color: #fff;
+        margin-top: 6px;
+        text-align: left;
+    }
+    .section-block-{{ section.id }} .large-image-cont-desc-2{
+        font-family: Roboto;
+        font-weight: 400;
+        font-style: Regular;
+        font-size: 16px;
+        line-height: normal;
+        letter-spacing: 0%;
+        vertical-align: middle;
+        color: #fff;
+        margin-top: 6px;
+        text-align: left;
+    }
+
+    .section-block-{{ section.id }} .large-video{
+        display: block;
+        background: #0A0A0C;
+        position: relative;
+    }
+    .section-block-{{ section.id }} .large-video:after{
+        display: block;
+        content: "";
+        width: 100%;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        height: 100%;
+        background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.09) 100%);
+    }
+    .section-block-{{ section.id }} .video-item-settiongs{
+        width: 100%;
+        aspect-ratio: 1920 / 880;
+        max-height: 80vh;
+        object-fit: cover;
+        object-position: center;
+        display: block;
+        vertical-align: middle;
+    }
+
+    .section-block-{{ section.id }} .video-cont{
+        position: absolute;
+        bottom: 100px;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .section-block-{{ section.id }} .video-title{
+        font-family: Poppins;
+        font-weight: 500;
+        font-style: Medium;
+        font-size: 48px;
+        line-height: 120%;
+        letter-spacing: 0%;
+        color: #fff;
+        text-align: center;
+    }
+    .section-block-{{ section.id }} .video-descripe{
+        font-family: Poppins;
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 1.4;
+        letter-spacing: 0%;
+        text-align: center;
+        color: #fff;
+        width: 80%;
+        margin: 9px auto 0;
+    }
+
+    .section-block-{{ section.id }} .large-image-rich-text{
+        font-family: Poppins;
+        font-weight: 500;
+        font-style: Medium;
+        font-size: 66px;
+        line-height: 114.99999999999999%;
+        letter-spacing: 0%;
+        color: #fff;
+    }
+
+
+    {% comment %} iPhone {% endcomment %}
+    @media(max-width: 767px){
+        .section-block-{{ section.id }} .large-image-container .large-image-pc{
+            display: none;
+        }
+        .section-block-{{ section.id }} .large-image-container .large-image-mb{
+            display: block;
+        }
+        .section-block-{{ section.id }} .large-image-cont{
+            width: 100%;
+            bottom: 27px;
+            left: 10px;
+            top: auto;
+            text-align: center;
+        }
+        .section-block-{{ section.id }} .large-image-cont-title{
+            font-size: 26px;
+        }
+        .section-block-{{ section.id }} .large-image-cont-desc{
+            font-size: 14px;
+            margin-top: 5px;
+            width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+        }
+        .section-block-{{ section.id }} .large-image-cont-title-2{
+            font-size: 16px;
+            margin-top: 8px;
+        }
+        .section-block-{{ section.id }} .large-image-cont-desc-2{
+            font-size: 14px;
+            margin-top: 5px;
+            width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+        }
+
+        .section-block-{{ section.id }} .large-image-rich-text{
+            font-size: 40px;
+            margin-top: 10px;
+        }
+
+        .section-block-{{ section.id }} .video-item-settiongs{
+            aspect-ratio: 375 / 600;
+        }
+
+        .section-block-{{ section.id }} .video-cont{
+            bottom: 30px;
+            left: 0;
+            transform: none;
+        }
+
+        .section-block-{{ section.id }} .video-title{
+            font-size: 26px;
+            width: 92%;
+            margin: auto;
+        }
+        .section-block-{{ section.id }} .video-descripe{
+            font-size: 14px;
+            width: 90%;
+        }
+    }
+
+    {% comment %} iPad {% endcomment %}
+    @media(min-width: 768px) and (max-width: 1024px){
+        .section-block-{{ section.id }} .large-image-cont-title{
+            font-size: 40px;
+        }
+        .section-block-{{ section.id }} .large-image-cont-desc{
+            font-size: 20px;
+        }
+    }
+
+    @media(min-width: 1025px) and (max-width: 1480px){
+        .section-block-{{ section.id }} .large-image-cont{
+            left: 60px;
+        }
+    }
+</style>
+
+<div id="{{ section.id }}" class="section-block-{{ section.id }} promotion-banner-section" data-section-id="{{ section.id }}">
+    <div class="container-full">
+        {% for block in section.blocks %}
+            {% if block.type == "largeImage" %}
+                <div class="large-image-container">
+                    <div class="large-image large-image-pc" style="padding-top: {% unless block.settings.bannerImage.presentation.focal_point == '50.0% 50.0%' %}{{ 1 | divided_by: block.settings.bannerImage.aspect_ratio | times: 120 }}%{% else %}{{ 1 | divided_by: block.settings.bannerImage.aspect_ratio | times: 100 }}%{% endunless %}">
+                        <img
+                            src="{{ block.settings.bannerImage | img_url: 'master' }}"
+                            alt="{{ block.settings.bannerImage.alt }}"
+                            width="{{ block.settings.bannerImage.width }}"
+                            height="{{ block.settings.bannerImage.height }}" />
+                    </div>
+                    <div class="large-image large-image-mb" style="padding-top: {% unless block.settings.bannerImageMobile.presentation.focal_point == '50.0% 50.0%' %}{{ 1 | divided_by: block.settings.bannerImageMobile.aspect_ratio | times: 120 }}%{% else %}{{ 1 | divided_by: block.settings.bannerImageMobile.aspect_ratio | times: 100 }}%{% endunless %}">
+                        <img
+                            src="{{ block.settings.bannerImageMobile | img_url: 'master' }}"
+                            alt="{{ block.settings.bannerImageMobile.alt }}"
+                            width="{{ block.settings.bannerImageMobile.width }}"
+                            height="{{ block.settings.bannerImageMobile.height }}" />
+                    </div>
+                    <div class="large-image-cont">
+                        {% if block.settings.title != blank %}
+                            <div class="large-image-cont-title">{{ block.settings.title }}</div>
+                        {% endif %}
+                        {% if block.settings.descripe != blank %}
+                            <div class="large-image-cont-desc">{{ block.settings.descripe }}</div>
+                        {% endif %}
+                        {% if block.settings['title-sub'] != blank %}
+                            <div class="large-image-cont-title-2">{{ block.settings['title-sub'] }}</div>
+                        {% endif %}
+                        {% if block.settings['descripe-sub'] != blank %}
+                            <div class="large-image-cont-desc-2">{{ block.settings['descripe-sub'] }}</div>
+                        {% endif %}
+                        {% if block.settings.richTextDesc != blank %}
+                            <div class="large-image-rich-text">{{ block.settings.richTextDesc }}</div>
+                        {% endif %}
+                        {% if block.settings.banner_btn_text != blank %}
+                            <div class="large-image-btn" data-url="{{ block.settings.banner_link_url }}">
+                                {{ block.settings.banner_btn_text }}
+                            </div>
+                        {% endif %}
+                    </div>
+                </div>
+            {% elsif block.type == "itemVideo" %}
+                <a {% if block.settings.videoLink != blank %} href="{{ block.settings.videoLink }}" {% else %} aria-disabled="true" {% endif %} class="large-video">
+                    {% assign poster_image = block.settings.videoPoster | image_url %}
+                    {{
+                        block.settings.videoFile
+                        | video_tag:
+                        class: 'video-item-settiongs',
+                        loop: true,
+                        muted: true,
+                        playsinline: true,
+                        autoplay: true,
+                        preload: 'metadata',
+                        poster: poster_image
+                    }}
+                    {% if block.settings.videoTitle != blank or block.settings.videoDesc != blank %}
+                        <div class="video-cont">
+                            {% if block.settings.videoTitle != blank %}
+                                <div class="video-title">{{ block.settings.videoTitle }}</div>
+                            {% endif %}
+                            {% if block.settings.videoDesc != blank %}
+                                <div class="video-descripe">{{ block.settings.videoDesc }}</div>
+                            {% endif %}
+                        </div>
+                    {% endif %}
+                </a>
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>
+
+
+{% schema %}
+{
+    "name": "promotion Banner",
+    "tag": "section",
+    "settings": [ ],
+    "blocks": [
+        {
+            "type": "largeImage",
+            "name": "largeImage",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "bannerImage",
+                    "label": "Banner Image"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "bannerImageMobile",
+                    "label": "Banner Image Mobile"
+                },
+                {
+                    "type": "richtext",
+                    "id": "title",
+                    "label": "Banner Image Title"
+                },
+                {
+                    "type": "text",
+                    "id": "descripe",
+                    "label": "Banner Image Descripe",
+                    "default": "Black Friday has officially arrived at Blacklyte! Enjoy huge savings across our most popular gaming chairs and desks."
+                },
+                {
+                    "type": "text",
+                    "id": "title-sub",
+                    "label": "Banner Title sub"
+                },
+                {
+                    "type": "text",
+                    "id": "descripe-sub",
+                    "label": "Banner Descripe sub"
+                },
+                {
+                    "type": "richtext",
+                    "id": "richTextDesc",
+                    "label": "large Image Rich Text"
+                },
+                {
+                    "type": "text",
+                    "id": "banner_btn_text",
+                    "label": "Banner Button Text"
+                },
+                {
+                    "type": "url",
+                    "id": "banner_link_url",
+                    "label": "Banner Link URL"
+                }
+            ]
+        },
+        {
+            "type": "itemVideo",
+            "name": "itemVideo",
+            "settings": [
+                {
+                    "type": "video",
+                    "id": "videoFile",
+                    "label": "video File"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "videoPoster",
+                    "label": "video Poster File"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "videoImage_mb",
+                    "label": "video Image Mobile"
+                },
+                {
+                    "type": "text",
+                    "id": "videoTitle",
+                    "label": "video Title"
+                },
+                {
+                    "type": "text",
+                    "id": "videoDesc",
+                    "label": "video Descripe"
+                },
+                {
+                    "type": "url",
+                    "id": "videoLink",
+                    "label": "video Product Link"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "promotion Banner"
+        }
+    ]
+}
+{% endschema %}

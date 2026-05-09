@@ -1,0 +1,303 @@
+{{ 'section-swiper-for-simplicity.css' | asset_url | stylesheet_tag }}
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
+
+<div class="swiper_for_simplicity" id="{{ section.settings.specId }}">
+  <div class="swiper_for_simplicity_title">{{ section.settings.title }}</div>
+  <div class="swiper_for_simplicity_text">{{ section.settings.text }}</div>
+  <div class="swiper_for_simplicity_contain">
+    <div class="swiper_for_simplicity_contain_swiper">
+      {% for block in section.blocks %}
+        <div class="swiper_for_simplicity_item">
+          {% if block.settings.video != blank %}
+            {% assign poster_image = block.settings.file_image | image_url %}
+            {{
+              block.settings.video
+              | video_tag:
+                class: 'swiper_for_simplicity_item_image',
+                loop: true,
+                muted: true,
+                playsinline: true,
+                preload: 'none',
+                poster: poster_image,
+                autoplay: true
+            }}
+          {% else -%}
+            {%- assign loading_init = 'lazy' %}
+            {% if block.settings.loading_lazy == false %}
+              {% assign loading_init = 'eager' %}
+            {% endif %}
+            {% render 'picture-simple',
+              image: block.settings.file_image,
+              image_mobile: block.settings.file_image_mobile,
+              mobile_widths: '350,450,550,650',
+              mobile_dpr: 1,
+              class_str: 'swiper_for_simplicity_item_image',
+              widths_sizes: '40vw',
+              loading: loading_init
+            %}
+            {% comment %}
+              {{-
+                block.settings.file_image
+                | image_url: width: block.settings.file_image.width
+                | image_tag: alt: block.settings.title, class: 'swiper_for_simplicity_item_image pc_show'
+              -}}
+              {% assign file_image_mobile = block.settings.file_image_mobile | default: block.settings.file_image %}
+              {{-
+                file_image_mobile
+                | image_url: width: file_image_mobile.width
+                | image_tag: alt: block.settings.title, class: 'swiper_for_simplicity_item_image pmd_show'
+              -}}
+            {% endcomment %}
+          {% endif %}
+          <div class="swiper_for_simplicity_item_info">
+            <div class="swiper_for_simplicity_item_subtitle">{{ block.settings.subtitle }}</div>
+            <div class="swiper_for_simplicity_item_title">{{ block.settings.title }}</div>
+            <div class="swiper_for_simplicity_item_text">{{ block.settings.text }}</div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+    <div class="swiper_for_simplicity_prev">
+      <svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 56 56" fill="none">
+        <circle cx="28" cy="28" r="27.5" fill="white" stroke="#E8E8E8"/>
+        <path d="M29.6562 22L23.9994 27.6569L29.6562 33.3137" stroke="black" stroke-width="2"/>
+      </svg>
+    </div>
+    <div class="swiper_for_simplicity_next">
+      <svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 56 56" fill="none">
+        <circle cx="28" cy="28" r="27.5" transform="matrix(-1 0 0 1 56 0)" fill="white" stroke="#E8E8E8"/>
+        <path d="M26.3438 22L32.0006 27.6569L26.3438 33.3137" stroke="black" stroke-width="2"/>
+      </svg>
+    </div>
+    {% if section.settings.btn_text != blank %}
+      <a href="{{ section.settings.btn_url }}" class="swiper_for_simplicity_btn">{{ section.settings.btn_text }}</a>
+    {% endif %}
+  </div>
+</div>
+
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+<script>
+  jQuery(function ($) {
+    $(document).ready(function () {
+      $('#shopify-section-{{ section.id }} .swiper_for_simplicity_contain_swiper').slick({
+        centerMode: {{ section.settings.centerMode }},
+        slidesToShow: 1,
+        initialSlide: {{ section.settings.initialSlide }},
+        infinite: {{ section.settings.infinite }},
+        variableWidth: true,
+        nextArrow: $('#shopify-section-{{ section.id }} .swiper_for_simplicity_next'),
+        prevArrow: $('#shopify-section-{{ section.id }} .swiper_for_simplicity_prev'),
+        dots: true,
+        autoplay: {{ section.settings.autoplay }},
+        responsive: [
+          {
+            breakpoint: 768,
+            settings: {
+              arrows: {{ section.settings.showMobileArrow }},
+              variableWidth: false,
+              centerMode: false,
+            },
+          },
+        ],
+      });
+      {% if section.settings.blockTransform %}
+        function blockTransform(el) {
+          if (window.innerWidth <= 768) return;
+          const style = el.style;
+          let _transform = style.transform;
+
+          Object.defineProperty(style, "transform", {
+            get() {
+              return _transform;
+            },
+            set(v) {
+
+              const list = el.closest('.slick-list');
+              const parent = el.closest('.slick-initialized').parentNode;
+              const track = el;
+              const slides = track.children;
+
+              if (!list || !slides.length) return;
+
+              const wrapperWidth = list.clientWidth;
+              const lastSlide = slides[slides.length - 1];
+              const lastSlideWidth = lastSlide.offsetWidth + parseFloat(getComputedStyle(lastSlide).marginRight);
+              const totalItems = slides.length;
+              const contentWidth = lastSlideWidth * totalItems;
+              let maxOffset = contentWidth - wrapperWidth;
+              if (maxOffset < 0) maxOffset = 0;
+
+              function clampTranslate() {
+                if (!v || v === 'none') return;
+
+                let currentX = null;
+
+                let matchMatrix = v.match(/matrix\(1,\s*0,\s*0,\s*1,\s*(-?\d+)/);
+                let match3d = v.match(/translate3d\(\s*(-?\d+)px/);
+
+                if (matchMatrix) {
+                  currentX = parseInt(matchMatrix[1], 10);
+                } else if (match3d) {
+                  currentX = parseInt(match3d[1], 10);
+                } else {
+                  return;
+                }
+
+                if (currentX < -maxOffset) {
+                  {% if section.settings.hideNextArrow %}
+                    parent.querySelector(".swiper_for_simplicity_next").classList.add("hidden")
+                  {% endif %}
+                  _transform = `translate3d(${-maxOffset}px, 0, 0)`;
+                } else {
+                  {% if section.settings.hideNextArrow %}
+                    parent.querySelector(".swiper_for_simplicity_next").classList.remove("hidden")
+                  {% endif %}
+                  _transform = v;
+                }
+
+                style.setProperty("transform", _transform);
+              }
+
+              clampTranslate();
+            }
+          });
+        }
+        if (window.innerWidth > 768) {
+          blockTransform(document.querySelector('#shopify-section-{{ section.id }} .swiper_for_simplicity_contain_swiper .slick-track'))
+        }
+        $('#shopify-section-{{ section.id }} .swiper_for_simplicity_contain_swiper').on('breakpoint', function (event, slick, breakpoint) {
+          blockTransform(document.querySelector('#shopify-section-{{ section.id }} .swiper_for_simplicity_contain_swiper .slick-track'));
+        });
+      {% endif %}
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "swiper for simplicity",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "specId",
+      "label": "specId"
+    },
+    {
+      "type": "textarea",
+      "id": "title",
+      "label": "title"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "text"
+    },
+    {
+      "type": "text",
+      "id": "btn_text",
+      "label": "button text"
+    },
+    {
+      "type": "url",
+      "id": "btn_url",
+      "label": "button url"
+    },
+    {
+      "type": "number",
+      "id": "initialSlide",
+      "label": "initialSlide",
+      "default": 2
+    },
+    {
+      "type": "checkbox",
+      "id": "autoplay",
+      "label": "autoplay",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "infinite",
+      "label": "infinite",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "centerMode",
+      "label": "centerMode",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "blockTransform",
+      "label": "blockTransform",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "hideNextArrow",
+      "label": "hideNextArrow",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "showMobileArrow",
+      "label": "showMobileArrow",
+      "default": true
+    }
+  ],
+  "blocks": [
+    {
+      "type": "swiper",
+      "name": "swiper",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "file_image",
+          "label": "file image"
+        },
+        {
+          "type": "image_picker",
+          "id": "file_image_mobile",
+          "label": "file image mobile"
+        },
+        {
+          "type": "checkbox",
+          "id": "loading_lazy",
+          "label": "loading lazy",
+          "default": true
+        },
+        {
+          "type": "video",
+          "id": "video",
+          "label": "video"
+        },
+        {
+          "type": "textarea",
+          "id": "title",
+          "label": "title"
+        },
+        {
+          "type": "textarea",
+          "id": "subtitle",
+          "label": "subtitle"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "swiper for simplicity"
+    }
+  ]
+}
+{% endschema %}

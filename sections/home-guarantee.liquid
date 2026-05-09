@@ -1,0 +1,195 @@
+<style>
+  .blavklyte-guarantees{
+    background: #E2E2E2;
+  }
+  .blavklyte-guarantees-border{
+    border-bottom: 1px solid #B9B9B9;
+  }
+
+  .blavklyte-guarantees img{
+    width: 100%;
+    object-fit: contain;
+    height: auto;
+  }
+
+  .blavklyte-guarantees .guarantee-wrapper{
+    padding: 71px 0;
+  }
+  .blavklyte-guarantees .guarantee-wrapper .icon-list{
+    display: flex;
+    gap: 37px;
+  }
+  .blavklyte-guarantees .guarantee-wrapper .icon-list .item{
+    width: calc( (100% - 74px)  / 3 );
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: flex-start;
+    position: relative;
+  }
+  .blavklyte-guarantees .guarantee-wrapper .icon-list .item .info {
+    flex: 1;
+  }
+  .blavklyte-guarantees .guarantee-wrapper .icon-list .icon-img{
+    width: 64px;
+    height: 64px;
+  }
+  .blavklyte-guarantees .guarantee-wrapper .icon-list .icon-img img{
+    max-width: 100%;
+    max-height: 100%;
+  }
+  .blavklyte-guarantees .info-title{
+    font: 500 22px var(--font-family-3);
+    line-height: 1.5;
+    margin-bottom: 4px;
+    margin-top: 18px;
+    color: #262629;
+  }
+  .blavklyte-guarantees .info-text{
+    font: 400 16px var(--font-family-3);
+    line-height: 1.4;
+    color: #76767F;
+    margin-top: 0;
+  }
+  @media(max-width: 767px) {
+    .blavklyte-guarantees .guarantee-wrapper .icon-list{
+      flex-direction: column;
+      gap: 30px;
+    }
+    .blavklyte-guarantees .guarantee-wrapper .icon-list .item{
+      width: 100%;
+    }
+    .blavklyte-guarantees .guarantee-wrapper .icon-list .icon-img {
+        width: 50px;
+        height: 50px;
+    }
+    .blavklyte-guarantees {
+      padding-top: 50px;
+      padding-bottom: 50px;
+    }
+    .blavklyte-guarantees div.guarantee-wrapper {
+      padding: 0 10px;
+    }
+    .blavklyte-guarantees .info-title {
+      margin-top: 8px;
+      font-size: 18px;
+    }
+    .blavklyte-guarantees .info-text{
+      font-size: 14px;
+    }
+    .blavklyte-guarantees .icon-list .item:first-child .info-text {
+      line-height: 21px;
+    }
+    
+  }
+  @media (min-width: 2000px) {
+    .blavklyte-guarantees .guarantee-wrapper .icon-list .icon-img {
+        width: 3.33vw;
+        height: 3.33vw;
+    }
+    .blavklyte-guarantees .info-title{
+          font-size: 0.84vw;
+    }
+    .blavklyte-guarantees .info-text{
+      font-size:0.84vw;
+    }
+  }
+
+  /* small screen */
+  @media(min-width: 1025px) and (max-width: 1480px){
+    .blavklyte-guarantees .container-1570{
+      padding-left: 60px;
+      padding-right: 60px;
+    }
+  }
+</style>
+
+<div class="blavklyte-guarantees lazy-section{% if section.settings.isShowBorderBottom %} blavklyte-guarantees-border{% endif %}" data-section-id="{{ section.id }}">
+  <div class="container-1570 guarantee-wrapper">
+    {% if section.settings.title != blank %}
+      {% comment %} <h3 class="guarantee-title">{{ section.settings.title }}</h3> {% endcomment %}
+    {% endif %}
+    <div class="icon-list">
+      {% for block in section.blocks %}
+        <div class="item">
+          <div class="icon-img">
+            {% if block.settings.icon != blank %}
+              {{-
+                block.settings.icon
+                | image_url: width: block.settings.icon.width
+                | image_tag:
+                  is: 'loess-image',
+                  loading: 'lazy',
+                  sizes: '100vw',
+                  widths: '200,300,400,500,600,700,800,900,1000,1200,1400,1600,1800,2000,2200,2400,2600,2800,3000,3200',
+                  class: '',
+                  alt: block.settings.icon.alt
+              -}}
+            {% else %}
+              <img src="" loading="lazy" alt="">
+            {% endif %}
+          </div>
+      
+          <div class="info">
+              {% if block.settings.title != blank %}
+                <p class="info-title">{{ block.settings.title }}</p>
+              {% endif %}
+              {% if block.settings.text != blank %}
+                <p class="info-text">{{ block.settings.text }}</p>
+              {% endif %}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Home Guarantee",
+  "tag": "section",
+  "class": "lazy-section",
+  "max_blocks": 3,
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "title",
+      "label": "Section title"
+    },
+    {
+      "type": "checkbox",
+      "id": "isShowBorderBottom",
+      "label": "is Show Border Bottom",
+      "default": false
+    }
+  ],
+  "blocks": [
+    {
+      "type": "blcok",
+      "name": "item",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon image"
+        }, 
+        {
+          "type": "textarea",
+          "id": "title",
+          "label": "Icon title"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Icon text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Home Guarantee"
+    }
+  ]
+}
+{% endschema %}

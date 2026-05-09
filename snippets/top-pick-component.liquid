@@ -1,0 +1,54 @@
+<div class="cont-left but-link" data-href="{{ block.settings.topPickProdLink }}" style="{% if block.settings.topPickModuleBgImage != blank %}background: url('{{ block.settings.topPickModuleBgImage }}') no-repeat;background-size: cover;{% endif %}">
+  <img src="{{ block.settings.topPickProdImg | img_url:'master' }}" />
+</div>
+<div class="cont-right but-link" data-href="{{ block.settings.topPickProdLink }}">
+  <div class="title-info">
+    {{ block.settings.topPickProdTitle }}
+  </div>
+  <div class="desc-info">{{ block.settings.topPickProdDesc }}</div>
+  <div class="price-info">
+    {% if block.settings.topEditionProdSalePrice != blank %}
+        <span class="discount-price">
+          {{
+              block.settings.topEditionProdSalePrice
+              | minus: block.settings.topEditionPickProdDiscountPrice
+              | money
+            }}
+        </span>
+        <span class="origa-price {% if block.settings.topEditionPickProdDiscountPrice != blank %}origa-price-discount{% endif %}">
+          {{ block.settings.topEditionProdSalePrice | money }}
+        </span>
+      {% else %}
+        {% if block.settings.topPickProd.selected_or_first_available_variant.metafields.custom.discount_price.value > 0 %}
+          <span class="discount-price">
+            {{
+              block.settings.topPickProd.selected_or_first_available_variant.price
+              | minus: block.settings.topPickProd.selected_or_first_available_variant.metafields.custom.discount_price.value
+              | money
+            }}
+          </span>
+        {% endif %}
+        <span class="origa-price {% if block.settings.topPickProd.selected_or_first_available_variant.metafields.custom.discount_price.value != blank %}origa-price-discount{% endif %}">
+          {{ block.settings.topPickProd.selected_or_first_available_variant.price | money }}
+        </span>
+    {% endif %}
+  </div>
+  <div class="buttons-info but-link" data-href="{{ block.settings.topPickProdLink }}">SHOP NOW</div>
+</div>
+
+{% if block.settings.topEditionProdSalePrice != blank %}
+    <div class="save-tag-cont">
+      <span class="save-price">{{ block.settings.topEditionPickProdDiscountPrice | money_without_trailing_zeros }}</span>
+      <span class="save-text">OFF</span>
+    </div>
+  {% else %}
+    {% if block.settings.topPickProd.selected_or_first_available_variant.metafields.custom.discount_price.value > 0 %}
+      <div class="save-tag-cont">
+        <span class="save-price">{{ block.settings.topPickProd.selected_or_first_available_variant.metafields.custom.discount_price.value | money_without_trailing_zeros }}</span>
+        <span class="save-text">OFF</span>
+      </div>
+    {% endif %}
+{% endif %}
+
+
+

@@ -1,0 +1,175 @@
+<style>
+    {% liquid
+        assign section_background_color = section.settings.sectionBackgroundColor
+      
+    %}
+    .section-{{ section.id }}{
+        padding-top: 110px;
+        padding-bottom: 110px;
+        background: {{  section_background_color }};
+    }
+    
+    .section-{{ section.id }} .container-full{
+        padding-left: 16%;
+        padding-right: 16%;
+    }
+    .section-{{ section.id }} .head-cont{
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+    }
+    .section-{{ section.id }} .head-cont .section-title{
+        font-family: Roboto;
+        font-weight: 600;
+        font-style: SemiBold;
+        font-size: 30px;
+        line-height: 100%;
+        letter-spacing: 0%;
+        text-align: center;
+        color: #262629;
+    }
+    .section-{{ section.id }} .head-cont .section-desc{
+        font-family: Roboto;
+        font-weight: 400;
+        font-style: Regular;
+        font-size: 16px;
+        line-height: 22px;
+        letter-spacing: 0%;
+        text-align: center;
+        color: #262629;
+        opacity: 0.7;
+        width: 60%;
+        margin: auto;
+    }
+    .section-{{ section.id }} .brand-lists{
+        display: flex;
+        gap: 66px;
+        flex-wrap: wrap;
+        margin-top: 60px;
+    }
+    .section-{{ section.id }} .brand-lists .brand-item{
+        width: calc((100% - 200px) / 6);
+    }
+    .section-{{ section.id }} .brand-lists .brand-item img{
+        height: auto;
+    }
+     
+
+
+
+    {% comment %} iPhone {% endcomment %}
+    @media(max-width: 767px){
+        .section-{{ section.id }} .container-full{
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+        .section-{{ section.id }}{
+            padding-top: 50px;
+            padding-bottom: 50px;
+        }
+        .section-{{ section.id }} .head-cont .section-title{
+            font-size: 20px;
+        }
+        .section-{{ section.id }} .head-cont .section-desc{
+            font-size: 14px;
+            width: 90%;
+        }
+        .section-{{ section.id }} .brand-lists{
+            gap: 50px;
+            margin-top: 30px;
+        }
+        .section-{{ section.id }} .brand-lists .brand-item{
+            width: calc((100% - 100px) / 3);
+        }
+
+    }
+
+
+    {% comment %} iPad {% endcomment %}
+    @media(min-width: 768px) and (max-width: 1024px){
+        .section-{{ section.id }} .container-full{
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+    }
+
+
+    @media(min-width: 1025px) and (max-width: 1480px){
+        .section-{{ section.id }} .container-full{
+            padding-left: 60px;
+            padding-right: 60px;
+        }
+    }
+</style>
+
+<section class="section-{{ section.id }}" id="{{ section.id }}" data-section-id="{{ section.id }}">
+    <div class="container-full">
+        <div class="head-cont">
+            {% if section.settings.sectionTitle != blank %}
+                <h2 class="section-title">{{ section.settings.sectionTitle }}</h2>
+            {% endif %}
+            {% if section.settings.sectionDesc != blank %}
+                <div class="section-desc">{{ section.settings.sectionDesc }}</div>
+            {% endif %}
+        </div>
+        <div class="brand-lists">
+            {% for block in section.blocks %}
+                <div class="brand-item">
+                    <img {% render 'lazyload',preview_img: block.settings.brandIteLogo, class: true, enable_rtl: settings.enable_layout_rtl  %}
+                        width="{{ block.settings.brandIteLogo.width }}"
+                        height="{{ block.settings.brandIteLogo.height }}"
+                        loading="lazy"
+                        decoding="async"
+                        style="auto"
+                    />
+                    
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+{% schema %}
+{
+    "name": "aboutus Brand Logos",
+    "class": "aboutus-brand-logos",
+    "settings": [
+        {
+            "type": "text",
+            "id": "sectionTitle",
+            "label": "section Title",
+            "default": "Partnerships"
+        },
+        {
+            "type": "text",
+            "id": "sectionDesc",
+            "label": "section desc",
+            "default": "We take pride in collaborating with world-class companies, premier tournaments, and elite esports teams to create unparalleled products and experiences."
+        },
+        {
+            "type": "color",
+            "id": "sectionBackgroundColor",
+            "label": "section Background Color",
+            "default": "#EBEBEB"
+        }
+    ],
+    "blocks": [
+        {
+            "type": "item",
+            "name": "item",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "brandIteLogo",
+                    "label": "brand Item Logo"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "aboutus Brand Logos"
+        }
+    ]
+}
+{% endschema %}

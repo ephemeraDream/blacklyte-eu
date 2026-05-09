@@ -1,0 +1,640 @@
+{% comment %}
+首页 major活动: 背景图, 可滑动的内容区域
+{% endcomment %}
+<style>
+  .home-slide-event-section{
+    padding-top: 130px;
+    padding-bottom: 100px;
+    position: relative;
+    background-color: #060606;
+  }
+  .home-slide-event-section .slide-title-desc-cont{
+    padding-left: 16%;
+  }
+ 
+  .home-slide-event-section .section-title{
+    font: 600 40px var(--font-family-3);
+    color: #fff;
+    line-height: 1.4;
+    text-align: left;
+  }
+  .home-slide-event-section .section-descripe{
+    font: 500 16px var(--font-family-3);
+    color: #FFFFFF;
+    opacity: 0.7;
+    line-height: 26px;
+    text-align: left;
+    opacity: 0.7;
+  }
+  .home-slide-event-section .section-link-url{
+    display: flex;
+    gap: 10px;
+    font: 500 16px var(--font-family-3);
+    color: #FFFFFF;
+    margin-top: 16px;
+    transition: all .35s ease-in-out;
+  }
+  .home-slide-event-section .section-link-url:hover svg{
+    transform: translateX(10px);
+  }
+  .home-slide-event-section .section-link-url svg{
+    width: 30px;
+    height: fit-content;
+  }
+  .home-slide-event-section .slide-event-cont{
+    margin-top: 30px;
+    margin-left: 16%;
+  }
+  .home-slide-event-section .slide-event-cont .item{
+    position: relative;
+    border: 1px solid #505050;
+  }
+
+  .home-slide-event-section .slide-event-cont .item .btns-lists{
+    position: absolute;
+    bottom: 23px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .home-slide-event-section .slide-event-cont .item .item-btn{
+    font: 500 16px var(--font-family-3);
+    color: #fff;
+    transition: all .3s ease;
+    white-space: nowrap;
+    transition: all .35s ease-in-out;
+  }
+  .home-slide-event-section .slide-event-cont .item .item-btn:hover .btns-svg svg{
+    transform: translateX(5px);
+  }
+  .home-slide-event-section .slide-event-cont .item .item-btn .btns-svg{
+    vertical-align: text-bottom;
+  }
+  .home-slide-event-section .slide-event-cont .item .item-btn .btns-svg svg{
+    width: 31px;
+  }
+  .home-slide-event-section .slide-event-cont .item .item-btn:hover{
+    background: var(--btn-hover-bg-color);
+  }
+  .home-slide-event-section .slide-event-cont .item .item-btn.learn-more-btn{
+    background: var(--learnmore-btn-bg-color);
+    color: #fff;
+  }
+  .home-slide-event-section .slide-event-cont .item .item-btn.learn-more-btn:hover{
+    background: var(--learnmore-btn-hover-bg-color);
+  }
+  .home-slide-event-section .slide-event-cont .item .item-cont-mb{
+    position: absolute;
+    bottom: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    width: 100%;
+  }
+  .home-slide-event-section .slide-event-cont .item .item-cont-mb .item-cont-title{
+    font: 600 26px var(--font-family-3);
+    line-height: 1.4;
+    color: #fff;
+  }
+  .home-slide-event-section .slide-event-cont .item .item-cont-mb .item-conte-desc{
+    font: 500 16px var(--font-family-3);
+    line-height: 26px;
+    color: #fff;
+  }
+  .home-slide-event-section .swiper-pagination{
+    bottom: 60px;
+  }
+  .home-slide-event-section .swiper-pagination .swiper-pagination-bullet{
+    width: 30px;
+    height: 2px;
+    display: inline-block;
+    border-radius: 0;
+    background: #fff;
+    opacity: 0.5;
+    transition: all .3s ease-in-out;
+  }
+  .home-slide-event-section .swiper-pagination .swiper-pagination-bullet.swiper-pagination-bullet-active{
+    background: #fff;
+    width: 80px;
+    opacity: 1;
+  }
+  .event-pagination-container .pagina-btn{
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    cursor: pointer;
+    background-color: rgba(255,255,255,0.9);
+  }
+  .event-pagination-container .pagina-btn svg{
+    width: 10px;
+    height: 10px;
+    fill: none;
+    stroke: none;
+  }
+  .event-pagination-container .pagina-btn:hover svg path{
+    stroke: #014AE4;
+  }
+  .event-pagination-container .pre-btn-icon{
+    position: absolute;
+    left: 16%;
+    top: calc(50% - 15px);
+    opacity: 0;
+    transition: opacity .3s ease-in-out;
+  }
+  .event-pagination-container .next-btn-icon{
+    position: absolute;
+    right: calc(16% + 10px);
+    top: calc(50% - 15px);
+    opacity: 0;
+    transition: opacity .3s ease-in-out;
+  }
+  .home-slide-event-section .btns-lists{
+    display: flex;
+    gap: 15px;
+  }
+  
+  /* IPhone */
+  @media(max-width: 767px) {
+    .home-slide-event-section{
+      padding-top: 50px;
+      padding-bottom: 50px;
+    }
+    .home-slide-event-section .slide-title-desc-cont{
+      padding-left: 0;
+    }
+    .home-slide-event-section .slide-event-cont{
+      margin-left: 10px;
+    }
+    .home-slide-event-section .slide-title-desc-cont{
+      width: calc(100% - 20px);
+      margin: 0 auto 28px;
+    }
+    .home-slide-event-section .section-title{
+      font-size: 24px;
+    }
+    .home-slide-event-section .section-descripe{
+      font-size: 14px;
+    }
+
+    .home-slide-event-section .slide-event-cont .section-title{
+      font-size: 24px;
+    }
+    .home-slide-event-section .slide-event-cont .section-descripe{
+      font-size: 16px;
+    }
+  
+    .home-slide-event-section .swiper-pagination{
+      bottom: 24px;
+    }
+    .home-slide-event-section .swiper-pagination .swiper-pagination-bullet.swiper-pagination-bullet-active{
+      width: 40px;
+    }
+    .home-slide-event-section .slide-event-cont .item .item-cont-mb{
+      position: absolute;
+      bottom: 60px;
+      text-align: center;
+    }
+    .home-slide-event-section .slide-event-cont .item .item-cont-mb .item-cont-title{
+      font: 600 26px var(--font-family-3);
+      line-height: 1.4;
+      color: #fff;
+    }
+    .home-slide-event-section .slide-event-cont .item .item-cont-mb .item-conte-desc{
+      font: 400 16px var(--font-family-3);
+      line-height: 26px;
+      color: #fff;
+    }
+    .event-pagination-container .pre-btn-icon{
+      display: none;
+    }
+    .event-pagination-container .next-btn-icon{
+      display: none;
+      right: 10px;
+    }
+    .home-slide-event-section .btns-lists{
+      gap: 8px;
+    }
+    .home-slide-event-section .slide-event-cont .item .item-btn{
+      font-size: 12px;
+      padding: 0 20px;
+      line-height: 35px;
+    }
+    .home-slide-event-section .slide-event-cont .item .item-btn .btns-svg svg{
+      width: 14px;
+    }
+    .home-slide-event-section .slide-event-cont .item .item-btn .btns-svg{
+      vertical-align: baseline;
+    }
+  }
+  {% comment %} /* IPad */ {% endcomment %}
+  @media(min-width: 768px) and (max-width: 1024px) {
+    .event-pagination-container .pre-btn-icon{
+      left: 10px;
+    }
+    .event-pagination-container .next-btn-icon{
+      right: 10px;
+    }
+
+    .home-slide-event-section .slide-event-cont{
+      margin-left: 10px;
+    }
+    .home-slide-event-section .slide-title-desc-cont{
+      padding-left: 10px;
+    }
+  }
+ 
+  @media(min-width: 1025px) and (max-width: 1480px){
+    .home-slide-event-section .slide-title-desc-cont {
+      padding-left: var(--margin-left-1);
+    }
+    .home-slide-event-section .slide-event-cont{
+      margin-left: 60px;
+    }
+    .event-pagination-container .pre-btn-icon{
+      left: 70px;
+    }
+    .event-pagination-container .next-btn-icon{
+      right: 70px;
+    }
+  }
+  {% comment %} /* not IPad & IPhone */ {% endcomment %}
+  @media(min-width: 1025px) {
+    .home-slide-event-section .slide-event-cont .swiper-slide{
+      width: 60%;
+    }
+  }
+</style>
+
+<div class="home-slide-event-section" id="event-section">
+  <div class="container-full">
+    <div class="slide-container">
+      <div class="slide-title-desc-cont">
+        {% if section.settings.sectionTitle != blank %}
+          <h2 class="section-title">{{ section.settings.sectionTitle }}</h2>
+        {% endif %}
+        {% if section.settings.sectionDesc != blank %}
+          <div class="section-descripe">{{ section.settings.sectionDesc }}</div>  
+        {% endif %}
+        {% if section.settings.sectionLinkText != blank %}
+          <a {% if section.settings.sectionLinkURl != blank %}  href="{{ section.settings.sectionLinkURl }}" {% else %} aria-disabled="true" {% endif %} class="section-link-url">
+            {{ section.settings.sectionLinkText }}
+            <span class="link-svg">
+              <svg width="31" height="15" viewBox="0 0 31 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M30.7071 8.07429C31.0976 7.68377 31.0976 7.0506 30.7071 6.66008L24.3431 0.29612C23.9526 -0.0944047 23.3195 -0.0944047 22.9289 0.29612C22.5384 0.686644 22.5384 1.31981 22.9289 1.71033L28.5858 7.36719L22.9289 13.024C22.5384 13.4146 22.5384 14.0477 22.9289 14.4383C23.3195 14.8288 23.9526 14.8288 24.3431 14.4383L30.7071 8.07429ZM0 7.36719V8.36719H30V7.36719V6.36719H0V7.36719Z" fill="white"/>
+              </svg>
+
+            </span>
+          </a>
+        {% endif %}
+      </div>
+      <div style="position: relative;">
+        <div class="slide-event-cont swiper">
+          <div class="swiper-wrapper">
+            {% for block in section.blocks %}
+              {% if block.type == "smallImage" %}
+
+                {% assign product_options = block.settings.itemProdVariants | split: ',' %}
+                {% assign product_variant = '' %}
+
+                {% for variant in block.settings.itemProduct.variants %}
+                  {% assign match = true %}
+
+                  {% if product_options.size > 0 %}
+                    {% if variant.option1 != product_options[0] %}
+                      {% assign match = false %}
+                    {% endif %}
+                  {% endif %}
+
+                  {% if product_options.size > 1 %}
+                    {% if variant.option2 != product_options[1] %}
+                      {% assign match = false %}
+                    {% endif %}
+                  {% endif %}
+
+                  {% if product_options.size > 2 %}
+                    {% if variant.option3 != product_options[2] %}
+                      {% assign match = false %}
+                    {% endif %}
+                  {% endif %}
+
+                  {% if match %}
+                    {% assign product_variant = variant %}
+                    {% break %}
+                  {% endif %}
+                {% endfor %}
+
+                {% assign product_variant_id = block.settings.itemProduct.selected_or_first_available_variant.id %}
+
+                {% if block.settings.itemProdVariants != blank %}
+                  {% assign product_variant_id = product_variant.id %}
+                {% endif %}
+
+                <div class="item swiper-slide" data-url="{{ block.settings.itemButtonLink }}">
+                  <picture>
+                      <source media="(max-width: 768px)" 
+                        srcset="{{ block.settings.itemImageMobile | image_url: width: 800 }}"
+                        data-srcset="{{ block.settings.itemImageMobile | image_url: width: 800 }}" >
+
+                      <img
+                          {% render 'lazyload',preview_img: block.settings.itemImage, class: true, enable_rtl: settings.enable_layout_rtl  %}
+                          width="{{ block.settings.itemImage.width }}"
+                          height="{{ block.settings.itemImage.height }}"
+                          alt="{{ block.settings.itemImage.alt | escape }}"
+                          loading="lazy"
+                          style="height: auto;">
+                  </picture>
+                  
+                  {% if block.settings.itemTitle != blank or block.settings.itemDescripe != blank %}
+                    <div class="item-cont-mb">
+                      {% if block.settings.itemTitle != blank %}
+                        <div class="item-cont-title">{{ block.settings.itemTitle }}</div>
+                      {% endif %}
+                      {% if block.settings.itemDescripe != blank %}
+                        <div class="item-conte-desc">{{ block.settings.itemDescripe }}</div>
+                      {% endif %}
+                    </div>
+                  {% endif %}
+
+                  {% if block.settings.itemButton != blank or block.settings.learnMoreBtn != blank %}
+                    <div class="btns-lists">
+                      {% if block.settings.learnMoreBtn != blank %}
+                        <a role="link" {% if block.settings.learnMoreBTNLink != blank %} href="{{ block.settings.learnMoreBTNLink }}" {% else %} aria-disabled="true" {% endif %} class="item-btn learn-more-btn" style="{% if block.settings.learnMoreBtnBgColor != blank %}--learnmore-btn-bg-color: {{ block.settings.learnMoreBtnBgColor }};{% endif %}{% if block.settings.learnMoreHoverColor != blank %}--learnmore-btn-hover-bg-color: {{ block.settings.learnMoreHoverColor | default: "linear-gradient(270deg, #8de0fc 0%, #2672eb 100%)" }} {% endif %}">
+                          {{ block.settings.learnMoreBtn }}
+                          <span class="btns-svg">
+                            <svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M0.707031 11.7109L6.20703 6.21094L0.707031 0.710938" stroke="white" stroke-width="2"/>
+                            </svg>
+
+
+                          </span>
+                        </a>
+                      {% endif %}
+                      {% if block.settings.itemButton != blank %}
+                        <a role="link" {% if block.settings.itemProduct != blank %} href="{{ block.settings.itemProduct.url }}?variant={{ product_variant_id }}" {% else %} aria-disabled="true" {% endif %} class="item-btn" style="{% if block.settings.itemBtnBgColor != blank %}--btn-bg-color: {{ block.settings.itemBtnBgColor }};{% endif %}{% if block.settings.itemButtonHoverColor != blank %}--btn-hover-bg-color: {{ block.settings.itemButtonHoverColor | default: "linear-gradient(270deg, #8de0fc 0%, #2672eb 100%)" }}{% endif %}">
+                          {{ block.settings.itemButton }}
+                          <span class="btns-svg">
+                            <svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+                              <path d="M0.707031 11.7109L6.20703 6.21094L0.707031 0.710938" stroke="white" stroke-width="2"/>
+                            </svg>
+
+                          </span>
+                        </a>
+                      {% endif %}
+                      
+                    </div>
+                  {% endif %}
+                </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+        </div>
+        {% comment %} 自定义左右箭头 {% endcomment %}
+        <div class="event-pagination-container">
+          <div class="pre-btn-icon pagina-btn">
+            <svg width="7" height="12" viewBox="0 0 7 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M5.75 10.5L1.39145 6.14145C1.31335 6.06335 1.31335 5.93671 1.39145 5.85861L5.75 1.50006" stroke="#262629" stroke-width="1" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <div class="next-btn-icon pagina-btn">
+            <svg width="7" height="12" viewBox="0 0 7 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M1 10.5L5.35855 6.14145C5.43665 6.06335 5.43665 5.93671 5.35855 5.85861L1 1.50006" stroke="#262629" stroke-width="1" stroke-linecap="round"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="swiper-pagination"></div>
+</div>
+
+<script>
+  $(document).ready(function(){
+      let eventSwiper = null
+
+
+      function getOffset() {
+          const w = window.innerWidth;
+          const rules = [
+              { min: 1025, max: 1480, value: 60 },
+              { min: 768,  max: 1024, value: 10 },
+              { min: 0, max: 767, value: 10 }
+          ];
+
+          const rule = rules.find(r => w >= r.min && w <= r.max);
+          return rule ? rule.value : Math.round(w * 0.16);
+      }
+      
+      $('.home-slide-event-section .slide-event-cont').css('margin-left', '0')
+      
+      
+
+      {% comment %} 判断鼠标hover到左半部分还是右半部分 {% endcomment %}
+      const eventReviewsList = document.querySelector('.home-slide-event-section .slide-event-cont')
+      const eventCollection = document.querySelector('.home-slide-event-section')
+      const eventPrevBtn = document.querySelector('.home-slide-event-section .event-pagination-container .pre-btn-icon')
+      const eventNextBtn = document.querySelector('.home-slide-event-section .event-pagination-container .next-btn-icon')
+      eventReviewsList.addEventListener('mousemove', (e) => {
+          const rect = eventReviewsList.getBoundingClientRect();
+          const mid = rect.left + rect.width / 2;
+        
+          if (e.clientX < mid) {
+            eventPrevBtn.style.opacity = '1';
+            eventNextBtn.style.opacity = '0';
+          } else {
+            eventPrevBtn.style.opacity = '0';
+            eventNextBtn.style.opacity = '1';
+          }
+      });
+      eventCollection.addEventListener('mouseleave', function() {
+          eventPrevBtn.style.opacity = '0';
+          eventNextBtn.style.opacity = '0';
+      })
+
+      
+      eventSwiper = new Swiper('.home-slide-event-section .slide-event-cont', {
+        loop: false,
+        grabCursor: true,
+        simulateTouch: true,
+        slidesPerView: 1, 
+        slidesPerGroup: 1,
+        spaceBetween: 10,
+        slidesOffsetBefore: 10,
+        slidesOffsetAfter: 70,
+        pagination: {
+            el: '.home-slide-event-section .swiper-pagination',
+            clickable: true,
+        },
+        breakpoints: {
+            320: {
+              slidesPerView: 1,
+              spaceBetween: 10,
+              slidesOffsetBefore: 10,
+              slidesOffsetAfter: 10,
+              centeredSlides: false
+            },
+            768: {
+              slidesPerView: 1,
+              spaceBetween: 10,
+              slidesOffsetBefore: 10,
+              slidesOffsetAfter: 10,
+              centeredSlides: false
+            },
+            992: {
+                slidesPerView: 1.3,
+                spaceBetween: 20,
+                slidesOffsetBefore: getOffset()
+            }
+        },
+      });
+
+      $('.home-slide-event-section .slide-event-cont .item').on('click', function() {
+          const url = $(this).data('url')
+          if(url){
+            window.location.href = url
+          }
+      })
+
+      {% comment %} pre page {% endcomment %}
+      $('.event-pagination-container .pre-btn-icon').click(function(){
+        eventSwiper.slidePrev();
+      })
+      {% comment %} next page {% endcomment %}
+      $('.event-pagination-container .next-btn-icon').click(function(){
+        eventSwiper.slideNext();
+      })
+  })
+  
+  
+
+</script>
+
+{% schema %}
+  {
+    "name": "HOME Slide Event",
+    "tag": "section",
+    "settings": [
+      {
+        "type": "text",
+        "id": "sectionTitle",
+        "label": "Section Title",
+        "default": "Exclusive collab editions"
+      },
+      {
+        "type": "text",
+        "id": "sectionDesc",
+        "label": "Section Desc",
+        "default": "Personalize your comfort with favorite esports, games, and more."
+      },
+      {
+        "type": "text",
+        "id": "sectionLinkText",
+        "label": "section Link Text",
+        "default": "VIEW ALL PARTNERSHIPS"
+      },
+      {
+        "type": "url",
+        "id": "sectionLinkURl",
+        "label": "section Link URl"
+      },
+      {
+        "type": "image_picker",
+        "id": "sectionImage",
+        "label": "Section Image"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "smallImage",
+        "name": "smallImage",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "blockItemBgImage",
+            "label": "Block Item BG Image"
+          },
+          {
+            "type": "image_picker",
+            "id": "itemImage",
+            "label": "Block Image"
+          },
+          {
+            "type": "image_picker",
+            "id": "itemImageMobile",
+            "label": "Block Image Mobile"
+          },
+          {
+            "type": "text",
+            "id": "itemTitle",
+            "label": "Item Title",
+            "default": "Exclusive collab editions"
+          },
+          {
+            "type": "text",
+            "id": "itemDescripe",
+            "label": "Item Descripe",
+            "default": "Personalize your comfort with favorite esports, games, and more."
+          },
+          {
+            "type": "text",
+            "id": "learnMoreBtn",
+            "label": "Learn More Button"
+          },
+          {
+            "type": "text",
+            "id": "learnMoreBtnBgColor",
+            "label": "Learn More BTN bgColor"
+          },
+          {
+            "type": "text",
+            "id": "learnMoreHoverColor",
+            "label": "Learn More Btn Hover BgColor"
+          },
+          {
+            "type": "url",
+            "id": "learnMoreBTNLink",
+            "label": "Learn More Button Link"
+          },
+          {
+            "type": "text",
+            "id": "itemButton",
+            "label": "Block Item Button",
+            "default": "BUY NOW"
+          },
+          {
+            "type": "text",
+            "id": "itemBtnBgColor",
+            "label": "Block Item BTN bgColor"
+          },
+          {
+            "type": "text",
+            "id": "itemButtonHoverColor",
+            "label": "Block Item BTN Hover bgColor"
+          },
+          {
+            "type": "url",
+            "id": "itemButtonLink",
+            "label": "Block Item Button Link"
+          },
+          {
+            "type": "product",
+            "id": "itemProduct",
+            "label": "Block Item Product"
+          },
+          {
+            "type": "text",
+            "id": "itemProdVariants",
+            "label": "item Product Variants"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "HOME Slide Event"
+      }
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,91 @@
+{% stylesheet %}
+  #shopify-block-AMTFYV21ocXhVRVNyY__stamped_reviews_star_rating_badge_x9zeba .stamped-product-reviews-badge {
+    align-items: center;
+    margin-bottom: 0.734375vw;
+  }
+  #shopify-block-AMTFYV21ocXhVRVNyY__stamped_reviews_star_rating_badge_x9zeba .stamped-cert {
+    width: 5.359375vw;
+    height: auto;
+    margin-left: 1.09375vw;
+  }
+  #shopify-block-AMTFYV21ocXhVRVNyY__stamped_reviews_star_rating_badge_x9zeba .stamped-fa-star-o:before {
+    font-size: 20px;
+  }
+  @media screen and (max-width: 500px) {
+      #shopify-block-AMTFYV21ocXhVRVNyY__stamped_reviews_star_rating_badge_x9zeba .stamped-product-reviews-badge {
+        margin-bottom: 2.50667vw;
+      }
+      #shopify-block-AMTFYV21ocXhVRVNyY__stamped_reviews_star_rating_badge_x9zeba {
+          margin-top: 1.6vw;
+      }
+      #shopify-block-AMTFYV21ocXhVRVNyY__stamped_reviews_star_rating_badge_x9zeba .stamped-cert {
+        width: 18.293333vw;
+        height: auto;
+        margin-left: 3.73333vw;
+      }
+  }
+{% endstylesheet %}
+
+<div
+  id="shopify-block-AMTFYV21ocXhVRVNyY__stamped_reviews_star_rating_badge_x9zeba"
+  class="shopify-block shopify-app-block"
+>
+  <span
+    class="stamped-product-reviews-badge stamped-main-badge"
+    style="display: none;"
+  >
+    <span
+      class="stamped-badge"
+      data-rating="4.8"
+      data-lang="en"
+      aria-label="Rated 4.8 out of 5 stars 17 reviews"
+      data-count="17"
+    >
+      <span class="stamped-starrating stamped-badge-starrating" aria-hidden="true">
+        <i class="stamped-fa stamped-fa-star-o" aria-hidden="true"></i>
+        <i class="stamped-fa stamped-fa-star-o" aria-hidden="true"></i>
+        <i class="stamped-fa stamped-fa-star-o" aria-hidden="true"></i>
+        <i class="stamped-fa stamped-fa-star-o" aria-hidden="true"></i>
+        <i class="stamped-fa stamped-fa-star-o" aria-hidden="true"></i>
+      </span>
+      <span
+        class="stamped-badge-caption"
+        data-reviews="0"
+        data-rating="0.0"
+        data-label="reviews"
+        data-version="2"
+      >
+      </span>
+    </span>
+    {% if product.title contains 'Atlas Desk' %}
+      <img
+        src="https://cdn.shopify.com/s/files/1/0663/6742/2695/files/atlas_desk_BIFMA_Certification.webp?v=1771988201"
+        width="100%"
+        height="100%"
+        class="stamped-cert"
+      >
+    {% endif %}
+  </span>
+</div>
+
+{% javascript %}
+  (() => {
+    function addEventListenerStamped(el, eventName, handler) {
+      if (el.addEventListener) {
+        el.addEventListener(eventName, handler);
+      } else {
+        el.attachEvent('on' + eventName, function () {
+          handler.call(el);
+        });
+      }
+    }
+
+    addEventListenerStamped(document, 'stamped:reviews:loaded', function (e) {
+      var ratingCount = $('meta[itemprop="reviewCount"]').attr('content');
+      var ratingValue = $('meta[itemprop="ratingValue"]').attr('content');
+      document.querySelector('.stamped-badge').setAttribute('data-rating', ratingValue);
+      document.querySelector('.stamped-badge').setAttribute('data-count', ratingCount);
+      document.querySelector('.stamped-product-reviews-badge').style.display = 'flex';
+    });
+  })();
+{% endjavascript %}

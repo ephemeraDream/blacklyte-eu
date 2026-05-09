@@ -1,0 +1,467 @@
+.compare_new {
+  background-color: #EBEBEB;
+  padding: 6.5625vw 15.625vw 0;
+}
+
+.compare_new .compare_new_title {
+  font-family: Poppins;
+  font-weight: 600;
+  font-style: SemiBold;
+  font-size: 2.0833vw;
+  leading-trim: NONE;
+  line-height: 100%;
+  letter-spacing: 0%;
+  color: #262629;
+  text-align: center;
+}
+
+.compare_new .compare_new_text {
+  font-family: Poppins;
+  font-weight: 500;
+  font-style: Medium;
+  font-size: clamp(14px, 0.8333vw, 0.8333vw);
+  leading-trim: NONE;
+  line-height: clamp(21px, 1.25vw, 1.25vw);
+  letter-spacing: 0.32px;
+  color: rgba(38, 38, 41, 0.7);
+  text-align: center;
+  margin-top: 0.3125vw;
+}
+
+.compare_new .compare_new_product {
+  display: flex;
+  margin-top: 3.59375vw;
+}
+
+.compare_new .compare_new_product_item {
+  flex: 0 0 auto;
+  width: 23.90625vw;
+  height: 18.28125vw;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.compare_new .compare_new_product_item:first-child {
+  width: 16.5625vw;
+}
+
+.compare_new .compare_new_product_item img {
+  width: 11.09375vw;
+  height: 12.5vw;
+  object-fit: cover;
+  object-position: center center;
+  position: absolute;
+  top: 1.40625vw;
+  left: 5.9375vw;
+}
+
+.compare_new .compare_new_product_item_name {
+  font-family: Poppins;
+  font-weight: 600;
+  font-style: SemiBold;
+  font-size: 3.125vw;
+  leading-trim: NONE;
+  line-height: 100%;
+  letter-spacing: 0%;
+  color: rgba(38, 38, 41, 0.7);
+}
+
+.compare_new .compare_new_product_item_price {
+  font-family: Poppins;
+  font-weight: 500;
+  font-style: Medium;
+  font-size: clamp(14px, 1.041667vw, 1.041667vw);
+  leading-trim: NONE;
+  line-height: clamp(20px, 1.45833vw, 1.45833vw);
+  letter-spacing: 0%;
+  vertical-align: middle;
+  color: rgba(38, 38, 41, 0.7);
+}
+
+.compare_new .compare_new_product_item_contain {
+  display: flex;
+  align-items: baseline;
+  gap: 0.3125vw;
+  position: absolute;
+  bottom: 1.5625vw;
+  left: 2.5vw;
+}
+
+.compare_new .compare_new_product_item_active .compare_new_product_item_name,
+.compare_new .compare_new_product_item_active .compare_new_product_item_price {
+  color: #262629;
+}
+
+.compare_new .compare_new_product_item_active {
+  background-color: #efefef;
+  border: 1px solid #BFBFBF;
+  border-bottom: none;
+  border-radius: 1.25vw 1.25vw 0 0;
+}
+
+.compare_new .compare_new_item {
+  display: flex;
+  align-items: center;
+  min-height: 3.75vw;
+}
+
+.compare_new .compare_new_item:nth-child(2n) {
+  background-color: #f5f5f5;
+  min-height: 3.4375vw;
+}
+
+.compare_new .compare_new_bottom {
+  display: flex;
+}
+
+.compare_new .compare_new_bottom_item {
+  display: block;
+  flex: 0 0 auto;
+  width: 23.90625vw;
+  height: 4.6875vw;
+}
+
+.compare_new .compare_new_bottom_item:first-child {
+  width: 16.5625vw;
+}
+
+.compare_new .compare_new_bottom_item_active {
+  background-color: #efefef;
+  border: 1px solid #BFBFBF;
+  border-top: none;
+  border-radius: 0 0 1.25vw 1.25vw;
+}
+
+.compare_new .compare_new_item_box {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: stretch;
+}
+
+.compare_new .compare_new_item_title {
+  flex: 0 0 auto;
+  width: 16.5625vw;
+  padding: .9375vw 1.09375vw .9375vw 1.71875vw;
+  font-family: Poppins;
+  font-weight: 500;
+  font-style: Medium;
+  font-size: clamp(14px, 0.9375vw, 0.9375vw);
+  leading-trim: NONE;
+  line-height: clamp(18px, 1.25vw, 1.25vw);
+  letter-spacing: 0%;
+  vertical-align: middle;
+  color: rgba(38, 38, 41, 0.7);
+  display: flex;
+  align-items: center;
+}
+
+.compare_new .compare_new_item_text {
+  font-family: Poppins;
+  font-weight: 500;
+  font-style: Medium;
+  font-size: clamp(14px, 0.9375vw, 0.9375vw);
+  leading-trim: NONE;
+  line-height: clamp(22px, 1.45833vw, 1.45833vw);
+  letter-spacing: 0%;
+  vertical-align: middle;
+  color: rgba(38, 38, 41, 0.7);
+}
+
+.compare_new .compare_new_item_contain {
+  display: flex;
+  align-items: center;
+  gap: 0.78125vw;
+  flex: 0 0 auto;
+  width: 23.90625vw;
+  padding: 0.9375vw 2.03125vw;
+  min-height: 3.75vw;
+}
+
+.compare_new .compare_new_item:nth-child(2n) .compare_new_item_contain {
+  min-height: 3.4375vw;
+}
+
+.compare_new .compare_new_item_contain svg {
+  width: 1.5625vw;
+  height: 1.5625vw;
+}
+
+.compare_new .compare_new_item_contain_active {
+  background-color: #efefef;
+  border-left: 1px solid #BFBFBF;
+  border-right: 1px solid #BFBFBF;
+}
+
+.compare_new .compare_new_item:nth-child(2n) .compare_new_item_contain_active {
+  background-color: #f4f4f4;
+}
+
+.compare_new .compare_new_item_contain_active .compare_new_item_text {
+  color: #262629;
+}
+
+.compare_new .compare_new_item_contain_active svg path {
+  stroke-opacity: 1
+}
+
+.compare_new .compare_new_product_item:last-child,
+.compare_new .compare_new_item_contain:last-child,
+.compare_new .compare_new_bottom_item:last-child {
+  margin-left: 1.5625vw;
+}
+
+.compare_new .compare_new_item_title_mobile {
+  display: none;
+}
+
+.compare_new_desk .compare_new_product_item_name {
+  font-family: Poppins;
+  font-weight: 600;
+  font-style: SemiBold;
+  font-size: 1.5625vw;
+  leading-trim: NONE;
+  line-height: 100%;
+  letter-spacing: 0%;
+  width: 100%;
+  text-align: center;
+}
+
+.compare_new_desk .compare_new_product_item_contain,
+.compare_new .compare_new_product_item_spec .compare_new_product_item_contain {
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0;
+  width: 100%;
+  left: 0;
+}
+
+.compare_new_desk .compare_new_item_contain,
+.compare_new .compare_new_product_item_spec .compare_new_item_contain {
+  justify-content: center;
+}
+
+.compare_new .compare_new_product_item_btn {
+  width: 7.453125vw;
+  min-width: 77px;
+  min-height: 21px;
+  height: 1.984375vw;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 2.234375vw;
+  background-color: #262629;
+  color: #fff;
+  font-family: Poppins;
+  font-weight: 500;
+  font-style: Medium;
+  font-size: clamp(14px, 1.041666667vw, 1.041666667vw);
+  leading-trim: NONE;
+  letter-spacing: 0%;
+  vertical-align: middle;
+  position: absolute;
+  bottom: 1.09375vw;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.compare_new.compare_new_desk .compare_new_product_item {
+  height: 19.28125vw;
+}
+
+.compare_new.compare_new_desk .compare_new_product_item_contain {
+  bottom: 3.5625vw;
+}
+
+.compare_new .compare_new_product_item_spec {
+  height: 22vw;
+}
+
+.compare_new .compare_new_product_item_spec .compare_new_product_item_name {
+  font-family: Poppins;
+  font-weight: 600;
+  font-style: SemiBold;
+  font-size: 2.08333vw;
+  leading-trim: NONE;
+  line-height: 3.4375vw;
+  letter-spacing: 0%;
+}
+
+.compare_new .compare_new_product_item_spec .compare_new_product_item_price {
+  margin-top: -0.421875vw;
+  width: 100%;
+  text-align: center;
+}
+
+.compare_new .compare_new_product_item_spec .compare_new_product_item_contain {
+  bottom: 3.6vw;
+}
+
+.compare_new .compare_new_item_spec .compare_new_item_contain_icon {
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  .compare_new {
+    padding: 12.8vw 0 0;
+  }
+
+  .compare_new .compare_new_title {
+    font-size: 6vw;
+    line-height: 8vw;
+    text-align: center;
+    padding: 0 5.6vw;
+  }
+
+  .compare_new .compare_new_text {
+    font-size: 3.7333vw;
+    line-height: 6.4vw;
+    margin-top: 1.6vw;
+    text-align: center;
+    padding: 0 5.6vw;
+  }
+
+  .compare_new .compare_new_product {
+    margin-top: 5.6vw;
+  }
+
+  .compare_new .compare_new_product_item:first-child,
+  .compare_new .compare_new_bottom_item:first-child {
+    width: 5.6vw;
+  }
+
+  .compare_new .compare_new_product_item {
+    width: 44.4vw;
+    height: 52.8vw;
+    display: block;
+  }
+
+  .compare_new .compare_new_product_item_active {
+    border-radius: 3.2vw 3.2vw 0 0;
+  }
+
+  .compare_new .compare_new_bottom_item {
+    width: 44.4vw;
+    height: 11.2vw;
+  }
+
+  .compare_new .compare_new_bottom_item_active {
+    border-radius: 0 0 3.2vw 3.2vw;
+  }
+
+  .compare_new .compare_new_product_item img {
+    width: 33.6vw;
+    height: 38.4vw;
+    position: relative;
+    margin: 4vw auto 0 auto;
+    top: 0;
+    left: 0;
+  }
+
+  .compare_new .compare_new_product_item_contain {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 1.6vw;
+    position: relative;
+    bottom: 0;
+    left: 0;
+    margin-top: 1.6vw;
+  }
+
+  .compare_new .compare_new_product_item_name {
+    font-size: 5.33vw;
+  }
+
+  .compare_new .compare_new_product_item_price {
+    font-size: 3.2vw;
+    line-height: 100%;
+  }
+
+  .compare_new .compare_new_item_title {
+    font-size: 0;
+    width: 5.6vw;
+  }
+
+  .compare_new .compare_new_item_contain {
+    gap: 0;
+    width: 44.4vw;
+    padding: 2.4vw 5.2vw;
+    flex-wrap: wrap;
+  }
+
+  .compare_new .compare_new_item_contain svg {
+    display: none;
+  }
+
+  .compare_new .compare_new_product_item:last-child,
+  .compare_new .compare_new_item_contain:last-child,
+  .compare_new .compare_new_bottom_item:last-child {
+    margin-left: 0;
+  }
+
+  .compare_new .compare_new_item_title_mobile {
+    width: 100%;
+    display: block;
+    font-family: Poppins;
+    font-weight: 500;
+    font-style: Medium;
+    font-size: 3.2vw;
+    leading-trim: NONE;
+    line-height: 6.4vw;
+    letter-spacing: 0%;
+    vertical-align: middle;
+    color: rgba(38, 38, 41, .7);
+  }
+
+  .compare_new .compare_new_item_text {
+    font-size: 3.2vw;
+    line-height: 4.2667vw;
+  }
+
+  .compare_new_desk .compare_new_product_item img {
+    width: 33.6vw;
+    height: 27.4vw;
+  }
+
+  .compare_new_desk .compare_new_item_text svg {
+    display: block;
+    width: 6.4vw;
+    height: 6.4vw;
+  }
+
+  .compare_new_desk .compare_new_item_title_mobile {
+    font-size: 2.677vw;
+    line-height: 1.5;
+  }
+
+  .compare_new_desk .compare_new_item_text {
+    margin-top: 2.4vw;
+  }
+
+  .compare_new.compare_new_desk .compare_new_product_item {
+    height: 49.8vw;
+  }
+
+  .compare_new .compare_new_product_item_spec {
+    height: 63.8vw;
+  }
+
+  .compare_new .compare_new_product_item_spec .compare_new_product_item_name {
+    font-size: 5.33vw;
+    line-height: 8.8vw;
+  }
+
+  .compare_new .compare_new_product_item_spec .compare_new_product_item_contain {
+    bottom: 1.6vw;
+  }
+
+  .compare_new .compare_new_product_item_btn {
+    width: 25.44vw;
+    height: 6.773333vw;
+    border-radius: 7.6267vw;
+    bottom: 1.6vw;
+    font-size: 3.733vw;
+  }
+}

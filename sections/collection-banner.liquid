@@ -1,0 +1,77 @@
+{{ 'section-collection-banner.css' | asset_url | stylesheet_tag }}
+
+<div class="collection_banner">
+  {{-
+    section.settings.image
+    | image_url: width: section.settings.image.width
+    | image_tag: alt: 'Gaming chairs', class: 'collection_banner_image pc_show'
+  -}}
+  {% assign file_image_mobile = section.settings.image_mobile | default: section.settings.image %}
+  {{-
+    file_image_mobile
+    | image_url: width: file_image_mobile.width
+    | image_tag: alt: 'Gaming chairs', class: 'collection_banner_image pmd_show'
+  -}}
+  <div class="collection_banner_contain">
+    <div class="collection_banner_contain_text">{{ section.settings.text }}</div>
+    <div class="collection_banner_features">
+      {% for block in section.blocks %}
+        <div class="collection_banner_feature">
+          {{ block.settings.icon }}
+          <div class="collection_banner_feature_text">{{ block.settings.text }}</div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "collection banner",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_mobile",
+      "label": "image mobile"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "text"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "feature",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "icon",
+          "label": "icon"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "collection banner"
+    }
+  ]
+}
+{% endschema %}

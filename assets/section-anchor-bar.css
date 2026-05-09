@@ -1,0 +1,45 @@
+.anchor_bar {
+  max-width: 100%;
+  background-color: #F5F5F5;
+  padding: 0 60px;
+  border-bottom: 1px solid rgba(153, 153, 153, 0.5);
+  display: flex;
+  gap: 100px;
+  height: 60px;
+  z-index: 1;
+  position: relative;
+  overflow-x: auto;
+}
+
+.anchor_bar .anchor_bar_item {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  font-family: var(--font-family-3);
+  font-weight: 500;
+  font-style: Medium;
+  font-size: 14px;
+  leading-trim: NONE;
+  line-height: 32px;
+  letter-spacing: 0%;
+  color: #262629;
+  cursor: pointer;
+  flex: 0 0 auto;
+}
+
+.anchor_bar .anchor_bar_item.active {
+  border-bottom: 3px solid #262629;
+}
+
+@media screen and (max-width: 768px) {
+  .anchor_bar {
+    padding: 0 5.33vw;
+    height: 45px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .anchor_bar {
+    gap: 10vw;
+  }
+}

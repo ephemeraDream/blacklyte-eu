@@ -1,0 +1,389 @@
+{% comment %}
+3.0 设计best sellers
+{% endcomment %}
+{{ 'home-best-sellers.css' | asset_url | stylesheet_tag }}
+
+
+{% if section.blocks.size > 0 %}
+  {% for block in section.blocks %}
+    {% if block.type == "item" %}
+      {%- if block.settings.productItem.variants.size > 0 and block.settings.productItem.has_only_default_variant != true -%}
+        <script>
+          window.quick_view_inven_array_{{ block.settings.productItem.id }} = {
+            {%- for variant in block.settings.productItem.variants -%}
+              '{{ variant.id }}': '{{ variant.inventory_quantity }}',
+            {%- endfor -%}
+          };
+
+          window.quick_shop_policy_array_{{ block.settings.productItem.id }} = {
+            {%- for variant in block.settings.productItem.variants -%}
+              '{{ variant.id }}': '{{ variant.inventory_policy }}',
+            {%- endfor -%}
+          };
+
+          window.cart_selling_array_{{ block.settings.productItem.id }} = {
+              {%- for variantProduct in block.settings.productItem.variants -%}
+                  '{{ variantProduct.id }}': '{{ variantProduct.inventory_policy }}',
+              {%- endfor -%}
+          };
+        </script>
+      {%- endif -%}
+    {% endif %}
+  {% endfor %}
+{% endif %}
+
+<div class="home_besetsells_collection" data-section-id="{{ section.id }}" id="{{ section.id }}">
+  <div class="container-full review-wrapper">
+    <div class="best-sell-head-cont">
+      {% if section.settings.title != blank or section.settings.sectionLabel != blank %}
+        <div class="section-header">
+          <h2 class="review-title">{{ section.settings.title }}</h2>
+          <a class="review-link" role="link" {% if section.settings.blockLink != blank %}href="{{ section.settings.blockLink }}"{% else %} aria-disabled="true" {% endif %}>{{ section.settings.sectionLabel }}</a>
+        </div>
+      {% endif %}
+      {% if section.settings.sectionDescripe != blank %}
+        <div class="section-desc">
+          <span>{{ section.settings.sectionDescripe }}</span>
+        </div>
+      {% endif %}
+      {% if section.settings.sectionLinkText != blank %}
+        <a class="section-link" {% if section.settings.sectionLinkURL != blank %} href="{{ section.settings.sectionLinkURL }}" {% else %} aria-disabled="true" {% endif %}>
+          <span>{{ section.settings.sectionLinkText }}</span>
+          <span class="section-link-icon">
+            <svg width="31" height="16" viewBox="0 0 31 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M30.7071 8.70711C31.0976 8.31658 31.0976 7.68342 30.7071 7.29289L24.3431 0.928932C23.9526 0.538408 23.3195 0.538408 22.9289 0.928932C22.5384 1.31946 22.5384 1.95262 22.9289 2.34315L28.5858 8L22.9289 13.6569C22.5384 14.0474 22.5384 14.6805 22.9289 15.0711C23.3195 15.4616 23.9526 15.4616 24.3431 15.0711L30.7071 8.70711ZM0 8V9H30V8V7H0V8Z" fill="#262629"/>
+            </svg>
+
+          </span>
+        </a>
+      {% endif %}
+      {% if section.blocks.size > 0 %}
+        <div class="target-cont">
+          <div class="target-lists">
+            {% for block in section.blocks %}
+              {% if block.type == 'targetItem' %}
+                <div class="target-item {% if forloop.first %}target-item-active{% endif %}" data-target-url="{{ block.settings.targetItemLinkURL }}">
+                  <div class="target-item-title" data-target-key="{{ block.settings.targetItemKey }}">{{ block.settings.targetItemTitle }}</div>
+                </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+          <a class="target-cont-link" {% if section.settings.targetItemDefaultLink != blank %} href="{{ section.settings.targetItemDefaultLink }}" {% else %} aira-disabled="true" {% endif %}>
+            More 
+            <svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M0.707031 0.710938L6.36389 6.36779L0.707031 12.0246" stroke="black" stroke-width="2"/>
+            </svg>
+          </a>
+        </div>
+        
+      {% endif %}
+    </div>
+    
+    <div class="best-sell-swiper-cont" style="position: relative;">
+      <div class="review-list swiper">
+        <div class="swiper-wrapper">
+          {% for block in section.blocks %}
+            {% if block.type == 'item' %}
+              <div class="item swiper-slide" data-target-key="{{ block.settings.itemType }}">
+                  {% assign product_options = block.settings.prodVariants | split: ',' %}
+                  {% assign product_variant = '' | default: block.settings.productItem.selected_or_first_available_variant %}
+
+                  {% for variant in block.settings.productItem.variants %}
+                    {% assign match = true %}
+
+                    {% if product_options.size > 0 %}
+                      {% if variant.option1 != product_options[0] %}
+                        {% assign match = false %}
+                      {% endif %}
+                    {% endif %}
+
+                    {% if product_options.size > 1 %}
+                      {% if variant.option2 != product_options[1] %}
+                        {% assign match = false %}
+                      {% endif %}
+                    {% endif %}
+
+                    {% if product_options.size > 2 %}
+                      {% if variant.option3 != product_options[2] %}
+                        {% assign match = false %}
+                      {% endif %}
+                    {% endif %}
+
+                    {% if match %}
+                      {% assign product_variant = variant %}
+                      {% break %}
+                    {% endif %}
+                  {% endfor %}
+
+                  {% assign variant_featured_image = product_variant.featured_image | default: block.settings.productItem.selected_or_first_available_variant.featured_image %}
+                
+                
+                <div class="link-cont" role="link" {% if block.settings.prodVariants != blank %} href="{{ block.settings.productItem.url }}?variant={{ product_variant.id }}" {% else %} href="{{ block.settings.productItem.url }}" {% endif %}>
+                  <div class="inner" data-url="{{ block.settings.productItem.url }}?variant={{ product_variant.id }}">
+                    <div class="img-box image-zoom" style="padding-top: 100%;">
+                        {% if variant_featured_image != blank %}
+                          <img {% render 'lazyload',preview_img: variant_featured_image, class: true, enable_rtl: settings.enable_layout_rtl  %}
+                            width="{{ variant_featured_image.width }}"
+                            height="{{ variant_featured_image.height }}"
+                            alt="{{ variant_featured_image.alt }}" loading="lazy" />
+                        {% else %}
+                          <img {% render 'lazyload',preview_img: block.settings.productItem.featured_image, class: true, enable_rtl: settings.enable_layout_rtl  %}
+                            width="{{ block.settings.productItem.featured_image.width }}"
+                            height="{{ block.settings.productItem.featured_image.height }}"
+                            alt="{{ block.settings.productItem.featured_image.alt }}" loading="lazy" />
+                        {% endif %}
+                    </div>
+
+                    <div class="info-box">
+                      <h3 class="info-title">{{ block.settings.productItem.title }}</h3>
+                      <div class="info-desc">
+                        <span>{{ block.settings.richDescripe | default: block.settings.descripe }}</span>
+                      </div>
+                      <span class="flex-1"></span>
+                      <div class="info-bottom-cont">
+                          <div class="info-footer">
+                            {% if product_variant.metafields.custom.discount_price.value != blank %}
+                              <div class="discount-price-info">
+                                {{ product_variant.price | minus: product_variant.metafields.custom.discount_price.value | money }}
+                              </div>
+                            {% endif %}
+                            <div class="info-footer-price {% if product_variant.metafields.custom.discount_price.value != blank %}info-footer-price-discount{% endif %}">
+                              {{ product_variant.price | money }}
+                            </div>
+                          </div>
+                          <div class="info-buttons">
+                            {% comment %} learn more {% endcomment %}
+                            {% if block.settings.prodLearnMoreBtn != blank %}
+                              <a class="info-footer-button" {% if block.settings.prodLearnMoreURL != blank %} href="{{ block.settings.prodLearnMoreURL }}" {% else %} aria-disabled="true" {% endif %}>
+                                {{ block.settings.prodLearnMoreBtn }}
+                              </a>
+                            {% endif %}
+                            {% comment %} Buy NOW {% endcomment %}
+                            <a class="info-footer-buynow" href="{{ block.settings.productItem.url }}?variant={{ product_variant.id }}">{{ block.settings.prodBuyNowBtn }}</a>
+                            {% comment %} ATC {% endcomment %}
+                            {% comment %} <a class="info-footer-button" role="link" data-variant={{ product_variant.id }}>
+                              <span class="text-atc">{{ block.settings.prodATCBtn }}</span>
+                              <svg class="spinner" width="44" height="44" viewBox="0 0 44 44" aria-hidden="true" focusable="false" role="presentation" xmlns="http://www.w3.org/2000/svg">
+                                  <circle
+                                    class="spinner-path"
+                                    fill="none"
+                                    stroke="#555"
+                                    stroke-width="2"
+                                    stroke-linecap="round"
+                                    cx="22"
+                                    cy="22"
+                                    r="20"
+                                    stroke-dasharray="90 150"
+                                    stroke-dashoffset="0"
+                                  >
+                                    <animateTransform
+                                      attributeName="transform"
+                                      type="rotate"
+                                      from="0 22 22"
+                                      to="360 22 22"
+                                      dur="0.8s"
+                                      repeatCount="indefinite"
+                                    />
+                                  </circle>
+                              </svg>
+                            </a> {% endcomment %}
+                          </div>
+                      </div>
+                      
+                    </div>
+                  </div>
+                </div>
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+    {% comment %} mobile more button {% endcomment %}
+    {% if section.settings.targetItemDefaultLink != blank %}
+      <a class="target-cont-link target-cont-link-mb" {% if section.settings.targetItemDefaultLink != blank %} href="{{ section.settings.targetItemDefaultLink }}" {% else %} aira-disabled="true" {% endif %}>
+          More 
+          <svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M0.707031 0.710938L6.36389 6.36779L0.707031 12.0246" stroke="black" stroke-width="2"/>
+          </svg>
+        </a>
+    {% endif %}
+  </div>
+  
+
+  <div class="swiper-pagination"></div>
+  {% comment %} 自定义左右箭头 {% endcomment %}
+  <div class="custom-pagination-container">
+    <div class="pre-btn-icon pagina-btn">
+      <svg width="7" height="11" viewBox="0 0 7 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M5.95898 0.710938L1.4133 5.25662L5.95898 9.80231" stroke="black" stroke-width="2"/>
+      </svg>
+
+    </div>
+    <div class="next-btn-icon pagina-btn">
+      <svg width="7" height="11" viewBox="0 0 7 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M0.707031 0.710938L5.25272 5.25662L0.707031 9.80231" stroke="black" stroke-width="2"/>
+      </svg>
+
+    </div>
+  </div>
+</div>
+
+<script src="{{ 'home-best-sellers.js' | asset_url }}" defer="defer"></script>
+
+{% schema %}
+{
+  "name": "HOME Best Sellers NEW",
+  "tag": "section",
+  "limit": 1,
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "title",
+      "label": "Section title",
+      "default": "Best sellers"
+    },
+    {
+      "type": "text",
+      "id": "sectionLabel",
+      "label": "Section Text"
+    },
+    {
+      "type": "url",
+      "id": "blockLink",
+      "label": "Section Link",
+    },
+    {
+      "type": "text",
+      "id": "sectionDescripe",
+      "label": "Section Descripe",
+      "default": "Find your perfect chair – Loved by customers worldwide"
+    },
+    {
+      "type": "text",
+      "id": "sectionLinkText",
+      "label": "Section Link Text"
+    },
+    {
+      "type": "url",
+      "id": "sectionLinkURL",
+      "label": "Section Link URL"
+    },
+    {
+      "type": "url",
+      "id": "targetItemDefaultLink",
+      "label": "traget Item Default Link"
+    }
+  ], 
+  "blocks": [
+      {
+        "type": "item",
+        "name": "item",
+        "settings": [
+          {
+            "type": "select",
+            "id": "itemType",
+            "label": "Item Type",
+            "options": [
+              {
+                "label": "Chairs",
+                "value": "Chairs"
+              },
+              {
+                "label": "Desks",
+                "value": "Desks"
+              },
+              {
+                "label": "Accessories",
+                "value": "Accessories"
+              }
+            ]
+          },
+          {
+            "type": "textarea",
+            "id": "descripe",
+            "label": "prod desc",
+            "info": "product descripe",
+          },
+          {
+            "type": "richtext",
+            "id": "richDescripe",
+            "label": "product rich descripe",
+            "info": "product descripe"
+          },
+          {
+            "type": "text",
+            "id": "prodVariants",
+            "label": "prod variants",
+            "info": "product variants"
+          },
+          {
+            "type": "text",
+            "id": "prodLearnMoreBtn",
+            "label": "product Learn More BTN"
+          },
+          {
+            "type": "url",
+            "id": "prodLearnMoreURL",
+            "label": "product Learn More LINK"
+          },
+          {
+            "type": "text",
+            "id": "prodBuyNowBtn",
+            "label": "Product Buy Now BTN",
+            "default": "Buy Now"
+          },
+          {
+            "type": "text",
+            "id": "prodATCBtn",
+            "label": "prod button",
+            "info": "Product BUTTON",
+            "default": "Add to Cart"
+          },
+          {
+            "type": "url",
+            "id": "prodLink",
+            "label": "prod link",
+            "info": "Product LINK"
+          },
+          {
+            "type": "product",
+            "id": "productItem",
+            "label": "Product Info"
+          }
+        ]
+      },
+      {
+        "type": "targetItem",
+        "name": "targetItem",
+        "settings": [
+          {
+            "type": "text",
+            "id": "targetItemTitle",
+            "label": "target Item Title"
+          },
+          {
+            "type": "text",
+            "id": "targetItemKey",
+            "label": "target Item Key"
+          },
+          {
+            "type": "text",
+            "id": "targetItemLinkText",
+            "label": "target Item Link Text"
+          },
+          {
+            "type": "url",
+            "id": "targetItemLinkURL",
+            "label": "target Item Link"
+          }
+        ]
+      } 
+  ],
+  "presets": [
+    {
+      "name": "HOME Best Sellers NEW"
+    }
+  ]
+}
+{% endschema %}

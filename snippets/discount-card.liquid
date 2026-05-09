@@ -1,0 +1,172 @@
+{% stylesheet %}
+  .product_info_new_discount_card {
+    width: 27.5vw;
+    border-radius: 0.421875vw;
+    background-color: #931717;
+    padding: 1.046875vw 1.40625vw 0.984375vw;
+    margin-bottom: 1.203125vw;
+  }
+
+  .product_info_new_discount_card .product_info_new_discount_card_subtitle,
+  .product_info_new_discount_card .product_info_new_discount_card_text {
+    font-family: Poppins;
+    font-weight: 500;
+    font-style: Medium;
+    font-size: clamp(14px, 0.7291667vw, 0.7291667vw);
+    leading-trim: NONE;
+    line-height: clamp(23px, 1.1979167vw, 1.1979167vw);
+    letter-spacing: 0%;
+    color: #faeddb;
+  }
+
+  .product_info_new_discount_card .product_info_new_discount_card_title {
+    font-family: Anton;
+    font-weight: 400;
+    font-style: Regular;
+    font-size: clamp(20px, 1.145833vw, 1.145833vw);
+    leading-trim: NONE;
+    line-height: clamp(23.3px, 1.45833333vw, 1.45833333vw);
+    letter-spacing: 0%;
+    color: #faeddb;
+    text-shadow: 0px 4px 4px 0px #00000040;
+    margin-top: -0.15625vw;
+  }
+
+  .product_info_new_discount_card .product_info_new_discount_card_contain {
+    display: flex;
+    align-items: center;
+    gap: 0.3125vw;
+    font-family: Poppins;
+    font-weight: 600;
+    font-style: Medium;
+    font-size: clamp(14px, 0.7291667vw, 0.7291667vw);
+    leading-trim: NONE;
+    line-height: clamp(22px, 1.1458333vw, 1.1458333vw);
+    letter-spacing: 0%;
+    color: #faeddb;
+  }
+
+  .product_info_new_discount_card .product_info_new_discount_card_btn {
+    display: inline-flex;
+    align-items: center;
+    background-color: #faeddb;
+    border-radius: 0.15625vw;
+    padding: 0.3125vw 0.671875vw 0.203125vw 0.421875vw;
+    color: #931717;
+    margin-top: 0.15625vw;
+    cursor: pointer;
+  }
+
+  /* .product_info_new_discount_card .product_info_new_discount_card_code {
+    font-weight: 600;
+    font-style: SemiBold;
+    font-size: clamp(16px, 1.04167vw, 1.04167vw);
+    line-height: clamp(17.6px, 1.1458333vw, 1.1458333vw);
+    margin-left: 0.046875vw;
+  } */
+
+  .product_info_new_discount_card .product_info_new_discount_card_btn svg {
+    width: 1.145833vw;
+    height: 1.145833vw;
+    margin-left: 0.3125vw;
+  }
+
+  @media screen and (max-width: 1200px) {
+    .product_info_new_discount_card {
+      width: 100%;
+      border-radius: 2.16vw;
+      padding: 4vw 0 4.8vw 4.8vw;
+      margin-bottom: 5.6vw;
+    }
+
+    .product_info_new_discount_card .product_info_new_discount_card_subtitle,
+    .product_info_new_discount_card .product_info_new_discount_card_text {
+      font-size: 3.7333vw;
+      line-height: 6.13333vw;
+    }
+
+    .product_info_new_discount_card .product_info_new_discount_card_title {
+      font-size: 4.533333vw;
+      line-height: 7.4666vw;
+      margin-top: -0.8vw;
+    }
+
+    .product_info_new_discount_card .product_info_new_discount_card_btn {
+      border-radius: 0.8vw;
+      padding: 1.6vw 3.44vw 1.04vw 2.16vw;
+      font-size: 3.7333vw;
+      line-height: 5.8667vw;
+      margin-top: 0.8vw;
+    }
+
+    /* .product_info_new_discount_card .product_info_new_discount_card_code {
+      font-size: 5.333vw;
+      line-height: 5.8667vw;
+      margin-left: 0.24vw;
+    } */
+
+    .product_info_new_discount_card .product_info_new_discount_card_btn svg {
+      width: 6.4vw;
+      height: 6.4vw;
+      margin-left: 1.6vw;
+    }
+
+    .product_info_new_discount_card .product_info_new_discount_card_contain {
+      gap: 1.6vw;
+    }
+  }
+{% endstylesheet %}
+
+<div class="product_info_new_discount_card">
+  <div class="product_info_new_discount_card_subtitle">{{ discount_card.subtitle }}</div>
+  <div class="product_info_new_discount_card_title">{{ discount_card.title }}</div>
+  <div class="product_info_new_discount_card_text">{{ discount_card.text }}</div>
+  <div class="product_info_new_discount_card_contain">
+    <div class="product_info_new_discount_card_btn" data-code="{{ discount_card.code }}">
+      CODE:<span class="product_info_new_discount_card_code">{{ discount_card.code }}</span>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        class="product_info_new_discount_card_copy_icon"
+      >
+        <path d="M20.268 2.97656H6.82801C6.40801 2.97656 6.07201 3.31256 6.07201 3.73256V6.04856H3.74401C3.32401 6.04856 2.98801 6.38456 2.98801 6.80456V20.2446C2.98801 20.6646 3.32401 20.9886 3.74401 20.9886H17.184C17.604 20.9886 17.928 20.6526 17.928 20.2446V17.9166H20.268C20.688 17.9166 21.012 17.5806 21.012 17.1726V3.73256C21.024 3.31256 20.688 2.97656 20.268 2.97656ZM16.44 19.5006H4.50001V7.56056H16.44V19.5006ZM19.524 16.4166H17.94V6.80456C17.94 6.38456 17.604 6.04856 17.196 6.04856H7.59601V4.48856H19.536V16.4166H19.524Z" fill="#931717"/>
+      </svg>
+      <svg
+        width="20"
+        height="20"
+        viewBox="0 0 20 20"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        class="product_info_new_discount_card_success_info hidden"
+      >
+        <circle cx="10" cy="10" r="9.3" stroke="#28A745" stroke-width="1.4"/>
+        <path d="M5.50006 9.72656L8.81367 13.0402L15.0392 6.8146" stroke="#28A745" stroke-width="1.4"/>
+      </svg>
+    </div>
+    <span class="product_info_new_discount_card_success_info hidden">success: {{ discount_card.code }}</span>
+  </div>
+</div>
+
+{% javascript %}
+  (() => {
+    const btn = document.querySelector('.product_info_new_discount_card .product_info_new_discount_card_btn');
+    btn.addEventListener('click', async () => {
+      const code = btn.getAttribute('data-code');
+      await navigator.clipboard.writeText(code);
+      document.querySelector('.product_info_new_discount_card_copy_icon').classList.add('hidden');
+      document.querySelectorAll('.product_info_new_discount_card_success_info').forEach((item) => {
+        item.classList.remove('hidden');
+      });
+      // alert('success:' + code);
+      setTimeout(() => {
+        document.querySelector('.product_info_new_discount_card_copy_icon').classList.remove('hidden');
+        document.querySelectorAll('.product_info_new_discount_card_success_info').forEach((item) => {
+          item.classList.add('hidden');
+        });
+      }, 5000);
+    });
+  })();
+{% endjavascript %}

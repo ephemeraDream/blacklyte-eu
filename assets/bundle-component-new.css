@@ -1,0 +1,227 @@
+ /* bundle */
+.module-title.bundle-title {
+    font: 700 50px var(--font-family-1);
+    color: #262626;
+    text-align: center;
+    padding-bottom: 60px;
+}
+.bundle-prod-lists {
+  display: flex;
+  gap: 40px;
+  flex-direction: column;
+}
+.bundle-prod-lists .bundle-prod-items{
+  flex: 1;
+  padding: 38px 30px;
+  border-radius: 16px;
+  display: flex;
+  background-color: #fff;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+}
+.bundle-prod-lists .bundle-prod-items .bundle-middle-icon{
+  margin: auto 50px;
+}
+.bundle-prod-lists .bundle-prod-items .bundle-middle-icon svg{
+  width: 54px;
+  height: 54px;
+  fill: none;
+  stroke: none;
+  opacity: 0.5;
+}
+.bundle-prod-item-right-cont{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.bundle-prod-items-cont-left{
+  display: flex;
+  justify-content: space-between;
+  width: calc(100% - 400px);
+}
+.bundle-prod-lists .bundle-prod-items .bundle-prod-item-left,
+.bundle-prod-lists .bundle-prod-items .bundle-prod-item-center{
+  height: auto;
+  background-color: #7FBF1F1A;
+  border-radius: 16px;
+  padding: 30px;
+  flex: 1;
+}
+
+.bundle-prod-lists .bundle-prod-items .bundle-prod-item-left .image-bundle,
+.bundle-prod-lists .bundle-prod-items .bundle-prod-item-center .image-bundle{
+  width: 90%;
+  margin: auto;
+}
+.bundle-prod-lists .bundle-prod-items .bundle-prod-item-right{
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.bundle-prod-lists .bundle-prod-items .bundle-prod-item-right .bundle-item-sale-price{
+  font: 900 40px var(--font-family-1);
+  color: #102E4A;
+}
+.bundle-prod-lists .bundle-prod-items .bundle-prod-item-right .bundle-item-discount-price{
+  font: 900 30px var(--font-family-1);
+  text-decoration: line-through;
+  color: #262629;
+  opacity: 0.5;
+}
+.bundle-prod-lists .bundle-prod-items .bundle-prod-item-right .bundle-item-shopnow-btn{
+  margin-top: 20px;
+  background-color: #7FBF1F;
+  color: #fff;
+  padding: 15px 59px;
+  font: 600 26px var(--font-family-1);
+  border-radius: 30px;
+  cursor: pointer;
+  border: 1px solid #7FBF1F;
+  transition: all .3s ease;
+}
+.bundle-prod-lists .bundle-prod-items .bundle-prod-item-right .bundle-item-shopnow-btn:hover{
+  background-color: #94E023;
+  border: 1px solid #94E023;
+}
+.bundle-item-title{
+  font: 500 20px var(--font-family-1);
+  color: #262629;
+  line-height: 1.4;
+  text-align: center;
+  margin-top: 20px;
+}
+.bundle-prod-lists .bundle-prod-items .bundle-item-save-tag {
+  width: 84px;
+  height: 90px;
+  background: url('https://cdn.shopify.com/s/files/1/0716/1341/5637/files/backToSchool-event-icons.webp?v=1754547052') no-repeat;
+  background-size: cover;
+  position: absolute;
+  right: 16px;
+  top: -1px;
+  font: 500 20px var(--font-family-1);
+  line-height: 1.3;
+  color: #fff;
+  text-align: center;
+  z-index: 10;
+  padding-top: 10px;
+}
+.bundle-prod-lists .bundle-prod-items .bundle-item-save-tag span{
+  display: block;
+}
+.bundle-module-not-first{
+  margin-top: 40px;
+}
+@media(max-width: 767px) {
+  .bundle-module-not-first{
+    margin-top: 20px;
+  }
+  /* bundle */
+  .module-title.bundle-title{
+    font-size: 20px;
+    margin: 40px auto 20px;
+  }
+  .bundle-prod-lists .bundle-prod-items{
+    flex-direction: column;
+    padding: 50px 15px 20px;
+  }
+  .bundle-prod-items-cont-left{
+    width: 100%;
+    align-items: normal;
+  }
+  .bundle-prod-lists .bundle-prod-items .bundle-middle-icon{
+    margin: auto;
+  }
+  .bundle-prod-lists .bundle-prod-items .bundle-prod-item-left,
+  .bundle-prod-lists .bundle-prod-items .bundle-prod-item-center{
+    width: calc((100% - 30px) / 2);
+    padding: 10px 0;
+    border-radius: 8px;
+  }
+  .bundle-item-title{
+    margin-top: 0;
+    font-size: 10px;
+  }
+  .bundle-prod-lists .bundle-prod-items .bundle-middle-icon svg{
+    width: 30px;
+    height: 30px;
+  }
+  .bundle-prod-lists .bundle-prod-items .bundle-prod-item-right{
+    width: 90%;
+    margin: 20px auto 0;
+  }
+  .bundle-prod-item-right-cont {
+    display: flex;
+    align-items: anchor-center;
+    gap: 4px;
+    flex-direction: row;
+  }
+  .bundle-prod-lists .bundle-prod-items .bundle-prod-item-right .bundle-item-sale-price{
+    font-size: 20px;
+  }
+  .bundle-prod-lists .bundle-prod-items .bundle-prod-item-right .bundle-item-discount-price{
+    font-size: 12px;
+  }
+  .bundle-prod-lists .bundle-prod-items .bundle-prod-item-right .bundle-item-shopnow-btn{
+      margin-top: 10px;
+      padding: 10px;
+      font-size: 14px;
+      width: 100%;
+      text-align: center;
+  }
+  .bundle-prod-lists .bundle-prod-items .bundle-item-save-tag{
+    width: 54px;
+    height: 60px;
+    right: auto;
+    left: 12px;
+    font-size: 11px;
+  }
+}
+/* small screen */
+@media(min-width: 992px) and (max-width: 1600px) {
+  .bundle-prod-items-cont-left{
+    width: calc(100% - 300px);
+  }
+  .bundle-prod-lists .bundle-prod-items .bundle-middle-icon{
+    margin: auto 40px;
+  }
+  .bundle-prod-lists .bundle-prod-items .bundle-middle-icon svg{
+    width: 30px;
+    height: 30px;
+  }
+  .bundle-prod-lists .bundle-prod-items .bundle-prod-item-right .bundle-item-sale-price{
+    font-size: 30px;
+  }
+  .bundle-prod-lists .bundle-prod-items .bundle-prod-item-right .bundle-item-discount-price{
+    font-size: 20px;
+  }
+  .bundle-prod-lists .bundle-prod-items .bundle-prod-item-right .bundle-item-shopnow-btn{
+    padding: 10px 45px;
+    font-size: 16px;
+  }
+  .bundle-prod-lists .bundle-prod-items .bundle-prod-item-left,
+  .bundle-prod-lists .bundle-prod-items .bundle-prod-item-center{
+    width: 340px;
+    height: auto;
+  }
+  .bundle-prod-lists .bundle-prod-items .bundle-item-save-tag{
+    width: 54px;
+    height: 60px;
+    font-size: 12px;
+    right: 13px;
+  }
+}
+/* IPad */
+@media(min-width: 768px) and (max-width: 1024px) {
+  .bundle-prod-lists .bundle-prod-items .bundle-prod-item-left,
+  .bundle-prod-lists .bundle-prod-items .bundle-prod-item-center{
+    padding: 10px 0;
+    flex: auto;
+  }
+  .bundle-item-title{
+    font-size: 18px;
+  }
+}

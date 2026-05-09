@@ -1,0 +1,411 @@
+<style>
+    .section-{{ section.id }} .container-full{
+        padding-top: 130px;
+    }
+    .section-{{ section.id }} .container-full .head-cont{
+        width: calc(100% - 16%);
+        margin: auto;
+        text-align: center;
+    }
+    .section-{{ section.id }} .container-full .section-title{
+        font-family: Poppins;
+        font-weight: 600;
+        font-style: SemiBold;
+        font-size: 40px;
+        line-height: normal;
+        letter-spacing: 0%;
+        text-align: center;
+        color: #262629;
+        
+    }
+    .section-{{ section.id }} .container-full .section-desc{
+        font-family: Poppins;
+        font-weight: 500;
+        font-style: Medium;
+        font-size: 16px;
+        line-height: 24px;
+        letter-spacing: 0%;
+        text-align: center;
+        color: #747474;
+    }
+
+    .section-{{ section.id }} .container-full .section-link{
+        font-family: Poppins;
+        font-weight: 600;
+        font-style: SemiBold;
+        font-size: 16px;
+        line-height: 26px;
+        letter-spacing: 0%;
+        color: #262629;
+        transition: all .35s ease;
+        text-align: center;
+        cursor: pointer;
+    }
+    .section-{{ section.id }} .container-full .section-link svg{
+        width: 20px;
+        height: auto;
+    }
+    .section-{{ section.id }} .container-full .section-link:hover svg{
+        transform: translateX(5px);
+    }
+
+    .section-{{ section.id }} .mode-switcher.is-gaming .mode-switcher-picture-office,
+    .section-{{ section.id }} .mode-switcher.is-office .mode-switcher-picture-gaming{
+        opacity: 0;
+        display: block;
+        height: 0;
+        transition: opacity 0.5s ease, height .5s ease;
+    }
+    .section-{{ section.id }} .mode-switcher.is-office .mode-switcher-picture-office,
+    .section-{{ section.id }} .mode-switcher.is-gaming .mode-switcher-picture-gaming{
+        opacity: 1;
+        height: auto;
+        transition: opacity 0.5s ease, height .5s ease;
+    }
+
+
+    @media(min-width: 1025px){
+        .section-{{ section.id }} .container-full .mode-switcher{
+            margin-top: 37px;
+            position: relative;
+        }
+        .section-{{ section.id }} .container-full .conts-gaming-and-office{
+            display: grid;
+            position: absolute;
+            bottom: 0;
+            height: 100%;
+            width: 100%;
+            grid-template-columns: 1fr 1fr;
+            align-items: end;
+        }
+        .section-{{ section.id }} .container-full .conts-gaming-and-office::after {
+            content: "";
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 1px;
+            height: 100%; 
+            background: rgba(255, 255, 255, 0.2);
+            z-index: 10;
+            pointer-events: none;
+        }
+
+        .section-{{ section.id }} .container-full .mode-switcher .mode-switcher-modal-cont{
+            display: block;
+            width: 100%;
+            height: 100%;
+            background-image: linear-gradient(180deg, rgba(0, 0, 0, 0) 45.71%, #000000 84.72%);
+            position: absolute;
+            left: 0;
+            bottom: 0;
+        }
+
+        .section-{{ section.id }} .container-full .conts-gaming-and-office .cont-items{
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            cursor: pointer;
+            padding-bottom: 5rem;
+        }
+        .section-{{ section.id }} .container-full .conts-gaming-and-office .cont-items .cont-items-box{
+            transform: translateY(calc(100% - 30px));
+            transition-property: all;
+            transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+            transition-duration: 500ms;
+        }
+        .section-{{ section.id }} .container-full .conts-gaming-and-office .cont-items:hover .cont-items-box{
+            transform: none;
+        }
+        .section-{{ section.id }} .cont-items:first-of-type{
+            text-align: right;
+        }
+
+        .section-{{ section.id }} .container-full .cont-item-title{
+            font-family: Poppins;
+            font-weight: 600;
+            font-style: SemiBold;
+            font-size: 24px;
+            line-height: 50px;
+            letter-spacing: 0%;
+            color: #fff;
+        }
+        .section-{{ section.id }} .container-full .cont-item-desc{
+            font-family: Poppins;
+            font-weight: 500;
+            font-style: Medium;
+            font-size: 16px;
+            line-height: 24px;
+            letter-spacing: 0.32px;
+            color: #fff;
+            opacity: 0;
+        }
+        
+        .section-{{ section.id }} .container-full .conts-gaming-and-office .cont-items:hover .cont-item-desc{
+            opacity: 0.7;
+        }
+        .section-{{ section.id }} .cont-items .cont-item-title,
+        .section-{{ section.id }} .container-full .cont-item-desc{
+            width: calc(100% - 160px);
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        
+    }
+    
+    
+
+
+    {% comment %} iPhone {% endcomment %}
+    @media(max-width: 1024px){
+        .section-{{ section.id }} .container-full{
+            padding-top: 80px;
+        }
+        .section-{{ section.id }} .container-full .head-cont{
+            width: calc(100% - 20px);
+            margin: auto;
+        }
+        .section-{{ section.id }} .container-full .section-title{
+            font-size: 24px;
+        }
+        .section-{{ section.id }} .container-full .section-desc{
+            font-size: 14px;
+            line-height: 20px;
+        }
+        .section-{{ section.id }} .container-full .mode-switcher{
+            margin-top: 10px;
+        }
+
+        .section-{{ section.id }} .conts-gaming-and-office{
+            background: #010101;
+            padding: 10px 20px 9px;
+            display: flex;
+            flex-direction: column;
+            transform: translateY(-10px);
+        }
+        .section-{{ section.id }} .cont-items{
+            padding-bottom: 30px;
+        }
+        .section-{{ section.id }} .cont-items:first-of-type{
+            border-bottom: 1px solid #282828;
+        }
+        .section-{{ section.id }} .cont-items:nth-of-type(2){
+            padding-top: 14px;
+        }
+        .section-{{ section.id }} .cont-items .cont-item-title{
+            font-family: Poppins;
+            font-weight: 600;
+            font-style: SemiBold;
+            font-size: 24px;
+            line-height: 50px;
+            letter-spacing: 0%;
+            color: #fff;
+        }
+        .section-{{ section.id }} .cont-items .cont-item-desc{
+            font-family: Poppins;
+            font-weight: 500;
+            font-style: Medium;
+            font-size: 14px;
+            line-height: 20px;
+            letter-spacing: 0.32px;
+            color: #FFFFFF;
+        }
+        .section-{{ section.id }} .mode-switcher-picture{
+            position: relative;
+        }
+        .section-{{ section.id }} .mode-switcher-picture:after{
+            display: block;
+            content: '';
+            width: 100vw;
+            height: 129px;
+            background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #000000 100%);
+            position: absolute;
+            bottom: 8px;
+            left: 0;
+        }
+        .section-{{ section.id }} .container-full .conts-gaming-and-office::after{
+            display: none;
+        }
+        .section-{{ section.id }} .container-full .section-link{
+            margin-top: 10px;
+        }
+
+    }
+
+    {% comment %} iPad {% endcomment %}
+    @media(min-width: 768px) and (max-width: 1024px){
+        .section-{{ section.id }} .container-full{ }
+        
+    }
+
+    {% comment %} small screen {% endcomment %}
+    @media(min-width: 1025px) and (max-width: 1480px){
+        .section-{{ section.id }} .container-full .head-cont{
+            width: calc(100% - 120px);
+            margin: auto;
+        }
+    
+    }
+</style>
+
+<section class="section-{{ section.id }}" id="{{ section.id }}" data-section-id="{{ section.id }}">
+    <div class="container-full">
+        <div class="head-cont">
+            {% if section.settings.sectionTitle != blank %}
+                <h2 class="section-title">{{ section.settings.sectionTitle }}</h2>
+            {% endif %}
+            {% if section.settings.sectionDesc != blank %}
+                <div class="section-desc">{{ section.settings.sectionDesc }}</div>
+            {% endif %}
+            {% if section.settings.sectionLink != blank %}
+                <a {% if section.settings.sectionLinkURL != blank %} href="{{ section.settings.sectionLinkURL }}" {% else %} aria-disabled="true" {% endif %} class="section-link">
+                    {{ section.settings.sectionLink }}
+                    <svg width="31" height="15" viewBox="0 0 31 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M30.7071 8.07429C31.0976 7.68377 31.0976 7.0506 30.7071 6.66008L24.3431 0.29612C23.9526 -0.0944047 23.3195 -0.0944047 22.9289 0.29612C22.5384 0.686644 22.5384 1.31981 22.9289 1.71033L28.5858 7.36719L22.9289 13.024C22.5384 13.4146 22.5384 14.0477 22.9289 14.4383C23.3195 14.8288 23.9526 14.8288 24.3431 14.4383L30.7071 8.07429ZM0 7.36719V8.36719H30V7.36719V6.36719H0V7.36719Z" fill="#262629"/>
+                    </svg>
+
+                </a>
+            {% endif %}
+        </div>
+        {% if section.blocks.size > 0 %}
+            <div class="mode-switcher is-gaming">
+                {% for block in section.blocks %}
+                    {% if block.type == "item" %}
+                        <picture class="mode-switcher-picture mode-switcher-picture-gaming">
+                            <source media="(max-width: 768px)" 
+                            srcset="{{ block.settings.itemLargeImage_mb | image_url: width: 800 }}"
+                            data-srcset="{{ block.settings.itemLargeImage_mb | image_url: width: 800 }}" >
+
+                            <img
+                                {% render 'lazyload',preview_img: block.settings.itemLargeImage, class: true, enable_rtl: settings.enable_layout_rtl  %}
+                                width="{{ block.settings.itemLargeImage.width }}"
+                                height="{{ block.settings.itemLargeImage.height }}"
+                                alt="{{ block.settings.itemLargeImage.alt | escape }}"
+                                loading="lazy"
+                                style="height: auto;">
+
+                        </picture>
+                        {% comment %} office Image {% endcomment %}
+                        <picture class="mode-switcher-picture mode-switcher-picture-office">
+                            <source media="(max-width: 768px)" 
+                            srcset="{{ block.settings.itemLargeImage_mb | image_url: width: 800 }}"
+                            data-srcset="{{ block.settings.itemLargeImage_mb | image_url: width: 800 }}" >
+
+                            <img
+                                {% render 'lazyload',preview_img: block.settings.itemOfficeImage, class: true, enable_rtl: settings.enable_layout_rtl  %}
+                                width="{{ block.settings.itemOfficeImage.width }}"
+                                height="{{ block.settings.itemOfficeImage.height }}"
+                                alt="{{ block.settings.itemOfficeImage.alt | escape }}"
+                                loading="lazy"
+                                style="height: auto;">
+                        </picture>
+                    {% endif %}
+                {% endfor %}
+                <div class="mode-switcher-modal-cont"></div>
+                <div class="conts-gaming-and-office">
+                    {% for block in section.blocks %}
+                        {% if block.type == "itemCont" %}
+                            <div class="cont-items" data-type="{{ block.settings.itemType }}">
+                                <div class="cont-items-box">
+                                    {% if block.settings.itemContTitle != blank %}
+                                        <div class="cont-item-title">{{ block.settings.itemContTitle }}</div>
+                                    {% endif %}
+                                    {% if block.settings.itemContDesc != blank %}
+                                        <div class="cont-item-desc">{{ block.settings.itemContDesc }}</div>
+                                    {% endif %}
+                                    
+                                </div>
+                                
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        {% endif %}
+        
+    </div>
+</section>
+
+<script src="{{ 'home-atlasdownload.js' | asset_url }}" defer="defer"></script>
+
+{% schema %}
+{
+    "name": "Home Atlas Downloads",
+    "tag": "section",
+    "settings": [
+        {
+            "type": "text",
+            "id": "sectionTitle",
+            "label": "section Title",
+            "default": "Atlas Driver"
+        },
+        {
+            "type": "text",
+            "id": "sectionDesc",
+            "label": "section Descripe",
+            "default": "Experience ultimate gaming experience with our intelligent lighting interactive system"
+        },
+        {
+            "type": "text",
+            "id": "sectionLink",
+            "label": "section Link"
+        },
+        {
+            "type": "url",
+            "id": "sectionLinkURL",
+            "label": "section Link URL"
+        }
+    ],
+    "blocks": [
+        {
+            "type": "item",
+            "name": "item",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "itemLargeImage",
+                    "label": "item Large Image"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "itemLargeImage_mb",
+                    "label": "item Large Image Mobile"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "itemOfficeImage",
+                    "label": "item Office Image"
+                }
+            ]
+        },
+        {
+            "type": "itemCont",
+            "name": "itemCont",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "itemType",
+                    "label": "item Cont Type"
+                },
+                {
+                    "type": "text",
+                    "id": "itemContTitle",
+                    "label": "item Cont Title"
+                },
+                {
+                    "type": "richtext",
+                    "id": "itemContDesc",
+                    "label": "item Cont Descripe"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "Home Atlas Downloads"
+        }
+    ]
+}
+{% endschema %}

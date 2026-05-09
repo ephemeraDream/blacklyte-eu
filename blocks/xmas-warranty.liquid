@@ -1,0 +1,24 @@
+<div class="warranty-module">
+    <div class="warranty-title">{{ block.settings.warrantyTitle }}</div>
+    <div class="warranty-list">{% content_for 'blocks' %}</div>
+</div>
+{% schema %}
+{
+    "name": "xmas warranty",
+    "settings": [
+        {
+            "type": "text",
+            "id": "warrantyTitle",
+            "label": "warranty Title"
+        }
+    ],
+    "blocks": [
+        { "type": "warranty-item" }
+    ],
+    "presets": [
+        {
+            "name": "xmas warranty"
+        }
+    ]
+}
+{% endschema %}

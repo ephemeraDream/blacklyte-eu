@@ -1,0 +1,53 @@
+.ergonomics_section_five {
+  max-width: 100vw;
+  background-color: #ebebeb;
+  padding: 10.78125vw 15.625vw 6.875vw;
+}
+
+.ergonomics_section_five .ergonomics_section_five_item {
+  display: flex;
+  align-items: center;
+  gap: 2.34375vw;
+}
+
+.ergonomics_section_five .ergonomics_section_five_item:nth-child(2n) {
+  flex-direction: row-reverse;
+}
+
+.ergonomics_section_five .ergonomics_section_five_item+.ergonomics_section_five_item {
+  margin-top: 6.71875vw;
+}
+
+.ergonomics_section_five .ergonomics_section_five_item_video {
+  flex: 0 0 auto;
+  width: 36.40625vw;
+  height: 23.90625vw;
+  border-radius: 0.46875vw;
+  object-fit: cover;
+  object-position: center center;
+}
+
+.ergonomics_section_five .ergonomics_section_five_item_title {
+  font-family: Poppins;
+  font-weight: 600;
+  font-style: SemiBold;
+  font-size: 2.0833vw;
+  leading-trim: NONE;
+  line-height: 2.604167vw;
+  letter-spacing: 0%;
+  vertical-align: middle;
+  color: #262629;
+}
+
+.ergonomics_section_five .ergonomics_section_five_item_text {
+  font-family: Poppins;
+  font-weight: 500;
+  font-style: Medium;
+  font-size: clamp(14px, 0.833vw, 0.833vw);
+  leading-trim: NONE;
+  line-height: clamp(22px, 1.25vw, 1.25vw);
+  letter-spacing: 0%;
+  vertical-align: middle;
+  margin-top: 1.40625vw;
+  color: rgba(38, 38, 41, .7);
+}

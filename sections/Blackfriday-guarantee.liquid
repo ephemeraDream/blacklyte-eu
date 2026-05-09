@@ -1,0 +1,307 @@
+<style>
+  .blavklyte-guarantees img{
+    width: 100%;
+    object-fit: contain;
+    height: auto;
+  }
+    .blavklyte-guarantees .guarantee-wrapper,
+    .blavklyte-guarantees .faq-cont{
+        padding-left: 16%;
+        padding-right: 16%;
+    }
+
+  .blavklyte-guarantees .guarantee-wrapper{
+    padding: 70px 0 110px;
+    background: #121315;
+  }
+  .blavklyte-guarantees  .guarantee-title{
+    font: 600 40px var(--font-family-1);
+    color: #fff;
+    text-align: center;
+  }
+  .blavklyte-guarantees .guarantee-wrapper .icon-list{
+    display: flex;
+    gap: 37px;
+    margin-top: 58px;
+  }
+  .blavklyte-guarantees .guarantee-wrapper .icon-list .item{
+    width: calc( (100% - 74px)  / 3 );
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    flex-direction: column;
+  }
+  .blavklyte-guarantees .guarantee-wrapper .icon-list .item .info {
+    flex: 1;
+    text-align: center;
+  }
+  .blavklyte-guarantees .guarantee-wrapper .icon-list .icon-img{
+    width: 64px;
+    height: 64px;
+  }
+  .blavklyte-guarantees .guarantee-wrapper .icon-list .icon-img img{
+    max-width: 100%;
+    max-height: 100%;
+  }
+  .blavklyte-guarantees .info-title{
+    font: 500 22px var(--font-family-3);
+    line-height: 1.5;
+    margin-bottom: 4px;
+    color: #fff;
+  }
+  .blavklyte-guarantees .info-text{
+    font: 400 16px var(--font-family-3);
+    line-height: 1.4;
+    color: #fff;
+    margin-top: 0;
+  }
+
+  .blavklyte-guarantees .faq-cont{
+    background: #EFEFEF;
+    padding-top: 90px;
+    padding-bottom: 200px;
+  }
+  .blavklyte-guarantees .faq-cont .faq-title{
+    font: 600 40px var(--font-family-3);
+    color: #262629;
+    text-align: center;
+  }
+  .blavklyte-guarantees .faq-cont .faq-lists{
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    margin-top: 80px;
+  }
+  .blavklyte-guarantees .faq-cont .faq-lists .faq-item .title{
+    font: 600 16px var(--font-family-1);
+    color: #000;
+    line-height: 1.4;
+  }
+  .blavklyte-guarantees .faq-cont .faq-lists .faq-item .descripe{
+    font: 400 16px var(--font-family-1);
+    color: #76767F;
+    line-height: 1.4;
+    margin-top: 13px;
+  }
+  @media(max-width: 767px) {
+    .blavklyte-guarantees .guarantee-wrapper,
+    .blavklyte-guarantees .faq-cont{
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    .blavklyte-guarantees .guarantee-wrapper .icon-list{
+        flex-direction: column;
+        gap: 20px;
+        margin-top: 30px;
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .blavklyte-guarantees .guarantee-wrapper .icon-list .item{
+      width: 100%;
+      flex-direction: row;
+      gap: 16px;
+    }
+    .blavklyte-guarantees .guarantee-wrapper .icon-list .icon-img {
+        width: 40px;
+        height: 40px;
+    }
+    .blavklyte-guarantees {
+      padding-top: 50px;
+      padding-bottom: 50px;
+    }
+    .blavklyte-guarantees div.guarantee-wrapper{
+      padding: 30px 0 50px;
+    }
+    .blavklyte-guarantees .info-title {
+      font-size: 14px;
+    }
+    .blavklyte-guarantees .info-text{
+      font-size: 12px;
+    }
+    .blavklyte-guarantees .guarantee-title{
+        font-size: 24px;
+    }
+    .blavklyte-guarantees .guarantee-wrapper .icon-list .item .info{
+        text-align: left;
+    }
+    .blavklyte-guarantees .faq-cont{
+        padding-top: 30px;
+        padding-bottom: 100px;
+    }
+    .blavklyte-guarantees .faq-cont .faq-title{
+        font-size: 24px;
+    }
+    .blavklyte-guarantees .faq-cont .faq-lists{
+        gap: 30px;
+        margin-top: 30px;
+    }
+    .blavklyte-guarantees .faq-cont .faq-lists .faq-item .title{
+        font-size: 14px;
+    }
+    .blavklyte-guarantees .faq-cont .faq-lists .faq-item .descripe{
+        font-size: 12px;
+    }
+    
+  }
+  @media(min-width: 768px) and (max-width: 1024px){
+    .blavklyte-guarantees .guarantee-wrapper,
+    .blavklyte-guarantees .faq-cont{
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    .blavklyte-guarantees .guarantee-title{
+        font-size: 30px;
+    }
+    .blavklyte-guarantees .guarantee-wrapper .icon-list .icon-img{
+        width: 44px;
+        height: 44px;
+    }
+    .blavklyte-guarantees .guarantee-wrapper .icon-list .item{
+        gap: 5px;
+    }
+    .blavklyte-guarantees .info-title{
+        font-size: 18px;
+    }
+    .blavklyte-guarantees .info-text{
+        font-size: 14px;
+    }
+    .blavklyte-guarantees .faq-cont{
+        padding-top: 50px;
+        padding-bottom: 100px;
+    }
+    .blavklyte-guarantees .faq-cont .faq-lists{
+        gap: 30px;
+        margin-top: 30px;
+    }
+  }
+  @media(min-width: 1025px) and (max-width: 1480px){
+    .blavklyte-guarantees .guarantee-wrapper,
+    .blavklyte-guarantees .faq-cont{
+        padding-left: 60px;
+        padding-right: 60px;
+    }
+
+  }
+</style>
+
+<section class="blavklyte-guarantees lazy-section section-{{ section.id }} container-full " data-section-id="{{ section.id }}">
+  <div class="guarantee-wrapper">
+    {% if section.settings.title != blank %}
+      <h3 class="guarantee-title">{{ section.settings.title }}</h3>
+    {% endif %}
+    <div class="icon-list">
+      {% for block in section.blocks %}
+        {% if block.type == 'guaranteItem' %}
+            <div class="item">
+            <div class="icon-img">
+                {% if block.settings.icon != blank %}
+                {{-
+                    block.settings.icon
+                    | image_url: width: block.settings.icon.width
+                    | image_tag:
+                    is: 'loess-image',
+                    loading: 'lazy',
+                    sizes: '100vw',
+                    widths: '200,300,400,500,600,700,800,900,1000,1200,1400,1600,1800,2000,2200,2400,2600,2800,3000,3200',
+                    class: '',
+                    alt: block.settings.icon.alt
+                -}}
+                {% else %}
+                <img src="" loading="lazy" alt="">
+                {% endif %}
+            </div>
+        
+            <div class="info">
+                {% if block.settings.title != blank %}
+                    <p class="info-title">{{ block.settings.title }}</p>
+                {% endif %}
+                {% if block.settings.text != blank %}
+                    <p class="info-text">{{ block.settings.text }}</p>
+                {% endif %}
+            </div>
+            </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+  <div class="faq-cont">
+    <div class="faq-title">{{ section.settings.faqTitle }}</div>
+    <div class="faq-lists">
+        {% for block in section.blocks %}
+            {% if block.type == "item" %}
+                <div class="faq-item">
+                    <div class="title">{{ block.settings.itemTitle }}</div>
+                    <div class="descripe">{{ block.settings.itemDescripe }}</div>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>
+</section>
+
+{% schema %}
+{
+  "name": "Black Friday Guarantee",
+  "class": "lazy-section",
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "title",
+      "label": "Section title"
+    },
+    {
+        "type": "text",
+        "id": "faqTitle",
+        "label": "FAQ Title",
+        "default": "FAQ"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "guaranteItem",
+      "name": "guaranteItem",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icon image"
+        }, 
+        {
+          "type": "textarea",
+          "id": "title",
+          "label": "Icon title"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "Icon text"
+        }
+      ]
+    },
+    {
+        "type": "item",
+        "name": "item",
+        "settings": [
+            {
+                "type": "text",
+                "id": "itemTitle",
+                "label": "item Title"
+            },
+            {
+                "type": "textarea",
+                "id": "itemDescripe",
+                "label": "item Descripe"
+            }
+        ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Black Friday Guarantee"
+    }
+  ]
+}
+{% endschema %}

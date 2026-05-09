@@ -1,0 +1,213 @@
+<style>
+    .section-online-{{ section.id }}{
+        padding-top: 130px;
+        padding-bottom: 200px;
+        overflow: hidden;
+    }
+    .section-online-{{ section.id }} .head-cont-box{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+    .section-online-{{ section.id }} .head-cont-box .titke{
+        font-family: DIN;
+        font-weight: 700;
+        font-style: Bold;
+        font-size: 30px;
+        line-height: 39px;
+        letter-spacing: -4%;
+        text-align: center;
+        text-transform: uppercase;
+        color: #fff;
+    }
+    .section-online-{{ section.id }} .head-cont-box .description{
+        font-family: Poppins;
+        font-weight: 500;
+        font-style: Medium;
+        font-size: 16px;
+        line-height: 24px;
+        letter-spacing: 0%;
+        text-align: center;
+        text-transform: capitalize;
+        margin-top: 15px;
+        color: #fff;
+        width: 60%;
+    }
+    .section-online-{{ section.id }} .cnt-cont .item-image_pc{
+        display: block;
+    }
+    .section-online-{{ section.id }} .cnt-cont .item-image_mb{
+        display: none;
+    }
+
+    .section-online-{{ section.id }} .gallery-swiper {
+        width: 100%;
+        padding: 40px 0;
+    }
+
+    .section-online-{{ section.id }} .gallery-swiper .swiper-slide {
+        width: 60%;
+        border-radius: 12px; 
+        overflow: hidden;
+    }
+
+    .section-online-{{ section.id }} .gallery-swiper .swiper-slide img {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+
+    .section-online-{{ section.id }} .swiper-pagination-bullet{
+        width: 50px;
+        height: 6px;
+        background: #15A4DB;
+        border-radius: 0;
+    }
+
+    {% comment %} iPhone {% endcomment %}
+    @media(max-width: 767px){
+        .section-online-{{ section.id }}{
+            padding-top: 40px;
+            padding-bottom: 50px;
+        }
+        .section-online-{{ section.id }} .cnt-cont .item-image_pc{
+            display: none;
+        }
+        .section-online-{{ section.id }} .cnt-cont .item-image_mb{
+            display: block;
+        }
+        .section-online-{{ section.id }} .head-cont-box .titke{
+            font-size: 26px;
+            line-height: 36px;
+        }
+        .section-online-{{ section.id }} .head-cont-box .description{
+            font-size: 14px;
+            line-height: 22px;
+            width: calc(100% - 20px);
+        }
+    }
+
+    {% comment %} iPad {% endcomment %}
+    @media(min-width: 768px) and (max-width: 1024px){ }
+
+
+</style>
+
+<section class="section-online-{{ section.id }}" id="{{ section.id }}" data-section-id="{{ section.id }}">
+    {%- liquid
+        assign bgImage = section.settings.sectionBgImage
+        assign bgImageMb = section.settings.sectionBgImage_mb
+    -%}
+
+    <style>
+        .section-online-{{ section.id }} {
+            background-color: #001538;
+            background-image: url({{ bgImage | img_url: 'master' }});
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        @media (max-width: 767px) {
+            .section-online-{{ section.id }} {
+                background-image: url({{ bgImageMb | img_url: 'master' }});
+            }
+        }
+    </style>
+    <div class="container-full">
+        <div class="head-cont-box">
+            <div class="titke">{{ section.settings.sectionTitle }}</div>
+            <div class="description">{{ section.settings.sectionDesc }}</div>
+        </div>
+        <div class="cnt-cont swiper gallery-swiper">
+            <div class="swiper-wrapper">
+                {% for block in section.blocks %}
+                    {% if block.type == "item" %}
+                        <div class="cnt-cont-item swiper-slide">
+                            <div class="item-image item-image_pc">
+                                <img src="{{ block.settings.itemImage | img_url: 'master' }}"
+                                    width="{{ block.settings.itemImage.width }}"
+                                    height="{{ block.settings.itemImage.height }}"
+                                    alt="{{ block.settings.itemImage.alt }}" />
+                            </div>
+                            <div class="item-image item-image_mb">
+                                <img src="{{ block.settings.itemImage_mb | img_url: 'master' }}"
+                                    width="{{ block.settings.itemImage_mb.width }}"
+                                    height="{{ block.settings.itemImage_mb.height }}"
+                                    alt="{{ block.settings.itemImage_mb.alt }}" />
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+            <div class="swiper-pagination"></div>
+        </div>
+    </div>
+</section>
+
+<script>
+    new Swiper(".gallery-swiper", {
+        slidesPerView: "auto",
+        spaceBetween: 20,
+        centeredSlides: true,
+        initialSlide: 1,
+        pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+        },
+    });
+</script>
+
+{% schema %}
+{
+    "name": "Liquid Online Event",
+    "settings": [
+        {
+            "type": "image_picker",
+            "id": "sectionBgImage",
+            "label": "section Background Image"
+        },
+        {
+            "type": "image_picker",
+            "id": "sectionBgImage_mb",
+            "label": "section Background Image Mobile"
+        },
+        {
+            "type": "text",
+            "id": "sectionTitle",
+            "label": "Section Title",
+            "default": "World-leading Gaming Chairs and Desks Brand"
+        },
+        {
+            "type": "textarea",
+            "id": "sectionDesc",
+            "label": "Section Desc",
+            "default": "Top esports players trust Blacklyte for unparalleled comfort and performance. Our chairs offer the support needed for the intense competition at BLAST R6 Munich Major, giving players the edge to win."
+        }
+    ],
+    "blocks": [
+        {
+            "type": "item",
+            "name": "item",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "itemImage",
+                    "label": "Item Image"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "itemImage_mb",
+                    "label": "Item Image Mobile"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "Liquid Online Event"
+        }
+    ]
+}
+{% endschema %}

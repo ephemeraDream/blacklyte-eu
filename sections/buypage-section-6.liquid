@@ -1,0 +1,234 @@
+{{ 'buypage-section-6.css' | asset_url | stylesheet_tag }}
+
+<div class="buypage_section_6">
+  {%- for block in section.blocks -%}
+    {%- case block.type -%}
+      {% when 'first_part' %}
+        <div class="first_part">
+          <div class="first_part_title">{{ block.settings.title }}</div>
+          <div class="first_part_text">{{ block.settings.text }}</div>
+          <div class="first_part_img">
+            {% render 'picture-simple',
+              image: block.settings.image,
+              image_mobile: block.settings.image_mobile,
+              mobile_widths: '350,450,550,650',
+              mobile_dpr: 1,
+              widths_sizes: '70vw'
+            %}
+            {% comment %}
+              {{-
+                block.settings.image
+                | image_url: width: block.settings.image.width
+                | image_tag: alt: block.settings.image.alt, class: 'pc_show', loading: 'lazy'
+              -}}
+              {% assign image_mobile = block.settings.image_mobile | default: block.settings.image %}
+              {{-
+                image_mobile
+                | image_url: width: image_mobile.width
+                | image_tag: alt: image_mobile.alt, class: 'pmd_show', loading: 'lazy'
+              -}}
+            {% endcomment %}
+            <div class="first_part_img_extra">
+              <div class="first_part_img_extra_item">
+                {{ block.settings.left_icon }}
+                {{ block.settings.left_text }}
+              </div>
+              <div class="first_part_img_extra_item">
+                {{ block.settings.right_icon }}
+                {{ block.settings.right_text }}
+              </div>
+            </div>
+          </div>
+        </div>
+      {%- when 'second_part' -%}
+        <div class="second_part">
+          <div class="second_part_title">{{ block.settings.title }}</div>
+          <div class="second_part_text">{{ block.settings.text }}</div>
+          <div class="second_part_contain">
+            <div class="second_part_contain_left">
+              <div class="second_part_contain_left_top">
+                {% render 'picture-simple',
+                  image: block.settings.left_top_image,
+                  image_mobile: block.settings.left_top_image,
+                  mobile_widths: '350,450,550,650',
+                  mobile_dpr: 1,
+                  widths_sizes: '40vw'
+                %}
+                {% comment %}
+                  {{-
+                    block.settings.left_top_image
+                    | image_url: width: block.settings.left_top_image.width
+                    | image_tag: alt: block.settings.left_top_image.alt, loading: 'lazy'
+                  -}}
+                {% endcomment %}
+                <div class="second_part_contain_left_top_info">
+                  <div class="second_part_contain_left_top_title">{{ block.settings.left_top_title }}</div>
+                  <div class="second_part_contain_left_top_text">{{ block.settings.left_top_text }}</div>
+                </div>
+              </div>
+              <div class="second_part_contain_left_bottom">
+                {% render 'picture-simple',
+                  image: block.settings.left_bottom_image,
+                  image_mobile: block.settings.left_bottom_image,
+                  mobile_widths: '350,450,550,650',
+                  mobile_dpr: 1,
+                  widths_sizes: '40vw'
+                %}
+                {% comment %}
+                  {{-
+                    block.settings.left_bottom_image
+                    | image_url: width: block.settings.left_bottom_image.width
+                    | image_tag: alt: block.settings.left_bottom_image.alt, loading: 'lazy'
+                  -}}
+                {% endcomment %}
+              </div>
+            </div>
+            <div class="second_part_contain_right">
+              {% render 'picture-simple',
+                image: block.settings.right_image,
+                image_mobile: block.settings.right_image,
+                mobile_widths: '350,450,550,650',
+                mobile_dpr: 1,
+                widths_sizes: '40vw'
+              %}
+              {% comment %}
+                {{-
+                  block.settings.right_image
+                  | image_url: width: block.settings.right_image.width
+                  | image_tag: alt: block.settings.right_image.alt, loading: 'lazy'
+                -}}
+              {% endcomment %}
+              <div class="second_part_contain_right_box">
+                <div class="second_part_contain_right_box_title">{{ block.settings.right_title }}</div>
+                <div class="second_part_contain_right_box_icon">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="9" viewBox="0 0 18 9" fill="none">
+                    <path d="M9.68674 8.3512C9.30132 8.71533 8.69868 8.71533 8.31326 8.3512L1.3016 1.7269C0.644002 1.10563 1.08368 2.53632e-07 1.98834 3.3272e-07L16.0117 1.55868e-06C16.9163 1.63776e-06 17.356 1.10563 16.6984 1.7269L9.68674 8.3512Z" fill="#262629"/>
+                  </svg>
+                </div>
+                <div class="second_part_contain_right_box_color">
+                  <div class="second_part_contain_right_box_color_item"></div>
+                  <div class="second_part_contain_right_box_color_item"></div>
+                  <div class="second_part_contain_right_box_color_item"></div>
+                </div>
+                <div class="second_part_contain_right_box_text">
+                  <span>FFF-</span>
+                  <span>AAA+</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    {%- endcase -%}
+  {% endfor %}
+</div>
+
+{% schema %}
+{
+  "name": "buypage section 6",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [],
+  "blocks": [
+    {
+      "type": "first_part",
+      "name": "first part",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "title",
+          "label": "title"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "text"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "image"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_mobile",
+          "label": "image mobile"
+        },
+        {
+          "type": "textarea",
+          "id": "left_icon",
+          "label": "left icon"
+        },
+        {
+          "type": "text",
+          "id": "left_text",
+          "label": "left text"
+        },
+        {
+          "type": "textarea",
+          "id": "right_icon",
+          "label": "right icon"
+        },
+        {
+          "type": "text",
+          "id": "right_text",
+          "label": "right text"
+        }
+      ]
+    },
+    {
+      "type": "second_part",
+      "name": "second part",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "title",
+          "label": "title"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "text"
+        },
+        {
+          "type": "image_picker",
+          "id": "left_top_image",
+          "label": "left top image"
+        },
+        {
+          "type": "image_picker",
+          "id": "left_bottom_image",
+          "label": "left bottom image"
+        },
+        {
+          "type": "image_picker",
+          "id": "right_image",
+          "label": "right image"
+        },
+        {
+          "type": "text",
+          "id": "left_top_title",
+          "label": "left top title"
+        },
+        {
+          "type": "text",
+          "id": "left_top_text",
+          "label": "left top text"
+        },
+        {
+          "type": "text",
+          "id": "right_title",
+          "label": "right title"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "buypage section 6"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,333 @@
+{% stylesheet %}
+  .collection_head_new {
+    padding: 5.03125vw 0 5.671875vw;
+    background-color: #f5f5f5;
+  }
+
+  .collection_head_new .collection_head_new_select {
+    text-align: center;
+  }
+
+  .collection_head_new .collection_head_new_select_title {
+    font-family: Poppins;
+    font-weight: 500;
+    font-style: Medium;
+    font-size: clamp(20px, 1.5625vw, 1.5625vw);
+    leading-trim: CAP_HEIGHT;
+    line-height: clamp(14.67px, 1.145833vw, 1.145833vw);
+    letter-spacing: 0%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.578125vw;
+    position: relative;
+    color: #262629;
+    cursor: pointer;
+  }
+
+  .collection_head_new .collection_head_new_select_title svg {
+    width: 1.140625vw;
+    height: 0.625vw;
+    min-width: 14.6px;
+    min-height: 8px;
+  }
+
+  .collection_head_new .collection_head_new_select_contain {
+    position: absolute;
+    width: calc(100% + 1.5625vw);
+    left: -0.78125vw;
+    bottom: 0;
+    transform: translateY(calc(100% + 0.9375vw));
+    border-top: 1px solid rgb(212, 212, 216);
+    background-color: #fff;
+    max-height: 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease-in;
+  }
+
+  .collection_head_new .collection_head_new_select_item {
+    height: 2.34375vw;
+    display: flex;
+    align-items: center;
+    padding-left: 0.46875vw;
+    font-family: Poppins;
+    font-weight: 400;
+    font-style: normal;
+    font-size: clamp(16px, 0.83333vw, 0.83333vw);
+    leading-trim: CAP_HEIGHT;
+    letter-spacing: 0%;
+    color: #262629;
+    cursor: pointer;
+  }
+
+  .collection_head_new .collection_head_new_select_item.active {
+    background-color: #262629;
+    color: #fff;
+  }
+
+  .collection_head_new .collection_head_new_text {
+    width: 50.890625vw;
+    text-align: center;
+    font-family: Poppins;
+    font-weight: 400;
+    font-style: Regular;
+    font-size: clamp(14px, 0.8333vw, 0.8333vw);
+    leading-trim: NONE;
+    line-height: clamp(22.75px, 1.354167vw, 1.354167vw);
+    letter-spacing: 0%;
+    text-align: center;
+    color: rgba(38, 38, 41, 0.7);
+    margin: 1.203125vw auto 0;
+  }
+
+  .collection_head_new .collection_head_new_select_title[open] .collection_head_new_select_contain {
+    max-height: 500px;
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .collection_head_new .collection_head_new_feature {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 2.03125vw;
+    margin-top: 1.765625vw;
+  }
+
+  .collection_head_new .collection_head_new_feature_item {
+    text-align: center;
+  }
+
+  .collection_head_new .collection_head_new_feature_item svg {
+    width: 2.390625vw;
+    height: 2.390625vw;
+    min-width: 30.6px;
+    min-height: 30.6px;
+    margin-bottom: 0.3125vw;
+  }
+
+  .collection_head_new .collection_head_new_feature_item_text {
+    font-family: Poppins;
+    font-weight: 400;
+    font-style: Regular;
+    font-size: clamp(10px, 0.625vw, 0.625vw);
+    leading-trim: NONE;
+    line-height: clamp(13.33px, 0.83333vw, 0.83333vw);
+    letter-spacing: 0%;
+    text-align: center;
+    color: #262629;
+  }
+
+  @media screen and (max-width: 900px) {
+    .collection_head_new .collection_head_new_feature {
+      gap: 2.03125vw 0;
+      margin: 1.765625vw auto;
+      width: 66vw;
+    }
+
+    .collection_head_new .collection_head_new_feature_item {
+      width: 25%;
+    }
+  }
+
+  @media screen and (max-width: 500px) {
+    .collection_head_new {
+      padding: 6.4vw 5.33vw 8.4vw;
+    }
+
+    .collection_head_new .collection_head_new_select_title {
+      font-size: 6.4vw;
+      line-height: 8vw;
+      gap: 1.6vw;
+    }
+
+    .collection_head_new .collection_head_new_select_title svg {
+      width: 3.89333vw;
+      height: 2.1333vw;
+    }
+
+    .collection_head_new .collection_head_new_select_contain {
+      width: calc(100% + 5.333vw);
+      left: -2.6665vw;
+      transform: translateY(calc(100% + 3.2vw));
+    }
+
+    .collection_head_new .collection_head_new_select_item {
+      height: 9.6vw;
+      padding-left: 1.6vw;
+      font-size: 3.733vw;
+    }
+
+    .collection_head_new .collection_head_new_text {
+      width: 100%;
+      font-size: 3.7333vw;
+      line-height: 5.86667vw;
+      margin: 4.1067vw auto 0;
+    }
+
+    .collection_head_new .collection_head_new_feature {
+      gap: 6.4vw;
+      margin: 6.0267vw auto 0;
+      width: 100%;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      justify-content: flex-start;
+      padding-bottom: 3.2vw;
+    }
+
+    .collection_head_new .collection_head_new_feature_item svg {
+      width: 16vw;
+      height: 16vw;
+      margin-bottom: 1.0667vw;
+    }
+
+    .collection_head_new .collection_head_new_feature_item {
+      width: 33%;
+      flex: 0 0 auto;
+    }
+
+    .collection_head_new .collection_head_new_feature_item_text {
+      font-size: 3.2vw;
+      line-height: 4.266667vw;
+    }
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .collection_head_new .collection_head_new_select_item:hover {
+      opacity: 0.8;
+    }
+  }
+{% endstylesheet %}
+
+<div class="collection_head_new">
+  <div class="collection_head_new_select">
+    <div class="collection_head_new_select_title">
+      {% if section.settings.type == 'chairs' %}
+        Blacklyte gaming chairs
+      {% elsif section.settings.type == 'desks' %}
+        Blacklyte desks
+      {% else %}
+        Blacklyte accessories
+      {% endif %}
+      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="12" viewBox="0 0 22 12" fill="none">
+        <path d="M20.9375 1.17188L10.9375 9.17188L0.937502 1.17187" stroke="#262629" stroke-width="3"/>
+      </svg>
+      <div class="collection_head_new_select_contain">
+        <a class="collection_head_new_select_item" href="/pages/collections">Shop all products</a>
+        <a
+          class="collection_head_new_select_item{%if section.settings.type == "chairs" %} active{% endif %}"
+          href="{{ routes.collections_url }}/gaming-chairs"
+        >
+          Blacklyte gaming chairs
+        </a>
+        <a
+          class="collection_head_new_select_item{%if section.settings.type == "desks" %} active{% endif %}"
+          href="{{ routes.collections_url }}/desks"
+        >
+          Blacklyte desks
+        </a>
+        <a
+          class="collection_head_new_select_item{%if section.settings.type == "accessories" %} active{% endif %}"
+          href="{{ routes.collections_url }}/accessories"
+        >
+          Blacklyte accessories
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="collection_head_new_text">{{ section.settings.text }}</div>
+  <div class="collection_head_new_feature">
+    {% for block in section.blocks %}
+      <div class="collection_head_new_feature_item">
+        {{ block.settings.icon }}
+        <div class="collection_head_new_feature_item_text">{{ block.settings.text }}</div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% javascript %}
+  const title = document.querySelector('.collection_head_new_select_title');
+
+  title.addEventListener('click', (e) => {
+    e.stopPropagation();
+    title.toggleAttribute('open');
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!title.contains(e.target)) {
+      title.removeAttribute('open');
+    }
+  });
+
+  document.querySelectorAll('.collection_head_new_select_item').forEach((item) => {
+    item.addEventListener('click', (e) => {
+      if (item.classList.contains('active')) e.preventDefault();
+      // const url = item.getAttribute('data-url');
+      // location.href = url;
+    });
+  });
+{% endjavascript %}
+
+{% schema %}
+{
+  "name": "collection head new",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "text"
+    },
+    {
+      "type": "select",
+      "id": "type",
+      "label": "type",
+      "default": "chairs",
+      "options": [
+        {
+          "value": "chairs",
+          "label": "chairs"
+        },
+        {
+          "value": "desks",
+          "label": "desks"
+        },
+        {
+          "value": "accessories",
+          "label": "accessories"
+        }
+      ]
+    }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "feature",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "icon",
+          "label": "icon"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "collection head new"
+    }
+  ]
+}
+{% endschema %}

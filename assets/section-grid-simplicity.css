@@ -1,0 +1,270 @@
+.grid_simplicity {
+  background-color: #000;
+  max-width: 75vw;
+  margin: 0 auto;
+  padding: 5.78125vw 8.33vw 6.40625vw;
+}
+
+.grid_simplicity .grid_simplicity_title {
+  font-family: DIN-BlackItalic;
+  font-weight: 500;
+  font-style: Regular;
+  font-size: 36px;
+  leading-trim: NONE;
+  line-height: 48px;
+  letter-spacing: 0%;
+  text-align: center;
+  vertical-align: middle;
+  text-transform: uppercase;
+  color: #FFFFFF;
+}
+
+.grid_simplicity .grid_simplicity_contain {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25vw;
+  margin-top: 4.375vw;
+}
+
+.grid_simplicity .grid_simplicity_item {
+  position: relative;
+  height: 20.833vw;
+  overflow: hidden;
+}
+
+.grid_simplicity .grid_simplicity_item_image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  transition: transform .3s ease-in-out;
+}
+
+.grid_simplicity .grid_simplicity_item_info {
+  position: absolute;
+  z-index: 1;
+  padding-right: 0.46875vw;
+}
+
+.grid_simplicity .grid_simplicity_item_title {
+  font-family: Roboto;
+  font-weight: 600;
+  font-style: SemiBold;
+  font-size: 1.5625vw;
+  leading-trim: NONE;
+  line-height: 2.29167vw;
+  letter-spacing: -0.15px;
+  vertical-align: middle;
+  color: #fff;
+}
+
+.grid_simplicity .grid_simplicity_item_text {
+  font-family: Roboto;
+  font-weight: 400;
+  font-style: Medium;
+  font-size: clamp(12px, 0.729167vw, 0.729167vw);
+  leading-trim: NONE;
+  line-height: clamp(20px, 1.09375vw, 1.09375vw);
+  letter-spacing: 0%;
+  color: rgba(255, 255, 255, .7);
+}
+
+.grid_simplicity .grid_simplicity_item:nth-child(1) {
+  width: 33.28125vw;
+}
+
+.grid_simplicity .grid_simplicity_item:nth-child(1) .grid_simplicity_item_info {
+  left: 2.8125vw;
+  bottom: 1.71875vw;
+}
+
+.grid_simplicity .grid_simplicity_item:nth-child(2) {
+  width: 23.80875vw;
+}
+
+.grid_simplicity .grid_simplicity_item:nth-child(2) .grid_simplicity_item_info {
+  left: 2.34375vw;
+  top: 1.71875vw;
+}
+
+.grid_simplicity .grid_simplicity_item:nth-child(3) {
+  width: 100%;
+}
+
+.grid_simplicity .grid_simplicity_item:nth-child(3) .grid_simplicity_item_info {
+  left: 2.8125vw;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 25.9375vw;
+}
+
+.grid_simplicity .grid_simplicity_item:nth-child(4) {
+  width: 23.80875vw;
+}
+
+.grid_simplicity .grid_simplicity_item:nth-child(4) .grid_simplicity_item_info {
+  left: 2.8125vw;
+  top: 1.71875vw;
+}
+
+.grid_simplicity .grid_simplicity_item:nth-child(5) {
+  width: 33.28125vw;
+}
+
+.grid_simplicity .grid_simplicity_item:nth-child(5) .grid_simplicity_item_info {
+  left: 2.03125vw;
+  bottom: 1.71875vw;
+}
+
+.grid_simplicity .pmd_show {
+  display: none;
+}
+
+.grid_simplicity .grid_simplicity_text {
+  font-family: Roboto;
+  font-weight: 400;
+  font-style: Regular;
+  font-size: 16px;
+  leading-trim: NONE;
+  line-height: 24px;
+  letter-spacing: 0.32px;
+  text-align: center;
+  color: rgba(38, 38, 41, .7);
+}
+
+.grid_simplicity .grid_simplicity_item_btns {
+  display: flex;
+  align-items: center;
+  gap: 1.671875vw;
+  margin-top: 0.46875vw;
+}
+
+.grid_simplicity .grid_simplicity_item_btns a {
+  font-family: Poppins;
+  font-weight: 600;
+  font-style: SemiBold;
+  font-size: 1.041667vw;
+  leading-trim: NONE;
+  line-height: 1.65;
+  letter-spacing: 0%;
+  color: #fff;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .grid_simplicity .grid_simplicity_item:hover .grid_simplicity_item_image {
+    transform: scale(1.1);
+  }
+
+  .grid_simplicity .grid_simplicity_item_btns a:hover {
+    text-decoration: underline;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .grid_simplicity .pc_show {
+    display: none;
+  }
+
+  .grid_simplicity .pmd_show {
+    display: block;
+  }
+
+  .grid_simplicity {
+    max-width: 100vw;
+    padding: 14.4vw 5.33vw 19.2vw;
+  }
+
+  .grid_simplicity .grid_simplicity_title {
+    font-size: 26px;
+    line-height: 30px;
+  }
+
+  .grid_simplicity .grid_simplicity_contain {
+    margin-top: 8vw;
+    gap: 5.33vw;
+  }
+
+  .grid_simplicity .grid_simplicity_item {
+    width: 100% !important;
+  }
+
+  .grid_simplicity .grid_simplicity_item_info {
+    padding: 0 5.33vw;
+  }
+
+  .grid_simplicity .grid_simplicity_item_title {
+    font-size: 26px;
+    line-height: 30px;
+  }
+
+  .grid_simplicity .grid_simplicity_item_text {
+    font-size: 14px;
+    line-height: 19px;
+    margin-top: 1.6vw;
+  }
+
+  .grid_simplicity .grid_simplicity_item:nth-child(1) {
+    height: 120vw;
+  }
+
+  .grid_simplicity .grid_simplicity_item:nth-child(1) .grid_simplicity_item_info {
+    left: 0vw;
+    bottom: 10.4vw;
+  }
+
+  .grid_simplicity .grid_simplicity_item:nth-child(2) {
+    height: 90.67vw;
+  }
+
+  .grid_simplicity .grid_simplicity_item:nth-child(2) .grid_simplicity_item_info {
+    left: 0vw;
+    top: 6.4vw;
+  }
+
+  .grid_simplicity .grid_simplicity_item:nth-child(3) {
+    height: 120vw;
+  }
+
+  .grid_simplicity .grid_simplicity_item:nth-child(3) .grid_simplicity_item_info {
+    left: 0;
+    top: auto;
+    bottom: 10.4vw;
+    transform: none;
+    width: 100%;
+  }
+
+  .grid_simplicity .grid_simplicity_item:nth-child(4) {
+    height: 90.67vw;
+  }
+
+  .grid_simplicity .grid_simplicity_item:nth-child(4) .grid_simplicity_item_info {
+    left: 0vw;
+    top: 6.4vw;
+  }
+
+  .grid_simplicity .grid_simplicity_item:nth-child(5) {
+    height: 120vw;
+  }
+
+  .grid_simplicity .grid_simplicity_item:nth-child(5) .grid_simplicity_item_info {
+    left: 0vw;
+    bottom: 10.4vw;
+  }
+
+  .grid_simplicity .grid_simplicity_text {
+    font-size: 14px;
+    line-height: 22px;
+  }
+
+  .grid_simplicity .grid_simplicity_item_btns {
+    gap: 5.70667vw;
+    margin-top: 1.6vw;
+  }
+
+  .grid_simplicity .grid_simplicity_item_btns a {
+    font-size: 3.556vw;
+  }
+}

@@ -1,0 +1,656 @@
+<style>
+    .blast-cs-editions {
+        background: #0A0A0C;
+    }
+
+    .blast-cs-editions .container-full{
+        padding: 157px 16%;
+    }
+
+    .blast-cs-editions .container-full .head-cont{ }
+
+    .blast-cs-editions .container-full .section-title{
+        font-family: Poppins;
+        font-weight: 500;
+        font-size: 48px;
+        line-height: 1.4;
+        letter-spacing: 0%;
+        color: #FFFFFF;
+        text-align: center;
+    }
+
+    .blast-cs-editions .container-full .section-descripe{
+        font-family: Poppins;
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 1.2;
+        letter-spacing: 0%;
+        text-align: center;
+        color: #FFFFFF;
+        width: 80%;
+        margin: 14px auto 0;
+    }
+
+    .blast-cs-editions .container-full .section-lists-cont{
+        margin-top: 70px;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 18px;
+    }
+
+    .blast-cs-editions .container-full .section-lists-cont a{
+        display: block;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .blast-cs-editions .container-full .section-lists-cont .middle-cont,
+    .blast-cs-editions .container-full .section-lists-cont .right-cont{
+        display: grid;
+        gap: 18px;
+        grid-template-columns: 1fr;
+    }
+
+    .blast-cs-editions .container-full .section-lists-cont .left-cont,
+    .blast-cs-editions .container-full .section-lists-cont .right-cont{
+        margin-top: 15.51vh;
+    }
+
+    .blast-cs-editions .container-full .section-lists-cont .middle-cont{
+        margin-bottom: 15.51vh;
+    }
+
+    .blast-cs-editions .container-full .section-lists-cont .small-image-cont{
+        margin-top: 6.28899482vh;
+    }
+
+    .blast-cs-editions .container-full .section-lists-cont .small-item-desc{
+        font-family: Poppins;
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 1.4;
+        letter-spacing: 0%;
+        color: #FFFFFF;
+    }
+    
+    .blast-cs-editions .container-full .section-lists-cont .small-item-btns{
+        font-family: Poppins;
+        font-weight: 500;
+        font-size: 18px;
+        line-height: normal;
+        letter-spacing: 0%;
+        text-align: center;
+        color: #FFFFFF;
+        padding: 10px 50px;
+        border: 1px solid #FFFFFF;
+        border-bottom-width: 4px;
+        display: block;
+        width: fit-content;
+        margin-top: 3.6891038vh;
+    }
+    .blast-cs-editions .container-full .section-lists-cont .small-item-btns:hover{
+        box-shadow: 0 0 8px #fff;
+    }
+
+    .blast-cs-editions .container-full .smallImage-swiper{
+        display: none;
+    }
+
+    .blast-cs-editions .item-prod-cont{
+        position: absolute;
+        bottom: 4vh;
+        left: 2vw;
+        {% comment %} transition: all .5s ease;
+        transform: translateY(150px); {% endcomment %}
+    }
+    
+    .blast-cs-editions .item-prod-cont .item-prod-title{
+        font-family: Poppins;
+        font-weight: 600;
+        font-size: 26px;
+        line-height: 1.1;
+        letter-spacing: 0%;
+        color: #fff;
+    }
+
+    .blast-cs-editions .item-prod-cont .item-prod-button{
+        font-family: Poppins;
+        font-weight: 600;
+        font-size: 20px;
+        line-height: 1.1;
+        letter-spacing: 0%;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        margin-top: 10px;
+        gap: 10px;
+    }
+    .blast-cs-editions .container-full .section-lists-cont a.item-active .item-prod-cont{
+        transform: translateY(0px);
+    }
+
+
+    {% comment %} iPhone {% endcomment %}
+    @media(max-width: 767px){
+        .blast-cs-editions{
+            max-width: 100%;
+            width: 100%;
+            overflow: hidden;
+        }
+        
+        .blast-cs-editions .container-full{
+            padding: 50px 22px 80px;
+            position: relative;
+        
+        }
+
+        .blast-cs-editions .container-full .section-title{
+            font-size: 26px;
+        }
+
+        .blast-cs-editions .container-full .section-descripe{
+            font-size: 14px;
+            margin-top: 12px;
+            width: 100%;
+        }
+
+        .blast-cs-editions .container-full .section-lists-cont{
+            margin-top: 27px;
+            grid-template-columns: 1fr;
+            gap: 60px;
+        }
+
+        .blast-cs-editions .container-full .section-lists-cont .small-item-desc{
+            font-size: 14px;
+            line-height: 28px;
+        }
+
+        .blast-cs-editions .container-full .section-lists-cont .middle-cont,
+        .blast-cs-editions .container-full .section-lists-cont .right-cont{
+            display: none;
+        }
+        .blast-cs-editions .container-full .smallImage-swiper{
+            display: block;
+            width: 100%;
+        }
+
+        .blast-cs-editions .container-full .smallImage-swiper img{
+            height: auto;
+        }
+
+        .blast-cs-editions .container-full .swiper-pagination{
+            bottom: 45px;
+        }
+
+        .blast-cs-editions .container-full .swiper-pagination .swiper-pagination-bullet-active,
+        .blast-cs-editions .container-full .swiper-pagination .swiper-pagination-bullet{
+            background: #fff;
+        }
+        .blast-cs-editions .container-full .section-lists-cont .left-cont,
+        .blast-cs-editions .container-full .section-lists-cont .right-cont{
+            margin-top: 0;
+        }
+        .blast-cs-editions .container-full .section-lists-cont .small-image-cont {
+            margin-top: 3.6865vh;
+        }
+        .blast-cs-editions .container-full .section-lists-cont .small-item-btns{
+            margin-top: 2.489104vh;
+        }
+
+        .blast-cs-editions .item-prod-cont{
+            transform: translateY(0);
+            left: 24px;
+            bottom: 24px;
+        }
+        
+    }
+
+
+    {% comment %} iPad {% endcomment %}
+    @media(min-width: 768px) and (max-width: 1024px){
+        .blast-cs-editions .container-full{
+            padding: 100px 10px;
+        }
+
+        .blast-cs-editions .item-prod-cont{
+            transform: translateY(0);
+            left: 24px;
+            bottom: 24px;
+        }
+    }
+
+
+    {% comment %} small screen {% endcomment %}
+    @media(min-width: 1025px) and (max-width: 1480px){
+        .blast-cs-editions .container-full{
+            padding-left: 60px;
+            padding-right: 60px;
+        }
+    
+    }
+</style>
+
+<div class="blast-cs-editions" id="{{ section.id }}">
+    <div class="container-full">
+        {% if section.settings.sectionTitle != blank or section.settings.sectionDesc != blank %}
+            <div class="head-cont">
+                {% if section.settings.sectionTitle != blank %}
+                    <div class="section-title">{{ section.settings.sectionTitle }}</div>
+                {% endif %}
+                {% if section.settings.sectionDesc != blank %}
+                    <div class="section-descripe">{{ section.settings.sectionDesc }}</div>
+                {% endif %}
+            </div>
+        {% endif %}
+        {% if section.blocks.size > 0 %}
+            <div class="section-lists-cont">
+                <div class="left-cont">
+                    {% for block in section.blocks %}
+                      {% if block.type == "smallItem" %}
+                        <a {% if block.settings.itemButtonLink != blank %} href="{{ block.settings.itemButtonLink }}" {% else %} aria-disabled="true" {% endif %} class="small-image">
+                            {% render 'picture-simple',
+                                image: block.settings.itemMainImage,
+                                image_mobile: block.settings.itemMainImage_mb,
+                                mobile_dpr: 2,
+                                loading: "eager"
+                            %}
+                            {% if block.settings.itemProdTitle != blank or block.settings.itemProdButtonTitle != blank %}
+                                <div class="item-prod-cont">
+                                    {% if block.settings.itemProdTitle != blank %}
+                                        <div class="item-prod-title">{{ block.settings.itemProdTitle }}</div>
+                                    {% endif %}
+                                    {% if block.settings.itemProdButtonTitle != blank %}
+                                        <div class="item-prod-button">
+                                            {{ block.settings.itemProdButtonTitle }}
+                                            <span class="item-prod-button-svg">
+                                                <svg width="7" height="11" viewBox="0 0 7 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M0.566406 0.566406L5.47339 5.47339L0.566406 10.3804" stroke="white" stroke-width="1.6"/>
+                                                </svg>
+
+                                            </span>
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            {% endif %}
+                        </a>
+                        <div class="small-image-cont">
+                            {% if block.settings.itemDesc != blank %}
+                                <div class="small-item-desc">{{ block.settings.itemDesc }}</div>
+                            {% endif %}
+                            {% if block.settings.itemButtonText != blank %}
+                                <a class="small-item-btns" {% if block.settings.itemButtonLink != blank %} href="{{ block.settings.itemButtonLink }}" {% else %} aria-disabled="true" {% endif %}>{{ block.settings.itemButtonText }}</a>
+                            {% endif %}
+                        </div>
+
+                      {% endif %}
+                    {% endfor %}
+                </div>
+                <div class="middle-cont">
+                    {% for block in section.blocks %}
+                      {% if block.type == "middleImage" %}
+                        <a {% if block.settings.middleMainImageLink != blank %} href="{{ block.settings.middleMainImageLink }}" {% else %} aria-disabled="true" {% endif %} class="middle-image">
+                            {% render 'picture-simple',
+                                image: block.settings.middleMainImage,
+                                image_mobile: block.settings.middleMainImage,
+                                mobile_dpr: 2,
+                                loading: "eager"
+                            %}
+                            {% if block.settings.itemProdTitle != blank or block.settings.itemProdButtonTitle != blank %}
+                                <div class="item-prod-cont">
+                                    {% if block.settings.itemProdTitle != blank %}
+                                        <div class="item-prod-title">{{ block.settings.itemProdTitle }}</div>
+                                    {% endif %}
+                                    {% if block.settings.itemProdButtonTitle != blank %}
+                                        <div class="item-prod-button">
+                                            {{ block.settings.itemProdButtonTitle }}
+                                            <span class="item-prod-button-svg">
+                                                <svg width="7" height="11" viewBox="0 0 7 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M0.566406 0.566406L5.47339 5.47339L0.566406 10.3804" stroke="white" stroke-width="1.6"/>
+                                                </svg>
+
+                                            </span>
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            {% endif %}
+                        </a>
+                        <a {% if block.settings.middleMainImageBottomLink != blank %} href="{{ block.settings.middleMainImageBottomLink }}" {% else %} aria-disabled="true" {% endif %} class="middle-image">
+                            {% render 'picture-simple',
+                                image: block.settings.middleMainImageBottom,
+                                image_mobile: block.settings.middleMainImageBottom,
+                                mobile_dpr: 2,
+                                loading: "eager"
+                            %}
+                            {% if block.settings.itemProdTitleSec != blank or block.settings.itemProdButtonTitle != blank %}
+                                <div class="item-prod-cont">
+                                    {% if block.settings.itemProdTitleSec != blank %}
+                                        <div class="item-prod-title">{{ block.settings.itemProdTitleSec }}</div>
+                                    {% endif %}
+                                    {% if block.settings.itemProdButtonTitle != blank %}
+                                        <div class="item-prod-button">
+                                            {{ block.settings.itemProdButtonTitle }}
+                                            <span class="item-prod-button-svg">
+                                                <svg width="7" height="11" viewBox="0 0 7 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M0.566406 0.566406L5.47339 5.47339L0.566406 10.3804" stroke="white" stroke-width="1.6"/>
+                                                </svg>
+
+                                            </span>
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            {% endif %}
+                            
+                        </a>
+                      {% endif %}
+                    {% endfor %}
+                </div>
+                <div class="right-cont">
+                    {% for block in section.blocks %}
+                      {% if block.type == "largeImage" %}
+                        <a {% if block.settings.largeMainImageLink != blank %} href="{{ block.settings.largeMainImageLink }}" {% else %} aria-disabled="true" {% endif %} class="large-image">
+                            {% render 'picture-simple',
+                                image: block.settings.largeMainImage,
+                                image_mobile: block.settings.largeMainImage,
+                                mobile_dpr: 2,
+                                loading: "eager"
+                            %}
+                            {% if block.settings.itemProdTitle != blank or block.settings.itemProdButtonTitle != blank %}
+                                <div class="item-prod-cont">
+                                    {% if block.settings.itemProdTitle != blank %}
+                                        <div class="item-prod-title">{{ block.settings.itemProdTitle }}</div>
+                                    {% endif %}
+                                    {% if block.settings.itemProdButtonTitle != blank %}
+                                        <div class="item-prod-button">
+                                            {{ block.settings.itemProdButtonTitle }}
+                                            <span class="item-prod-button-svg">
+                                                <svg width="7" height="11" viewBox="0 0 7 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M0.566406 0.566406L5.47339 5.47339L0.566406 10.3804" stroke="white" stroke-width="1.6"/>
+                                                </svg>
+
+                                            </span>
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            {% endif %}
+                        </a>
+                        <a {% if block.settings.largeMainImageBottomLink != blank %} href="{{ block.settings.largeMainImageBottomLink }}" {% else %} aria-disabled="true" {% endif %} class="large-image">
+                            {% render 'picture-simple',
+                                image: block.settings.largeMainImageBottom,
+                                image_mobile: block.settings.largeMainImageBottom,
+                                mobile_dpr: 2,
+                                loading: "eager"
+                            %}
+                            {% if block.settings.itemProdTitleSec != blank or block.settings.itemProdButtonTitle != blank %}
+                                <div class="item-prod-cont">
+                                    {% if block.settings.itemProdTitleSec != blank %}
+                                        <div class="item-prod-title">{{ block.settings.itemProdTitleSec }}</div>
+                                    {% endif %}
+                                    {% if block.settings.itemProdButtonTitle != blank %}
+                                        <div class="item-prod-button">
+                                            {{ block.settings.itemProdButtonTitle }}
+                                            <span class="item-prod-button-svg">
+                                                <svg width="7" height="11" viewBox="0 0 7 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path d="M0.566406 0.566406L5.47339 5.47339L0.566406 10.3804" stroke="white" stroke-width="1.6"/>
+                                                </svg>
+
+                                            </span>
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            {% endif %}
+                        </a>
+                      {% endif %}
+                    {% endfor %}
+                </div>
+
+                {% comment %} mobile Swiper {% endcomment %}
+                <div class="smallImage-swiper swiper">
+                    <div class="swiper-wrapper">
+                        {% for block in section.blocks %}
+                            {% if block.type == "smallImageMobile" %}
+                                <a {% if block.settings.mobileSmallImageLink != blank %} href="{{ block.settings.mobileSmallImageLink }}" {% else %} aria-disabled="true" {% endif %} class="small-image-mobile swiper-slide">
+                                    <img src="{{ block.settings.mobileSmallImage | img_url: 'master' }}"
+                                        width="{{ block.settings.mobileSmallImage.width }}"
+                                        height="{{ block.settings.mobileSmallImage.height }}"
+                                        alt="{{ block.settings.mobileSmallImage.alt }}" />
+                                    
+                                    {% if block.settings.itemProdTitle != blank or block.settings.itemProdButtonTitle != blank %}
+                                        <div class="item-prod-cont">
+                                            {% if block.settings.itemProdTitle != blank %}
+                                                <div class="item-prod-title">{{ block.settings.itemProdTitle }}</div>
+                                            {% endif %}
+                                            {% if block.settings.itemProdButtonTitle != blank %}
+                                                <div class="item-prod-button">
+                                                    {{ block.settings.itemProdButtonTitle }}
+                                                    <span class="item-prod-button-svg">
+                                                        <svg width="7" height="11" viewBox="0 0 7 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                            <path d="M0.566406 0.566406L5.47339 5.47339L0.566406 10.3804" stroke="white" stroke-width="1.6"/>
+                                                        </svg>
+
+                                                    </span>
+                                                </div>
+                                            {% endif %}
+                                        </div>
+                                    {% endif %}
+                                </a>
+                            {% endif %} 
+                        {% endfor %}
+                    </div>
+                    
+                </div>
+            </div>
+            <div class="swiper-pagination"></div>
+        {% endif %}
+    </div>
+</div>
+
+<script>
+    $(document).ready(function(){
+        if(window.innerWidth < 768){
+            new Swiper('.blast-cs-editions .smallImage-swiper', {
+                loop: true,
+                spaceBetween: 10,
+                slidesPerGroup: 1,
+                pagination: {
+                    el: '.blast-cs-editions .swiper-pagination',
+                    clickable: true,
+                },
+                breakpoints: {
+                    320: { slidesPerView: 1, slidesPerGroup: 1 },
+                    480: { slidesPerView: 1, slidesPerGroup: 1 }
+                }
+            });
+        }
+
+        {% comment %} $('.blast-cs-editions .container-full .section-lists-cont a').hover(
+            function() {
+                $(this).addClass('item-active');
+            }, 
+            function() {
+                $(this).removeClass('item-active');
+            }
+        ); {% endcomment %}
+
+
+    })
+</script>
+
+{% schema %}
+{
+    "name": "BLAST CS Editions",
+    "tag": "section",
+    "settings": [
+        {
+            "type": "text",
+            "id": "sectionTitle",
+            "label": "section Title"
+        },
+        {
+            "type": "text",
+            "id": "sectionDesc",
+            "label": "section Descripe"
+        }
+    ],
+    "blocks": [
+        {
+            "type": "smallItem",
+            "name": "smallItem",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "itemMainImage",
+                    "label": "item Main Image"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "itemMainImage_mb",
+                    "label": "item Main Image Mobile"
+                },
+                {
+                    "type": "text",
+                    "id": "itemTitle",
+                    "label": "item Title"
+                },
+                {
+                    "type": "text",
+                    "id": "itemDesc",
+                    "label": "item Descripe"
+                },
+                {
+                    "type": "text",
+                    "id": "itemButtonText",
+                    "label": "item Button Text"
+                },
+                {
+                    "type": "url",
+                    "id": "itemButtonLink",
+                    "label": "item Button Link"
+                },
+                {
+                    "type": "text",
+                    "id": "itemProdTitle",
+                    "label": "item Product Title"
+                },
+                {
+                    "type": "text",
+                    "id": "itemProdButtonTitle",
+                    "label": "item Product Button Title"
+                }
+            ]
+        },
+        {
+            "type": "middleImage",
+            "name": "middleImage",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "middleMainImage",
+                    "label": "middle Main Image"
+                },
+                {
+                    "type": "url",
+                    "id": "middleMainImageLink",
+                    "label": "middle Main Image Link"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "middleMainImageBottom",
+                    "label": "middle Main Image 2"
+                },
+                {
+                    "type": "url",
+                    "id": "middleMainImageBottomLink",
+                    "label": "middle Main Image 2 Link"
+                },
+                {
+                    "type": "text",
+                    "id": "itemProdTitle",
+                    "label": "item Product Title"
+                },
+                {
+                    "type": "text",
+                    "id": "itemProdTitleSec",
+                    "label": "item Product Title 2"
+                },
+                {
+                    "type": "text",
+                    "id": "itemProdButtonTitle",
+                    "label": "item Product Button Title"
+                }
+            ]
+        },
+        {
+            "type": "largeImage",
+            "name": "largeImage",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "largeMainImage",
+                    "label": "large Main Image"
+                },
+                {
+                    "type": "url",
+                    "id": "largeMainImageLink",
+                    "label": "large Main Image Link"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "largeMainImageBottom",
+                    "label": "large Main Image 2"
+                },
+                {
+                    "type": "url",
+                    "id": "largeMainImageBottomLink",
+                    "label": "large Main Image 2 Link"
+                },
+                {
+                    "type": "text",
+                    "id": "itemProdTitle",
+                    "label": "item Product Title"
+                },
+                {
+                    "type": "text",
+                    "id": "itemProdTitleSec",
+                    "label": "item Product Title 2"
+                },
+                {
+                    "type": "text",
+                    "id": "itemProdButtonTitle",
+                    "label": "item Product Button Title"
+                }
+            ]
+        },
+        {
+            "type": "smallImageMobile",
+            "name": "smallImageMobile",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "mobileSmallImage",
+                    "label": "mobile Small Image Swiper"
+                },
+                {
+                    "type": "url",
+                    "id": "mobileSmallImageLink",
+                    "label": "mobile Small Image Swiper Link"
+                },
+                {
+                    "type": "text",
+                    "id": "itemProdTitle",
+                    "label": "item Product Title"
+                },
+                {
+                    "type": "text",
+                    "id": "itemProdButtonTitle",
+                    "label": "item Product Button Title"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "BLAST CS Editions"
+        }
+    ]
+}
+{% endschema %}

@@ -1,0 +1,186 @@
+<style>
+    .robot-features-section {
+        background-color: #000;
+        overflow: hidden;
+    }
+
+    .robot-features-container{
+        position: relative;
+    }
+
+    .robot-features-section .robot-image-wrapper{
+        width: 100%;
+        aspect-ratio: 1920 / 890;
+        object-fit: cover;
+        object-position: center;
+        display: block;
+        vertical-align: middle;
+    }
+
+    .robot-features-section .robot-main-img {
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+        filter: drop-shadow(0 0 20px rgba(0, 162, 255, 0.2));
+    }
+
+    .robot-features-section .robot-content-wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 1.16vw;
+        position: absolute;
+        top: 50%;
+        left: 58.5%;
+        width: auto;
+        z-index: 2;
+        transform: translateY(-50%);
+    }
+
+
+    .robot-features-section .feature-item {
+        width: 28.69vw;
+        display: flex;
+        flex-direction: column;
+        gap: 0.8192vh;
+    }
+
+    .robot-features-section .feature-title {
+        font-family: 'Poppins', sans-serif;
+        font-weight: 500;
+        font-size: 1.5625vw;
+        line-height: 3.125vw;
+        letter-spacing: 0;
+        vertical-align: middle;
+        color: #fff;
+    }
+
+    .robot-features-section .feature-desc {
+        font-family: Roboto;
+        font-weight: 500;
+        font-size: 0.8333vw;
+        line-height: 1.25vw;
+        letter-spacing: 0.0167vw;
+        vertical-align: middle;
+        color: #FFFFFF;
+        opacity: 0.7;
+    }
+
+    .robot-features-section .feature-decoration-line {
+        transform: translateX(-6.82839vw);
+    }
+
+    .robot-features-section .feature-decoration-line svg {
+        width: 100%;
+        height: auto;
+    }
+
+    @media screen and (max-width: 767px) {
+        .robot-features-section { }
+
+        .robot-features-section .robot-image-wrapper{
+            aspect-ratio: 375 / 1100;
+        }
+
+        .robot-features-section .robot-content-wrapper {
+            width: 100%;
+            padding: 0 3.4829vw;
+            gap: 10.16vw;
+            top: auto;
+            bottom: 5%;
+            transform: none;
+            left: 0;
+        }
+
+        .robot-features-section .feature-item{
+            width: 100%;
+        }
+
+        .robot-features-section .feature-title {
+            font-size: 6.4vw;
+            margin-bottom: 2.6vw;
+            text-align: left;
+            line-height: normal;
+        }
+
+        .robot-features-section .feature-desc {
+            font-size: 3.73vw;
+            max-width: 100%;
+            text-align: left;
+            line-height: normal;
+        }
+
+        .robot-features-section .feature-desc p{ display: inline; }
+
+        .robot-features-section .feature-decoration-line {
+            transform: none;
+        }
+    }
+</style>
+
+<div class="robot-features-section" id="RobotFeatures--{{ section.id }}">
+  <div class="robot-features-container">
+    <div class="robot-image-wrapper">
+      {%- if section.settings.image != blank -%}
+        {% render 'picture-simple',
+            image: section.settings.image,
+            image_mobile: section.settings.image_mb,
+            mobile_dpr: 2,
+            loading: "eager"
+        %}
+      {%- endif -%}
+    </div>
+
+    <div class="robot-content-wrapper">
+      {%- for block in section.blocks -%}
+        <div class="feature-item" {{ block.shopify_attributes }}>
+          <div class="feature-text">
+            <h3 class="feature-title">{{ block.settings.title }}</h3>
+            <div class="feature-desc">{{ block.settings.description }}</div>
+          </div>
+          <div class="feature-decoration-line">
+            <svg width="551" height="111" viewBox="0 0 551 111" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                <rect width="551" height="111" fill="url(#pattern0_19022_32934)"/>
+                <defs>
+                <pattern id="pattern0_19022_32934" patternContentUnits="objectBoundingBox" width="1" height="1">
+                <use xlink:href="#image0_19022_32934" transform="scale(0.00181488 0.00900901)"/>
+                </pattern>
+                <image id="image0_19022_32934" width="551" height="111" preserveAspectRatio="none" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAicAAABvCAYAAAA3xGD1AAAVlklEQVR4nO3deXxU9bnH8U9iQsK+CVVccA+10IqKAkJFoqIoonW9uFQt7VWrVat1Bfe1Ra+7dcGVUlEEtSqKDaK4IKigaDWiYqxeN1AUKoIs94/vmTvjmGROkjmzft+vV14TZs45+UUzZ57z/J7fc0o23WYoZmZmZmm0FTAKOCz4vjx4fhXwNjAZmFBXW7Oovp1LHJyYmZlZmqwPXAwcl/DcGuBzoAToDpQGz68DbgNOq6utWZ54kFLMzMzMWm4HYB4KTD4DzgX6AB2AHsCGwfd9gXOAJcDvgDd7VlVvl3ggZ07MzMyspfoB04GOwB3AacDXKfbpDFwLHA4sBobV1dbMB2dOzMzMrGXaAQ8CnYCzgdGkDkyoq635qq625ijgQjTdM61nVXUpODgxMzOzlrkd2AS4AbiyqTvX1dZcBNwIbADcDQ5OzMzMrPl2Aw4FalHWpLkuBBYBI3pWVfdxcGJmZmbNUQacjlbd3AIsb3zzhtXV1nwB3IlqVvYuS8vwzMzMLBNaEe8ZkmnfoWXBMV2B7YLnHkzD8a8CLgJGOjgxMzPLH2ejZbjfZvjnrgEOAWYkPNcOLRH+BviwpT+grrbm255V1V8C/RycmJmZZV5rYBywI2pOFsYaYEuUPWkV0bga+9kdk57rGjzOS+PPeQXYw8GJmZlZ5k0E9s/2IJqghB8voqkMHlem8ecsAxWzmJmZWWZUEA9MXgUOJPzK2W+BS4DfRDO0Rq0DViQ9tzh43DKNP2cLcHBiZmaWKZXAw8CewAJgGPEP+LC+TPegmmBt0r+XoYBp0zT+jO2ARQ5OzMzMotcReAq1eX8bGEjzlt5eBzzAjwOFqK0D3k16binwFrpXzjDgyZb8gJ5V1XsG3850cGJmZhattsCjKDCZD+xL83uCfBR85YJlwOPohn9HAzXA6hYc7wwUdE11EzYzM7PoVADTgEHow/uXwMdZHVF6nYfuQHwYsHNzD9Kzqno4sCvKzkx3cGJmZhaNWMZkMPA0MIJgNUqBOTR4nAb8pKk796yq7oGKhMuA0XW1NSsdnJiZmUXjYWB34GVgb3682qVQPAtcgZqyvQj8IuyOPauqtwfmopqc8+tqa2aBb/xncSXA5kAfoE2Wx2Jm0AH4OVpaGbZJV7IN0eqHzs3cvwQtE+1NvKeFpdYGZUyqgRdQ8Ws6e4HkmnWoc+2N6HPkZXQjv+SmbYna96yqvgr99+kB/A9wWezFkk23GRrZaC0vtAPGozX33wCrgPWB94CT0BypmWXOkegqtDPwFapZaIc+7H4bPJfKX4DfoQ+NZUAXtLLiUuCmEPv3Qjdy2znYfxXQDd159gRgVujfpjg9gqZwZqPi1yXZHU5GnYiCjPaoOPZJ1PL+6+D1jmhlzxDU5fYr4Ny62pqbEw/i4KS49QJmoqrxk1EL4jVozvBk4FjgNODqLI0vF52BMo53A58Ez/UC9kJvxLuJzylvjRosrUEfFjEHAJuhivsHiS8JPARdJc8hfv+K9VAVfGf0Jl+QcJxzgn1vI37y2zA4zhrgHhRwWn5YD109noSCiAnoxF2K0uRXoX4SOwDvNHCMTsAT6G/yNLR09TuUhRkFjEUp+F8R/7BINhx4DJ0brgBeQ0FOD+BPqPDxBBS8rGver1qwyoD70Pt+Pqo1afadevPYVugz5NcoSKnPcvQ3dFNdbc37yS86OCleXYFF6GpsFDrhnIau0GqAM1FK+QWUVXk4O8PMObGT8SDg+eD7o9CtvlcCPwXqgucPQv0I4Idp+WkomJmNTl6xpXfPo/TveGB08Fwb1EdgU3RFcmM9Y+kNvBl8PwB9+KwEfpYwFst9xwB3ABuhQOVSdN+VFcD1wF2oaLB/8Hx9zbjuC17fDP2NXgRsDLwOnAV8DnwKTAGOqGf/rVEPjhOBm9EFykkoe/MYcAFaDvt08Phy83/dgrMecC/wXygw2RP4Iqsjyr5SdI7bBWXvSlDTuZnA3LramgaXHbvPSfG6F52ERqGr9MHoxPMR8Ad0xfZTlGJ+CP2R+SopLvFN9X3wuJZw/41i26xKen5NPc+vJp5ZaeiN7P8v+a8tyoANQwHCTGA6ylxshKZijkDFlXOA/wYuTzrGjsB+wfYXoiWeNwC3o0B5IbrQ2AJ4H9WizE86xg0oAL4LnQs6owDnC+AU4HQ0vXMmMBXYpKW/eAGZgC7yPqB4MybJ1gLPBF9N4uCkOHVDV+790TRFVfDc0uD1u9GJ7Tk0TXAlupK6PuMjNSsOo1EmcwaaijsGBQgx16Dsx+nAqSjjmRycXA7cirImY1HmMzYNOBEYiS402qFM36XAPgn7l6Or/SNQZuVNFOzECjnvRNNOs1EAdQmqSXmpeb9ywWiDsp2Hof9mQ3Bg0mIOTopTP3TCmYOma/5IPDCJuQ5dHW2FbmG9HwpOylDWJXn7QrIaOJ/s3sMiCn1RQGqZtxzVF33bwOt7AJPQ++wTfhiYgKZ2xqKsRnc0j1/BD1eADAbGAOeiQGJB0jEeRvUjl6Ppn6eSXh+KpnyWoouXPknHX4eyJycTnyranXhwUo7+xkpQxuUN1HDsIZSBvRU4DmWI9kHTlZ2A1ijbMAB1Gz0c1SL8KXjcKzhW9+Bn/Bv9HT+CAqlbUSZpQnDcF9GKkRWoFqsXMDnpd+2HVtIkZy+bahUK+nZHmanm3CvH6uHgpDh1Ih7Zt0UnhmRL0Zu7B3qD9w2eb4WuEArZKlTAWmjByW4o3W+Z9zEqaG4oOGmLpk66AR82cowuaPrvO/TeXBS81gHVPHyJpm3ub+AYn6Pp2iX8uJVE1+C4lSgQaayL6frA/6JzSUwHlHlZh+qdxqOAqgZlWW5DqzjuQpnYv6EpqK4oUPoDyjxcGrx2BQoqTgn2HYQCmafQhdNrwJ9R0DUO1b+cgaahRqBz2GtohVNycLI/KihPl/dQIPZpGo9Z1BycFKcP0MkFNPc8Al1tJKpCJ41X0QkldhX2Hbo6KeQ1+2vRSbzQXI1XXuWqf6NpmNvR1El9BqH3YxcUzCxKeO0btEpsW/ThPRx9uCdqjYqnL0YBSvJKroUo2FiGAqCBqAg20RYo+FiIalYSX/8G+CfKnMxDK4ouC453QbDfWFSjdTMKRDqhaZFFqN7lQ5S1XB5suwRlbF9Hxd3lwTZ/Cf59DmqdfhZa5nwVCki+QRdXi6k/y/sIOpel4zz2PQp+HJikkYOT4vQC8B909XI0OpG8haZrQEuJH0UrByrRSSp2lbEWpV7NLH0mBV+/Qe/Fp9HVfWy578Hog35nVNz6Sj3HGA8cn7Dfn1EmAZRVmYQ+9G9GAcwtSfvPRYHCQHRueBQtOZ4avL45Kmy8A03bbJLwGuhDenbSMWPnlNgqsxuCxyn1jP+D4DFW23ZJ8Pi34DFxmiq2Om1c8Bhbqj8+eHwrYdvk6S3QVFSx18rkNAcnxeFAdDL7IOG5Megqegt0X4RJ6IrlW5Q1mYFOlJNRuvTZzA03L5TW831Tu3gmp9VL6nm+tIHnrbA8hq68r0T1FAvQtMr7KGDYHE1PvI3eiwfUc4wLUVAyEK3ceQHVbyxGS9GXoODmADTFt389x7gATbtUoc6wU9CN2FYGz/0DFe8+iZbJF2KG0XKAg5PCtx8KMIbww+DkGlSA9jaqvG+FGit1A/6OrkwmortEbp+x0eaPNUnfr0l6Dhpe4rs2+EpeGrw66TG2bey4ycev7+esC7Zb28C2lrv2Qe/H5aiIczDxAsu/ovfmIvR+Ti5mJdjvOFTjMRQVzR6OCltnoKXJp6KLktEoe5rsepQteQUFSeejbExnVHBaiwKUXwDbtOzXNWuYm7AVth1RqjZ5WWKiu1AXv7mol8JSdIOqY4lnUTyXGrcxymR8RrzSvzWqA1gXPL8m4fn1g+c/SjhGVzRdtpIfVvZ3C55fRnyevARNs5Wh3jOJHyixHhOfEA9oWgXHSR6L5YcBqG5jFZqimIXafR+PgoWJKOBozO/R9MkHwLUo89EPNVPrTOqmiuVoqvdnKPtyM/q7G4n6Ii1GXWo/aegAZmHU1TZ8dxQHJ4Xrl6iR0xnE52UbsgPKmuyEPhzfQ9X+E2j5Ujsza5pytIx2DxQMf48K1m8lfJ3ExihLshsKbj5FNSQ30XDb+kSlaAnvQSgoKkdZkwfRMmWzFnNwUnz6oqr+MWhZnpmZWU5pLDhxgV3hGYiursaRcPtpMzOzfOHgpLAMRS3nJ6C0sO+5YmZmecfBSeH4OarSH4OKWc3MzPKSg5PCsDPqRXIBnsoxM7M85+Ak/22JujKOw/dNMTOzAuDgJL9tDcxHSwzPy/JYzMzM0sIdYvPXRihj8ii6XbilR2W2BxCh1fy4K62ZWc5xcJKf2qKGSI+QulukhdcBtQ8vz/ZAIlCCbllwSaoNzcyyzcFJ/ukOzEE3/xoVcp8S4D6gAi8vbkwFahVfqNOdR6NuwNZ05ehOwVdleyBmxcDBSX5phVbl1ALDQ+7TEd2oa3BUg7K8sWXwZc1T343yzCwCDk7yRweULfmU+m+XXp8KdFvzweiupJfgzEljOqI7vhbq+2IScAv+G2iOUnwDTLOMKdSTcKHpiO4O2grYLuQ+5cDjqGvsHKA6mqEVlE7A2mwPIkIfoptBOjgxs5zm4CT3dQf+he4UvGfIfdqgW6IPBZ5Cdxa11FYCZ1OYNSclKEh1YGJmOc/BSW5bH2VMFqBAI8wHSyUwBdgdeB5NAXmuPJwVwNXZHoSZWbFzcJK71kNXuh+gQCNMYPITlCnpg3qgDAVWRTQ+MzOzSBRi+roQtEercr5GUzlh6iAqgGdQYDIfGIYDEzMzy0MOTnLTM6igtS/hOnp2Q5mSKmAasAvwTWSjMzMzi5CDk9xSDswCWgO7htynHfAYWsUzGRW/fhvJ6MzMzDLANSe5owT1oegFbEa4ItZ2qMakH1o2fHBUgzMzM8sUZ05yxyRgENCbcIFJW9T5tT+aynFgYmZmBcGZk+xbD7gVGAFsDnwWcr/pwEDgOWAf3L/CzMwKhDMn2XcturPwVoRrj92eeGAyA3V+dWBiZmYFw5mT7KkA/o6WCvcHPg653wPAHmhFz6/wcmEzMyswDk6y5w7UvbUP8EaI7SuB+1D/kheDx5WRjc7MzCxLHJxkxx3A3uj29e+H2L4dWiY8DHWNHYEDEzMzK1AOTjLvGuAYYAPCFb+2QZmS3sBbaEXP95GNzszMLMtcEJtZ44DjgG0JF5i0R0WvvYFXcWBiZmZFwMFJZpQCFwMnA4NRBiSVSrQqZ2fUYG0Q8GVUAzQzM8sVDk4y4yRgDLrnzdwQ23dELen7A0+gwtkVkY3OzMwshzg4id6JqM5kOCpmDWMKMBSYCRyIlwubmVkRcXASrd8C16NAY1qI7TsATwfbPw7sjm/iZ2ZmRcbBSXQOQ23pD0IBRyoVwP3AkGD7UcCaqAZnZmaWq7yUOBqHou6vRwIPhti+DNWYVAMvo8yJmZlZUXLmJP1OQJ1cDwcmhNi+EpiKApPnUWt6MzOzouXMSXqdANwIHI0yJ2E8hDq/zgse/xPJyMzMzPKEg5P0OQwFJvuiKZpUugEPAwOAl4C9cGBiZmbm4CRN9keZkmMJF5hUAI8COwGvASOBpZGNzszMLI+45qTl9kQ1I6OBO0Ns3wF4FgUmLwEDCdfK3szMrCg4OGmZHYAnUa3J+BDbtyKeMZmOVuW4j4mZmVkCT+s030DgGeBc4OYQ21eg/iUDgsdh0Q3NzMwsfzlz0jy90LLfy4KvVNoA/0CByVPoXjlmZmZWD2dOmq4X8ApamXNRyH2moP4lL6DAxKtyzMzMGuDMSdNsAryIur6eSOr28rGMyTBU/DoUByZmZmaNcnASXgfgHRRs/DrkPhNR35P5KEBZGc3QzMzMCoeDk3CqgEWoXuQoYF2K7ctQ59eRqPPrAODrKAdoZmZWKBycpNYTeBuYDewXYvu2xAOTV4HhwHeRjc7MzKzAODhp3NYo8zEBdYFNpR3wT2AfoBYVwX4a2ejMzMwKkIOThnUB3gAmA0cC36fYvj0KTPqjGpNdgC+jHKCZmVkhcnBSvw2B91BgcmKI7StRx9edgWkoMFkS2ejMzMwKmPuc/Fh3tFz4ZeDwENt3QkuL+6OC2ZGkzrKYmZlZA5w5+aEyFJTUohv6pVKCGqwNRa3sD8CBiZmZWYs4OInriIpfP0MrbFItF64AaoDdgOeAatxgzczMrMU8rRP3HOr42i/EtiVoufBuqCX9vqTuFmtmZmYhOHOiDMiLKOAYGmL7MuBhYC9gLsqYuMGamZlZmhR75qQUrcjZHNiM1M3SKoF7gBHAHGDvEPuYmZlZExRzcFIBzELLhvsQLsi4BzgY+BcqmHXGxMzMLM2KdVqnDTAD2AbYAfgixPaTUWCyAPUxcWBiZmYWgWLNnMxCmZMNCJcxeQbYEVgI7A4sjW5oZmZmxa3YMieVqFFaJ2AIqQOTDsBMFJi8gxqtfR7d8MzMzKzYMif3ommcnsCyFNtWAA8Au6JMy6H4XjlmZmaRK6bg5F6ULdmO1IFJGfAYWiY8F/hlpCMzMzOz/1cswckNwBFAN2Bxim0rUcakGjVm2zfaoZmZmVmiYghOrgOOBapIHZgATEUN1uYFj25Jb2ZmlkGFXBBbClwOHIeW/r6TYvvWwP0oIJmNusU6MDEzM8uw+jInXVCNRS9gCfqgfhNYm8FxpcMfgbNQAey8ENvfivqYzAdG4uXCZmZmWZEcnNyIMg3LgddRoLIt8BHKKLyZ0dE131jgPBRkvZpi2zKUMTkABTEDcUt6MzOzrIlN65Shfh6HoRUtXVEB6WDUHbUGeAMYnfERNt0NwEVoWmZWiO2vQoHJK8BwHJiYmZllVSxzMgbdX6YbsD/wLtAeTeVMB44BXgNuQ91SF2Z8pOFcDRyPgowwgQkoKNsJ2Af3MTEzM8u6kk23GdoKFX5uCwwC7gDOBcYDW6CApAvQA/gr6hPSPyujbdwY4GIUZL2R5bGYmZlZI+pqaxp8rQz4PZrSeBetaBmCsiMAnwG9Ua3JOJSVWI06rNZFNeBmOAUFJtvjwMTMzCyvlQGHAC+goGQR8GI9250JXAtciOpUJpI7UyCdUManmnCrcszMzCyHlQHlqLakHFhD/UuGvw+2jdWodEf3nskFrYE9gRnZHoiZmZm1XBkwDS2fHQtshaZx5idtdxpasfNV8O+90TSQmZmZWVqVoqW0u6LVOZeiIGRI8HoX4C60pPh4FMAsxIGJmZmZRaQMdUK9C3gS6Au0BZ4GVgAl6H40PVHAchG+Q6+ZmZlFKNaE7VSUOVkAXAFshBqyVQObAEcCT6CC2LD9Q8zMzMyaLFbgugz1B5mG2tZPBZ5H99e5GtWhHAI8kIUxmpmZWRH5P3scav/5pB5vAAAAAElFTkSuQmCC"/>
+                </defs>
+            </svg>
+
+          </div>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "AiRobot Features",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Main Robot Image"
+    },
+    {
+        "type": "image_picker",
+        "id": "image_mb",
+        "label": "Main Robot Image Mobile"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Feature",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Title" },
+        { "type": "richtext", "id": "description", "label": "Description" }
+      ]
+    }
+  ],
+  "presets": [{ "name": "AiRobot Features" }]
+}
+{% endschema %}

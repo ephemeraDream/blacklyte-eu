@@ -1,0 +1,227 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {}
+    },
+    "ai_robot_banner_njGNMb": {
+      "type": "AiRobot-banner",
+      "blocks": {
+        "item_db6X8J": {
+          "type": "item",
+          "settings": {
+            "item_bg_image": "shopify://shop_images/AIRobot-banner-new.webp",
+            "item_bg_image_mb": "shopify://shop_images/AIRobot-banner-mb-new.webp",
+            "item_title": "Your desk teammate",
+            "item_sub_title": "Not just a robot",
+            "item_description": "<p>Your AI gaming companion. It reacts to your play, understands your </p><p>style, and pushes you to the next level.</p>",
+            "isShowSubscribeEmail": true,
+            "item_email_placeholder": "Enter your email address",
+            "item_email_submit": "Join the first drop",
+            "item_email_input_descriptions": "<p>Coming soon. Sign up for an exclusive launch offer and be the first </p><p>to know when it arrives.</p>",
+            "item_coupons": ""
+          }
+        }
+      },
+      "block_order": [
+        "item_db6X8J"
+      ],
+      "name": "AiRobot Banner",
+      "settings": {}
+    },
+    "ai_robot_feature_MiKmVg": {
+      "type": "AiRobot-feature",
+      "blocks": {
+        "feature_iN647X": {
+          "type": "feature",
+          "settings": {
+            "title": "It reacts to your game.",
+            "description": "<p>Capturing every critical moment. It doesn’t just watch—it </p><p>responds to your play in real time.</p>"
+          }
+        },
+        "feature_G9TQa4": {
+          "type": "feature",
+          "settings": {
+            "title": "It learns your playstyle.",
+            "description": "<p>No more starting over. It remembers your habits and evolves </p><p>with your data to become your digital twin.</p>"
+          }
+        },
+        "feature_phyCjE": {
+          "type": "feature",
+          "settings": {
+            "title": "Feedback, not just chat.",
+            "description": "<p>Built for performance. Receive tactical alerts and coaching-</p><p>grade insights, not idle conversation.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "feature_iN647X",
+        "feature_G9TQa4",
+        "feature_phyCjE"
+      ],
+      "name": "AiRobot Features",
+      "settings": {
+        "image": "shopify://shop_images/AIRobot-feature-new.webp",
+        "image_mb": "shopify://shop_images/AIRobot-feature-mb-new.webp"
+      }
+    },
+    "ai_robot_subscribe_tdFicK": {
+      "type": "AiRobot-subscribe",
+      "blocks": {
+        "item_7eATLi": {
+          "type": "item",
+          "settings": {
+            "itemMainImage": "shopify://shop_images/AIRobot-subsc-mini.png",
+            "itemMainImage_mb": "shopify://shop_images/AIRobot-subsc-mini-mb.png",
+            "itemTitle": "Your desk teammate",
+            "itemDescription": "<p>First batch reservation, exclusive number, priority delivery</p><p>goods</p>",
+            "itemDiscountPrice": "$299",
+            "itemOriginalPrice": "$599",
+            "countdownTitle": "End immediately",
+            "countdownTime": "2026-04-17",
+            "itemButton": "Reserve",
+            "itemTagText": "Limited"
+          }
+        },
+        "small_image_item_7QYVnL": {
+          "type": "smallImageItem",
+          "settings": {
+            "smallItemMainImage": "shopify://shop_images/AIRobot-smallImg.png",
+            "smallItemMainImage_mb": "shopify://shop_images/AIRobot-smallImg-mb.png"
+          }
+        }
+      },
+      "block_order": [
+        "item_7eATLi",
+        "small_image_item_7QYVnL"
+      ],
+      "disabled": true,
+      "name": "AiRobot Subscribe",
+      "settings": {
+        "sectionBgImage": "shopify://shop_images/AIRobot-subsc-bgImg.png",
+        "sectionBgImage_mb": "shopify://shop_images/AIRobot-subsc-bgImg-mb.png",
+        "sectionTitle": "First batch reservation, exclusive number",
+        "sectionDescription": "<p>Subscribe to unlock and stay updated on Blacklyte special offers, new releases and more!</p>",
+        "itemSubscTitle": "Sign Up to Get Our Latest Discount News!",
+        "itemSubscDescripe": "<p>Subscribe to unlock and stay updated on Blacklyte special offers, new releases and more!</p>",
+        "itemSubscButton": "SUBSCRIBE"
+      }
+    },
+    "ai_robot_info_e74kfA": {
+      "type": "AiRobot-info",
+      "blocks": {
+        "item_TbcddP": {
+          "type": "item",
+          "settings": {
+            "itemImage": "shopify://shop_images/AiRobot-ie.webp",
+            "itemTitle": "",
+            "itemDesc": "<p>Your first playtest awaits. Visit the Blacklyte interactive </p><p>zone to experience our AI Companion in action. Take a </p><p>seat, dive into the game, and see firsthand how our AI </p><p>reacts, learns, and evolves with your playstyle in real </p><p>time. Witness the digital debut of your new ultimate</p><p> wingman—long before it hits the shelves.</p>",
+            "itemComeonImage": "shopify://shop_images/AIRobot-smallImg.webp"
+          }
+        }
+      },
+      "block_order": [
+        "item_TbcddP"
+      ],
+      "name": "AiRobot maps",
+      "settings": {
+        "sectionBgImg": "shopify://shop_images/AIRobot-subsc-bgImg.webp",
+        "sectionBgImgMobile": "shopify://shop_images/AIRobot-subsc-bgImg-mb.webp",
+        "sectionTitle": "<p>Ready to Level Up? </p><p>Come play.</p>",
+        "sectionDescripe": "<p>As the official sponsor of LVL UP EXPO 2026, Blacklyte is bringing the next generation of AI to the </p><p>floor. Witness the digital debut where ultimate comfort meets elite intelligence.</p>",
+        "mapTitle": ""
+      }
+    },
+    "ai_robot_online_KDdp74": {
+      "type": "AiRobot-online",
+      "blocks": {
+        "item_6mWAnG": {
+          "type": "item",
+          "settings": {
+            "itemImage": "shopify://shop_images/AIRobot-online-0.webp",
+            "itemImage_mb": "shopify://shop_images/AIRobot-online-0-mb.webp"
+          }
+        },
+        "item_VkH6m3": {
+          "type": "item",
+          "settings": {
+            "itemImage": "shopify://shop_images/AIRobot-online-1.webp",
+            "itemImage_mb": "shopify://shop_images/AIRobot-online-1-mb.webp"
+          }
+        },
+        "item_hM4Fyg": {
+          "type": "item",
+          "settings": {
+            "itemImage": "shopify://shop_images/AIRobot-online-2.webp",
+            "itemImage_mb": "shopify://shop_images/AIRobot-online-2-mb.webp"
+          }
+        },
+        "item_QAU9AA": {
+          "type": "item",
+          "settings": {
+            "itemImage": "shopify://shop_images/AIRobot-online-3.webp",
+            "itemImage_mb": "shopify://shop_images/AIRobot-online-3-mb.webp"
+          }
+        },
+        "item_3RDFtX": {
+          "type": "item",
+          "settings": {
+            "itemImage": "shopify://shop_images/AIRobot-online-4.webp",
+            "itemImage_mb": "shopify://shop_images/AIRobot-online-4-mb.webp"
+          }
+        },
+        "item_7AGWj8": {
+          "type": "item",
+          "settings": {
+            "itemImage": "shopify://shop_images/AIRobot-online-5.webp",
+            "itemImage_mb": "shopify://shop_images/AIRobot-online-5-mb.webp"
+          }
+        },
+        "item_VRKD6f": {
+          "type": "item",
+          "settings": {
+            "itemImage": "shopify://shop_images/AIRobot-online-6.webp",
+            "itemImage_mb": "shopify://shop_images/AIRobot-online-6-mb.webp"
+          }
+        },
+        "item_tbiFJt": {
+          "type": "item",
+          "settings": {
+            "itemImage": "shopify://shop_images/AIRobot-online-7.webp",
+            "itemImage_mb": "shopify://shop_images/AIRobot-online-7-mb.webp"
+          }
+        }
+      },
+      "block_order": [
+        "item_6mWAnG",
+        "item_VkH6m3",
+        "item_hM4Fyg",
+        "item_QAU9AA",
+        "item_3RDFtX",
+        "item_7AGWj8",
+        "item_VRKD6f",
+        "item_tbiFJt"
+      ],
+      "name": "AiRobot online",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main",
+    "ai_robot_banner_njGNMb",
+    "ai_robot_feature_MiKmVg",
+    "ai_robot_subscribe_tdFicK",
+    "ai_robot_info_e74kfA",
+    "ai_robot_online_KDdp74"
+  ]
+}

@@ -1,0 +1,392 @@
+<style>
+    .section-{{ section.id }}{
+        background: #EBEBEB;
+        padding-top: 90px;
+        padding-bottom: 90px;
+    }
+    .section-{{ section.id }} .container-full{
+        padding-left: 16%;
+        padding-right: 16%;
+    }
+
+    .section-{{ section.id }} .tab-lists{
+        display: flex;
+        gap: 20px;
+    }
+    .section-{{ section.id }} .tab-lists .tab-item{
+        width: calc((100% - 60px) / 4);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        background: #F3F3F3;
+        border-radius: 20px;
+        cursor: pointer;
+        padding: 40px 0;
+    }
+    .section-{{ section.id }} .tab-lists .tab-item .tab-item-icon svg{
+        width: 45px;
+        height: 45px;
+    }
+    .section-{{ section.id }} .tab-lists .tab-item .tab-item-title{
+        font-family: Roboto;
+        font-weight: 500;
+        font-style: Medium;
+        font-size: 18px;
+        line-height: 26px;
+        letter-spacing: 0%;
+        color: #262629;
+        flex: 1;
+    }
+    .section-{{ section.id }} .tab-lists .tab-item .tab-item-desc{
+        font-family: Roboto;
+        font-weight: 400;
+        font-style: Regular;
+        font-size: 14px;
+        line-height: 26px;
+        letter-spacing: 0%;
+        color: #76767F;
+    }
+    .section-{{ section.id }} .tab-lists .tab-item .tab-item-svg svg{
+        width: 12px;
+        height: 12px;
+        transition: all .35s ease;
+    }
+    .section-{{ section.id }} .tab-lists .tab-item:hover .tab-item-svg svg{
+        transform: translateY(10px);
+    }
+
+    {% comment %} faqs collapsible {% endcomment %}
+    .collapslible-section{
+        background: #EBEBEB;
+    }
+    .collapslible-section .container-full{
+        padding-left: 16%;
+        padding-right: 16%;
+    }
+    .collapslible-section .collapsible-cont{
+        display: flex;
+        gap: 110px;
+    }
+    .collapslible-section .collapsible-cont .item-cont-right{
+        background: #F3F3F3;
+        border-radius: 16px;
+        padding: 20px 66px;
+        flex: 1;
+    }
+    .collapslible-section .collapsible-cont .item-cont-right .item-area{
+        border-bottom: 1px solid #CFCFCF;
+    }
+    .collapslible-section .collapsible-cont .item-cont-left{
+        font-family: Roboto;
+        font-weight: 500;
+        font-style: Medium;
+        font-size: 30px;
+        line-height: 1.4;
+        letter-spacing: 0%;
+        color: #262629;
+        width: 20%;
+    }
+
+    .collapslible-section .collapsible-cont .item-cont-right .item-area .title{
+        font-family: Roboto;
+        font-weight: 600;
+        font-style: SemiBold;
+        font-size: 16px;
+        line-height: 25.14px;
+        letter-spacing: 0%;
+        vertical-align: middle;
+        color: #000;
+        cursor: pointer;
+        padding: 26px 30px 26px 10px;
+        position: relative;
+    }
+    .collapslible-section .collapsible-cont .item-cont-right .item-area .title:after{
+        content: '';
+        width: 16px;
+        height: 3px;
+        background: #000000;
+        position: absolute;
+        right: 10px;
+        top: calc(50% - 2px);
+    }
+    .collapslible-section .collapsible-cont .item-cont-right .item-area .title:before{
+        content: '';
+        width: 16px;
+        height: 3px;
+        background: #000000;
+        position: absolute;
+        right: 10px;
+        top: calc(50% - 2px);
+        transform: rotate(90deg);
+        transition: all .35s ease;
+    }
+    .collapslible-section .collapsible-cont .item-cont-right .item-area .desc{
+        font-family: Roboto;
+        font-weight: 400;
+        font-style: Regular;
+        font-size: 14px;
+        line-height: 22px;
+        letter-spacing: 0%;
+        color: #898A8E;
+        padding: 0 10px 40px 10px;
+        white-space: pre-wrap;
+    }
+    .collapslible-section .collapsible-cont .item-cont-right .item-area .desc a{
+        color: #3173E8;
+        text-decoration: underline;
+    }
+    .collapslible-section .collapsible-cont .item-cont-right .item-area.item-area-toggle .title:before{
+        transform: rotate(180deg);
+    }
+    .collapslible-section .section-line-bottom{
+        padding: 100px 0;
+    }
+    .collapslible-section .section-line-bottom .line-bottom{
+        display: block;
+        width: 100%;
+        height: 1px;
+        background: #C0C0C0;
+    }
+
+
+    {% comment %} IPhone {% endcomment %}
+    @media(max-width: 767px){
+        .section-{{ section.id }} {
+            padding-top: 50px;
+            padding-bottom: 50px;
+        }
+        .section-{{ section.id }} .container-full{
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+        .section-{{ section.id }} .tab-lists{
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        .section-{{ section.id }} .tab-lists .tab-item{
+            width: calc((100% - 10px) / 2);
+            padding: 10px 0;
+            border-radius: 10px;
+        }
+        .section-{{ section.id }} .tab-lists .tab-item .tab-item-icon svg{
+            width: 25px;
+            height: 25px;
+        }
+        .section-{{ section.id }} .tab-lists .tab-item .tab-item-title{
+            font-size: 12px;
+            line-height: normal;
+            margin-top: 6px;
+        }
+        .section-{{ section.id }} .tab-lists .tab-item .tab-item-desc{
+            font-size: 10px;
+            line-height: 20px;
+        }
+        .section-{{ section.id }} .tab-lists .tab-item .tab-item-svg svg{
+            width: 8px;
+            height: 8px;
+        }
+        .section-{{ section.id }} .tab-lists .tab-item:hover .tab-item-svg svg{
+            transform: translateY(5px);
+        }
+        
+        {% comment %} faqs collapsible {% endcomment %}
+        .collapslible-section .container-full{
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+        .collapslible-section .collapsible-cont{
+            gap: 20px;
+            flex-direction: column;
+        }
+        .collapslible-section .collapsible-cont .item-cont-left{
+            font-size: 14px;
+            line-height: normal;
+            width: 100%;
+        }
+        .collapslible-section .collapsible-cont .item-cont-right{
+            padding: 10px 20px;
+            border-radius: 8px;
+        }
+        .collapslible-section .collapsible-cont .item-cont-right .item-area .title{
+            font-size: 11px;
+            line-height: 1.4;
+            padding: 10px 25px 10px 10px;
+        }
+        .collapslible-section .collapsible-cont .item-cont-right .item-area .title:before{
+            width: 10px;
+            height: 2px;
+            top: calc(50% - 1px);
+        }
+        .collapslible-section .collapsible-cont .item-cont-right .item-area .title:after{
+            width: 10px;
+            height: 2px;
+            top: calc(50% - 1px);
+        }
+        .collapslible-section .collapsible-cont .item-cont-right .item-area .desc{
+            font-size: 10px;
+            line-height: 18px;
+            padding-bottom: 20px;
+        }
+        .collapslible-section .section-line-bottom{
+            padding: 50px 0;
+        }
+    }
+    {% comment %} IPAD {% endcomment %}
+    @media(min-width: 768px) and (max-width: 1024px){
+        .section-{{ section.id }} .container-full{
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+        .section-{{ section.id }} .tab-lists .tab-item{
+            padding: 30px 0;
+        }
+        .section-{{ section.id }} .tab-lists .tab-item .tab-item-icon svg{
+            width: 40px;
+            height: 40px;
+        }
+        .section-{{ section.id }} .tab-lists .tab-item .tab-item-title{
+            font-size: 16px;
+            line-height: normal;
+        }
+        .section-{{ section.id }} .tab-lists .tab-item .tab-item-desc{
+            font-size: 12px;
+        }
+        .section-{{ section.id }} .tab-lists .tab-item .tab-item-svg svg{
+            width: 10px;
+            height: 10px;
+        }
+
+        {% comment %} faqs collapsible {% endcomment %}
+        .collapslible-section .container-full{
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+        .collapslible-section .collapsible-cont{
+            gap: 30px;
+        }
+        .collapslible-section .collapsible-cont .item-cont-left{
+            font-size: 20px;
+        }
+        .collapslible-section .collapsible-cont .item-cont-right{
+            padding: 10px 46px;
+        }
+        .collapslible-section .collapsible-cont .item-cont-right .item-area .title{
+            font-size: 14px;
+            line-height: normal;
+            padding: 20px 5px;
+        }
+        .collapslible-section .collapsible-cont .item-cont-right .item-area .desc{
+            font-size: 12px;
+            line-height: 1.6;
+            padding-bottom: 20px;
+        }
+        
+        .collapslible-section .collapsible-cont .item-cont-right .item-area .title:after{
+            width: 10px;
+            height: 2px;
+            top: calc(50% - 1px);
+        }
+        .collapslible-section .collapsible-cont .item-cont-right .item-area .title:before{
+            width: 10px;
+            height: 2px;
+            top: calc(50% - 1px);
+        }
+    }
+
+    @media(min-width: 1025px) and (max-width: 1480px){
+        .section-{{ section.id }} .container-full{
+            padding-left: 60px;
+            padding-right: 60px;
+        }
+        .collapslible-section .container-full{
+            padding-left: 60px;
+            padding-right: 60px;
+        }
+    }
+</style>
+
+<section class="section-{{ section.id }}" id="{{ section.id }}" data-section-id="{{ section.id }}">
+    <div class="container-full tab-lists">
+        {% for block in section.blocks %}
+          {% if block.type == "item" %}
+            <div class="tab-item" data-target-id="{{ block.settings.targetKey }}">
+                {% if block.settings.itemIcon != blank %}
+                    <div class="tab-item-icon">
+                        {{ block.settings.itemIcon }}
+                    </div>
+                {% endif %}
+                {% if block.settings.itemTitle != blank %}
+                    <div class="tab-item-title">{{ block.settings.itemTitle }}</div>
+                {% endif %}
+                {% if block.settings.itemDesc != blank %}
+                    <div class="tab-item-desc">{{ block.settings.itemDesc }}</div>
+                {% endif %}
+                <div class="tab-item-svg">
+                    <svg width="17" height="10" viewBox="0 0 17 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M0.708007 0.704101L8.38672 8.38281L16.0654 0.704101" stroke="#3173E8" stroke-width="2"/>
+                    </svg>
+
+                </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+    </div>
+</section>
+
+<script>
+    $(document).ready(function () {
+        $('.tab-lists .tab-item').on('click', function(){
+            const targetId = $(this).data('target-id')
+            if(targetId){
+                const $target = $('#' + targetId);
+
+                if ($target.length) {
+                    $('html, body').animate({
+                        scrollTop: $target.offset().top - 120
+                    }, 800);
+                }
+            }
+        })
+    })
+</script>
+
+{% schema %}
+{
+    "name": "new FAQ Tabs",
+    "settings": [],
+    "blocks": [
+        {
+            "type": "item",
+            "name": "item",
+            "settings": [
+                {
+                    "type": "textarea",
+                    "id": "itemIcon",
+                    "label": "Item Iconn"
+                },
+                {
+                    "type": "text",
+                    "id": "itemTitle",
+                    "label": "Item Title"
+                },
+                {
+                    "type": "text",
+                    "id": "itemDesc",
+                    "label": "Item Descripe"
+                },
+                {
+                    "type": "text",
+                    "id": "targetKey",
+                    "label": "target Key"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "new FAQ Tabs"
+        }
+    ]
+}
+{% endschema %}

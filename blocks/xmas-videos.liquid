@@ -1,0 +1,37 @@
+<div class="videos-module">
+    <div class="head-cont">
+        <div class="video-module-title">{{ block.settings.videoTitle }}</div>
+        <div class="video-module-desc">{{ block.settings.videoDesc }}</div>
+    </div>
+    <div class="video-lists swiper">
+        <div class="swiper-wrapper">
+            {% content_for "blocks" %}
+        </div>
+    </div>
+</div>
+{% schema %}
+{
+    "name": "xmas videos",
+    "class": "xmas-video-module",
+    "settings": [
+        {
+            "type": "text",
+            "id": "videoTitle",
+            "label": "video Title",
+            "default": "Voice of leaders in community"
+        },
+        {
+            "type": "text",
+            "id": "videoDesc",
+            "label": "video Descripe",
+            "default": "Where innovation meets experience — shared by those leading the way"
+        }
+    ],
+    "blocks": [{ "type": "video-item" }],
+    "presets": [
+        {
+            "name": "xmas videos"
+        }
+    ]
+}
+{% endschema %}

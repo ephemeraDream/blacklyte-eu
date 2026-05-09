@@ -1,0 +1,343 @@
+{{ 'buypage-section-1.css' | asset_url | stylesheet_tag }}
+
+<div class="buypage_section_1" id="{{section.settings.specId}}">
+  {%- for block in section.blocks -%}
+    {%- case block.type -%}
+      {% when 'first_part' %}
+        <div class="first_part">
+          <div class="first_part_title">{{ block.settings.title }}</div>
+          <div class="first_part_subtitle">{{ block.settings.subtitle }}</div>
+          <div class="first_part_text">{{ block.settings.text }}</div>
+          {% if block.settings.button_text != blank %}
+            <a class="first_part_btn" href="{{ block.settings.button_link }}">{{ block.settings.button_text }}</a>
+          {% endif %}
+          {% assign loading_init = 'lazy' %}
+          {% if block.settings.loading_lazy == false %}
+            {% assign loading_init = 'eager' %}
+          {% endif %}
+          {% render 'picture-simple',
+            image: block.settings.image,
+            image_mobile: block.settings.image_mobile,
+            mobile_widths: '350,450,550,650',
+            mobile_dpr: 1,
+            class_str: 'first_part_img',
+            widths_sizes: '60vw',
+            loading: loading_init
+          %}
+          {% comment %}
+            {{-
+              block.settings.image
+              | image_url: width: block.settings.image.width
+              | image_tag: alt: block.settings.image.alt, class: 'first_part_img pc_show', loading: 'lazy'
+            -}}
+            {% assign image_mobile = block.settings.image_mobile | default: block.settings.image %}
+            {{-
+              image_mobile
+              | image_url: width: image_mobile.width
+              | image_tag: alt: image_mobile.alt, class: 'first_part_img pmd_show', loading: "lazy"
+            -}}
+          {% endcomment %}
+        </div>
+      {%- when 'second_part' -%}
+        <div class="second_part">
+          <div class="second_part_title">{{ block.settings.title }}</div>
+          <div class="second_part_text">{{ block.settings.text }}</div>
+          {% if block.settings.image != blank %}
+            {% render 'picture-simple',
+              image: block.settings.image,
+              image_mobile: block.settings.image_mobile,
+              mobile_widths: '350,450,550,650',
+              mobile_dpr: 1,
+              class_str: 'second_part_img',
+              widths_sizes: '70vw'
+            %}
+          {% endif %}
+          {% comment %}
+            {{-
+              block.settings.image
+              | image_url: width: block.settings.image.width
+              | image_tag: alt: block.settings.image.alt, class: 'second_part_img pc_show', loading: 'lazy'
+            -}}
+            {% assign image_mobile = block.settings.image_mobile | default: block.settings.image %}
+            {{-
+              image_mobile
+              | image_url: width: image_mobile.width
+              | image_tag: alt: image_mobile.alt, class: 'second_part_img pmd_show', loading: 'lazy'
+            -}}
+          {% endcomment %}
+        </div>
+      {% when 'third_part' %}
+        <div class="third_part">
+          {% comment %}
+            {{-
+              block.settings.image
+              | image_url: width: block.settings.image.width
+              | image_tag: alt: block.settings.image.alt, class: 'third_part_img', loading: 'lazy'
+            -}}
+          {% endcomment %}
+          <div class="third_part_img_box">
+            {% render 'picture-simple',
+              image: block.settings.image,
+              image_mobile: block.settings.image,
+              mobile_widths: '350,450,550,650',
+              mobile_dpr: 1,
+              class_str: 'third_part_img',
+              widths_sizes: '30vw'
+            %}
+          </div>
+          <div>
+            <div class="third_part_title">{{ block.settings.title }}</div>
+            <div class="third_part_text">{{ block.settings.text }}</div>
+          </div>
+        </div>
+      {% when 'fourth_part' %}
+        <div class="fourth_part">
+          <div class="fourth_part_left">
+            {% render 'picture-simple',
+              image: block.settings.left_image,
+              image_mobile: block.settings.left_image_mobile,
+              mobile_widths: '350,450,550,650',
+              mobile_dpr: 1,
+              class_str: 'fourth_part_img',
+              widths_sizes: '40vw'
+            %}
+            {% comment %}
+              {{-
+                block.settings.left_image
+                | image_url: width: block.settings.left_image.width
+                | image_tag: alt: block.settings.left_image.alt, class: 'fourth_part_img pc_show', loading: 'lazy'
+              -}}
+              {% assign image_mobile = block.settings.left_image_mobile | default: block.settings.left_image %}
+              {{-
+                image_mobile
+                | image_url: width: image_mobile.width
+                | image_tag: alt: image_mobile.alt, class: 'fourth_part_img pmd_show', loading: 'lazy'
+              -}}
+            {% endcomment %}
+            <div class="fourth_part_title">{{ block.settings.left_title }}</div>
+            <div class="fourth_part_text">{{ block.settings.left_text }}</div>
+          </div>
+          <div class="fourth_part_right">
+            {% render 'picture-simple',
+              image: block.settings.right_image,
+              image_mobile: block.settings.right_image,
+              mobile_widths: '350,450,550,650',
+              mobile_dpr: 1,
+              class_str: 'fourth_part_img',
+              widths_sizes: '40vw'
+            %}
+            {% comment %}
+              {{-
+                block.settings.right_image
+                | image_url: width: block.settings.right_image.width
+                | image_tag: alt: block.settings.right_image.alt, class: 'fourth_part_img', loading: 'lazy'
+              -}}
+            {% endcomment %}
+            <div class="fourth_part_title">{{ block.settings.right_title }}</div>
+            <div class="fourth_part_text">{{ block.settings.right_text }}</div>
+            <div class="fourth_part_pressure_title">{{ block.settings.pressure_title }}</div>
+            {{-
+              block.settings.pressure_image
+              | image_url: width: block.settings.pressure_image.width
+              | image_tag: alt: block.settings.pressure_image.alt, class: 'fourth_part_pressure_img', loading: 'lazy'
+            -}}
+            <div class="fourth_part_pressure_text_line">
+              {% assign list = '1,2,3' | split: ',' %}
+              {% for item in list %}
+                {% assign text = 'pressure_text_' | append: item %}
+                <div>
+                  {{ block.settings[text] }}
+                </div>
+              {% endfor %}
+            </div>
+            <div></div>
+          </div>
+        </div>
+    {%- endcase -%}
+  {% endfor %}
+</div>
+
+{% schema %}
+{
+  "name": "buypage section 1",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "specId",
+      "label": "specId"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "first_part",
+      "name": "first part",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "title",
+          "label": "title"
+        },
+        {
+          "type": "textarea",
+          "id": "subtitle",
+          "label": "subtitle"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "text"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "image"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_mobile",
+          "label": "image mobile"
+        },
+        {
+          "type": "checkbox",
+          "id": "loading_lazy",
+          "label": "loading lazy",
+          "default": true
+        },
+        {
+          "type": "text",
+          "id": "button_text",
+          "label": "button text"
+        },
+        {
+          "type": "url",
+          "id": "button_link",
+          "label": "button link"
+        }
+      ]
+    },
+    {
+      "type": "second_part",
+      "name": "second part",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "title",
+          "label": "title"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "text"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "image"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_mobile",
+          "label": "image mobile"
+        }
+      ]
+    },
+    {
+      "type": "third_part",
+      "name": "third part",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "title",
+          "label": "title"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "text"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "image"
+        }
+      ]
+    },
+    {
+      "type": "fourth_part",
+      "name": "fourth part",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "left_title",
+          "label": "left title"
+        },
+        {
+          "type": "textarea",
+          "id": "left_text",
+          "label": "left text"
+        },
+        {
+          "type": "image_picker",
+          "id": "left_image",
+          "label": "left image"
+        },
+        {
+          "type": "image_picker",
+          "id": "left_image_mobile",
+          "label": "left image mobile"
+        },
+        {
+          "type": "textarea",
+          "id": "right_title",
+          "label": "right title"
+        },
+        {
+          "type": "textarea",
+          "id": "right_text",
+          "label": "right text"
+        },
+        {
+          "type": "image_picker",
+          "id": "right_image",
+          "label": "right image"
+        },
+        {
+          "type": "text",
+          "id": "pressure_title",
+          "label": "pressure title"
+        },
+        {
+          "type": "image_picker",
+          "id": "pressure_image",
+          "label": "pressure image"
+        },
+        {
+          "type": "text",
+          "id": "pressure_text_1",
+          "label": "pressure text 1"
+        },
+        {
+          "type": "text",
+          "id": "pressure_text_2",
+          "label": "pressure text 2"
+        },
+        {
+          "type": "text",
+          "id": "pressure_text_3",
+          "label": "pressure text 3"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "buypage section 1"
+    }
+  ]
+}
+{% endschema %}

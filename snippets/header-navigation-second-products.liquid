@@ -1,0 +1,758 @@
+{{ 'header-menu-second.css' | asset_url | stylesheet_tag }}
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="https://cdn.shopify.com/s/files/1/0716/1341/5637/files/slick.css?v=1760406619"
+>
+
+<div class="header_menu_second" data-type="products">
+  <div class="header_menu_second_inner">
+    <div class="header_menu_second_category">
+      <img
+        src="https://cdn.shopify.com/s/files/1/0663/6742/2695/files/header_second_menu_Gaming_Chairs.webp?v=1772784095"
+        width="100%"
+        height="100%"
+        loading="lazy"
+        alt="Gaming Chairs"
+        class="header_menu_second_category_img"
+      >
+      <div class="header_menu_second_category_title">Gaming Chairs</div>
+      <nav class="header_menu_second_category_menu">
+        {% for link in linklists['chairs-menu'].links %}
+          {% if link.handle == 'collab-chairs' -%}
+            {{- link.title | link_to: '/pages/partners', class: 'header_menu_second_category_menu_item' -}}
+          {%- else -%}
+            {{- link.title | link_to: link.url, class: 'header_menu_second_category_menu_item' -}}
+          {%- endif %}
+        {% endfor %}
+        {{
+          'All Chairs'
+          | link_to: collections['gaming-chairs'].url,
+            class: 'header_menu_second_category_menu_item header_menu_second_category_menu_item_spec'
+        }}
+      </nav>
+    </div>
+    <div class="header_menu_second_category">
+      <img
+        src="https://cdn.shopify.com/s/files/1/0663/6742/2695/files/header_second_menu_Height_Adjustable_Desks.webp?v=1772784095"
+        width="100%"
+        height="100%"
+        loading="lazy"
+        alt="Height Adjustable Desks"
+        class="header_menu_second_category_img"
+      >
+      <div class="header_menu_second_category_title">Height Adjustable Desks</div>
+      <nav class="header_menu_second_category_menu">
+        {% for link in linklists['desks-menu'].links %}
+          {{ link.title | link_to: link.url, class: 'header_menu_second_category_menu_item' }}
+        {% endfor %}
+        {{
+          'All Desks'
+          | link_to: collections.desks.url,
+            class: 'header_menu_second_category_menu_item header_menu_second_category_menu_item_spec'
+        }}
+      </nav>
+    </div>
+    <div class="header_menu_second_category">
+      <img
+        src="https://cdn.shopify.com/s/files/1/0663/6742/2695/files/header_second_menu_Accessories.webp?v=1772784095"
+        width="100%"
+        height="100%"
+        loading="lazy"
+        alt="Accessories"
+        class="header_menu_second_category_img"
+      >
+      <div class="header_menu_second_category_title">Accessories</div>
+      <nav class="header_menu_second_category_menu">
+        {% for link in linklists['accessories-products'].links %}
+          {{ link.title | link_to: link.url, class: 'header_menu_second_category_menu_item' }}
+        {% endfor %}
+        {% comment %}
+          {% for product in collections.accessories.products %}
+            {{- product.title | link_to: product.url, class: 'header_menu_second_category_menu_item' }}
+          {% endfor %}
+        {% endcomment %}
+        {{
+          'All Accessories'
+          | link_to: collections.accessories.url,
+            class: 'header_menu_second_category_menu_item header_menu_second_category_menu_item_spec'
+        }}
+      </nav>
+    </div>
+    <div class="header_menu_second_category">
+      <img
+        src="https://cdn.shopify.com/s/files/1/0663/6742/2695/files/header_second_menu_Smart_Gaming_Setup.webp?v=1772784095"
+        width="100%"
+        height="100%"
+        loading="lazy"
+        alt="Smart Gaming Setup"
+        class="header_menu_second_category_img"
+      >
+      <div class="header_menu_second_category_title">Smart Gaming Setup</div>
+      <nav class="header_menu_second_category_menu">
+        {{ 'Download' | link_to: '/pages/desktop-atlas-driver', class: 'header_menu_second_category_menu_item' }}
+      </nav>
+    </div>
+  </div>
+</div>
+<div class="header_menu_second" data-type="chairs">
+  <div class="header_menu_second_inner">
+    <div class="header_menu_second_left">
+      <nav class="header_menu_second_left_menu">
+        {% for link in linklists['chairs-menu'].links %}
+          {% comment %} {% if link.object.available %} {% endcomment %}
+          <a
+            class="header_menu_second_left_menu_item{% if forloop.first %} active{% endif %}"
+            href="{% if link.handle == 'collab-chairs' %}/pages/partners{% else %}{{ link.url }}{% endif %}"
+            data-type="{{ link.handle }}"
+          >
+            {% assign is_first_available = false %}
+            {% if link.handle == 'collab-chairs' %}
+              {% for variant in link.object.variants %}
+                {% if variant.option2 contains 'Edition' and is_first_available == false %}
+                  {% assign is_first_available = true %}
+                  {% assign first_variant = variant %}
+                {% endif %}
+              {% endfor %}
+            {% else %}
+              {% for variant in link.object.variants %}
+                {% if is_first_available == false %}
+                  {% assign is_first_available = true %}
+                  {% assign first_variant = variant %}
+                {% endif %}
+              {% endfor %}
+            {% endif %}
+            {{-
+              first_variant.featured_image
+              | image_url: width: 84
+              | image_tag: alt: link.title, class: 'header_menu_second_left_menu_img'
+            -}}
+            <span class="header_menu_second_left_menu_title">{{ link.title }}</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="8" height="13" viewBox="0 0 8 13" fill="none">
+              <path d="M0.707031 0.710938L6.37334 6.37724L0.707031 12.0436" stroke="#76767F" stroke-width="2"/>
+            </svg>
+          </a>
+          {% comment %} {% endif %} {% endcomment %}
+        {% endfor %}
+      </nav>
+      <div class="header_menu_second_compare show_chair_compare_modal">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="21" viewBox="0 0 20 21" fill="none">
+          <path d="M10.6992 4L0.699219 4.00511V17L10.6992 16.9949" stroke="#262629" stroke-width="1.4"/>
+          <path d="M10.6992 4H18.6992V17H10.6992" stroke="#262629" stroke-width="1.4" stroke-dasharray="2 2"/>
+          <path d="M10.6992 0L10.6992 21" stroke="#262629" stroke-width="1.4"/>
+        </svg>
+        <span>Compare Chairs</span>
+      </div>
+    </div>
+    <div class="header_menu_second_right">
+      {% for link in linklists['chairs-menu'].links %}
+        {% comment %} {% if link.object.available %} {% endcomment %}
+        <div
+          class="header_menu_second_right_contain{% if forloop.first %} active{% endif %}"
+          data-type="{{ link.handle }}"
+        >
+          <div class="header_menu_second_relative">
+            <div class="header_menu_second_slick">
+              {%- assign variants = '' | split: '' -%}
+              {% if link.handle == 'collab-chairs' %}
+                {% comment %}
+                  Keep this list to the first four collab option2 names in the desired display order.
+                  Remaining Edition variants keep the Shopify variant order.
+                {% endcomment %}
+                {%- assign collab_chair_priority_options = 'Fnatic Edition|Budapest Major Edition|R6 10th Anniversary Edition|Spirit Edition' | split: '|' -%}
+                {%- assign collab_chair_default_variants = '' | split: '' -%}
+                {%- assign collab_chair_priority_variant_ids = '' -%}
+
+                {% for variant in link.object.variants %}
+                  {% if variant.option2 contains 'Edition' %}
+                    {%- assign collab_chair_variant = link.object.variants | slice: forloop.index0 -%}
+                    {%- assign collab_chair_default_variants = collab_chair_default_variants | concat: collab_chair_variant -%}
+                  {% endif %}
+                {% endfor %}
+
+                {% for priority_option in collab_chair_priority_options %}
+                  {% for variant in collab_chair_default_variants %}
+                    {% assign collab_chair_variant_id_token = variant.id | prepend: '|' | append: '|' %}
+                    {% if variant.option2 contains priority_option %}
+                      {% unless collab_chair_priority_variant_ids contains collab_chair_variant_id_token %}
+                        {%- assign collab_chair_variant = collab_chair_default_variants | slice: forloop.index0 -%}
+                        {%- assign variants = variants | concat: collab_chair_variant -%}
+                        {%- assign collab_chair_priority_variant_ids = collab_chair_priority_variant_ids
+                          | append: collab_chair_variant_id_token
+                        -%}
+                      {% endunless %}
+                    {% endif %}
+                  {% endfor %}
+                {% endfor %}
+
+                {% for variant in collab_chair_default_variants %}
+                  {% assign collab_chair_variant_id_token = variant.id | prepend: '|' | append: '|' %}
+                  {% unless collab_chair_priority_variant_ids contains collab_chair_variant_id_token %}
+                    {%- assign collab_chair_variant = collab_chair_default_variants | slice: forloop.index0 -%}
+                    {%- assign variants = variants | concat: collab_chair_variant -%}
+                  {% endunless %}
+                {% endfor %}
+              {% elsif link.handle == 'athena-pro-chair' %}
+                {% for variant in link.object.variants %}
+                  {% unless variant.option2 contains 'Edition' %}
+                    {%- assign variants = link.object.variants | slice: forloop.index0 | concat: variants -%}
+                  {% endunless %}
+                {% endfor %}
+              {% else %}
+                {% for variant in link.object.variants %}
+                  {% comment %} {% if variant.available %} {% endcomment %}
+                  {%- assign variants = link.object.variants | slice: forloop.index0 | concat: variants -%}
+                  {% comment %} {% endif %} {% endcomment %}
+                {% endfor %}
+              {% endif %}
+              {% unless link.handle == 'collab-chairs' %}
+                {% assign variants = variants | reverse %}
+              {% endunless %}
+              {% assign product = link.object %}
+              {% for variant in variants %}
+                {% if variant.available or variant.option2 contains 'Edition' or variant.option2 contains 'Black' %}
+                  {% liquid
+                    assign featured_image = variant.featured_image
+                    assign second_image = null
+
+                    if featured_image
+                      assign found = false
+                      for img in product.images
+                        if found
+                          assign second_image = img
+                          break
+                        endif
+                        if img.src == featured_image.src
+                          assign found = true
+                        endif
+                      endfor
+
+                      if second_image == null
+                        for img in product.images
+                          if img.src != featured_image.src
+                            assign second_image = img
+                            break
+                          endif
+                        endfor
+                      endif
+                    else
+                      assign second_image = product.images[1]
+                    endif
+                  %}
+                  {% assign img_alt = product.title | append: ' - ' | append: variant.title %}
+                  <a
+                    class="header_menu_second_product{% if second_image != blank %} header_menu_second_product_hoverchange{% endif %}"
+                    {% if link.handle == 'collab-chairs' %}
+                      href="{{ variant.metafields.custom.editionchairdtl.value.url | default: variant.url }}"
+                    {% else %}
+                      href="{{ variant.url }}"
+                    {% endif %}
+                  >
+                    <div class="header_menu_second_product_img">
+                      {{
+                        featured_image
+                        | image_url: width: 500
+                        | image_tag: alt: img_alt, class: 'header_menu_second_product_imgfirst', loading: 'lazy'
+                      }}
+                      {{
+                        second_image
+                        | image_url: width: 500
+                        | image_tag: alt: img_alt, class: 'header_menu_second_product_imgsecond', loading: 'lazy'
+                      }}
+                      {% if variant.metafields.custom.discount_price != blank
+                        and variant.metafields.custom.discount_price.value != 0
+                      %}
+                        <div class="header_menu_second_product_tag">Sale</div>
+                      {% endif %}
+                    </div>
+                    <div class="header_menu_second_product_info">
+                      <div class="header_menu_second_product_title">
+                        {% if link.handle == 'collab-chairs' -%}
+                          {{- variant.option2 }}
+                        {%- else -%}
+                          {{- variant.option2 }} - {{ variant.option1 -}}
+                        {%- endif %}
+                      </div>
+                      <div class="header_menu_second_product_price">
+                        {% if variant.metafields.custom.discount_price != blank
+                          and variant.metafields.custom.discount_price.value != 0
+                        %}
+                          <div class="header_menu_second_product_price_dp">
+                            {{
+                              variant.price
+                              | minus: variant.metafields.custom.discount_price.value
+                              | money_without_trailing_zeros
+                            }}
+                          </div>
+                        {% endif %}
+                        <div class="header_menu_second_product_price_op">
+                          {{ variant.price | money_without_trailing_zeros }}
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                {% endif %}
+              {% endfor %}
+            </div>
+            <div class="header_menu_second_slick_prev">
+              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="19" viewBox="0 0 12 19" fill="none">
+                <path d="M10.3208 1L2.00006 9.32074L10.3208 17.6415" stroke="black" stroke-width="2"></path>
+              </svg>
+            </div>
+            <div class="header_menu_second_slick_next">
+              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="19" viewBox="0 0 12 19" fill="none">
+                <path d="M1.3208 1L9.64154 9.32074L1.3208 17.6415" stroke="black" stroke-width="2"></path>
+              </svg>
+            </div>
+          </div>
+          <a
+            class="header_menu_second_right_btn"
+            {% if link.handle == 'collab-chairs' %}
+              href="{{ pages.partners.url }}"
+            {% else %}
+              href="{{ collections['gaming-chairs'].url }}"
+            {% endif %}
+          >
+            <span>View All</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="8" height="13" viewBox="0 0 8 13" fill="none">
+              <path d="M0.707031 0.710938L6.37334 6.37724L0.707031 12.0436" stroke="#76767F" stroke-width="2"/>
+            </svg>
+          </a>
+        </div>
+        {% comment %} {% endif %} {% endcomment %}
+      {% endfor %}
+    </div>
+  </div>
+</div>
+<div class="header_menu_second" data-type="desks">
+  <div class="header_menu_second_inner">
+    <div class="header_menu_second_left">
+      <nav class="header_menu_second_left_menu">
+        {% for link in linklists['desks-menu'].links %}
+          {% comment %} {% if link.object.available %} {% endcomment %}
+          <a
+            class="header_menu_second_left_menu_item{% if forloop.first %} active{% endif %}"
+            href="{{ link.url }}"
+            data-type="{{ link.handle }}"
+          >
+            {% assign first_variant = link.object.selected_or_first_available_variant %}
+            {{-
+              first_variant.featured_image
+              | image_url: width: 84
+              | image_tag: alt: link.title, class: 'header_menu_second_left_menu_img'
+            -}}
+            <span class="header_menu_second_left_menu_title">{{ link.title }}</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="8" height="13" viewBox="0 0 8 13" fill="none">
+              <path d="M0.707031 0.710938L6.37334 6.37724L0.707031 12.0436" stroke="#76767F" stroke-width="2"/>
+            </svg>
+          </a>
+          {% comment %} {% endif %} {% endcomment %}
+        {% endfor %}
+      </nav>
+      <div class="header_menu_second_compare show_desk_compare_modal">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="21" viewBox="0 0 20 21" fill="none">
+          <path d="M10.6992 4L0.699219 4.00511V17L10.6992 16.9949" stroke="#262629" stroke-width="1.4"/>
+          <path d="M10.6992 4H18.6992V17H10.6992" stroke="#262629" stroke-width="1.4" stroke-dasharray="2 2"/>
+          <path d="M10.6992 0L10.6992 21" stroke="#262629" stroke-width="1.4"/>
+        </svg>
+        <span>Compare Desks</span>
+      </div>
+    </div>
+    <div class="header_menu_second_right">
+      {% for link in linklists['desks-menu'].links %}
+        {% comment %} {% if link.object.available %} {% endcomment %}
+        <div
+          class="header_menu_second_right_contain{% if forloop.first %} active{% endif %}"
+          data-type="{{ link.handle }}"
+        >
+          <div class="header_menu_second_relative">
+            <div class="header_menu_second_slick">
+              {% assign product = link.object %}
+              {% if product.title contains 'Lite Standing Desk' %}
+                {%- assign variants = '' | split: '' -%}
+                {%- for value in product.options_by_name.Color.values %}
+                  {% assign color_variants = product.variants | where: 'option1', value | where: 'available' %}
+                  {% if color_variants.size > 0 %}
+                    {% assign last_variant_index = color_variants.size | minus: 1 %}
+                    {% assign last_variant = color_variants | slice: last_variant_index, 1 %}
+                    {% assign variants = variants | concat: last_variant %}
+                  {% endif %}
+                {%- endfor %}
+              {% else %}
+                {% assign variants = product.variants %}
+              {% endif %}
+              {% for variant in variants %}
+                {% if variant.available %}
+                  {% liquid
+                    if product.title contains 'Lite Standing Desk'
+                      assign imgshow_variant = product.variants | where: 'option2', 'Large' | where: 'option1', variant.option1 | first
+                    else
+                      assign imgshow_variant = variant
+                    endif
+                    assign featured_image = imgshow_variant.featured_image
+                    assign second_image = null
+
+                    if featured_image
+                      assign found = false
+                      for img in product.images
+                        if found
+                          assign second_image = img
+                          break
+                        endif
+                        if img.src == featured_image.src
+                          assign found = true
+                        endif
+                      endfor
+
+                      if second_image == null
+                        for img in product.images
+                          if img.src != featured_image.src
+                            assign second_image = img
+                            break
+                          endif
+                        endfor
+                      endif
+                    else
+                      assign second_image = product.images[1]
+                    endif
+                  %}
+                  {% assign img_alt = product.title | append: ' - ' | append: variant.title %}
+                  <a
+                    class="header_menu_second_product{% if second_image != blank %} header_menu_second_product_hoverchange{% endif %}"
+                    href="{{ variant.url }}"
+                  >
+                    <div class="header_menu_second_product_img">
+                      {{
+                        featured_image
+                        | image_url: width: 500
+                        | image_tag: alt: img_alt, class: 'header_menu_second_product_imgfirst', loading: 'lazy'
+                      }}
+                      {{
+                        second_image
+                        | image_url: width: 500
+                        | image_tag: alt: img_alt, class: 'header_menu_second_product_imgsecond', loading: 'lazy'
+                      }}
+                      {% if variant.metafields.custom.discount_price != blank
+                        and variant.metafields.custom.discount_price.value != 0
+                      %}
+                        <div class="header_menu_second_product_tag">Sale</div>
+                      {% endif %}
+                    </div>
+                    <div class="header_menu_second_product_info">
+                      {% assign other_options_string = '' %}
+                      {% if product.title contains 'Lite Standing Desk' %}
+                        {% for opt in product.options_with_values %}
+                          {% if opt.name == 'Color' %}
+                            {% assign other_options_string = other_options_string
+                              | append: variant.options[forloop.index0]
+                            %}
+                            {% assign color_variants = product.variants
+                              | where: 'option1', variant.options[forloop.index0]
+                              | where: 'available'
+                            %}
+                          {% endif %}
+                        {% endfor %}
+                        {% assign other_options_string = other_options_string
+                          | append: ' - '
+                          | append: color_variants.size
+                          | append: ' sizes available'
+                        %}
+                      {% else %}
+                        {% for opt in product.options_with_values %}
+                          {% if other_options_string != '' %}
+                            {% assign other_options_string = other_options_string | append: ' - ' %}
+                          {% endif %}
+                          {% assign other_options_string = other_options_string
+                            | append: variant.options[forloop.index0]
+                          %}
+                        {% endfor %}
+                      {% endif %}
+                      <div class="header_menu_second_product_title">{{ other_options_string }}</div>
+                      <div class="header_menu_second_product_price">
+                        {% if product.title contains 'Lite Standing Desk' -%}
+                          From
+                        {%- endif %}
+                        {% if variant.metafields.custom.discount_price != blank
+                          and variant.metafields.custom.discount_price.value != 0
+                        %}
+                          <div class="header_menu_second_product_price_dp">
+                            {{
+                              variant.price
+                              | minus: variant.metafields.custom.discount_price.value
+                              | money_without_trailing_zeros
+                            }}
+                          </div>
+                        {% endif %}
+                        <div class="header_menu_second_product_price_op">
+                          {{ variant.price | money_without_trailing_zeros }}
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                {% endif %}
+              {% endfor %}
+            </div>
+            <div class="header_menu_second_slick_prev">
+              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="19" viewBox="0 0 12 19" fill="none">
+                <path d="M10.3208 1L2.00006 9.32074L10.3208 17.6415" stroke="black" stroke-width="2"></path>
+              </svg>
+            </div>
+            <div class="header_menu_second_slick_next">
+              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="19" viewBox="0 0 12 19" fill="none">
+                <path d="M1.3208 1L9.64154 9.32074L1.3208 17.6415" stroke="black" stroke-width="2"></path>
+              </svg>
+            </div>
+          </div>
+          <a class="header_menu_second_right_btn" href="{{ collections.desks.url }}">
+            <span>View All</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="8" height="13" viewBox="0 0 8 13" fill="none">
+              <path d="M0.707031 0.710938L6.37334 6.37724L0.707031 12.0436" stroke="#76767F" stroke-width="2"/>
+            </svg>
+          </a>
+        </div>
+        {% comment %} {% endif %} {% endcomment %}
+      {% endfor %}
+    </div>
+  </div>
+</div>
+<div class="header_menu_second" data-type="accessories">
+  <div class="header_menu_second_inner">
+    <div class="header_menu_second_left">
+      <nav class="header_menu_second_left_menu">
+        {% for link in linklists['accessories-second'].links %}
+          <a
+            class="header_menu_second_left_menu_item{% if forloop.first %} active{% endif %}"
+            href="{{ collections.accessories.url }}"
+            data-type="{{ link.handle }}"
+          >
+            {% assign first_variant = link.object.selected_or_first_available_variant %}
+            {{-
+              first_variant.featured_image
+              | image_url: width: 84
+              | image_tag: alt: link.title, class: 'header_menu_second_left_menu_img'
+            -}}
+            <span class="header_menu_second_left_menu_title">{{ link.title }}</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="8" height="13" viewBox="0 0 8 13" fill="none">
+              <path d="M0.707031 0.710938L6.37334 6.37724L0.707031 12.0436" stroke="#76767F" stroke-width="2"/>
+            </svg>
+          </a>
+        {% endfor %}
+      </nav>
+    </div>
+    <div class="header_menu_second_right">
+      {% for link in linklists['accessories-second'].links %}
+        <div
+          class="header_menu_second_right_contain{% if forloop.first %} active{% endif %}"
+          data-type="{{ link.handle }}"
+        >
+          <div class="header_menu_second_relative">
+            <div class="header_menu_second_slick">
+              {% assign collection = collections[link.handle] %}
+              {% for product in collection.products %}
+                {% if product.available %}
+                  {% liquid
+                    assign featured_image = product.selected_or_first_available_variant.featured_image | default: product.featured_image
+                    assign second_image = null
+
+                    if featured_image
+                      assign found = false
+                      for img in product.images
+                        if found
+                          assign second_image = img
+                          break
+                        endif
+                        if img.src == featured_image.src
+                          assign found = true
+                        endif
+                      endfor
+
+                      if second_image == null
+                        for img in product.images
+                          if img.src != featured_image.src
+                            assign second_image = img
+                            break
+                          endif
+                        endfor
+                      endif
+                    else
+                      assign second_image = product.images[1]
+                    endif
+                  %}
+                  {% assign img_alt = product.title %}
+                  <a
+                    class="header_menu_second_product{% if second_image != blank %} header_menu_second_product_hoverchange{% endif %}"
+                    href="{{ product.url }}"
+                  >
+                    <div class="header_menu_second_product_img">
+                      {{
+                        featured_image
+                        | image_url: width: 500
+                        | image_tag: alt: img_alt, class: 'header_menu_second_product_imgfirst', loading: 'lazy'
+                      }}
+                      {{
+                        second_image
+                        | image_url: width: 500
+                        | image_tag: alt: img_alt, class: 'header_menu_second_product_imgsecond', loading: 'lazy'
+                      }}
+                      {% if product.selected_or_first_available_variant.metafields.custom.discount_price != blank
+                        and product.selected_or_first_available_variant.metafields.custom.discount_price.value != 0
+                      %}
+                        <div class="header_menu_second_product_tag">Sale</div>
+                      {% endif %}
+                    </div>
+                    <div class="header_menu_second_product_info">
+                      <div class="header_menu_second_product_title">{{ product.title }}</div>
+                      <div class="header_menu_second_product_price">
+                        {% if product.selected_or_first_available_variant.metafields.custom.discount_price != blank
+                          and product.selected_or_first_available_variant.metafields.custom.discount_price.value != 0
+                        %}
+                          <div class="header_menu_second_product_price_dp">
+                            {{
+                              product.selected_or_first_available_variant.price
+                              | minus: product.selected_or_first_available_variant.metafields.custom.discount_price.value
+                              | money_without_trailing_zeros
+                            }}
+                          </div>
+                        {% endif %}
+                        <div class="header_menu_second_product_price_op">
+                          {{ product.selected_or_first_available_variant.price | money_without_trailing_zeros }}
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                {% endif %}
+              {% endfor %}
+            </div>
+            <div class="header_menu_second_slick_prev">
+              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="19" viewBox="0 0 12 19" fill="none">
+                <path d="M10.3208 1L2.00006 9.32074L10.3208 17.6415" stroke="black" stroke-width="2"></path>
+              </svg>
+            </div>
+            <div class="header_menu_second_slick_next">
+              <svg xmlns="http://www.w3.org/2000/svg" width="12" height="19" viewBox="0 0 12 19" fill="none">
+                <path d="M1.3208 1L9.64154 9.32074L1.3208 17.6415" stroke="black" stroke-width="2"></path>
+              </svg>
+            </div>
+          </div>
+          <a class="header_menu_second_right_btn" href="{{ collections.accessories.url }}">
+            <span>View All</span>
+            <svg xmlns="http://www.w3.org/2000/svg" width="8" height="13" viewBox="0 0 8 13" fill="none">
+              <path d="M0.707031 0.710938L6.37334 6.37724L0.707031 12.0436" stroke="#76767F" stroke-width="2"/>
+            </svg>
+          </a>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+<div class="header_menu_second" data-type="discover">
+  <div class="header_menu_second_inner">
+    <div class="header_menu_second_activity">
+      <div class="header_menu_second_discover_title">Activities</div>
+      <div class="header_menu_second_activity_slick">
+        {% for item in metaobjects.header_activities.values %}
+          <a class="header_menu_second_activity_slick_item" href="{{ item.url }}">
+            {{ item.image | image_url: width: 500 | image_tag: alt: item.image.value.alt, loading: 'lazy' }}
+          </a>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="header_menu_second_discover_item">
+      <div class="header_menu_second_discover_title">Community</div>
+      <nav class="header_menu_second_discover_menu">
+        {% for link in linklists['new-tip'].links %}
+          {{ link.title | link_to: link.url, class: 'header_menu_second_discover_menu_item' }}
+        {% endfor %}
+      </nav>
+    </div>
+    <div class="header_menu_second_discover_item">
+      <div class="header_menu_second_discover_title">About Us</div>
+      <nav class="header_menu_second_discover_menu">
+        {% for link in linklists.about.links %}
+          {{ link.title | link_to: link.url, class: 'header_menu_second_discover_menu_item' }}
+        {% endfor %}
+      </nav>
+    </div>
+  </div>
+</div>
+
+<script
+  type="text/javascript"
+  src="https://cdn.shopify.com/s/files/1/0716/1341/5637/files/slick.min.js?v=1760406619"
+></script>
+{% javascript %}
+  (() => {
+    const menuItems = document.querySelectorAll('.header-navigation .menu-lv-item');
+    const secondMenus = document.querySelectorAll('.header_menu_second');
+
+    menuItems.forEach((item) => {
+      item.addEventListener('mouseenter', () => {
+        const text = item.textContent.toLowerCase().trim();
+
+        secondMenus.forEach((menu) => {
+          menu.classList.toggle('active', menu.dataset.type?.toLowerCase().trim() === text);
+        });
+      });
+
+      item.addEventListener('mouseleave', (e) => {
+        const toElement = e.relatedTarget;
+        if (!toElement || !toElement.closest('.header_menu_second')) {
+          secondMenus.forEach((menu) => menu.classList.remove('active'));
+        }
+      });
+    });
+
+    secondMenus.forEach((menu) => {
+      menu.addEventListener('mouseleave', () => {
+        menu.classList.remove('active');
+      });
+    });
+
+    function initHeaderMenuSecond() {
+      if (!$('.header_menu_second_activity_slick').hasClass('slick-initialized')) {
+        $('.header_menu_second_activity_slick').slick({
+          slidesToShow: 3,
+          slidesToScroll: 3,
+          infinite: false,
+          arrows: false,
+          dots: true,
+        });
+      }
+      document.querySelectorAll('.header_menu_second').forEach((menu) => {
+        const leftItems = menu.querySelectorAll('.header_menu_second_left_menu_item');
+        const rightItems = menu.querySelectorAll('.header_menu_second_right_contain');
+
+        if (leftItems.length && rightItems.length) {
+          menu.querySelectorAll('.header_menu_second_slick').forEach((slick) => {
+            if (!$(slick).hasClass('slick-initialized')) {
+              $(slick).slick({
+                slidesToShow: 4,
+                slidesToScroll: 1,
+                infinite: false,
+                arrows: true,
+                prevArrow: $(slick).closest('.header_menu_second_right_contain').find('.header_menu_second_slick_prev'),
+                nextArrow: $(slick).closest('.header_menu_second_right_contain').find('.header_menu_second_slick_next'),
+              });
+            }
+          });
+
+          leftItems.forEach((item) => {
+            item.addEventListener('mouseenter', () => {
+              const type = item.dataset.type;
+
+              leftItems.forEach((el) => el.classList.remove('active'));
+              item.classList.add('active');
+
+              rightItems.forEach((right) => {
+                right.classList.toggle('active', right.dataset.type === type);
+              });
+            });
+          });
+        }
+      });
+    }
+
+    initHeaderMenuSecond();
+    // document.addEventListener('DOMContentLoaded', initHeaderMenuSecond);
+  })();
+{% endjavascript %}

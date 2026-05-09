@@ -1,0 +1,102 @@
+<style>
+    .blast-cs-online-module {
+        background: #0A0A0C;
+    }
+    .blast-cs-online-module .large-image-cont .large-image-item{
+        width: 100%;
+        height: auto;
+    }
+
+    .blast-cs-online-module .small-image-cont{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        gap: 0;
+    }
+
+    @media(max-width: 767px){
+        .blast-cs-online-module .small-image-cont{
+            grid-template-columns: 1fr 1fr;
+        }
+    }
+
+</style>
+
+<div class="blast-cs-online-module">
+    <div class="container-full">
+        <div class="large-image-cont">
+            {% for block in section.blocks %}
+                {% if block.type == "largeItem" %}
+                    <div class="large-image-item">
+                        {% render 'picture-simple',
+                            image: block.settings.largeImage,
+                            image_mobile: block.settings.largeImage_mb,
+                            mobile_dpr: 2,
+                            loading: "eager"
+                        %}
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+        <div class="small-image-cont">
+            {% for block in section.blocks %}
+              {% if block.type == "smallItem" %}
+                <div class="small-image-item">
+                    {% render 'picture-simple',
+                        image: block.settings.smallImage,
+                        image_mobile: block.settings.smallImage_mb,
+                        mobile_dpr: 2,
+                        loading: "eager"
+                    %}
+                </div>
+              {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% schema %}
+{
+    "name": "BLAST CS Online",
+    "tag": "section",
+    "settings": [],
+    "blocks": [
+        {
+            "type": "largeItem",
+            "name": "largeItem",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "largeImage",
+                    "label": "large Image"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "largeImage_mb",
+                    "label": "large Image Mobile"
+                }
+            ]
+        },
+        {
+            "type": "smallItem",
+            "name": "smallItem",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "smallImage",
+                    "label": "small Image"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "smallImage_mb",
+                    "label": "small Image Mobile"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "BLAST CS Online",
+        }
+    ]
+}
+{% endschema %}

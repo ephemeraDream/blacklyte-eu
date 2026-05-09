@@ -1,0 +1,372 @@
+<style>
+    .unique-space-section{
+        padding-top: 100px;
+        padding-bottom: 0px;
+        background: #EBEBEB;
+    }
+    .unique-space-section .unique-section-title{
+        font: 600 40px var(--font-family-3);
+        color: #262629;
+        line-height: 1.4;
+        text-align: center;
+        max-width: 70vw;
+        margin: auto;
+    }
+    .unique-space-section .unique-section-desc{
+        font: 500 16px var(--font-family-3);
+        color: #262629;
+        line-height: 1.4;
+        margin-top: 10px;
+        text-align: center;
+        opacity: 0.7;
+    }
+    .unique-space-section .link-lists{
+        display: flex;
+        justify-content: center;
+        gap: 50px;
+    }
+    .unique-space-section .unique-section-link,
+    .unique-space-section .unique-section-play-link{
+        font: 600 16px var(--font-family-3);
+        color: #262629;
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+        align-items: center;
+        margin-top: 16px;
+        transition: all .3s ease;
+    }
+    .unique-space-section .unique-section-link:hover svg,
+    .unique-space-section .unique-section-play-link:hover svg{
+        transform: translateX(10px);
+    }
+    .unique-space-section .unique-section-link svg,
+    .unique-space-section .unique-section-play-link svg{
+        fill: none;
+        stroke: none;
+        width: 30px;
+        height: 20px;
+    }
+    .unique-space-section .unique-space-cont{
+        margin-top: 56px;
+    }
+    .unique-space-section .unique-space-cont .middle-item-image{
+        width: calc(100% - 220px);
+        margin: 0 auto;
+    }
+    .unique-space-section .unique-space-cont .img_pc{
+        display: block;
+        position: relative;
+    }
+    .unique-space-section .unique-space-cont .img_pc img{
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+    .unique-space-section .unique-space-cont .img_mb{
+        display: none;
+        position: relative;
+    }
+    .unique-space-section .unique-space-cont .img_mb img{
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+    .unique-space-section .unique-space-cont .mu3-video-container video{
+        width: 100%;
+    }
+    .unique-space-section .uniquespace-video{
+        display: block;
+        width: 100vw;
+        height: 800px;
+        max-height: 800px;
+        object-fit: cover;
+    }
+    .unique-space-section .uniquespace-video-mb{
+        display: none;
+        max-width: 100%;
+        max-height: 400px;
+    }
+
+    /* IPhone */
+    @media(max-width: 767px){
+        .unique-space-section{
+            padding-top: 50px;
+        }
+        .unique-space-section .unique-space-cont .middle-item-image{
+            width: calc(100% - 20px);
+        }
+        .unique-space-section .unique-section-title{
+            font-size: 24px;
+            max-width: 100%;
+        }
+        .unique-space-section .unique-section-desc{
+            font-size: 14px;
+        }
+        .unique-space-section .unique-space-cont .img_pc{
+            display: none;
+        }
+        .unique-space-section .unique-space-cont .img_mb{
+            display: block;
+        }
+        .unique-space-section .link-lists{
+            gap: 10px;
+            flex-direction: column;
+        }
+        .unique-space-section .unique-section-link,
+        .unique-space-section .unique-section-play-link{
+            font-size: 10px;
+            gap: 5px;
+        }
+        .unique-space-section .unique-section-link svg,
+        .unique-space-section .unique-section-play-link svg{
+            width: 10px;
+            height: auto;
+        }
+        .unique-space-section .unique-section-play-link{
+            margin-top: 0;
+        }
+        .unique-space-section .unique-space-cont{
+            margin-top: 20px;
+        }
+        .unique-space-section .uniquespace-video{
+            display: none;
+        }
+        .unique-space-section .uniquespace-video-mb{
+            display: block;
+        }
+    } 
+    /* IPad */
+    @media(min-width: 768px) and (max-width: 1024px){
+        .unique-space-section .unique-space-cont .middle-item-image{
+            width: calc(100% - 30px);
+        }
+    }
+    /* small screen */
+    @media(min-width: 1025px) and (max-width: 1900px){
+        .unique-space-section .uniquespace-video{
+            height: 500px;
+            max-height: 500px;
+        }
+    }
+    /* large screen */
+    @media(min-width: 2000px){ }
+    @media(min-width: 1025px) and (max-width: 1480px){
+        .prod-collection-section .container-1570{
+            padding-left: var(--padding-left-1);
+            padding-right: var(--padding-right-1);
+        }
+        .unique-space-section .unique-space-cont .middle-item-image{
+            width: calc(100% - 120px);
+        }
+    }
+</style>
+
+<section class="unique-space-section">
+    <div class="container-1570">
+        {% if section.settings.sectionTitle != blank %}
+            <h2 class="unique-section-title">{{ section.settings.sectionTitle }}</h2>
+        {% endif %}
+        {% if section.settings.sectionDescripe != blank %}
+            <div class="unique-section-desc">{{ section.settings.sectionDescripe }}</div>
+        {% endif %}
+        {% if section.settings.sectionLinkText != blank or section.settings.sectionPlayLinkText != blank %}
+            <div class="link-lists">
+                {% if section.settings.sectionLinkText != blank %}
+                    <a role="link" {% if section.settings.sectionLinkText != blank %} href="{{ section.settings.sectionLinkUrl }}" {% else %} aria-disabled="true" {% endif %} class="unique-section-link">
+                        {{ section.settings.sectionLinkText }}
+                        <svg width="31" height="15" viewBox="0 0 31 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M30.7071 8.07429C31.0976 7.68377 31.0976 7.0506 30.7071 6.66008L24.3431 0.29612C23.9526 -0.0944047 23.3195 -0.0944047 22.9289 0.29612C22.5384 0.686644 22.5384 1.31981 22.9289 1.71033L28.5858 7.36719L22.9289 13.024C22.5384 13.4146 22.5384 14.0477 22.9289 14.4383C23.3195 14.8288 23.9526 14.8288 24.3431 14.4383L30.7071 8.07429ZM0 7.36719V8.36719H30V7.36719V6.36719H0V7.36719Z" fill="#262629"/>
+                        </svg>
+
+                    </a>
+                {% endif %}
+                {% if section.settings.sectionPlayLinkText != blank %}
+                    <a role="link" {% if section.settings.sectionPlayLinkText != blank %} href="{{ section.settings.sectionPlayURL }}" {% else %} aria-disabled="true" {% endif %} class="unique-section-play-link">
+                        {{ section.settings.sectionPlayLinkText }}
+                        <svg width="31" height="15" viewBox="0 0 31 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M30.7071 8.07429C31.0976 7.68377 31.0976 7.0506 30.7071 6.66008L24.3431 0.29612C23.9526 -0.0944047 23.3195 -0.0944047 22.9289 0.29612C22.5384 0.686644 22.5384 1.31981 22.9289 1.71033L28.5858 7.36719L22.9289 13.024C22.5384 13.4146 22.5384 14.0477 22.9289 14.4383C23.3195 14.8288 23.9526 14.8288 24.3431 14.4383L30.7071 8.07429ZM0 7.36719V8.36719H30V7.36719V6.36719H0V7.36719Z" fill="#262629"/>
+                        </svg>
+
+                    </a>
+                {% endif %}
+            </div>
+        {% endif %}
+        
+    </div>
+    <div class="unique-space-cont">
+        {% for block in section.blocks %}
+            {% if block.type == "largeImage" %}
+                <div class="space-container img_pc" style="padding-top: {% unless block.settings.itemImage.presentation.focal_point == '50.0% 50.0%' %}{{ 1 | divided_by: block.settings.itemImage.aspect_ratio | times: 120 }}%{% else %}{{ 1 | divided_by: block.settings.itemImage.aspect_ratio | times: 100 }}%{% endunless %}">
+                    <img src="{{ block.settings.itemImage | img_url: 'master' }}" alt="{{ block.settings.itemImage.alt | escape }}">
+                </div>
+                <div class="space-container img_mb" style="padding-top: {% unless block.settings.itemImageMb.presentation.focal_point == '50.0% 50.0%' %}{{ 1 | divided_by: block.settings.itemImageMb.aspect_ratio | times: 120 }}%{% else %}{{ 1 | divided_by: block.settings.itemImageMb.aspect_ratio | times: 100 }}%{% endunless %}">
+                    <img src="{{ block.settings.itemImageMb | img_url: 'master' }}" alt="{{ block.settings.itemImageMb.alt | escape }}">
+                </div>
+            {% elsif block.type == "middleImage" %}
+                <div class="middle-item-image">
+                    {% if block.settings.middleItemImage != blank %}
+                        <div class="middle-container img_pc" style="padding-top: {% unless block.settings.middleItemImage.presentation.focal_point == '50.0% 50.0%' %}{{ 1 | divided_by: block.settings.middleItemImage.aspect_ratio | times: 120 }}%{% else %}{{ 1 | divided_by: block.settings.middleItemImage.aspect_ratio | times: 100 }}%{% endunless %}">
+                            <img src="{{ block.settings.middleItemImage | img_url: "master" }}" alt="{{ block.settings.middleItemImage.alt }}" />
+                        </div>
+                    {% endif %}
+                    {% if block.settings.middleItemImageMb != blank %}
+                        <div class="middle-container-mb img_mb" style="padding-top: {% unless block.settings.middleItemImageMb.presentation.focal_point == '50.0% 50.0%' %}{{ 1 | divided_by: block.settings.middleItemImageMb.aspect_ratio | times: 120 }}%{% else %}{{ 1 | divided_by: block.settings.middleItemImageMb.aspect_ratio | times: 100 }}%{% endunless %}">
+                            <img src="{{ block.settings.middleItemImageMb | img_url: "master" }}" alt="{{ block.settings.middleItemImageMb.alt }}" />
+                        </div>
+                    {% endif %}
+                </div>
+            {% elsif block.type == "largeVideo" %}
+                {% if block.settings.itemVideo != blank %}
+                    <video muted loop playsinline preload="auto" autoplay class="uniquespace-video">
+                        <source type="video/mp4" src="{{ block.settings.itemVideo }}">
+                    </video>
+                {% endif %}
+                {% if block.settings.itemVideoMobile != blank %}
+                    <video muted loop playsinline preload="auto" autoplay class="uniquespace-video-mb">
+                        <source type="video/mp4" src="{{ block.settings.itemVideoMobile }}">
+                    </video>
+                {% endif %}
+            {% elsif block.type == "mu3Video" %}
+                <div class="mu3-video-container">
+                    <video id="mu3-video-id" muted loop autoplay playsinline preload="auto" poster="{{ block.settings.mu3VideoPoster | img_url: 'master' }}">
+                        <source src="{{ block.settings.mu3VideoURL }}" />
+                    </video>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+</section>
+
+<script src="{{ 'hls.js' | asset_url }}" defer="defer"></script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        var video = document.getElementById("mu3-video-id");
+        if(video){
+            var videoSrc = "https://cdn.shopify.com/s/files/1/0716/1341/5637/files/uniqueoutput.m3u8?v=1760344576";
+
+            if (video.canPlayType("application/vnd.apple.mpegurl")) {
+                // 兼容 Safari 直接支持 HLS
+                video.src = videoSrc;
+            } else if(Hls.isSupported()) {
+                var hls = new Hls();
+                hls.loadSource(videoSrc);
+                hls.attachMedia(video);
+            }
+        }
+    });
+  
+</script>
+
+{% schema %}
+    {
+        "name": "Home Unique Space",
+        "settings": [
+            {
+                "type": "text",
+                "id": "sectionTitle",
+                "label": "Section Title",
+                "default": "BUILD YOUR UNIQUE SPACE"
+            },
+            {
+                "type": "text",
+                "id": "sectionDescripe",
+                "label": "Section Descripe",
+                "default": "Mirror your screen, react to in-game events, and move to thebeat of the music for a dynamic experience."
+            },
+            {
+                "type": "text",
+                "id": "sectionLinkText",
+                "label": "Section Link Text",
+                "default": "VIEW ALL LIGHTING"
+            },
+            {
+                "type": "url",
+                "id": "sectionLinkUrl",
+                "label": "Section Link URl"
+            },
+            {
+                "type": "text",
+                "id": "sectionPlayLinkText",
+                "label": "Section Play Link Text"
+            },
+            {
+                "type": "url",
+                "id": "sectionPlayURL",
+                "label": "Section Play URL"
+            }
+        ],
+        "blocks": [
+            {
+                "type": "largeImage",
+                "name": "largeImage",
+                "settings": [
+                    {
+                        "type": "image_picker",
+                        "id": "itemImage",
+                        "label": "Item Image"
+                    },
+                    {
+                        "type": "image_picker",
+                        "id": "itemImageMb",
+                        "label": "Item Image Mobile"
+                    }
+                ]
+            },
+            {
+                "type": "middleImage",
+                "name": "middleImage",
+                "settings": [
+                    {
+                        "type": "image_picker",
+                        "id": "middleItemImage",
+                        "label": "Middle Item Image"
+                    },
+                    {
+                        "type": "image_picker",
+                        "id": "middleItemImageMb",
+                        "label": "Middle Item Image Mobile"
+                    }
+                ]
+            },
+            {
+                "type": "largeVideo",
+                "name": "largeVideo",
+                "settings": [
+                    {
+                        "type": "text",
+                        "id": "itemVideo",
+                        "label": "Item Video"
+                    },
+                    {
+                        "type": "text",
+                        "id": "itemVideoMobile",
+                        "label": "Item Video Mobile"
+                    }
+                ]
+            },
+            {
+                "type": "mu3Video",
+                "name": "mu3Video",
+                "settings": [
+                    {
+                        "type": "text",
+                        "id": "mu3VideoURL",
+                        "label": "mu3 video URL"
+                    },
+                    {
+                        "type": "image_picker",
+                        "id": "mu3VideoPoster",
+                        "label": "mu3 video poster"
+                    }
+                ]
+            }
+        ],
+        "presets": [
+            {
+                "name": "Home Unique Space"
+            }
+        ]
+    }
+{% endschema %}

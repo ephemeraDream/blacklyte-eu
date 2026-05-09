@@ -1,0 +1,710 @@
+{{ 'section-product-categories.css' | asset_url | stylesheet_tag }}
+
+{% if section.settings.is_chair_category %}
+  {% assign chairs_sort = metaobjects.products_sort['all-products-chairs'].data.value | sort: 'position' %}
+{% endif %}
+{% assign product_list = section.settings.collection.products | default: section.settings.product_list %}
+
+<div class="product_categories" id="{{ section.settings.specId }}">
+  <div class="product_categories_title">{{ section.settings.title }}</div>
+  <div class="product_categories_contain">
+    {% if section.settings.show_banner_one %}
+      <a class="product_categories_banner" href="{{ section.settings.banner_one_link }}">
+        {% assign banner_one_mobile = section.settings.banner_one_mobile | default: section.settings.banner_one %}
+        {% render 'picture-simple',
+          image: section.settings.banner_one,
+          image_mobile: banner_one_mobile,
+          class_str: 'product_categories_banner_img',
+          widths_sizes: '50vw'
+        %}
+        {% comment %}
+          {{-
+            section.settings.banner_one
+            | image_url: width: section.settings.banner_one.width
+            | image_tag:
+              alt: section.settings.banner_one_title,
+              class: 'product_categories_banner_img pc_show',
+              loading: 'lazy'
+          -}}
+          {% assign banner_one_mobile = section.settings.banner_one_mobile | default: section.settings.banner_one %}
+          {{-
+            banner_one_mobile
+            | image_url: width: 375
+            | image_tag:
+              alt: section.settings.banner_one_title,
+              class: 'product_categories_banner_img pmd_show',
+              loading: 'lazy'
+          -}}
+        {% endcomment %}
+        <div class="product_categories_banner_info">
+          <div class="product_categories_banner_title">{{ section.settings.banner_one_title }}</div>
+          <div class="product_categories_banner_text">{{ section.settings.banner_one_text }}</div>
+        </div>
+      </a>
+    {% endif %}
+    {% if section.settings.show_banner_two %}
+      <a class="product_categories_banner" href="{{ section.settings.banner_two_link }}">
+        {% assign banner_two_mobile = section.settings.banner_two_mobile | default: section.settings.banner_two %}
+        {% render 'picture-simple',
+          image: section.settings.banner_two,
+          image_mobile: banner_two_mobile,
+          class_str: 'product_categories_banner_img',
+          widths_sizes: '50vw'
+        %}
+        {% comment %}
+          {{-
+            section.settings.banner_two
+            | image_url: width: section.settings.banner_two.width
+            | image_tag:
+              alt: section.settings.banner_two_title,
+              class: 'product_categories_banner_img pc_show',
+              loading: 'lazy'
+          -}}
+          {% assign banner_two_mobile = section.settings.banner_two_mobile | default: section.settings.banner_two %}
+          {{-
+            banner_two_mobile
+            | image_url: width: 375
+            | image_tag:
+              alt: section.settings.banner_two_title,
+              class: 'product_categories_banner_img pmd_show',
+              loading: 'lazy'
+          -}}
+        {% endcomment %}
+        <div class="product_categories_banner_info">
+          <div class="product_categories_banner_title">{{ section.settings.banner_two_title }}</div>
+          <div class="product_categories_banner_text">{{ section.settings.banner_two_text }}</div>
+        </div>
+      </a>
+    {% endif %}
+    {% if section.settings.is_chair_category %}
+      {%- assign products = '' | split: '' -%}
+      {% for item in chairs_sort %}
+        {% for product in product_list %}
+          {% comment %} {% if product.title == item.name %} {% endcomment %}
+          {% for variant in product.variants %}
+            {% if variant.id == item.id %}
+              {%- assign find_variant = product.variants | slice: forloop.index0 -%}
+              {%- assign products = products | concat: find_variant -%}
+            {% endif %}
+          {% endfor %}
+          {% comment %} {% endif %} {% endcomment %}
+        {% endfor %}
+      {% endfor %}
+      {% assign available_variants = products | where: 'available' %}
+      {% assign unavailable_variants = products | where: 'available', false %}
+      {% for variant in unavailable_variants %}
+        {%- assign add_variant = unavailable_variants | slice: forloop.index0 -%}
+        {%- assign available_variants = available_variants | concat: add_variant -%}
+      {% endfor %}
+      {% for variant in available_variants %}
+        {% comment %} {% if variant.available %} {% endcomment %}
+        {% liquid
+          assign featured_image = variant.featured_image
+          assign second_image = null
+
+          if featured_image
+            assign found = false
+            for img in variant.product.images
+              if found
+                assign second_image = img
+                break
+              endif
+              if img.src == featured_image.src
+                assign found = true
+              endif
+            endfor
+
+            if second_image == null
+              for img in variant.product.images
+                if img.src != featured_image.src
+                  assign second_image = img
+                  break
+                endif
+              endfor
+            endif
+          else
+            assign second_image = variant.product.images[1]
+          endif
+        %}
+        <a
+          class="product_categories_product{% if second_image != blank %} product_categories_product_hoverchange{% endif %}{% if variant.available == false %} product_categories_product_disabled{% endif %}"
+          href="{{ variant.url }}"
+        >
+          <div class="product_categories_product_img">
+            {% assign srcset_1x = featured_image | image_url: width: 900 | append: ' 1x, ' %}
+            {% assign srcset_2x = featured_image | image_url: width: 215 | append: ' 2x, ' %}
+            {% assign srcset_3x = featured_image | image_url: width: 215 | append: ' 3x, ' %}
+            {% assign sizes_init = '(max-width:768px) 100vw, 50vw' %}
+            {% assign srcset_init = srcset_1x | append: srcset_2x | append: srcset_3x %}
+            {% if featured_image %}
+              {% comment %}
+                {{
+                  featured_image
+                  | image_url: width: featured_image.width
+                  | image_tag:
+                    alt: product.title,
+                    class: 'product_categories_product_img_first',
+                    loading: 'lazy',
+                    sizes: sizes_init,
+                    srcset: srcset_init
+                }}
+              {% endcomment %}
+              {% render 'picture-simple',
+                image: featured_image,
+                class_str: 'product_categories_product_img_first',
+                mobile_widths: '350,450,550,650',
+                mobile_dpr: 2,
+                widths_sizes: '25vw'
+              %}
+            {% endif %}
+
+            {% if second_image and second_image.src != featured_image.src %}
+              {% assign srcset_1x = second_image | image_url: width: 900 | append: ' 1x, ' %}
+              {% assign srcset_2x = second_image | image_url: width: 215 | append: ' 2x, ' %}
+              {% assign srcset_3x = second_image | image_url: width: 215 | append: ' 3x, ' %}
+              {% assign sizes_init = '(max-width:768px) 100vw, 50vw' %}
+              {% assign srcset_init = srcset_1x | append: srcset_2x | append: srcset_3x %}
+              {% comment %}
+                {{
+                  second_image
+                  | image_url: width: second_image.width
+                  | image_tag:
+                    alt: product.title,
+                    class: 'product_categories_product_img_second',
+                    loading: 'lazy',
+                    sizes: sizes_init,
+                    srcset: srcset_init
+                }}
+              {% endcomment %}
+              {% render 'picture-simple',
+                image: second_image,
+                mobile_widths: '350,450,550,650',
+                mobile_dpr: 2,
+                class_str: 'product_categories_product_img_second',
+                widths_sizes: '25vw'
+              %}
+            {% endif %}
+            {% comment %}
+              {{-
+                variant.featured_image
+                | image_url: width: variant.featured_image.width
+                | image_tag: alt: product.title
+              -}}
+            {% endcomment %}
+            {% if variant.available == false %}
+              <div class="product_categories_product_tag product_categories_product_tag_disabled">Out of stock</div>
+            {% else %}
+              {% if variant.metafields.custom.discount_price != blank
+                and variant.metafields.custom.discount_price.value != 0
+              %}
+                <div class="product_categories_product_tag">
+                  {{ variant.metafields.custom.discount_price.value | money_without_trailing_zeros | append: ' ' }}
+                  {{ 'products.product.off_text' | t }}
+                </div>
+              {% endif %}
+            {% endif %}
+          </div>
+          <div class="product_categories_product_info">
+            <div>
+              {% assign other_options_string = '' %}
+              {% for opt in variant.product.options_with_values %}
+                {% unless opt.name == 'Size' %}
+                  {% if other_options_string != '' %}
+                    {% assign other_options_string = other_options_string | append: ' - ' %}
+                  {% endif %}
+                  {% assign other_options_string = other_options_string | append: variant.options[forloop.index0] %}
+                {% endunless %}
+              {% endfor %}
+              <div class="product_categories_product_title">
+                {{ variant.product.title }}
+              </div>
+              <div class="product_categories_product_options">{{ other_options_string }}</div>
+            </div>
+            <div class="product_categories_product_price">
+              {% if variant.metafields.custom.discount_price != blank
+                and variant.metafields.custom.discount_price.value != 0
+              %}
+                <div class="product_categories_product_price_dp">
+                  {{
+                    variant.price
+                    | minus: variant.metafields.custom.discount_price.value
+                    | money_without_trailing_zeros
+                  }}
+                </div>
+              {% endif %}
+              <div class="product_categories_product_price_op">
+                {{ variant.price | money_without_trailing_zeros }}
+              </div>
+            </div>
+          </div>
+        </a>
+        {% comment %} {% endif %} {% endcomment %}
+      {% endfor %}
+    {% else %}
+      {% for product in product_list %}
+        {% unless product.title contains 'Bundle' or product.title contains 'Athena X Gaming Chair - Pink' %}
+          {% if section.settings.show_variants
+            or product.title contains 'Atlas Monitor Arm'
+            or product.title contains 'Atlas Dual Monitor Arm'
+          %}
+            {% if section.settings.is_desk_category and product.title contains 'Lite Standing Desk' %}
+              {%- assign variants = '' | split: '' -%}
+              {%- for value in product.options_by_name.Color.values %}
+                {% assign color_variants = product.variants | where: 'option1', value | where: 'available' %}
+                {% if color_variants.size > 0 %}
+                  {% assign last_variant_index = color_variants.size | minus: 1 %}
+                  {% assign last_variant = color_variants | slice: last_variant_index, 1 %}
+                  {% assign variants = variants | concat: last_variant %}
+                {% endif %}
+              {%- endfor %}
+            {% else %}
+              {% assign variants = product.variants %}
+            {% endif %}
+            {% for variant in variants %}
+              {% if variant.available %}
+                {% liquid
+                  if product.title contains 'Lite Standing Desk'
+                    assign imgshow_variant = product.variants | where: 'option2', 'Large' | where: 'option1', variant.option1 | first
+                  else
+                    assign imgshow_variant = variant
+                  endif
+                  assign featured_image = imgshow_variant.featured_image
+                  assign second_image = null
+
+                  if featured_image
+                    assign found = false
+                    for img in product.images
+                      if found
+                        assign second_image = img
+                        break
+                      endif
+                      if img.src == featured_image.src
+                        assign found = true
+                      endif
+                    endfor
+
+                    if second_image == null
+                      for img in product.images
+                        if img.src != featured_image.src
+                          assign second_image = img
+                          break
+                        endif
+                      endfor
+                    endif
+                  else
+                    assign second_image = product.images[1]
+                  endif
+                %}
+                <a
+                  class="product_categories_product{% if second_image != blank %} product_categories_product_hoverchange{% endif %}"
+                  href="{{ variant.url }}"
+                >
+                  <div class="product_categories_product_img">
+                    {% assign srcset_1x = featured_image | image_url: width: 900 | append: ' 1x, ' %}
+                    {% assign srcset_2x = featured_image | image_url: width: 215 | append: ' 2x, ' %}
+                    {% assign srcset_3x = featured_image | image_url: width: 215 | append: ' 3x, ' %}
+                    {% assign sizes_init = '(max-width:768px) 100vw, 50vw' %}
+                    {% assign srcset_init = srcset_1x | append: srcset_2x | append: srcset_3x %}
+                    {% if featured_image %}
+                      {% comment %}
+                        {{
+                          featured_image
+                          | image_url: width: featured_image.width
+                          | image_tag:
+                            alt: product.title,
+                            class: 'product_categories_product_img_first',
+                            loading: 'lazy',
+                            sizes: sizes_init,
+                            srcset: srcset_init
+                        }}
+                      {% endcomment %}
+                      {% render 'picture-simple',
+                        image: featured_image,
+                        class_str: 'product_categories_product_img_first',
+                        mobile_widths: '350,450,550,650',
+                        mobile_dpr: 2,
+                        widths_sizes: '25vw'
+                      %}
+                    {% endif %}
+
+                    {% if second_image and second_image.src != featured_image.src %}
+                      {% assign srcset_1x = second_image | image_url: width: 900 | append: ' 1x, ' %}
+                      {% assign srcset_2x = second_image | image_url: width: 215 | append: ' 2x, ' %}
+                      {% assign srcset_3x = second_image | image_url: width: 215 | append: ' 3x, ' %}
+                      {% assign sizes_init = '(max-width:768px) 100vw, 50vw' %}
+                      {% assign srcset_init = srcset_1x | append: srcset_2x | append: srcset_3x %}
+                      {% comment %}
+                        {{
+                          second_image
+                          | image_url: width: second_image.width
+                          | image_tag:
+                            alt: product.title,
+                            class: 'product_categories_product_img_second',
+                            loading: 'lazy',
+                            sizes: sizes_init,
+                            srcset: srcset_init
+                        }}
+                      {% endcomment %}
+                      {% render 'picture-simple',
+                        image: second_image,
+                        mobile_widths: '350,450,550,650',
+                        mobile_dpr: 2,
+                        class_str: 'product_categories_product_img_second',
+                        widths_sizes: '25vw'
+                      %}
+                    {% endif %}
+                    {% comment %}
+                      {{-
+                        variant.featured_image
+                        | image_url: width: variant.featured_image.width
+                        | image_tag: alt: product.title
+                      -}}
+                    {% endcomment %}
+                    {% if variant.metafields.custom.discount_price != blank
+                      and variant.metafields.custom.discount_price.value != 0
+                    %}
+                      <div class="product_categories_product_tag">
+                        {{
+                          variant.metafields.custom.discount_price.value
+                          | money_without_trailing_zeros
+                          | append: ' '
+                        }}
+                        {{ 'products.product.off_text' | t }}
+                      </div>
+                    {% endif %}
+                  </div>
+                  <div class="product_categories_product_info">
+                    <div>
+                      {% assign other_options_string = '' %}
+
+                      {% if product.metafields.custom.product_type.value == 'chairs' %}
+                        {% for opt in product.options_with_values %}
+                          {% unless opt.name == 'Size' %}
+                            {% if other_options_string != '' %}
+                              {% assign other_options_string = other_options_string | append: ' - ' %}
+                            {% endif %}
+                            {% assign other_options_string = other_options_string
+                              | append: variant.options[forloop.index0]
+                            %}
+                          {% endunless %}
+                        {% endfor %}
+                      {% elsif product.metafields.custom.product_type.value == 'desk'
+                        and product.title contains 'Lite Standing Desk'
+                      %}
+                        {% for opt in product.options_with_values %}
+                          {% if opt.name == 'Color' %}
+                            {% assign other_options_string = other_options_string
+                              | append: variant.options[forloop.index0]
+                            %}
+                            {% assign color_variants = product.variants
+                              | where: 'option1', variant.options[forloop.index0]
+                              | where: 'available'
+                            %}
+                          {% endif %}
+                        {% endfor %}
+                        {% assign other_options_string = other_options_string
+                          | append: ' - '
+                          | append: color_variants.size
+                          | append: ' sizes available'
+                        %}
+                      {% else %}
+                        {% for opt in product.options_with_values %}
+                          {% if other_options_string != '' %}
+                            {% assign other_options_string = other_options_string | append: ' - ' %}
+                          {% endif %}
+                          {% assign other_options_string = other_options_string
+                            | append: variant.options[forloop.index0]
+                          %}
+                        {% endfor %}
+                      {% endif %}
+                      <div class="product_categories_product_title">
+                        {{ product.title }}
+                      </div>
+                      <div class="product_categories_product_options">{{ other_options_string }}</div>
+                    </div>
+                    <div class="product_categories_product_price">
+                      {% if section.settings.is_desk_category and product.title contains 'Lite Standing Desk' -%}
+                        From
+                      {%- endif %}
+                      {% if variant.metafields.custom.discount_price != blank
+                        and variant.metafields.custom.discount_price.value != 0
+                      %}
+                        <div class="product_categories_product_price_dp">
+                          {{
+                            variant.price
+                            | minus: variant.metafields.custom.discount_price.value
+                            | money_without_trailing_zeros
+                          }}
+                        </div>
+                      {% endif %}
+                      <div class="product_categories_product_price_op">
+                        {{ variant.price | money_without_trailing_zeros }}
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              {% endif %}
+            {% endfor %}
+          {% else %}
+            {% liquid
+              assign featured_image = product.selected_or_first_available_variant.featured_image | default: product.featured_image
+              assign second_image = null
+
+              if featured_image
+                assign found = false
+                for img in product.images
+                  if found
+                    assign second_image = img
+                    break
+                  endif
+                  if img.src == featured_image.src
+                    assign found = true
+                  endif
+                endfor
+
+                if second_image == null
+                  for img in product.images
+                    if img.src != featured_image.src
+                      assign second_image = img
+                      break
+                    endif
+                  endfor
+                endif
+              else
+                assign second_image = product.images[1]
+              endif
+            %}
+            <a
+              class="product_categories_product{% if second_image != blank %} product_categories_product_hoverchange{% endif %}"
+              href="{{ product.url }}"
+            >
+              <div class="product_categories_product_img">
+                {% assign srcset_1x = featured_image | image_url: width: 900 | append: ' 1x, ' %}
+                {% assign srcset_2x = featured_image | image_url: width: 215 | append: ' 2x, ' %}
+                {% assign srcset_3x = featured_image | image_url: width: 215 | append: ' 3x, ' %}
+                {% assign sizes_init = '(max-width:768px) 100vw, 50vw' %}
+                {% assign srcset_init = srcset_1x | append: srcset_2x | append: srcset_3x %}
+                {% if featured_image %}
+                  {% comment %}
+                    {{
+                      featured_image
+                      | image_url: width: featured_image.width
+                      | image_tag:
+                        alt: product.title,
+                        class: 'product_categories_product_img_first',
+                        loading: 'lazy',
+                        sizes: sizes_init,
+                        srcset: srcset_init
+                    }}
+                  {% endcomment %}
+                  {% render 'picture-simple',
+                    image: featured_image,
+                    class_str: 'product_categories_product_img_first',
+                    mobile_widths: '350,450,550,650',
+                    mobile_dpr: 2,
+                    widths_sizes: '25vw'
+                  %}
+                {% endif %}
+
+                {% if second_image and second_image.src != featured_image.src %}
+                  {% assign srcset_1x = second_image | image_url: width: 900 | append: ' 1x, ' %}
+                  {% assign srcset_2x = second_image | image_url: width: 215 | append: ' 2x, ' %}
+                  {% assign srcset_3x = second_image | image_url: width: 215 | append: ' 3x, ' %}
+                  {% assign sizes_init = '(max-width:768px) 100vw, 50vw' %}
+                  {% assign srcset_init = srcset_1x | append: srcset_2x | append: srcset_3x %}
+                  {% comment %}
+                    {{
+                      second_image
+                      | image_url: width: second_image.width
+                      | image_tag:
+                        alt: product.title,
+                        class: 'product_categories_product_img_second',
+                        loading: 'lazy',
+                        sizes: sizes_init,
+                        srcset: srcset_init
+                    }}
+                  {% endcomment %}
+                  {% render 'picture-simple',
+                    image: second_image,
+                    mobile_widths: '350,450,550,650',
+                    mobile_dpr: 2,
+                    class_str: 'product_categories_product_img_second',
+                    widths_sizes: '25vw'
+                  %}
+                {% endif %}
+
+                {% comment %}
+                  {% assign featured_image = product.selected_or_first_available_variant.featured_image
+                    | default: product.featured_image
+                  %}
+                  {{- featured_image | image_url: width: featured_image.width | image_tag: alt: product.title -}}
+                {% endcomment %}
+                {% if product.selected_or_first_available_variant.metafields.custom.discount_price != blank
+                  and product.selected_or_first_available_variant.metafields.custom.discount_price.value != 0
+                %}
+                  <div class="product_categories_product_tag">
+                    {{
+                      product.selected_or_first_available_variant.metafields.custom.discount_price.value
+                      | money_without_trailing_zeros
+                      | append: ' '
+                    }}
+                    {{ 'products.product.off_text' | t }}
+                  </div>
+                {% endif %}
+                {% if product.metafields.custom.buy_more_discount != blank %}
+                  <div class="product_categories_product_tag">
+                    {{ product.metafields.custom.buy_more_discount.value.name }}
+                  </div>
+                {% endif %}
+              </div>
+              <div class="product_categories_product_info">
+                <div>
+                  <div class="product_categories_product_title">{{ product.title }}</div>
+                  {% if product.options.size > 0 and product.options.first != 'Title' %}
+                    <div class="product_categories_product_options">
+                      {{ product.selected_or_first_available_variant.options | join: ' - ' }}
+                    </div>
+                  {% endif %}
+                </div>
+                <div class="product_categories_product_price">
+                  {% if product.selected_or_first_available_variant.metafields.custom.discount_price != blank
+                    and product.selected_or_first_available_variant.metafields.custom.discount_price.value != 0
+                  %}
+                    <div class="product_categories_product_price_dp">
+                      {{
+                        product.selected_or_first_available_variant.price
+                        | minus: product.selected_or_first_available_variant.metafields.custom.discount_price.value
+                        | money_without_trailing_zeros
+                      }}
+                    </div>
+                  {% endif %}
+                  <div class="product_categories_product_price_op">
+                    {{ product.selected_or_first_available_variant.price | money_without_trailing_zeros }}
+                  </div>
+                </div>
+              </div>
+            </a>
+          {% endif %}
+        {% endunless %}
+      {% endfor %}
+    {% endif %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "product categories",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "specId",
+      "label": "specId"
+    },
+    {
+      "type": "textarea",
+      "id": "title",
+      "label": "title"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_banner_one",
+      "label": "show banner one",
+      "default": true
+    },
+    {
+      "type": "image_picker",
+      "id": "banner_one",
+      "label": "banner one"
+    },
+    {
+      "type": "image_picker",
+      "id": "banner_one_mobile",
+      "label": "banner one mobile"
+    },
+    {
+      "type": "textarea",
+      "id": "banner_one_title",
+      "label": "banner one title"
+    },
+    {
+      "type": "textarea",
+      "id": "banner_one_text",
+      "label": "banner one text"
+    },
+    {
+      "type": "url",
+      "id": "banner_one_link",
+      "label": "banner one link"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_banner_two",
+      "label": "show banner two",
+      "default": true
+    },
+    {
+      "type": "image_picker",
+      "id": "banner_two",
+      "label": "banner two"
+    },
+    {
+      "type": "image_picker",
+      "id": "banner_two_mobile",
+      "label": "banner two mobile"
+    },
+    {
+      "type": "textarea",
+      "id": "banner_two_title",
+      "label": "banner two title"
+    },
+    {
+      "type": "textarea",
+      "id": "banner_two_text",
+      "label": "banner two text"
+    },
+    {
+      "type": "url",
+      "id": "banner_two_link",
+      "label": "banner two link"
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "collection"
+    },
+    {
+      "type": "product_list",
+      "id": "product_list",
+      "label": "product list"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_variants",
+      "label": "show variants",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "is_desk_category",
+      "label": "is desk category",
+      "default": false
+    },
+    {
+      "type": "checkbox",
+      "id": "is_chair_category",
+      "label": "is chair category",
+      "default": false
+    }
+  ],
+  "presets": [
+    {
+      "name": "product categories"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,129 @@
+{{ 'section-grid-simplicity.css' | asset_url | stylesheet_tag }}
+
+<div class="grid_simplicity" id="{{ section.settings.specId }}">
+  <div class="grid_simplicity_title">{{ section.settings.title }}</div>
+  {% if section.settings.text %}
+    <div class="grid_simplicity_text">{{ section.settings.text }}</div>
+  {% endif %}
+  <div class="grid_simplicity_contain">
+    {% for block in section.blocks %}
+      <div class="grid_simplicity_item">
+        {% if forloop.index > 4 %}
+          {% assign file_image = block.settings.file_image_small %}
+        {% else %}
+          {% assign file_image = block.settings.file_image %}
+        {% endif %}
+        {% comment %}
+          {{-
+            block.settings.file_image
+            | image_url: width: block.settings.file_image.width
+            | image_tag: alt: block.settings.title, class: 'grid_simplicity_item_image pc_show'
+          -}}
+          {% assign file_image_mobile = block.settings.file_image_mobile | default: block.settings.file_image %}
+          {{-
+            file_image_mobile
+            | image_url: width: file_image_mobile.width
+            | image_tag: alt: block.settings.title, class: 'grid_simplicity_item_image pmd_show'
+          -}}
+        {% endcomment %}
+        {% render 'picture-simple',
+          image: file_image,
+          image_mobile: block.settings.file_image_mobile,
+          mobile_widths: '350,450,550,650',
+          mobile_dpr: 1,
+          class_str: 'grid_simplicity_item_image'
+        %}
+        <div class="grid_simplicity_item_info">
+          <div class="grid_simplicity_item_title">{{ block.settings.title }}</div>
+          <div class="grid_simplicity_item_text">{{ block.settings.text }}</div>
+          {% if block.settings.learn_more_link != blank or block.settings.buy_now_link != blank %}
+            <div class="grid_simplicity_item_btns">
+              {% if block.settings.learn_more_link != blank %}
+                <a href="{{ block.settings.learn_more_link }}">Learn more ></a>
+              {% endif %}
+              {% if block.settings.buy_now_link != blank %}
+                <a href="{{ block.settings.buy_now_link }}">Buy now ></a>
+              {% endif %}
+            </div>
+          {% endif %}
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "grid simplicity",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "specId",
+      "label": "specId"
+    },
+    {
+      "type": "textarea",
+      "id": "title",
+      "label": "title"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "text"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "append Info",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "file_image",
+          "label": "file image"
+        },
+        {
+          "type": "image_picker",
+          "id": "file_image_small",
+          "label": "file image small"
+        },
+        {
+          "type": "image_picker",
+          "id": "file_image_mobile",
+          "label": "file image mobile"
+        },
+        {
+          "type": "textarea",
+          "id": "title",
+          "label": "title"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "text"
+        },
+        {
+          "type": "url",
+          "id": "learn_more_link",
+          "label": "learn more link"
+        },
+        {
+          "type": "url",
+          "id": "buy_now_link",
+          "label": "buy bow link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "grid simplicity"
+    }
+  ]
+}
+{% endschema %}

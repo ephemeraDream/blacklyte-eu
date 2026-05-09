@@ -1,0 +1,438 @@
+<style>
+    .section-{{ section.id }}{
+        background: #E2E2E2;
+    }
+    .section-{{ section.id }} .container-full{
+        padding: 100px 0;
+        position: relative;
+    }
+    .section-{{ section.id }} .container-full .header-cont{
+        padding: 0 16%;
+    }
+
+    .section-{{ section.id }} .header-cont .section-title{
+        font-family: Poppins;
+        font-weight: 600;
+        font-style: SemiBold;
+        font-size: 36px;
+        line-height: 46px;
+        letter-spacing: 0%;
+        text-align: center;
+        color: #262629;
+    }
+
+    .section-{{ section.id }} .blogs-lists{
+        display: flex;
+        margin-top: 50px;
+        margin-left: 16%;
+        gap: 20px;
+    }
+    .section-{{ section.id }} .blogs-lists .blog-item{
+        display: flex;
+        flex-direction: column;
+        width: calc((100% - 40px) / 2.5);
+        height: auto;
+    }
+    .section-{{ section.id }} .blogs-lists .blog-item .blog-item-cont{
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        margin-top: 20px;
+    }
+    .section-{{ section.id }} .blogs-lists .blog-item .blog-item-title{
+        font-family: Poppins;
+        font-weight: 500;
+        font-style: Medium;
+        font-size: 24px;
+        line-height: 34px;
+        letter-spacing: 0%;
+        vertical-align: middle;
+        color: #262629;
+        flex: 1;
+    }
+    .section-{{ section.id }} .blogs-lists .blog-item .blog-item-link{
+        font-family: Poppins;
+        font-weight: 500;
+        font-style: Medium;
+        font-size: 20px;
+        line-height: 34px;
+        letter-spacing: 0%;
+        vertical-align: middle;
+        color: #262629;
+        opacity: 0.7;
+    }
+    .section-{{ section.id }} .blogs-lists .blog-item-link:hover .blog-item-link-icon svg{
+        transform: translateX(5px);
+    }
+    .section-{{ section.id }} .blogs-lists .blog-item-link .blog-item-link-icon svg{
+        width: 30px;
+        height: auto;
+        vertical-align: middle;
+    }
+
+    .section-{{ section.id }} .blogs-lists .blog-item .blog-item-image{
+        border-radius: 24px;
+        overflow: hidden;
+        height: 38vh;
+    }
+
+    .section-{{ section.id }} .custom-pagina svg{
+        width: 56px;
+        height: 56px;
+    }
+    .section-{{ section.id }} .custom-pagina{
+        position: absolute;
+        z-index: 6;
+        cursor: pointer;
+        border-radius: 100%;
+        transition: all .35s ease;
+    }
+    .section-{{ section.id }} .custom-pagina:hover{
+        box-shadow: 0 0 10px #fff;
+    }
+
+    .section-{{ section.id }} .left-pagina{
+        top: calc(168px + calc(38vh / 2));
+        left: calc(16% + 20px);
+    }
+    .section-{{ section.id }} .right-pagina{
+        top: calc(168px + calc(38vh / 2));
+        right: calc(16% - 20px);
+    }
+    
+    {% comment %} iPad {% endcomment %}
+    @media(min-width: 768px)and(max-width: 1024px){
+        .section-{{ section.id }} .container-full .header-cont{
+            padding: 0 10px;
+        }
+    
+    }
+
+    {% comment %} iPhone {% endcomment %}
+    @media(max-width: 767px){
+        .section-{{ section.id }} .container-full{
+            padding: 38px 10px 50px;
+        }
+        .section-{{ section.id }} .container-full .header-cont{
+            padding: 0 10px;
+        }
+        .section-{{ section.id }} .header-cont .section-title{
+            font-size: 26px;
+        }
+        .section-{{ section.id }} .blogs-lists .blog-item-link .blog-item-link-icon svg{
+            width: 20px;
+        }
+        .section-{{ section.id }} .custom-pagina{ }
+        .section-{{ section.id }} .custom-pagina svg{
+            width: 32px;
+            height: 32px;
+        }
+        .section-{{ section.id }} .left-pagina{
+            top: calc(86px + calc(21vh / 2));
+            transform: none;
+            left: 20px;
+        }
+        .section-{{ section.id }} .right-pagina{
+            top: calc(86px + calc(21vh / 2));
+            transform: none;
+            right: 20px;
+        }
+        .section-{{ section.id }} .blogs-lists .blog-item .blog-item-image{
+            height: 21vh;
+            border-radius: 12px;
+        }
+        .section-{{ section.id }} .swiper-pagination-bullets.swiper-pagination-horizontal{
+            bottom: 40px;
+        }
+        .section-{{ section.id }} .container-full .blogs-lists{
+            margin-top: 20px;
+        }
+        .section-{{ section.id }} .blogs-lists .blog-item .blog-item-cont{
+            margin-top: 10px;
+        }
+        .section-{{ section.id }} .blogs-lists .blog-item .blog-item-title{
+            font-size: 18px;
+            line-height: 24px;
+        }
+        .section-{{ section.id }} .blogs-lists .blog-item .blog-item-link{
+            font-size: 16px;
+        }
+        .section-{{ section.id }} .blogs-lists{
+            margin-left: 10px;
+        }
+    
+    }
+
+    {% comment %} small screen {% endcomment %}
+    @media(min-width: 1025px) and (max-width: 1480px){
+        .section-{{ section.id }} .container-full .header-cont{
+            padding: 0 60px;
+        }
+        .section-{{ section.id }} .blogs-lists .blog-item .blog-item-image{
+            height: 33vh;
+        }
+        .section-{{ section.id }} .custom-pagina svg{
+            width: 40px;
+            height: 40px;
+        }
+        .section-{{ section.id }} .left-pagina{
+            top: calc(175px + calc(33vh / 2));
+            left: 80px;
+        }
+        .section-{{ section.id }} .right-pagina{
+            top: calc(175px + calc(33vh / 2));
+            right: 80px;
+        }
+        .section-{{ section.id }} .blogs-lists{
+            margin-left: 60px;
+        }
+        
+    
+    }
+
+</style>
+
+<section class="section-{{ section.id }} highlights-section" id="{{ section.id }}" data-section-id="{{ section.id }}">
+    <div class="container-full">
+        <div class="header-cont">
+            {% if section.settings.sectionTitle != blank %}
+                <h2 class="section-title">{{ section.settings.sectionTitle }}</h2>
+            {% endif %}
+        </div>
+        {% if section.blocks.size > 0 %}
+            <div class="blogs-lists swiper">
+                <div class="swiper-wrapper">
+                    {% for block in section.blocks %}
+                        {% if block.type == "itemBlog" %}
+                            <div class="blog-item swiper-slide">
+                                {% if block.settings.articleBlog != blank %}
+                                    <div class="blog-item-image">
+                                        {% assign article_image = block.settings.articleBlog.image %}
+                                        <img {% render 'lazyload',preview_img: article_image, class: true, enable_rtl: settings.enable_layout_rtl  %}
+                                            width="{{ article_image.width }}"
+                                            height="{{ article_image.height }}"
+                                            loading="lazy"
+                                            decoding="async"
+                                            style="height: 100%;object-fit: cover;"
+                                        />
+                                    </div>
+                                    <div class="blog-item-cont">
+                                        {% if block.settings.articleBlog.title != blank %}
+                                            <div class="blog-item-title">{{ block.settings.articleBlog.title }}</div>
+                                        {% endif %}
+                                        {% if block.settings.articleBlog.url != blank %}
+                                            <a class="blog-item-link" {% if block.settings.articleBlog.url != blank %} href="{{ block.settings.articleBlog.url }}" {% else %} aria-disabled="true" {% endif %}>
+                                                {{ block.settings.viewLink }}
+                                                <span class="blog-item-link-icon">
+                                                    <svg width="36" height="15" viewBox="0 0 36 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path opacity="0.7" d="M35.7071 8.07429C36.0976 7.68377 36.0976 7.0506 35.7071 6.66008L29.3431 0.29612C28.9526 -0.0944047 28.3195 -0.0944047 27.9289 0.29612C27.5384 0.686644 27.5384 1.31981 27.9289 1.71033L33.5858 7.36719L27.9289 13.024C27.5384 13.4146 27.5384 14.0477 27.9289 14.4383C28.3195 14.8288 28.9526 14.8288 29.3431 14.4383L35.7071 8.07429ZM0 7.36719V8.36719H35V7.36719V6.36719H0V7.36719Z" fill="#262629"/>
+                                                    </svg>
+
+                                                </span>
+                                            </a>
+                                        {% endif %}
+                                    </div>
+                                    
+                                {% endif %}
+                            </div>
+                        {% elsif block.type == "itemPage" %}
+                            <div class="blog-item swiper-slide">
+                                {% if block.settings.pageItems != blank %}
+                                    <div class="blog-item-image">
+                                        {% assign article_image = block.settings.pageFeatureImage.image %}
+                                        <img {% render 'lazyload',preview_img: article_image, class: true, enable_rtl: settings.enable_layout_rtl  %}
+                                            width="{{ article_image.width }}"
+                                            height="{{ article_image.height }}"
+                                            loading="lazy"
+                                            decoding="async"
+                                            style="height: 100%;object-fit: cover;"
+                                        />
+                                    </div>
+                                    <div class="blog-item-cont">
+                                        {% if block.settings.pageItems.title != blank %}
+                                            <div class="blog-item-title">{{ block.settings.pageItems.title }}</div>
+                                        {% endif %}
+                                        {% if block.settings.pageItems.url != blank %}
+                                            <a class="blog-item-link" {% if block.settings.pageItems.url != blank %} href="{{ block.settings.pageItems.url }}" {% else %} aria-disabled="true" {% endif %}>
+                                                {{ block.settings.pageItemLink }}
+                                                <span class="blog-item-link-icon">
+                                                    <svg width="36" height="15" viewBox="0 0 36 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                        <path opacity="0.7" d="M35.7071 8.07429C36.0976 7.68377 36.0976 7.0506 35.7071 6.66008L29.3431 0.29612C28.9526 -0.0944047 28.3195 -0.0944047 27.9289 0.29612C27.5384 0.686644 27.5384 1.31981 27.9289 1.71033L33.5858 7.36719L27.9289 13.024C27.5384 13.4146 27.5384 14.0477 27.9289 14.4383C28.3195 14.8288 28.9526 14.8288 29.3431 14.4383L35.7071 8.07429ZM0 7.36719V8.36719H35V7.36719V6.36719H0V7.36719Z" fill="#262629"/>
+                                                    </svg>
+
+                                                </span>
+                                            </a>
+                                        {% endif %}
+                                    </div>
+                                    
+                                {% endif %}
+                            </div>
+
+                        {% endif %}
+                    {% endfor %}
+                </div>
+                
+            </div>
+        {% endif %}
+        {% comment %} customer page {% endcomment %}
+        <div class="custom-swiper-pagina">
+            <div class="left-pagina custom-pagina">
+                <svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="28" cy="28" r="27.5" fill="white" stroke="#E8E8E8"/>
+                    <path d="M29.6562 22L23.9994 27.6569L29.6562 33.3137" stroke="black" stroke-width="2"/>
+                </svg>
+
+            </div>
+            <div class="right-pagina custom-pagina">
+                <svg width="56" height="56" viewBox="0 0 56 56" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="28" cy="28" r="27.5" transform="matrix(-1 0 0 1 56 0)" fill="white" stroke="#E8E8E8"/>
+                    <path d="M26.3438 22L32.0006 27.6569L26.3438 33.3137" stroke="black" stroke-width="2"/>
+                </svg>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    $(document).ready(function(){
+        let eventHighlights = null
+
+        function getOffset() {
+            const w = window.innerWidth;
+            if (w >= 1025 && w <= 1480) return 60;
+            return Math.round(w * 0.16);
+
+        }
+
+        $('.section-{{ section.id }} .blogs-lists').css('margin-left', '0')
+
+        function toggleBtnState(swiper) {
+            // 使用传入的 swiper 参数或 this，而不是外部变量 eventHighlights
+            const instance = swiper || this; 
+            if (!instance || !instance.el) return;
+
+            const $preBtn = $('.highlights-section .left-pagina');
+            const $nextBtn = $('.highlights-section .right-pagina');
+
+            $preBtn.css({
+                opacity: instance.isBeginning ? 0.5 : 1,
+                pointerEvents: instance.isBeginning ? 'none' : 'auto'
+            });
+            $nextBtn.css({
+                opacity: instance.isEnd ? 0.5 : 1,
+                pointerEvents: instance.isEnd ? 'none' : 'auto'
+            });
+        }
+        
+
+        eventHighlights = new Swiper('.highlights-section .blogs-lists', {
+            loop: false,
+            grabCursor: true,
+            simulateTouch: true,
+            slidesPerView: 2.5,
+            slidesPerGroup: 1,
+            spaceBetween: 20,
+            slidesOffsetBefore: getOffset(),
+            slidesOffsetAfter: 60,
+            breakpoints: {
+                320: {
+                    slidesPerView: 1,
+                    slidesPerGroup: 1,
+                    spaceBetween: 10,
+                    slidesOffsetBefore: 10,
+                    slidesOffsetAfter: 10,
+                    centeredSlides: false
+                },
+                992: {
+                    slidesPerView: 2.5,
+                    slidesOffsetBefore: getOffset()
+                }
+            },
+            on: {
+                init: function(){
+                    toggleBtnState(this)
+                
+                } ,
+                slideChange: function(){
+                    toggleBtnState(this)
+                } 
+            }
+        });
+
+        $('.highlights-section .left-pagina').on('click', function() {
+            if (eventHighlights) eventHighlights.slidePrev();
+        });
+        $('.highlights-section .right-pagina').on('click', function() {
+            if (eventHighlights) eventHighlights.slideNext();
+        });
+
+    
+    })
+
+</script>
+
+{% schema %}
+{
+    "name": "Events Highlights",
+    "settings": [
+        {
+            "type": "text",
+            "id": "sectionTitle",
+            "label": "section Title",
+            "default": "Featured Highlights"
+        }
+    ],
+    "blocks": [
+        {
+            "type": "itemBlog",
+            "name": "itemBlog",
+            "settings": [
+                {
+                    "type": "article",
+                    "id": "articleBlog",
+                    "label": "blog Article"
+                },
+                {
+                    "type": "text",
+                    "id": "viewLink",
+                    "label": "view Link",
+                    "default": "View Event"
+                }
+            ]
+        },
+        {
+            "type": "itemPage",
+            "name": "itemPage",
+            "settings": [
+                {
+                    "type": "page",
+                    "id": "pageItems",
+                    "label": "item page"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "pageFeatureImage",
+                    "label": "page Feature Image"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "pageFeatureImage_mb",
+                    "label": "page Feature Image Mobile"
+                },
+                {
+                    "type": "text",
+                    "id": "pageItemLink",
+                    "label": "page Item Link",
+                    "default": "View Event"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "Events Highlights"
+        }
+    ]
+}
+{% endschema %}

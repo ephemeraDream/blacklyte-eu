@@ -1,0 +1,274 @@
+{{ 'buypage-section-11.css' | asset_url | stylesheet_tag }}
+
+<div class="buypage_section_11" id="{{section.settings.specId}}">
+  <div class="buypage_section_11_title">{{ section.settings.title }}</div>
+  <div class="buypage_section_11_text">{{ section.settings.text }}</div>
+  {% for block in section.blocks %}
+    <div
+      class="item_contain{% unless forloop.first %} hidden{% endunless %}"
+      data-type="{{ block.settings.item_type }}"
+    >
+      <div class="item_contain_left">
+        {% assign list = '1,2,3' | split: ',' %}
+        {% for item in list %}
+          {% assign image = 'image_' | append: item %}
+          {% if forloop.first %}
+            {% assign class_str = 'item_contain_img' %}
+          {% else %}
+            {% assign class_str = 'item_contain_img hidden' %}
+          {% endif %}
+          {{-
+            block.settings[image]
+            | image_url: width: block.settings[image].width
+            | image_tag: alt: block.settings[image].alt, class: class_str, data-index: forloop.index
+          -}}
+        {% endfor %}
+      </div>
+      <div class="item_contain_right">
+        {% for item in list %}
+          {% assign text = 'text_' | append: item %}
+          {% assign title = 'title_' | append: item %}
+          <div class="item_contain_right_tab{% if forloop.first %} active{% endif %}" data-index="{{ forloop.index }}">
+            <div class="item_contain_right_tab_head">
+              {{ block.settings[title] }}
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="34"
+                height="34"
+                viewBox="0 0 34 34"
+                fill="none"
+                class="item_contain_right_tab_icon_close"
+              >
+                <circle cx="17" cy="17" r="16" stroke="white" stroke-width="2"/>
+                <path d="M10 17L24 17" stroke="white" stroke-width="2"/>
+              </svg>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="34"
+                height="34"
+                viewBox="0 0 34 34"
+                fill="none"
+                class="item_contain_right_tab_icon_open"
+              >
+                <circle cx="17" cy="17" r="16" stroke="white" stroke-opacity="0.4" stroke-width="2"/>
+                <path d="M10 17L24 17" stroke="white" stroke-opacity="0.4" stroke-width="2"/>
+                <path d="M17 10L17 24" stroke="white" stroke-opacity="0.4" stroke-width="2"/>
+              </svg>
+            </div>
+            <div class="item_contain_right_tab_body">{{ block.settings[text] }}</div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  {% endfor %}
+  <div class="item_contain_tab_box">
+    <div class="item_contain_tab">
+      {% for block in section.blocks %}
+        <div
+          class="item_contain_tab_type{% if forloop.first %} active{% endif %}"
+          data-type="{{ block.settings.item_type }}"
+        >
+          {{ block.settings.item_type }}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<script>
+  (() => {
+    const section = document.querySelector('#shopify-section-{{ section.id }}');
+    if (!section) return;
+
+    const typeTabs = section.querySelectorAll('.item_contain_tab_type');
+    const items = section.querySelectorAll('.item_contain');
+
+    typeTabs.forEach((tab) => {
+      tab.addEventListener('click', () => {
+        const type = tab.dataset.type;
+
+        // tab active
+        typeTabs.forEach((t) => t.classList.remove('active'));
+        tab.classList.add('active');
+
+        // item
+        items.forEach((item) => {
+          item.classList.toggle('hidden', item.dataset.type !== type);
+        });
+        initAccordions();
+      });
+    });
+
+    items.forEach((item) => {
+      const tabs = item.querySelectorAll('.item_contain_right_tab');
+      const imgs = item.querySelectorAll('.item_contain_img');
+
+      tabs.forEach((tab) => {
+        const body = tab.querySelector('.item_contain_right_tab_body');
+
+        // 初始化：只有 active 展开
+        if (tab.classList.contains('active')) {
+          body.style.height = body.scrollHeight + 'px';
+        } else {
+          body.style.height = '0px';
+        }
+
+        tab.addEventListener('click', () => {
+          const index = tab.dataset.index;
+
+          // 图片切换
+          imgs.forEach((img) => {
+            img.classList.toggle('hidden', img.dataset.index !== index);
+          });
+
+          // 关闭其他
+          tabs.forEach((t) => {
+            const b = t.querySelector('.item_contain_right_tab_body');
+
+            if (t !== tab) {
+              t.classList.remove('active');
+              b.style.height = '0px';
+            }
+          });
+
+          // 当前 toggle
+          if (tab.classList.contains('active')) {
+            tab.classList.remove('active');
+            body.style.height = '0px';
+          } else {
+            tab.classList.add('active');
+            body.style.height = body.scrollHeight + 'px';
+          }
+        });
+      });
+    });
+
+    function initAccordions() {
+      const activeTypeTab = section.querySelector('.item_contain_tab_type.active');
+      if (!activeTypeTab) return;
+
+      const activeType = activeTypeTab.dataset.type;
+
+      const currentItem = section.querySelector(`.item_contain[data-type="${activeType}"]`);
+
+      if (!currentItem) return;
+
+      // ✅ 如果已经初始化过，直接跳过
+      if (currentItem.dataset.inited === 'true') return;
+
+      const tabs = currentItem.querySelectorAll('.item_contain_right_tab');
+      const imgs = currentItem.querySelectorAll('.item_contain_img');
+
+      tabs.forEach((tab, i) => {
+        const body = tab.querySelector('.item_contain_right_tab_body');
+
+        if (i === 0) {
+          tab.classList.add('active');
+          body.style.height = body.scrollHeight + 'px';
+        } else {
+          tab.classList.remove('active');
+          body.style.height = '0px';
+        }
+      });
+
+      imgs.forEach((img, i) => {
+        img.classList.toggle('hidden', i !== 0);
+      });
+
+      currentItem.dataset.inited = 'true';
+    }
+
+    initAccordions();
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "buypage section 11",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "specId",
+      "label": "specId"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "title"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "text"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "item_type",
+          "label": "item type"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_1",
+          "label": "image 1"
+        },
+        {
+          "type": "text",
+          "id": "title_1",
+          "label": "title 1"
+        },
+        {
+          "type": "textarea",
+          "id": "text_1",
+          "label": "text 1"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_2",
+          "label": "image 2"
+        },
+        {
+          "type": "text",
+          "id": "title_2",
+          "label": "title 2"
+        },
+        {
+          "type": "textarea",
+          "id": "text_2",
+          "label": "text 2"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_3",
+          "label": "image 3"
+        },
+        {
+          "type": "text",
+          "id": "title_3",
+          "label": "title 3"
+        },
+        {
+          "type": "textarea",
+          "id": "text_3",
+          "label": "text 3"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "buypage section 11"
+    }
+  ]
+}
+{% endschema %}

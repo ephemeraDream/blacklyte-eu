@@ -1,0 +1,220 @@
+{% comment %}
+  3.0修改版首页弹窗
+{% endcomment %}
+<style>
+  .upholstery-modal{
+    width: 800px;
+    margin: 0 auto;
+    border-radius: 20px;
+    background-color: #ffffff;
+    transform: translate(0, -6%);
+    opacity: 0;
+    display: none;
+    transition: all .5s ease;
+  }
+  body.upholstery-modal-show .home-background-overlay{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: #0009;
+    top: 0;
+    left: 0;
+    z-index: 10000;
+  }
+  body.upholstery-modal-show .upholstery-modal {
+    transition: all .5s ease;
+    opacity: 1;
+    display: block;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translate(0, 100px);
+    animation: slowShow .55s ease-in forwards;
+  }
+  .upholstery-modal .upholstery-modal-title{
+    display: flex;
+    justify-content: space-between;
+    background-color: #F8F9FC;
+    padding: 27px 42px;
+    border-radius: 20px 20px 0 0;
+    font: 500 26px "Roboto";
+    color: #262629;
+  }
+  .upholstery-modal .upholstery-modal-title .close-icon svg{
+    width: 18px;
+    height: 18px;
+    fill: none;
+    stroke: none;
+    cursor: pointer;
+  }
+  .upholstery-modal .upholstery-modal-cont{
+    padding: 60px 42px 90px;
+    max-height: calc(100vh - 200px);
+    overflow-y: scroll;
+    transition: all .15s linear;
+  }
+  .upholstery-modal .upholstery-modal-cont .upholstery-modal-cont-container .content{
+    font: 400 18px var(--font-family-1);
+    color: #262629;
+    line-height: 1.4;
+  }
+  .upholstery-modal .upholstery-modal-cont .content-line-bxo{
+    display: block;
+    width: 100%;
+    height: 2px;
+    background-color: #F3F3F3;
+    margin: 36px 0 60px;
+  }
+  .upholstery-modal .upholstery-modal-cont .upholstery-lists{
+    display: flex;
+    gap: 70px;
+  }
+  .upholstery-modal .upholstery-modal-cont .upholstery-lists .upholstery-item{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    flex: 1;
+  }
+  
+  .upholstery-modal .upholstery-modal-cont .upholstery-lists .upholstery-item .upholstery-image{
+    width: 280px;
+  }
+  .upholstery-modal .upholstery-modal-cont .upholstery-lists .upholstery-item .upholstery-title{
+    font: 500 20px var(--font-family-1);
+    color: #262629;
+    margin-top: 17px;
+  }
+  .upholstery-modal .upholstery-modal-cont .upholstery-lists .upholstery-item .upholstery-desc{
+    font: 400 14px var(--font-family-1);
+    color: #262629;
+    margin-top: 7px;
+  }
+  
+  .upholstery-modal .upholstery-modal-cont .upholstery-lists .upholstery-item .upholstery-cont,
+  .upholstery-modal .upholstery-modal-cont .upholstery-lists .upholstery-item .upholstery-cont-2,
+  .upholstery-modal .upholstery-modal-cont .upholstery-lists .upholstery-item .upholstery-cont-3 {
+    font:500 16px var(--font-family-1);
+    color: #262629;
+  }
+  .upholstery-modal .upholstery-modal-cont .upholstery-lists .upholstery-item .upholstery-cont{
+    margin-top: 57px;
+  }
+  .upholstery-modal .upholstery-modal-cont .upholstery-lists .upholstery-item .upholstery-cont-2{
+    margin-top: 50px;
+  }
+  .upholstery-modal .upholstery-modal-cont .upholstery-lists .upholstery-item .upholstery-cont-3{
+    margin-top: 59px;
+  }
+  .upholstery-btns{
+    margin: 100px auto 0;
+    padding: 13px 0;
+    font: 500 18px var(--font-family-1);
+    color: #fff;
+    background-color: red;
+    text-align: center;
+    max-width: 350px;
+    border-radius: 35px;
+    background: #262629;
+  }
+
+  @media(max-width: 767px) {
+    .upholstery-modal{
+      width: 90%;
+    }
+    .upholstery-modal .upholstery-modal-title{
+      padding: 17px 10px;
+      font-size: 18px;
+    }
+    .upholstery-modal .upholstery-modal-cont{
+      padding: 30px 20px;
+    }
+    .upholstery-modal .upholstery-modal-cont .upholstery-modal-cont-container .content{
+      font-size: 12px;
+    }
+    .upholstery-modal .upholstery-modal-cont .content-line-bxo{
+      margin: 16px 0 30px;
+    }
+    .upholstery-modal .upholstery-modal-cont .upholstery-lists{
+      gap: 20px;
+    }
+    .upholstery-modal .upholstery-modal-cont .upholstery-lists .upholstery-item .upholstery-image{
+      width: 120px;
+    }
+    .upholstery-modal .upholstery-modal-cont .upholstery-lists .upholstery-item .upholstery-title{
+      font-size: 16px;
+      min-height: 44px;
+    }
+    .upholstery-modal .upholstery-modal-cont .upholstery-lists .upholstery-item .upholstery-desc{
+      font-size: 12px;
+      min-height: 60px;
+    }
+    .upholstery-modal .upholstery-modal-cont .upholstery-lists .upholstery-item .upholstery-cont{
+      margin-top: 30px;
+      min-height: 44px;
+    }
+    .upholstery-modal .upholstery-modal-cont .upholstery-lists .upholstery-item .upholstery-cont, .upholstery-modal .upholstery-modal-cont .upholstery-lists .upholstery-item .upholstery-cont-2, .upholstery-modal .upholstery-modal-cont .upholstery-lists .upholstery-item .upholstery-cont-3{
+      font-size: 12px;
+    }
+    .upholstery-modal .upholstery-modal-cont .upholstery-lists .upholstery-item .upholstery-cont-2{
+      margin-top: 20px;
+      min-height: 30px;
+    }
+    .upholstery-modal .upholstery-modal-cont .upholstery-lists .upholstery-item .upholstery-cont-3{
+      margin-top: 39px;
+    }
+    .upholstery-btns{
+      margin: 50px auto 0;
+      max-width: 200px;
+      font-size: 12px;
+    }
+  }
+</style>
+<section class="compare-upholstery-modal-section home-background-overlay">
+  <div class="upholstery-modal">
+    <div class="upholstery-modal-title">
+      <span>{{ section.settings.compareModalTitle }}</span>
+      <span class="close-icon">
+        <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M2.00293 2L19.3156 19.3126" stroke="#76767F" stroke-width="3"/>
+          <path d="M19.3125 2L1.99986 19.3126" stroke="#76767F" stroke-width="3"/>
+        </svg>
+      </span>
+    </div>
+    <div class="upholstery-modal-cont">
+      <div class="upholstery-modal-cont-container">
+        <div class="content">
+          {{ section.settings.compareModalDesc }}
+        </div>
+      </div>
+      <div class="content-line-bxo"></div>
+      <div class="upholstery-lists">
+        {% for block in section.blocks %}
+          {% if block.type == "blockItem" %}
+            <div class="upholstery-item">
+              <div class="upholstery-image">
+                <img src="{{ block.settings.blockItemImage | img_url: 'master' }}" />
+              </div>
+              <div class="upholstery-title">
+                {{ block.settings.blockItemTitle }}
+              </div>
+              <div class="upholstery-desc">
+                {{ block.settings.blockItemDesc }}
+              </div>
+              <div class="upholstery-cont">
+                {{ block.settings.blockItemCont1 }}
+              </div>
+              <div class="upholstery-cont-2">
+                {{ block.settings.blockItemCont2 }}
+              </div>
+              <div class="upholstery-cont-3">
+                {{ block.settings.blockItemCont3 }}
+              </div>
+            </div>
+          {% endif %}
+        {% endfor %}
+      </div>
+      <div class="upholstery-btns">Continue Shopping</div>
+    </div>
+  </div>
+</section>

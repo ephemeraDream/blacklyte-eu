@@ -1,0 +1,281 @@
+<style>
+    .ai-robot-maps-section{
+        background: linear-gradient(360deg, #00010F 0%, #000117 100%);
+        padding: 120px 16% 180px;
+    }
+
+    .ai-robot-maps-section .container-full{ }
+
+    .ai-robot-maps-section .section-title {
+        font-family: Poppins;
+        font-weight: 500;
+        font-size: 1.5625vw;
+        line-height: 3.6042vw; 
+        letter-spacing: 0%;
+        text-align: center;
+        vertical-align: middle;
+        color: #FFFFFF;
+    }
+    
+    .ai-robot-maps-section .section-title p{
+        display: inline;
+    }
+
+    .ai-robot-maps-section .section-desc {
+        font-family: Poppins;
+        font-weight: 500;
+        font-size: 0.8333vw;
+        line-height: 1.25vw; 
+        letter-spacing: 0%;
+        text-align: center;
+        vertical-align: middle;
+        color: #FFFFFF;
+    }
+
+    .ai-robot-maps-section .item-images-infos {
+        display: flex;
+        gap: 3.4375vw;
+        align-items: center;
+        margin-top: 6.2963vh;
+        justify-content: center;
+
+    }
+    .ai-robot-maps-section .item-images-infos .item-info-cont{
+        width: 60vw;
+    }
+
+    .ai-robot-maps-section .come-on-item{
+        margin-top: 60px;
+    }
+
+    .ai-robot-maps-section .come-on-item-mobile{
+        display: none;
+    }
+
+    .ai-robot-maps-section .item-info-cont-desc {
+        font-family: Poppins;
+        font-weight: 500;
+        font-size: 0.8433vw;
+        line-height: 1.25vw;
+        letter-spacing: 0%;
+        vertical-align: middle;
+        color: #FFFFFF;
+        white-space: nowrap;
+    }
+
+
+    @media(max-width: 767px){
+        .ai-robot-maps-section{
+            padding: 50px 20px;
+        }
+
+        .ai-robot-maps-section .section-title {
+            font-size: 6.9333vw;
+            line-height: 1.2;
+        }
+
+        .ai-robot-maps-section .section-title p{
+            display: block;
+        }
+
+        .ai-robot-maps-section .section-desc {
+            font-size: 4.2667vw;
+            line-height: 6.4vw;
+            margin-top: 20px;
+        }
+
+        .ai-robot-maps-section .item-images-infos {
+            margin-top: 20px;
+            flex-direction: column;
+            gap: 5.4375vw;
+        }
+
+        .ai-robot-maps-section .item-info-cont-desc {
+            font-size: 3.2333vw;
+            line-height: normal;
+            white-space: normal;
+        }
+
+        .ai-robot-maps-section .item-images-infos picture,
+        .ai-robot-maps-section .item-images-infos .item-info-cont{
+            width: 100%;
+            text-align: center;
+        }
+
+        .ai-robot-maps-section .section-desc p{
+            display: inline;
+        }
+        .ai-robot-maps-section .item-info-cont-desc p{
+            display: inline;
+        }
+
+        .ai-robot-maps-section .come-on-item{
+            display: none;
+        }
+        .ai-robot-maps-section .come-on-item-mobile{
+            display: block;
+            width: 100%;
+        }
+    
+    }
+
+    @media(min-width: 1025px) and (max-width: 1480px){
+        .ai-robot-maps-section{
+            padding: 100px 60px 160px;
+        }
+    
+    }
+</style>
+
+<div class="ai-robot-maps-section">
+    {% liquid
+      assign section_bg_image = section.settings.sectionBgImg
+      assign section_bg_image_mb = section.settings.sectionBgImgMobile
+    %}
+    <style>
+        .ai-robot-maps-section{
+            background: url({{ section_bg_image | image_url: width: 1920 }});
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        @media(max-width: 767px){
+            .ai-robot-maps-section{
+                background: url({{ section_bg_image_mb | image_url: width: 750 }});
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+            }
+        }
+    </style>
+
+    <div class="container-full">
+        {% if section.settings.sectionTitle != blank %}
+            <div class="section-title">{{ section.settings.sectionTitle }}</div>
+        {% endif %}
+        {% if section.settings.sectionDescripe != blank %}
+            <div class="section-desc">{{ section.settings.sectionDescripe }}</div>
+        {% endif %}
+
+        {% for block in section.blocks %}
+          {% if block.type == "item" %}
+            <div class="item-images-infos">
+                {% if block.settings.itemImage != blank %}
+                    {% render 'picture-simple',
+                        image: block.settings.itemImage,
+                        image_mobile: block.settings.itemImage,
+                        mobile_dpr: 2,
+                        loading: "eager"
+                    %}
+                {% endif %}
+
+                {% if block.settings.itemComeonImage != blank %}
+                    <div class="come-on-item-mobile">
+                        {% render 'picture-simple',
+                            image: block.settings.itemComeonImage,
+                            image_mobile: block.settings.itemComeonImage,
+                            mobile_dpr: 2,
+                            loading: "eager"
+                        %}
+                    </div>
+                {% endif %}
+
+                {% if block.settings.itemTitle != blank or block.settings.itemDesc != blank %}
+                    <div class="item-info-cont">
+                        <div class="item-info-cont-title">{{ block.settings.itemTitle }}</div>
+                        <div class="item-info-cont-desc">{{ block.settings.itemDesc }}</div>
+                    </div>
+                {% endif %}
+            </div>
+            {% if block.settings.itemComeonImage != blank %}
+                <div class="come-on-item">
+                    {% render 'picture-simple',
+                        image: block.settings.itemComeonImage,
+                        image_mobile: block.settings.itemComeonImage,
+                        mobile_dpr: 2,
+                        loading: "eager"
+                    %}
+                </div>
+            {% endif %}
+          {% endif %}
+        {% endfor %}
+        
+    </div>
+</div>
+
+{% schema %}
+{
+    "name": "AiRobot maps",
+    "tag": "section",
+    "settings": [
+        {
+            "type": "image_picker",
+            "id": "sectionBgImg",
+            "label": "section Background Image"
+        },
+        {
+            "type": "image_picker",
+            "id": "sectionBgImgMobile",
+            "label": "section Background Image Mobile"
+        },
+        {
+            "type": "richtext",
+            "id": "sectionTitle",
+            "label": "section Title"
+        },
+        {
+            "type": "richtext",
+            "id": "sectionDescripe",
+            "label": "section Descripe"
+        },
+        {
+            "type": "text",
+            "id": "mapTitle",
+            "label": "map Title"
+        }
+    ],
+    "blocks": [
+        {
+            "type": "item",
+            "name": "item",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "itemImage",
+                    "label": "item Image"
+                },
+                {
+                    "type": "richtext",
+                    "id": "itemTitle",
+                    "label": "item Title"
+                },
+                {
+                    "type": "richtext",
+                    "id": "itemDesc",
+                    "label": "item Descripe"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "itemComeonImage",
+                    "label": "item Come on Image"
+                }
+            ]
+        },
+        {
+            "type": "mapItem",
+            "name": "mapItem",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "item_map_image",
+                    "label": "item map image"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        { "name": "AiRobot maps" }
+    ]
+}
+{% endschema %}

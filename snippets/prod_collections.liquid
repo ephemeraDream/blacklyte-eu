@@ -1,0 +1,54 @@
+{% for variant in product_card_product.variants %}
+  {% if variant.inventory_quantity > 0 %}
+    <div class="prod_item"
+         data-product-id="{{ product_card_product.id }}" 
+         data-variant-id="{{ variant.id }}" 
+         style="{% if product_card_product.metafields.custom.product_type != 'accessories' %}display: block;{% else %}display: none;{% endif %}">
+  
+      <div class="container">
+        <div class="card-product">
+          {% render 'product-badge', product: product_card_product, class: 'card__badge', badge_detail: true, serial: serial %}
+  
+          <div class="card-media card-media--adapt {% if product_card_product.media[1] != nil and settings.show_image_swap %} media--hover-effect{% endif%} media--loading-effect" 
+              style="padding-bottom: {{ 1.1 | times: 100 }}%;">
+            {% assign variant_img = variant.image | default: product_card_product.featured_image %}
+            {% render 'image-product-card', 
+              product_card_product: product_card_product, 
+              variant_img: variant_img, 
+              has_video: false,
+              loading: true 
+            %}
+            <a class="card-link" href="{{ product_card_product.url }}?variant={{ variant.id }}" title="{{ product_card_product.title | escape }}"></a>
+          </div>
+        </div>
+        <div class="prod_card_info">
+          <div class="prod_item_title">
+            <span>{{ product_card_product.title }}</span>
+          </div>
+          <div class="prod_item-variants">
+            {%- for opt in variant.options -%}
+              <span class="variant-option">{{ opt }}</span>
+              {%- unless forloop.last -%}
+                <span> | </span>
+              {%- endunless -%}
+            {%- endfor -%}
+          </div>
+          <div class="flex-1"></div>
+          <div class="prod_item_price">
+            <div class="price">
+              {%- if variant.metafields.custom.discount_price.value -%}
+                <span class="prod_item_save_discount_price">
+                  {{ variant.price | minus: variant.metafields.custom.discount_price.value | money }}
+                </span>
+              {%- endif -%}
+              <span class="prod_item_sale_price{% if variant.metafields.custom.discount_price.value %} prod_item_sale_save_price{% endif %}">
+                {{ variant.price | money }}
+              </span>
+            </div>
+            <a class="shop_now_btn" href="{{ product_card_product.url }}?variant={{ variant.id }}">{{ 'products.product.shop_now' | t }}</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endif %}
+{% endfor %}

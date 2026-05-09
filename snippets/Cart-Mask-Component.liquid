@@ -1,0 +1,148 @@
+
+<div class="cart-sticky-module">
+    <div class="cart-sticky-info">
+        <div class="cart-sticky-info-all">
+            <div class="head-cont">
+                <div class="head-cont-title">
+                    <span class="text">{{ 'general.cart.order_summary' | t }}</span>
+                    <span class="icon">
+                        <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0.707031 0.710938L13.7767 13.7806" stroke="#76767F" stroke-width="2"/>
+                            <path d="M13.7773 0.710938L0.707671 13.7806" stroke="#76767F" stroke-width="2"/>
+                        </svg>
+
+                    </span>
+                </div>
+                <div class="total-cont">
+                    <span class="total-price-label">{{ 'general.cart.subtotal' | t }}</span>
+                    <span class="total-price">{{ cart.original_total_price | money }}</span>
+
+                </div>
+                
+            </div>
+            {% if settings.show_cart_discount %}
+                <div class="cart-info-cont">
+                    <div class="cart-info-cont-title">{{ 'general.cart.coupon_code' | t }}</div>
+                    <div class="cart-total-value" style="display: none;"></div>
+
+                    {% assign code_str = '' %}
+                    {% assign discount_code_list = cart.discount_applications | where: 'type', 'discount_code' %}
+                    {% for discount in discount_code_list %}
+                        {% assign code_str = code_str | append: discount.title %}
+                        {% unless forloop.last %}
+                        {% assign code_str = code_str | append: ',' %}
+                        {% endunless %}
+                    {%- endfor -%}
+
+                    <div class="cart-coupon-code form-field discount-code-field">
+                        <label class="form-label hiddenLabels" for="cart-coupon-code-input">
+                            {{- 'general.cart.coupon_code' | t -}}
+                        </label>
+                        <div class="cart_coupon_applybox">
+                            <input
+                                class="form-input"
+                                autocomplete="off"
+                                type="text"
+                                name="discount"
+                                id="cart-coupon-code-input"
+                                placeholder="{{'general.cart.enter_coupo_code' | t }}"
+                            >
+                            <div class="cart_coupon_applybtn">{{ 'common.apply' | t }}</div>
+                        </div>
+
+                        <div class="cart_coupon_tip_box"></div>
+
+                        <div class="cart_coupon_contain_box">
+                            <input type="hidden" value="{{ code_str }}" id="now_coupon_used">
+                            {%- if discount_code_list.size > 0 -%}
+                                <div class="cart_coupon_contain">
+                                    {% for discount in discount_code_list %}
+                                        <div class="cart_coupon_contain_item" data-value="{{ discount.title | escape_once }}">
+                                        {%- render 'icon-discount' -%}
+                                        {{ discount.title | escape_once }}
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg"
+                                            viewBox="0 0 14 14"
+                                            focusable="false"
+                                            aria-hidden="true"
+                                            class="delete_discount_icon"
+                                        >
+                                            <path stroke-linecap="round" d="M2.5 2.5 7 7m4.5 4.5L7 7m0 0 4.5-4.5M7 7l-4.5 4.5"></path>
+                                        </svg>
+                                        </div>
+                                    {%- endfor -%}
+                                </div>
+                            {%- endif -%}
+                        </div>
+                    </div>
+                </div>
+            {% endif %}
+            {% comment %} shipping note {% endcomment %}
+            {%- if settings.show_shipping_note -%}
+                <div class="shipTotal">
+                    {{ 'sections.cart.taxes_included_but_shipping_at_checkout' | t }}
+                </div>  
+            {%- endif -%}
+
+            {% comment %} discount {% endcomment %}
+            <div class="cart-discount cart-total-savings"{% if cart.total_discount == 0 %} style="display: none;"{% endif %} data-saved-discount-display data-dis="{{ cart.total_discount }}">
+                <div class="cart-total-label"><span class="text">{{ 'general.cart.are_saving' | t }}</span></div>
+                <div class="cart-total-value">
+                    <span class="text" data-saved-discount-value>
+                            {{ cart.total_discount | money | prepend: '-' }}
+                    </span>
+                </div>  
+            </div>
+
+        </div>
+
+        {% comment %} payments info module {% endcomment %}
+        <div class="cart-payments-plan">
+            <span class="payment-plan-12-price">
+                {{ cart.total_price | divided_by: 24.0 | round: 2 | money_without_trailing_zeros }}
+            </span>
+            <span class="payment-plan-text">{{ 'products.product.text.klarnatext' | t }}</span>
+            <span class="payment-plan-6-price">
+                {{- cart.total_price | divided_by: 3.0 | round: 2 | money_without_trailing_zeros -}}
+            </span>
+            <span class="payment-plan-text" style="margin-right: 3px;">with</span>
+            <span class="payment-plan-logo">
+                <img width="100%" height="100%"
+                    src="https://cdn.shopify.com/s/files/1/0579/0839/6145/files/klarna-logo.webp?v=1752045162"
+                    alt="" loading="lazy" class="payway_btn" />
+            </span>
+        </div>
+
+        {% comment %} total {% endcomment %}
+        <div class="cart-total cart-total-grandtotal">
+            <div class="cart-total-label">
+                {{ 'general.cart.total' | t }}
+            </div>  
+            <div class="cart-total-value" data-cart-total-value="{{ cart.total_price }}">
+                {{ cart.total_price | money }}
+                <span class="cart-total-value-icon">
+                    <svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M11.1934 6.65625L5.95027 1.41316L0.707172 6.65625" stroke="#262629" stroke-width="2"/>
+                    </svg>
+
+                </span>
+            </div>  
+        </div>
+
+        {% comment %} checkout {% endcomment %}
+        <div class="action-group">
+            <a class="button button-1 button-checkout" 
+                id="cart-checkout" 
+                data-href="{{ routes.cart_url | split: '/cart' | first }}/checkout"
+                href="{{ routes.cart_url | split: '/cart' | first }}/checkout">
+                {{ 'sections.cart.checkout' | t }}
+            </a>
+
+        </div>
+
+        
+    </div>
+
+</div>
+
+{% render 'payway-modal' %}

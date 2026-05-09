@@ -1,0 +1,250 @@
+<style>
+    .section-{{ section.id }}{
+        padding-top: 150px;
+        padding-bottom: 174px;
+    }
+    .section-{{ section.id }} .container-full{
+        padding-left: 16%;
+        padding-right: 16%;
+    }
+    .section-{{ section.id }} .cont{
+        text-align: center;
+    }
+    .section-{{ section.id }} .cont .cont-title{
+        font: 700 46px 'DIN';
+        color: #FFFFFF;
+        position: relative;
+        z-index: 1;
+    }
+    .section-{{ section.id }} .cont .cont-title .cont-title-icon{
+        display: inline-block;
+        width: 100%;
+        position: absolute;
+        bottom: -12px;
+        left: 0;
+        z-index: -1;
+    }
+    .section-{{ section.id }} .cont .cont-title .cont-title-icon svg{
+        width: 50%;
+        height: auto;
+    }
+    .section-{{ section.id }} .cont .cont-desc{
+        font: 700 50px 'DIN';
+        color: #FFF;
+    }
+    .section-{{ section.id }} .part-logos{
+        display: flex;
+        gap: 60px;
+        justify-content: center;
+        margin-top: 68px;
+        width: 70%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .section-{{ section.id }} .event-images{
+        display: flex;
+        gap: 6px;
+        justify-content: center;
+        margin-top: 60px;
+        flex-wrap: nowrap;
+    }
+   
+
+    {% comment %} iPhone {% endcomment %}
+    @media(max-width: 767px) {
+        .section-{{ section.id }} {
+            padding-top: 20px;
+            padding-bottom: 100px;
+        }
+        .section-{{ section.id }} .container-full{
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+        .section-{{ section.id }} .cont .cont-title,
+        .section-{{ section.id }} .cont .cont-desc{
+            font-size: 17px;
+        }
+        .section-{{ section.id }} .part-logos{
+            gap: 0;
+            margin-top: 20px;
+            width: 100%;
+        }
+        .section-{{ section.id }} .part-logos .part-logo-item{
+            width: calc((100% - 60px) / 5)
+        }
+        .section-{{ section.id }} .event-images{
+            gap: 6px;
+            margin-top: 30px;
+        }
+        .section-{{ section.id }} .cont .cont-title .cont-title-icon{
+            bottom: -6px;
+        }
+    
+    }
+    {% comment %} iPad {% endcomment %}
+    @media(min-width: 768px) and (max-width: 1024px){
+        .section-{{ section.id }} .container-full{
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+        .section-{{ section.id }} .cont .cont-title,
+        .section-{{ section.id }} .cont .cont-desc{
+            font-size: 40px;
+        }
+    
+    }
+
+    @media(min-width: 1025px) and (max-width: 1480px){
+        .section-{{ section.id }} .container-full{
+            padding-left: 60px;
+            padding-right: 60px;
+        }
+    }
+</style>
+
+<section class="section-{{ section.id }}" id="{{ section.id }}" data-section-id="{{ section.id }}">
+    {%- liquid
+        assign bgImage = section.settings.sectionBgImage
+        assign bgImageMb = section.settings.sectionBgImageMb
+    -%}
+
+    <style>
+        .section-{{ section.id }} {
+            background-color: #050505;
+            background-image: url({{ bgImage | img_url: 'master' }});
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        @media (max-width: 767px) {
+            .section-{{ section.id }} {
+                background-image: url({{ bgImageMb | img_url: 'master' }});
+                background-position: top;
+            }
+        }
+    </style>
+    <div class="container-full">
+        <div class="cont">
+            <div class="cont-title">
+                <span class="cont-title-icon">
+                    <svg width="776" height="35" viewBox="0 0 776 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g opacity="0.7" filter="url(#filter0_f_7845_32590)">
+                        <path d="M770 29H19.8705L6 6H770V29Z" fill="url(#paint0_linear_7845_32590)"/>
+                        </g>
+                        <defs>
+                        <filter id="filter0_f_7845_32590" x="0" y="0" width="776" height="35" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+                        <feFlood flood-opacity="0" result="BackgroundImageFix"/>
+                        <feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+                        <feGaussianBlur stdDeviation="3" result="effect1_foregroundBlur_7845_32590"/>
+                        </filter>
+                        <linearGradient id="paint0_linear_7845_32590" x1="6" y1="17.5" x2="735.576" y2="17.5" gradientUnits="userSpaceOnUse">
+                        <stop stop-color="#CC3101" stop-opacity="0.1"/>
+                        <stop offset="0.5" stop-color="#ED1C24"/>
+                        <stop offset="1" stop-color="#992501" stop-opacity="0.1"/>
+                        </linearGradient>
+                        </defs>
+                    </svg>
+
+                </span>
+                <span class="cont-title-value">{{ section.settings.sectionTitle }}</span>
+            </div>
+            <div class="cont-desc">{{ section.settings.sectionDesc }}</div>
+        </div>
+        <div class="part-logos">
+            {% for block in section.blocks %}
+                {% if block.type == 'iconItem' %}
+                    <div class="part-logo-item">
+                        <img src="{{ block.settings.logoIcon | img_url: 'master' }}" />
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+        <div class="event-images">
+            {% for block in section.blocks %}
+                {% if block.type == 'eventItem' %}
+                    <div class="event-image-item">
+                        <img src="{{ block.settings.eventItemImage | img_url: 'master' }}" />
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+<script>
+    {% comment %} function isMobile(){
+        return window.innerWidth < 768
+    }
+    $(document).ready(function () {
+        if(isMobile()){
+            $('.event-images').slick({
+                arrows: false,
+                dots: true,
+                infinite: true,
+                speed: 300,
+                slidesToShow: 3,
+                centerMode: true,
+                variableWidth: true
+            })
+        }
+    }); {% endcomment %}
+</script>
+
+{% schema %}
+{
+    "name": "Major Tournament",
+    "settings": [
+        {
+            "type": "image_picker",
+            "id": "sectionBgImage",
+            "label": "Section Background Image"
+        },
+        {
+            "type": "image_picker",
+            "id": "sectionBgImageMb",
+            "label": "Section Background Image Mobile"
+        },
+        {
+        
+            "type": "text",
+            "id": "sectionTitle",
+            "label": "Section Title"
+        },
+        {
+            "type": "text",
+            "id": "sectionDesc",
+            "label": "Section Descripe"
+        }
+    ],
+    "blocks": [
+        {
+            "type": "iconItem",
+            "name": "iconItem",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "logoIcon",
+                    "label": "logo Icon"
+                }
+            ]
+        },
+        {
+            "type": "eventItem",
+            "name": "eventItem",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "eventItemImage",
+                    "label": "event Item Image"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "Major Tournament"
+        }
+    ]
+}
+{% endschema %}

@@ -1,0 +1,489 @@
+<style>
+    .section-block-{{ section.id }}{
+        padding-top: 100px;
+        padding-bottom: 130px;
+    }
+    .section-block-{{ section.id }} .container-full .head-cont,
+    .section-block-{{ section.id }} .container-full .trust-data-cont,
+    .section-block-{{ section.id }} .container-full .trust-award-cont{
+        padding-left: 16%;
+        padding-right: 16%;
+    }
+    .section-block-{{ section.id }} .container-full .section-title{
+        font-family: Poppins;
+        font-weight: 600;
+        font-style: SemiBold;
+        font-size: 40px;
+        line-height: normal;
+        letter-spacing: 0%;
+        text-align: center;
+        color: #262629;
+    }
+    .section-block-{{ section.id }} .container-full .section-desc{
+        font-family: Poppins;
+        font-weight: 500;
+        font-style: Medium;
+        font-size: 16px;
+        line-height: 24px;
+        letter-spacing: 0.32px;
+        text-align: center;
+        color: #262629;
+        opacity: 0.7;
+        width: 80%;
+        margin: auto;
+    }
+    .section-block-{{ section.id }} .section-trust-container{
+        margin-top: 33px;
+    }
+    .section-block-{{ section.id }} .section-trust-container .trust-data-cont .trust-data-item{
+        display: grid;
+        gap: 4vw;
+        align-items: center;
+        grid-template-columns: 1fr auto;
+        column-gap: 4vw;
+    }
+    .section-block-{{ section.id }} .section-trust-container .trust-data-lists{
+        display: flex;
+        gap: 50px;
+        flex-direction: column;
+    }
+    .section-block-{{ section.id }} .section-trust-container .trust-data-lists .itesm-title{
+        font-family: Poppins;
+        font-weight: 700;
+        font-style: Bold;
+        font-size: 30px;
+        line-height: 100%;
+        letter-spacing: 0%;
+        color: #262629;
+    }
+    .section-block-{{ section.id }} .section-trust-container .trust-data-lists .itesm-desc{
+        font-family: Poppins;
+        font-weight: 500;
+        font-style: Medium;
+        font-size: 16px;
+        line-height: 24px;
+        letter-spacing: 0.32px;
+        color: #262629;
+        opacity: 0.7;
+        margin-top: 6px;
+    }
+
+    .section-block-{{ section.id }} .trust-award-cont{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1fr;
+        row-gap: 0;
+        column-gap: 0;
+        width: 80%;
+        margin:0 auto 60px;
+    }
+    .section-block-{{ section.id }} .trust-award-cont .award-items{
+        display: flex;
+        align-items: center;
+        gap: 24px;
+        justify-content: center;
+    }
+    .section-block-{{ section.id }} .award-items img{
+        max-width: 160px;
+        height: auto;
+    }
+    .section-block-{{ section.id }} .award-items .award-item-title{
+        font-family: Poppins;
+        font-weight: 600;
+        font-style: SemiBold;
+        font-size: 20px;
+        line-height: 26px;
+        letter-spacing: 0%;
+        color: #262629;
+    }
+    .section-block-{{ section.id }} .award-items .award-item-desc{
+        font-family: Poppins;
+        font-weight: 500;
+        font-style: Medium;
+        font-size: 14px;
+        line-height: 24px;
+        letter-spacing: 0.32px;
+        color: #262629;
+        opacity: 0.7;
+    }
+    .section-block-{{ section.id }} .trust-award-cont .slick-dots, 
+    .section-block-{{ section.id }} .trust-award-cont .slider-dots{
+        bottom: 20px;
+    }
+    .section-block-{{ section.id }} .slick-dots li, 
+    .section-block-{{ section.id }} .slider-dots li{
+        margin: 0 3px;
+    }
+    .section-block-{{ section.id }} .slick-dots li button, 
+    .section-block-{{ section.id }} .slider-dots li button{
+        width: 6px;
+        height: 6px;
+        border: none;
+        background: #D9D9D9;
+    }
+    .section-block-{{ section.id }} .slick-dots li.slick-active button,
+    .section-block-{{ section.id }} .slider-dots li.active button{
+        background: #262629;
+    }
+
+    {% comment %} iPhone {% endcomment %}
+    @media(max-width: 767px){
+        .section-block-{{ section.id }}{
+            padding-top: 40px;
+            padding-bottom: 40px;
+        }
+        .section-block-{{ section.id }} .container-full .head-cont,
+        .section-block-{{ section.id }} .container-full .trust-data-cont,
+        .section-block-{{ section.id }} .container-full .trust-award-cont{
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+       
+        .section-block-{{ section.id }} .container-full .section-title{
+            font-size: 24px;
+        }
+        .section-block-{{ section.id }} .container-full .section-desc{
+            font-size: 14px;
+            line-height: 20px;
+            width: 100%;
+        }
+        .section-block-{{ section.id }} .section-trust-container{
+            margin-top: 20px;
+        }
+        .section-block-{{ section.id }} .section-trust-container .trust-data-cont .trust-data-item{
+            grid-template-columns: 1fr;
+            gap: 8vw;
+        }
+        .section-block-{{ section.id }} .section-trust-container .trust-data-lists{
+            gap: 16px;
+        }
+        .section-block-{{ section.id }} .section-trust-container .trust-data-lists .itesm-title{
+            font-size: 30px;
+        }
+        .section-block-{{ section.id }} .trust-award-cont{
+            margin-top: 20px;
+            grid-template-columns: 1fr 1fr;
+            row-gap: 30px;
+            width: 100%;
+            margin-bottom: 25px;
+        }
+        .section-block-{{ section.id }} .award-items .award-item-title{
+            display: none;
+        }
+        .section-block-{{ section.id }} .trust-award-cont .award-items{
+            flex-direction: column;
+            gap: 0;
+        }
+        .section-block-{{ section.id }} .award-items img{
+            max-width: 40%;
+        }
+        .section-block-{{ section.id }} .award-items .award-item-desc{
+            text-align: center;
+            width: 80%;
+            margin: auto;
+        }
+    
+    }
+
+    {% comment %} iPad {% endcomment %}
+    @media(min-width: 768px) and (max-width: 1024px){
+        .section-block-{{ section.id }} .container-full .head-cont,
+        .section-block-{{ section.id }} .container-full .trust-data-cont,
+        .section-block-{{ section.id }} .container-full .trust-award-cont{
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+        .section-block-{{ section.id }} .section-trust-container{
+            margin-top: 40px;
+        } 
+        .section-block-{{ section.id }} .section-trust-container .trust-data-cont .trust-data-item{
+            column-gap: 3vw;
+        }
+        .section-block-{{ section.id }} .section-trust-container .trust-data-lists{
+            gap: 30px;
+        }
+
+    }
+
+    {% comment %} small screen {% endcomment %}
+    @media(min-width: 1025px) and (max-width: 1480px){
+        .section-block-{{ section.id }} .container-full .head-cont,
+        .section-block-{{ section.id }} .container-full .trust-data-cont,
+        .section-block-{{ section.id }} .container-full .trust-award-cont{
+            padding-left: 60px;
+            padding-right: 60px;
+        }
+    }
+
+</style>
+
+<div class="section-block-{{ section.id }}" data-section-id="{{ section.id }}" id="{{ section.id }}">
+    <div class="container-full">
+        {% if section.settings.sectionTitle != blank or section.settings.sectionDesc != blank %}
+            <div class="head-cont">
+                {% if section.settings.sectionTitle != blank %}
+                    <h2 class="section-title">{{ section.settings.sectionTitle }}</h2>
+                {% endif %}
+                {% if section.settings.sectionDesc != blank %}
+                    <div class="section-desc">{{ section.settings.sectionDesc }}</div>
+                {% endif %}
+            </div>
+        {% endif %}
+        {% if section.blocks.size > 0 %}
+            <div class="section-trust-container">
+                <div class="trust-award-cont">
+                    {% for block in section.blocks %}
+                        {% if block.type == "awardsItem" %}
+                            <div class="award-items">
+                                {% if block.settings.awardImage != blank %}
+                                    <img {% render 'lazyload',preview_img: block.settings.awardImage, class: true, enable_rtl: settings.enable_layout_rtl  %}
+                                        width="{{ block.settings.awardImage.width }}"
+                                        height="{{ block.settings.awardImage.height }}"
+                                        alt="{{ block.settings.awardImage.alt }}" loading="lazy"
+                                        style="height: auto;" />
+                                {% endif %}
+                                {% if block.settings.awardTitle != blank or block.settings.awardDescripe != blank %}
+                                    <div class="award-item-cont">
+                                        <div class="award-item-title">{{ block.settings.awardTitle }}</div>
+                                        <div class="award-item-desc">{{ block.settings.awardDescripe }}</div>
+                                    </div>
+                                {% endif %}
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+                <div class="trust-data-cont">
+                    {% for block in section.blocks %}
+                        {% if block.type == "item" %}
+                            <div class="trust-data-item">
+                                {% if block.settings.itemImage != blank or block.settings.itemImage_mb != blank %}
+                                    <picture class="trust-data-item-image">
+                                        <source media="(max-width: 768px)"
+                                                srcset="{{ block.settings.itemImage_mb | image_url: width: 800 }}"
+                                                data-srcset="{{ block.settings.itemImage_mb | image_url: width: 800 }}">
+
+                                        <img {% render 'lazyload',preview_img: block.settings.itemImage, class: true, enable_rtl: settings.enable_layout_rtl  %}
+                                            width="{{ block.settings.itemImage.width }}"
+                                            height="{{ block.settings.itemImage.height }}"
+                                            alt="{{ block.settings.itemImage.alt | escape }}"
+                                            loading="lazy"
+                                            decoding="async"
+                                            style="height: auto;"/>
+                                    </picture>
+                                {% endif %}
+                                <div class="trust-data-lists">
+                                    <div class="itesm">
+                                        <div class="itesm-title">{{ block.settings.item_title_1 }}</div>
+                                        <div class="itesm-desc">{{ block.settings.item_desc_1 }}</div>
+                                    </div>
+                                    <div class="itesm">
+                                        <div class="itesm-title">{{ block.settings.item_title_2 }}</div>
+                                        <div class="itesm-desc">{{ block.settings.item_desc_2 }}</div>
+                                    </div>
+                                    <div class="itesm">
+                                        <div class="itesm-title">{{ block.settings.item_title_3 }}</div>
+                                        <div class="itesm-desc">{{ block.settings.item_desc_3 }}</div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+                
+                
+            </div>
+        {% endif %}
+        
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const formatNumber = (num) => new Intl.NumberFormat('en-US').format(Math.floor(num));
+
+        const animateValue = (container, target, suffix, duration = 2000) => {
+            let startTimestamp = null;
+
+            const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                
+                const easeOutProgress = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
+                const currentValue = easeOutProgress * target;
+
+                {% comment %} 逻辑调整：如果动画还没结束(progress < 1)，只显示数字 {% endcomment %}
+                {% comment %} 如果动画结束了(progress === 1)，拼接上后缀符号 {% endcomment %}
+                if (progress < 1) {
+                    container.innerHTML = formatNumber(currentValue);
+                } else {
+                    container.innerHTML = formatNumber(target) + suffix;
+                    {% comment %} 可以在这里加个小动画类，比如让 + 号闪现一下 {% endcomment %}
+                    container.classList.add('animation-done');
+                }
+
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                }
+            };
+            window.requestAnimationFrame(step);
+        };
+
+        const observerOptions = { threshold: 0.5 };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const el = entry.target;
+                    const rawText = el.innerText.trim();
+                    const match = rawText.match(/^([\d,.]+)(.*)$/);
+
+                    if (match) {
+                        const numberPart = match[1];
+                        const suffix = match[2] || "";
+                        const targetValue = parseFloat(numberPart.replace(/,/g, '')) || 0;
+
+                        if (targetValue > 0) {
+                            {% comment %} 初始清空内容，防止闪烁 {% endcomment %}
+                            el.innerHTML = "0"; 
+                            animateValue(el, targetValue, suffix);
+                        }
+                    }
+                    observer.unobserve(el);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.itesm-title').forEach(title => {
+            observer.observe(title);
+        });
+    });
+
+    {% comment %} $(document).ready(function(){
+        function initTrustSlider() {
+            const $slider = $('.trust-award-cont');
+            const mobileBreakpoint = 768;
+            
+
+            if (window.innerWidth <= mobileBreakpoint) {
+                {% comment %} 如果还没初始化，则启动 Slick {% endcomment %}
+                if (!$slider.hasClass('slick-initialized')) {
+                    $slider.slick({
+                        dots: true,
+                        arrows: false,
+                        infinite: true,
+                        speed: 500,
+                        slidesToShow: 1,
+                        slidesToScroll: 1,
+                        adaptiveHeight: true
+                    });
+                }
+            } else {
+                {% comment %} 如果屏幕变大，销毁 Slick 恢复网格布局 {% endcomment %}
+                if ($slider.hasClass('slick-initialized')) {
+                    $slider.slick('unslick');
+                }
+            }
+        }
+
+        {% comment %} 初始化执行 {% endcomment %}
+        initTrustSlider();
+
+        {% comment %} 监听窗口大小变化 {% endcomment %}
+        $(window).resize(function() {
+            initTrustSlider();
+        });
+    }); {% endcomment %}
+</script>
+
+{% schema %}
+{
+    "name": "Home Trust Blocks",
+    "tag": "section",
+    "settings": [
+        {
+            "type": "text",
+            "id": "sectionTitle",
+            "label": "section Title",
+            "default": "Why Choose Blacklyte?"
+        },
+        {
+            "type": "richtext",
+            "id": "sectionDesc",
+            "label": "section Descripe"
+        }
+    ],
+    "blocks": [
+        {
+            "type": "item",
+            "name": "item",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "itemImage",
+                    "label": "item Image"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "itemImage_mb",
+                    "label": "item Image Mobile"
+                },
+                {
+                    "type": "text",
+                    "id": "item_title_1",
+                    "label": "item Title 1"
+                },
+                {
+                    "type": "richtext",
+                    "id": "item_desc_1",
+                    "label": "item Descripe 1"
+                },
+                {
+                    "type": "text",
+                    "id": "item_title_2",
+                    "label": "item Title 2"
+                },
+                {
+                    "type": "richtext",
+                    "id": "item_desc_2",
+                    "label": "item Descripe 2"
+                },
+                {
+                    "type": "text",
+                    "id": "item_title_3",
+                    "label": "item Title 3"
+                },
+                {
+                    "type": "richtext",
+                    "id": "item_desc_3",
+                    "label": "item Descripe 3"
+                }
+            ]
+        },
+        {
+            "type": "awardsItem",
+            "name": "awardsItem",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "awardImage",
+                    "label": "award Image"
+                },
+                {
+                    "type": "text",
+                    "id": "awardTitle",
+                    "label": "award Title"
+                },
+                {
+                    "type": "richtext",
+                    "id": "awardDescripe",
+                    "label": "award Descripe"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "Home Trust Blocks"
+        }
+    ]
+}
+{% endschema %}

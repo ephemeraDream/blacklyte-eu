@@ -1,0 +1,167 @@
+<style>
+  @media(max-width: 1024px) {
+    .accessory-mobile-cont{
+        height: 100vh;
+        width: 100%;
+        max-height: 100vh;
+        max-width: 100%;
+        overflow: hidden;
+        transition: .5s;
+        position: absolute;
+        top: 0;
+        left: 100vw;
+        opacity: 0;
+        background-color: #fff;
+        z-index: 999;
+    }
+    .accessory-mobile-cont.accessory-mobile-cont-active{
+      left: 0;
+      opacity: 1;
+    }
+    .accessory-mobile-cont .title{
+      padding: 26px 20px;
+      border-bottom: 1px solid #F1F1F1;
+      position: relative;
+      cursor: pointer;
+    }
+    .accessory-mobile-cont .title .icons svg{
+      width: 18px;
+      height: 18px;
+      fill: none;
+      stroke: none;
+    }
+    .accessory-mobile-cont .title .header-title-text{
+        font: 500 16px var(--font-family-1);
+        color: #262629;
+        vertical-align: middle;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    .accessory-mobile-cont .accessory-prods{
+        display: flex;
+        gap: 18px;
+        padding: 26px 20px;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        max-height: calc(100vh - 150px);
+        overflow-y: scroll;
+    }
+    .accessory-mobile-cont .accessory-prods .cont-light-items{
+        display: flex;
+        gap: 10px;
+        padding: 20px;
+        flex-direction: column;
+        width: calc((100% - 18px) / 2);
+        justify-content: center;
+        align-items: center;
+    }
+    .accessory-mobile-cont .accessory-prods .cont-light-items .item-left{
+        width: 140px;
+        height: 140px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .accessory-mobile-cont .accessory-prods .cont-light-items .item-right{
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+    }
+
+    .accessory-mobile-cont .accessory-prods .cont-light-items .item-right .right-title{
+        font: 500 16px var(--font-family-1);
+        color: #262629;
+        text-align: center;
+        flex: 1;
+    }
+    .accessory-mobile-cont .accessory-prods .cont-light-items .item-right .right-btns{
+        text-align: center;
+        margin-top: 4px;
+    }
+    .accessory-mobile-cont .accessory-prods .cont-light-items .item-right .right-btns .single-btn{
+        font: 400 16px var(--font-family-1);
+        color: #76767F;
+        text-decoration: underline;
+        margin-top: 15px;
+        text-align: center;
+    }
+    .accessory-mobile-cont .all-chairs-line {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      padding: 0 20px;
+    }
+    .accessory-mobile-cont .all-chairs-line .all-chairs-line-left {
+      font: 500 16px var(--font-family-1);
+      color: #262629;
+      vertical-align: middle;
+    }
+  }
+  
+</style>
+
+<div class="accessory-mobile-cont">
+  <div class="title">
+    <span class="icons">
+      <svg width="12" height="20" viewBox="0 0 12 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M11 19L2 10L11 1" stroke="#262629" stroke-width="1.6"/>
+      </svg>
+    </span>
+    <span class="header-title-text">ACCESSORIES</span>
+  </div>
+  <div class="accessory-prods">
+    <div class="all-chairs-line" data-url="/collections/accessories">
+      <span class="all-chairs-line-left">{{ section.settings.accessoryMenuTitle }}</span>
+      <div class="all-chairs-line-right">
+        <span class="texts">View All</span>
+        <span class="icon">
+          <svg width="8" height="13" viewBox="0 0 8 13" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M1.28906 12L6.57813 6.71094L1.28906 1.42187" stroke="#262629" stroke-width="1.6"/>
+          </svg>
+        </span>
+      </div>
+    </div>
+    {% for product in section.settings.AccessoryProductList %}
+      <div class="cont-light-items" data-href="{{ product.url }}">
+        <div class="item-left">
+          <img src="{{ product.featured_image | image_url: width: 280 }}" loading="lazy">
+        </div>
+        <div class="item-right">
+          <div class="right-title">{{ product.title }}</div>
+          <div class="right-btns">
+            <span class="single-btn">Buy</span>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+<script>
+    {% comment %} close {% endcomment %}
+    $('.accessory-mobile-cont .title .icons').on('click', function(){
+        $('.accessory-mobile-cont').removeClass('accessory-mobile-cont-active')
+        $('body').removeClass('menu_open_mb')
+    })
+    {% comment %} click button {% endcomment %}
+    {% comment %} $('.accessory-mobile-cont .accessory-prods .cont-light-items .item-right .right-btns .single-btn').on('click', function(){
+      const link = $(this).data('href')
+      if(link){
+        window.location.href = link
+      }
+    }) {% endcomment %}
+
+    $('.accessory-mobile-cont .accessory-prods .cont-light-items').on('click', function(){
+      const links = $(this).data('href')
+      if(links){
+        window.location.href = links
+      }
+    })
+
+    $('.accessory-mobile-cont .all-chairs-line').on('click', function(){
+    const links = $(this).data('url')
+    if(links){
+      window.location.href = links
+    }
+  })
+</script>

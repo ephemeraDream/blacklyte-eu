@@ -1,0 +1,1366 @@
+.xmas-event-section {
+    background: linear-gradient(180deg, #133D32 0%, #030E0A 100%);
+    padding-top: 100px;
+    padding-bottom: 100px;
+    position:relative;
+    cursor: url(//gtracing.com/cdn/shop/t/125/assets/cursor-christmas-sock.svg?v=1712978…) 0 0, auto;
+}
+.xmas-event-section .side-top-icon{
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+}
+.xmas-event-section .side-top-icon svg{
+    width: 100%;
+    height: auto;
+}
+.xmas-event-section .container-full{
+    padding-left: 16%;
+    padding-right: 16%;
+}
+.xmas-event-section .container-target-btns{
+    display: flex;
+    gap: 43px;
+    justify-content: center;
+    width: calc((100% - 32%) - 43px);
+    margin: auto;
+    padding: 5px 0;
+}
+.xmas-event-section .container-target-btns .target-button{
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #fff;
+    border-radius: 100px;
+    padding: 14px;
+    flex: 1;
+    cursor: url(//gtracing.com/cdn/shop/t/125/assets/cursor-christmas-sock.svg?v=1712978…) 0 0, auto;
+    transition: background .35s ease;
+    position: relative;
+    overflow: hidden;
+}
+.xmas-event-section .container-target-btns .target-button-active{
+    background: linear-gradient(90deg, #CFA359 0%, #EED497 100%);
+}
+.xmas-event-section .container-target-btns .target-button:hover{
+    box-shadow: 0px 0px 6px #CFA359;
+}
+.xmas-event-section .container-target-btns .target-button .active-btn-svg{
+    display: none;
+}
+.xmas-event-section .container-target-btns .target-button-active .active-btn-svg{
+    width: 80%;
+    position: absolute;
+    top: 0;
+    display: flex;
+}
+.xmas-event-section .container-target-btns .target-button-active .active-btn-svg svg{
+    width: 100%;
+    height: auto;
+}
+.xmas-event-section .container-full-prods{
+    margin-top: 80px;
+}
+.xmas-event-section .container-target-btns .title-info{
+    font-family: Poppins;
+    font-weight: 700;
+    font-style: Bold;
+    font-size: 18px;
+    line-height: 1.4;
+    letter-spacing: 0%;
+    text-align: center;
+    vertical-align: middle;
+    color: #012313;
+}
+.xmas-event-section .container-target-btns .desc-info{
+    font-family: Poppins;
+    font-weight: 600;
+    font-style: SemiBold;
+    font-size: 18px;
+    line-height: 1.4;
+    letter-spacing: 0%;
+    text-align: center;
+    vertical-align: middle;
+    color: #012313;
+}
+.xmas-event-section .section-title{
+    font-family: Poppins;
+    font-weight: 600;
+    font-style: SemiBold;
+    font-size: 40px;
+    line-height: 1.2;
+    letter-spacing: 0%;
+    text-align: center;
+    background: linear-gradient(90deg, #CFA359 0%, #EED497 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+.xmas-event-section .section-sub-title{
+    font-family: Poppins;
+    font-weight: 500;
+    font-style: Medium;
+    font-size: 30px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    text-align: center;
+    color: #fff;
+    margin: 10px auto;
+}
+.xmas-event-section .section-descrip{
+    font-family: Poppins;
+    font-weight: 500;
+    font-style: Medium;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 0%;
+    text-align: center;
+    color: #fff;
+}
+.xmas-event-section .cont-spins{
+    margin-top: 58px;
+    position: relative;
+}
+.xmas-event-section .cont-spins:before{
+    display: inline-block;
+    content: '';
+    width: 74%;
+    height: 88%;
+    position: absolute;
+    background: #092420;
+    top: 6%;
+    left: 26%;
+    z-index: 0;
+}
+.xmas-event-section .cont-spins .item-block{
+    display: flex;
+    align-items: center;
+}
+.xmas-event-section .cont-spins .item-block .item-block-left img{
+    height: auto;
+    width: 90%;
+    background: #092420;
+    border-radius: 50%;
+    animation: wheel-spin 25s linear infinite;
+}
+@keyframes wheel-spin{
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.xmas-event-section .cont-spins .item-block-left,
+.xmas-event-section .cont-spins .item-block-right{
+    flex: 1;
+    z-index: 1;
+}
+.xmas-event-section .cont-spins .item-block-right{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.xmas-event-section .cont-spins .item-block .item-block-title{
+    width: 95%;
+    font-family: Poppins;
+    font-weight: 600;
+    font-style: SemiBold;
+    font-size: 30px;
+    line-height: 1.2;
+    letter-spacing: 0%;
+    color: #fff;
+}
+.xmas-event-section .cont-spins .item-block .item-block-sub-title{
+    font-family: Poppins;
+    font-weight: 500;
+    font-style: Medium;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 0%;
+    color: #fff;
+    margin-top: 10px;
+    width: 95%;
+}
+.xmas-event-section .cont-spins .item-block .item-button{
+    background: linear-gradient(90deg, #CFA359 0%, #EED497 100%);
+    padding: 6px 100px;
+    font-family: Poppins;
+    font-weight: 500;
+    font-style: Medium;
+    font-size: 22px;
+    line-height: 40px;
+    letter-spacing: 0%;
+    text-align: center;
+    vertical-align: middle;
+    color: #092420;
+    margin: 26px 0 0;
+    border-radius: 8px;
+    cursor: url(//gtracing.com/cdn/shop/t/125/assets/cursor-christmas-sock.svg?v=1712978…) 0 0, auto;
+    width: max-content;
+    transition: all .35s ease;
+    border: none;
+}
+.xmas-event-section .cont-spins .item-block .item-button:hover{
+    background: linear-gradient(90deg, #EED497 0%, #EED497 100%);
+    box-shadow: 0px 0px 10px #CFA359;
+}
+.xmas-event-section .cont-spins .item-block .item-block-desc{
+    font-family: Poppins;
+    font-weight: 500;
+    font-style: Medium;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 0%;
+    color: #fff;
+    opacity: 0.7;
+    width: 95%;
+}
+.xmas-event-section .collections-prods{ }
+
+.xmas-event-section .feature-module{
+    margin-top: 100px;
+}
+.xmas-event-section .feature-module .module-head,
+.xmas-event-section .collections-head{
+    display: flex;
+    text-align: center;
+    gap: 10px;
+    flex-direction: column;
+}
+.xmas-event-section .feature-module .module-head .block-title,
+.xmas-event-section .collection-title{
+    font-family: Poppins;
+    font-weight: 600;
+    font-style: SemiBold;
+    font-size: 40px;
+    line-height: 60px;
+    letter-spacing: 0%;
+    text-align: center;
+    background: linear-gradient(90deg, #CFA359 0%, #EED497 100%);
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+.xmas-event-section .feature-module .module-head .block-desc-text{
+    font-family: Poppins;
+    font-weight: 500;
+    font-style: Medium;
+    font-size: 16px;
+    letter-spacing: 0%;
+    text-align: center;
+    color: #fff;
+    width: 60%;
+    margin: auto;
+    line-height: normal;
+}
+.xmas-event-section .feature-module .feature-prod,
+.xmas-event-section .collections-features-prod{
+    display: flex;
+    background: #fff;
+    align-items: center;
+    margin-top: 23px;
+    gap: 33px;
+    border-radius: 16px;
+    overflow: hidden;
+}
+.xmas-event-section .collections-features-prod{
+    margin-top: 30px;
+}
+.xmas-event-section .feature-module .feature-prod .feature-left,
+.xmas-event-section .feature-module .feature-prod .feature-right,
+.xmas-event-section .coll-feature-left,
+.xmas-event-section .coll-feature-right{
+    flex: 1;
+}
+.xmas-event-section .feature-module .feature-prod .feature-left,
+.xmas-event-section .coll-feature-left{
+    background: #F0F5F3;
+}
+.xmas-event-section .feature-module .feature-prod .feature-left img,
+.xmas-event-section .coll-feature-left img{
+    height: auto;
+}
+
+.xmas-event-section .feature-module .feature-prod .feature-right .block-prod-title,
+.xmas-event-section .coll-feature-right .block-prod-title{
+    font-family: Roboto;
+    font-weight: 600;
+    font-style: SemiBold;
+    font-size: 30px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    color: #262629;
+    margin-bottom: 16px;
+}
+.xmas-event-section .feature-module .feature-prod .feature-right .block-prod-desc,
+.xmas-event-section .feature-module .feature-prod .feature-right .block-prod-desc-2,
+.xmas-event-section .coll-feature-right .block-prod-desc,
+.xmas-event-section .coll-feature-right .block-prod-desc-2{
+    font-family: Roboto;
+    font-weight: 400;
+    font-style: Regular;
+    font-size: 22px;
+    line-height: 1.2;
+    letter-spacing: 0%;
+    color: #76767F;
+    margin-top: 10px;
+}
+.xmas-event-section .feature-module .feature-prod .feature-right .block-prod-prices,
+.xmas-event-section .coll-feature-right .block-prod-prices{
+    display: flex;
+    gap: 13px;
+    align-items: center;
+    margin-top: 37px;
+}
+.xmas-event-section .feature-module .feature-prod .feature-right .block-prod-prices .block-prod-discount-price,
+.xmas-event-section .coll-feature-right .block-prod-discount-price{
+    font-family: Poppins;
+    font-weight: 600;
+    font-style: SemiBold;
+    font-size: 30px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    color: #262629;
+}
+.xmas-event-section .feature-module .feature-prod .feature-right .block-prod-prices .block-prod-sale-price,
+.xmas-event-section .coll-feature-right .block-prod-sale-price{
+    font-family: Poppins;
+    font-weight: 400;
+    font-style: Regular;
+    font-size: 30px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    color: #76767F;
+}
+.xmas-event-section .feature-module .feature-prod .feature-right .block-prod-prices .block-prod-sale-price-text,
+.xmas-event-section .coll-feature-right .block-prod-sale-price-text{
+    text-decoration: line-through;
+}
+.xmas-event-section .feature-module .feature-prod .feature-right .block-prod-btns,
+.xmas-event-section .coll-feature-right .block-prod-btns{
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 24px;
+}
+.xmas-event-section .feature-module .feature-prod .feature-right .prod-btn,
+.xmas-event-section .coll-feature-right .prod-btn{
+    font-family: Roboto;
+    font-weight: 500;
+    font-style: Medium;
+    font-size: 22px;
+    letter-spacing: 0%;
+    text-align: center;
+    vertical-align: middle;
+    border-radius: 100px;
+    width: 80%;
+    cursor: url(//gtracing.com/cdn/shop/t/125/assets/cursor-christmas-sock.svg?v=1712978…) 0 0, auto;
+    transition: all .35s ease;
+    height: min-content;
+}
+
+.xmas-event-section .feature-module .feature-prod .feature-right .prod-btn.buy-now,
+.xmas-event-section .coll-feature-right .prod-btn.buy-now{
+    background: linear-gradient(90deg, #CFA359 0%, #EED497 100%);
+    color: #fff;
+    padding: 18px 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.xmas-event-section .feature-module .feature-prod .feature-right .prod-btn.buy-now:hover,
+.xmas-event-section .coll-feature-right .prod-btn.buy-now:hover{
+    background: linear-gradient(90deg, #CFA359 0%, #CFA359 100%);
+    box-shadow: 0px 0px 8px #EED497;
+}
+.xmas-event-section .feature-module .feature-prod .feature-right .prod-btn.learn-more,
+.xmas-event-section .coll-feature-right .prod-btn.learn-more{
+    border: 1px solid #262629;
+    color: #262629;
+    padding: 17px 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.xmas-event-section .feature-module .feature-prod .feature-right .prod-btn.learn-more:hover,
+.xmas-event-section .coll-feature-right .prod-btn.learn-more:hover{
+    box-shadow: 0px 0px 8px #262629;
+}
+.xmas-event-section .collections-prods .collection-countdown{ }
+.xmas-event-section .collections-prods .collection-countdown .countdown-item{
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+}
+.xmas-event-section .collections-prods .collection-countdown .countdown-item .count-times{
+    background: #fff;
+    border-radius: 6px;
+    font-family: Poppins;
+    font-weight: 600;
+    font-style: SemiBold;
+    font-size: 40px;
+    line-height: 37px;
+    letter-spacing: 0%;
+    color: #0A231C;
+    width: 73px;
+    height: 83px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.xmas-event-section .collections-prods .collection-countdown .countdown-item .count-unit{
+    font-family: Poppins;
+    font-weight: 500;
+    font-style: Medium;
+    font-size: 20px;
+    letter-spacing: 0%;
+    color: #fff;
+}
+.xmas-event-section .collections-prods .collection-countdown .countdown-split {
+    color: #fff;
+    margin-left: 30px;
+    margin-right: 30px;
+    font-size: 30px;
+    transform: translateY(-10px);
+}
+/* collections */
+.xmas-event-section .collections-prods .collections-lists{
+    display: flex;
+    gap: 17px;
+    flex-wrap: wrap;
+    margin-top: 16px;
+}
+.xmas-event-section .collections-prods .collections-lists .prod_item{
+    width: calc((100% - 51px) / 4);
+    background: #fff;
+    border-radius: 16px;
+}
+.xmas-event-section .collections-prods .collections-lists .container-prod{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    position: relative;
+}
+.xmas-event-section .collections-prods .collections-lists .prod_item .prod_card_info{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+    text-align: center;
+    padding: 0 10px 20px;
+}
+.xmas-event-section .collections-prods .collections-lists .prod_item .prod_item_title,
+.xmas-event-section .collections-prods .collections-lists .prod_item .prod_item_series_name{
+    font-family: Roboto;
+    font-weight: 500;
+    font-style: Medium;
+    font-size: 20px;
+    line-height: 1.2;
+    letter-spacing: 0%;
+    color: #262629;
+}
+
+.xmas-event-section .flex-1{
+    display: block;
+    flex: 1;
+}
+.xmas-event-section .collections-prods .collections-lists .prod_item .prod_item-variants{
+    font-family: Roboto;
+    font-weight: 400;
+    font-style: Regular;
+    font-size: 12px;
+    line-height: 26px;
+    letter-spacing: 0%;
+    color: #262629;
+    opacity: 0.7;
+}
+.xmas-event-section .collections-prods .collections-lists .prod_item .prod_item_price .price{
+    display: flex;
+    gap: 8px;
+    line-height: normal;
+}
+.xmas-event-section .collections-prods .collections-lists .prod_item .prod_item_price .price .prod_item_discount_price{
+    font-family: Roboto;
+    font-weight: 500;
+    font-style: Medium;
+    font-size: 20px;
+    letter-spacing: 0%;
+    vertical-align: middle;
+    color: #262629;
+}
+.xmas-event-section .collections-prods .collections-lists .prod_item .prod_item_price .price .prod_item_sale_price{
+    font-family: Roboto;
+    font-weight: 500;
+    font-style: Regular;
+    font-size: 20px;
+    letter-spacing: 0%;
+    vertical-align: middle;
+    color: #262629;
+}
+.xmas-event-section .collections-prods .collections-lists .prod_item .prod_item_price .price .prod_item_sale_price_new{
+    text-decoration: line-through;
+    font-size: 12px;
+    font-weight: 400;
+}
+.xmas-event-section .collections-prods .collections-lists .prod_item .shop_now_btn{
+    font-family: Roboto;
+    font-weight: 500;
+    font-style: Medium;
+    font-size: 16px;
+    line-height: normal;
+    letter-spacing: 0%;
+    text-align: center;
+    vertical-align: middle;
+    color: #fff;
+    background: linear-gradient(90deg, #CFA359 0%, #EED497 100%);
+    width: 80%;
+    padding: 10px 0;
+    border-radius: 30px;
+    margin-top: 15px;
+    transition: all .35s ease;
+}
+.xmas-event-section .collections-prods .collections-lists .prod_item .shop_now_btn:hover{
+    background: linear-gradient(90deg, #CFA359 0%, #CFA359 100%);
+    box-shadow: 0 0 6px #EED497;
+}
+
+.xmas-event-section .warranty-module{
+    margin-top: 150px;
+}
+.xmas-event-section .warranty-module .warranty-title{
+    font-family: Roboto;
+    font-weight: 600;
+    font-style: SemiBold;
+    font-size: 40px;
+    line-height: 60px;
+    letter-spacing: 0%;
+    text-align: center;
+    color: #fff;
+}
+.xmas-event-section .warranty-module .warranty-list{
+    display: flex;
+    gap: 140px;
+    margin-top: 58px;
+}
+.xmas-event-section .warranty-module .warranty-list .item-warranty{
+    width: calc((100% - 280px) / 3);
+}
+.xmas-event-section .warranty-module .warranty-list .warranty-item{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+}
+.xmas-event-section .warranty-module .item-image{
+    width: 68px;
+    height: 68px;
+}
+.xmas-event-section .warranty-module .item-image img{
+    height: auto;
+}
+.xmas-event-section .warranty-module .item-cont-title{
+    font-family: Poppins;
+    font-weight: 500;
+    font-style: Medium;
+    font-size: 22px;
+    line-height: normal;
+    letter-spacing: 0%;
+    color: #fff;
+    text-align: center;
+}
+.xmas-event-section .warranty-module .item-cont-desc{
+    font-family: Poppins;
+    font-weight: 400;
+    font-style: Regular;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 0%;
+    text-align: center;
+    color: #fff;
+    margin-top: 7px;
+}
+/* reviews */
+.xmas-event-section .xmas-reviews{
+    margin-top: 110px;
+}
+.xmas-event-section .xmas-reviews .reviews-title{
+    font-family: Poppins;
+    font-weight: 600;
+    font-style: SemiBold;
+    font-size: 40px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    color: #fff;
+    text-align: center;
+}
+.xmas-event-section .xmas-reviews-blocks{
+    position: relative;
+    padding-bottom: 50px;
+}
+.xmas-event-section .xmas-reviews .reviews-lists{
+    display: flex;
+    margin-top: 34px;
+}
+.xmas-event-section .xmas-reviews .reviews-lists img{
+    height: auto;
+}
+.xmas-event-section .xmas-reviews .review-item{
+    border-radius: 24px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    height: auto;
+}
+.xmas-event-section .xmas-reviews .reviews-lists .star-cont{
+    display: flex;
+    gap: 7px;
+}
+.xmas-event-section .xmas-reviews .reviews-lists .star-cont svg{
+    width: 18px;
+    height: 18px;
+}
+.xmas-event-section .xmas-reviews .review-cont{
+    padding: 30px;
+    border: 1px solid rgba(147, 147, 147, 0.4);
+    border-bottom-left-radius: 24px;
+    border-bottom-right-radius: 24px;
+    flex: 1;
+}
+.xmas-event-section .xmas-reviews .review-cont .review-cont-title{
+    font-family: Roboto;
+    font-weight: 600;
+    font-style: SemiBold;
+    font-size: 22px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    color: #fff;
+    margin: 15px auto;
+}
+.xmas-event-section .xmas-reviews .review-cont .review-cont-desc{
+    font-family: Roboto;
+    font-weight: 400;
+    font-style: Regular;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 0%;
+    color: #fff;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.xmas-event-section .xmas-reviews-blocks .swiper-pagination-bullet{
+    width: 31px;
+    height: 3px;
+    border: none;
+    border-radius: 0;
+    background: #EDEFF2;
+}
+/* variant total */
+.xmas-event-section .variant-total-cont{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    color: #fff;
+    margin: 53px auto 0;
+    width: max-content;
+}
+.xmas-event-section .variant-total-cont .prod-total-cont{
+    font-family: Roboto;
+    font-weight: 500;
+    font-style: Medium;
+    font-size: 20px;
+    line-height: 26px;
+    letter-spacing: 0%;
+    color: #fff;
+}
+.xmas-event-section .line-bottom{
+    display: inline-block;
+    font-size: 0;
+    height: 2px;
+    background: #FFFFFF4D;
+    width: 100%;
+    margin: 17px 0 25px;
+    position: relative;
+}
+.xmas-event-section .line-bottom-active{
+    display: inline-block;
+    background: #fff;
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+}
+.xmas-event-section .prod-total-button{
+    padding: 14px 80px;
+    font-family: Roboto;
+    font-weight: 500;
+    font-style: Medium;
+    font-size: 16px;
+    line-height: normal;
+    letter-spacing: 0%;
+    text-align: center;
+    vertical-align: middle;
+    color: #fff;
+    border-radius: 100px;
+    border: 1px solid #fff;
+    cursor: url(//gtracing.com/cdn/shop/t/125/assets/cursor-christmas-sock.svg?v=1712978…) 0 0, auto;
+    transition: all .35s ease;
+}
+.xmas-event-section .prod-total-button:hover{
+    box-shadow: 0 0 10px #fff;
+}
+.limit-items .prod_item {
+    display: none;
+}
+
+.limit-items .prod_item:nth-child(-n+12) {
+    display: block;
+}
+.xmas-event-section .line-bottom-active,
+.xmas-event-section .variant-total-cont .prod-total-cont-pc{
+    display: block;
+}
+.xmas-event-section .line-bottom-active-mb,
+.xmas-event-section .variant-total-cont .prod-total-cont-mb{
+    display: none;
+}
+/* video */
+.xmas-event-section .videos-module{
+    margin-top: 110px;
+}
+.xmas-event-section .videos-module .head-cont{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+    gap: 8px;
+}
+.xmas-event-section .videos-module .video-module-title {
+    font-family: Poppins;
+    font-weight: 600;
+    font-style: SemiBold;
+    font-size: 40px;
+    line-height: 40px;
+    letter-spacing: 0%;
+    text-align: center;
+    color: #fff;
+}
+.xmas-event-section .videos-module .video-module-desc{
+    font-family: Poppins;
+    font-weight: 500;
+    font-style: Medium;
+    font-size: 16px;
+    line-height: 26px;
+    letter-spacing: 0%;
+    color: #fff;
+}
+.xmas-event-section .videos-module .video-lists{
+    display: flex;
+    gap: 20px;
+    margin-top: 46px;
+}
+.xmas-event-section .videos-module .video-lists .video-item{
+    width: calc((100% - 60px) / 4);
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+}
+.xmas-event-section .videos-module .video-lists .video-item video{
+    height: 100%;
+    width: 100%;
+}
+.xmas-event-section .videos-module .video-lists .video-item .video-play-icon{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.xmas-event-section .videos-module .video-lists .video-item .video-play-icon svg{
+    width: 60px;
+    height: 60px;
+}
+.xmas-event-section .videos-module .video-lists .video-item .video-item-settings{
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+}
+.xmas-event-section .videos-module .video-lists .video-item .video-person-name{
+    font-family: Poppins;
+    font-weight: 500;
+    font-style: Medium;
+    font-size: 26px;
+    line-height: 40px;
+    letter-spacing: 0%;
+    text-align: center;
+    color: #fff;
+    position: absolute;
+    bottom: 38px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.xmas-event-section .prod-sale-tag{
+    font-family: Roboto;
+    font-weight: 500;
+    font-style: Medium;
+    font-size: 14px;
+    letter-spacing: 0%;
+    vertical-align: middle;
+    background: #931717;
+    padding: 4px 6px;
+    width: max-content;
+    color: #fff;
+    position: absolute;
+    left: 12px;
+    top: 10px;
+    z-index: 10;
+    text-transform: uppercase;
+    display: none;
+}
+/* omnisend */
+.omnisend-form-693695f81eca2200613c3170-countdown-timer-6937bd275aad840a1c0a0b3d{
+    text-align: center;
+}
+.omnisend-form-693695f81eca2200613c3170-countdown-timer-6937bd275aad840a1c0a0b3d svg{
+    width: 50% !important;
+}
+.omnisend-form-693695f81eca2200613c3170-discount-copy-button svg{
+    fill: inherit !important;
+    stroke: inherit !important;
+}
+/* button svg */
+.xmas-event-section .container-target-btns .target-icon-svg{
+    position: absolute;
+    right: 45px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.xmas-event-section .container-target-btns .target-icon-svg svg{
+    width: 46px;
+    height: 46px;
+}
+
+.card-media {
+    display: block;
+    position: relative;
+    overflow: hidden;
+}
+.card-media>img+img {
+    opacity: 0;
+}
+.card-media>img {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    max-width: 100%;
+    cursor: pointer;
+    object-fit: var(--product-cart-image-fit);
+    object-position: center center;
+    transition: all .8s ease;
+}
+
+
+/* {% comment %} iPad {% endcomment %} */
+@media(min-width: 768px) and (max-width: 1024px){
+    .xmas-event-section .container-full{
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+
+    .xmas-event-section .cont-spins{
+        width: calc(100% - 10px);
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .xmas-event-section .cont-spins .item-block{
+        gap: 20px;
+    }
+    .xmas-event-section .cont-spins .item-block .item-block-title{
+        font-size: 26px;
+        line-height: 1;
+    }
+    .xmas-event-section .cont-spins .item-block .item-block-sub-title{
+        font-size: 16px;
+        line-height: 1.2;
+    }
+    .xmas-event-section .cont-spins .item-block .item-button{
+        font-size: 20px;
+        line-height: normal;
+        margin: 20px 0 26px;
+    }
+    .xmas-event-section .cont-spins .item-block .item-block-desc{
+        font-size: 14px;
+        line-height: 1.4;
+    }
+    .xmas-event-section .container-target-btns{
+        gap: 20px;
+        width: calc(100% - 40px);
+    }
+    .xmas-event-section .container-target-btns .target-button{
+        gap: 0px;
+    }
+    .xmas-event-section .container-target-btns .title-info{
+        font-size: 14px;
+    }
+    .xmas-event-section .container-target-btns .desc-info{
+        font-size: 12px;
+    }
+    .xmas-event-section .container-full-prods{
+        margin-top: 50px;
+    }
+    .xmas-event-section .cont-spins .item-block .item-block-left img{
+        width: 100%;
+    }
+    .xmas-event-section .feature-module .module-head .block-title,
+    .xmas-event-section .collection-title{
+        font-size: 30px;
+        line-height: normal;
+    }
+    .xmas-event-section .collections-prods .collection-countdown .countdown-item .count-times{
+        width: 53px;
+        height: 63px;
+        font-size: 24px;
+        line-height: normal;
+    }
+    .xmas-event-section .collections-prods .collection-countdown .countdown-item .count-unit{
+        font-size: 14px;
+    }
+    .xmas-event-section .collections-prods .collection-countdown .countdown-split{
+        margin-left: 15px;
+        margin-right: 15px;
+        font-size: 20px;
+    }
+    .xmas-event-section .feature-module .feature-prod .feature-right .block-prod-title,
+    .xmas-event-section .coll-feature-right .block-prod-title{
+        font-size: 24px;
+        line-height: normal;
+    }
+    .xmas-event-section .feature-module .feature-prod .feature-right .block-prod-desc,
+    .xmas-event-section .feature-module .feature-prod .feature-right .block-prod-desc-2,
+    .xmas-event-section .coll-feature-right .block-prod-desc,
+    .xmas-event-section .coll-feature-right .block-prod-desc-2{
+        font-size: 16px;
+        line-height: 1;
+        margin-top: 5px;
+    }
+    .xmas-event-section .feature-module .feature-prod .feature-right .block-prod-prices,
+    .xmas-event-section .coll-feature-right .block-prod-prices{
+        margin-top: 16px;
+    }
+    .xmas-event-section .feature-module .feature-prod .feature-right .block-prod-btns,
+    .xmas-event-section .coll-feature-right .block-prod-btns{
+        gap: 10px;
+        margin-top: 15px;
+    }
+    .xmas-event-section .feature-module .feature-prod .feature-right .prod-btn,
+    .xmas-event-section .coll-feature-right .prod-btn{
+        font-size: 16px;
+    }
+    .xmas-event-section .feature-module .feature-prod .feature-right .prod-btn.buy-now,
+    .xmas-event-section .coll-feature-right .prod-btn.buy-now{
+        padding: 14px 0;
+    }
+    .xmas-event-section .feature-module .feature-prod .feature-right .prod-btn.learn-more,
+    .xmas-event-section .coll-feature-right .prod-btn.learn-more{
+        padding: 13px 0;
+    }
+    .xmas-event-section .collections-prods .collections-lists{
+        gap: 10px;
+        margin-top: 10px;
+    }
+    .xmas-event-section .collections-prods .collections-lists .prod_item{
+        width: calc((100% - 20px) / 3);
+    }
+    .xmas-event-section .collections-prods .collections-lists .prod_item .prod_item_title,
+    .xmas-event-section .collections-prods .collections-lists .prod_item .prod_item_series_name{
+        font-size: 16px;
+        line-height: 1.2;
+    }
+    .xmas-event-section .collections-prods .collections-lists .prod_item .prod_item-variants{
+        font-size: 12px;
+        line-height: 2;
+    }
+    .xmas-event-section .collections-prods .collections-lists .prod_item .shop_now_btn{
+        font-size: 14px;
+    }
+    .xmas-event-section .collections-prods{ }
+
+    .xmas-event-section .feature-module,
+    .xmas-event-section .warranty-module{
+        margin-top: 50px;
+    }
+    .xmas-event-section .warranty-module .warranty-list{
+        gap: 58px;
+    }
+    .xmas-event-section .warranty-module .warranty-title{
+        font-size: 30px;
+    }
+    .xmas-event-section .warranty-module .warranty-list .item-warranty{
+        width: calc((100% - 106px) / 3);
+    }
+    /* button svg */
+    .xmas-event-section .container-target-btns .target-icon-svg{
+        right: 20px;
+    }
+    .xmas-event-section .container-target-btns .target-icon-svg svg{
+        width: 25px;
+        height: 25px;
+    }
+
+}
+/* {% comment %} iPhone {% endcomment %} */
+@media(max-width: 767px){
+    .xmas-event-section{
+        padding-top: 50px;
+        padding-bottom: 50px;
+    }
+    .xmas-event-section .container-full{
+        padding-left: 0;
+        padding-right: 0;
+    }
+    .xmas-event-section .container-full .feature-modules,
+    .xmas-event-section .collections-prods,
+    .xmas-event-section .warranty-module,
+    .xmas-event-section .xmas-reviews-blocks{
+        padding-left: 23px;
+        padding-right: 23px;
+    }
+    .xmas-event-section .section-title{
+        font-size: 26px;
+    }
+    .xmas-event-section .container-full .cont-header{
+        padding-left: 10px;
+        padding-right: 10px;
+    }
+    .xmas-event-section .cont-spins .item-block{
+        flex-direction: column;
+        gap: 40px;
+    }
+    .xmas-event-section .cont-spins .item-block .item-block-left img{
+        width: 50%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .xmas-event-section .cont-spins .item-block .item-block-right{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    .xmas-event-section .cont-spins:before{
+        width: 100%;
+        height: 76%;
+        top: 30%;
+        left: 0;
+    }
+    .xmas-event-section .section-sub-title{
+        font-size: 20px;
+    }
+    .xmas-event-section .section-descrip{
+        font-size: 14px;
+    }
+    .xmas-event-section .cont-spins{
+        margin-top: 30px;
+    }
+    .xmas-event-section .cont-spins .item-block .item-block-title{
+        font-size: 26px;
+    }
+    .xmas-event-section .cont-spins .item-block .item-block-sub-title{
+        font-size: 14px;
+    }
+    .xmas-event-section .cont-spins .item-block .item-button{
+        font-size: 20px;
+        margin: 16px 0 20px;
+    }
+    .xmas-event-section .cont-spins .item-block .item-block-desc{
+        font-size: 14px;
+        text-align: center;
+    }
+    /* {% comment %} 单推 {% endcomment %} */
+    .xmas-event-section .feature-module .feature-prod,
+    .xmas-event-section .collections-features-prod{
+        flex-direction: column;
+        gap: 0;
+    }
+    .xmas-event-section .feature-module .module-head,
+    .xmas-event-section .collections-head{
+        gap: 5px;
+    }
+    .xmas-event-section .feature-module .module-head .block-title,
+    .xmas-event-section .coll-feature-right .block-prod-title,
+    .xmas-event-section .collection-title,
+    .xmas-event-section .warranty-module .warranty-title,
+    .xmas-event-section .xmas-reviews .reviews-title,
+    .xmas-event-section .videos-module .video-module-title{
+        font-size: 26px;
+        line-height: 40px;
+    }
+    .xmas-event-section .feature-module .module-head .block-desc-text,
+    .xmas-event-section .videos-module .video-module-desc{
+        width: 90%;
+        font-size: 14px;
+    }
+    .xmas-event-section .feature-module .feature-prod .feature-right,
+    .xmas-event-section .coll-feature-right{
+        padding-left: 19px;
+        padding-bottom: 29px;
+        padding-right: 19px;
+        width: 100%;
+    }
+    .xmas-event-section .feature-module .feature-prod .feature-left,
+    .xmas-event-section .coll-feature-left{
+        background: none;
+    }
+    .xmas-event-section .feature-module .feature-prod .feature-right .block-prod-btns,
+    .xmas-event-section .coll-feature-right .block-prod-btns{
+        flex-direction: row;
+        gap: 10px;
+        margin-top: 15px;
+    }
+    .xmas-event-section .feature-module .feature-prod .feature-right .block-prod-title,
+    .xmas-event-section .coll-feature-right .block-prod-title{
+        font-size: 24px;
+        margin-bottom: 10px;
+    }
+    .xmas-event-section .feature-module .feature-prod .feature-right .block-prod-desc,
+    .xmas-event-section .feature-module .feature-prod .feature-right .block-prod-desc-2,
+    .xmas-event-section .coll-feature-right .block-prod-desc,
+    .xmas-event-section .coll-feature-right .block-prod-desc-2{
+        font-size: 14px;
+    }
+    .xmas-event-section .feature-module .feature-prod .feature-right .block-prod-prices,
+    .xmas-event-section .coll-feature-right .block-prod-prices{
+        gap: 6px;
+        margin-top: 15px;
+    }
+    .xmas-event-section .feature-module .feature-prod .feature-right .block-prod-prices .block-prod-discount-price,
+    .xmas-event-section .feature-module .feature-prod .feature-right .block-prod-prices .block-prod-sale-price,
+    .xmas-event-section .coll-feature-right .block-prod-discount-price,
+    .xmas-event-section .coll-feature-right .block-prod-sale-price{
+        font-size: 20px;
+    }
+    .xmas-event-section .feature-module .feature-prod .feature-right .prod-btn,
+    .xmas-event-section .coll-feature-right .prod-btn{
+        font-size: 16px;
+    }
+    .xmas-event-section .feature-module .feature-prod .feature-right .prod-btn.buy-now,
+    .xmas-event-section .coll-feature-right .prod-btn.buy-now{
+        padding: 15px 0;
+    }
+    .xmas-event-section .feature-module .feature-prod .feature-right .prod-btn.learn-more,
+    .xmas-event-section .coll-feature-right .prod-btn.learn-more{
+        padding: 14px 0;
+    }
+    /* {% comment %} 单推end {% endcomment %} */
+    .xmas-event-section .container-target-btns .desc-info{
+        display: none;
+    }
+    .xmas-event-section .container-target-btns{
+        gap: 20px;
+        width: calc(100% - 50px);
+    }
+    .xmas-event-section .container-target-btns .title-info{
+        font-size: 12px;
+        line-height: 1.2;
+    }
+    .xmas-event-section .container-full-prods,
+    .xmas-event-section .feature-module{
+        margin-top: 50px;
+    }
+   
+    .xmas-event-section .collections-prods .collection-countdown .countdown-item .count-times{
+        font-size: 20px;
+        line-height: normal;
+        width: 53px;
+        height: 43px;
+    }
+    .xmas-event-section .collections-prods .collection-countdown .countdown-item .count-unit{
+        font-size: 14px;
+    }
+    .xmas-event-section .collections-prods .collection-countdown .countdown-split{
+        margin-left: 16px;
+        margin-right: 16px;
+        font-size: 20px;
+        transform: translateY(-14px);
+    }
+    .xmas-event-section .collections-prods .collections-lists{
+        gap: 10px;
+        margin-top: 10px;
+    }
+    .xmas-event-section .collections-prods .collections-lists .prod_item{
+        width: calc((100% - 10px) / 2);
+    }
+    .xmas-event-section .collections-prods .collections-lists .prod_item .prod_item_title,
+    .xmas-event-section .collections-prods .collections-lists .prod_item .prod_item_series_name{
+        font-size: 16px;
+    }
+    .xmas-event-section .collections-prods .collections-lists .prod_item .prod_item-variants{
+        line-height: 2;
+    }
+    .xmas-event-section .collections-prods .collections-lists .prod_item .prod_item_price .price{
+        gap: 4px;
+    }
+    .xmas-event-section .collections-prods .collections-lists .prod_item .prod_item_price .price .prod_item_sale_price{
+        font-size: 14px;
+    }
+    .xmas-event-section .collections-prods .collections-lists .prod_item .prod_item_price .price .prod_item_discount_price{
+        font-size: 14px;
+    }
+    .xmas-event-section .collections-prods .collections-lists .prod_item .shop_now_btn{
+        margin-top: 6px;
+        font-size: 14px;
+        width: 100%;
+    }
+    .xmas-event-section .collections-prods .collections-lists .prod_item .prod_card_info{
+        padding: 0 10px 13px;
+    }
+    .xmas-event-section .warranty-module .warranty-list{
+        gap: 30px;
+        margin-top: 30px;
+        flex-direction: column;
+    }
+    .xmas-event-section .warranty-module .warranty-list .item-warranty{
+        width: 100%;
+    }
+    .xmas-event-section .warranty-module .warranty-list .warranty-item{
+        flex-direction: row;
+        justify-content: flex-start;
+    }
+    .xmas-event-section .warranty-module .warranty-list .warranty-item{
+        gap: 20px;
+    }
+    .xmas-event-section .warranty-module .item-cont-title,
+    .xmas-event-section .warranty-module .item-cont-desc{
+        text-align: left;
+    }
+    .xmas-event-section .warranty-module .item-cont{
+        flex: 1;
+    }
+    /* reviews */
+    .xmas-event-section .xmas-reviews .review-item{
+        border-radius: 12px;
+    }
+    .xmas-event-section .xmas-reviews .review-cont{
+        padding: 14px;
+        border-bottom-left-radius: 12px;
+        border-bottom-right-radius: 12px;
+    }
+    .xmas-event-section .xmas-reviews .reviews-lists .star-cont svg{
+        width: 10px;
+        height: 10px;
+    }
+    .xmas-event-section .xmas-reviews .review-cont .review-cont-title{
+        font-size: 14px;
+        margin: 10px auto;
+    }
+    .xmas-event-section .xmas-reviews .review-cont .review-cont-desc{
+        font-size: 12px;
+        line-height: 1.5;
+    }
+    .xmas-event-section .xmas-reviews-blocks{
+        padding-bottom: 40px;
+    }
+    .xmas-event-section .xmas-reviews-blocks .swiper-pagination-bullet{
+        width: 8px;
+        height: 8px;
+        border-radius: 100%;
+        background: #edeff2;
+    }
+    /* product */
+    .xmas-event-section .variant-total-cont .prod-total-cont{
+        font-size: 12px;
+        line-height: normal;
+    }
+    .xmas-event-section .line-bottom{
+        margin: 10px 0 16px;
+    }
+    .xmas-event-section .prod-total-button{
+        padding: 10px 60px;
+        font-size: 12px;
+    }
+    .xmas-event-section .line-bottom-active,
+    .xmas-event-section .variant-total-cont .prod-total-cont-pc,
+    .limit-items .prod_item:nth-child(-n+12){
+        display: none;
+    }
+    .xmas-event-section .line-bottom-active-mb,
+    .xmas-event-section .variant-total-cont .prod-total-cont-mb{
+        display: block;
+    }
+  
+    .limit-items .prod_item:nth-child(-n+6) {
+        display: block;
+    }
+    .xmas-event-section .warranty-module,
+    .xmas-event-section .videos-module{
+        margin-top: 50px;
+    }
+    .xmas-event-section .videos-module .video-lists .video-item .video-play-icon svg{
+        width: 28px;
+        height: 28px;
+    }
+    .xmas-event-section .videos-module .video-lists .video-item .video-person-name{
+        font-size: 16px;
+    }
+    /* button svg */
+    .xmas-event-section .container-target-btns .target-icon-svg{
+        right: 10px;
+    }
+    .xmas-event-section .container-target-btns .target-icon-svg svg{
+        width: 15px;
+        height: 15px;
+    }
+
+
+}
+
+/* {% comment %} small screen {% endcomment %} */
+@media(min-width: 1025px) and (max-width: 1480px){
+    .xmas-event-section .container-full{
+        padding-left: 60px;
+        padding-right: 60px;
+    }
+    .xmas-event-section .xmas-reviews .review-cont{
+        padding: 10px;
+    }
+    .xmas-event-section .xmas-reviews .reviews-lists .star-cont svg{
+        width: 14px;
+        height: 14px;
+    }
+    .xmas-event-section .xmas-reviews .review-cont .review-cont-title{
+        font-size: 20px;
+        margin: 12px auto;
+    }
+    .xmas-event-section .xmas-reviews .review-cont .review-cont-desc{
+        font-size: 14px;
+        line-height: 20px;
+    }
+    .xmas-event-section .container-target-btns{
+        width: 100%;
+    }
+    .xmas-event-section .videos-module .video-lists .video-item .video-person-name{
+        font-size: 20px;
+    }
+}
+@media(min-width: 1025px) and (max-width: 1600px){
+    /* button svg */
+    .xmas-event-section .container-target-btns .target-icon-svg{
+        right: 20px;
+    }
+}

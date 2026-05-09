@@ -1,0 +1,184 @@
+{{ 'buypage-section-12.css' | asset_url | stylesheet_tag }}
+
+<div class="buypage_section_12" id="{{section.settings.specId}}">
+  <div class="buypage_section_12_slick">
+    {% for block in section.blocks %}
+      <div class="buypage_section_12_slick_item">
+        {% assign poster_image = block.settings.post_image | image_url %}
+        {{
+          block.settings.video
+          | video_tag:
+            class: 'buypage_section_12_slick_item_video',
+            loop: true,
+            muted: true,
+            playsinline: true,
+            preload: 'none',
+            autoplay: false
+        }}
+        <div class="buypage_section_12_slick_item_info">
+          <div class="buypage_section_12_slick_item_info_title">{{ block.settings.title }}</div>
+          <div class="buypage_section_12_slick_item_info_text">{{ block.settings.text }}</div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+  <div class="buypage_section_12_slick_dot">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="50"
+      height="50"
+      viewBox="0 0 50 50"
+      fill="none"
+      class="buypage_section_12_slick_dot_prev disabled"
+    >
+      <g>
+      <circle cx="25" cy="25" r="24.5" stroke="white"/>
+      <path d="M29.4844 17L20.9991 25.4853L29.4844 33.9706" stroke="white" stroke-width="2"/>
+      </g>
+    </svg>
+    <div><span class="buypage_section_12_slick_dot_current">1</span>/{{ section.blocks.size }}</div>
+    <svg
+      width="50"
+      height="50"
+      viewBox="0 0 50 50"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      class="buypage_section_12_slick_dot_next"
+    >
+      <circle cx="25" cy="25" r="24.5" stroke="white"/>
+      <path d="M23.4844 17L31.9697 25.4853L23.4844 33.9706" stroke="white" stroke-width="2"/>
+    </svg>
+  </div>
+</div>
+
+<script>
+  (function ($) {
+    const $section = $('#shopify-section-{{ section.id }}');
+    const $slider = $section.find('.buypage_section_12_slick');
+    const $prev = $section.find('.buypage_section_12_slick_dot_prev');
+    const $next = $section.find('.buypage_section_12_slick_dot_next');
+    const $current = $section.find('.buypage_section_12_slick_dot_current');
+
+    const slideCount = $slider.children().length;
+
+    /* =====================
+      Slick
+    ====================== */
+    $slider.on('init', function (event, slick) {
+      updateNav(0, slick);
+      playCurrentVideo(0);
+    });
+
+    $slider.slick({
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      arrows: false,
+      dots: false,
+      infinite: false,
+      waitForAnimate: false,
+      adaptiveHeight: true,
+      variableWidth: true,
+    });
+
+    /* =====================
+      
+    ====================== */
+    $prev.on('click', function () {
+      if ($(this).hasClass('disabled')) return;
+      $slider.slick('slickPrev');
+    });
+
+    $next.on('click', function () {
+      if ($(this).hasClass('disabled')) return;
+      $slider.slick('slickNext');
+    });
+
+    /* =====================
+      
+    ====================== */
+    $slider.on('afterChange', function (event, slick, currentSlide) {
+      updateNav(currentSlide, slick);
+      playCurrentVideo(currentSlide);
+    });
+
+    /* =====================
+      
+    ====================== */
+    function updateNav(index, slick) {
+      // 
+      $current.text(index + 1);
+
+      // prev / next 
+      $prev.toggleClass('disabled', index === 0);
+      $next.toggleClass('disabled', index === slick.slideCount - 1);
+    }
+
+    function playCurrentVideo(index) {
+      const $slides = $slider.find('.buypage_section_12_slick_item');
+
+      $slides.each(function (i) {
+        const video = $(this).find('.buypage_section_12_slick_item_video').get(0);
+
+        if (!video) return;
+
+        if (i === index) {
+          video.play?.();
+        } else {
+          video.pause?.();
+          video.currentTime = 0;
+        }
+      });
+    }
+  })(jQuery);
+</script>
+
+{% schema %}
+{
+  "name": "buypage section 12",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "specId",
+      "label": "specId"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "item",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "post_image",
+          "label": "post image"
+        },
+        {
+          "type": "video",
+          "id": "video",
+          "label": "video"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "title"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "buypage section 12"
+    }
+  ]
+}
+{% endschema %}

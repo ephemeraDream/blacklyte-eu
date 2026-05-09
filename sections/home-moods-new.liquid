@@ -1,0 +1,849 @@
+<style type="text/css" media="screen">
+    .home-moods-section{
+        padding-top: 100px;
+        padding-bottom: 100px;
+        background-color: #EBEBEB;
+        position: relative;
+    }
+    .home-moods-section .container-full{
+        padding-left: 0;
+        padding-right: 0;
+    }
+    .home-moods-section .moods-section-title{
+        font: 600 40px var(--font-family-3);
+        color: #262629;
+        text-align: center;
+    }
+    .home-moods-section .moods-section-desc{
+        font: 500 16px var(--font-family-3);
+        color: #262629;
+        line-height: 1.4;
+        margin-top: 10px;
+        text-align: center;
+        opacity: 0.7;
+    }
+    .home-moods-section .moods-cont{
+        margin-top: 50px;
+    }
+    .home-moods-section .moods-cont .itemsCont-image.moods_img_pc{
+        display: block;
+        position: relative;
+    }
+    .home-moods-section .moods-cont .itemsCont-image.moods_img_mb{
+        display: none;
+    }
+    .home-moods-section .moods-cont .itemsCont-image.moods_img_pc img{
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+    .home-moods-section .moods-btns{
+        display: flex;
+        justify-content: center;
+        margin: 30px auto 0;
+        background-color: #E0E0E0;
+        width: max-content;
+        border-radius: 30px;
+        overflow: hidden;
+    }
+    .home-moods-section .moods-btns .buttons{
+        font: 500 16px var(--font-family-1);
+        color: #1E1E21;
+        padding: 14px 40px;
+        background-color: #E0E0E0;
+    }
+    .home-moods-section .moods-btns .buttons.active{
+        background-color: #1E1E21;
+        color: #fff;
+        border-radius: 30px;
+    }
+    .home-moods-section .moods-cont-living,
+    .home-moods-section .moods-cont-gaming{
+        position: relative;
+    }
+    .dot-container,
+    .gaming_dot-container{
+        position: absolute;
+    }
+    .dot-container .dot-icons,
+    .gaming_dot-container .dot-icons{
+        max-width: min-content;
+        cursor: pointer;
+    }
+    .dot-container .dot-icon,
+    .gaming_dot-container .dot-icon{
+        display: inline-block;
+        position: relative;
+        width: 14px;
+        height: 14px;
+        background: white;
+        border-radius: 50%;
+    }
+    .dot-container .dot-icon::before,
+    .dot-container .dot-icon::after,
+    .gaming_dot-container .dot-icon::before,
+    .gaming_dot-container .dot-icon::after {
+        display: inline-block;
+        content: "";
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        width: 14px;
+        height: 14px;
+        border: 1px solid white;
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        opacity: 0;
+        animation: ripple 3s infinite;
+    }
+    .dot-container .dot-icon::after,
+    .gaming_dot-container .dot-icon::after{
+        animation-delay: 2s;
+    }
+    @keyframes ripple {
+        0% {
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 0.6;
+        }
+        100% {
+            transform: translate(-50%, -50%) scale(3); /* 扩散倍数 */
+            opacity: 0;
+        }
+        }
+    
+    
+    .home-moods-section .moods-cont .dot-prod-item{
+        gap: 12px;
+        background-color: #fff;
+        padding: 11px 13px;
+        border-radius: 10px;
+        display: none;
+        opacity: 0;
+        transition: opacity .35s ease-in-out, display .35s ease-in-out;
+    }
+    .home-moods-section .moods-cont .dot-container.active .dot-prod-item,
+    .home-moods-section .moods-cont .gaming_dot-container.active .dot-prod-item {
+        display: flex;
+        opacity: 1;
+        min-width: max-content;
+        min-height: fit-content;
+        transition: all .35s ease-in-out;
+    }
+    .home-moods-section .moods-cont .dot-prod-item .dot-prod-item-left{
+        width: 108px;
+        height: 108px;
+        background-color: #eee;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .home-moods-section .moods-cont .dot-prod-item .dot-prod-item-left img{
+        height: 100%;
+        object-fit: contain;
+    }
+    .home-moods-section .moods-cont .dot-prod-item .dot-prod-item-right{
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .home-moods-section .moods-cont .dot-prod-item .dot-prod-item-right .dot-prod-title{
+        font: 600 16px var(--font-family-1);
+        color: #262629;
+    }
+    .home-moods-section .moods-cont .dot-prod-item .dot-prod-item-right .dot-prod-desc{
+        font: 400 12px var(--font-family-1);
+        color: #76767F;
+        line-height: 1.4;
+        white-space: pre-line;
+        margin-top: 4px;
+    }
+    .home-moods-section .moods-cont .dot-prod-item .dot-prod-item-right .dot-prod-prices{
+        font: 600 14px var(--font-family-1);
+        color: #262629;
+        margin-top: 8px;
+        display: flex;
+        gap: 8px;
+    }
+    .home-moods-section .moods-cont .dot-prod-item .dot-prod-item-right .dot-prod-prices .origa-sale-price-active{
+        font: 400 14px var(--font-family-1);
+        color: #76767F;
+        text-decoration: line-through;
+    }
+
+    .home-moods-section .swiper-pagination-horizontal.swiper-pagination-bullets {
+        bottom: 50px;
+    }
+    .home-moods-section .swiper-pagination-bullet{
+        width: 30px;
+        border-radius: 0;
+        height: 3px;
+        background: #D9D9D9;
+        transition: all .35s ease;
+        opacity: 1;
+    }
+    .home-moods-section .swiper-pagination-bullet-active{
+        background: #262629;
+        width: 40px;
+    }
+    .home-moods-section .swiperLeftRightSvg{
+        display: flex;
+        justify-content: space-between;
+    }
+    .home-moods-section .swiperLeftRightSvg .left-svg,
+    .home-moods-section .swiperLeftRightSvg .right-svg{
+        width: 56px;
+        height: 56px;
+        background: #ffffff;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        z-index: 9;
+    }
+    .home-moods-section .swiperLeftRightSvg .left-svg{
+        position: absolute;
+        top: 50%;
+        left: 50px;
+    }
+    .home-moods-section .swiperLeftRightSvg .right-svg{
+        position: absolute;
+        top: 50%;
+        right: 50px;
+    }
+    .home-moods-section .swiperLeftRightSvg .left-svg svg,
+    .home-moods-section .swiperLeftRightSvg .right-svg svg{
+        width: 20px;
+        height: 20px;
+    }
+    .home-moods-section .swiperLeftRightSvg .left-svg:hover svg path,
+    .home-moods-section .swiperLeftRightSvg .right-svg:hover svg path{
+        stroke: #429BFF;
+    }
+
+    /* IPhone */
+    @media(max-width: 767px){
+        .home-moods-section{
+            padding-top: 50px;
+            padding-bottom: 50px;
+        }
+        .home-moods-section .container-full{
+            padding-left: 0;
+            padding-right: 0;
+        }
+        .home-moods-section .moods-section-title{
+            font-size: 24px;
+        }
+        .home-moods-section .moods-section-desc{
+            font-size: 14px;
+        }
+        .home-moods-section .moods-cont .itemsCont-image.moods_img_pc{
+            display: none;
+        }
+        .home-moods-section .moods-cont .itemsCont-image.moods_img_mb{
+            display: block;
+            position: relative;
+        }
+        .home-moods-section .moods-cont .itemsCont-image.moods_img_mb img{
+            position: absolute;
+            top: 0;
+            left: 0;
+            opacity: 0.9;
+        }
+        .home-moods-section .moods-cont{
+            margin-top: 20px;
+        }
+        .home-moods-section .moods-btns .buttons{
+            font-size: 12px;
+            padding: 12px 30px;
+        }
+        .home-moods-section .moods-cont .dot-prod-item .dot-prod-item-left{
+            width: 58px;
+            height: 58px;
+        }
+        .home-moods-section .moods-cont .dot-prod-item .dot-prod-item-right .dot-prod-title{
+            font-size: 12px;
+        }
+        .home-moods-section .moods-cont .dot-prod-item .dot-prod-item-right .dot-prod-desc{
+            font-size: 8px;
+        }
+        .home-moods-section .moods-cont .dot-prod-item .dot-prod-item-right .dot-prod-prices{
+            font-size: 10px;
+            gap: 4px;
+            margin-top: 4px;
+        }
+        .home-moods-section .moods-cont .dot-prod-item .dot-prod-item-right .dot-prod-prices .origa-sale-price-active{
+            font-size: 10px;
+        }
+        .home-moods-section .swiper-pagination-bullet{
+            width: 20px;
+        }
+        .home-moods-section .swiper-pagination-horizontal.swiper-pagination-bullets{
+            bottom: 20px;
+        }
+        .home-moods-section .swiper-pagination-bullet-active{
+            width: 30px;
+        }
+        .home-moods-section .swiperLeftRightSvg{
+            display: none;
+        }
+        .home-moods-section .swiperLeftRightSvg .left-svg,
+        .home-moods-section .swiperLeftRightSvg .right-svg{
+            width: 20px;
+            height: 20px;
+        }
+        .home-moods-section .swiperLeftRightSvg .left-svg svg,
+        .home-moods-section .swiperLeftRightSvg .right-svg svg{
+            width: 8px;
+            height: 8px;
+        }
+        .home-moods-section .swiperLeftRightSvg .left-svg{
+            left: 8px;
+        }
+        .home-moods-section .swiperLeftRightSvg .right-svg{
+            right: 8px;
+        }
+    }
+
+    {% comment %} IPad {% endcomment %}
+    @media(min-width: 768px) and (max-width: 1024px){
+        .home-moods-section .swiperLeftRightSvg .left-svg,
+        .home-moods-section .swiperLeftRightSvg .right-svg{
+            width: 30px;
+            height: 30px;
+        }
+        .home-moods-section .swiperLeftRightSvg .left-svg svg, 
+        .home-moods-section .swiperLeftRightSvg .right-svg svg{
+            width: 10px;
+            height: 10px;
+        }
+        .home-moods-section .swiperLeftRightSvg .left-svg{
+            left: 10px;
+        }
+        .home-moods-section .swiperLeftRightSvg .right-svg{
+            right: 10px;
+        }
+    }
+    
+    /* small screen */
+    @media(min-width: 1025px) and (max-width: 1480px){
+        .home-moods-section .container-full{
+            padding-left: 0;
+            padding-right: 0;
+        }
+        .home-moods-section .swiperLeftRightSvg .left-svg,
+        .home-moods-section .swiperLeftRightSvg .right-svg{
+            width: 30px;
+            height: 30px;
+        }
+        .home-moods-section .swiperLeftRightSvg .left-svg{
+            left: 20px;
+        }
+        .home-moods-section .swiperLeftRightSvg .right-svg{
+            right: 20px;
+        }
+    }
+</style>
+
+<section class="home-moods-section">
+    <div class="container-full">
+        {% if section.settings.sectionTitle != blank %}
+            <h2 class="moods-section-title no-select">{{ section.settings.sectionTitle }}</h2>
+        {% endif %}
+        {% if section.settings.sectionDesc != blank %}
+            <div class="moods-section-desc no-select">{{ section.settings.sectionDesc }}</div>
+        {% endif %}
+        <div class="moods-cont swiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div class="moods-cont-living">
+                        {% for block in section.blocks %}
+                            {% if block.type == 'livingItems' %}
+                                <div class="itemsCont-image moods_img_pc" style="padding-top: {% unless block.settings.itemsLargeImage.presentation.focal_point == '50.0% 50.0%' %}{{ 1 | divided_by: block.settings.itemsLargeImage.aspect_ratio | times: 120 }}%{% else %}{{ 1 | divided_by: block.settings.itemsLargeImage.aspect_ratio | times: 100 }}%{% endunless %}">
+                                    <img src="{{ block.settings.itemsLargeImage | img_url: 'master' }}" alt="{{ block.settings.itemsLargeImage.alt | escape }}" />
+                                </div>
+                                <div class="itemsCont-image moods_img_mb" style="padding-top: {% unless block.settings.itemsLargeImageMobile.presentation.focal_point == '50.0% 50.0%' %}{{ 1 | divided_by: block.settings.itemsLargeImageMobile.aspect_ratio | times: 120 }}%{% else %}{{ 1 | divided_by: block.settings.itemsLargeImageMobile.aspect_ratio | times: 100 }}%{% endunless %}">
+                                    <img src="{{ block.settings.itemsLargeImageMobile | img_url: 'master' }}" alt="{{ block.settings.itemsLargeImageMobile.alt | escape }}" />
+                                </div>
+                            {% elsif block.type == 'livingItemsDot' %}
+                                {%- liquid
+                                assign dot_container_left = block.settings.dotPositionLeft
+                                assign dot_container_top = block.settings.dotPositionTop
+                                assign dot_container_left_mb = block.settings.dotPositionLeftMobile
+                                assign dot_container_top_mb = block.settings.dotPositionTopMobile
+                                -%}
+                                <div class="dot-container" style="--dot_container_left: {{ dot_container_left }};
+                                    --dot_container_top: {{ dot_container_top }};
+                                    --dot_container_left_mb: {{ dot_container_left_mb }};
+                                    --dot_container_top_mb: {{ dot_container_top_mb }};">
+                                    <style>
+                                        .dot-container{
+                                            left: var(--dot_container_left);
+                                            top: var(--dot_container_top);
+                                        }
+                                        @media(max-width: 767px) {
+                                            .dot-container{
+                                                left: var(--dot_container_left_mb);
+                                                top: var(--dot_container_top_mb);
+                                            }
+                                        }
+                                    </style>
+                                    <div class="dot-icons">
+                                        <span class="dot-icon"></span>
+                                    </div>
+                                    <a {% if block.settings.dotProdLink != blank %} href="{{ block.settings.dotProdLink }}" {% else %} aria-disabled="true" {% endif %} class="dot-prod-item">
+                                        <div class="dot-prod-item-left">
+                                            {% if block.settings.dotProdFeatherImage != blank %}
+                                                <img src="{{ block.settings.dotProdFeatherImage | img_url: 'master' }}" alt="{{ block.settings.dotProdFeatherImage.alt | escape }}" />
+                                            {% else %}
+                                                <img src="{{ block.settings.dotProd.featured_image | img_url: 'master' }}" alt="{{ block.settings.dotProd.featured_image.alt | escape }}" />
+                                            {% endif %}
+                                        </div>
+                                        <div class="dot-prod-item-right">
+                                            <div class="dot-prod-title">{{ block.settings.dotProdtitle }}</div>
+                                            <div class="dot-prod-desc">{{ block.settings.dotProdDesc }}</div>
+                                            <div class="dot-prod-prices">
+                                                {% if block.settings.dotProd.selected_or_first_available_variant.metafields.custom.discount_price.value %}
+                                                    <span class="discount-sale-price">
+                                                        {{ block.settings.dotProd.selected_or_first_available_variant.price | minus: block.settings.dotProd.selected_or_first_available_variant.metafields.custom.discount_price.value | money }}
+                                                    </span>
+                                                {% endif %}
+                                                <span class="origa-sale-price {% if block.settings.dotProd.selected_or_first_available_variant.metafields.custom.discount_price.value %}origa-sale-price-active{% endif %}">{{ block.settings.dotProd.selected_or_first_available_variant.price | money }}</span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="moods-cont-gaming">
+                        {% for block in section.blocks %}
+                            {% if block.type == 'gamingItems' %}
+                                <div class="itemsCont-image moods_img_pc" style="padding-top: {% unless block.settings.gamingItemsLargeImage.presentation.focal_point == '50.0% 50.0%' %}{{ 1 | divided_by: block.settings.gamingItemsLargeImage.aspect_ratio | times: 120 }}%{% else %}{{ 1 | divided_by: block.settings.gamingItemsLargeImage.aspect_ratio | times: 100 }}%{% endunless %}">
+                                    <img src="{{ block.settings.gamingItemsLargeImage | img_url: 'master' }}" alt="{{ block.settings.gamingItemsLargeImage.alt | escape }}" />
+                                </div>
+                                <div class="itemsCont-image moods_img_mb" style="padding-top: {% unless block.settings.gamingItemsLargeImageMobile.presentation.focal_point == '50.0% 50.0%' %}{{ 1 | divided_by: block.settings.gamingItemsLargeImageMobile.aspect_ratio | times: 120 }}%{% else %}{{ 1 | divided_by: block.settings.gamingItemsLargeImageMobile.aspect_ratio | times: 100 }}%{% endunless %}">
+                                    <img src="{{ block.settings.gamingItemsLargeImageMobile | img_url: 'master' }}" alt="{{ block.settings.gamingItemsLargeImageMobile.alt | escape }}" />
+                                </div>
+                            {% elsif block.type == 'gamingItemsDot' %}
+                                {%- liquid
+                                assign gaming_dot_container_left = block.settings.gamingDotPositionLeft
+                                assign gaming_dot_container_top = block.settings.gamingDotPositionTop
+                                assign gaming_dot_container_left_mb = block.settings.gamingDotPositionLeftMobile
+                                assign gaming_dot_container_top_mb = block.settings.gamingDotPositionTopMobile
+                                -%}
+                                <div class="gaming_dot-container" style="--gaming_dot_container_left: {{ gaming_dot_container_left }};
+                                    --gaming_dot_container_top: {{ gaming_dot_container_top }};
+                                    --gaming_dot_container_left_mb: {{ gaming_dot_container_left_mb }};
+                                    --gaming_dot_container_top_mb: {{ gaming_dot_container_top_mb }};">
+                                    <style>
+                                        .gaming_dot-container{
+                                            left: var(--gaming_dot_container_left);
+                                            top: var(--gaming_dot_container_top);
+                                        }
+                                        @media(max-width: 767px) {
+                                            .gaming_dot-container{
+                                                left: var(--gaming_dot_container_left_mb);
+                                                top: var(--gaming_dot_container_top_mb);
+                                            }
+                                        }
+                                    </style>
+                                    <div class="dot-icons">
+                                        <span class="dot-icon"></span>
+                                    </div>
+                                    <a {% if block.settings.gamingDotProdLink != blank %}href="{{ block.settings.gamingDotProdLink }}" {% else %} aria-disabled="true" {% endif %}  class="dot-prod-item">
+                                        <div class="dot-prod-item-left">
+                                            {% if block.settings.gamingDotProdFeatherImage != blank %}
+                                                <img src="{{ block.settings.gamingDotProdFeatherImage | img_url: 'master' }}" alt="{{ block.settings.gamingDotProdFeatherImage.alt | escape }}" />
+                                            {% else %}
+                                                <img src="{{ block.settings.gamingDotProd.featured_image | img_url: 'master' }}" alt="{{ block.settings.gamingDotProd.featured_image.alt | escape }}" />
+                                            {% endif %}
+                                        </div>
+                                        <div class="dot-prod-item-right">
+                                            <div class="dot-prod-title">{{ block.settings.gamingDotProdtitle }}</div>
+                                            <div class="dot-prod-desc">{{ block.settings.gamingDotProdDesc }}</div>
+                                            <div class="dot-prod-prices">
+                                                {% if block.settings.gamingDotProd.selected_or_first_available_variant.metafields.custom.discount_price.value %}
+                                                    <span class="discount-sale-price">
+                                                        {{ block.settings.gamingDotProd.selected_or_first_available_variant.price | minus: block.settings.gamingDotProd.selected_or_first_available_variant.metafields.custom.discount_price.value | money }}
+                                                    </span>
+                                                {% endif %}
+                                                <span class="origa-sale-price {% if block.settings.gamingDotProd.selected_or_first_available_variant.metafields.custom.discount_price.value %}origa-sale-price-active{% endif %}">{{ block.settings.gamingDotProd.selected_or_first_available_variant.price | money }}</span>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="swiper-pagination"></div>
+        <div class="swiperLeftRightSvg">
+            <span class="left-svg">
+                <svg width="9" height="14" viewBox="0 0 9 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M7.65674 1L1.99988 6.65685L7.65674 12.3137" stroke="black" stroke-width="2"/>
+                </svg>
+
+            </span>
+            <span class="right-svg">
+                <svg width="9" height="14" viewBox="0 0 9 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M1.34326 1L7.00012 6.65685L1.34326 12.3137" stroke="black" stroke-width="2"/>
+                </svg>
+
+            </span>
+        </div>
+
+    </div>
+</section>
+
+<script>
+    $('.dot-container').on('click', function(){
+        if ($(this).hasClass('active')) {
+            $(this).removeClass('active');
+            $(this).find('.dot-prod-item').css('transform', '');
+        } else {
+            $('.dot-container').removeClass('active');
+            $('.dot-prod-item').css('transform', '');
+            $(this).addClass('active');
+
+            const parentRect = this.parentElement.getBoundingClientRect();
+            const $card = $(this).find('.dot-prod-item');
+            const cardRect = $card[0].getBoundingClientRect();
+
+            let offsetX = 0;
+            let offsetY = 0;
+
+            {% comment %} 判断上下左右是否超出，并计算超出距离 {% endcomment %}
+            if (cardRect.left < parentRect.left) {
+                {% comment %} 左边超出 {% endcomment %}
+                offsetX = parentRect.left - cardRect.left;
+            }
+            if (cardRect.right > parentRect.right) {
+                {% comment %} 右边超出（负值） {% endcomment %}
+                offsetX = parentRect.right - cardRect.right - 70;
+            }
+            if (cardRect.top < parentRect.top) {
+                {% comment %} 上边超出 {% endcomment %}
+                offsetY = parentRect.top - cardRect.top;
+            }
+            if (cardRect.bottom > parentRect.bottom) {
+                {% comment %} 下边超出（负值） {% endcomment %}
+                offsetY = parentRect.bottom - cardRect.bottom;
+                offsetX += 20
+            }
+
+
+            if (offsetX !== 0 || offsetY !== 0) {
+                {% comment %} 用 transform 调整位置（不影响原布局） {% endcomment %}
+                $card.css('transform', `translate(${offsetX}px, ${offsetY}px)`);
+            } else {
+                {% comment %} 恢复原位置 {% endcomment %}
+                $card.css('transform', '');
+            }
+        }
+
+        
+    })
+
+    $('.gaming_dot-container').on('click', function(){
+        if ($(this).hasClass('active')) {
+            $(this).removeClass('active');
+            $(this).find('.dot-prod-item').css('transform', '');
+        } else {
+            $('.gaming_dot-container').removeClass('active');
+            $(this).addClass('active');
+            
+            $('.dot-prod-item').css('transform', '');
+            $(this).addClass('active');
+
+            const parentRect = this.parentElement.getBoundingClientRect();
+            const $card = $(this).find('.dot-prod-item');
+            const cardRect = $card[0].getBoundingClientRect();
+
+            let offsetX = 0;
+            let offsetY = 0;
+
+            {% comment %} 判断上下左右是否超出，并计算超出距离 {% endcomment %}
+            if (cardRect.left < parentRect.left) {
+                {% comment %} 左边超出 {% endcomment %}
+                offsetX = parentRect.left - cardRect.left;
+            }
+            if (cardRect.right > parentRect.right) {
+                {% comment %} 右边超出（负值） {% endcomment %}
+                offsetX = parentRect.right - cardRect.right - 70;
+            }
+            if (cardRect.top < parentRect.top) {
+                {% comment %} 上边超出 {% endcomment %}
+                offsetY = parentRect.top - cardRect.top;
+            }
+            if (cardRect.bottom > parentRect.bottom) {
+                {% comment %} 下边超出（负值） {% endcomment %}
+                offsetY = parentRect.bottom - cardRect.bottom;
+                offsetX += 20
+            }
+
+            if (offsetX !== 0 || offsetY !== 0) {
+                {% comment %} 用 transform 调整位置（不影响原布局） {% endcomment %}
+                $card.css('transform', `translate(${offsetX}px, ${offsetY}px)`);
+            } else {
+                {% comment %} 恢复原位置 {% endcomment %}
+                $card.css('transform', '');
+            }
+        }
+    })
+
+    let moodsSwiper = new Swiper('.home-moods-section .moods-cont',{
+      loop: true,
+      pagination: {
+        el: '.home-moods-section .swiper-pagination',
+        clickable: true,
+      },
+      slidesPerView : 1,
+      breakpoints: { 
+        320: {
+          slidesPerView: 1,
+        },
+        992: {
+          slidesPerView: 1,
+        },
+        1025: {
+          slidesPerView : 1,
+        }
+      }
+    })
+    {% comment %} change addEventListen {% endcomment %}
+    moodsSwiper.on('realIndexChange', function () {
+        const index = moodsSwiper.realIndex
+        switch(index) {
+            case 0:
+                $('.home-moods-section .moods-btns .living-btn').addClass('active')
+                $('.home-moods-section .moods-btns .gaming-btn').removeClass('active')
+                break;
+            case 1:
+                $('.home-moods-section .moods-btns .gaming-btn').addClass('active')
+                $('.home-moods-section .moods-btns .living-btn').removeClass('active')
+                break;
+            default:
+                $('.home-moods-section .moods-btns .living-btn').addClass('active')
+                $('.home-moods-section .moods-btns .gaming-btn').removeClass('active')
+        }
+        $('.dot-container').removeClass('active')
+        $('.gaming_dot-container').removeClass('active')
+    })
+
+    {% comment %} click Btns {% endcomment %}
+    $('.home-moods-section .swiperLeftRightSvg .left-svg').on('click', function() {
+        moodsSwiper.slidePrev()
+    })
+    $('.home-moods-section .swiperLeftRightSvg .right-svg').on('click', function(){
+        moodsSwiper.slideNext()
+    })
+</script>
+
+{% schema %}
+    {
+        "name": "Home Moods",
+        "settings": [
+            {
+                "type": "text",
+                "id": "sectionTitle",
+                "label": "Section Title",
+                "default": "Blacklyte satisfies all your moods"
+            },
+            {
+                "type": "text",
+                "id": "sectionDesc",
+                "label": "Section Descripe",
+                "default": "Seamlessly shifting between work, play, and rest — always supporting your best posture."
+            },
+            {
+                "type": "text",
+                "id": "learnMoreBTN",
+                "label": "Learn More BUTTON",
+                "default": "Living Room"
+            },
+            {
+                "type": "url",
+                "id": "learnMoreBTNLink",
+                "label": "Learn More BUTTON Link"
+            },
+            {
+                "type": "text",
+                "id": "buyNowBTN",
+                "label": "Buy Now BUTTON",
+                "default": "Game Room"
+            },
+            {
+                "type": "url",
+                "id": "buyNowBTNLink",
+                "label": "Buy Now BUTTON Link"
+            }
+        ],
+        "blocks": [
+            {
+                "type": "livingItems",
+                "name": "livingItems",
+                "settings": [
+                    {
+                        "type": "image_picker",
+                        "id": "itemsLargeImage",
+                        "label": "Items Large Image"
+                    },
+                    {
+                        "type": "image_picker",
+                        "id": "itemsLargeImageMobile",
+                        "label": "Items Large Image Mobile"
+                    },
+                ]
+            },
+            {
+                "type": "livingItemsDot",
+                "name": "livingItemsDot",
+                "settings": [
+                    {
+                        "type": "text",
+                        "id": "dotPositionLeft",
+                        "label": "Items Dots Position Left"
+                    },
+                    {
+                        "type": "text",
+                        "id": "dotPositionLeftMobile",
+                        "label": "Items Dots Position Left Mobile"
+                    },
+                    {
+                        "type": "text",
+                        "id": "dotPositionTop",
+                        "label": "Items Dots Position Top"
+                    },
+                    {
+                        "type": "text",
+                        "id": "dotPositionTopMobile",
+                        "label": "Items Dots Position Top Mobile"
+                    },
+                    {
+                        "type": "text",
+                        "id": "dotPositionItemLeft",
+                        "label": "Items Dots Items Position Left"
+                    },
+                    {
+                        "type": "text",
+                        "id": "dotPositionItemLeftMobile",
+                        "label": "Items Dots Position Left Mobile"
+                    },
+                    {
+                        "type": "text",
+                        "id": "dotPositionItemTop",
+                        "label": "Items Dots Items Position Top"
+                    },
+                    {
+                        "type": "text",
+                        "id": "dotPositionItemTopMobile",
+                        "label": "Items Dots Items Position Top Mobile"
+                    },
+                    {
+                        "type": "product",
+                        "id": "dotProd",
+                        "label": "Items Product Dot"
+                    },
+                    {
+                        "type": "image_picker",
+                        "id": "dotProdFeatherImage",
+                        "label": "Items Product Dot Feather Image"
+                    },
+                    {
+                        "type": "text",
+                        "id": "dotProdtitle",
+                        "label": "Items Dots Product Title"
+                    },
+                    {
+                        "type": "richtext",
+                        "id": "dotProdDesc",
+                        "label": "Items Dots Product Descripe"
+                    },
+                    {
+                        "type": "url",
+                        "id": "dotProdLink",
+                        "label": "Items Product Dot Link"
+                    }
+                ]
+            },
+            {
+                "type": "gamingItems",
+                "name": "gamingItems",
+                "settings": [
+                    {
+                        "type": "image_picker",
+                        "id": "gamingItemsLargeImage",
+                        "label": "Gaming Items Large Image"
+                    },
+                    {
+                        "type": "image_picker",
+                        "id": "gamingItemsLargeImageMobile",
+                        "label": "gaming Items Large Image Mobile"
+                    },
+                ]
+            },
+            {
+                "type": "gamingItemsDot",
+                "name": "gamingItemsDot",
+                "settings": [
+                    {
+                        "type": "text",
+                        "id": "gamingDotPositionLeft",
+                        "label": "gaming Items Dots Position Left"
+                    },
+                    {
+                        "type": "text",
+                        "id": "gamingDotPositionLeftMobile",
+                        "label": "gaming Items Dots Position Left Mobile"
+                    },
+                    {
+                        "type": "text",
+                        "id": "gamingDotPositionTop",
+                        "label": "gaming Items Dots Position Top"
+                    },
+                    {
+                        "type": "text",
+                        "id": "gamingDotPositionTopMobile",
+                        "label": "gaming Items Dots Position Top Mobile"
+                    },
+                    {
+                        "type": "product",
+                        "id": "gamingDotProd",
+                        "label": "gaming Items Product Dot"
+                    },
+                    {
+                        "type": "image_picker",
+                        "id": "gamingDotProdFeatherImage",
+                        "label": "gaming Items Product Dot Feather Image"
+                    },
+                    {
+                        "type": "text",
+                        "id": "gamingDotProdtitle",
+                        "label": "gaming Items Dots Product Title"
+                    },
+                    {
+                        "type": "richtext",
+                        "id": "gamingDotProdDesc",
+                        "label": "gaming Items Dots Product Descripe"
+                    },
+                    {
+                        "type": "url",
+                        "id": "gamingDotProdLink",
+                        "label": "gaming Items Dots Product LINK"
+                    }
+                ]
+            }
+        ],
+        "presets": [
+            {
+                "name": "Home Moods"
+            }
+        ]
+    }
+{% endschema %}

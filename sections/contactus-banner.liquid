@@ -1,0 +1,310 @@
+<style>
+    .section-{{ section.id }} {
+        background: #EBEBEB;
+    }
+    .section-{{ section.id }} .container-full{
+        padding: 33px 16% 100px;
+    }
+    .section-{{ section.id }} .large-image-container{
+        position: relative;
+    }
+
+    .section-{{ section.id }} .container-full img{
+        height: auto;
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+    .section-{{ section.id }} .large-image{
+        padding-top: var(--pc-ratio);
+    }
+
+    .section-{{ section.id }} .large-image picture{
+        width: 100%;
+        position: absolute;
+        top: 0;
+        height: auto;
+    }
+
+    .section-{{ section.id }} .contact-us-title{
+        margin-top: 84px;
+        font-family: Roboto;
+        font-weight: 600;
+        font-style: SemiBold;
+        font-size: 30px;
+        line-height: 34px;
+        letter-spacing: 0%;
+        vertical-align: middle;
+        color: #262629;
+        text-align: center;
+    }
+    .section-{{ section.id }} .icon-lists{
+        display: flex;
+        margin-top: 53px;
+        justify-content: space-between;
+    }
+    .section-{{ section.id }} .icon-lists .icon-item{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: calc(100% / 3);
+    }
+    .section-{{ section.id }} .icon-lists .icon-svg svg{
+        width: 40px;
+        height: 40px;
+    }
+
+    .section-{{ section.id }} .icon-lists .icon-item .block-title{
+        font-family: Roboto;
+        font-weight: 600;
+        font-style: SemiBold;
+        font-size: 20px;
+        line-height: 34px;
+        letter-spacing: 0%;
+        vertical-align: middle;
+        color: #18181B;
+        margin-top: 5px;
+    }
+    .section-{{ section.id }} .icon-lists .icon-item .block-desc{
+        width: 80%;
+        font-family: Roboto;
+        font-weight: 400;
+        font-style: Regular;
+        font-size: 16px;
+        line-height: 22px;
+        letter-spacing: 0%;
+        text-align: center;
+        vertical-align: middle;
+        color: #262629;
+        margin: 6px 0;
+        word-break: break-word;
+        overflow-wrap: break-word;
+        white-space: normal;
+        flex: 1;
+    }
+    .section-{{ section.id }} .icon-lists .icon-item .block-icon{
+        font-family: Roboto;
+        font-weight: 500;
+        font-style: Medium;
+        font-size: 16px;
+        letter-spacing: 0%;
+        vertical-align: middle;
+        text-align: center;
+        color: #262629;
+        display: flex;
+        align-items: flex-end;
+        cursor: pointer;
+    }
+    .section-{{ section.id }} .icon-lists .icon-item:hover .block-icon svg{
+        transform: translateX(5px);
+    }
+    .section-{{ section.id }} .icon-lists .icon-item .block-icon svg{
+        width: 16px;
+        height: 16px;
+    }
+
+
+    {% comment %} iPhone {% endcomment %}
+    @media(max-width: 767px){
+        .section-{{ section.id }} .container-full{
+            padding: 33px 10px 40px;
+        }
+        .section-{{ section.id }} .large-image{
+            padding-top: var(--mb-ratio);
+        }
+        .section-{{ section.id }} .contact-us-title{
+            margin-top: 27px;
+            font-size: 26px;
+            line-height: 34px;
+        }
+        .section-{{ section.id }} .icon-lists{
+            margin-top: 13px;
+            flex-direction: column;
+            gap: 26px;
+        }
+        .section-{{ section.id }} .icon-lists .icon-item{
+            width: 100%;
+        }
+    }
+
+    {% comment %} iPad {% endcomment %}
+    @media(min-width: 768px) and (max-width: 1024px){
+        .section-{{ section.id }} .container-full{
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+    }
+
+    @media(min-width: 1025px) and (max-width: 1480px){
+        .section-{{ section.id }} .container-full{
+            padding-left: 60px;
+            padding-right: 60px;
+        }
+        
+    }
+</style>
+
+<section class="section-{{ section.id }}" id="{{ section.id }}" data-section-id="{{ section.id }}">
+    <div class="container-full">
+        {% for block in section.blocks %}
+            {% if block.type == "largeImage" %}
+                {% if block.settings.blockImage != blank or block.settings.blockImage_mb != blank %}
+                    {% liquid
+                        assign pc_ratio = 1 | divided_by: block.settings.blockImage.aspect_ratio | times: 100
+                        if block.settings.blockImage.presentation.focal_point != '50.0% 50.0%'
+                            assign pc_ratio = pc_ratio | times: 1.2
+                        endif
+
+                        assign mb_ratio = 1 | divided_by: block.settings.blockImage_mb.aspect_ratio | times: 100
+                        if block.settings.blockImage_mb.presentation.focal_point != '50.0% 50.0%'
+                            assign mb_ratio = mb_ratio | times: 1.2
+                        endif
+                    %}
+                {% endif %}
+                <div class="large-image-container">
+                    <div class="large-image" style="--pc-ratio: {{ pc_ratio }}%;--mb-ratio: {{ mb_ratio }}%;">
+                        <picture class="event-logos">
+                            <source media="(max-width: 768px)"
+                                    srcset="{{ block.settings.blockImage_mb | image_url: width: 800 }}"
+                                    data-srcset="{{ block.settings.blockImage_mb | image_url: width: 800 }}">
+
+                            <img {% render 'lazyload',preview_img: block.settings.blockImage, class: true, enable_rtl: settings.enable_layout_rtl  %}
+                                width="{{ block.settings.blockImage }}"
+                                height="{{ block.settings.blockImage.height }}"
+                                alt="{{ block.settings.blockImage.alt | escape }}"
+                                loading="lazy"
+                                decoding="async"
+                                style="height: auto;"/>
+                        </picture>
+                    </div>
+
+                </div>
+            {% endif %}
+        {% endfor %}
+        <div class="contact-us-icons">
+            {% if section.settings.contactIconsTitle != blank %}
+                <div class="contact-us-title">{{ section.settings.contactIconsTitle }}</div>
+            {% endif %}
+            <div class="icon-lists">
+                {% for block in section.blocks %}
+                    {% if block.type == "smallIcon" %}
+                        <div class="icon-item">
+                            {% if block.settings.blockIcon != blank %}
+                                <div class="icon-svg">
+                                    {{ block.settings.blockIcon }}
+                                </div>
+                            {% endif %}
+                            {% if block.settings.blockTitle != blank %}
+                                <div class="block-title">{{ block.settings.blockTitle }}</div>
+                            {% endif %}
+                            {% if block.settings.blockDesc != blank %}
+                                <div class="block-desc">{{ block.settings.blockDesc }}</div>
+                            {% endif %}
+                            {% if block.settings.blockTarget != blank %}
+                                <div class="block-icon" id="{{ block.settings.blockTargetId }}">
+                                    {{ block.settings.blockTarget }}
+                                    <span class="block-svg">
+                                        <svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M6.5 4.5L10.5 8.5L6.5 12.5" stroke="#262629" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </span>
+                                </div>
+                            {% endif %}
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    $(document).ready(function(){
+        const chatTarget = document.querySelector('#chat-target-id');
+        zE('messenger', 'close');
+
+        chatTarget.onclick = () => {
+            zE('messenger', 'open');
+        };
+
+        $('#email-target-id').click(function(){
+            
+            const email = "Support@blacklyte.com";
+            {% comment %} 直接赋值 location.href 是 Mac Safari 最通用的方式 {% endcomment %}
+            window.location.href = "mailto:" + email;
+        })
+
+        {% comment %} discord {% endcomment %}
+        $('#discord-target-id').click(function(){
+            window.location.href = "https://discord.gg/blacklyte"
+        })
+    })
+</script>
+
+{% schema %}
+{
+    "name": "contact us banner",
+    "settings": [
+        {
+            "type": "text",
+            "id": "contactIconsTitle",
+            "label": "contact us Icons Title",
+            "default": "Contact Us"
+        }
+    ],
+    "blocks": [
+        {
+            "type": "largeImage",
+            "name": "largeImage",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "blockImage",
+                    "label": "block Image"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "blockImage_mb",
+                    "label": "block Image Mobile"
+                }
+            ]
+        },
+        {
+            "type": "smallIcon",
+            "name": "smallIcon",
+            "settings": [
+                {
+                    "type": "textarea",
+                    "id": "blockIcon",
+                    "label": "block Icon"
+                },
+                {
+                    "type": "text",
+                    "id": "blockTitle",
+                    "label": "block Title"
+                },
+                {
+                    "type": "text",
+                    "id": "blockDesc",
+                    "label": "block Descripe"
+                },
+                {
+                    "type": "text",
+                    "id": "blockTarget",
+                    "label": "block Target"
+                },
+                {
+                    "type": "text",
+                    "id": "blockTargetId",
+                    "label": "block Target ID"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "contact us banner"
+        }
+    ]
+}
+{% endschema %}

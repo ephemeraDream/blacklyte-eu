@@ -1,0 +1,40 @@
+<div class="warranty-item">
+    <div class="item-image">
+        <img src="{{ block.settings.warrantyImage | img_url: 'master' }}"
+            width="{{ block.settings.warrantyImage.width }}"
+            height="{{ block.settings.warrantyImage.height }}"
+            alt="{{ block.settings.warrantyImage.alt }}" />
+    </div>
+    <div class="item-cont">
+        <div class="item-cont-title">{{ block.settings.warrantyTitle }}</div>
+        <div class="item-cont-desc">{{ block.settings.warrantyDesc }}</div>
+    </div>
+</div>
+{% schema %}
+{
+    "name": "warranty name",
+    "class": "item-warranty",
+    "settings": [
+        {
+            "type": "image_picker",
+            "id": "warrantyImage",
+            "label": "warranty Image"
+        },
+        {
+            "type": "text",
+            "id": "warrantyTitle",
+            "label": "warranty Title"
+        },
+        {
+            "type": "text",
+            "id": "warrantyDesc",
+            "label": "warranty Desc"
+        }
+    ],
+    "presets": [
+        {
+            "name": "warranty name"
+        }
+    ]
+}
+{% endschema %}

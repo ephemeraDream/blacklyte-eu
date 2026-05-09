@@ -1,0 +1,97 @@
+{{ 'buypage-section-16.css' | asset_url | stylesheet_tag }}
+
+<div class="buypage_section_16" id="{{section.settings.specId}}">
+  {{
+    section.settings.video
+    | video_tag: class: 'buypage_section_16_video pc_show', loop: true, muted: true, playsinline: true, preload: 'auto'
+  }}
+  {{ section.settings.image_mobile | image_url: width: 750 | image_tag: class: 'buypage_section_16_video pmd_show' }}
+  <div class="buypage_section_16_mask"></div>
+  <div class="buypage_section_16_info">
+    <div class="buypage_section_16_head">
+      <div class="buypage_section_16_title">{{ section.settings.title }}</div>
+      <div class="buypage_section_16_text">{{ section.settings.text }}</div>
+    </div>
+    <div class="buypage_section_16_subtitle">{{ section.settings.subtitle }}</div>
+    <div class="buypage_section_16_contain">
+      {% for block in section.blocks %}
+        <div class="buypage_section_16_box">
+          {{ block.settings.icon }}
+          <div class="buypage_section_16_box_title">{{ block.settings.title }}</div>
+          <div class="buypage_section_16_box_text">{{ block.settings.text }}</div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "buypage section 16",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "specId",
+      "label": "specId"
+    },
+    {
+      "type": "video",
+      "id": "video",
+      "label": "video"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_mobile",
+      "label": "image mobile"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "title"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "text"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "subtitle"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "item",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "icon",
+          "label": "icon"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "title"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "buypage section 16"
+    }
+  ]
+}
+{% endschema %}

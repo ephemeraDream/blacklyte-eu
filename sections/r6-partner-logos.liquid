@@ -1,0 +1,208 @@
+<style>
+    .section-{{ section.id }} {
+        padding-top: 100px;
+        padding-bottom: 100px;
+    }
+    .section-{{ section.id }} .container-full{
+        padding-left: 16%;
+        padding-right: 16%;
+    }
+    .section-{{ section.id }} .cont{
+        text-align: center;
+    }
+    .section-{{ section.id }} .cont .cont-title{
+        font: 700 50px 'DIN';
+        color: #FFB321;
+    }
+    .section-{{ section.id }} .cont .cont-desc{
+        font: 700 50px 'DIN';
+        color: #FFF;
+    }
+    .section-{{ section.id }} .cont-logos{
+        display: flex;
+        gap: 90px;
+        flex-wrap: wrap;
+        margin-top: 60px;
+        justify-content: center;
+    }
+    .section-{{ section.id }} .cont-logos .logo-item{
+        display: flex;
+        flex-direction: column;
+        width: calc((100% - 360px) / 5);
+        border: 1px solid #FFB321;
+        background: #0E0E0E;
+    }
+    .section-{{ section.id }} .cont-logos .logo-item .logo-item-icon{
+        position: relative;
+    }
+    .section-{{ section.id }} .cont-logos .logo-item .logo-item-icon img{
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+    .section-{{ section.id }} .cont-logos .logo-item .logo-item-title{
+        font: 500 1.1vw 'DIN';
+        color: #FFB321;
+        padding: 17px 0;
+        background: #FFB3211F;
+        border-top: 1px solid #FFB321;
+        text-align: center;
+        flex: 1;
+    }
+
+    {% comment %} iPhone {% endcomment %}
+    @media(max-width: 767px){
+        .section-{{ section.id }} {
+            padding-top: 100px;
+            padding-bottom: 100px;
+        }
+        .section-{{ section.id }} .container-full{
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+        .section-{{ section.id }} .cont .cont-title,
+        .section-{{ section.id }} .cont .cont-desc{
+            font-size: 19px;
+        }
+        .section-{{ section.id }} .cont-logos{
+            gap: 9px;
+            margin-top: 20px;
+        }
+        .section-{{ section.id }} .cont-logos .logo-item{
+            width: calc((100% - 36px) / 5);
+        }
+        .section-{{ section.id }} .cont-logos .logo-item:nth-of-type(n + 6){
+            margin-top: 20px;
+        }
+        .section-{{ section.id }} .cont-logos .logo-item .logo-item-title{
+            padding: 5px 0;
+            font-size: 2vw;
+        }
+    }
+    
+    {% comment %} iPad {% endcomment %}
+    @media(min-width: 768px) and (max-width: 1024px){
+        .section-{{ section.id }} .container-full{
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+        .section-{{ section.id }} .cont .cont-title,
+        .section-{{ section.id }} .cont .cont-desc{
+            font-size: 40px;
+        }
+        .section-{{ section.id }} .cont-logos{
+            gap: 50px;
+        }
+        .section-{{ section.id }} .cont-logos .logo-item{
+            width: calc((100% - 200px) / 5);
+        }
+    }
+
+    @media (min-width: 1025px) and (max-width: 1480px){
+        .section-{{ section.id }} .container-full{
+            padding-left: 60px;
+            padding-right: 60px;
+        }
+        .section-{{ section.id }} .cont-logos{
+            gap: 50px;
+        }
+        .section-{{ section.id }} .cont-logos .logo-item{
+            width: calc((100% - 200px) / 5);
+        }
+    }
+
+</style>
+
+<section id="{{ section.id }}" class="section-{{ section.id }}" data-section-id="{{ section.id }}">
+    {%- liquid
+        assign bgImage = section.settings.webBgImage
+        assign bgImageMb = section.settings.mobileBgImage
+    -%}
+
+    <style>
+        .section-{{ section.id }} {
+            background-image: url({{ bgImage | img_url: 'master' }});
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        @media (max-width: 767px) {
+            .section-{{ section.id }} {
+                background-image: url({{ bgImageMb | img_url: 'master' }});
+                background-position: top;
+            }
+        }
+    </style>
+    <div class="container-full">
+        <div class="cont">
+            <div class="cont-title">{{ section.settings.sectionTitle }}</div>
+            <div class="cont-desc">{{ section.settings.sectionDesc }}</div>
+        </div>
+        <div class="cont-logos">
+            {% for block in section.blocks %}
+                {% if block.type == 'item' %}
+                    <div class="logo-item">
+                        <div class="logo-item-icon" style="padding-top: {% unless block.settings.itemIcon.presentation.focal_point == '50.0% 50.0%' %}{{ 1 | divided_by: block.settings.itemIcon.aspect_ratio | times: 120 }}%{% else %}{{ 1 | divided_by: block.settings.itemIcon.aspect_ratio | times: 100 }}%{% endunless %}">
+                            <img src="{{ block.settings.itemIcon | img_url: 'master' }}" />
+                        </div>
+                        <div class="logo-item-title">{{ block.settings.itemTitle }}</div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+{% schema %}
+{
+    "name": "r6 Partner Logos",
+    "settings": [
+        {
+            "type": "image_picker",
+            "id": "webBgImage",
+            "label": "Section Background Image"
+        },
+        {
+            "type": "image_picker",
+            "id": "mobileBgImage",
+            "label": "Background Image Mobile"
+        },
+        {
+            "type": "text",
+            "id": "sectionTitle",
+            "label": "Section Title",
+            "default": "The Teams that qualified for"
+        },
+        {
+            "type": "text",
+            "id": "sectionDesc",
+            "label": "Section Description"
+        }
+
+    ],
+    "blocks": [
+        {
+            "type": "item",
+            "name": "item",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "itemIcon",
+                    "label": "Item Icon"
+                },
+                {
+                    "type": "text",
+                    "id": "itemTitle",
+                    "label": "Item Title"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "r6 Partner Logos"
+        }
+    ]
+}
+{% endschema %}

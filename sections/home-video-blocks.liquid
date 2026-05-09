@@ -1,0 +1,243 @@
+<style>
+    .section-{{ section.id }}{
+        background: #060606;
+    }
+    .section-{{ section.id }} .container-full{
+        position: relative;
+    }
+    .section-{{ section.id }} .container-full:before{
+        content: '';
+        display: block;
+        width: 100%;
+        height: 100%;
+        background: #000;
+        opacity: 0.14;
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+    .section-{{ section.id }} .container-full .video-item-cont{
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        text-align: center;
+    }
+    .section-{{ section.id }} .video-item-cont .title{
+        font-family: Poppins;
+        font-weight: 600;
+        font-style: SemiBold;
+        font-size: 40px;
+        line-height: 1.2;
+        letter-spacing: 0%;
+        color: #FFFFFF;
+        white-space: nowrap;
+    }
+    .section-{{ section.id }} .video-item-cont .descripe{
+        font-family: Poppins;
+        font-weight: 500;
+        font-style: Medium;
+        font-size: 16px;
+        line-height: 24px;
+        letter-spacing: 0.32px;
+        text-align: center;
+        color: #FFFFFF;
+        margin: 10px auto 17px;
+        width: 90%;
+    }
+    .section-{{ section.id }} .video-item-cont .video-item-btns{
+        display: block;
+        font-family: Poppins;
+        font-weight: 500;
+        font-style: Medium;
+        font-size: 16px;
+        line-height: 24px;
+        letter-spacing: 0.32px;
+        text-align: center;
+        background: #FFFFFF;
+        color: #262629;
+        padding: 13px 50px;
+        border-radius: 100px;
+        width: max-content;
+        margin: auto;
+        transition: all .35s ease;
+    }
+    .section-{{ section.id }} .video-item-cont .video-item-btns:hover{
+        background: #262629;
+        color: #fff;
+    }
+
+    .section-{{ section.id }} .video-item-sett{
+        width: 100%;
+        aspect-ratio: 1920 / 800;
+        max-height: 80vh;
+        object-fit: cover;
+        object-position: center;
+    }
+
+    {% comment %} iPhone {% endcomment %}
+    @media(max-width: 767px){
+        .section-{{ section.id }} .video-item{
+            display: flex;
+            flex-direction: column-reverse;
+        }
+        .section-{{ section.id }} .container-full .video-item-cont{
+            position: static;
+            transform: none;
+            padding-top: 40px;
+            padding-bottom: 24px;
+        }
+        .section-{{ section.id }} .container-full:before{
+            opacity: 0;
+            display: none;
+        }
+        .section-{{ section.id }} .video-item-cont .title{
+            font-size: 24px;
+            line-height: 30px;
+            white-space: normal;
+        }
+        .section-{{ section.id }} .video-item-cont .descripe{
+            font-size: 14px;
+            line-height: 24px;
+            margin: 5px auto 13px;
+            width: calc(100% - 40px);
+        }
+        .section-{{ section.id }} .video-item-cont .video-item-btns{
+            font-size: 16px;
+            line-height: 24px;
+            padding: 10px 30px;
+        }
+        .section-{{ section.id }} .video-item-sett{
+            width: 100%;
+            aspect-ratio: 375 / 320;
+        }
+    
+    }
+
+    {% comment %} iPad {% endcomment %}
+    @media(min-width: 768px) and (max-width: 1024px){
+        .section-{{ section.id }} .video-item-cont .title{
+            font-size: 30px;
+            line-height: 1.2;
+        }
+        .section-{{ section.id }} .video-item-cont .descripe{
+            font-size: 12px;
+            line-height: normal;
+        }
+    }
+
+</style>
+
+<div class="section-{{ section.id }}" data-section-id="{{ section.id }}" id="{{ section.id }}">
+    <div class="container-full">
+        {% if section.blocks.size > 0 %}
+            <div class="blocks-list">
+                {% for block in section.blocks %}
+                   {% if block.type == "item" %}
+                        <div class="video-item">
+                            {% if block.settings.itemVideo != blank %}
+                                {% assign poster_image = block.settings.itemPosterImage | image_url %}
+                                {{
+                                    block.settings.itemVideo
+                                    | video_tag:
+                                    class: 'video-item-sett',
+                                    loop: true,
+                                    muted: true,
+                                    playsinline: true,
+                                    autoplay: true,
+                                    preload: 'metadata',
+                                    poster: poster_image
+                                }}
+                            {% else %}
+                                <picture class="trust-data-item-image">
+                                    <source media="(max-width: 768px)"
+                                            srcset="{{ block.settings.itemPosterImage_mb | image_url: width: 800 }}"
+                                            data-srcset="{{ block.settings.itemPosterImage_mb | image_url: width: 800 }}">
+
+                                    <img {% render 'lazyload',preview_img: block.settings.itemPosterImage, class: true, enable_rtl: settings.enable_layout_rtl  %}
+                                        width="{{ block.settings.itemPosterImage.width }}"
+                                        height="{{ block.settings.itemPosterImage.height }}"
+                                        alt="{{ block.settings.itemPosterImage.alt | escape }}"
+                                        loading="lazy"
+                                        decoding="async"
+                                        style="height: auto;"/>
+                                </picture>
+                            {% endif %}
+                            
+                            <div class="video-item-cont">
+                                {% if block.settings.itemVideoTitle != blank %}
+                                    <h2 class="title">{{ block.settings.itemVideoTitle }}</h2>
+                                {% endif %}
+                                {% if block.settings.itemVideoDesc != blank %}
+                                    <div class="descripe">{{ block.settings.itemVideoDesc }}</div>
+                                {% endif %}
+                                {% if block.settings.itemVideoLink != blank %}
+                                    <a class="video-item-btns" {% if block.settings.itemVideoLinkURL != blank %} href="{{ block.settings.itemVideoLinkURL }}" {% else %} aria-disabled="true" {% endif %}>
+                                        {{ block.settings.itemVideoLink }}
+                                    </a>
+                                {% endif %}
+                            </div>
+                        </div>
+                   {% endif %}
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+</div>
+
+{% schema %}
+{
+    "name": "Home Video Blocks",
+    "tag": "section",
+    "settings": [ ],
+    "blocks": [
+        {
+            "type": "item",
+            "name": "item",
+            "settings": [
+                {
+                    "type": "video",
+                    "id": "itemVideo",
+                    "label": "item Video"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "itemPosterImage",
+                    "label": "item Poster Image"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "itemPosterImage_mb",
+                    "label": "item Poster Image Mobile"
+                },
+                {
+                    "type": "text",
+                    "id": "itemVideoTitle",
+                    "label": "item Video Title"
+                },
+                {
+                    "type": "richtext",
+                    "id": "itemVideoDesc",
+                    "label": "item Video Descripe"
+                },
+                {
+                    "type": "text",
+                    "id": "itemVideoLink",
+                    "label": "item Video Link",
+                    "default": "Learn more"
+                },
+                {
+                    "type": "url",
+                    "id": "itemVideoLinkURL",
+                    "label": "item Video Link URL"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "Home Video Blocks"
+        }
+    ]
+}
+{% endschema %}

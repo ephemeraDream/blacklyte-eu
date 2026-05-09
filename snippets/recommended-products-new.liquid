@@ -1,0 +1,302 @@
+{% if product.metafields.custom.recommended_products != blank %}
+  <div class="product_info_new_right_product_recommended">
+    <div class="product_info_new_right_select_title">
+      {{ 'products.product.text.you_might_also_like' | t }}
+    </div>
+    {% for item in product.metafields.custom.recommended_products.value -%}
+      {% if item.available %}
+        <div
+          class="product_info_new_right_product_addons_item"
+          data-id="{{ item.selected_or_first_available_variant.id }}"
+        >
+          <script
+            type="application/json"
+            class="product_info_new_right_product_addons_item_data"
+          >
+            [
+              {% for variant in item.variants %}
+                {
+                  "variant": {{ variant | json }},
+                  "symbol": {{ currency_symbol | json }},
+                  "discount": {{ variant.metafields.custom.discount_price.value | json }},
+                  "show_img": {{ variant.metafields.custom.addon_show_image.value | json }}
+                }{% unless forloop.last %},{% endunless %}
+              {% endfor %}
+            ]
+          </script>
+          <div class="product_info_new_right_product_addons_item_left">
+            <div>
+              <div class="product_info_new_right_product_addons_item_title">{{ item.title }}</div>
+              <div class="product_info_new_right_product_addons_item_price">
+                {% assign discount = item.selected_or_first_available_variant.metafields.custom.discount_price.value %}
+                +<span
+                  class="product_info_new_right_product_addons_item_price_dp{% if discount != blank %} show{% endif %}"
+                  data-value="{{ item.selected_or_first_available_variant.metafields.custom.discount_price.value | money_without_currency }}"
+                >
+                  {{-
+                    item.selected_or_first_available_variant.price
+                    | minus: item.selected_or_first_available_variant.metafields.custom.discount_price.value
+                    | money_without_trailing_zeros
+                  -}}
+                </span>
+                <span
+                  class="product_info_new_right_product_addons_item_price_op"
+                  data-value="{{ item.selected_or_first_available_variant.price | money_without_currency }}"
+                >
+                  {{- item.selected_or_first_available_variant.price | money_without_trailing_zeros -}}
+                </span>
+              </div>
+              <div class="product_info_new_right_select_line">
+                {% for option in item.options_with_values %}
+                  {%- case option.name -%}
+                    {%- when 'Material' -%}
+                      {% if option.values.size > 1 %}
+                        <div
+                          class="product_info_new_right_select_line_contain"
+                          data-type="{{ option.name }}"
+                          data-index="{{  forloop.index }}"
+                        >
+                          <select class="product_info_new_right_select_option">
+                            {% for value in option.values %}
+                              {% liquid
+                                assign variant = value.variant
+                                if variant.available == blank
+                                  assign available_variant = item.variants | where: 'option1', value | where: 'available'
+                                  if available_variant.size > 0
+                                    assign variant = available_variant[0]
+                                  endif
+                                endif
+                              %}
+                              {% unless variant.available == blank and available_variant.size == 0 %}
+                                <option
+                                  value="{{ value }}"
+                                  {% if value.selected %}
+                                    selected
+                                  {% endif %}
+                                  data-id="{{ variant.id }}"
+                                >
+                                  {{ value }}
+                                </option>
+                              {% endunless %}
+                            {% endfor %}
+                          </select>
+                        </div>
+                      {% endif %}
+                    {%- when 'Color' -%}
+                      {% if option.values.size > 1 %}
+                        <div
+                          class="product_info_new_right_select_line_contain"
+                          data-type="{{ option.name }}"
+                          data-index="{{  forloop.index }}"
+                        >
+                          <select class="product_info_new_right_select_option">
+                            {% for value in option.values %}
+                              {% liquid
+                                assign variant = value.variant
+                                if variant.available == blank
+                                  if item.title contains 'Desk'
+                                    assign available_variant = item.variants | where: 'option1', value | where: 'available'
+                                  else
+                                    assign available_variant = item.variants | where: 'option2', value | where: 'available'
+                                  endif
+                                  if available_variant.size > 0
+                                    assign variant = available_variant[0]
+                                  endif
+                                endif
+                              %}
+                              {% unless variant.available == blank and available_variant.size == 0 %}
+                                <option
+                                  value="{{ value }}"
+                                  {% if value.selected %}
+                                    selected
+                                  {% endif %}
+                                  data-id="{{ variant.id }}"
+                                >
+                                  {{ value }}
+                                </option>
+                              {% endunless %}
+                            {% endfor %}
+                          </select>
+                        </div>
+                      {% endif %}
+                    {%- when 'Size' -%}
+                      {% if option.values.size > 1 %}
+                        <div
+                          class="product_info_new_right_select_line_contain"
+                          data-type="{{ option.name }}"
+                          data-index="{{  forloop.index }}"
+                        >
+                          <select class="product_info_new_right_select_option">
+                            {% for value in option.values %}
+                              {% liquid
+                                assign variant = value.variant
+                                if variant.available == blank
+                                  if item.title contains 'Desk'
+                                    assign available_variant = item.variants | where: 'option2', value | where: 'available'
+                                  else
+                                    assign available_variant = item.variants | where: 'option3', value | where: 'available'
+                                  endif
+                                  if available_variant.size > 0
+                                    assign variant = available_variant[0]
+                                  endif
+                                endif
+                              %}
+                              {% assign size_object = '' %}
+                              {% for size in item.metafields.custom.product_size.value %}
+                                {% if size.name == value %}
+                                  {% assign size_object = size %}
+                                {% endif %}
+                              {% endfor %}
+                              {% unless variant.available == blank and available_variant.size == 0 %}
+                                <option
+                                  value="{{ value }}"
+                                  {% if value.selected %}
+                                    selected
+                                  {% endif %}
+                                  data-id="{{ variant.id }}"
+                                >
+                                  {{ value }} | {{ size_object.size | replace: '\', '' }}
+                                </option>
+                              {% endunless %}
+                            {% endfor %}
+                          </select>
+                        </div>
+                      {% endif %}
+                  {%- endcase -%}
+                {% endfor %}
+              </div>
+            </div>
+            <div>
+              <div class="product_info_new_right_product_addons_item_btn">
+                {{ 'products.product.add_to_cart' | t }}
+              </div>
+              <div class="addons_item_detail_btn">
+                Details
+                <svg
+                  class="plus"
+                  width="15"
+                  height="15"
+                  viewBox="0 0 16 16"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  style="width: 15px; height: 15px; color: #262629;"
+                >
+                  <path d="M13.25 7.5C13.25 10.6756 10.6756 13.25 7.5 13.25C4.32436 13.25 1.75 10.6756 1.75 7.5C1.75 4.32436 4.32436 1.75 7.5 1.75C10.6756 1.75 13.25 4.32436 13.25 7.5Z" stroke="#262629" stroke-width="1.5" stroke-linecap="round"></path><path d="M5 7.5H10" stroke="#262629" stroke-width="1.5" stroke-linecap="round"></path><path d="M7.5 5L7.5 10" stroke="#262629" stroke-width="1.5" stroke-linecap="round"></path>
+                </svg>
+              </div>
+            </div>
+          </div>
+          <img
+            width="100%"
+            height="100%"
+            src="{{ item.selected_or_first_available_variant.metafields.custom.addon_show_image | default: item.featured_image | image_url: width:500  }}"
+            alt="{{item.title}}"
+            class="product_info_new_right_product_addons_item_img"
+            loading="lazy"
+          >
+          <div class="addons_item_modal">
+            <div class="addons_item_modal_conatin">
+              <div class="addons_item_modal_head">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 20 20"
+                  fill="none"
+                  id="close_addons_item_modal"
+                >
+                  <path d="M0.707031 0.710938L18.7054 18.7093" stroke="#262629" stroke-width="2"/>
+                  <path d="M18.707 0.710938L0.708672 18.7093" stroke="#262629" stroke-width="2"/>
+                </svg>
+              </div>
+              <div class="addons_item_modal_body">
+                <div class="addons_item_modal_body_left">
+                  <div class="addons_item_imgmain_body">
+                    {% assign show_images = item.selected_or_first_available_variant.metafields.custom.multiple_images.value
+                      | default: item.images
+                    %}
+                    {% for image in show_images %}
+                      <div class="addons_item_imgmain_item">
+                        {{- image | image_url: width: 500 | image_tag: alt: product.title -}}
+                      </div>
+                    {% endfor -%}
+                  </div>
+                  <div class="addons_item_imgmain_prev hidden">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="13" height="22" viewBox="0 0 13 22" fill="none">
+                      <path d="M11.4141 20.7109L1.41406 10.7109L11.4141 0.710938" stroke="#464646" stroke-width="2"/>
+                    </svg>
+                  </div>
+                  <div class="addons_item_imgmain_next">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="13" height="22" viewBox="0 0 13 22" fill="none">
+                      <path d="M0.707031 20.7109L10.707 10.7109L0.707031 0.710938" stroke="#464646" stroke-width="2"/>
+                    </svg>
+                  </div>
+                  <div class="addons_item_imgthumb">
+                    <div class="addons_item_imgthumb_body">
+                      {% assign thumb_images = item.selected_or_first_available_variant.metafields.custom.multiple_images.value
+                        | default: item.images
+                      %}
+                      {% if item.selected_or_first_available_variant.metafields.custom.multiple_thumb_images != blank %}
+                        {% assign thumb_images = item.selected_or_first_available_variant.metafields.custom.multiple_thumb_images.value %}
+                      {% endif %}
+                      {% for image in thumb_images %}
+                        <div class="addons_item_imgthumb_item">
+                          {% assign img_alt = image.alt | default: product.title %}
+                          {{- image | image_url: width: 100 | image_tag: alt: img_alt -}}
+                        </div>
+                      {% endfor -%}
+                    </div>
+                    <div class="addons_item_imgthumb_prev hidden">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="13" height="22" viewBox="0 0 13 22" fill="none">
+                        <path d="M11.4141 20.7109L1.41406 10.7109L11.4141 0.710938" stroke="#464646" stroke-width="2"/>
+                      </svg>
+                    </div>
+                    <div class="addons_item_imgthumb_next">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="13" height="22" viewBox="0 0 13 22" fill="none">
+                        <path d="M0.707031 20.7109L10.707 10.7109L0.707031 0.710938" stroke="#464646" stroke-width="2"/>
+                      </svg>
+                    </div>
+                  </div>
+                </div>
+                <div class="addons_item_modal_body_right">
+                  <div class="addons_item_title">{{ item.title }}</div>
+                  <div class="addons_item_price">
+                    {% assign discount = item.selected_or_first_available_variant.metafields.custom.discount_price.value %}
+                    <span
+                      class="addons_item_price_dp{% if discount != blank %} show{% endif %}"
+                      data-value="{{ item.selected_or_first_available_variant.metafields.custom.discount_price.value | money_without_currency }}"
+                    >
+                      {{-
+                        item.selected_or_first_available_variant.price
+                        | minus: item.selected_or_first_available_variant.metafields.custom.discount_price.value
+                        | money_without_trailing_zeros
+                      -}}
+                    </span>
+                    <span
+                      class="addons_item_price_op"
+                      data-value="{{ item.selected_or_first_available_variant.price | money_without_currency }}"
+                    >
+                      {{- item.selected_or_first_available_variant.price | money_without_trailing_zeros -}}
+                    </span>
+                  </div>
+                  <div class="addons_item_desc">{{ item.description }}</div>
+                  {% if item.metafields.custom.extra_description != blank %}
+                    <div class="addons_item_feature">
+                      {{ item.metafields.custom.extra_description | metafield_tag }}
+                    </div>
+                  {% endif %}
+                  <a class="addons_item_btn" href="{{ item.url }}">
+                    Learn more
+                    <svg xmlns="http://www.w3.org/2000/svg" width="40" height="15" viewBox="0 0 40 15" fill="none">
+                      <path d="M39.7071 8.07429C40.0976 7.68377 40.0976 7.0506 39.7071 6.66008L33.3431 0.29612C32.9526 -0.0944047 32.3195 -0.0944047 31.9289 0.29612C31.5384 0.686644 31.5384 1.31981 31.9289 1.71033L37.5858 7.36719L31.9289 13.024C31.5384 13.4146 31.5384 14.0477 31.9289 14.4383C32.3195 14.8288 32.9526 14.8288 33.3431 14.4383L39.7071 8.07429ZM0 7.36719V8.36719H39V7.36719V6.36719H0V7.36719Z" fill="#262629"/>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endif %}
+    {%- endfor %}
+  </div>
+{% endif %}

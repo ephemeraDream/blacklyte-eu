@@ -1,0 +1,126 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "main": {
+      "type": "main-page",
+      "disabled": true,
+      "settings": {}
+    },
+    "robot_event_banner_6HQ89a": {
+      "type": "RobotEvent-banner",
+      "blocks": {
+        "item_subscripe_qRQidk": {
+          "type": "itemSubscripe",
+          "settings": {
+            "itemMainImage": "shopify://shop_images/robotEvent-subscribe.webp",
+            "itemTitle": "",
+            "itemSubTitle": "",
+            "itemDescription": "",
+            "itemSubscribePlaceholder": "Enter your email",
+            "itemSubscribeButton": "I'M IN",
+            "itemSubscribePreInfo": "",
+            "itemSubscribeInfo": "Enter your email to unlock your exclusive code. No payment now.",
+            "itemSubscribeCountdown": "2026-04-27T11:00:00+08:00",
+            "itemSubscribePrecentText": "20",
+            "itemSubscribePrecentImage": "shopify://shop_images/robotEvent-precent.webp",
+            "itemSubscribePrecentNextText": "off",
+            "itemSubscribeAddImage": "shopify://shop_images/robotEvent-add-icon.webp",
+            "itemSubscribeAddInfo": "<p>exclusive</p><p>LVLUP outfit</p>"
+          }
+        }
+      },
+      "block_order": [
+        "item_subscripe_qRQidk"
+      ],
+      "name": "Robot Event Banner",
+      "settings": {
+        "modalItemTitle": "",
+        "modalItemDesc": "",
+        "modalItemInputPlaceHolder": "",
+        "modalItemButton": "",
+        "exportSubscribeModalTitle": "Your code is locked",
+        "exportSubscribeModalCode": "LVLUP20",
+        "exportSubscribeModalButton": "COPY",
+        "exportSubscribeModalNote": "<p>We just dropped it in your inbox too.</p><p>20% off your full deployment package.</p><p>Stand by for site activation orders.</p>"
+      }
+    },
+    "ai_robot_subscribe_9cmeC7": {
+      "type": "AiRobot-subscribe",
+      "blocks": {
+        "item_G39PWG": {
+          "type": "item",
+          "settings": {
+            "itemMainImage": "shopify://shop_images/robotEvent-feature-0.webp",
+            "itemMainImage_mb": "shopify://shop_images/robotEvent-feature-0.webp",
+            "itemTitle": "",
+            "itemDescription": "",
+            "itemDiscountPrice": "",
+            "itemOriginalPrice": "",
+            "countdownTitle": "",
+            "countdownTime": "",
+            "itemButton": "",
+            "itemTagText": "",
+            "itemFeatureInfoFir": "<p>· It reacts to your game</p>",
+            "itemFeatureInfoFirDesc": "<p>Capturing every critical moment. It doesn’t just watch—</p><p>it responds to your play in real time.</p>",
+            "itemFeatureInfoSec": "<p>· It learns your playstyle</p>",
+            "itemFeatureInfoSecDesc": "<p>No more starting over. It remembers your habits and </p><p>evolves with your data to become your digital twin.</p>",
+            "itemFeatureInfoThird": "<p>· Feedback, not just chat</p>",
+            "itemFeatureInfoThirdDesc": "<p>Built for performance. Receive tactical alerts and coaching-</p><p>grade insights, not idle conversation.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "item_G39PWG"
+      ],
+      "name": "AiRobot Subscribe",
+      "settings": {
+        "sectionBgImage": "shopify://shop_images/robotEvent-feature-bgImg.webp",
+        "sectionBgImage_mb": "shopify://shop_images/robotEvent-feature-bgImg.webp",
+        "sectionTitle": "Limited Amount for Exclusive Price",
+        "sectionDescription": "",
+        "itemSubscTitle": "",
+        "itemSubscDescripe": "",
+        "itemSubscButton": ""
+      }
+    },
+    "robot_event_imgs_4NeMwk": {
+      "type": "RobotEvent-Imgs",
+      "blocks": {
+        "middle_image_item_Km8Q49": {
+          "type": "middleImageItem",
+          "settings": {
+            "middleImageItemTitle": "",
+            "middleImageItemMainImage": "shopify://shop_images/robotEvent-feature-1-new.webp"
+          }
+        },
+        "middle_image_item_e9j4UA": {
+          "type": "middleImageItem",
+          "settings": {
+            "middleImageItemTitle": "GAME ON",
+            "middleImageItemMainImage": "shopify://shop_images/robotEvent-feature-2-new.webp"
+          }
+        }
+      },
+      "block_order": [
+        "middle_image_item_Km8Q49",
+        "middle_image_item_e9j4UA"
+      ],
+      "name": "Robot Event Imgs",
+      "settings": {}
+    }
+  },
+  "order": [
+    "main",
+    "robot_event_banner_6HQ89a",
+    "ai_robot_subscribe_9cmeC7",
+    "robot_event_imgs_4NeMwk"
+  ]
+}

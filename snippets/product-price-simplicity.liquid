@@ -1,0 +1,124 @@
+<div class="product_infor_simplicity_right_buybox_price{% if is_pmd_show %} pmd_show{% endif %}">
+  <div class="product_infor_simplicity_right_buybox_price_info">
+    <span
+      class="product_infor_simplicity_right_buybox_price_info_discount"
+      data-value="{{ sale_price | money_without_currency }}"
+      need-change="{{ need_change }}"
+    >
+      {{ sale_price | money_without_trailing_zeros }}
+    </span>
+    {% comment %} {% if show_sale_info %} {% endcomment %}
+    <span
+      class="product_infor_simplicity_right_buybox_price_info_op{% unless show_sale_info %} hidden{% endunless %}"
+      data-value="{{ product.selected_or_first_available_variant.price | money_without_currency }}"
+      need-change="{{ need_change }}"
+    >
+      {{- product.selected_or_first_available_variant.price | money_without_trailing_zeros -}}
+    </span>
+
+    <span
+      class="product_infor_simplicity_right_buybox_price_info_save{% unless show_sale_info %} hidden{% endunless %}"
+      data-value="{{ save_price | money_without_currency }}"
+      need-change="{{ need_change }}"
+    >
+      {{ 'products.product.text.save' | t -}}
+      {{- save_price | money_without_trailing_zeros -}}
+    </span>
+    {% comment %} {% endif %} {% endcomment %}
+  </div>
+  <div class="product_infor_simplicity_right_buybox_price_afterpay{% if is_bottom %} pc_show{% endif %}">
+    <span class="product_infor_simplicity_right_buybox_price_afterpay_mowith">
+      {{- sale_price | divided_by: 24.0 | round: 2 | money_without_trailing_zeros -}}
+    </span>
+    {{ 'products.product.text.klarnatext' | t }}
+    <span
+      class="product_infor_simplicity_right_buybox_price_afterpay_sixmowith"
+    >
+      {{- sale_price | divided_by: 3.0 | round: 2 | money_without_trailing_zeros -}}
+    </span>
+    {{ 'products.product.text.mowith' | t }}
+    <img
+      width="100%"
+      height="100%"
+      src="https://cdn.shopify.com/s/files/1/0579/0839/6145/files/klarna-logo.webp?v=1752045162"
+      alt="{{ product.title }} klarna"
+      loading="lazy"
+      class="payway_btn"
+    >
+  </div>
+  {% if is_bottom %}
+    <div class="product_infor_simplicity_right_buybox_goods_options pmd_show">
+      {% comment %}
+        {{ product.metafields.custom.series_name | append: ' | ' -}}
+      {% endcomment %}
+      {% if product.options_by_name.Size.values.size > 1 %}
+        {{ product.selected_or_first_available_variant.options | join: ' | ' }}
+      {% else %}
+        {% if product.title contains 'Blacklyte Atlas Desk' or product.title contains 'Blacklyte Atlas Gaming Desk' %}
+          {% assign size = product.metafields.custom.product_size.value | first %}
+          {{ size.name | append: ' | ' | append: size.size | replace: '\', '' }}
+        {% else %}
+          {% if product.selected_or_first_available_variant.options.size > 0
+            and product.selected_or_first_available_variant.options.first != 'Default Title'
+          %}
+            {% if product.metafields.custom.product_type.value == 'chairs' %}
+              {{
+                product.selected_or_first_available_variant.option1
+                | append: ' | '
+                | append: product.selected_or_first_available_variant.option2
+              }}
+            {% else %}
+              {{ product.selected_or_first_available_variant.options | join: ' | ' }}
+            {% endif %}
+          {% endif %}
+        {% endif %}
+      {% endif %}
+    </div>
+  {% endif %}
+</div>
+<style>
+    .product_infor_simplicity .product_infor_simplicity_right_buybox_price_afterpay img
+   {
+       width: 40px;
+    height: auto;
+    object-fit: cover;
+    display: inline-block;
+    position: relative;
+    top: 2px;
+  }
+
+  .product_info_new .product_info_new_right_contain_top .product_infor_simplicity_right_buybox_price_afterpay {
+    align-items: center;
+  }
+
+  .product_info_new .product_info_new_right_contain_top .product_infor_simplicity_right_buybox_price_afterpay img {
+    margin-left: .3125vw;
+    position: relative;
+    top: -1px;
+    width: 2.53125vw;
+  }
+
+  .product_info_new .product_info_new_bottom_bar_contain_right .product_infor_simplicity_right_buybox_price_afterpay img {
+    min-width: 42px;
+    width: 2.03125vw;
+    height: auto;
+    margin-left: .15625vw;
+    position: relative;
+    top: 0.0515625vw;
+    margin-left: 0.15625vw;
+  }
+
+  @media screen and (max-width: 1200px) {
+    .product_info_new .product_info_new_right_contain_top .product_infor_simplicity_right_buybox_price_afterpay img {
+        width: 4vw;
+        margin-left: .8vw;
+    }
+  }
+
+  @media screen and (max-width: 500px) {
+    .product_info_new .product_info_new_right_contain_top .product_infor_simplicity_right_buybox_price_afterpay img {
+        width: 12vw;
+        margin-left: 1vw;
+    }
+  }
+</style>

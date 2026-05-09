@@ -1,0 +1,11 @@
+.special-class-style.cart-item{
+  display: none !important;
+}
+.special-class-style .cart-item-qty{
+  pointer-events: none;
+  opacity: 0.4;
+}
+.special-class-style .cart-item-block.cart-item-remove{
+  pointer-events: none;
+  opacity: 0.4;
+}

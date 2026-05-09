@@ -1,0 +1,54 @@
+<div class="review-item-image">
+    {% render 'picture-simple',
+      image: block.settings.reviewItemImage,
+      image_mobile: block.settings.reviewItemImage,
+      mobile_dpr: 2,
+      loading: 'lazy'
+    %}
+</div>
+<div class="review-cont">
+    <div class="star-cont">
+        {% for i in (1..5) %}
+            <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M6.58109 0.52895C6.95668 -0.18058 7.9731 -0.180581 8.3487 0.52895L9.97145 3.59444C10.1161 3.86763 10.3789 4.05859 10.6834 4.11171L14.1003 4.70775C14.8912 4.8457 15.2053 5.81238 14.6465 6.38885L12.2325 8.87946C12.0174 9.10142 11.917 9.4104 11.9606 9.71642L12.4496 13.1503C12.5628 13.9451 11.7405 14.5425 11.0196 14.1893L7.90491 12.6631C7.62733 12.527 7.30245 12.527 7.02488 12.6631L3.9102 14.1893C3.18928 14.5425 2.36698 13.9451 2.48017 13.1503L2.96918 9.71642C3.01277 9.4104 2.91237 9.10142 2.69724 8.87946L0.283243 6.38885C-0.275495 5.81238 0.0385956 4.8457 0.829465 4.70775L4.24637 4.11171C4.55089 4.05859 4.81372 3.86763 4.95834 3.59444L6.58109 0.52895Z" fill="#EE5025"/>
+            </svg>
+        {% endfor %}
+    </div>
+    {% if block.settings.reviewItemTitle != blank %}
+        <div class="review-cont-title">{{ block.settings.reviewItemTitle }}</div>
+    {% endif %}
+    <div class="flex-1"></div>
+    {% if block.settings.reviewItemDesc != blank %}
+        <div class="review-cont-desc">{{ block.settings.reviewItemDesc }}</div>
+    {% endif %}
+</div>
+
+
+{% schema %}
+{
+    "name": "review item",
+    "class": "review-item swiper-slide",
+    "settings": [
+        {
+            "type": "image_picker",
+            "id": "reviewItemImage",
+            "label": "review Item Image"
+        },
+        {
+            "type": "text",
+            "id": "reviewItemTitle",
+            "label": "review Item Title"
+        },
+        {
+            "type": "textarea",
+            "id": "reviewItemDesc",
+            "label": "review Item Descripe"
+        }
+    ],
+    "presets": [
+        {
+            "name": "review item"
+        }
+    ]
+}
+{% endschema %}

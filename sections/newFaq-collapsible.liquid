@@ -1,0 +1,74 @@
+<section class="section-{{ section.id }} collapslible-section" data-section-id="{{ section.id }}" id="{{ section.settings.targetId }}">
+    <div class="container-full">
+        <div class="collapsible-cont">
+            <div class="item-cont-left">{{ section.settings.collapsibleTitle }}</div>
+            <div class="item-cont-right">
+                {% for block in section.blocks %}
+                  {% if block.type == "item" %}
+                    <div class="item-area">
+                        {% if block.settings.itemTitle != blank %}
+                            <div class="title">
+                                {{ block.settings.itemTitle }}
+                            </div>
+                        {% endif %}
+                        {% if block.settings.itemDescRich != blank %}
+                            <div class="desc" style="display: none;">{{ block.settings.itemDescRich }}</div>
+                        {% endif %}
+                    </div>
+                  {% endif %}
+                {% endfor %}
+            </div>
+        </div>
+        {% if section.settings.isShowLineBottom %}
+            <div class="section-line-bottom">
+                <span class="line-bottom"></span>
+            </div>
+        {% endif %}
+    </div>
+</section>
+
+{% schema %}
+{
+    "name": "new Faq collapsible",
+    "settings": [
+        {
+            "type": "text",
+            "id": "collapsibleTitle",
+            "label": "collapsible Title"
+        },
+        {
+            "type": "checkbox",
+            "id": "isShowLineBottom",
+            "label": "is show line bottom"
+        },
+        {
+            "type": "text",
+            "id": "targetId",
+            "label": "section target id"
+        }
+    ],
+    "blocks": [
+        {
+            "type": "item",
+            "name": "item",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "itemTitle",
+                    "label": "item Title"
+                },
+                {
+                    "type": "richtext",
+                    "id": "itemDescRich",
+                    "label": "item Describe"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "new Faq Collapsible"
+        }
+    ]
+}
+{% endschema %}

@@ -1,0 +1,30 @@
+[data-product-id="8817635918073"] .prod_item_sale_price{
+  text-decoration: line-through;
+  font-size: 14px !important;
+  font-weight: 400 !important;
+}
+[data-product-id="8817635918073"] .prod_item_sale_price:before{
+  content: '€649,00';
+  display: inline-block;
+  color: #262629;
+  margin-right: 5px;
+  font: 500 22px var(--font-family-1) !important;
+}
+
+@media(max-width: 767px) {
+  [data-product-id="8817635918073"] .prod_item_sale_price{
+    font-size: 12px !important;
+  }
+  [data-product-id="8817635918073"] .prod_item_sale_price:before{
+    font-size: 14px !important;
+    margin-right: 2px !important;
+  }
+}
+@media(min-width: 992px) and (max-width: 1600px){
+  [data-product-id="8817635918073"] .prod_item_sale_price{
+    font-size: 12px !important;
+  }
+  [data-product-id="8817635918073"] .prod_item_sale_price:before {
+    font-size: 14px !important;
+  }
+}

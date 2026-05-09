@@ -1,0 +1,312 @@
+.cart-sticky-module{ display: none; }
+
+@media(max-width: 767px){
+    body.cart-mask-open{
+        overflow: hidden;
+    }
+
+    body.template-cart .halo-recently-viewed-popup.is-show{
+        bottom: 240px !important;
+    }
+
+    body.template-cart #conversation-badge{
+        bottom: 200px;
+    }
+
+    body.template-cart.cart-mask-open #conversation-badge,
+    body.cart-mask-open .halo-recently-viewed-popup{
+        z-index: 30;
+    }
+
+    .cart-sticky-module{
+        display: block;
+    }
+
+    .cart-sticky-module.cart-sticky-module-open{
+        height: 100vh;
+        width: 100vw;
+        background: #00000080;
+        position: fixed;
+        z-index: 55;
+        left: 0;
+        top: 0;
+        overflow: hidden;
+    }
+
+    
+
+    .cart-sticky-module .cart-sticky-info-all{
+        max-height: 0;
+        opacity: 0;
+        transform: translateY(300px);
+        transition: all .5s ease;
+    }
+
+    .cart-sticky-module.cart-sticky-module-open .cart-sticky-info-all{
+        max-height: max-content;
+        opacity: 1;
+        transform: translateY(0px);
+    }
+
+    .cart-sticky-module .cart-sticky-info{
+        padding: 0 0 23px;
+        background: #fff;
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        overflow: hidden;
+        z-index: 100;
+        box-shadow: 0 -10px 10px -5px #00000014;
+    }
+
+     .cart-sticky-module.cart-sticky-module-open .cart-sticky-info{
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        overflow: hidden;
+        padding: 23px 20px;
+        
+    }
+    .cart-sticky-module .cart-sticky-info .head-cont-title{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .cart-sticky-module .cart-sticky-info .head-cont-title .text{
+        font-family: Roboto;
+        font-weight: 500;
+        font-size: 20px;
+        line-height: 100%;
+        letter-spacing: 0%;
+        color: #262629;
+
+    }
+    .cart-sticky-module .cart-sticky-info .head-cont-title .icon svg{
+        width: 13px;
+        height: 13px;
+
+    }
+
+    .cart-sticky-module .cart-sticky-info .total-cont{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 22px 0 14px;
+        border-bottom: 0.5px solid #C0C0C0;
+    }
+
+    .cart-sticky-module .cart-sticky-info .total-cont .total-price-label,
+    .cart-sticky-module .cart-info-cont .cart-info-cont-title,
+    .cart-sticky-module .cart-total-label{
+        font-family: Roboto;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 18px;
+        letter-spacing: 0%;
+        color: #262629;
+        
+    }
+    
+    .cart-sticky-module .cart-sticky-info .total-cont .total-price{
+        font-family: Roboto;
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 18px;
+        letter-spacing: 0%;
+        color: #262629;
+
+    }
+
+    .cart-sticky-module .cart-info-cont{
+        margin-top: 14px;
+        
+    }
+
+    .cart-sticky-module .cart-discount.cart-total-savings,
+    .cart-sticky-module .cart-total.cart-total-grandtotal{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 14px;
+    }
+
+    .cart-sticky-module .cart-total.cart-total-grandtotal{
+        margin-top: 12px;
+        padding: 0 20px;
+    }
+
+    .cart-sticky-module .action-group{
+        padding: 0 20px;
+    }
+
+    .cart-sticky-module.cart-sticky-module-open .cart-total.cart-total-grandtotal,
+    .cart-sticky-module.cart-sticky-module-open .action-group{
+        padding: 0;
+    }
+    
+
+    .cart-sticky-module .shipTotal{
+        font-family: Roboto;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 21px;
+        letter-spacing: 0%;
+        vertical-align: middle;
+        color: #76767F;
+        margin-top: 17px;
+    }
+
+    .cart-sticky-module .action-group #cart-checkout,
+    .cart-sticky-module .button.button-1.button-checkout{
+        width: 100%;
+        height: 50;
+        border-width: 1px;
+        border-radius: 25px;
+        border-color: #262629;
+        background: #262629;
+        font-family: Roboto;
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 24px;
+        letter-spacing: 0%;
+        vertical-align: middle;
+        text-transform: capitalize;
+        color: #fff;
+        margin-top: 12px;
+    }
+
+    .cart-sticky-module .cart_coupon_applybtn{
+        border-radius: 25px;
+        padding: 13px 22px;
+        background: #262629;
+        font-family: Roboto;
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 24px;
+        letter-spacing: 0%;
+        vertical-align: middle;
+        text-transform: capitalize;
+        color: #fff;
+        width: max-content;
+    }
+
+    .cart-sticky-module .cart_coupon_applybtn.is-loading{
+        font-size: 0;
+        position: relative;
+        min-width: 75px;
+    }
+    .cart-sticky-module .cart_coupon_applybtn.is-loading:before{
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: calc(50% - 8px);
+        transform: translate(-50%, -50%);
+        display: inline-block;
+        border: 2px solid #f6f6f6;
+        border-radius: 50%;
+        border-top: 2px solid var(--spinner-top-color);
+        border-right: 2px solid var(--spinner-right-color);
+        border-bottom: 2px solid var(--spinner-bottom-color);
+        border-left: 2px solid var(--spinner-left-color);
+        width: 20px;
+        height: 20px;
+        animation: spin-icon 1.4s linear infinite;
+    }
+
+    .cart-sticky-module .cart_coupon_applybox{
+        display: flex;
+        gap: 10px;
+        margin-top: 13px;
+    }
+
+    .cart-sticky-module .cart_coupon_applybox .form-input{
+        border-radius: 25px;
+        border-color: #C0C0C0;
+
+    }
+
+    .cart-sticky-module .cart-payments-plan{
+        display: flex;
+        padding: 10px 0;
+        text-align: center;
+        align-items: center;
+        justify-content: center;
+        font-family: Roboto;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 18.2px;
+        letter-spacing: 0%;
+        vertical-align: middle;
+        color: #262629;
+        background: #F8F9FC;
+    }
+
+    .cart-sticky-module.cart-sticky-module-open .cart-payments-plan{
+        display: none;
+    }
+
+    .cart-sticky-module .cart-payments-plan .payment-plan-logo{
+        width: 8vw;
+    }
+
+    .cart-sticky-module .cart-payments-plan .payment-plan-6-price{
+        margin: 0 4px;
+
+    }
+
+    .cart-sticky-module .delete_discount_icon {
+        fill: #262629b3;
+        stroke: #262629b3;
+        width: 14px;
+        height: 14px;
+        cursor: pointer;
+    }
+
+    .cart-sticky-module .cart_coupon_tip_box {
+        font-family: Roboto;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 21px;
+        letter-spacing: 0%;
+        vertical-align: middle;
+        color: #d91c1c;
+        padding: 8px 0 4px;
+    }
+    .cart-sticky-module .cart_coupon_contain {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 10px;
+    }
+    .cart-sticky-module .cart_coupon_contain_item {
+        padding: 7px 9px;
+        background-color: #ededed;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        width: max-content;
+    }
+
+    .cart-sticky-module .cart-total-value-icon{
+        display: inline-block;
+        vertical-align: text-top;
+
+    }
+    .cart-sticky-module .cart-total-value-icon svg{
+        width: 10px;
+        height: 10px;
+
+    }
+
+    .cart-sticky-module.cart-sticky-module-open .cart-total-value-icon{
+        display: none;
+
+    }
+
+
+
+}
+
+

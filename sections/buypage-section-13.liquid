@@ -1,0 +1,76 @@
+{{ 'buypage-section-13.css' | asset_url | stylesheet_tag }}
+
+<div class="buypage_section_13" id="{{section.settings.specId}}">
+  {% render 'picture-simple',
+    image: section.settings.image,
+    image_mobile: section.settings.image_mobile,
+    mobile_widths: '350,450,550,650',
+    mobile_dpr: 1,
+    class_str: 'buypage_section_13_img'
+  %}
+  <div class="buypage_section_13_info">
+    <div class="buypage_section_13_info_title">{{ section.settings.title }}</div>
+    <div class="buypage_section_13_info_text">{{ section.settings.text }}</div>
+    <a href="{{ section.settings.download_url }}" class="buypage_section_13_info_btn">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <path d="M3 12.0042V21H21V12" stroke="#262629" stroke-width="2"/>
+        <path d="M16.5 11.5L12 16L7.5 11.5" stroke="#262629" stroke-width="2"/>
+        <path d="M11.9961 3V16" stroke="#262629" stroke-width="2"/>
+      </svg>
+      {{- section.settings.download_text -}}
+    </a>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "buypage section 13",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "specId",
+      "label": "specId"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "image"
+    },
+    {
+      "type": "image_picker",
+      "id": "image_mobile",
+      "label": "image mobile"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "title"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "text"
+    },
+    {
+      "type": "text",
+      "id": "download_text",
+      "label": "download text"
+    },
+    {
+      "type": "text",
+      "id": "download_url",
+      "label": "download url"
+    }
+  ],
+  "presets": [
+    {
+      "name": "buypage section 13"
+    }
+  ]
+}
+{% endschema %}

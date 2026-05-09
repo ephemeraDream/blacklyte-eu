@@ -1,0 +1,25 @@
+{%- liquid 
+    assign fontsize_text = block.settings.fontsize_text
+    assign fontsize_text_mb = block.settings.fontsize_text_mb
+    assign color_title = block.settings.color_title
+    assign space-font-family = block.settings.space_font-family
+    assign show_product_price = block.settings.showProductPrice
+-%}
+{%- if check_show_share == '3' -%}
+    <div class="halo-share-3">
+        <h1 class="productView-title {% if show_product_price %}accessory_title{% endif %}" style="font-weight: 700;--color-title: {{ color_title }};--fontsize-text: {{ fontsize_text | append: 'px' }};--fontsize-mb-text: {{ fontsize_text_mb | append: 'px' }};">
+          <span>{{ product.title | escape }}</span>
+          {%- if show_product_price -%}
+            <span class="accessory_price">{{ product.price | money }}</span>
+          {%- endif -%}
+        </h1>
+        {% render 'halo-share', product: product, share_layout: check_show_share %}
+    </div>
+{%- else -%}
+    <div class="productView-title {% if show_product_price %}accessory_title{% endif %}" style="--color-title: {{ color_title }};--fontsize-text: {{ fontsize_text | append: 'px' }};--fontsize-mb-text: {{ fontsize_text_mb | append: 'px' }};font-family: {{ space-font-family }};">
+      <h1>{{ product.title | escape }}</h1>
+      {%- if show_product_price -%}
+        <span class="accessory_price">{{ product.price | money }}</span>
+      {%- endif -%}
+    </div>
+{%- endif -%}

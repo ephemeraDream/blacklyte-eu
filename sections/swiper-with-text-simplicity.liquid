@@ -1,0 +1,145 @@
+{{ 'section-swiper-with-text-simplicity.css' | asset_url | stylesheet_tag }}
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
+
+<div
+  class="swiper_with_text{% if section.settings.swiper_position == "right" %} swiper_with_text_right{% endif %}"
+  data-is-swiper="{{ section.settings.is_swiper }}"
+>
+  <div class="swiper_with_text_media{% if section.settings.is_swiper %} is_swiper{% endif %}">
+    <div class="swiper_with_text_media_box">
+      {% for block in section.blocks %}
+        {% assign img_alt = block.settings.title | append: block.settings.text %}
+        {{-
+          block.settings.file_image
+          | image_url: width: block.settings.file_image.width
+          | image_tag: alt: block.settings.file_image.alt, class: 'swiper_with_text_media_box_item'
+        -}}
+      {% endfor %}
+    </div>
+    <div class="swiper_with_text_media_prev">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="32" viewBox="0 0 18 32" fill="none">
+        <path d="M16.8223 30.6445L2 15.8223L16.8223 0.999999" stroke="white" stroke-width="2"/>
+      </svg>
+    </div>
+    <div class="swiper_with_text_media_next">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="32" viewBox="0 0 18 32" fill="none">
+        <path d="M0.822266 30.6445L15.6445 15.8223L0.822266 0.999999" stroke="white" stroke-width="2"/>
+      </svg>
+    </div>
+  </div>
+  <div class="swiper_with_text_info">
+    <div class="swiper_with_text_info_title">{{ section.settings.title }}</div>
+    {% for block in section.blocks %}
+      <div class="swiper_with_text_info_item">
+        {{ block.settings.icon }}
+        <div>
+          {% if block.settings.title != blank %}
+            <div class="swiper_with_text_info_item_title">{{ block.settings.title }}</div>
+          {% endif %}
+          <div class="swiper_with_text_info_item_text">{{ block.settings.text }}</div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+</div>
+
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+<script>
+  (() => {
+    jQuery(function ($) {
+      $('.swiper_with_text').each(function () {
+        const $section = $(this);
+        const is_swiper = $section.data('is-swiper');
+        if (!is_swiper) return;
+        if ($section.data('slick-initialized')) return;
+        const $box = $section.find('.swiper_with_text_media_box');
+        const $next = $section.find('.swiper_with_text_media_next');
+        const $prev = $section.find('.swiper_with_text_media_prev');
+        $box.slick({
+          dots: true,
+          nextArrow: $next,
+          prevArrow: $prev,
+        });
+        $section.attr('data-slick-initialized', 'true');
+      });
+    });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "swiper with text",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "specId",
+      "label": "specId"
+    },
+    {
+      "type": "textarea",
+      "id": "title",
+      "label": "title"
+    },
+    {
+      "type": "select",
+      "id": "swiper_position",
+      "label": "swiper position",
+      "options": [
+        {
+          "value": "left",
+          "label": "left"
+        },
+        {
+          "value": "right",
+          "label": "right"
+        }
+      ],
+      "default": "left"
+    },
+    {
+      "type": "checkbox",
+      "id": "is_swiper",
+      "label": "is swiper",
+      "default": true
+    }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "item",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "file_image",
+          "label": "file image"
+        },
+        {
+          "type": "textarea",
+          "id": "icon",
+          "label": "icon"
+        },
+        {
+          "type": "textarea",
+          "id": "title",
+          "label": "title"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "text"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "swiper with text"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,312 @@
+<style>
+    :root {
+        --dynamic-height: 20vh;
+    }
+
+    @media (min-width: 1024px) {
+        :root {
+            --dynamic-height: 35vh;
+        }
+    }
+
+    @media (min-width: 1920px) {
+        :root {
+            --dynamic-height: 35vh;
+        }
+    }
+    .section-{{ section.id }}{
+        background: #ebebeb;
+    }
+    .section-{{ section.id }} .container-full{
+        padding: 100px 16%;
+    }
+    .section-{{ section.id }} .section-title{
+        font-family: Poppins;
+        font-weight: 600;
+        font-style: SemiBold;
+        font-size: 36px;
+        line-height: 46px;
+        letter-spacing: 0%;
+        text-align: center;
+        color: #262629;
+    }
+    .section-{{ section.id }} .cont-lists{
+        display: flex;
+        justify-content: space-between;
+        gap: 40px 20px;
+        flex-wrap: wrap;
+        margin-top: 40px;
+    }
+    .section-{{ section.id }} .cont-lists .block-item{
+        width: calc((100% - 20px) / 2);
+        display: flex;
+        flex-direction: column;
+    }
+    .section-{{ section.id }} .block-item .block-item-image{
+        border-radius: 24px;
+        overflow: hidden;
+        height: clamp(20vh, var(--dynamic-height), 35vh);
+        transition: height 0.3s ease;
+        cursor: pointer;
+    }
+
+    .section-{{ section.id }} .block-item .block-item-title{
+        font-family: Poppins;
+        font-weight: 500;
+        font-style: Medium;
+        font-size: clamp(14px, 1.67vw, 24px);
+        line-height: 1.42;
+        letter-spacing: 0%;
+        vertical-align: middle;
+        color: #262629;
+        margin: clamp(10px, 1.6vw, 27px) 0 clamp(20px, 2.2vw, 38px);
+        flex: 1;
+        cursor: pointer;
+    }
+
+    .section-{{ section.id }} .block-item .block-item-link-url{
+        font-family: Poppins;
+        font-weight: 500;
+        font-style: Medium;
+        font-size: clamp(12px, 1.67vw, 20px);
+        line-height: normal;
+        letter-spacing: 0%;
+        vertical-align: middle;
+        color: #262629;
+        transition: all .35s ease;
+        opacity: 0.7;
+    }
+    .section-{{ section.id }} .block-item .block-item-link-url:hover .block-item-icon svg{
+        transform: translateX(5px);
+    }
+    .section-{{ section.id }} .block-item .block-item-link-url .block-item-icon svg{
+        width: 30px;
+        height: auto;
+        vertical-align: middle;
+    }
+
+
+    {% comment %} iPhone {% endcomment %}
+    @media(max-width: 767px){
+        .section-{{ section.id }} .container-full{
+            padding: 30px 10px 26px;
+        }
+        .section-{{ section.id }} .section-title{
+            font-size: 26px;
+        }
+        .section-{{ section.id }} .cont-lists{
+            gap: 40px;
+            margin-top: 20px;
+        }
+        .section-{{ section.id }} .cont-lists .block-item{
+            width: 100%;
+        }
+        .section-{{ section.id }} .block-item .block-item-title{
+            font-size: 18px;
+            line-height: 24px;
+            margin-bottom: 10px;
+        }
+        .section-{{ section.id }} .block-item .block-item-image{
+            height: 195px;
+            border-radius: 12px;
+        }
+        .section-{{ section.id }} .block-item .block-item-link-url{
+            font-size: 16px;
+        }
+        .section-{{ section.id }} .block-item .block-item-link-url .block-item-icon svg{
+            width: 20px;
+        }
+    }
+
+    {% comment %} iPad {% endcomment %}
+    @media(min-width: 768px) and (max-width: 1024px){
+        .section-{{ section.id }} .container-full{
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+        .section-{{ section.id }} .block-item .block-item-link-url .block-item-icon svg{
+            width: 15px;
+        }
+        .section-{{ section.id }} .block-item .block-item-title{
+            margin: 8px 0 12px;
+        }
+    }
+
+    {% comment %} small screen {% endcomment %}
+    @media(min-width: 1025px) and (max-width: 1480px){
+        .section-{{ section.id }} .container-full{
+            padding-left: 60px;
+            padding-right: 60px;
+        }
+        .section-{{ section.id }} .cont-area .right-pagina-icon{
+            right: 80px;
+        }
+    }
+
+</style>
+
+<section class="section-{{ section.id }}" id="{{ section.id }}" data-section-id="{{ section.id }}">
+    <div class="container-full">
+        <div class="headr-cont">
+            {% if section.settings.sectionTitle != blank %}
+                <h2 class="section-title">{{ section.settings.sectionTitle }}</h2>
+            {% endif %}
+        </div>
+        {% if section.blocks.size > 0 %}
+            <div class="cont-lists">
+                {% for block in section.blocks %}
+                    {% if block.type == "item" %}
+                        <div class="block-item" data-url="{{ block.settings.itemArticle.url }}">
+                            {% assign article_image = block.settings.itemArticle.image %}
+                            {% if article_image %}
+                                <div class="block-item-image">
+                                    <img {% render 'lazyload',preview_img: article_image, class: true, enable_rtl: settings.enable_layout_rtl  %}
+                                        width="{{ article_image.width }}"
+                                        height="{{ article_image.height }}"
+                                        loading="lazy"
+                                        decoding="async"
+                                        style="height: 100%;object-fit: cover;"
+                                    />
+                                    
+                                </div>
+                            {% endif %}
+
+                            {% if block.settings.itemArticle.title != blank %}
+                                <div class="block-item-title">{{ block.settings.itemArticle.title }}</div>
+                            {% endif %}
+                            
+                            {% if block.settings.itemLink != blank %}
+                                <a class="block-item-link-url" {% if block.settings.itemArticle.url != blank %} href="{{ block.settings.itemArticle.url }}" {% else %} aria-disabled="true" {% endif %} >
+                                    {{ block.settings.itemLink }}
+                                    <span class="block-item-icon">
+                                        <svg width="36" height="15" viewBox="0 0 36 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path opacity="0.7" d="M35.7071 8.07429C36.0976 7.68377 36.0976 7.0506 35.7071 6.66008L29.3431 0.29612C28.9526 -0.0944047 28.3195 -0.0944047 27.9289 0.29612C27.5384 0.686644 27.5384 1.31981 27.9289 1.71033L33.5858 7.36719L27.9289 13.024C27.5384 13.4146 27.5384 14.0477 27.9289 14.4383C28.3195 14.8288 28.9526 14.8288 29.3431 14.4383L35.7071 8.07429ZM0 7.36719V8.36719H35V7.36719V6.36719H0V7.36719Z" fill="#262629"/>
+                                        </svg>
+
+                                    </span>
+                                </a>
+                            {% endif %}
+                            
+                        </div>
+                    {% elsif block.type == "itempage" %}
+                        <div class="block-item" data-url="{{ block.settings.pageItems.url }}" data-obj="{{ block.settings.pageItems }}">
+                            {% assign article_image = block.settings.pageFeatureImage %}
+                            {% if article_image %}
+                                <div class="block-item-image">
+                                    <picture>
+                                        <source media="(max-width: 768px)"
+                                                srcset="{{ block.settings.pageFeatureImage_mb | image_url: width: 800 }}"
+                                                data-srcset="{{ block.settings.pageFeatureImage_mb | image_url: width: 800 }}">
+
+                                        <img {% render 'lazyload',preview_img: block.settings.pageFeatureImage, class: true, enable_rtl: settings.enable_layout_rtl  %}
+                                            width="{{ block.settings.pageFeatureImage.width }}"
+                                            height="{{ block.settings.pageFeatureImage.height }}"
+                                            alt="{{ block.settings.pageFeatureImage.alt | escape }}"
+                                            loading="lazy"
+                                            decoding="async"
+                                            style="height: 100%;object-fit: cover;" />
+
+                                    </picture>
+                                </div>
+                            {% endif %}
+
+                            {% if block.settings.pageItems.title != blank %}
+                                <div class="block-item-title">{{ block.settings.pageItems.title }}</div>
+                            {% endif %}
+                            
+                            {% if block.settings.pageItemLink != blank %}
+                                <a class="block-item-link-url" {% if block.settings.pageItems.url != blank %} href="{{ block.settings.pageItems.url }}" {% else %} aria-disabled="true" {% endif %} >
+                                    {{ block.settings.pageItemLink }}
+                                    <span class="block-item-icon">
+                                        <svg width="36" height="15" viewBox="0 0 36 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path opacity="0.7" d="M35.7071 8.07429C36.0976 7.68377 36.0976 7.0506 35.7071 6.66008L29.3431 0.29612C28.9526 -0.0944047 28.3195 -0.0944047 27.9289 0.29612C27.5384 0.686644 27.5384 1.31981 27.9289 1.71033L33.5858 7.36719L27.9289 13.024C27.5384 13.4146 27.5384 14.0477 27.9289 14.4383C28.3195 14.8288 28.9526 14.8288 29.3431 14.4383L35.7071 8.07429ZM0 7.36719V8.36719H35V7.36719V6.36719H0V7.36719Z" fill="#262629"/>
+                                        </svg>
+
+                                    </span>
+                                </a>
+                            {% endif %}
+                            
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        {% endif %}
+    </div>
+</section>
+
+<script>
+    $(document).ready(function(){
+        $('.section-{{ section.id }} .cont-lists .block-item').click(function(){
+            const url = $(this).data('url')
+            if(url){
+                window.location.href = url
+            }
+        })
+        
+    })
+</script>
+
+{% schema %}
+{
+    "name": "Events Blogs",
+    "settings": [
+        {
+            "type": "text",
+            "id": "sectionTitle",
+            "label": "section Title",
+            "default": "Recent Events"
+        }
+    ],
+    "blocks": [
+        {
+            "type": "item",
+            "name": "item",
+            "settings": [
+                {
+                    "type": "article",
+                    "id": "itemArticle",
+                    "label": "item Article"
+                },
+                {
+                    "type": "text",
+                    "id": "itemLink",
+                    "label": "item Link",
+                    "default": "View Event"
+                }
+            ]
+        },
+        {
+            "type": "itempage",
+            "name": "itempage",
+            "settings": [
+                {
+                    "type": "page",
+                    "id": "pageItems",
+                    "label": "item page"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "pageFeatureImage",
+                    "label": "page Feature Image"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "pageFeatureImage_mb",
+                    "label": "page Feature Image Mobile"
+                },
+                {
+                    "type": "text",
+                    "id": "pageItemLink",
+                    "label": "page Item Link",
+                    "default": "View Event"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "Events Blogs"
+        }
+    ]
+}
+{% endschema %}

@@ -1,0 +1,217 @@
+<link rel="stylesheet" href="{{ 'component-quick-cart.css' | asset_url }}" media="print" onload="this.media='all'">
+{% comment %} discount coupon style {% endcomment %}
+<link rel="stylesheet" href="{{ 'halo-cart-coupon.css' | asset_url }}" media="print" onload="this.media='all'">
+{% comment %} recommed product {% endcomment %}
+<link rel="stylesheet" href="{{ 'halo-cart-recommed.css' | asset_url }}" media="print" onload="this.media='all'">
+
+<style>
+  .halo-sidebar-header{
+    padding: 18px 30px;
+    border-bottom: 1px solidrgb(212, 180, 180);
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #F3F3F3;
+    background-color: #fff;
+  }
+  .halo-sidebar{
+    background-color: #fff;
+  }
+  .halo-sidebar-header .title {
+    font-family: Poppins;
+    font-weight: 500;
+    font-style: Medium;
+    font-size: 20px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    color: #262629;
+    display: flex;
+    align-items: center;
+  }
+  .halo-sidebar-header .title .cartCount {
+    font-size: 20px;
+    background-color: #333333;
+    border-radius: 50%;
+    min-width: 27px;
+    min-height: 27px;
+    display: inline-flex;
+    color: #fff;
+    justify-content: center;
+    align-items: center;
+    margin-left: 8px;
+  }
+
+  .halo-sidebar-close {
+    color: #333;
+    top: 48px;
+  }
+  .halo-sidebar-close svg {
+    fill: #333;
+  }
+  
+  .form-input, .field__input{
+    color: #18181B;
+  }
+  .form-input, .field__input {
+    border-color: rgba(135, 135, 135, 0.61);
+  }
+  .halo-cart-sidebar .previewCartItem{
+  }
+
+  .halo-cart-sidebar .previewCartItem-price .before-discount-price {
+    font-family: Poppins;
+    font-weight: 400;
+    font-style: Regular;
+    font-size: 14px;
+    line-height: 100%;
+    letter-spacing: 0%;
+    text-decoration: line-through;
+    color: #76767F;
+  }
+  .halo-sidebar.halo-sidebar-right .halo-sidebar-close{
+    position: static;
+    width: auto;
+  }
+  #cart-sidebar-checkout,
+  .button.button-1[aria-label="Checkout"],
+  .button.button--primary[aria-label="Checkout"] {
+    color: #fff;
+    border-radius: 25px;
+    flex: 1;
+    font-family: Roboto;
+    font-weight: 500;
+    font-style: Medium;
+    font-size: 18px;
+      line-height: inherit;
+    letter-spacing: 0%;
+    text-align: center;
+    background-color: #262629;
+    border-color: #262629;
+  }
+  .button.button-2.button-view-cart {
+    border-radius: 25px;
+    border-color: #262629;
+    color: #262629;
+    flex: 1;
+    font-family: Roboto;
+    font-weight: 500;
+    font-style: Medium;
+    font-size: 18px;
+    line-height: inherit;
+    letter-spacing: 0%;
+    text-align: center;
+    background: none;
+    transition: all .25s ease;
+  }
+  .button.button-2.button-view-cart:hover{
+    box-shadow: 0 0 4px #262629;
+  }
+  #cart-sidebar-checkout:hover{
+    box-shadow: 0 0 4px #262629;
+  }
+  
+  .halo-cart-sidebar .halo-sidebar-wrapper{
+    padding-top: 0;
+  }
+
+  #halo-cart-sidebar .cart_coupon_applybox{
+    display: flex;
+    gap: 11px;
+    margin-top: 10px;
+  }
+  #halo-cart-sidebar .cart_coupon_applybox .form-input{
+    padding: 8px;
+    line-height: normal;
+  }
+  #halo-cart-sidebar .cart_coupon_applybtn{
+    font-family: Poppins;
+    font-weight: 600;
+    font-size: 12px;
+    color: #fff;
+    background: #262629;
+    padding: 13px 20px;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    text-transform: capitalize;
+  }
+  #halo-cart-sidebar .cart_coupon_applybtn.is-loading{
+    font-size: 0;
+    position: relative;
+    min-width: 75px;
+  }
+  #halo-cart-sidebar .cart_coupon_applybtn.is-loading:before{
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: calc(50% - 8px);
+    transform: translate(-50%, -50%);
+    display: inline-block;
+    border: 2px solid #f6f6f6;
+    border-radius: 50%;
+    border-top: 2px solid var(--spinner-top-color);
+    border-right: 2px solid var(--spinner-right-color);
+    border-bottom: 2px solid var(--spinner-bottom-color);
+    border-left: 2px solid var(--spinner-left-color);
+    width: 20px;
+    height: 20px;
+    animation: spin-icon 1.4s linear infinite;
+  }
+
+  @media (max-width: 768px) {
+    .previewCartItem-variant {
+      font-size: 12px;
+      line-height: 24px;
+    }
+    .previewCartTotals .previewCartTotals-label, .previewCartTotals .previewCartTotals-value {
+      font-size: 16px;
+      line-height: 1.4;
+    }
+    #cart-sidebar-checkout,
+    .button.button-2.button-view-cart,
+    .button.button-1[aria-label="Checkout"] {
+        font-size: 14px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    .previewCartTotals.shipTotal .previewCartTotals-value {
+      font-size: 12px;
+      font-weight: 500;
+    }
+    .halo-sidebar-header .title .cartCount {
+      font-size: 10px;
+      min-width: 20px;
+      min-height: 20px;
+      margin-left: 4px;
+      vertical-align: middle;
+    }
+  }
+  
+</style>
+
+<noscript>{{ 'component-quick-cart.css' | asset_url | stylesheet_tag }}</noscript>
+
+<div class="halo-sidebar halo-sidebar-right halo-cart-sidebar" id="halo-cart-sidebar">
+    <div class="halo-sidebar-header text-left">
+      <span class="title">
+            {{ 'sections.cart.my_cart' | t }}
+            {% comment %} <span class="cartCount" data-cart-count>{{ cart.item_count }}</span> {% endcomment %}
+      </span>
+      <button type="button" class="halo-sidebar-close button-effect" data-close-cart-sidebar aria-label="{{ 'general.common.close' | t }}">{% render 'icon-close' %} {{ 'general.common.close' | t }}</button>
+	</div>
+    <div class="halo-sidebar-wrapper custom-scrollbar {{cart.items}}">
+      	{%- if settings.show_calculator_free_shipping_message -%}
+          <div class="previewCartMessage">{% render 'free-shipping-component' %}</div>
+        {%- endif -%}
+		<cart-coupon-discount data-is-sidebar="true">
+			<template data-discount-icon>{% render 'icon-discount' %}</template>
+			<template data-discounted-price-template>
+				<span class="previewCartItem-saving-price"><s class="before-discount-price" data-original-price-display>{{ item.original_price | money }}</s><span class="discounted-price" data-current-price-display>{{ item.final_price | money }}</span></span> 
+			</template>
+			<div class="previewCart-wrapper"></div>
+		</cart-coupon-discount>
+  	</div>
+</div>
+
+<script src="{{ 'halo-toolcart.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'halo-cart-coupon.js' | asset_url }}" defer="defer"></script>

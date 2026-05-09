@@ -1,0 +1,428 @@
+<style>
+    .robot-event-next-section {
+        position: relative;
+        width: 100%;
+        background-color: #000;
+        overflow: hidden;
+    }
+
+    .next-item-container {
+        position: relative;
+        width: 100%;
+        height: calc(100vh - 85px);;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+    }
+
+
+    .next-background {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+    }
+
+    .next-background img, 
+    .next-background picture {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+
+
+    .next-header-cont {
+        position: relative;
+        z-index: 2;
+        padding-top: 40px;
+        text-align: center;
+        color: #ffffff;
+    }
+
+ 
+    .head-title {
+        font-family: 'The 2K12', sans-serif;
+        font-size: 9.33333vw;
+        line-height: 1.1;
+        letter-spacing: 0;
+        margin-bottom: 2vw;
+        text-align: center;
+    }
+
+  
+    .head-description {
+        font-size: 4vw;
+        line-height: 1.2;
+        font-weight: 400;
+        color: rgba(255, 255, 255, 0.7);
+        letter-spacing: 0.32px;
+    }
+
+
+    .next-item-steps {
+        background-color: #000;
+        padding: 40px 20px 100px;
+        color: #ffffff;
+        margin: 0 auto;
+    }
+
+
+    .next-steps-titles {
+        font-family: 'The 2K12', sans-serif;
+        font-size: 6.67vw;
+        line-height: 1.2;
+        text-align: center;
+        margin-bottom: 30px;
+        letter-spacing: 0;
+        text-transform: uppercase;
+    }
+
+    .next-step-note-title{
+        font-family: 'The 2K12', sans-serif;
+        font-size: 5.335vw;
+        line-height: 1;
+        text-align: center;
+        margin-bottom: 30px;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+    }
+
+    .next-steps-lists {
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+        margin-bottom: 100px;
+    }
+
+    .next-step-item {
+        position: relative;
+        height: 36vw;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .step-item-title {
+        position: absolute;
+        top: 3.5px;
+        left: 14px;
+        color: #ffffff;
+        font-family: Roboto;
+        font-weight: 500;
+        font-size: 4vw;
+        line-height: 1;
+    }
+
+    .step-item-desc {
+        font-family: Roboto;
+        font-weight: 500;
+        font-size: 4vw;
+        line-height: 6.13vw;
+        letter-spacing: 0%;
+        color: rgba(255, 255, 255, 0.7);
+        margin-top: 10px;
+        text-align: left;
+        padding: 0 5.81738vw;
+    }
+
+    .next-step-note-title {
+        margin-bottom: 20px;
+    }
+
+    .next-step-note-desc {
+        font-size: 3.93vw;
+        line-height: 1.8;
+        color: rgba(255, 255, 255, 0.7);
+        text-align: left;
+    }
+
+
+    .item-warning-container {
+        position: relative;
+        width: 100%;
+        height: calc(100vh - 85px);; 
+        background-color: #000;
+        overflow: hidden;
+        color: #ffffff;
+    }
+
+    .item-warning-container::before,
+    .item-warning-container::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        width: 20.67vw;
+        height: 100%;
+        z-index: 3;
+        pointer-events: none;
+        animation: side-warning-flash 1.9s infinite ease-in-out;
+    }
+
+
+    .item-warning-container::before {
+        left: -4px;
+        background: linear-gradient(to bottom, transparent 0%, rgba(255, 0, 0, 0.4) 40%, rgba(255, 0, 0, 0.6) 50%, rgba(255, 0, 0, 0.4) 60%, transparent 100%);
+        border-radius: 0 100% 100% 0;
+        filter: blur(6px);
+        -webkit-mask-image: linear-gradient(to right, rgba(255, 0, 0, 1) 0, transparent 100%);
+        mask-image: linear-gradient(to right, rgba(255, 0, 0, 1) 0, transparent 100%);
+    }
+
+
+    .item-warning-container::after {
+        right: -4px;
+        background: linear-gradient(to bottom, transparent 0%, rgba(255, 0, 0, 0.4) 40%, rgba(255, 0, 0, 0.6) 50%, rgba(255, 0, 0, 0.4) 60%, transparent 100%);
+        border-radius: 100% 0 0 100%;
+        filter: blur(6px);
+        -webkit-mask-image: linear-gradient(to left, rgba(255, 0, 0, 1) 0, transparent 100%);
+        mask-image: linear-gradient(to left, rgba(255, 0, 0, 1) 0, transparent 100%);
+    }
+
+    .item-warning-background {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1;
+    }
+
+    .item-warning-background img, 
+    .item-warning-background picture {
+        width: 100%;
+        height: 100%;
+        object-fit: cover; 
+        object-position: center;
+        display: block;
+    }
+
+    .item-warning-cont {
+        position: relative;
+        z-index: 2;
+        padding-top: 10vh;
+        text-align: center;
+        margin: 0 auto;
+    }
+
+
+    .item-warning-head-title {
+        font-family: 'The 2K12', sans-serif;
+        font-size: 9.33333vw; 
+        color: #C40000;
+        line-height: 1.1;
+        margin-bottom: 2vw;
+    }
+
+
+    .item-warning-head-desc {
+        font-family: Roboto;
+        font-size: 4vw;
+        line-height: 1.2;
+        font-weight: 400;
+        color: rgba(255, 255, 255, 0.7);
+        padding: 0 5vw;
+        text-align: center;
+    }
+
+    @keyframes side-warning-flash {
+        0%, 100% {
+            opacity: 0.2;
+        }
+        50% {
+            opacity: 1;
+            transform: scaleX(1);
+        }
+    }
+
+</style>
+
+
+<div class="robot-event-next-section">
+    <div class="container-full">
+        {% for block in section.blocks %}
+            {% if block.type == "itemWarning" %}
+                <div class="item-warning-container">
+                    <div class="item-warning-background">
+                        {% render 'picture-simple',
+                            image: block.settings.itemWarningMainImage,
+                            image_mobile: block.settings.itemWarningMainImage,
+                            mobile_dpr: 2,
+                            loading: "eager"
+                        %}
+                    </div>
+                    <div class="item-warning-cont">
+                        <div class="item-warning-head-title">{{ block.settings.itemWarningTitle }}</div>
+                        <div class="item-warning-head-desc">{{ block.settings.itemWarningDesc }}</div>
+                    </div>
+                </div>
+            {% elsif block.type == "item" %}
+                <div class="next-item-container">
+                    <div class="next-background">
+                        {% render 'picture-simple',
+                            image: block.settings.itemMainImage,
+                            image_mobile: block.settings.itemMainImage,
+                            mobile_dpr: 2,
+                            loading: "eager"
+                        %}
+                    </div>
+                    <div class="next-header-cont">
+                        {% if block.settings.itemTitle != blank %}
+                            <div class="head-title">{{ block.settings.itemTitle }}</div>
+                        {% endif %}
+                        {% if block.settings.itemDesc != blank %}
+                            <div class="head-description">{{ block.settings.itemDesc }}</div>
+                        {% endif %}
+                    </div>
+                </div>
+            {% elsif block.type == "itemSteps" %}
+                <div class="next-item-steps">
+                    <div class="next-steps-titles">{{ block.settings.itemStepsTitle }}</div>
+                    <div class="next-steps-lists">
+                        {% liquid
+                            assign item_step_background = block.settings.itemStepBackground
+                        %}
+                        <style>
+                            .next-step-item{
+                                background: url({{ item_step_background | image_url: width: 750 }});
+                                background-size: 100% 100%;
+                                background-repeat: no-repeat;
+                            }
+                        </style>
+
+                        <div class="next-step-item">
+                            <div class="step-item-title">{{ block.settings.itemStepFirTitle }}</div>
+                            <div class="step-item-desc">{{ block.settings.itemStepFirDesc }}</div>
+                        </div>
+                        <div class="next-step-item">
+                            <div class="step-item-title">{{ block.settings.itemStepSecondTitle }}</div>
+                            <div class="step-item-desc">{{ block.settings.itemStepSecondDesc }}</div>
+                        </div>
+                        <div class="next-step-item">
+                            <div class="step-item-title">{{ block.settings.itemStepThirdTitle }}</div>
+                            <div class="step-item-desc">{{ block.settings.itemStepThirdDesc }}</div>
+                        </div>
+                    </div>
+                    <div class="next-steps-note">
+                        <div class="next-step-note-title">{{ block.settings.itemStepNoteTitle }}</div>
+                        <div class="next-step-note-desc">{{ block.settings.itemStepNoteDesc }}</div>
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+        
+    </div>
+</div>
+
+{% schema %}
+{
+    "name": "Robot Event Next",
+    "settings": [],
+    "blocks": [
+        {
+            "type": "itemWarning",
+            "name": "itemWarning",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "itemWarningMainImage",
+                    "label": "item Warning Main Image"
+                },
+                {
+                    "type": "text",
+                    "id": "itemWarningTitle",
+                    "label": "item Warning Title"
+                },
+                {
+                    "type": "richtext",
+                    "id": "itemWarningDesc",
+                    "label": "item Warning Description"
+                }
+            ] 
+        },
+        {
+            "type": "item",
+            "name": "item",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "itemMainImage",
+                    "label": "item Main Image"
+                },
+                {
+                    "type": "text",
+                    "id": "itemTitle",
+                    "label": "item Title"
+                },
+                {
+                    "type": "richtext",
+                    "id": "itemDesc",
+                    "label": "item Descriptions"
+                }
+            ]
+        },
+        {
+            "type": "itemSteps",
+            "name": "itemSteps",
+            "settings": [
+                {
+                    "type": "text",
+                    "id": "itemStepsTitle",
+                    "label": "item Steps Title"
+                },
+                {
+
+                    "type": "image_picker",
+                    "id": "itemStepBackground",
+                    "label": "item Step background"
+                },
+                {
+                    "type": "text",
+                    "id": "itemStepFirTitle",
+                    "label": "item Step One Title"
+                },
+                {
+                    "type": "richtext",
+                    "id": "itemStepFirDesc",
+                    "label": "item Step One Descripe"
+                },
+                {
+                    "type": "text",
+                    "id": "itemStepSecondTitle",
+                    "label": "item Step Second Title"
+                },
+                {
+                    "type": "richtext",
+                    "id": "itemStepSecondDesc",
+                    "label": "item Step Second Descripe"
+                },
+                {
+                    "type": "text",
+                    "id": "itemStepThirdTitle",
+                    "label": "item Step Third Title"
+                },
+                {
+                    "type": "richtext",
+                    "id": "itemStepThirdDesc",
+                    "label": "item Step Third Descripe"
+                },
+                {
+                    "type": "text",
+                    "id": "itemStepNoteTitle",
+                    "label": "item Step Note Title"
+                },
+                {
+                    "type": "richtext",
+                    "id": "itemStepNoteDesc",
+                    "label": "item Step Note Description"
+                }
+            ]
+        }
+    ],
+    "presets": [{ "name": "Robot Event Next" }]
+}
+{% endschema %}

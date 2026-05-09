@@ -1,0 +1,260 @@
+{%- liquid
+  assign header_bg_image = section.settings.sectionHeaderImage
+-%}
+
+<style>
+  .section-{{ section.id }} {
+      padding-top: 100px;
+      padding-bottom: 100px;
+      background: radial-gradient(50% 50% at 50% 50%, #201E1D 0%, #050505 100%);
+  }
+  .section-{{ section.id }} .container-full{
+      padding-left: 16%;
+      padding-right: 16%;
+  }
+  {% if header_bg_image != blank %}
+      .section-{{ section.id }} .cont{
+          background: url({{ header_bg_image | img_url: '1920x' }});
+          background-repeat: no-repeat;background-size: 100% 100%;
+          padding: 66px 0;
+      }
+  {% endif %}
+  .section-{{ section.id }} .cont{
+      text-align: center;
+  }
+  .section-{{ section.id }} .cont .cont-title{
+      font: 700 50px 'DIN';
+      color: #FFB321;
+  }
+  .section-{{ section.id }} .cont .cont-desc{
+      font: 700 50px 'DIN';
+      color: #FFF;
+  }
+  .section-{{ section.id }} .cont-logos{
+      display: flex;
+      gap: 40px;
+      flex-wrap: wrap;
+      margin-top: 60px;
+      justify-content: center;
+  }
+  .section-{{ section.id }} .cont-logos .logo-item{
+      display: flex;
+      flex-direction: column;
+      width: calc((100% - 200px) / 6);
+      border: 1px solid #FDDA6F;
+  }
+  .section-{{ section.id }} .cont-logos .logo-item .logo-item-icon{
+      position: relative;
+      background: #d9d9d919;
+  }
+  .section-{{ section.id }} .cont-logos .logo-item .logo-item-icon img{
+      position: absolute;
+      top: 0;
+      left: 0;
+  }
+  .section-{{ section.id }} .cont-logos .logo-item .logo-item-title{
+      font: 500 0.9vw 'DIN';
+      color: #FDDA6F;
+      padding: 10px 4px;
+      background: #FDDA6F14;
+      border-top: 1px solid #FDDA6F;
+      text-align: center;
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+  }
+
+  .section-{{ section.id }} .bottom-partner-logs{
+      width: 100%;
+      margin-top: 80px;
+  }
+  .section-{{ section.id }} .bottom-partner-logs svg{
+      width: 100%;
+      height: auto;
+  }
+
+  {% comment %} iPhone {% endcomment %}
+  @media(max-width: 767px){
+      .section-{{ section.id }} {
+          padding-top: 50px;
+          padding-bottom: 50px;
+      }
+
+      .section-{{ section.id }} .container-full{
+          padding-left: 10px;
+          padding-right: 10px;
+      }
+      .section-{{ section.id }} .cont{
+          padding: 20px 0;
+      }
+      .section-{{ section.id }} .cont .cont-title,
+      .section-{{ section.id }} .cont .cont-desc{
+          font-size: 19px;
+      }
+      .section-{{ section.id }} .cont-logos{
+          gap: 10px;
+          margin-top: 30px;
+      }
+      .section-{{ section.id }} .cont-logos .logo-item{
+          width: calc((100% - 30px) / 4);
+      }
+      .section-{{ section.id }} .cont-logos .logo-item .logo-item-title{
+          padding: 5px 0;
+          font-size: 1.2vw;
+      }
+      .section-{{ section.id }} .bottom-partner-logs{
+          margin-top: 40px;
+      }
+  }
+
+  {% comment %} iPad {% endcomment %}
+  @media(min-width: 768px) and (max-width: 1024px){
+      .section-{{ section.id }} .container-full{
+          padding-left: 10px;
+          padding-right: 10px;
+      }
+      .section-{{ section.id }} .cont .cont-title,
+      .section-{{ section.id }} .cont .cont-desc{
+          font-size: 40px;
+      }
+      .section-{{ section.id }} .cont-logos{
+          gap: 10px;
+      }
+      .section-{{ section.id }} .cont-logos .logo-item{
+          width: calc((100% - 50px) / 6);
+      }
+  }
+
+  @media (min-width: 1025px) and (max-width: 1480px){
+      .section-{{ section.id }} .container-full{
+          padding-left: 60px;
+          padding-right: 60px;
+      }
+      .section-{{ section.id }} .cont-logos{
+          gap: 20px;
+      }
+      .section-{{ section.id }} .cont-logos .logo-item{
+          width: calc((100% - 100px) / 6);
+      }
+  }
+</style>
+
+<section id="{{ section.id }}" class="section-{{ section.id }}" data-section-id="{{ section.id }}">
+  {% if section.settings.webBgImage != blank %}
+    {%- liquid
+      assign bgImage = section.settings.webBgImage
+      assign bgImageMb = section.settings.mobileBgImage
+    -%}
+
+    <style>
+      .section-{{ section.id }} {
+          background-image: url({{ bgImage | img_url: 'master' }});
+          background-size: cover;
+          background-position: center;
+          background-repeat: no-repeat;
+      }
+
+      @media (max-width: 767px) {
+          .section-{{ section.id }} {
+              background-image: url({{ bgImageMb | img_url: 'master' }});
+              background-position: top;
+          }
+      }
+    </style>
+  {% endif %}
+  <div class="container-full">
+    <div class="cont">
+      <div class="cont-title">{{ section.settings.sectionTitle }}</div>
+      <div class="cont-desc">{{ section.settings.sectionDesc }}</div>
+    </div>
+    <div class="cont-logos">
+      {% for block in section.blocks %}
+        {% if block.type == 'item' %}
+          <div class="logo-item">
+            <div
+              class="logo-item-icon"
+              style="padding-top: {% unless block.settings.itemIcon.presentation.focal_point == '50.0% 50.0%' %}{{ 1 | divided_by: block.settings.itemIcon.aspect_ratio | times: 120 }}%{% else %}{{ 1 | divided_by: block.settings.itemIcon.aspect_ratio | times: 100 }}%{% endunless %}"
+            >
+              <img src="{{ block.settings.itemIcon | image_url }}" loading="lazy">
+            </div>
+            <div class="logo-item-title">{{ block.settings.itemTitle }}</div>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+    <div class="bottom-partner-logs">
+      <svg width="1320" height="70" viewBox="0 0 1320 70" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M1290 18H815L795 48H528L508.5 18H40L0 70H1320L1290 18Z" fill="#503A00"/>
+        <g clip-path="url(#clip0_7578_32876)">
+        <path d="M649.912 0.390625L646.227 8.18187L657.974 17.4347L649.912 0.390625Z" fill="white"/>
+        <path d="M646.333 17.5671L648.336 21.8016L655.551 21.1356L654.397 18.6942L642.648 9.44141L636.273 22.914L644.147 22.1876L646.333 17.5671Z" fill="white"/>
+        <path d="M650.613 24.7636L653.451 30.7662H643.767L646.424 25.1497L638.55 25.876L633 37.6071H664.218L657.827 24.0977L650.613 24.7636Z" fill="white"/>
+        <path d="M684.454 15.0182C683.063 13.6067 681.025 12.8921 678.398 12.8906C678.242 12.895 673.749 12.9054 671.2 16.051C671.211 14.9637 671.124 12.1967 671.643 10.2518C672.156 8.34229 673.388 6.13222 674.681 5.67694C674.839 5.62095 675.012 5.62243 675.17 5.67694C676.788 6.24419 678.073 9.24253 678.35 10.2488H686.906C686.459 6.63759 685.451 4.20061 683.748 2.60641C681.849 0.828041 679.019 0 674.839 0C670.397 0 667.332 1.1345 665.471 3.47129C663.796 5.57233 663.016 8.66349 663.016 13.1971V25.4571C663.016 30.2927 663.679 33.1585 665.234 35.037C666.903 37.0541 669.803 37.9956 674.359 38H675.691C680.16 38 683.041 36.9362 684.755 34.6525C686.256 32.6546 686.991 29.6665 686.991 24.9665C686.991 24.7897 686.991 24.6011 686.994 24.3977C687.013 21.8488 686.981 17.5819 684.452 15.0167L684.454 15.0182ZM678.813 28.7177L678.037 29.8375V30.4003H678.813V31.0397L678.521 31.4567H671.491L671.2 31.0397V30.4003H671.976V29.8375L671.2 28.7177V23.3251L671.242 23.222C671.967 21.6307 676.213 19.0965 678.811 19.0965V28.7177H678.813Z" fill="white"/>
+        </g>
+        <defs>
+        <clipPath id="clip0_7578_32876">
+        <rect width="54" height="38" fill="white" transform="translate(633)"/>
+        </clipPath>
+        </defs>
+      </svg>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "r6 Siege Partner Logos",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "webBgImage",
+      "label": "Section Background Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "mobileBgImage",
+      "label": "Background Image Mobile"
+    },
+    {
+      "type": "image_picker",
+      "id": "sectionHeaderImage",
+      "label": "Section header bgImage"
+    },
+    {
+      "type": "text",
+      "id": "sectionTitle",
+      "label": "Section Title",
+      "default": "The Teams that qualified for"
+    },
+    {
+      "type": "text",
+      "id": "sectionDesc",
+      "label": "Section Description"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "item",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "itemIcon",
+          "label": "Item Icon"
+        },
+        {
+          "type": "text",
+          "id": "itemTitle",
+          "label": "Item Title"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "r6 Siege Partner Logos"
+    }
+  ]
+}
+{% endschema %}

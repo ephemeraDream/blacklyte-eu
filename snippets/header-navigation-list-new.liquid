@@ -1,0 +1,668 @@
+{% comment %}
+  navigation new menu: left & right container.
+{% endcomment %}
+<style>
+  .nav-menu-new{
+       background-color: #EBEBEB;
+       width: 100%;
+       position: absolute;
+       top: 60px;
+       left: 0;
+       max-height: -webkit-fill-available;
+       max-height: 0;
+       overflow: hidden;
+       transition: max-height 0.5s ease, opacity 0.4s ease;
+   }
+   .container-cont-new{
+       display: flex;
+       justify-content: space-between;
+       padding: 30px 16% 50px;
+       background: #EBEBEB;
+   }
+   .container-cont-new .nav-left{
+       display: flex;
+       flex-direction: column;
+       gap: 8px;
+       padding-right: 26px;
+       border-right: 1px solid #D8D8D8;
+   }
+   .container-cont-new .nav-left .nav-menu-items{
+       font: 400 16px var(--font-family-1);
+       color: #76767F;
+       padding: 10px 34px 10px 20px;
+       transition: all .3s ease;
+       cursor: pointer;
+       white-space: nowrap;
+   }
+   .container-cont-new .nav-left .shop_all_text-menu{
+       font: 500 16px var(--font-family-1);
+       padding: 10px 34px 0 20px;
+       color: #262629;
+       cursor: pointer;
+       transition: all .3s ease;
+       white-space: nowrap;
+   }
+   .container-cont-new .nav-left .shop_all_text-menu:hover{
+       text-decoration: underline;
+       text-underline-offset: 3px;
+   }
+   .container-cont-new .nav-right .menu-item-cont .menu-item-cont-left .items-text{
+       font: 400 16px var(--font-family-1);
+       color: #76767F;
+       padding: 10px 60px 10px 20px;
+       transition: all .3s ease;
+       cursor: pointer;
+       white-space: nowrap;
+   }
+   .container-cont-new .nav-right .menu-item-cont .menu-item-cont-left .hot-sale-icon svg{
+       width: 15px;
+       height: 15px;
+       fill: none;
+       stroke: none;
+       vertical-align: bottom;
+   }
+   .no-select {
+       -webkit-user-select: none;
+       -moz-user-select: none;
+       -ms-user-select: none;
+       user-select: none;
+   }
+
+   .container-cont-new .nav-left .nav-menu-items.nav-menu-items-active,
+   .container-cont-new .nav-left .nav-menu-items:hover,
+   .container-cont-new .nav-right .menu-item-cont .menu-item-cont-left .items-text:hover {
+       font-weight: 500;
+       background-color: #F5F5F5;
+       color: #262629;
+       border-radius: 4px;
+   }
+   .container-cont-new .nav-right .menu-item-cont .menu-item-cont-left .items-text.items-text-active{
+       font-weight: 500;
+       color: #262629;
+   }
+   .container-cont-new .nav-right .menu-item-cont .menu-item-cont-left .items-views-all{
+       font: 500 16px var(--font-family-1);
+       color: #76767F;
+       border: 1px solid #76767F;
+       border-radius: 30px;
+       padding: 10px 24px;
+       max-width: max-content;
+       cursor: pointer;
+       margin-left: 20px;
+       transition: all .3s ease;
+       margin-top: 20px;
+   }
+   .container-cont-new .nav-right .menu-item-cont .menu-item-cont-left .items-views-all:hover{
+       border-color: #262629;
+       color: #262629;
+   }
+   .container-cont-new .nav-right .menu-item-cont .menu-item-cont-left .items-views-all .icons-cont svg{
+       fill: none;
+       stroke: none;
+       width: 12px;
+       height: 12px;
+       vertical-align: baseline;
+   }
+   .container-cont-new .nav-right .menu-item-cont .menu-item-cont-left .items-views-all:hover .icons-cont svg{
+       transform: translateX(5px);
+   }
+   .container-cont-new .nav-right .menu-item-cont .menu-item-cont-left .items-views-all:hover .icons-cont svg path{
+       stroke: #262629;
+   }
+   .container-cont-new .nav-left .nav-menu-lists-top{
+       display: flex;
+       flex-direction: column;
+       gap: 10px;
+   }
+   .container-cont-new .nav-left .nav-menu-bottom-line{
+       display: block;
+       width: 100%;
+       height: 1px;
+       background-color: #D8D8D8;
+       margin-bottom: 20px;
+   }
+   .container-cont-new .nav-left .nav-menu-lists-bottom{
+       margin-top: 160px;
+   }
+   .container-cont-new .nav-right{
+       flex: 1;
+       padding-left: 63px;
+       overflow: hidden;
+   }
+   .container-cont-new .nav-right .menu-item-cont{
+       display: flex;
+       gap: 67px;
+       height: 100%;
+   }
+   .container-cont-new .nav-right .menu-item-cont:not(:first-child){
+       display: none;
+   }
+   .container-cont-new .nav-right .menu-item-cont .menu-item-cont-left{
+       display: flex;
+       flex-direction: column;
+       gap: 10px;
+       width: 20%;
+   }
+   .container-cont-new .nav-right .menu-item-cont .menu-item-cont-left .items-text-bottom svg {
+       width: 18px;
+       height: 21px;
+   }
+   .container-cont-new .nav-right .menu-item-cont .menu-item-cont-left .items-text-bottom{
+       font: 500 16px var(--font-family-1);
+       color: #262629;
+       cursor: pointer;
+       margin: auto 0 0 20px;
+       display: flex;
+       align-items: center;
+       gap: 5px;
+   }
+   .container-cont-new .nav-right .menu-item-cont .menu-item-cont-right{
+       flex: 1;
+       position: relative;
+       height: max-content;
+       cursor: pointer;
+   }
+   .container-cont-new .nav-right .menu-item-cont:nth-of-type(1) .menu-item-cont-right .dom-new-settings:not(:first-child) {
+       display: none;
+   }
+   .container-cont-new .nav-right .menu-item-cont .menu-item-cont-right .prod-image{
+       border-radius: 16px;
+   }
+   .container-cont-new .nav-right .menu-item-cont .menu-item-cont-right-container{
+       position: absolute;
+       bottom: 40px;
+       left: 50%;
+       transform: translateX(-50%);
+       text-align: center;
+   }
+   .container-cont-new .nav-right .menu-item-cont .menu-item-cont-right-container .cont-title{
+       font: 700 30px var(--font-family-1);
+       font-style: Italic;
+       color: #fff;
+   }
+   .container-cont-new .nav-right .menu-item-cont .menu-item-cont-right-container .cont-desc{
+       font: 400 16px var(--font-family-1);
+       margin-top: 4px;
+       color: #fff;
+   }
+   .container-cont-new .nav-right .menu-item-cont .menu-item-cont-right-container .cont-btns{
+       margin-top: 18px;
+       display: flex;
+       gap: 23px;
+       justify-content: center;
+   }
+   .container-cont-new .nav-right .menu-item-cont .menu-item-cont-right-container .cont-btns .btn-link{
+       font: 500 16px var(--font-family-1);
+       display: inline-block;
+       padding: 10px 24px;
+       border-radius: 30px;
+       cursor: pointer;
+       white-space: nowrap;
+       transition: all .3s ease;
+   }
+   .container-cont-new .nav-right .menu-item-cont .menu-item-cont-right-container .cont-btns .learn_more-btns{
+        background-color: transform;
+        border: 1px solid #fff;
+        color: #fff;
+    }
+    .container-cont-new .nav-right .menu-item-cont .menu-item-cont-right-container .cont-btns .learn_more-btns:hover{
+        border-color: #fff;
+        background-color: #fff;
+        color: #262629;
+    }
+    .container-cont-new .nav-right .menu-item-cont .menu-item-cont-right-container .cont-btns .buy_now-btns{
+        background: #fff;
+        color: #262629;
+    }
+    .container-cont-new .nav-right .menu-item-cont .menu-item-cont-right-container .cont-btns .buy_now-btns:hover{
+        background: #262629;
+        color: #fff;
+    }
+
+
+
+   /* IPhone */
+   @media(max-width: 767px){ }
+   /* IPad */
+   @media(min-width: 768px) and (max-width: 1025px){ }
+   /* small screen */
+   @media(min-width: 1025px) and (max-width: 1480px){
+       .container-cont-new{
+           padding-left: 60px;
+           padding-right: 60px;
+       }
+   }
+   @media(min-width: 1026px) and (max-width: 1600px){
+       .container-cont-new .nav-left{
+           padding-right: 13px;
+       }
+       .container-cont-new .nav-right{
+           padding-left: 35px;
+       }
+       .container-cont-new .nav-right .menu-item-cont{
+           gap: 30px;
+       }
+       .container-cont-new .nav-right .menu-item-cont .menu-item-cont-right-container{
+           bottom: 26px;
+       }
+       .container-cont-new .nav-right .menu-item-cont .menu-item-cont-left{
+           width: 25%;
+       }
+       .container-cont-new .nav-left .nav-menu-items,
+       .container-cont-new .nav-right .menu-item-cont .menu-item-cont-left .items-text,
+       .container-cont-new .nav-left .shop_all_text-menu,
+       .container-cont-new .nav-right .menu-item-cont .menu-item-cont-left .items-views-all,
+       .container-cont-new .nav-right .menu-item-cont .menu-item-cont-left .items-text-bottom {
+           font-size: 14px;
+       }
+       .container-cont-new .nav-left .nav-menu-lists-top,
+       .container-cont-new .nav-right .menu-item-cont .menu-item-cont-left {
+           gap: 5px;
+       }
+       .container-cont-new .nav-right .menu-item-cont .menu-item-cont-right-container .cont-title{
+           font-size: 26px;
+       }
+       .container-cont-new .nav-right .menu-item-cont .menu-item-cont-right-container .cont-desc{
+           font-size: 14px;
+       }
+       .container-cont-new .nav-right .menu-item-cont .menu-item-cont-right-container .cont-btns .btn-link{
+           font-size: 10px;
+       }
+   }
+   /* large screen */
+   @media(min-width: 2000px){
+       .container-cont-new{
+           padding: 40px 16% 120px;
+       }
+       .container-cont-new .nav-right .menu-item-cont .menu-item-cont-right{
+           max-width: fit-content;
+       }
+       .container-cont-new .nav-right .menu-item-cont .menu-item-cont-right .prod-image{
+           max-width: 760px;
+           max-height: 400px;
+       }
+       .container-cont-new .nav-right .menu-item-cont{
+           gap: 80px;
+       }
+   }
+</style>
+<div class="nav-menu-new">
+  <div class="container-cont-new">
+    <div class="nav-left">
+      <div class="nav-menu-lists-top">
+        {% for menu in section.settings.headerNavMenu.links %}
+          <a href="{{ menu.url }}" class="nav-menu-items {% if forloop.first %}nav-menu-items-active{% endif %}">
+            {{- menu.title -}}
+          </a>
+        {% endfor %}
+      </div>
+      <div class="nav-menu-lists-bottom">
+        <div class="nav-menu-bottom-line"></div>
+        <a class="shop_all_text-menu" {% if section.settings.shopAllLink != blank %} href="{{ section.settings.shopAllLink }}" {% else %} aria-disabled="true" {% endif %} >
+          Shop All Products
+        </a>
+      </div>
+    </div>
+    <div class="nav-right">
+      {% comment %} chairs {% endcomment %}
+      <div class="menu-item-cont" data-target="chairs">
+        <div class="menu-item-cont-left" data-target="chairs">
+          {% for menu in section.settings.chairsMenuList.links %}
+            <a href="{{ menu.url }}" class="items-text {% if forloop.first %}items-text-active{% endif %} no-select">
+              {{ menu.title }}
+              {% if menu.title == section.settings.hotSaleChair %}
+                <span class="hot-sale-icon">
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M16.5175 11.6925C16.5175 10.8625 16.065 9.0275 15.0825 7.1725C15.065 7.7925 14.5625 9.295 14.1925 9.695C13.945 8.995 13.8825 4.3225 7.72003 2.75C8.09503 7.3975 3.46753 7.33 3.46753 12.345C3.46753 15.01 5.06503 17.3025 7.35253 18.32C6.83003 15.245 9.86753 14.85 9.37753 11.6825C12.5775 13.5975 13.33 15.8375 12.465 18.39C15.02 17.32 16.7225 14.6425 16.5175 11.6925Z" fill="#AF1C1C"/>
+                  </svg>
+                </span>
+              {% endif %}
+            </a>
+          {% endfor %}
+          <a class="items-views-all" href="{{ section.settings.chairsMenuListLink }}">
+            View All
+            <span class="icons-cont">
+              <svg width="8" height="12" viewBox="0 0 8 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1.28906 11.4336L6.57813 6.14453L1.28906 0.855468" stroke="#76767F" stroke-width="1.6"/>
+              </svg>
+            </span>
+          </a>
+          <div class="items-text-bottom show_chair_compare_modal">
+            <span class="bottom-icons">
+              <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M11 4L1 4.00511V17L11 16.9949" stroke="#262629" stroke-width="1.4"/>
+                <path d="M11 4H19V17H11" stroke="#262629" stroke-width="1.4" stroke-dasharray="2 2"/>
+                <path d="M11 0L11 21" stroke="#262629" stroke-width="1.4"/>
+              </svg>
+            </span>
+            Compare Chairs
+          </div>
+        </div>
+        <div class="menu-item-cont-right">
+          {% for block in section.blocks %}
+            {% if block.type == 'chairsItems' %}
+              {% if block.settings.chairsItemKey == 'Collab Chairs' or block.settings.chairsItemKey == 'Editions Stühle' or block.settings.chairsItemKey == 'Sillas Ediciones' or block.settings.chairsItemKey == 'Éditions Chaises' or block.settings.chairsItemKey == 'Sedie Edizioni' %}
+                  <div class="dom-new-settings" data-target="{{ block.settings.chairsItemKey }}">
+                      {% render 'header-editions', product_list: block.settings.editionList, block: block %}
+                  </div>
+              {% else %}
+                <div class="dom-new-settings" data-target="{{ block.settings.chairsItemKey }}">
+                  <div class="menu-item-cont-right-main">
+                    <div class="prod-image image-zoom">
+                      <img src="{{ block.settings.chairsItemsMainImage | img_url: 'master' }}" loading="lazy">
+                    </div>
+                  </div>
+                  <div class="menu-item-cont-right-container">
+                    <div class="cont-title">{{ block.settings.chairsItemsTitle }}</div>
+                    <div class="cont-desc">
+                      {{ block.settings.chairsItemsDesc }}
+                    </div>
+                    <div class="cont-btns">
+                      {% if block.settings['chairsItemsLink-0'] != blank %}
+                        <a class="learn_more-btns btn-link" href="{{ block.settings.chairsItemsLink }}">
+                          {{- block.settings['chairsItemsLink-0'] -}}
+                        </a>
+                      {% endif %}
+                      {% if block.settings['chairsItemsLink-1'] != blank %}
+                        <a class="buy_now-btns btn-link" href="{{ block.settings.chairsItemsLink-1-url }}">
+                          {{- block.settings['chairsItemsLink-1'] -}}
+                        </a>
+                      {% endif %}
+                    </div>
+                  </div>
+                </div>
+              {% endif %}
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+      {% comment %} desks {% endcomment %}
+      <div class="menu-item-cont" data-target="desks">
+        <div class="menu-item-cont-left">
+          {% for menu in section.settings.desksMenuList.links %}
+            <a href="{{ menu.url }}" class="items-text {% if forloop.first %}items-text-active{% endif %} no-select">
+              {{ menu.title }}
+            </a>
+          {% endfor %}
+          <a class="items-views-all" href="{{ section.settings.desksMenuListLink }}">
+            View All
+            <span class="icons-cont">
+              <svg width="8" height="12" viewBox="0 0 8 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1.28906 11.4336L6.57813 6.14453L1.28906 0.855468" stroke="#76767F" stroke-width="1.6"/>
+              </svg>
+            </span>
+          </a>
+          <div class="items-text-bottom show_desk_compare_modal" id="show_compare_modal">
+            <span class="bottom-icons">
+              <svg width="20" height="21" viewBox="0 0 20 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M11 4L1 4.00511V17L11 16.9949" stroke="#262629" stroke-width="1.4"/>
+                <path d="M11 4H19V17H11" stroke="#262629" stroke-width="1.4" stroke-dasharray="2 2"/>
+                <path d="M11 0L11 21" stroke="#262629" stroke-width="1.4"/>
+              </svg>
+            </span>
+            Compare Desks
+          </div>
+        </div>
+        <div class="menu-item-cont-right">
+          {% for block in section.blocks %}
+            {% if block.type == 'desksItems' %}
+              <div class="dom-new-settings" data-target="{{ block.settings.desksItemKey }}">
+                <div class="menu-item-cont-right-main">
+                  <div class="prod-image image-zoom">
+                    <img src="{{ block.settings.desksItemsMainImage | img_url: 'master' }}" loading="lazy">
+                  </div>
+                </div>
+                <div class="menu-item-cont-right-container">
+                  <div class="cont-title">{{ block.settings.desksItemsTitle }}</div>
+                  <div class="cont-desc">
+                    {{ block.settings.desksItemsDesc }}
+                  </div>
+                  <div class="cont-btns">
+                    {% if block.settings['desksItemsLink-0'] != blank %}
+                      <a class="learn_more-btns btn-link" href="{{ block.settings.desksItemsLink }}">
+                        {{- block.settings['desksItemsLink-0'] -}}
+                      </a>
+                    {% endif %}
+                    {% if block.settings['desksItemsLink-1'] != blank %}
+                      <a class="buy_now-btns btn-link" href="{{ block.settings.desksItemsLink-1-url }}">
+                        {{- block.settings['desksItemsLink-1'] -}}
+                      </a>
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+      {% comment %} Light Product List {% endcomment %}
+      <div class="menu-item-cont" data-target="lighting">
+        <div class="menu-item-cont-left">
+          {% for menu in section.settings.lightingMenuList.links %}
+            <a href="{{ menu.url }}" class="items-text {% if forloop.first %}items-text-active{% endif %} no-select">
+              {{ menu.title }}
+            </a>
+          {% endfor %}
+          <a class="items-views-all" href="{{ section.settings.lightingMenuListLink }}">
+            View All
+            <span class="icons-cont">
+              <svg width="8" height="12" viewBox="0 0 8 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1.28906 11.4336L6.57813 6.14453L1.28906 0.855468" stroke="#76767F" stroke-width="1.6"/>
+              </svg>
+            </span>
+          </a>
+          <div class="items-text-bottom show_chair_compare_modal"></div>
+        </div>
+        <div class="menu-item-cont-right">
+          {% for block in section.blocks %}
+            {% if block.type == 'lightingItems' %}
+              <div class="dom-new-settings" data-target="{{ block.settings.lightingItemKey }}">
+                <div class="menu-item-cont-right-main">
+                  <div class="prod-image image-zoom">
+                    <img src="{{ block.settings.lightingItemsMainImage | img_url: 'master' }}" loading="lazy">
+                  </div>
+                </div>
+                <div class="menu-item-cont-right-container">
+                  <div class="cont-title">{{ block.settings.lightingItemsTitle }}</div>
+                  <div class="cont-desc">
+                    {{ block.settings.lightingItemsDesc }}
+                  </div>
+                  <div class="cont-btns">
+                    {% if block.settings['lightingItemsLink-0'] != blank %}
+                      <a class="learn_more-btns btn-link" href="{{ block.settings.lightingItemsLink }}">
+                        {{- block.settings['lightingItemsLink-0'] -}}
+                      </a>
+                    {% endif %}
+                    {% if block.settings['lightingItemsLink-1'] != blank %}
+                      <a class="buy_now-btns btn-link" href="{{ block.settings.lightingItemsLink-1-url }}">
+                        {{- block.settings['lightingItemsLink-1'] -}}
+                      </a>
+                    {% endif %}
+                  </div>
+                </div>
+              </div>
+            {% endif %}
+          {% endfor %}
+        </div>
+      </div>
+      {% comment %} Accessories {% endcomment %}
+      <div class="menu-item-cont" data-target="accessories">
+        {% render 'header-accessory', products_collection: section.settings.AccessoriesProductList, isTag: false %}
+      </div>
+      {% comment %} New Arrival {% endcomment %}
+      <div class="menu-item-cont" data-target="new arrival">
+        {% render 'header-newArrival', products_collection: section.settings.NewArrivalProductList, isTag: true %}
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  $(document).ready(function () {
+      {% comment %} 封装一级菜单点击逻辑为函数 {% endcomment %}
+      function handleFirstLevelClick($firstLevelItem) {
+          {% comment %} 一级菜单激活样式 {% endcomment %}
+          $('.container-cont-new .nav-left .nav-menu-items')
+              .removeClass('nav-menu-items-active');
+          $firstLevelItem.addClass('nav-menu-items-active');
+
+          let selectedText = $firstLevelItem.text().trim().toLocaleLowerCase();
+          if(selectedText == 'stühle' || selectedText == 'sillas' || selectedText == 'sedie' || selectedText == 'chaises'){
+              selectedText = 'chairs'
+          } else if(selectedText == 'schreibtische' || selectedText == 'escritorios' || selectedText == 'scrivanie' || selectedText == 'bureaux') {
+              selectedText = 'desks'
+          } else if(selectedText == 'zubehör' || selectedText == 'accesorios' || selectedText == 'accessori' || selectedText == 'accessoires') {
+              selectedText = 'accessories'
+          } else if(selectedText == 'neu eingetroffen' || selectedText == 'recién llegado' || selectedText == 'nuovo arrivo' || selectedText == 'nouvelle arrivée'){
+              selectedText = 'new arrival'
+          }
+
+
+          setTimeout(()=>{
+              {% comment %} 显示对应的二级菜单容器 {% endcomment %}
+              $('.container-cont-new .nav-right .menu-item-cont').each(function () {
+                  const target = $(this).data('target');
+                  if (target === selectedText) {
+                      $(this).css('display', 'flex')
+
+                      {% comment %} 自动激活该二级菜单下的第一个 .items-text {% endcomment %}
+                      const $firstSecondLevelItem = $(this).find('.menu-item-cont-left .items-text').first();
+
+                      $('.container-cont-new .nav-right .menu-item-cont .items-text')
+                          .removeClass('items-text-active');
+                      $firstSecondLevelItem.addClass('items-text-active');
+
+                      const secondLevelText = $firstSecondLevelItem.text().trim();
+
+                      {% comment %} 显示对应的三级菜单 {% endcomment %}
+                      $('.dom-new-settings').each(function () {
+                          const thirdTarget = $(this).data('target');
+                          if (thirdTarget === secondLevelText) {
+                              $(this).css('display', 'block');
+                          } else {
+                              $(this).css('display', 'none');
+                          }
+                      });
+
+                  } else {
+                      $(this).css('display', 'none');
+                  }
+              });
+          }, 0)
+
+      }
+
+      {% comment %} 一级菜单点击事件 {% endcomment %}
+      $('.container-cont-new .nav-left .nav-menu-items').on('mouseenter', function () {
+          handleFirstLevelClick($(this));
+      });
+
+      {% comment %} 二级菜单点击事件 {% endcomment %}
+      $('.container-cont-new .nav-right .menu-item-cont .menu-item-cont-left .items-text').on('mouseenter', function () {
+          $('.container-cont-new .nav-right .menu-item-cont .items-text')
+              .removeClass('items-text-active');
+          $(this).addClass('items-text-active');
+
+          const selectedText = $(this).text().trim();
+
+          $('.dom-new-settings').each(function () {
+              const target = $(this).data('target');
+              console.log('target:', target)
+              console.log('selectedText:', selectedText)
+              if (target === selectedText) {
+                  $(this).css('display', 'block');
+              } else {
+                  $(this).css('display', 'none');
+              }
+          });
+      });
+
+      {% comment %} ✅ 初始化时：自动点击第一个一级菜单（包含二级/三级联动） {% endcomment %}
+      const $firstLevelMenuItem = $('.container-cont-new .nav-left .nav-menu-items').first();
+      if ($firstLevelMenuItem.length) {
+          handleFirstLevelClick($firstLevelMenuItem);
+      }
+
+  });
+
+  {% comment %} $('.container-cont-new .nav-right .menu-item-cont .menu-item-cont-left .items-views-all').on('click', function() {
+      const link = $(this).data('url')
+      if(link) {
+          window.location.href = link
+      }
+  })
+
+  $('.container-cont-new .nav-left .shop_all_text-menu').on('click', function() {
+      const link = $(this).data('url')
+      if(link) {
+          window.location.href = link
+      }
+  })
+
+  $('.container-cont-new .nav-right .menu-item-cont .menu-item-cont-right-container .cont-btns .btn-link').on('click', function() {
+      const link = $(this).data('url')
+      if(link) {
+          window.location.href = link
+      }
+  }) {% endcomment %}
+
+  const $firstMenuItem = $('.header-navigation .menu-lv-item').first();
+  const $navMenu = $('.nav-menu-new');
+
+  $firstMenuItem.on('mouseenter', function() {
+  const heightVal = $('.header-navigation').innerHeight();
+      $navMenu.css({
+          'opacity': '1',
+          'top': heightVal,
+          'max-height': 'fit-content',
+          'border-top': '1px solid #D4D4D8',
+          'border-bottom': '1px solid #D4D4D8'
+      });
+  });
+
+  $firstMenuItem.on('mouseleave', function() {
+      if (!$navMenu.is(':hover')) {
+          $navMenu.css({
+          'opacity': '0',
+          'max-height': '0',
+          'border-top': 'none',
+          'border-bottom': 'none'
+          });
+      }
+  });
+
+  {% comment %} $('.header-navigation .menu-lv-item').on('mouseenter', function() {
+      let currentMenuText = $(this).text().toLowerCase().trim()
+      const heightVal = $('.header-navigation').innerHeight()
+      console.log(currentMenuText)
+      if(currentMenuText == 'products' || currentMenuText == 'prodotti' || currentMenuText == 'produkte' || currentMenuText  == 'productos' || currentMenuText == 'prodotti') {
+          $('.nav-menu-new').css({
+              'opacity': '1',
+              'top': heightVal,
+              'max-height': 'fit-content',
+              'border-top': '1px solid #D4D4D8',
+              'border-bottom': "1px solid #D4D4D8"
+          })
+      }
+  })
+
+  $('.header-navigation .menu-lv-item').on('mouseleave', function() {
+      if(($(this).text().toLowerCase().trim() == 'products' || currentMenuText == 'prodotti' || currentMenuText == 'produkte' || currentMenuText == 'productos' || currentMenuText  == 'prodotti') && !$('.nav-menu-new:hover').length) {
+          $('.nav-menu-new').css({
+              'opacity': '0',
+              'max-height': '0',
+              'border-top': 'none',
+              'border-bottom': "none"
+          })
+      }
+  }) {% endcomment %}
+
+  $('.nav-menu-new').on('mouseleave', function () {
+      $(this).css({
+          opacity: '0',
+          'max-height': '0',
+          'border-top': 'none',
+          'border-bottom': 'none',
+      });
+  });
+</script>

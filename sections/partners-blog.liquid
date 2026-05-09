@@ -1,0 +1,115 @@
+{{ 'section-partners-blog.css' | asset_url | stylesheet_tag }}
+<link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css">
+
+<div class="partners_blog" id="{{ section.settings.specId }}">
+  <div class="partners_blog_title">{{ section.settings.title }}</div>
+  <div class="partners_blog_text">{{ section.settings.text }}</div>
+  <div class="partners_blog_box">
+    <div class="partners_blog_contain">
+      {% for block in section.blocks %}
+        <a class="partners_blog_item" href="{{ block.settings.article.url }}">
+          <div class="partners_blog_item_img">
+            {{-
+              block.settings.article.image
+              | image_url: width: block.settings.article.image.width
+              | image_tag: alt: block.settings.article.title
+            -}}
+          </div>
+          <div class="partners_blog_item_info">
+            <div>
+              <div class="partners_blog_item_title">{{ block.settings.article.title }}</div>
+              <div class="partners_blog_item_date">
+                On {{ block.settings.article.published_at | date: '%b %-d, %Y' }}
+              </div>
+            </div>
+            <div class="partners_blog_item_link">{{ 'products.product.text.learn_more' | t }} ></div>
+          </div>
+        </a>
+      {% endfor %}
+    </div>
+    <div class="partners_blog_prev">
+      <svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 56 56" fill="none">
+        <circle cx="28" cy="28" r="27.5" fill="white" stroke="#E8E8E8"/>
+        <path d="M29.6562 22L23.9994 27.6569L29.6562 33.3137" stroke="black" stroke-width="2"/>
+      </svg>
+    </div>
+    <div class="partners_blog_next">
+      <svg xmlns="http://www.w3.org/2000/svg" width="56" height="56" viewBox="0 0 56 56" fill="none">
+        <circle cx="28" cy="28" r="27.5" transform="matrix(-1 0 0 1 56 0)" fill="white" stroke="#E8E8E8"/>
+        <path d="M26.3438 22L32.0006 27.6569L26.3438 33.3137" stroke="black" stroke-width="2"/>
+      </svg>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+<script>
+  jQuery(function ($) {
+    $(document).ready(function () {
+      $('.partners_blog_contain').slick({
+        slidesToShow: 1,
+        infinite: true,
+        variableWidth: true,
+        nextArrow: $('.partners_blog_next'),
+        prevArrow: $('.partners_blog_prev'),
+        responsive: [
+          {
+            breakpoint: 768,
+            settings: {
+              arrows: false,
+              dots: true,
+              variableWidth: false,
+              centerMode: false,
+            },
+          },
+        ],
+      });
+    });
+  });
+</script>
+
+{% schema %}
+{
+  "name": "partners blog",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "specId",
+      "label": "specId"
+    },
+    {
+      "type": "textarea",
+      "id": "title",
+      "label": "title"
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "text"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "item",
+      "name": "item",
+      "settings": [
+        {
+          "type": "article",
+          "id": "article",
+          "label": "article"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "partners blog"
+    }
+  ]
+}
+{% endschema %}

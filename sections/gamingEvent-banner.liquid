@@ -1,0 +1,159 @@
+<style>
+    .section-block-{{ section.id }} .large-image-container .large-image-pc{
+        display: block;
+    }
+    .section-block-{{ section.id }} .large-image-container .large-image-mb{
+        display: none;
+    }
+    .section-block-{{ section.id }} .large-image-container{
+        position: relative;
+        overflow: hidden;
+    }
+    .section-block-{{ section.id }} .large-image-container .large-image img{
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: auto;
+    }
+    .section-block-{{ section.id }} .large-image-cont{
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 100%;
+        text-align: center;
+        bottom: 140px;
+    }
+    .section-block-{{ section.id }} .large-image-cont-title{
+        font-family: Anton;
+        font-weight: 400;
+        font-style: Regular;
+        font-size: 3.125vw;
+        line-height: 1.1;
+        text-transform: uppercase;
+        color: #FFB91F;
+    }
+    .section-block-{{ section.id }} .large-image-cont-desc{
+        font-family: Poppins;
+        font-weight: 500;
+        font-style: Medium;
+        font-size: 16px;
+        line-height: normal;
+        text-align: center;
+        color: #fff;
+        width: 56%;
+        margin: 30px auto 0;
+    }
+
+    {% comment %} iPhone {% endcomment %}
+    @media(max-width: 767px){
+        .section-block-{{ section.id }} .large-image-container .large-image-pc{
+            display: none;
+        }
+        .section-block-{{ section.id }} .large-image-container .large-image-mb{
+            display: block;
+        }
+        .section-block-{{ section.id }} .large-image-cont{
+            width: 80%;
+            bottom: 10px;
+        }
+        .section-block-{{ section.id }} .large-image-cont-title{
+            font-size: 30px;
+        }
+        .section-block-{{ section.id }} .large-image-cont-desc{
+            font-size: 14px;
+            width: 100%;
+            margin-top: 12px;
+        }
+    }
+
+    {% comment %} iPad {% endcomment %}
+    @media(min-width: 768px) and (max-width: 1024px){
+        .section-block-{{ section.id }} .large-image-cont{
+            bottom: 40px;
+        }
+        .section-block-{{ section.id }} .large-image-cont-title{
+            font-size: 40px;
+        }
+        .section-block-{{ section.id }} .large-image-cont-desc{
+            font-size: 18px;
+            line-height: 1.4;
+            margin-top: 16px;
+        }
+        
+    }
+</style>
+
+<section id="{{ section.id }}" class="section-block-{{ section.id }}" data-section-id="{{ section.id }}">
+    <div class="container-full">
+        {% for block in section.blocks %}
+            {% if block.type == "largeImage" %}
+                <div class="large-image-container">
+                    <div class="large-image large-image-pc" style="padding-top: {% unless block.settings.bannerImage.presentation.focal_point == '50.0% 50.0%' %}{{ 1 | divided_by: block.settings.bannerImage.aspect_ratio | times: 120 }}%{% else %}{{ 1 | divided_by: block.settings.bannerImage.aspect_ratio | times: 100 }}%{% endunless %}">
+                        <img
+                            src="{{ block.settings.bannerImage | img_url: 'master' }}"
+                            alt="{{ block.settings.bannerImage.alt }}"
+                            width="{{ block.settings.bannerImage.width }}"
+                            height="{{ block.settings.bannerImage.height }}" />
+                    </div>
+                    <div class="large-image large-image-mb" style="padding-top: {% unless block.settings.bannerImageMobile.presentation.focal_point == '50.0% 50.0%' %}{{ 1 | divided_by: block.settings.bannerImageMobile.aspect_ratio | times: 120 }}%{% else %}{{ 1 | divided_by: block.settings.bannerImageMobile.aspect_ratio | times: 100 }}%{% endunless %}">
+                        <img
+                            src="{{ block.settings.bannerImageMobile | img_url: 'master' }}"
+                            alt="{{ block.settings.bannerImageMobile.alt }}"
+                            width="{{ block.settings.bannerImageMobile.width }}"
+                            height="{{ block.settings.bannerImageMobile.height }}" />
+                    </div>
+                    <div class="large-image-cont">
+                        {% if block.settings.title != blank %}
+                            <div class="large-image-cont-title">{{ block.settings.title }}</div>
+                        {% endif %}
+                        {% if block.settings.descripe != blank %}
+                            <div class="large-image-cont-desc">{{ block.settings.descripe }}</div>
+                        {% endif %}
+                    </div>
+                </div>
+            {% endif %}
+        {% endfor %}
+    </div>
+</section>
+
+{% schema %}
+{
+    "name": "Gaming Event Banner",
+    "settings": [ ],
+    "blocks": [
+        {
+            "type": "largeImage",
+            "name": "largeImage",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "bannerImage",
+                    "label": "Banner Image"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "bannerImageMobile",
+                    "label": "Banner Image Mobile"
+                },
+                {
+                    "type": "text",
+                    "id": "title",
+                    "label": "Banner Image Title",
+                    "default": "Disrupting the world of gaming chairs"
+                },
+                {
+                    "type": "text",
+                    "id": "descripe",
+                    "label": "Banner Image Descripe",
+                    "default": "At Blacklyte, we pioneered how the modern gaming chair delivers the best experience for gamers and creators spending vast, sustained amounts of time in front of a computer."
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "Gaming Event Banner"
+        }
+    ]
+}
+{% endschema %}

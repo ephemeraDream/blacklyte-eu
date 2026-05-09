@@ -1,0 +1,129 @@
+{{ 'section-image-compare-simplicity.css' | asset_url | stylesheet_tag }}
+
+<div class="image_compare_simplicity">
+  <div class="image_compare_simplicity_title">{{ section.settings.title }}</div>
+  <div class="image_compare_simplicity_contain">
+    <div class="image_compare_simplicity_wrapper image_compare_simplicity_left">
+      <img src="{{ section.settings.left_image | image_url }}" alt="Left Image">
+    </div>
+    <div class="image_compare_simplicity_wrapper image_compare_simplicity_right">
+      <img src="{{ section.settings.right_image | image_url }}" alt="Right Image">
+    </div>
+    <div class="image_compare_simplicity_divider">
+      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="56" viewBox="0 0 32 56" fill="none">
+        <rect width="32" height="56" rx="16" fill="white"/>
+        <path d="M9 14V42" stroke="#B2B2B2" stroke-width="2.6" stroke-linecap="round"/>
+        <path d="M16 14V42" stroke="#B2B2B2" stroke-width="2.6" stroke-linecap="round"/>
+        <path d="M23 14V42" stroke="#B2B2B2" stroke-width="2.6" stroke-linecap="round"/>
+      </svg>
+    </div>
+  </div>
+</div>
+
+<script>
+  (() => {
+    document.addEventListener('DOMContentLoaded', function () {
+      document.querySelectorAll('.image_compare_simplicity').forEach((container) => {
+        if (container.dataset.initialized === 'true') return; // 已初始化则跳过
+        container.dataset.initialized = 'true'; // 标记已初始化
+
+        const divider = container.querySelector('.image_compare_simplicity_divider');
+        const leftImage = container.querySelector('.image_compare_simplicity_left');
+        const rightImage = container.querySelector('.image_compare_simplicity_right');
+
+        let isDragging = false;
+        let animationFrameId = null;
+        let latestClientX = 0;
+
+        function updatePosition() {
+          const rect = container.getBoundingClientRect();
+          const offsetX = latestClientX - rect.left;
+          const percentage = (offsetX / rect.width) * 100;
+
+          if (percentage > 1 && percentage < 98) {
+            leftImage.style.clipPath = `inset(0 ${100 - percentage}% 0 0)`;
+            rightImage.style.clipPath = `inset(0 0 0 ${percentage}%)`;
+            divider.style.left = `${percentage}%`;
+          }
+          animationFrameId = null;
+        }
+
+        function requestUpdate(clientX) {
+          latestClientX = clientX;
+          if (animationFrameId === null) {
+            animationFrameId = requestAnimationFrame(updatePosition);
+          }
+        }
+
+        // PC
+        divider.addEventListener('mousedown', () => {
+          isDragging = true;
+          document.body.style.cursor = 'ew-resize';
+        });
+
+        document.addEventListener('mousemove', (e) => {
+          if (!isDragging) return;
+          requestUpdate(e.clientX);
+        });
+
+        document.addEventListener('mouseup', () => {
+          isDragging = false;
+          document.body.style.cursor = 'default';
+        });
+
+        // Mobile
+        divider.addEventListener('touchstart', () => {
+          isDragging = true;
+        });
+
+        document.addEventListener(
+          'touchmove',
+          (e) => {
+            if (!isDragging) return;
+            if (e.touches.length > 0) {
+              requestUpdate(e.touches[0].clientX);
+            }
+          },
+          { passive: false }
+        );
+
+        document.addEventListener('touchend', () => {
+          isDragging = false;
+        });
+      });
+    });
+  })();
+</script>
+
+{% schema %}
+{
+  "name": "Image Compare Simplicity",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "richtext",
+      "id": "title",
+      "label": "title"
+    },
+    {
+      "type": "image_picker",
+      "id": "left_image",
+      "label": "Left Image"
+    },
+    {
+      "type": "image_picker",
+      "id": "right_image",
+      "label": "Right Image"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Image Compare Simplicity"
+    }
+  ]
+}
+{% endschema %}

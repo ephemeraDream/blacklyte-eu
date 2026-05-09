@@ -1,0 +1,254 @@
+.swiper_for_simplicity {
+  width: 100vw;
+  background-color: #fff;
+  padding-top: 6.71875vw;
+}
+
+.swiper_for_simplicity .swiper_for_simplicity_title {
+  font-family: Roboto;
+  font-weight: 600;
+  font-style: SemiBold;
+  font-size: 36px;
+  leading-trim: NONE;
+  line-height: 60px;
+  letter-spacing: 0%;
+  color: #262629;
+  text-align: center;
+}
+
+.swiper_for_simplicity .swiper_for_simplicity_text {
+  font-family: Roboto;
+  font-weight: 400;
+  font-style: Regular;
+  font-size: 16px;
+  leading-trim: NONE;
+  line-height: 24px;
+  letter-spacing: 0.32px;
+  text-align: center;
+  color: rgba(38, 38, 41, .7);
+}
+
+.swiper_for_simplicity .swiper_for_simplicity_contain {
+  margin-top: 3.125vw;
+  position: relative;
+}
+
+.swiper_for_simplicity .swiper_for_simplicity_prev,
+.swiper_for_simplicity .swiper_for_simplicity_next {
+  width: 2.96875vw;
+  height: 2.96875vw;
+  display: flex;
+  border: none;
+  padding: 0;
+}
+
+.swiper_for_simplicity .swiper_for_simplicity_prev {
+  left: 25.15625vw;
+}
+
+.swiper_for_simplicity .swiper_for_simplicity_next {
+  right: 25.15625vw;
+}
+
+.swiper_for_simplicity .swiper_for_simplicity_prev svg,
+.swiper_for_simplicity .swiper_for_simplicity_next svg {
+  width: 100%;
+  height: 100%;
+  fill: none;
+}
+
+.swiper_for_simplicity .swiper_for_simplicity_item {
+  width: 53.645833vw;
+  height: 30.20833vw;
+  border-radius: 1.25vw;
+  position: relative;
+  margin: 0 0.546875vw;
+  overflow: hidden;
+}
+
+.swiper_for_simplicity .swiper_for_simplicity_item_image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: transform .3s ease-in-out;
+}
+
+/* .swiper_for_simplicity .swiper_for_simplicity_item::before {
+  content: "";
+  width: 100%;
+  height: 15.3125vw;
+  background: linear-gradient(0deg, #0A0A0A 0%, rgba(10, 10, 10, 0) 100%);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  border-radius: 1.25vw;
+} */
+
+.swiper_for_simplicity .swiper_for_simplicity_item_info {
+  position: absolute;
+  bottom: 2.5vw;
+  left: 3.4375vw;
+  z-index: 2;
+  padding-right: 0.625vw;
+}
+
+.swiper_for_simplicity .swiper_for_simplicity_item_title {
+  font-family: Roboto;
+  font-weight: 600;
+  font-style: SemiBold;
+  font-size: 36px;
+  leading-trim: NONE;
+  line-height: 60px;
+  letter-spacing: 0%;
+  color: #FFFFFF;
+}
+
+.swiper_for_simplicity .swiper_for_simplicity_item_text {
+  font-family: Roboto;
+  font-weight: 400;
+  font-style: Regular;
+  font-size: 16px;
+  leading-trim: NONE;
+  line-height: 24px;
+  letter-spacing: 0.32px;
+  color: rgba(255, 255, 255, .7);
+  margin-top: 0.15625vw;
+}
+
+.swiper_for_simplicity .pmd_show {
+  display: none;
+}
+
+.swiper_for_simplicity .swiper_for_simplicity_btn {
+  width: clamp(250px, 18.28125vw, 18.28125vw);
+  height: 2.96875vw;
+  border-radius: 1.5625vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #3173E8;
+  font-family: Roboto;
+  font-weight: 500;
+  font-style: Medium;
+  font-size: clamp(14px, 0.9375vw, 0.9375vw);
+  leading-trim: NONE;
+  line-height: clamp(22px, 1.354167vw, 1.354167vw);
+  letter-spacing: 0%;
+  text-align: center;
+  color: #fff;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 1.71875vw;
+}
+
+.swiper_for_simplicity .slick-dots,
+.swiper_for_simplicity .slider-dots {
+  display: none !important;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .swiper_for_simplicity .swiper_for_simplicity_item:hover .swiper_for_simplicity_item_image {
+    transform: scale(1.1);
+  }
+
+  .swiper_for_simplicity .swiper_for_simplicity_btn:hover {
+    background: #429bff;
+  }
+}
+
+@media screen and (max-width: 768px) {
+
+  .swiper_for_simplicity .slick-dots,
+  .swiper_for_simplicity .slider-dots {
+    display: block !important;
+  }
+
+  .swiper_for_simplicity .pc_show {
+    display: none;
+  }
+
+  .swiper_for_simplicity .pmd_show {
+    display: block;
+  }
+
+  .swiper_for_simplicity {
+    padding: 9.6vw 5.33vw;
+  }
+
+  .swiper_for_simplicity .swiper_for_simplicity_title {
+    font-size: 30px;
+    line-height: 40px;
+  }
+
+  .swiper_for_simplicity .swiper_for_simplicity_text {
+    font-size: 14px;
+    line-height: 22px;
+    margin-top: 4vw;
+  }
+
+  .swiper_for_simplicity .swiper_for_simplicity_contain {
+    margin-top: 6.4vw;
+  }
+
+  .swiper_for_simplicity .swiper_for_simplicity_item {
+    height: 133.33vw;
+    border-radius: 3.2vw;
+    margin: 0 2.4vw;
+  }
+
+  .swiper_for_simplicity .swiper_for_simplicity_item::before {
+    height: 61.6vw;
+    border-radius: 3.2vw;
+  }
+
+  .swiper_for_simplicity .swiper_for_simplicity_prev,
+  .swiper_for_simplicity .swiper_for_simplicity_next {
+    display: none;
+  }
+
+  .swiper_for_simplicity .swiper_for_simplicity_item_title {
+    font-size: 24px;
+    line-height: 30px;
+  }
+
+  .swiper_for_simplicity .swiper_for_simplicity_item_text {
+    font-size: 14px;
+    line-height: 22px;
+  }
+
+  .swiper_for_simplicity .swiper_for_simplicity_item_info {
+    left: 5.6vw;
+    bottom: 4.8vw;
+    padding-right: 3.2vw;
+  }
+
+  .swiper_for_simplicity .swiper_for_simplicity_item_image {
+    border-radius: 3.2vw;
+  }
+
+  .swiper_for_simplicity .slick-dots li button,
+  .swiper_for_simplicity .slider-dots li button {
+    width: 8vw;
+    height: 0.8vw;
+    background-color: #EDEFF2;
+    border-radius: 0.8vw;
+    border: none;
+  }
+
+  .swiper_for_simplicity .slick-dots li.slick-active button,
+  .swiper_for_simplicity .slider-dots li.active button {
+    background-color: #262629;
+  }
+
+  .swiper_for_simplicity .swiper_for_simplicity_btn {
+    height: 10.4vw;
+    border-radius: 8vw;
+    bottom: 8.8vw;
+  }
+}

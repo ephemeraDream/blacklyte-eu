@@ -1,0 +1,248 @@
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="https://cdn.shopify.com/s/files/1/0716/1341/5637/files/slick.css?v=1760406619"
+>
+{{ 'section-joint-spirit-team.css' | asset_url | stylesheet_tag }}
+
+<div class="spirit_team">
+  {% for block in section.blocks %}
+    {%- case block.type -%}
+      {%- when 'achievements' -%}
+        <div class="spirit_team_achievements">
+          <div class="spirit_team_achievements_title">{{ block.settings.title }}</div>
+          <div class="spirit_team_achievements_text">{{ block.settings.text }}</div>
+          {% comment %}
+            <div class="spirit_team_achievements_contain">
+              <div class="spirit_team_achievements_item">
+                <div class="spirit_team_achievements_item_img">
+                  {{-
+                    block.settings.left_image
+                    | image_url: width: block.settings.left_image.width
+                    | image_tag: alt: block.settings.left_image_title
+                  -}}
+                </div>
+                <div class="spirit_team_achievements_item_title">{{ block.settings.left_image_title }}</div>
+              </div>
+              <div class="spirit_team_achievements_item">
+                <div class="spirit_team_achievements_item_img">
+                  {{-
+                    block.settings.right_image
+                    | image_url: width: block.settings.right_image.width
+                    | image_tag: alt: block.settings.right_image_title
+                  -}}
+                </div>
+                <div class="spirit_team_achievements_item_title">{{ block.settings.right_image_title }}</div>
+              </div>
+            </div>
+          {% endcomment %}
+        </div>
+    {%- endcase -%}
+  {% endfor %}
+  <div class="spirit_team_slick">
+    <div class="spirit_team_slick_contain">
+      {% for block in section.blocks %}
+        {%- case block.type -%}
+          {%- when 'slickItem' -%}
+            <div class="spirit_team_slick_contain_item">
+              {{-
+                block.settings.image
+                | image_url: width: block.settings.image.width
+                | image_tag: alt: block.settings.text
+              -}}
+              <div class="spirit_team_slick_contain_item_title">{{ block.settings.title }}</div>
+              <div class="spirit_team_team_contian_text">{{ block.settings.text }}</div>
+            </div>
+        {%- endcase -%}
+      {% endfor %}
+    </div>
+    <div class="spirit_team_slick_nav">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="56"
+        height="56"
+        viewBox="0 0 56 56"
+        fill="none"
+        class="spirit_team_slick_nav_left"
+      >
+        <circle cx="28" cy="28" r="27.5" fill="white" stroke="#E8E8E8"/>
+        <path d="M29.6567 22L23.9999 27.6569L29.6567 33.3137" stroke="black" stroke-width="2"/>
+      </svg>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="56"
+        height="56"
+        viewBox="0 0 56 56"
+        fill="none"
+        class="spirit_team_slick_nav_right"
+      >
+        <circle cx="28" cy="28" r="27.5" transform="matrix(-1 0 0 1 56 0)" fill="white" stroke="#E8E8E8"/>
+        <path d="M26.3433 22L32.0001 27.6569L26.3433 33.3137" stroke="black" stroke-width="2"/>
+      </svg>
+    </div>
+  </div>
+  {% for block in section.blocks %}
+    {%- case block.type -%}
+      {%- when 'team' -%}
+        <div class="spirit_team_team">
+          {{-
+            block.settings.image
+            | image_url: width: block.settings.image.width
+            | image_tag: alt: block.settings.title, class: 'spirit_team_team_img'
+          -}}
+          <div class="spirit_team_team_contian">
+            <div class="spirit_team_team_contian_title">{{ block.settings.title }}</div>
+            <div class="spirit_team_team_contian_text">{{ block.settings.text }}</div>
+            <a class="spirit_team_team_contian_btn" href="{{ block.settings.btn_link }}">
+              {{- block.settings.btn_title -}}
+            </a>
+          </div>
+        </div>
+    {%- endcase -%}
+  {% endfor %}
+</div>
+
+<script>
+  (function ($) {
+    $(function () {
+      const $slickEl = $('.spirit_team .spirit_team_slick_contain');
+
+      $slickEl.slick({
+        centerMode: true,
+        variableWidth: true,
+        slidesToScroll: 1,
+        arrows: false,
+        waitForAnimate: false,
+        initialSlide: 1,
+        infinite: false,
+        responsive: [
+          {
+            breakpoint: 768,
+            settings: {
+              slidesToShow: 1,
+              initialSlide: 0,
+              infinite: true,
+              centerMode: false,
+              variableWidth: false,
+            },
+          },
+        ],
+      });
+
+      $('.spirit_team .spirit_team_slick_nav_left').on('click', () => {
+        $slickEl.slick('slickPrev');
+      });
+
+      $('.spirit_team .spirit_team_slick_nav_right').on('click', () => {
+        $slickEl.slick('slickNext');
+      });
+    });
+  })(jQuery);
+</script>
+
+{% schema %}
+{
+  "name": "spirit team",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [],
+  "blocks": [
+    {
+      "type": "achievements",
+      "name": "achievements",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "title"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "text"
+        },
+        {
+          "type": "image_picker",
+          "id": "left_image",
+          "label": "left image"
+        },
+        {
+          "type": "text",
+          "id": "left_image_title",
+          "label": "left image title"
+        },
+        {
+          "type": "image_picker",
+          "id": "right_image",
+          "label": "right image"
+        },
+        {
+          "type": "text",
+          "id": "right_image_title",
+          "label": "right image title"
+        }
+      ]
+    },
+    {
+      "type": "slickItem",
+      "name": "slickItem",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "title"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "text"
+        }
+      ]
+    },
+    {
+      "type": "team",
+      "name": "team",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "image"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "title"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "text"
+        },
+        {
+          "type": "text",
+          "id": "btn_title",
+          "label": "button title"
+        },
+        {
+          "type": "url",
+          "id": "btn_link",
+          "label": "button link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "joint spirit team"
+    }
+  ]
+}
+{% endschema %}

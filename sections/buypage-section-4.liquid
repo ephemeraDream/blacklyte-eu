@@ -1,0 +1,304 @@
+{{ 'buypage-section-4.css' | asset_url | stylesheet_tag }}
+
+<div class="buypage_section_4" id="{{section.settings.specId}}">
+  {%- for block in section.blocks -%}
+    {%- case block.type -%}
+      {% when 'first_part' %}
+        <div class="first_part">
+          <div class="first_part_title">{{ block.settings.title }}</div>
+          <div class="first_part_text">{{ block.settings.text }}</div>
+          <div class="first_part_contain">
+            {% if block.settings.left_video != blank %}
+              {% assign poster_image = block.settings.left_image | image_url: width: block.settings.left_image.width %}
+              {{
+                block.settings.left_video
+                | video_tag:
+                  class: 'first_part_video',
+                  loop: true,
+                  muted: true,
+                  playsinline: true,
+                  preload: 'none',
+                  poster: poster_image,
+                  autoplay: true
+              }}
+            {% else %}
+              {% render 'picture-simple',
+                image: block.settings.left_image,
+                image_mobile: block.settings.left_image,
+                mobile_widths: '350,450,550,650',
+                mobile_dpr: 1,
+                class_str: 'first_part_img',
+                widths_sizes: '35vw'
+              %}
+            {% endif %}
+            {% if block.settings.right_video != blank %}
+              {% assign poster_image = block.settings.right_image | image_url: width: block.settings.right_image.width %}
+              {{
+                block.settings.right_video
+                | video_tag:
+                  class: 'first_part_video',
+                  loop: true,
+                  muted: true,
+                  playsinline: true,
+                  preload: 'none',
+                  poster: poster_image,
+                  autoplay: true
+              }}
+            {% else %}
+              {% render 'picture-simple',
+                image: block.settings.right_image,
+                image_mobile: block.settings.right_image,
+                mobile_widths: '350,450,550,650',
+                mobile_dpr: 1,
+                class_str: 'first_part_img',
+                widths_sizes: '35vw'
+              %}
+            {% endif %}
+            {% comment %}
+              {{-
+                block.settings.left_image
+                | image_url: width: block.settings.left_image.width
+                | image_tag: alt: block.settings.left_image.alt, class: 'first_part_img', loading: 'lazy'
+              -}}
+              {{-
+                block.settings.right_image
+                | image_url: width: block.settings.right_image.width
+                | image_tag: alt: block.settings.right_image.alt, class: 'first_part_img', loading: 'lazy'
+              -}}
+            {% endcomment %}
+          </div>
+        </div>
+      {%- when 'second_part' -%}
+        <div class="second_part">
+          <div class="second_part_title">{{ block.settings.title }}</div>
+          <div class="second_part_text">{{ block.settings.text }}</div>
+          {% if block.settings.video != blank %}
+            {% assign poster_image = block.settings.image | image_url: width: block.settings.image.width %}
+            {{
+              block.settings.video
+              | video_tag:
+                class: 'second_part_img',
+                loop: true,
+                muted: true,
+                playsinline: true,
+                preload: 'none',
+                poster: poster_image,
+                autoplay: true
+            }}
+          {% else %}
+            {% render 'picture-simple',
+              image: block.settings.image,
+              image_mobile: block.settings.image_mobile,
+              mobile_widths: '350,450,550,650',
+              mobile_dpr: 1,
+              class_str: 'second_part_img',
+              widths_sizes: '70vw'
+            %}
+            {% comment %}
+              {{-
+                block.settings.image
+                | image_url: width: block.settings.image.width
+                | image_tag: alt: block.settings.image.alt, class: 'second_part_img pc_show', loading: 'lazy'
+              -}}
+              {% assign image_mobile = block.settings.image_mobile | default: block.settings.image %}
+              {{-
+                image_mobile
+                | image_url: width: image_mobile.width
+                | image_tag: alt: image_mobile.alt, class: 'second_part_img pmd_show', loading: 'lazy'
+              -}}
+            {% endcomment %}
+          {% endif %}
+        </div>
+      {% when 'third_part' %}
+        <div class="third_part">
+          {% assign list = '1,2,3' | split: ',' %}
+          {% for item in list %}
+            {% assign text = 'text_' | append: item %}
+            {% assign image = 'image_' | append: item %}
+            {% assign title = 'title_' | append: item %}
+            {% assign icon = 'icon_' | append: item %}
+            <div class="third_part_item">
+              {% render 'picture-simple',
+                image: block.settings[image],
+                image_mobile: block.settings[image],
+                mobile_widths: '350,450,550,650',
+                mobile_dpr: 1,
+                class_str: 'third_part_item_img',
+                widths_sizes: '30vw'
+              %}
+              {% comment %}
+                {{-
+                  block.settings[image]
+                  | image_url: width: block.settings[image].width
+                  | image_tag: alt: block.settings[image].alt, class: 'third_part_item_img', loading: 'lazy'
+                -}}
+              {% endcomment %}
+              <div class="third_part_item_body">
+                <div class="third_part_item_icon">{{ block.settings[icon] }}</div>
+                <div class="third_part_item_title">{{ block.settings[title] }}</div>
+                <div class="third_part_item_text">{{ block.settings[text] }}</div>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+    {%- endcase -%}
+  {% endfor %}
+</div>
+
+{% schema %}
+{
+  "name": "buypage section 4",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "text",
+      "id": "specId",
+      "label": "specId"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "first_part",
+      "name": "first part",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "title",
+          "label": "title"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "text"
+        },
+        {
+          "type": "image_picker",
+          "id": "left_image",
+          "label": "left image"
+        },
+        {
+          "type": "video",
+          "id": "left_video",
+          "label": "left video"
+        },
+        {
+          "type": "image_picker",
+          "id": "right_image",
+          "label": "right image"
+        },
+        {
+          "type": "video",
+          "id": "right_video",
+          "label": "right video"
+        }
+      ]
+    },
+    {
+      "type": "second_part",
+      "name": "second part",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "title",
+          "label": "title"
+        },
+        {
+          "type": "textarea",
+          "id": "text",
+          "label": "text"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "image"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_mobile",
+          "label": "image mobile"
+        },
+        {
+          "type": "video",
+          "id": "video",
+          "label": "video"
+        }
+      ]
+    },
+    {
+      "type": "third_part",
+      "name": "third part",
+      "settings": [
+        {
+          "type": "textarea",
+          "id": "title_1",
+          "label": "title"
+        },
+        {
+          "type": "textarea",
+          "id": "text_1",
+          "label": "text"
+        },
+        {
+          "type": "textarea",
+          "id": "icon_1",
+          "label": "icon"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_1",
+          "label": "image"
+        },
+        {
+          "type": "textarea",
+          "id": "title_2",
+          "label": "title"
+        },
+        {
+          "type": "textarea",
+          "id": "text_2",
+          "label": "text"
+        },
+        {
+          "type": "textarea",
+          "id": "icon_2",
+          "label": "icon"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_2",
+          "label": "image"
+        },
+        {
+          "type": "textarea",
+          "id": "title_3",
+          "label": "title"
+        },
+        {
+          "type": "textarea",
+          "id": "text_3",
+          "label": "text"
+        },
+        {
+          "type": "textarea",
+          "id": "icon_3",
+          "label": "icon"
+        },
+        {
+          "type": "image_picker",
+          "id": "image_3",
+          "label": "image"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "buypage section 4"
+    }
+  ]
+}
+{% endschema %}

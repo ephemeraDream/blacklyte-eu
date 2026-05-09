@@ -1,0 +1,677 @@
+@font-face {
+  font-family: 'Dharma Gothic E';
+  src: url('https://cdn.shopify.com/s/files/1/0716/1341/5637/files/DharmaGothicE-Regular.woff2?v=1753251651') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+}
+
+.wuchang_introduction {
+  width: 100%;
+  padding-top: 11.67vw;
+  height: 155.6vw;
+}
+
+.wuchang_introduction_summary_img {
+  width: 510px;
+  margin: 0 auto;
+}
+
+.wuchang_introduction_summary_text {
+  font-family: Roboto;
+  font-weight: 500;
+  font-style: Medium;
+  font-size: 16px;
+  leading-trim: NONE;
+  line-height: 24px;
+  letter-spacing: 0.32px;
+  text-align: center;
+  color: rgba(255, 255, 255, .7);
+  margin-top: 1.9270833vw;
+}
+
+.wuchang_introduction_summary+.wuchang_introduction_main {
+  margin-top: 9.84375vw;
+}
+
+.wuchang_introduction_main_title {
+  width: 645px;
+  height: 114px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: Dharma Gothic E;
+  font-weight: 700;
+  font-style: Bold;
+  font-size: 60px;
+  leading-trim: NONE;
+  line-height: 100%;
+  letter-spacing: 0%;
+  color: #FFFFFF;
+}
+
+.wuchang_introduction_main_text {
+  margin: 0 auto;
+  font-family: Roboto;
+  font-weight: 500;
+  font-style: Medium;
+  font-size: 16px;
+  leading-trim: NONE;
+  line-height: 24px;
+  letter-spacing: 0.32px;
+  text-align: center;
+  color: rgba(255, 255, 255, .7);
+}
+
+.wuchang_introduction_main_content {
+  position: relative;
+  max-width: 77.5520833vw;
+  height: 42.1875vw;
+  margin: 0 auto;
+  display: flex;
+  gap: 2.8125vw;
+  padding-top: 7.28125vw;
+  padding-left: 16.71875vw;
+}
+
+.wuchang_introduction_main_content_bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  object-fit: contain;
+  object-position: center center;
+}
+
+.wuchang_introduction_main_content_left {
+  margin-top: 5.625vw;
+  z-index: 1;
+  opacity: 0;
+  transform: translateY(-100px);
+  transition: all 1s ease;
+}
+
+.wuchang_introduction_main_content_title {
+  font-family: Dharma Gothic E;
+  font-weight: 400;
+  font-style: Regular;
+  font-size: 60px;
+  leading-trim: NONE;
+  line-height: 60px;
+  letter-spacing: 0%;
+  vertical-align: middle;
+  text-transform: uppercase;
+  color: #6C100B;
+}
+
+.wuchang_introduction_main_content_text {
+  font-family: Roboto;
+  font-weight: 500;
+  font-style: Medium;
+  font-size: 16px;
+  leading-trim: NONE;
+  line-height: 24px;
+  letter-spacing: 0.32px;
+  color: #650000;
+  margin-top: 0.625vw;
+  width: 22vw;
+}
+
+.wuchang_introduction_main_btn {
+  width: 274px;
+  height: 112px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: DINCond-Bold;
+  font-weight: 500;
+  font-style: Regular;
+  font-size: 30px;
+  leading-trim: NONE;
+  line-height: 100%;
+  letter-spacing: 0%;
+  color: #FFFFFF;
+  margin-top: 0.625vw;
+}
+
+.wuchang_introduction_main_btn:hover {
+  color: #fff;
+}
+
+.wuchang_introduction_main_content_right {
+  width: 29.4vw;
+  height: 27.3vw;
+  border-radius: 20px;
+  border: 2px solid #BE1616;
+  z-index: 1;
+  opacity: 0;
+  transform: translateY(100px);
+  transition: all 1s ease;
+  position: relative;
+}
+
+.wuchang_introduction_main_video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  border-radius: 20px;
+}
+
+.wuchang_introduction_main+.wuchang_introduction_swiper {
+  margin-top: 6.9375vw;
+}
+
+.wuchang_introduction_swiper {
+  position: relative;
+  height: 56.09375vw;
+  padding: 12.1875vw 12.5vw 0;
+}
+
+.wuchang_introduction_swiper_bg {
+  width: 55.9375vw;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  margin-left: -27.96875vw;
+  animation: spin 50s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.wuchang_introduction_swiper .swiper {
+  width: 75vw;
+  height: 28.125vw;
+  overflow: visible;
+}
+
+.wuchang_introduction_swiper .swiper-slide {
+  width: 32.34375vw;
+  height: 20.9375vw;
+}
+
+.wuchang_introduction_swiper .swiper-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  object-position: center center;
+}
+
+.wuchang_introduction_swiper .swiper-slide-active {
+  width: 47.8125vw;
+  height: 28.125vw;
+  z-index: 1;
+}
+
+.wuchang_introduction_swiper .swiper-slide:not(.swiper-slide-active) {
+  margin-top: 3.28125vw;
+}
+
+.wuchang_introduction_swiper .swiper-slide-prev {
+  right: -18.8vw;
+}
+
+.wuchang_introduction_swiper .swiper-slide-next {
+  left: -18.8vw;
+}
+
+.wuchang_introduction_swiper_title {
+  font-family: Dharma Gothic E;
+  font-weight: 400;
+  font-style: Regular;
+  font-size: 50px;
+  leading-trim: NONE;
+  line-height: 48px;
+  letter-spacing: 0%;
+  vertical-align: middle;
+  text-transform: uppercase;
+  color: #fff;
+  text-align: center;
+  margin-top: 3.125vw;
+  z-index: 1;
+  position: relative;
+}
+
+.wuchang_introduction_swiper_text {
+  font-family: Roboto;
+  font-weight: 500;
+  font-style: Medium;
+  font-size: 16px;
+  leading-trim: NONE;
+  line-height: 24px;
+  letter-spacing: 0.32px;
+  text-align: center;
+  color: rgba(255, 255, 255, .7);
+  margin-top: 0.46875vw;
+  z-index: 1;
+  position: relative;
+}
+
+.wuchang_introduction_swiper .slick-track {
+  max-width: 100% !important;
+  transform: translate3d(0, 0, 0) !important;
+  perspective: 100px;
+}
+
+.wuchang_introduction_swiper .slick-slide {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  opacity: 0;
+  width: 100% !important;
+  transform: translate3d(0, 0, 0);
+  transition: all 0.6s ease;
+}
+
+.wuchang_introduction_swiper .slick-snext,
+.wuchang_introduction_swiper .slick-sprev {
+  display: block;
+}
+
+.wuchang_introduction_swiper .slick-current {
+  opacity: 1;
+  position: relative;
+  display: block;
+  z-index: 2;
+  transform: scale(1.3);
+}
+
+.wuchang_introduction_swiper .slick-snext {
+  opacity: 1;
+  transform: translate3d(33%, 0, -15px);
+  z-index: 1;
+  perspective: 1000px;
+}
+
+.wuchang_introduction_swiper .slick-snext::before {
+  content: "";
+  background: linear-gradient(90deg, #000, #0000);
+  width: 12.65625vw;
+  height: 100%;
+  position: absolute;
+  left: 46%;
+}
+
+/* .wuchang_introduction_swiper .slick-snext img {
+  opacity: 0.8;
+} */
+
+.wuchang_introduction_swiper .slick-sprev {
+  opacity: 1;
+  transform: translate3d(-33%, 0, -15px);
+}
+
+.wuchang_introduction_swiper .slick-sprev::before {
+  content: "";
+  background: linear-gradient(270deg, #000, #0000);
+  width: 12.65625vw;
+  height: 100%;
+  position: absolute;
+  right: 46%;
+}
+
+/* .wuchang_introduction_swiper .slick-sprev img {
+  opacity: 0.8;
+} */
+
+.wuchang_introduction_swiper .rev-slide img {
+  display: block;
+  width: 100%;
+  height: auto;
+  background: #c00;
+  box-shadow: inset 0px 0px 0px 3px #000;
+}
+
+.wuchang_introduction_swiper .slick-prev,
+.wuchang_introduction_swiper .slick-next {
+  position: absolute;
+  width: 48px;
+  height: 71px;
+  z-index: 9999;
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  font-size: 0;
+  outline: none;
+}
+
+.wuchang_introduction_swiper .slick-prev:before,
+.wuchang_introduction_swiper .slick-next:before {
+  content: "";
+  display: block;
+  width: 48px;
+  height: 71px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: relative;
+}
+
+.wuchang_introduction_swiper .slick-prev:before {
+  background-image: url('https://cdn.shopify.com/s/files/1/0716/1341/5637/files/joint-wuchang-swiper-prev.webp?v=1753267429');
+}
+
+.wuchang_introduction_swiper .slick-next:before {
+  background-image: url('https://cdn.shopify.com/s/files/1/0716/1341/5637/files/joint-wuchang-swiper-next.webp?v=1753267428');
+}
+
+.wuchang_introduction_swiper .slick-prev:hover:before,
+.wuchang_introduction_swiper .slick-next:hover:before {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+
+.wuchang_introduction_swiper .slick-prev {
+  left: 20% !important;
+}
+
+.wuchang_introduction_swiper .slick-next {
+  right: 20% !important;
+}
+
+.wuchang_introduction_swiper .slick-dots li {
+  margin: 0 15px;
+}
+
+.wuchang_introduction_swiper .slick-dots li::before {
+  content: "";
+  display: block;
+  width: 53px;
+  height: 46px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url('https://cdn.shopify.com/s/files/1/0716/1341/5637/files/joint-wuchang-swiper-dot.webp?v=1753320156');
+  cursor: pointer;
+}
+
+.wuchang_introduction_swiper .slick-dots li.slick-active::before {
+  background-image: url('https://cdn.shopify.com/s/files/1/0716/1341/5637/files/joint-wuchang-swiper-dot-active.webp?v=1753320156');
+  position: relative;
+  top: -4px;
+}
+
+.wuchang_introduction_swiper .slick-dots {
+  bottom: -18vw;
+}
+
+.wuchang_introduction .pmd_show {
+  display: none;
+}
+
+.wuchang_introduction_main_content.in-view .wuchang_introduction_main_content_left,
+.wuchang_introduction_main_content.in-view .wuchang_introduction_main_content_right {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.wuchang_introduction_swiper_text .red_word {
+  color: #D74038;
+}
+
+.wuchang_introduction_main_content_right::before {
+  content: "";
+  background: url("https://cdn.shopify.com/s/files/1/0716/1341/5637/files/joint-wuchang-intro-video-frame.webp?v=1753347417") no-repeat;
+  background-size: 100%;
+  width: 35.46875vw;
+  height: 32.4479167vw;
+  position: absolute;
+  left: -1.2vw;
+  top: -1.7vw;
+}
+
+@media screen and (min-width: 2000px) {
+  .wuchang_introduction_swiper .slick-dots {
+    bottom: -14vw;
+  }
+}
+
+@media screen and (max-width: 1900px) {
+  .wuchang_introduction {
+    height: 155vw;
+  }
+
+  .wuchang_introduction_main_content_title {
+    font-size: 45px;
+    line-height: 45px;
+  }
+
+  .wuchang_introduction_main_content_text {
+    font-size: 14px;
+    line-height: 21px;
+  }
+
+  .wuchang_introduction_main+.wuchang_introduction_swiper {
+    margin-top: 3.9375vw;
+  }
+}
+
+@media screen and (max-width: 1100px) {
+  .wuchang_introduction_main_content_title {
+    font-size: 32px;
+    line-height: 32px;
+  }
+
+  .wuchang_introduction_main_content_text {
+    font-size: 12px;
+    line-height: 18px;
+  }
+
+  .wuchang_introduction_main_btn {
+    width: 146px;
+    height: 60px;
+    font-size: 16px;
+  }
+
+  .wuchang_introduction_summary+.wuchang_introduction_main {
+    margin-top: 5.84375vw;
+  }
+
+  .wuchang_introduction_swiper_title {
+    font-size: 26px;
+    line-height: 26px;
+    margin-top: 2.125vw;
+  }
+
+  .wuchang_introduction_swiper_text {
+    font-size: 12px;
+    line-height: 18px;
+  }
+}
+
+@media screen and (max-width: 1000px) {
+  .wuchang_introduction .pmd_show {
+    display: block;
+  }
+
+  .wuchang_introduction .pc_show {
+    display: none;
+  }
+
+  .wuchang_introduction_summary_img {
+    width: 250px;
+  }
+
+  .wuchang_introduction_summary_text {
+    font-size: 14px;
+    line-height: 22px;
+    width: 84vw;
+    margin: 6.133vw auto 0;
+  }
+
+  .wuchang_introduction_main_title {
+    width: 309px;
+    height: 55px;
+    font-size: 30px;
+  }
+
+  .wuchang_introduction_summary+.wuchang_introduction_main {
+    margin-top: 18.133vw;
+  }
+
+  .wuchang_introduction_main_text {
+    font-size: 14px;
+    line-height: 22px;
+    width: 84vw;
+    margin: 2.133vw auto 0;
+  }
+
+  .wuchang_introduction_main_content {
+    max-width: 100vw;
+    padding: 0;
+    height: 173.87vw;
+    flex-direction: column-reverse;
+    justify-content: flex-end;
+    margin-top: 3.73vw;
+    gap: 0;
+  }
+
+  .wuchang_introduction_main_content_right {
+    width: 77vw;
+    height: 89.87vw;
+    margin: 8vw auto 0;
+    flex: 0 0 auto;
+  }
+
+  .wuchang_introduction {
+    height: 473.067vw;
+  }
+
+  .wuchang_introduction_main_content_left {
+    margin-left: 11.5vw;
+  }
+
+  .wuchang_introduction_main_content_title {
+    font-size: 30px;
+    line-height: 40px;
+  }
+
+  .wuchang_introduction_main_content_text {
+    width: 73.067vw;
+    font-size: 14px;
+    line-height: 22px;
+  }
+
+  .wuchang_introduction_main_btn {
+    width: 63.467vw;
+    height: 25.867vw;
+    font-size: 28px;
+    margin-left: 3.73vw;
+  }
+
+  .wuchang_introduction_main+.wuchang_introduction_swiper {
+    margin-top: 46.67vw;
+  }
+
+  .wuchang_introduction_swiper {
+    padding: 0 5.33vw;
+  }
+
+  .wuchang_introduction_swiper_bg {
+    display: none !important;
+  }
+
+  .wuchang_introduction_swiper .swiper {
+    width: 100%;
+    height: 52.53vw;
+  }
+
+  .wuchang_introduction_swiper .slick-track,
+  .wuchang_introduction_swiper .swiper-slide {
+    height: 100%;
+  }
+
+  .wuchang_introduction_swiper .swiper-slide:not(.swiper-slide-active) {
+    margin-top: 0;
+  }
+
+  .wuchang_introduction_swiper .slick-current {
+    transform: none;
+  }
+
+  .wuchang_introduction_swiper .slick-prev:before,
+  .wuchang_introduction_swiper .slick-next:before,
+  .wuchang_introduction_swiper .slick-prev,
+  .wuchang_introduction_swiper .slick-next {
+    width: 17px;
+    height: 26px;
+  }
+
+  .wuchang_introduction_swiper .slick-prev {
+    left: 0 !important;
+  }
+
+  .wuchang_introduction_swiper .slick-next {
+    right: 0 !important;
+  }
+
+  .wuchang_introduction_swiper .slick-sprev:before,
+  .wuchang_introduction_swiper .slick-snext:before {
+    display: none;
+  }
+
+  .wuchang_introduction_swiper_title {
+    font-size: 30px;
+    line-height: 40px;
+    margin-top: 7.33vw;
+  }
+
+  .wuchang_introduction_swiper_text {
+    font-size: 14px;
+    line-height: 22px;
+  }
+
+  .wuchang_introduction_swiper .slick-dots li {
+    margin: 0 9px;
+  }
+
+  .wuchang_introduction_swiper .slick-dots li:before {
+    width: 32px;
+    height: 27px;
+  }
+
+  .wuchang_introduction_swiper .slick-dots {
+    bottom: -60vw;
+  }
+
+  .wuchang_introduction_main_content_right:before {
+    background: url("https://cdn.shopify.com/s/files/1/0716/1341/5637/files/joint-wuchang-intro-video-frame-mobile.webp?v=1753350391") no-repeat;
+    width: 128%;
+    height: 118%;
+    background-size: 100%;
+    left: -13vw;
+    top: -5.2vw;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .wuchang_introduction_main+.wuchang_introduction_swiper {
+    margin-top: 25.67vw;
+  }
+
+  .wuchang_introduction_swiper .slick-dots {
+    bottom: -65vw;
+  }
+
+  .wuchang_introduction_main_content_title {
+    line-height: 30px;
+  }
+
+  .wuchang_introduction_main_content_text {
+    line-height: 20px;
+  }
+}

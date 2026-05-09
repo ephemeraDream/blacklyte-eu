@@ -1,0 +1,1184 @@
+{{ 'product-information-new.css' | asset_url | stylesheet_tag }}
+{{ 'recommended-products-new.css' | asset_url | stylesheet_tag }}
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="https://cdn.shopify.com/s/files/1/0716/1341/5637/files/slick.css?v=1760406619"
+>
+<link rel="stylesheet" href="{{ 'component-fancybox.css' | asset_url }}" media="print" onload="this.media='all'">
+<noscript>{{ 'component-fancybox.css' | asset_url | stylesheet_tag }}</noscript>
+
+<style>
+    {% assign small_img_list = section.settings.small_img | split: "," %}
+    {% for item in small_img_list %}
+      .product_info_new .product_info_new_left_grid_img:nth-child({{item}}){% unless forloop.last %},{% endunless %}
+    {% endfor %}
+    {
+    flex: 0 0 auto;
+    width: calc((100% - 0.78125vw) / 2);
+    height: 18.75vw;
+    object-fit: cover;
+    object-position: center center;
+    border-radius: 0.46875vw;
+  }
+</style>
+
+{% for currency in shop.enabled_currencies %}
+  {% if currency.iso_code == shop.currency %}
+    {%- assign currency_symbol = currency.symbol -%}
+    {% break %}
+  {% endif %}
+{% endfor %}
+{% liquid
+  assign show_sale_info = false
+  assign sale_price = product.selected_or_first_available_variant.price
+  if product.selected_or_first_available_variant.metafields.custom.discount_price.value != blank and product.selected_or_first_available_variant.metafields.custom.discount_price.value != 0
+    assign save_price = product.selected_or_first_available_variant.metafields.custom.discount_price.value
+    assign sale_price = product.selected_or_first_available_variant.price | minus: save_price
+    assign show_sale_info = true
+  endif
+%}
+{% assign product_name = product.metafields.custom.alias | default: product.title %}
+{% assign thumbs = product.selected_or_first_available_variant.metafields.custom.multiple_video_thumb.value %}
+{% assign videos = product.selected_or_first_available_variant.metafields.custom.multiple_video.value %}
+
+<div class="product_info_new">
+  <div class="product_info_new_left{% if section.settings.show_pc_thumb %} show_pc_thumb{% endif %}">
+    <div class="product_info_new_left_imgmain">
+      <div class="product_info_new_left_imgmain_body">
+        {% assign show_images = product.selected_or_first_available_variant.metafields.custom.multiple_images.value
+          | default: product.images
+        %}
+        {% for image in show_images %}
+          <div class="product_info_new_left_imgmain_item">
+            {{- image | image_url: width: image.width | image_tag: alt: image.alt -}}
+          </div>
+        {% endfor -%}
+      </div>
+      <div class="product_info_new_left_spin{% unless section.settings.show_spin %} hidden{% endunless %}">
+        {% render 'product-360',
+          images: product.selected_or_first_available_variant.metafields.custom.spin_images.value
+        %}
+      </div>
+      <div class="product_info_new_left_imgmain_prev{% unless section.settings.show_pc_thumb %} pmd_show{% endunless %}">
+        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="19" viewBox="0 0 12 19" fill="none">
+          <path d="M10.3208 1L2.00006 9.32074L10.3208 17.6415" stroke="black" stroke-width="2"/>
+        </svg>
+      </div>
+      <div class="product_info_new_left_imgmain_next{% unless section.settings.show_pc_thumb %} pmd_show{% endunless %}">
+        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="19" viewBox="0 0 12 19" fill="none">
+          <path d="M1.3208 1L9.64154 9.32074L1.3208 17.6415" stroke="black" stroke-width="2"/>
+        </svg>
+      </div>
+      <div class="product_info_new_left_pcvideo pc_show">
+        {% if thumbs != blank and videos != blank %}
+          <div class="product_videothumb">
+            {% for thumb in thumbs %}
+              {% assign i = forloop.index0 %}
+              {% for video in videos %}
+                {% if i == forloop.index0 %}
+                  {% assign video = video %}
+                {% endif %}
+              {% endfor %}
+              {% if video != blank %}
+                {% comment %} {% assign video_source = video.sources | first %} {% endcomment %}
+                {% assign source_1080 = video.sources
+                  | where: 'mime_type', 'video/mp4'
+                  | where: 'height', 1080
+                  | first
+                %}
+                {% assign source_default = video.sources | where: 'mime_type', 'video/mp4' | first %}
+                <a
+                  href="{{ source_1080.url | default: source_default.url }}"
+                  data-fancybox="Video PC Collection"
+                  class="product_videothumb_item"
+                >
+                  <img
+                    width="100%"
+                    height="100%"
+                    src="{{ thumb | image_url }}"
+                    alt="{{ thumb.alt | default: product.title }}"
+                    loading="eager"
+                  >
+                  <svg
+                    stroke="currentColor"
+                    fill="currentColor"
+                    stroke-width="0"
+                    viewBox="0 0 448 512"
+                    class="tw-text-white"
+                    height="1em"
+                    width="1em"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path d="M424.4 214.7L72.4 6.6C43.8-10.3 0 6.1 0 47.9V464c0 37.5 40.7 60.1 72.4 41.3l352-208c31.4-18.5 31.5-64.1 0-82.6z"></path>
+                  </svg>
+                </a>
+              {% endif %}
+            {% endfor %}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+    <div class="product_info_new_left_imgthumb{% unless section.settings.show_pc_thumb %} pmd_show{% endunless %}{% if thumbs != blank and videos != blank %} has_video{% endif %}">
+      <div class="product_info_new_left_imgthumb_body">
+        {% assign thumb_images = product.selected_or_first_available_variant.metafields.custom.multiple_images.value
+          | default: product.images
+        %}
+        {% if product.selected_or_first_available_variant.metafields.custom.multiple_thumb_images != blank %}
+          {% assign thumb_images = product.selected_or_first_available_variant.metafields.custom.multiple_thumb_images.value %}
+        {% endif %}
+        {% for image in thumb_images %}
+          <div class="product_info_new_left_imgthumb_item">
+            {% assign img_alt = image.alt | default: product.title %}
+            {{- image | image_url: width: image.width | image_tag: alt: img_alt -}}
+          </div>
+        {% endfor -%}
+      </div>
+      <div class="product_info_new_left_spin_icon hidden">
+        {% comment %}
+          {{-
+            product.selected_or_first_available_variant.featured_image
+            | image_url: width: 80
+            | image_tag: alt: product.title
+          -}}
+        {% endcomment %}
+        <svg
+          width="80"
+          height="81"
+          viewBox="0 0 80 81"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <g clip-path="url(#clip0_134_10)">
+              <path
+                  d="M44.4919 62.6332L45.4971 59.221C43.4022 59.3436 41.4294 59.4096 39.5035 59.4284C29.1792 59.5509 19.4278 58.5518 12.0627 56.6101C4.20901 54.5364 0.0379228 51.6616 0.000345443 48.2872C-0.0466263 44.6488 4.69752 41.5006 13.6973 39.1819L14.9937 38.8614L14.928 40.2941C14.9373 40.7937 15.0689 41.3027 15.3131 41.8022L15.8486 42.905L14.6743 43.2161C7.75068 44.9693 5.30815 47.0053 5.32694 48.2212C5.33633 49.456 7.89159 51.4731 15.0501 53.066C21.7388 54.5553 30.6071 55.3188 40.0296 55.2057C41.5797 55.1868 43.1955 55.1397 44.9241 55.0643L43.3834 52.2554L55.9906 56.1294L44.4919 62.6332ZM58.8465 58.0145L58.7525 56.94C58.7056 56.4216 58.2922 56.0069 57.954 55.7524L56.0658 54.3291L58.4049 53.9803C63.7879 53.2074 68.2972 52.1329 71.4443 50.8698C75.4463 49.258 75.8596 47.9196 75.8596 47.42C75.8408 46.0815 72.9756 43.9513 64.9622 42.3207L63.9194 42.1039L64.2013 41.0859C64.267 40.822 64.3046 40.5392 64.3046 40.2753C64.3046 40.0679 64.2764 39.8605 64.2294 39.6155V39.606L63.9194 38.1168L65.4037 38.4278C69.7157 39.3704 73.295 40.6052 75.7657 41.9907C78.584 43.5837 80.0307 45.3934 80.0589 47.3823C80.0777 49.0035 79.0725 51.4259 74.1874 53.7635C70.6927 55.4319 65.7513 56.8363 59.8987 57.826L58.8465 58.0145ZM67.9872 19.8591C66.0144 19.8591 64.4079 21.4614 64.4079 23.4503C64.4079 25.4297 66.0144 27.0415 67.9872 27.0415C69.96 27.0415 71.5664 25.4391 71.5664 23.4503C71.5664 21.4614 69.9506 19.8591 67.9872 19.8591ZM67.9872 25.4391C66.888 25.4391 65.9956 24.5437 65.9956 23.4409C65.9956 22.338 66.888 21.4426 67.9872 21.4426C69.0863 21.4426 69.9788 22.338 69.9788 23.4409C69.9788 24.5437 69.0863 25.4391 67.9872 25.4391ZM45.375 35.1005C44.0974 33.7903 42.4815 33.1211 40.5651 33.1211C40.3208 33.1211 40.0484 33.14 39.7478 33.1682C39.6069 33.1871 39.466 33.1965 39.3157 33.2248L45.375 24.1572H41.5233L34.9379 34.5444C34.2427 35.6472 33.7354 36.6746 33.4254 37.6078C33.106 38.5503 32.9557 39.5118 32.9557 40.4543C32.9557 42.5092 33.6133 44.2058 34.9285 45.4877C36.2343 46.7602 37.9629 47.4106 40.086 47.4106C41.1382 47.4106 42.1527 47.1938 43.1016 46.7602C44.0598 46.3266 44.8865 45.7139 45.5535 44.9316C46.1359 44.2718 46.5775 43.5177 46.8781 42.6977C47.1693 41.8871 47.3196 40.9916 47.3196 40.0585C47.3008 38.0791 46.6526 36.4107 45.375 35.1005ZM42.8949 43.2915C42.1621 44.0738 41.2415 44.4509 40.0766 44.4509C38.8835 44.4509 37.9629 44.0927 37.2677 43.3481C36.5725 42.6129 36.2249 41.5949 36.2249 40.3507C36.2249 39.0876 36.5913 38.0602 37.3241 37.2779C38.0568 36.4861 38.9681 36.0997 40.1142 36.0997C41.3166 36.0997 42.2749 36.4767 42.9701 37.2119C43.6652 37.9471 44.0128 38.9934 44.0128 40.2941C44.0034 41.5006 43.6371 42.5186 42.8949 43.2915Z"
+                  fill="#999999" />
+              <path
+                  d="M23.1292 44.4509C22.3213 44.4509 21.5697 44.2153 20.8933 43.7534C20.2075 43.2821 19.6345 42.6035 19.1836 41.7269L19.0708 41.5101L16.1868 43.1124L16.2995 43.3198C17.0417 44.6583 18.0093 45.6762 19.1554 46.3549C20.3109 47.0336 21.6731 47.3823 23.2043 47.3823C25.4402 47.3823 27.3191 46.6471 28.7752 45.1861C30.2407 43.7345 30.9735 41.8588 30.9735 39.6343C30.9735 37.6266 30.344 35.9583 29.0946 34.6858C27.9391 33.4982 26.4454 32.8384 24.6511 32.7158L30.6071 24.1478H17.455V27.3149L24.9799 27.1735L18.3944 36.2034L19.2399 36.7783L19.3714 36.6841C19.9915 36.2316 20.6115 35.8829 21.2221 35.6567C21.8234 35.4304 22.4434 35.3079 23.0446 35.3079C24.4162 35.3079 25.5529 35.7415 26.4172 36.5898C27.2721 37.4381 27.7136 38.5598 27.7136 39.9077C27.7136 41.1896 27.2721 42.2735 26.3984 43.1407C25.5247 44.0173 24.4256 44.4509 23.1292 44.4509ZM62.9612 40.0679V31.3397C62.9612 28.9832 62.3412 27.1358 61.1387 25.8256C59.9174 24.5154 58.1983 23.8462 56.0188 23.8462C53.9896 23.8462 52.308 24.5343 51.021 25.8822C49.734 27.23 49.0857 29.0115 49.0857 31.1794V40.0773C49.0857 42.2453 49.734 44.0173 51.021 45.3746C52.308 46.7225 53.9802 47.4106 56.0188 47.4106C58.0667 47.4106 59.7483 46.7225 61.0353 45.3746C62.313 44.0079 62.9612 42.2264 62.9612 40.0679ZM52.3644 32.1503C52.3644 30.3405 52.6838 28.9644 53.2944 28.0878C53.905 27.2112 54.7975 26.787 56.0188 26.787C57.24 26.787 58.1325 27.2112 58.7337 28.0784C59.3444 28.9644 59.6544 30.3311 59.6544 32.1503V39.1159C59.6544 40.9351 59.3444 42.2924 58.7431 43.169C58.1513 44.0267 57.2588 44.4509 56.0188 44.4509C54.7787 44.4509 53.8863 44.0267 53.285 43.1596C52.665 42.2736 52.3644 40.9162 52.3644 39.1159V32.1503Z"
+                  fill="#999999" />
+          </g>
+          <defs>
+              <clipPath id="clip0_134_10">
+                  <rect width="80" height="80.2676" fill="white"
+                      transform="translate(0 0.287598)" />
+              </clipPath>
+          </defs>
+        </svg>
+      </div>
+      <div class="product_info_new_left_imgthumb_prev hidden">
+        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="19" viewBox="0 0 12 19" fill="none">
+          <path d="M10.3208 1L2.00006 9.32074L10.3208 17.6415" stroke="black" stroke-width="2"/>
+        </svg>
+      </div>
+      <div class="product_info_new_left_imgthumb_next">
+        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="19" viewBox="0 0 12 19" fill="none">
+          <path d="M1.3208 1L9.64154 9.32074L1.3208 17.6415" stroke="black" stroke-width="2"/>
+        </svg>
+      </div>
+
+      {% if thumbs != blank and videos != blank %}
+        <div class="product_videothumb">
+          {% for thumb in thumbs %}
+            {% assign i = forloop.index0 %}
+            {% for video in videos %}
+              {% if i == forloop.index0 %}
+                {% assign video = video %}
+              {% endif %}
+            {% endfor %}
+            {% if video != blank %}
+              {% comment %} {% assign video_source = video.sources | first %} {% endcomment %}
+              {% assign source_1080 = video.sources | where: 'mime_type', 'video/mp4' | where: 'height', 1080 | first %}
+              {% assign source_default = video.sources | where: 'mime_type', 'video/mp4' | first %}
+              <a
+                href="{{ source_1080.url | default: source_default.url }}"
+                data-fancybox="Video Collection"
+                class="product_videothumb_item"
+              >
+                <img
+                  width="100%"
+                  height="100%"
+                  src="{{ thumb | image_url }}"
+                  alt="{{ thumb.alt | default: product.title }}"
+                  loading="eager"
+                >
+                <svg
+                  stroke="currentColor"
+                  fill="currentColor"
+                  stroke-width="0"
+                  viewBox="0 0 448 512"
+                  class="tw-text-white"
+                  height="1em"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M424.4 214.7L72.4 6.6C43.8-10.3 0 6.1 0 47.9V464c0 37.5 40.7 60.1 72.4 41.3l352-208c31.4-18.5 31.5-64.1 0-82.6z"></path>
+                </svg>
+              </a>
+            {% endif %}
+          {% endfor %}
+        </div>
+      {% endif %}
+    </div>
+    <div class="product_info_new_left_grid pc_show{% if section.settings.show_pc_thumb %} hidden{% endif %}">
+      {% assign skip_first = section.settings.show_spin | default: false %}
+
+      {% for image in product.selected_or_first_available_variant.metafields.custom.multiple_images.value %}
+        {% if skip_first == false and forloop.first %}
+          {% continue %}
+        {% endif %}
+        {% assign hide_array = product.selected_or_first_available_variant.metafields.custom.hide_in_pc_images.value %}
+        {%- if hide_array != blank and hide_array contains forloop.index -%}
+          {% continue %}
+        {%- endif %}
+        {{-
+          image
+          | image_url: width: image.width
+          | image_tag: alt: image.alt, class: 'product_info_new_left_grid_img'
+        -}}
+      {% endfor %}
+    </div>
+  </div>
+  <div class="product_info_new_right">
+    {% render 'breadcrumb-simplicity', alignment: 'left', product_type: product.metafields.custom.product_type %}
+    <div class="product_info_new_right_contain">
+      <div class="product_info_new_right_contain_top">
+        <h1 class="product_info_new_product_title">{{ product_name }}</h1>
+        <div class="product_info_new_product_desc pc_show">{{ product.description }}</div>
+        {% comment %}
+          {%- for block in section.blocks -%}
+            {%- case block.type -%}
+              {%- when '@app' -%}
+                {% render block %}
+            {%- endcase -%}
+          {%- endfor -%}
+        {% endcomment %}
+        {% render 'rating-simple' %}
+        {% render 'product-price-simplicity',
+          sale_price: sale_price,
+          show_sale_info: show_sale_info,
+          save_price: save_price,
+          product: product,
+          is_bottom: false,
+          is_pmd_show: false,
+          is_preorder: false
+        %}
+        <div class="product_info_new_betweenline"></div>
+        {% if product.metafields.custom.discount_card != blank %}
+          {% render 'discount-card', discount_card: product.metafields.custom.discount_card.value %}
+        {% endif %}
+        {% if product.metafields.custom.series_product != blank
+          and product.metafields.custom.product_type == 'chairs'
+        %}
+          <div
+            class="product_info_new_right_select_contain product_info_new_right_select_contain_common"
+            data-type="series"
+          >
+            <div class="product_info_new_right_select_title">
+              <span>Configuration</span>
+              {% comment %}
+                {% if section.settings.show_compare_modal %}
+                  <span class="product_info_new_right_select_title_text" id="show_compare_modal">
+                    {{- 'products.product.text.difference' | t -}}
+                    <svg xmlns="http://www.w3.org/2000/svg" width="8" height="8" viewBox="0 0 8 8" fill="none">
+                      <path d="M0 4H8" stroke="#262629"/>
+                      <path d="M4 0L4 8" stroke="#262629"/>
+                    </svg>
+                  </span>
+                {% endif %}
+              {% endcomment %}
+            </div>
+            <div class="product_info_new_right_select_itembox">
+              {% for series in product.metafields.custom.series_product.value %}
+                <div
+                  data-handle="{{ series.handle }}"
+                  class="product_info_new_right_select_item{% if forloop.first %} product_info_new_right_select_item_active{% endif %}"
+                >
+                  <span>{{- series.metafields.custom.series_name.value -}}</span>
+                </div>
+              {%- endfor -%}
+            </div>
+          </div>
+        {% endif %}
+        {% if product.metafields.custom.product_type == 'chairs' %}
+          {% assign available_variants = product.variants | where: 'available' %}
+          {% if available_variants.size > 1 %}
+            <div
+              class="product_info_new_right_select_contain product_info_new_right_select_contain_spec"
+              data-type="Color"
+            >
+              <div class="product_info_new_right_select_title">
+                {% if request.host contains '.uk' %}
+                  Colour
+                {% else %}
+                  Color
+                {% endif %}
+              </div>
+              <div class="product_info_new_right_select_itembox_mask"></div>
+              <div class="product_info_new_right_select_itembox">
+                <div class="product_info_new_right_select_title pmd_show">
+                  {% if request.host contains '.uk' %}
+                    Colour
+                  {% else %}
+                    Color
+                  {% endif %}
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+                    <path d="M0.707031 0.710938L14.7058 14.7097" stroke="#262629" stroke-width="2"/>
+                    <path d="M14.707 0.710938L0.708308 14.7097" stroke="#262629" stroke-width="2"/>
+                  </svg>
+                </div>
+                <div class="product_info_new_right_select_itembox_color">
+                  {% assign available_variants = product.variants | where: 'available' %}
+                  {% if product.title contains 'Athena Pro Gaming Chair' %}
+                    {% assign unavailable_variants = product.variants | where: 'available', false %}
+                    {% for variant in unavailable_variants %}
+                      {% if variant.option2 contains 'Black' or variant.option2 contains 'Edition' %}
+                        {%- assign add_variant = unavailable_variants | slice: forloop.index0 -%}
+                        {%- assign available_variants = available_variants | concat: add_variant -%}
+                      {% endif %}
+                    {% endfor %}
+                  {% endif %}
+                  {% for variant in available_variants %}
+                    {% assign is_current = false %}
+                    {% if product.selected_or_first_available_variant.option1 == variant.option1
+                      and product.selected_or_first_available_variant.option2 == variant.option2
+                    %}
+                      {% assign is_current = true %}
+                    {% endif %}
+
+                    <div
+                      data-id="{{ variant.id }}"
+                      data-color="{{ variant.option2 }}"
+                      data-material="{{ variant.option1 }}"
+                      class="product_info_new_right_select_item{% if is_current %} product_info_new_right_select_item_active{% endif %}{% if variant.available == false %} product_info_new_right_select_item_disabled{% endif %}"
+                    >
+                      <div class="product_info_new_right_select_item_contain">
+                        {{- variant.featured_image | image_url: width: 240 | image_tag: alt: variant.title -}}
+                      </div>
+                      <div class="product_info_new_right_select_item_tips">
+                        {{ variant.option1 | append: ' / ' | append: variant.option2 }}
+                      </div>
+                      {% if variant.metafields.custom.discount_price.value != blank
+                        and variant.metafields.custom.discount_price.value != 0
+                      %}
+                        <div class="product_info_new_right_select_item_tag">SALE</div>
+                      {% endif %}
+                    </div>
+                  {% endfor %}
+                </div>
+                <div class="product_info_new_right_select_bottom pmd_show">
+                  <div class="product_info_new_right_select_bottom_flex">
+                    <div class="product_info_new_right_select_bottom_option">
+                      {{ product.selected_or_first_available_variant.option1 }} |
+                      {{ product.selected_or_first_available_variant.option2 }}
+                    </div>
+                    {% render 'product-price-simplicity',
+                      sale_price: sale_price,
+                      show_sale_info: show_sale_info,
+                      save_price: save_price,
+                      product: product,
+                      is_bottom: false,
+                      is_pmd_show: false,
+                      is_preorder: false
+                    %}
+                  </div>
+                  <div class="product_info_new_right_select_bottom_btn">Confirm Selection</div>
+                </div>
+              </div>
+              <div class="product_info_new_right_select_choosedbox">
+                <div class="product_info_new_right_select_choosedbox_left">
+                  <div class="product_info_new_right_select_choosedbox_img">
+                    <img
+                      src="{{ product.selected_or_first_available_variant.featured_image | image_url }}"
+                      width="100%"
+                      height="100%"
+                    >
+                  </div>
+                  <div class="product_info_new_right_select_choosedbox_title">
+                    {{ product.selected_or_first_available_variant.option1 }} |
+                    {{ product.selected_or_first_available_variant.option2 }}
+                  </div>
+                </div>
+                <svg xmlns="http://www.w3.org/2000/svg" width="7" height="12" viewBox="0 0 7 12" fill="none">
+                  <path d="M0.353516 0.351562L5.85858 5.85663L0.353516 11.3617" stroke="#262629"/>
+                </svg>
+              </div>
+            </div>
+          {% endif %}
+        {% else %}
+          {% for option in product.options_with_values %}
+            {%- case option.name -%}
+              {%- when 'Color' -%}
+                {% if option.values.size > 1 or product.metafields.custom.product_type == 'desk' %}
+                  <div
+                    class="product_info_new_right_select_contain product_info_new_right_select_contain_common"
+                    data-type="{{ option.name }}"
+                  >
+                    <div class="product_info_new_right_select_title">
+                      {% if request.host contains '.uk' %}
+                        Colour
+                      {% else %}
+                        Color
+                      {% endif %}
+                    </div>
+                    <div class="product_info_new_right_select_itembox">
+                      {% for value in option.values %}
+                        {% liquid
+                          assign variant = value.variant
+                          if value.variant.available == false or value.variant.available == blank
+                            if product.metafields.custom.product_type == 'desk'
+                              assign available_variant = product.variants | where: 'option1', value | where: 'available'
+                            else
+                              assign available_variant = product.variants | where: 'option2', value | where: 'available'
+                            endif
+                            if available_variant.size > 0
+                              assign variant = available_variant[0]
+                            endif
+                          endif
+                        %}
+                        {% assign color_object = '' %}
+                        {% for color in product.metafields.custom.color_style.value %}
+                          {% if color.color == value %}
+                            {% assign color_object = color %}
+                          {% endif %}
+                        {% endfor %}
+                        {% comment %} {% unless value.variant.available == blank and available_variant.size == 0 %} {% endcomment %}
+                        <div
+                          data-id="{{ variant.id }}"
+                          data-value="{{ value }}"
+                          class="product_info_new_right_select_item{% unless variant.available %} product_info_new_right_select_item_diasbled{% endunless %}{% if value.selected %} product_info_new_right_select_item_active{% endif %}"
+                        >
+                          {{ color_object.show_name }}
+                        </div>
+                        {% comment %} {% endunless %} {% endcomment %}
+                      {% endfor %}
+                    </div>
+                  </div>
+                {% endif %}
+              {%- when 'Size' -%}
+                {% if option.values.size > 1
+                  or product.metafields.custom.product_type == 'desk'
+                  and product.available
+                %}
+                  <div
+                    class="product_info_new_right_select_contain product_info_new_right_select_contain_common"
+                    data-type="{{ option.name }}"
+                  >
+                    <div class="product_info_new_right_select_title">
+                      {{ option.name }}
+                      {% if product.metafields.custom.product_type == 'desk' %}
+                        <div class="product_info_new_right_size_switch">
+                          {% if request.host contains 'blacklyte.com' %}
+                            <div
+                              class="product_info_new_right_size_switch_item"
+                              data-type="format"
+                            >
+                              mm
+                            </div>
+                            <div
+                              class="product_info_new_right_size_switch_item active"
+                              data-type="normal"
+                            >
+                              in
+                            </div>
+                          {% else %}
+                            <div
+                              class="product_info_new_right_size_switch_item active"
+                              data-type="normal"
+                            >
+                              mm
+                            </div>
+                            <div
+                              class="product_info_new_right_size_switch_item"
+                              data-type="format"
+                            >
+                              in
+                            </div>
+                          {% endif %}
+                        </div>
+                      {% endif %}
+                    </div>
+                    <div class="product_info_new_right_select_itembox">
+                      {% for value in option.values %}
+                        {% liquid
+                          assign variant = value.variant
+                          if value.variant.available == false or value.variant.available == blank
+                            if product.metafields.custom.product_type == 'desk'
+                              assign available_variant = product.variants | where: 'option2', value | where: 'available'
+                            endif
+                            if available_variant.size > 0
+                              assign variant = available_variant[0]
+                            endif
+                          endif
+                        %}
+                        {% assign size_object = '' %}
+                        {% for size in product.metafields.custom.product_size.value %}
+                          {% if size.name == value %}
+                            {% assign size_object = size %}
+                          {% endif %}
+                        {% endfor %}
+                        {% unless value.variant.available == blank and available_variant.size == 0 %}
+                          <div
+                            data-index="{{ forloop.index0 }}"
+                            data-id="{{ variant.id }}"
+                            data-value="{{ value }}"
+                            data-size="{{ size_object.size | replace: '\"', '/' }}"
+                            data-size-format="{{ size_object.size_format_in | replace: '\"', '/' }}"
+                            class="product_info_new_right_select_item{% unless value.variant.available %} product_info_new_right_select_item_diasbled{% endunless %}{% if value.selected %} product_info_new_right_select_item_active{% endif %}"
+                          >
+                            <div>
+                              <span>
+                                {{ value }}
+                              </span>
+                              {% if size_object != blank %}
+                                <span class="product_info_new_right_size_extra">
+                                  {{ size_object.size | replace: '\', '' }}
+                                </span>
+                              {% endif %}
+                            </div>
+                          </div>
+                        {% endunless %}
+                      {% endfor %}
+                    </div>
+                  </div>
+                {% endif %}
+              {% when 'Wheel' %}
+                <div
+                  class="product_info_new_right_select_contain product_info_new_right_select_contain_common"
+                  data-type="{{ option.name }}"
+                >
+                  <div class="product_info_new_right_select_title">
+                    {{ option.name }}
+                  </div>
+                  <div class="product_info_new_right_select_itembox">
+                    {% for value in option.values %}
+                      <div
+                        data-index="{{ forloop.index0 }}"
+                        data-id="{{ value.variant.id }}"
+                        data-value="{{ value }}"
+                        class="product_info_new_right_select_item{% unless value.available %} product_info_new_right_select_item_diasbled{% endunless %}{% if value.selected %} product_info_new_right_select_item_active{% endif %}"
+                      >
+                        {% comment %}
+                          {{-
+                            value.variant.featured_image
+                            | image_url: width: 120
+                            | image_tag: alt: value.variant.featured_image.alt
+                          -}}
+                        {% endcomment %}
+                        <span>{{ value }}</span>
+                      </div>
+                    {% endfor %}
+                  </div>
+                </div>
+            {%- endcase -%}
+          {% endfor %}
+        {% endif %}
+        {% if product.metafields.custom.product_attach != blank
+          or product.metafields.custom.selectable_product_attach != blank
+        %}
+          <div class="product_info_new_right_product_addons">
+            <div class="product_info_new_right_select_title">{{ 'products.product.text.addons' | t }}</div>
+            {% if product.title contains 'Athena X'
+              or product.title contains 'Athena Pro Gaming Chair'
+              or product.title contains 'Athena Pro Team Liquid Edition'
+            %}
+              {% for item in product.metafields.custom.product_attach.value %}
+                {% for variant in item.variants %}
+                  {% assign variant_option_color = variant.option2 | downcase %}
+                  {% assign selected_option_color = product.selected_or_first_available_variant.option2 | downcase %}
+
+                  {% if variant_option_color == selected_option_color %}
+                    <div class="product_info_new_right_product_addons_item product_info_new_right_product_addons_item_active">
+                      <div class="product_info_new_right_product_addons_item_left">
+                        <div>
+                          <div class="product_info_new_right_product_addons_item_title">{{ item.title }}</div>
+                          <div class="product_info_new_right_product_addons_item_price">
+                            +{{ '00.00' | money_without_trailing_zeros }}
+                            <span class="linethrough_word">{{ variant.price | money_without_trailing_zeros }}</span>
+                          </div>
+                        </div>
+                      </div>
+                      {{-
+                        variant.metafields.custom.addon_show_image
+                        | default: variant.featured_image
+                        | image_url: width: 500
+                        | image_tag: alt: item.title, class: 'product_info_new_right_product_addons_item_img'
+                      -}}
+                      <div class="product_info_new_right_product_addons_item_tag">INCLUDED</div>
+                    </div>
+                  {% endif %}
+                {% endfor %}
+              {% endfor %}
+            {% else %}
+              {% for item in product.metafields.custom.product_attach.value %}
+                <div class="product_info_new_right_product_addons_item product_info_new_right_product_addons_item_active">
+                  <div class="product_info_new_right_product_addons_item_left">
+                    <div>
+                      <div class="product_info_new_right_product_addons_item_title">{{ item.title }}</div>
+                      <div class="product_info_new_right_product_addons_item_price">
+                        +{{ '00.00' | money_without_trailing_zeros }}
+                        <span class="linethrough_word">{{ item.price | money_without_trailing_zeros }}</span>
+                      </div>
+                    </div>
+                  </div>
+                  {{-
+                    item.selected_or_first_available_variant.metafields.custom.addon_show_image
+                    | default: item.featured_image
+                    | image_url: width: 500
+                    | image_tag: alt: item.title, class: 'product_info_new_right_product_addons_item_img'
+                  -}}
+                  <div class="product_info_new_right_product_addons_item_tag">INCLUDED</div>
+                </div>
+              {% endfor %}
+            {% endif %}
+            {% for item in product.metafields.custom.selectable_product_attach.value %}
+              <div
+                class="product_info_new_right_product_addons_item"
+                data-id="{{ item.selected_or_first_available_variant.id }}"
+              >
+                <div class="product_info_new_right_product_addons_item_left">
+                  <div>
+                    <div class="product_info_new_right_product_addons_item_title">{{ item.title }}</div>
+                    <div class="product_info_new_right_product_addons_item_price">
+                      {% assign discount = item.selected_or_first_available_variant.metafields.custom.discount_price.value %}
+                      +<span
+                        class="product_info_new_right_product_addons_item_price_dp{% if discount != blank %} show{% endif %}"
+                        data-value="{{ item.selected_or_first_available_variant.metafields.custom.discount_price.value | money_without_currency }}"
+                      >
+                        {{-
+                          item.selected_or_first_available_variant.price
+                          | minus: item.selected_or_first_available_variant.metafields.custom.discount_price.value
+                          | money_without_trailing_zeros
+                        -}}
+                      </span>
+                      <span
+                        class="product_info_new_right_product_addons_item_price_op"
+                        data-value="{{ item.selected_or_first_available_variant.price | money_without_currency }}"
+                      >
+                        {{- item.selected_or_first_available_variant.price | money_without_trailing_zeros -}}
+                      </span>
+                    </div>
+                  </div>
+                  <div>
+                    <div class="product_info_new_right_product_addons_item_btn">
+                      {{ 'products.product.add_to_cart' | t }}
+                    </div>
+                  </div>
+                </div>
+                {% assign featured_image = item.selected_or_first_available_variant.featured_image
+                  | default: item.featured_image
+                %}
+                {{-
+                  featured_image
+                  | image_url: width: 500
+                  | image_tag: alt: item.title, class: 'product_info_new_right_product_addons_item_img'
+                -}}
+              </div>
+            {% endfor %}
+          </div>
+        {% endif %}
+        <div class="product_info_new_product_title_small">{{ product_name }}</div>
+        <div class="product_info_new_right_buybox">
+          <div class="product_info_new_right_buybox_line">
+            <input type="hidden" name="goods_id" value="{{ product.selected_or_first_available_variant.id }}">
+            <div class="product_info_new_right_goods_options">
+              {% if product.options_by_name.Size.values.size > 1 %}
+                {{ product.selected_or_first_available_variant.options | join: ' | ' }}
+              {% else %}
+                {% if product.title contains 'Atlas Desk' or product.title contains 'Atlas Gaming Desk' %}
+                  {% assign size = product.metafields.custom.product_size.value | first %}
+                  {{ size.name | append: ' | ' | append: size.size | replace: '\', '' }}
+                {% else %}
+                  {% if product.selected_or_first_available_variant.options.size > 0
+                    and product.selected_or_first_available_variant.options.first != 'Default Title'
+                  %}
+                    {% if product.metafields.custom.product_type.value == 'chairs' %}
+                      {{
+                        product.selected_or_first_available_variant.option1
+                        | append: ' | '
+                        | append: product.selected_or_first_available_variant.option2
+                      }}
+                    {% else %}
+                      {{ product.selected_or_first_available_variant.options | join: ' | ' }}
+                    {% endif %}
+                  {% endif %}
+                {% endif %}
+              {% endif %}
+            </div>
+            <div class="product_info_new_right_buybox_quantity_box">
+              <span class="product_info_new_right_buybox_quantity_btn" data-type="minus">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                  <g opacity="0.5" clip-path="url(#clip0_3876_2510)">
+                  <g clip-path="url(#clip1_3876_2510)">
+                  <path d="M13.9076 9.19531H5.9076C5.46578 9.19531 5.1076 9.55348 5.1076 9.99531C5.1076 10.4371 5.46578 10.7953 5.9076 10.7953H13.9076C14.3494 10.7953 14.7076 10.4371 14.7076 9.99531C14.7076 9.55348 14.3494 9.19531 13.9076 9.19531Z" fill="black"/>
+                  </g>
+                  </g>
+                  <defs>
+                  <clipPath id="clip0_3876_2510">
+                  <rect width="20" height="20" fill="white"/>
+                  </clipPath>
+                  <clipPath id="clip1_3876_2510">
+                  <rect width="20" height="20" fill="white"/>
+                  </clipPath>
+                  </defs>
+                </svg>
+              </span>
+              <input
+                class="product_info_new_right_buybox_quantity_input"
+                type="text"
+                name="quantity"
+                value="1"
+              >
+              <span class="product_info_new_right_buybox_quantity_btn" data-type="plus">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                  <g opacity="0.5" clip-path="url(#clip0_3876_2516)">
+                  <g clip-path="url(#clip1_3876_2516)">
+                  <path d="M14.1667 9.16406H5.83333C5.3731 9.16406 5 9.53716 5 9.9974C5 10.4576 5.3731 10.8307 5.83333 10.8307H14.1667C14.6269 10.8307 15 10.4576 15 9.9974C15 9.53716 14.6269 9.16406 14.1667 9.16406Z" fill="#191C21"/>
+                  <path d="M10.8333 14.1667V5.83333C10.8333 5.3731 10.4602 5 9.99998 5C9.53974 5 9.16665 5.3731 9.16665 5.83333V14.1667C9.16665 14.6269 9.53974 15 9.99998 15C10.4602 15 10.8333 14.6269 10.8333 14.1667Z" fill="#191C21"/>
+                  </g>
+                  </g>
+                  <defs>
+                  <clipPath id="clip0_3876_2516">
+                  <rect width="20" height="20" fill="white"/>
+                  </clipPath>
+                  <clipPath id="clip1_3876_2516">
+                  <rect width="20" height="20" fill="white"/>
+                  </clipPath>
+                  </defs>
+                </svg>
+              </span>
+            </div>
+          </div>
+          {% if product.selected_or_first_available_variant.metafields.custom.preorder_info != blank %}
+            <div class="product_infor_new_right_preorder_info">
+              {{ product.selected_or_first_available_variant.metafields.custom.preorder_info }}
+            </div>
+          {% endif %}
+        </div>
+        <div class="product_info_new_right_total">
+          <div class="product_info_new_right_total_title">{{ 'general.cart.total' | t }}</div>
+          <div class="product_info_new_right_total_num">{{ sale_price | money_without_trailing_zeros }}</div>
+        </div>
+      </div>
+      <div class="product_info_new_right_contain_bottom">
+        {% comment %}
+          {% render 'product-price-simplicity',
+            sale_price: sale_price,
+            show_sale_info: show_sale_info,
+            save_price: save_price,
+            product: product,
+            is_bottom: false,
+            is_pmd_show: false,
+            is_preorder: false
+          %}
+        {% endcomment %}
+        <div class="product_info_new_right_buybox_btns">
+          <button
+            class="product_info_new_right_buybox_btns_btn"
+            data-type="add_to_cart"
+            type="submit"
+            {% if product.selected_or_first_available_variant.available == false
+              or product.selected_or_first_available_variant == null
+            %}
+              disabled
+            {% endif %}
+          >
+            {% if product.selected_or_first_available_variant.inventory_quantity <= 0 %}
+              {% if product.selected_or_first_available_variant.available %}
+                {{ 'products.product.add_to_cart' | t }}
+              {% else %}
+                {{ 'products.product.out_of_stock' | t }}
+              {% endif %}
+            {% else %}
+              {{ 'products.product.add_to_cart' | t }}
+            {% endif %}
+          </button>
+          <button
+            data-type="buy_it_now"
+            class="product_info_new_right_buybox_btns_btn"
+            {% if product.selected_or_first_available_variant.available == false
+              or product.selected_or_first_available_variant == null
+            %}
+              disabled
+            {% endif %}
+          >
+            {{ 'products.product.buy_it_now' | t }}
+          </button>
+        </div>
+        <div class="product_info_new_right_extra_bottom">
+          <div class="product_info_new_right_extra_bottom_item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <g opacity="0.7" clip-path="url(#clip0_3876_2459)">
+              <g clip-path="url(#clip1_3876_2459)">
+              <path d="M1.66663 4.16406H12.2435C12.7746 4.16406 13.2051 4.52755 13.2051 5.11717V13.1324C13.2051 13.6808 12.7746 14.164 12.2435 14.164H2.49996C2.03972 14.164 1.66663 13.791 1.66663 13.3307V12.0807" stroke="#262629" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M19.1665 13.3359C19.1665 13.7961 18.7934 14.1692 18.3332 14.1692H14.1665C13.7063 14.1692 13.3332 13.7961 13.3332 13.3359V9.16928C13.3332 8.70904 13.7063 8.33594 14.1665 8.33594H15.924C16.1335 8.33594 16.3353 8.41485 16.4893 8.55694L18.8984 10.7807C19.0693 10.9385 19.1665 11.1605 19.1665 11.3931V13.3359Z" stroke="#262629" stroke-linejoin="round"/>
+              <path d="M11.6667 15C11.6667 15.9204 12.4129 16.6667 13.3333 16.6667C14.2538 16.6667 15 15.9204 15 15" stroke="#262629" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M3.33318 15C3.33318 15.9204 4.07939 16.6667 4.99985 16.6667C5.92031 16.6667 6.66651 15.9204 6.66651 15" stroke="#262629" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M1.6665 7.08594H7.08317" stroke="#262629" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M1.6665 9.58594H7.08317" stroke="#262629" stroke-linecap="round" stroke-linejoin="round"/>
+              </g>
+              </g>
+              <defs>
+              <clipPath id="clip0_3876_2459">
+              <rect width="20" height="20" fill="white"/>
+              </clipPath>
+              <clipPath id="clip1_3876_2459">
+              <rect width="20" height="20" fill="white"/>
+              </clipPath>
+              </defs>
+            </svg>
+            {% if product.selected_or_first_available_variant.metafields.custom.preorder_info != blank %}
+              Free Shipping on All Orders
+            {% else %}
+              Estimated dispatch within 2 business days / Free Shipping on All Orders
+            {% endif %}
+          </div>
+          <div class="product_info_new_right_extra_bottom_item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="19" height="19" viewBox="0 0 19 19" fill="none">
+              <g opacity="0.7">
+              <path d="M18.2819 17.2766H1.07803V7.01025L4.81124 1.45312H14.3372L18.2819 7.01397V17.2766ZM1.82022 16.5344H17.5398V7.25146L13.9531 2.19531H5.20645L1.82022 7.23662V16.5344Z" fill="#262629" stroke="#262629" stroke-width="0.2"/>
+              <path d="M1.43428 6.75H17.6195V7.49219H1.43428V6.75Z" fill="#262629" stroke="#262629" stroke-width="0.2"/>
+              <path d="M9.15044 7.03047L9.16279 1.82031L9.90498 1.82208L9.89264 7.03223L9.15044 7.03047Z" fill="#262629" stroke="#262629" stroke-width="0.2"/>
+              <path d="M12.0234 14.6369H8.16221V13.8947H12.0234C12.8009 13.8947 13.4317 13.262 13.4317 12.4864C13.4317 11.7108 12.799 11.0781 12.0234 11.0781H6.13419V10.3359H12.0234C13.2091 10.3359 14.1739 11.3008 14.1739 12.4864C14.1739 13.6721 13.2091 14.6369 12.0234 14.6369Z" fill="#262629" stroke="#262629" stroke-width="0.2"/>
+              <path d="M7.05449 12.3362L5.18604 10.735L6.95244 8.89062L7.48867 9.40273L6.26406 10.6812L7.53877 11.7722L7.05449 12.3362Z" fill="#262629" stroke="#262629" stroke-width="0.2"/>
+              </g>
+            </svg>
+            30-Day <a id="refund_policy_btn">Returns Policy</a>
+            {% render 'refund-policy-modal' %}
+          </div>
+          <div class="product_info_new_right_extra_bottom_item">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <g opacity="0.7" clip-path="url(#clip0_5609_63692)">
+              <g clip-path="url(#clip1_5609_63692)">
+              <path d="M2 4.94328C2 4.49217 2.30203 4.09691 2.7373 3.9784L10.0038 2L17.2629 3.97827C17.6981 4.09686 18 4.49207 18 4.94309V8.64804C18 13.3452 14.7779 17.5152 10.0012 19C5.22316 17.5152 2 13.3443 2 8.64597V4.94328Z" stroke="#262629" stroke-linejoin="round"/>
+              <path d="M6.25 9.58333L9.16667 12.5L14.1667 7.5" stroke="#262629" stroke-linecap="round" stroke-linejoin="round"/>
+              </g>
+              </g>
+              <defs>
+              <clipPath id="clip0_5609_63692">
+              <rect width="20" height="20" fill="white"/>
+              </clipPath>
+              <clipPath id="clip1_5609_63692">
+              <rect width="20" height="20" fill="white"/>
+              </clipPath>
+              </defs>
+            </svg>
+            {% if product.metafields.custom.product_type == 'chairs' %}
+              Up to 5-Year Warranty Protection
+              <a href="/pages/warranty-extension" target="_blank">Learn more ></a>
+            {% elsif product.metafields.custom.product_type == 'desk' %}
+              3-Year Warranty Protection
+            {% else %}
+              1-Year Warranty Protection
+            {% endif %}
+          </div>
+          <div class="product_info_new_right_extra_bottom_item pc_show">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <g clip-path="url(#clip0_3876_2489)">
+              <g clip-path="url(#clip1_3876_2489)">
+              <path d="M2.5 6.25L8.07142 10.6407C8.54167 11.0417 9.51175 11.6667 10.4167 10.8334C11.3705 9.95492 10.625 8.95833 10.4167 8.75L7.08333 6.25" stroke="#262629" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M1.66699 3.33594H10.8637C11.1125 3.33594 11.3523 3.42866 11.5364 3.596L15.8337 7.50261" stroke="#262629" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M3.75 13.75L18.3333 13.7581" stroke="#262629" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M3.75 7.5V15.6667C3.75 16.219 4.19772 16.6667 4.75 16.6667H17.3333C17.8856 16.6667 18.3333 16.219 18.3333 15.6667V8.5C18.3333 7.94772 17.8856 7.5 17.3333 7.5H9.16675" stroke="#262629" stroke-linecap="round" stroke-linejoin="round"/>
+              </g>
+              </g>
+              <defs>
+              <clipPath id="clip0_3876_2489">
+              <rect width="20" height="20" fill="white"/>
+              </clipPath>
+              <clipPath id="clip1_3876_2489">
+              <rect width="20" height="20" fill="white"/>
+              </clipPath>
+              </defs>
+            </svg>
+            Ways To Pay
+            {%- for type in shop.enabled_payment_types -%}
+              {{ type | payment_type_svg_tag }}
+            {%- endfor -%}
+          </div>
+          <div class="product_info_new_right_extra_bottom_item pmd_show">
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <g clip-path="url(#clip0_3876_2489)">
+              <g clip-path="url(#clip1_3876_2489)">
+              <path d="M2.5 6.25L8.07142 10.6407C8.54167 11.0417 9.51175 11.6667 10.4167 10.8334C11.3705 9.95492 10.625 8.95833 10.4167 8.75L7.08333 6.25" stroke="#262629" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M1.66699 3.33594H10.8637C11.1125 3.33594 11.3523 3.42866 11.5364 3.596L15.8337 7.50261" stroke="#262629" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M3.75 13.75L18.3333 13.7581" stroke="#262629" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M3.75 7.5V15.6667C3.75 16.219 4.19772 16.6667 4.75 16.6667H17.3333C17.8856 16.6667 18.3333 16.219 18.3333 15.6667V8.5C18.3333 7.94772 17.8856 7.5 17.3333 7.5H9.16675" stroke="#262629" stroke-linecap="round" stroke-linejoin="round"/>
+              </g>
+              </g>
+              <defs>
+              <clipPath id="clip0_3876_2489">
+              <rect width="20" height="20" fill="white"/>
+              </clipPath>
+              <clipPath id="clip1_3876_2489">
+              <rect width="20" height="20" fill="white"/>
+              </clipPath>
+              </defs>
+            </svg>
+            Ways To Pay
+            <div class="product_info_new_right_extra_bottom_item_payment_types">
+              {%- for type in shop.enabled_payment_types -%}
+                {{ type | payment_type_svg_tag }}
+              {%- endfor -%}
+            </div>
+          </div>
+        </div>
+        {% if product.metafields.custom.extra_description != blank %}
+          <div class="product_info_new_right_extra_desc">
+            {{ product.metafields.custom.extra_description | metafield_tag }}
+          </div>
+        {% endif %}
+        {%- for block in section.blocks -%}
+          {%- case block.type -%}
+            {% when 'extra_desc' %}
+              {{ block.settings.html }}
+          {%- endcase -%}
+        {%- endfor -%}
+        {% render 'recommended-products-new', currency_symbol: currency_symbol %}
+      </div>
+    </div>
+  </div>
+
+  <div class="product_info_new_bottom_bar">
+    <div class="product_info_new_bottom_bar_contain">
+      <div class="pc_show">
+        <div class="product_info_new_bottom_bar_title">{{ product_name }}</div>
+      </div>
+      <div class="product_info_new_bottom_bar_contain_right">
+        {% render 'product-price-simplicity',
+          sale_price: sale_price,
+          show_sale_info: show_sale_info,
+          save_price: save_price,
+          product: product,
+          is_bottom: true,
+          is_pmd_show: false,
+          is_preorder: false,
+          need_change: true,
+          buy_more_discount: product.metafields.custom.buy_more_discount.value
+        %}
+        <div class="product_info_new_right_buybox_btns">
+          <button
+            data-type="buy_it_now"
+
+            class="product_info_new_right_buybox_btns_btn"
+            {% if product.selected_or_first_available_variant.available == false
+              or product.selected_or_first_available_variant == null
+            %}
+              disabled
+            {% endif %}
+          >
+            {{ 'products.product.buy_it_now' | t }}
+          </button>
+          <button
+            type="submit"
+            class="product_info_new_right_buybox_btns_btn"
+            data-type="add_to_cart"
+            {% if product.selected_or_first_available_variant.available == false
+              or product.selected_or_first_available_variant == null
+            %}
+              disabled
+            {% endif %}
+          >
+            {% if product.selected_or_first_available_variant.inventory_quantity <= 0 %}
+              {% if product.selected_or_first_available_variant.available %}
+                {{ 'products.product.add_to_cart' | t }}
+              {% else %}
+                {{ 'products.product.out_of_stock' | t }}
+              {% endif %}
+            {% else %}
+              {{ 'products.product.add_to_cart' | t }}
+            {% endif %}
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {% render 'payway-modal' %}
+</div>
+
+<!-- Facebook Pixel Code -->
+<script>
+  !(function (f, b, e, v, n, t, s) {
+    if (f.fbq) return;
+    n = f.fbq = function () {
+      n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments);
+    };
+    if (!f._fbq) f._fbq = n;
+    n.push = n;
+    n.loaded = !0;
+    n.version = '2.0';
+    n.queue = [];
+    t = b.createElement(e);
+    t.async = !0;
+    t.src = v;
+    s = b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t, s);
+  })(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '246774244792685');
+  fbq('track', 'PageView');
+</script>
+<noscript>
+  <img
+    height="1"
+    width="1"
+    style="display:none"
+    src="https://www.facebook.com/tr?id=246774244792685&ev=PageView&noscript=1"
+  >
+</noscript>
+<!-- End Facebook Pixel Code -->
+<script type="application/ld+json">
+  {
+    "@context": "https://schema.org/",
+    "@type": "Product",
+    "name": {{ product.title | append: ' - ' | append: product.selected_or_first_available_variant.title | json }},
+    "image": [
+      {% for image in show_images %}
+        {{ image | image_url | json }}{% unless forloop.last %},{% endunless %}
+      {% endfor -%}
+      ],
+    "description": {{ product.metafields.global.description_tag | json }},
+    "sku": {{ product.selected_or_first_available_variant.sku | json }},
+    "mpn": {{ product.selected_or_first_available_variant.barcode | json }},
+    "productID": "{{ product.id }}",
+    "brand": {
+      "@type": "Brand",
+      "name": {% if product.vendor != blank %}{{ product.vendor | json }}{% else %}"Blacklyte"{% endif %}
+    },
+    {% comment %} {% if product.metafields.stamped.reviews_count != '0' and product.metafields.stamped.reviews_count != blank %}
+    {% if product.metafields.stamped.reviews_average != '0' and product.metafields.stamped.reviews_average != blank %}
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": {{ product.metafields.stamped.reviews_average | round: 2 }},
+      "reviewCount": {{ product.metafields.stamped.reviews_count }}
+    },
+    {% endif %}
+    {% endif %} {% endcomment %}
+    "offers": {
+      "@type": "Offer",
+      "url": {{ shop.url | append: product.url | json }},
+      "priceCurrency": {{ cart.currency.iso_code | json }},
+      "price": {{ sale_price | money_without_currency | remove: "." | remove: "," | divided_by: 100.0 }},
+      "priceValidUntil": "{{ 'now' | date: '%Y-%m-%d' | date: '%s' | plus: 31536000 | date: '%Y-%m-%d' }}",
+      "itemCondition": "https://schema.org/NewCondition",
+      "hasMerchantReturnPolicy": {
+        "@type": "MerchantReturnPolicy",
+        "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+        "merchantReturnDays": 30,
+        "returnMethod": "https://schema.org/ReturnByMail",
+        "returnFees": "https://schema.org/FreeReturn",
+        "applicableCountry": "US",
+        "returnPolicyCountry": "US"
+      },
+      "availability": {% if product.selected_or_first_available_variant.available %}"https://schema.org/InStock"{% else %}"https://schema.org/OutOfStock"{% endif %}
+    }
+  }
+</script>
+<script
+  type="text/javascript"
+  src="https://cdn.shopify.com/s/files/1/0716/1341/5637/files/slick.min.js?v=1760406619"
+></script>
+<script src="{{ 'fancybox.js' | asset_url }}" defer="defer"></script>
+<script type="application/json" id="fb_act_data">
+  {
+    "content_category": "{{ product.type }}",
+    "content_ids": [{{ product.selected_or_first_available_variant.id }}],
+    "content_name": "{{ product.title | escape }} - {{ product.selected_or_first_available_variant.title | escape }}",
+    "content_type": "product",
+    "currency": "{{ shop.currency }}",
+    "num_items": 1,
+    "value": {{ sale_price | money_without_currency | remove: "." | remove: "," | divided_by: 100.0 }}
+  }
+</script>
+<script type="application/json" id="gtag_act_data">
+  {
+    "send_to": [
+      "G-R5YSDRW1KT",
+      "AW-16482182477/XvDHCP6L6d8ZEM3KqLM9",
+      "AW-16450299413/IjKyCJv64q0ZEJXMjqQ9",
+      "AW-16482182477/Eg6fCPGmufAaEM3KqLM9",
+      "AW-16482182477/aHiXCMGe5d8ZEM3KqLM9",
+      "G-8QCLZ9CPN7",
+      "G-XXXXXXXXXX",
+      "G-F5TX2P3W9Z",
+      "AW-16450299413"
+    ],
+    "developer_id": {"dNzYwYj": true},
+    "ecomm_prodid": ["shopify_US_{{ product.id }}_{{ product.selected_or_first_available_variant.id }}"],
+    "ecomm_totalvalue": {{ sale_price | money_without_currency | remove: "." | remove: "," | divided_by: 100.0 }},
+    "ecomm_pagetype": "cart",
+    "value": {{ sale_price | money_without_currency | remove: "." | remove: "," | divided_by: 100.0 }},
+    "currency": "{{ shop.currency }}",
+    "items": [
+      {
+        "id": "shopify_US_{{ product.id }}_{{ product.selected_or_first_available_variant.id }}",
+        "name": "{{ product.title | escape }} - {{ product.selected_or_first_available_variant.title | escape }}",
+        "brand": "Blacklyte",
+        "category": "{{ product.type }}",
+        "price": {{ sale_price | money_without_currency | remove: "." | remove: "," | divided_by: 100.0 }},
+        "quantity": 1,
+        "variant": "{{ product.selected_or_first_available_variant.title | escape }}"
+      }
+    ],
+    "user_data": {"address": {}}
+  }
+</script>
+<script>
+  const show_spin = JSON.parse({{ section.settings.show_spin | json }})
+  const show_pc_thumb = JSON.parse({{ section.settings.show_pc_thumb | json }})
+  const product_type = {{ product.metafields.custom.product_type | json }}
+  const product = {{ product | json }}
+  const variant = {{ product.selected_or_first_available_variant | json }}
+  const currency_symbol = {{ currency_symbol | json }}
+</script>
+<script src="{{ 'product-information-new.js' | asset_url  }}"></script>
+
+{% schema %}
+{
+  "name": "product info new",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "checkbox",
+      "id": "show_spin",
+      "label": "show spin",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_pc_thumb",
+      "label": "show pc thumb",
+      "default": false
+    },
+    {
+      "type": "text",
+      "id": "small_img",
+      "label": "small img list"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "@app"
+    },
+    {
+      "type": "extra_desc",
+      "name": "extra description",
+      "settings": [
+        {
+          "type": "liquid",
+          "id": "html",
+          "label": "html"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "product info new"
+    }
+  ]
+}
+{% endschema %}

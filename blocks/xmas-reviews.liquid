@@ -1,0 +1,38 @@
+<div class="xmas-reviews">
+    <div class="reviews-title">{{ block.settings.xmasReviewsTitle }}</div>
+    {% if block.settings.xmasReviewsDesc != blank %}
+        <div class="collection-desc">{{ block.settings.xmasReviewsDesc }}</div>
+    {% endif %}
+    <div class="reviews-lists swiper">
+        <div class="swiper-wrapper">
+            {% content_for 'blocks' %}
+        </div>
+    </div>
+</div>
+<div class="swiper-pagination"></div>
+
+{% schema %}
+{
+    "name": "xmas reviews",
+    "class": "xmas-reviews-blocks",
+    "settings": [
+        {
+            "type": "text",
+            "id": "xmasReviewsTitle",
+            "label": "xmas reviews title",
+            "default": "What 200,000+ Gamers are Saying"
+        },
+        {
+            "type": "text",
+            "id": "xmasReviewsDesc",
+            "label": "xmas reviews descripe"
+        }
+    ],
+    "blocks": [{ "type": "review-item" }],
+    "presets": [
+        {
+            "name": "xmas reviews"
+        }
+    ]
+}
+{% endschema %}

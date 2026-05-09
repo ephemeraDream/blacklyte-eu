@@ -1,0 +1,421 @@
+<style>
+    .section-{{ section.id }}{
+        padding-top: 168px;
+        background: #EBEBEB;
+    }
+    .section-{{ section.id }} .container-full{ }
+
+    .section-{{ section.id }} .container-full .head-cont{
+        display: flex;
+        gap: 8px;
+        flex-direction: column;
+        padding-left: 16%;
+        padding-right: 16%;
+    }
+    .section-{{ section.id }} .head-cont .section-title{
+        font-family: Poppins;
+        font-weight: 600;
+        font-style: SemiBold;
+        font-size: 40px;
+        line-height: 50px;
+        letter-spacing: 0%;
+        text-align: center;
+        vertical-align: middle;
+        color: #262629;
+    }
+    .section-{{ section.id }} .head-cont .section-desc{
+        font-family: Poppins;
+        font-weight: 500;
+        font-style: Medium;
+        font-size: 16px;
+        line-height: 24px;
+        letter-spacing: 0%;
+        text-align: center;
+        vertical-align: middle;
+        color: rgba(38, 38, 41, 0.7);
+    }
+    .section-{{ section.id }} .cont-images{
+        margin-top: 30px;
+        position: relative;
+    }
+    .section-{{ section.id }} .cont-images .cont-large-image{
+        position: relative;
+    }
+    .section-{{ section.id }} .cont-images .large-item-image-pc,
+    .section-{{ section.id }} .cont-small-right .cont-small-img-pc{
+        display: block;
+    }
+    .section-{{ section.id }} .cont-images .large-item-image-mb,
+    .section-{{ section.id }} .cont-small-right .cont-small-img-mb{
+        display: none;
+    }
+    .section-{{ section.id }} .cont-images .large-item-image img{
+        width: 60%;
+        height: auto;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+    .section-{{ section.id }} .cont-small-right{
+        position: relative;
+    }
+    .section-{{ section.id }} .cont-small-right .cont-small-img img{
+        height: auto;
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
+    
+    .section-{{ section.id }} .cont-small-image{
+        display: flex;
+        gap: 50px;
+        width: 78%;
+        padding-left: 16%;
+        padding-right: 10%;
+        margin-top: -50px;
+    }
+    .section-{{ section.id }} .cont-small-image .cont-small-left,
+    .section-{{ section.id }} .cont-small-image .cont-small-right{
+        width: calc((100% - 50px) / 2);
+    }
+    .section-{{ section.id }} .cont-small-image .cont-small-title{
+        font-family: Poppins;
+        font-weight: 600;
+        font-style: SemiBold;
+        font-size: 30px;
+        line-height: 40px;
+        letter-spacing: 0%;
+        vertical-align: middle;
+        color: #262629;
+    }
+    .section-{{ section.id }} .cont-small-image .cont-small-desc{
+        font-family: Poppins;
+        font-weight: 500;
+        font-style: Medium;
+        font-size: 16px;
+        leading-trim: NONE;
+        line-height: 24px;
+        letter-spacing: 0%;
+        vertical-align: middle;
+        color: rgba(38, 38, 41, 0.7);
+        margin-top: 14px;
+    }
+    .section-{{ section.id }} .cont-small-image .cont-small-link{
+        display: block;
+        font-family: Poppins;
+        font-weight: 500;
+        font-style: Medium;
+        font-size: 16px;
+        line-height: 24px;
+        letter-spacing: 0%;
+        vertical-align: middle;
+        color: #262629;
+        margin-top: 30px;
+    }
+    .section-{{ section.id }} .cont-small-image .link-svg{
+        display: inline-block;
+        transition: all .35s ease;
+    }
+    .section-{{ section.id }} .cont-small-image .link-svg svg{
+        width: 24px;
+        height: auto;
+        vertical-align: baseline;
+    }
+    .section-{{ section.id }} .cont-small-image .cont-small-link:hover .link-text{
+        text-decoration: underline;
+    }
+    .section-{{ section.id }} .cont-small-image .cont-small-link:hover .link-svg{
+        transform: translateX(10px);
+    }
+    .section-{{ section.id }} .cont-middle-image{
+        width: 100%;
+        position: absolute;
+        bottom: -100px;
+        padding-right: 16%;
+    }
+    .section-{{ section.id }} .cont-middle-image img{
+        height: auto;
+        width: 40%;
+        margin-left: auto;
+    }
+    
+
+
+    {% comment %} iPhone {% endcomment %}
+    @media(max-width: 767px){
+        .section-{{ section.id }}{
+            padding-top: 50px;
+        }
+        .section-{{ section.id }} .container-full{ }
+
+        .section-{{ section.id }} .cont-images .large-item-image-pc,
+        .section-{{ section.id }} .cont-small-right .cont-small-img-pc{
+            display: none;
+        }
+        .section-{{ section.id }} .cont-images .large-item-image-mb,
+        .section-{{ section.id }} .cont-small-right .cont-small-img-mb{
+            display: block;
+        }
+        .section-{{ section.id }} .head-cont .section-title{
+            font-size: 24px;
+            line-height: normal;
+        }
+        .section-{{ section.id }} .container-full .head-cont{
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+        .section-{{ section.id }} .head-cont .section-desc{
+            font-size: 14px;
+            line-height: 22px;
+        }
+        .section-{{ section.id }} .cont-middle-image{
+            display: none;
+        }
+        .section-{{ section.id }} .cont-images .large-item-image img{
+            width: calc(100% - 20px);
+            left: 10px;
+        }
+        .section-{{ section.id }} .cont-small-image{
+            gap: 20px;
+            width: calc(100% - 20px);
+            padding-left: 0;
+            padding-right: 0;
+            margin-top: 0;
+            flex-direction: column;
+            margin-left: 10px;
+        }
+        .section-{{ section.id }} .cont-small-image .cont-small-left,
+        .section-{{ section.id }} .cont-small-image .cont-small-right{
+            width: 100%;
+        }
+        .section-{{ section.id }} .cont-small-image .cont-small-title{
+            font-size: 20px;
+            line-height: normal;
+        }
+        .section-{{ section.id }} .cont-small-image .cont-small-desc{
+            font-size: 14px;
+            line-height: 22px;
+            margin-top: 10px;
+        }
+        .section-{{ section.id }} .cont-small-image .cont-small-link{
+            margin-top: 10px;
+        }
+        
+        
+        
+    }
+
+    {% comment %} iPad {% endcomment %}
+    @media(min-width: 768px) and (max-width: 1024px){
+        .section-{{ section.id }} .container-full{ }
+        .section-{{ section.id }} .container-full .head-cont{
+            padding-left: 5%;
+            padding-right: 5%;
+        }
+        .section-{{ section.id }} .cont-middle-image{
+            display: none;
+        }
+        .section-{{ section.id }} .cont-small-image{
+            width: 100%;
+            padding-left: 10px;
+            padding-right: 10px;
+            margin-top: 100px;
+        }
+        .section-{{ section.id }} .cont-images .large-item-image img{
+            width: calc(100% - 20px);
+            margin-left: 10px;
+        }
+    }
+
+    @media(min-width: 1025px) and (max-width: 1480px){
+        .section-{{ section.id }} .container-full{
+            padding-left: 60px;
+            padding-right: 60px;
+        }
+        .section-{{ section.id }} .cont-images .large-item-image img{
+            width: 70%;
+        }
+        .section-{{ section.id }} .cont-middle-image img{
+            width: 35%;
+        }
+        .section-{{ section.id }} .cont-small-image{
+            width: 82%;
+            padding-left: 0;
+            padding-right: 0;
+            margin-top: -10px;
+        }
+        .section-{{ section.id }} .cont-middle-image{
+            bottom: -96px;
+            padding-right: 0;
+        }
+    }
+
+
+</style>
+
+<section class="section-{{ section.id }}" id="{{ section.id }}" data-section-id="{{ section.id }}">
+    <div class="container-full">
+        <div class="head-cont">
+            {% if section.settings.sectionTitle != blank %}
+                <div class="section-title">{{ section.settings.sectionTitle }}</div>
+            {% endif %}
+            {% if section.settings.sectionDesc != blank %}
+                <div class="section-desc">{{ section.settings.sectionDesc }}</div>
+            {% endif %}
+        </div>
+        <div class="cont-images">
+            {% for block in section.blocks %}
+                {% if block.type == "largeItemImage" %}
+                    <div class="cont-large-image">
+                        {% if block.settings.itemImage != blank or block.settings.itemImage_mb != blank %}
+                            <div class="large-item-image large-item-image-pc" style="padding-top: {% unless block.settings.itemImage.presentation.focal_point == '50.0% 50.0%' %}{{ 1 | divided_by: block.settings.itemImage.aspect_ratio | times: 120 }}%{% else %}{{ 1 | divided_by: block.settings.itemImage.aspect_ratio | times: 100 }}%{% endunless %}">
+                                <img srcset="{{ block.settings.itemImage | img_url: 'master' }}"
+                                    height="{{ block.settings.itemImage.height }}"
+                                    width="{{ block.settings.itemImage.width }}"
+                                    alt="{{ block.settings.itemImage.alt }}" />
+                            </div>
+                            <div class="large-item-image large-item-image-mb" style="padding-top: {% unless block.settings.itemImage_mb.presentation.focal_point == '50.0% 50.0%' %}{{ 1 | divided_by: block.settings.itemImage_mb.aspect_ratio | times: 120 }}%{% else %}{{ 1 | divided_by: block.settings.itemImage_mb.aspect_ratio | times: 100 }}%{% endunless %}">
+                                <img srcset="{{ block.settings.itemImage_mb | img_url: 'master' }}"
+                                    height="{{ block.settings.itemImage_mb.height }}"
+                                    width="{{ block.settings.itemImage_mb.width }}"
+                                    alt="{{ block.settings.itemImage_mb.alt }}" />
+                            </div>
+                        {% endif %}
+                        {% if block.settings.itemImage_middle != blank %}
+                            <div class="cont-middle-image">
+                                <img srcset="{{ block.settings.itemImage_middle | img_url: 'master' }}"
+                                    height="{{ block.settings.itemImage_middle.height }}"
+                                    width="{{ block.settings.itemImage_middle.width }}"
+                                    alt="{{ block.settings.itemImage_middle.alt }}" />
+                            </div>
+                        {% endif %}
+                    </div>
+                {% elsif block.type == "smallItem" %}
+                    <div class="cont-small-image">
+                        <div class="cont-small-left">
+                            {% if block.settings.smallItemTitle != blank %}
+                                <div class="cont-small-title">{{ block.settings.smallItemTitle }}</div>
+                            {% endif %}
+                            {% if block.settings.smallItemDesc != blank %}
+                                <div class="cont-small-desc">{{ block.settings.smallItemDesc }}</div>
+                            {% endif %}
+                            {% if block.settings.smallItemLink != blank %}
+                                <a class="cont-small-link" {% if block.settings.smallItemURL != blank %} href="{{ block.settings.smallItemURL }}" {% else %} aria-disabled="true" {% endif %}>
+                                    <span class="link-text">{{ block.settings.smallItemLink }}</span>
+                                    <span class="link-svg">
+                                        <svg width="32" height="15" viewBox="0 0 32 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M31.7071 8.07039C32.0976 7.67986 32.0976 7.0467 31.7071 6.65617L25.3431 0.292213C24.9526 -0.0983109 24.3195 -0.0983109 23.9289 0.292213C23.5384 0.682738 23.5384 1.3159 23.9289 1.70643L29.5858 7.36328L23.9289 13.0201C23.5384 13.4107 23.5384 14.0438 23.9289 14.4343C24.3195 14.8249 24.9526 14.8249 25.3431 14.4343L31.7071 8.07039ZM0 7.36328V8.36328H31V7.36328V6.36328H0V7.36328Z" fill="#262629"/>
+                                        </svg>
+
+                                    </span>
+                                </a>
+                            {% endif %}
+
+                        </div>
+                        <div class="cont-small-right">
+                            <div class="cont-small-img cont-small-img-pc" style="padding-top: {% unless block.settings.smallItemImage.presentation.focal_point == '50.0% 50.0%' %}{{ 1 | divided_by: block.settings.smallItemImage.aspect_ratio | times: 120 }}%{% else %}{{ 1 | divided_by: block.settings.smallItemImage.aspect_ratio | times: 100 }}%{% endunless %}">
+                                <img srcset="{{ block.settings.smallItemImage | img_url: 'master' }}"
+                                    height="{{ block.settings.smallItemImage.height }}"
+                                    width="{{ block.settings.smallItemImage.width }}"
+                                    alt="{{ block.settings.smallItemImage.alt }}" />
+                            </div>
+                            <div class="cont-small-img cont-small-img-mb" style="padding-top: {% unless block.settings.smallItemImage_mb.presentation.focal_point == '50.0% 50.0%' %}{{ 1 | divided_by: block.settings.smallItemImage_mb.aspect_ratio | times: 120 }}%{% else %}{{ 1 | divided_by: block.settings.smallItemImage_mb.aspect_ratio | times: 100 }}%{% endunless %}">
+                                <img srcset="{{ block.settings.smallItemImage_mb | img_url: 'master' }}"
+                                    height="{{ block.settings.smallItemImage_mb.height }}"
+                                    width="{{ block.settings.smallItemImage_mb.width }}"
+                                    alt="{{ block.settings.smallItemImage_mb.alt }}" />
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+{% schema %}
+{
+    "name": "gaming Event Standards",
+    "settings": [
+        {
+            "type": "text",
+            "id": "sectionTitle",
+            "label": "section Title",
+            "default": "Moving beyond industry standards"
+        },
+        {
+            "type": "text",
+            "id": "sectionDesc",
+            "label": "section Descripe",
+            "default": "Over the years, we’ve invested millions into R&D, pioneering new patent-pending technologies that encourage healthy movement throughout the day. Using advanced computer simulations and user testing, we ensure that every component and material is engineered for start-to-finish performance."
+        }
+    ],
+    "blocks": [
+        {
+            "type": "largeItemImage",
+            "name": "largeItemImage",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "itemImage",
+                    "label": "large Item Image"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "itemImage_mb",
+                    "label": "large Item Image Mobile"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "itemImage_middle",
+                    "label": "large Middle Item Image"
+                }
+            ]
+        },
+        {
+            "type": "smallItem",
+            "name": "smallItem",
+            "settings": [
+                {
+                    "type": "image_picker",
+                    "id": "smallItemImage",
+                    "label": "small Item Image"
+                },
+                {
+                    "type": "image_picker",
+                    "id": "smallItemImage_mb",
+                    "label": "small Item Image Mobile"
+                },
+                {
+                    "type": "text",
+                    "id": "smallItemTitle",
+                    "label": "small Item Title",
+                    "default": "Blacklyte offers the best gaming chairs that are engineered for work and play"
+                },
+                {
+                    "type": "text",
+                    "id": "smallItemDesc",
+                    "label": "small Item Descripe",
+                    "default": "You no longer have to choose between a gaming chair and an office chair. Secretlab offers an extensive range of comfortable, ergonomically designed chairs that elevate your gaming experience and also make working from home easier and more efficient"
+                },
+                {
+                    "type": "text",
+                    "id": "smallItemLink",
+                    "label": "small Item Link",
+                    "default": "EXPLORE BLACKLYTE GAMING CHAIRS"
+                },
+                {
+                    "type": "url",
+                    "id": "smallItemURL",
+                    "label": "small Item URL"
+                }
+            ]
+        }
+    ],
+    "presets": [
+        {
+            "name": "gaming Event Standards"
+        }
+    ]
+}
+{% endschema %}

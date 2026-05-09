@@ -1,0 +1,185 @@
+/* 折扣价格 */
+[data-variant-id="45007065350393"] .prod_item_sale_price,
+[data-variant-id="45814720200953"] .prod_item_sale_price,
+[data-variant-id="45814720233721"] .prod_item_sale_price,
+[data-variant-id="45607220216057"] .prod_item_sale_price,
+[data-variant-id="45458537054457"] .prod_item_sale_price,
+[data-variant-id="45458537021689"] .prod_item_sale_price,
+[data-variant-id="45007065284857"] .prod_item_sale_price,
+[data-variant-id="45007065317625"] .prod_item_sale_price,
+[data-product-id="8575320719609"] .prod_item_sale_price,
+[data-product-id="8817635918073"] .prod_item_sale_price,
+[data-product-id="8831946260729"] .prod_item_sale_price,
+[data-variant-id="45814724002041"] .prod_item_sale_price,
+[data-variant-id="45814724034809"] .prod_item_sale_price {
+  text-decoration: line-through;
+  font-size: 14px !important;
+  font-weight: 400 !important;
+}
+
+
+[data-variant-id="45007065350393"] .prod_item_sale_price:before,
+[data-variant-id="45007065317625"] .prod_item_sale_price:before {
+  display: inline-block;
+  content: "€299,00";
+  font: 500 22px var(--font-family-1);
+  color: #262629;
+  margin-right: 5px;
+  vertical-align: middle;
+}
+[data-variant-id="45814724002041"] .prod_item_sale_price:before,
+[data-variant-id="45814724034809"] .prod_item_sale_price:before{
+  display: inline-block;
+  content: "€419,00";
+  font: 500 22px var(--font-family-1);
+  color: #262629;
+  margin-right: 5px;
+  vertical-align: middle;
+}
+
+[data-variant-id="45814720200953"] .prod_item_sale_price:before,
+[data-variant-id="45814720233721"] .prod_item_sale_price:before {
+  display: inline-block;
+  content: "€339,00";
+  font: 500 22px var(--font-family-1);
+  color: #262629;
+  margin-right: 5px;
+  vertical-align: middle;
+}
+
+[data-variant-id="45607220216057"] .prod_item_sale_price:before{
+  display: inline-block;
+  content: "€449,00";
+  font: 500 22px var(--font-family-1);
+  color: #262629;
+  margin-right: 5px;
+  vertical-align: middle;
+}
+
+[data-variant-id="45458537054457"] .prod_item_sale_price:before,
+[data-variant-id="45458537021689"] .prod_item_sale_price:before {
+  display: inline-block;
+  content: "€569,00";
+  font: 500 22px var(--font-family-1);
+  color: #262629;
+  margin-right: 5px;
+  vertical-align: middle;
+}
+
+[data-variant-id="45623071310073"] .prod_item_sale_price:before{
+  display: inline-block;
+  content: "€69,00";
+  font: 500 22px var(--font-family-1);
+  color: #262629;
+  margin-right: 5px;
+  vertical-align: middle;
+}
+[data-product-id="8817635918073"] .prod_item_sale_price:before{
+  display: inline-block;
+  content: "€529,00";
+  font: 500 22px var(--font-family-1);
+  color: #262629;
+  margin-right: 5px;
+  vertical-align: middle;
+}
+[data-product-id="8831946260729"] .prod_item_sale_price:before{
+  display: inline-block;
+  content: "€469,00";
+  font: 500 22px var(--font-family-1);
+  color: #262629;
+  margin-right: 5px;
+  vertical-align: middle;
+}
+
+/* IPhone */
+@media(max-width: 767px) {
+  [data-variant-id="45007065350393"] .prod_item_sale_price,
+  [data-variant-id="45814720200953"] .prod_item_sale_price,
+  [data-variant-id="45814720233721"] .prod_item_sale_price,
+  [data-variant-id="45607220216057"] .prod_item_sale_price,
+  [data-variant-id="45458537054457"] .prod_item_sale_price,
+  [data-variant-id="45458537021689"] .prod_item_sale_price,
+  [data-variant-id="45007065284857"] .prod_item_sale_price,
+  [data-variant-id="45007065317625"] .prod_item_sale_price,
+  [data-product-id="8575320719609"] .prod_item_sale_price,
+  [data-product-id="8817635918073"] .prod_item_sale_price,
+  [data-product-id="8831946260729"] .prod_item_sale_price,
+  [data-variant-id="45814724002041"] .prod_item_sale_price,
+  [data-variant-id="45814724034809"] .prod_item_sale_price {
+    font-size: 10px !important;
+  }
+  
+  [data-variant-id="45007065350393"] .prod_item_sale_price:before,
+  [data-variant-id="45814720200953"] .prod_item_sale_price:before,
+  [data-variant-id="45814720233721"] .prod_item_sale_price:before,
+  [data-variant-id="45607220216057"] .prod_item_sale_price:before,
+  [data-variant-id="45458537054457"] .prod_item_sale_price:before,
+  [data-variant-id="45458537021689"] .prod_item_sale_price:before,
+  [data-variant-id="45007065284857"] .prod_item_sale_price:before,
+  [data-variant-id="45007065317625"] .prod_item_sale_price:before,
+  [data-product-id="8575320719609"] .prod_item_sale_price:before,
+  [data-product-id="8817635918073"] .prod_item_sale_price:before,
+  [data-product-id="8831946260729"] .prod_item_sale_price:before,
+  [data-variant-id="45814724002041"] .prod_item_sale_price:before,
+  [data-variant-id="45814724034809"] .prod_item_sale_price:before {
+    font-size: 12px;
+  }
+}
+@media(max-width: 1024px) {
+  [data-variant-id="45007065350393"] .prod_item_sale_price,
+  [data-variant-id="45814720200953"] .prod_item_sale_price,
+  [data-variant-id="45814720233721"] .prod_item_sale_price,
+  [data-variant-id="45607220216057"] .prod_item_sale_price,
+  [data-variant-id="45458537054457"] .prod_item_sale_price,
+  [data-variant-id="45458537021689"] .prod_item_sale_price,
+  [data-variant-id="45007065284857"] .prod_item_sale_price,
+  [data-variant-id="45007065317625"] .prod_item_sale_price,
+  [data-product-id="8575320719609"] .prod_item_sale_price,
+  [data-product-id="8817635918073"] .prod_item_sale_price,
+  [data-product-id="8831946260729"] .prod_item_sale_price,
+  [data-variant-id="45814724002041"] .prod_item_sale_price,
+  [data-variant-id="45814724034809"] .prod_item_sale_price {
+    font-size: 10px !important;
+  }
+}
+/* small screen */
+@media(min-width: 992px) and (max-width: 1600px) {
+  [data-variant-id="45007065350393"] .prod_item_sale_price,
+  [data-variant-id="45814720200953"] .prod_item_sale_price,
+  [data-variant-id="45814720233721"] .prod_item_sale_price,
+  [data-variant-id="45607220216057"] .prod_item_sale_price,
+  [data-variant-id="45458537054457"] .prod_item_sale_price,
+  [data-variant-id="45458537021689"] .prod_item_sale_price,
+  [data-variant-id="45007065284857"] .prod_item_sale_price,
+  [data-variant-id="45007065317625"] .prod_item_sale_price,
+  [data-product-id="8575320719609"] .prod_item_sale_price,
+  [data-product-id="8817635918073"] .prod_item_sale_price,
+  [data-product-id="8831946260729"] .prod_item_sale_price,
+  [data-variant-id="45814724002041"] .prod_item_sale_price,
+  [data-variant-id="45814724034809"] .prod_item_sale_price{
+    font-size: 12px !important;
+  }
+
+  
+  [data-variant-id="45007065350393"] .prod_item_sale_price:before,
+  [data-variant-id="45814720200953"] .prod_item_sale_price:before,
+  [data-variant-id="45814720233721"] .prod_item_sale_price:before,
+  [data-variant-id="45607220216057"] .prod_item_sale_price:before,
+  [data-variant-id="45458537054457"] .prod_item_sale_price:before,
+  [data-variant-id="45458537021689"] .prod_item_sale_price:before,
+  [data-variant-id="45007065284857"] .prod_item_sale_price:before,
+  [data-variant-id="45007065317625"] .prod_item_sale_price:before,
+  [data-product-id="8575320719609"] .prod_item_sale_price:before,
+  [data-product-id="8817635918073"] .prod_item_sale_price:before,
+  [data-product-id="8831946260729"] .prod_item_sale_price:before,
+  [data-variant-id="45814724002041"] .prod_item_sale_price:before,
+  [data-variant-id="45814724034809"] .prod_item_sale_price:before {
+    font-size: 16px !important;
+  }
+}
+
+
+
+
+
+

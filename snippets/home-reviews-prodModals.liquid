@@ -1,0 +1,286 @@
+<style>
+    .reviews-product{
+        display: flex;
+        gap: 53px;
+        padding: 27px 30px;
+        background-color: #fff;
+        opacity: 0;
+        display: none;
+        transition: all .5s ease;
+    }
+    .home-reviews-background-overlay.is-active{
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        inset: 0;
+        background: #0009;
+        top: 0;
+        left: 0;
+        z-index: 10000;
+    }
+    .home-reviews-background-overlay.is-active .reviews-product{
+        transition: all .5s ease;
+        opacity: 1;
+        display: flex;
+        visibility: visible;
+        pointer-events: auto;
+        transform: translate(0, 2%);
+        animation: slowShow .55s ease-in forwards;
+        margin-top: 200px;
+        width: 1000px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .home-reviews-background-overlay.is-active .reviews-product .reviews-product-left,
+    .home-reviews-background-overlay.is-active .reviews-product .reviews-product-left .image_view{
+        width: 400px;
+    }
+    .reviews-product .modal_image_pc{
+        display: block;
+    }
+    .reviews-product .modal_image_mb{
+        display: none;
+    }
+    .reviews-product-right{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .reviews-product-right .titles{
+        font: 600 22px var(--font-family-1);
+        color: #262629;
+        margin-top: 10px;
+    }
+    .reviews-product-right .descripes{
+        font: 400 14px var(--font-family-1);
+        color: #76767F;
+        margin-top: 12px;
+        line-height: 1.4;
+    }
+    .reviews-product-right .product-cont{
+        margin-top: 36px;
+    }
+    .reviews-product-right .prod-title{
+        font: 500 20px var(--font-family-1);
+        color: #262629;
+    }
+    .reviews-product-right .prod-prices-cont{
+        display: flex;
+        justify-content: flex-start;
+        gap: 11px;
+        margin-top: 10px;
+    }
+    .reviews-product-right .prod-prices-cont .discount-prices{
+        font: 600 18px var(--font-family-1);
+        color: #262629;
+    }
+    .reviews-product-right .prod-prices-cont .sales-prices{
+        font: 400 18px var(--font-family-1);
+        color: #262629;
+    }
+    .reviews-product-right .prod-prices-cont .sales-prices.sales-prices-new{
+        text-decoration: line-through;
+    }
+    .reviews-product-right .atc-cont{
+        display: flex;
+        gap: 15px;
+        margin-top: 13px;
+    }
+    .reviews-product-right .atc-cont .atc-input-container{
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        border: 1px solid #262629;
+        border-radius: 45px;
+    }
+    .reviews-product-right .atc-cont .min-icons,
+    .reviews-product-right .atc-cont .plus-icons{
+        display: inline-block;
+        width: 30px;
+        text-align: center;
+        cursor: pointer;
+    }
+    .reviews-product-right .atc-cont .atc-input{
+        border: none;
+        width: 50px;
+        text-align: center;
+    }
+    .reviews-product-right .atc-cont .add-to-cart-btn{
+        font: 600 16px var(--font-family-1);
+        padding: 14px 75px;
+        border-radius: 45px;
+        background: linear-gradient(96.66deg, #014AE4 -20.67%, #9BEFFF 103.73%);
+        color: #fff;
+        transition: all .3s ease-in-out;
+        white-space: nowrap;
+        cursor: pointer;
+    }
+    .reviews-product-right .atc-cont .add-to-cart-btn:hover{
+        background: linear-gradient(96.66deg, #9BEFFF -20.67%, #014AE4 103.73%);
+    }
+    .reviews-product-right .star--icon svg{
+        width: 18px;
+        height: 18px;
+    }
+    .reviews-product .image_view img{
+        border-radius: 0;
+    }
+    .reviews-overlay-close{
+        max-height: max-content;
+        cursor: pointer;
+    }
+    .reviews-overlay-close svg{
+        fill: none;
+        stroke: none;
+        width: 22px;
+        height: 22px;
+    }
+
+    input[type="number"] {
+        -moz-appearance: textfield; /* Firefox */
+    }
+
+    input[type="number"]::-webkit-outer-spin-button,
+    input[type="number"]::-webkit-inner-spin-button {
+        -webkit-appearance: none; /* Chrome, Safari, Edge */
+        margin: 0;
+    }
+
+    /* IPhone */
+    @media(max-width: 767px){
+        .reviews-product{
+            flex-direction: column;
+            padding: 40px 0;
+        }
+        .home-reviews-background-overlay.is-active .reviews-product{
+            width: 90%;
+            gap: 20px;
+            position: relative;
+            margin-top: 70px;
+        }
+        .reviews-product .modal_image_pc{
+            display: none;
+        }
+        .reviews-product .modal_image_mb{
+            display: block;
+        }
+        .reviews-product-right .titles{
+            font-size: 18px;
+        }
+        .reviews-product-right .descripes{
+            font-size: 12px;
+            margin-top: 10px;
+        }
+        .reviews-product-right .product-cont{
+            margin-top: 14px;
+        }
+        .reviews-product-right .prod-title{
+            font-size: 16px;
+        }
+        .reviews-overlay-close{
+            position: absolute;
+            right: 20px;
+            top: 20px;
+        }
+        .reviews-overlay-close svg{
+            width: 16px;
+            height: 16px;
+        }
+        .reviews-product-right .atc-cont .atc-input{
+            width: 40px;
+        }
+        .reviews-product-right .atc-cont .add-to-cart-btn{
+            padding: 10px 26px;
+            font-size: 12px;
+        }
+        .reviews-product-right .star--icon svg{
+            width: 14px;
+            height: 14px;
+        }
+        .reviews-product-right .prod-prices-cont{
+            gap: 4px;
+            align-items: center;
+        }
+        .reviews-product-right .prod-prices-cont .discount-prices{
+            font-size: 14px;
+        }
+        
+        .reviews-product-right .prod-prices-cont .sales-prices{
+            font-size: 12px;
+        }
+        .reviews-product .reviews-product-left,
+        .reviews-product .reviews-product-right{
+            padding: 0 20px;
+        }
+        .home-reviews-background-overlay.is-active .reviews-product .reviews-product-left,
+        .home-reviews-background-overlay.is-active .reviews-product .reviews-product-left .image_view{
+            width: 100%;
+        }
+    }
+    /* IPad */
+    @media(min-width: 768px)and(max-width: 1024px){ }
+    /* small screen */
+    @media(min-width: 1025px)and(max-width: 1600px){ }
+    /* large screen */
+    @media(min-width: 2000px){ }
+
+</style>
+
+<section class="home-reviews-background-overlay" id="{{ blockId }}" data-modal-id="modal-{{ block.id }}">
+    <div class="reviews-product">
+        <div class="reviews-product-left">
+            <div class="image_view">
+                <img src="{{ block.settings.avatar_modals | img_url: 'master' }}" class="modal_image_pc" alt="{{ block.settings.avatar_modals.alt | escape }}" />
+                <img src="{{ block.settings.avatar | img_url: 'master' }}" class="modal_image_mb" alt="{{ block.settings.avatar.alt | escape }}" />
+            </div>
+        </div>
+        <div class="reviews-product-right">
+            <div class="star-icons">
+                {% assign nums = block.settings.rating %}
+                {% for i in (1..nums) limit:5 %}
+                    <span class="star--icon ">
+                    <svg width="16" height="15" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M7.04984 0.669575C7.42543 -0.0399553 8.44185 -0.0399556 8.81745 0.669575L10.4402 3.73506C10.5848 4.00826 10.8476 4.19922 11.1522 4.25234L14.5691 4.84837C15.3599 4.98633 15.674 5.953 15.1153 6.52947L12.7013 9.02009C12.4862 9.24205 12.3858 9.55103 12.4294 9.85705L12.9184 13.2909C13.0316 14.0857 12.2093 14.6831 11.4883 14.3299L8.37366 12.8037C8.09608 12.6677 7.7712 12.6677 7.49363 12.8037L4.37895 14.3299C3.65803 14.6831 2.83573 14.0857 2.94892 13.2909L3.43793 9.85705C3.48152 9.55103 3.38112 9.24205 3.16599 9.02009L0.751993 6.52947C0.193255 5.953 0.507346 4.98633 1.29821 4.84837L4.71512 4.25234C5.01964 4.19922 5.28247 4.00826 5.42709 3.73506L7.04984 0.669575Z" fill="#EE5025"/>
+                    </svg>
+                    </span>
+                {% endfor %}
+            </div>
+            <div class="titles">{{ block.settings.heading }}</div>
+            <div class="descripes">{{ block.settings.Content }}</div>
+            <div class="product-cont">
+                <div class="prod-title">{{ block.settings.itemsProduct.title }}</div>
+                <div class="prod-prices-cont">
+                    {% if block.settings.itemsProduct.selected_or_first_available_variant.metafields.custom.discount_price.value %}
+                        <span class="discount-prices">
+                            {{ block.settings.itemsProduct.price | minus: block.settings.itemsProduct.selected_or_first_available_variant.metafields.custom.discount_price.value | money }}
+                        </span>
+                    {% endif %}
+                    <span class="sales-prices {% if block.settings.itemsProduct.selected_or_first_available_variant.metafields.custom.discount_price.value %}sales-prices-new{% endif %}">{{ block.settings.itemsProduct.price | money }}</span>
+                </div>
+                <div class="atc-cont">
+                    <div class="atc-input-container" data-variant="{{ block.settings.itemsProductVariantId }}">
+                        <span class="min-icons">
+                            <svg width="9" height="3" viewBox="0 0 9 3" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M0.5 1.5H8.5" stroke="#262629" stroke-width="2"/>
+                            </svg>
+                        </span>
+                        <input type="text" pattern="^[1-9]\d*$" value="1" class="atc-input" data-variant="{{ block.settings.itemsProductVariantId }}" />
+                        <span class="plus-icons">
+                            <svg width="8" height="8" viewBox="0 0 8 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M0 4H8" stroke="#262629" stroke-width="2"/>
+                                <path d="M4.00586 0L4.00586 8" stroke="#262629" stroke-width="2"/>
+                            </svg>
+                        </span>
+                    </div>
+                    <div class="add-to-cart-btn">{{ 'products.product.add_to_cart' | t }}</div>
+                </div>
+            </div>
+        </div>
+        <div class="reviews-overlay-close">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M1 1L23 23" stroke="#898A8E" stroke-width="2"/>
+                <path d="M23 1L0.999995 23" stroke="#898A8E" stroke-width="2"/>
+            </svg>
+        </div>
+    </div>
+</section>

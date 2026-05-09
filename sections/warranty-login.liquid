@@ -1,0 +1,467 @@
+{% comment %}
+    This template will be automatically generated for you if the file doesn't exist,
+    but where's the fun in having no control? Define your layout below.
+
+    The 'layout settings.customer_layout' line is inserted at the top of every customer account template.
+    Your theme's settings determine to use the 'default' or 'theme' customer templates.
+    More info:
+        - http://www.tetchi.ca/shopify-theme-from-scratch-part-11/
+
+    Template note:
+        - All IDs on this template are required to make the forms submit properly
+        - There are two instances of inline JS below. Best practices advise separating this into an external JS file.
+{% endcomment %}
+{{ 'customer.css' | asset_url | stylesheet_tag }}
+{%- liquid
+    assign container = section.settings.container
+    assign padding_full_width = section.settings.padding_full_width
+-%}
+
+<style>
+  /* .section-block-{{section.id}} {
+    position: relative;
+  } */
+  .login_conatiner{
+    height: 100vh;
+    width: 100vw;
+    position: relative;
+    padding: 0;
+  }
+  .login_conatiner .page-subheader,
+  .login_conatiner .login-text,
+  .login_conatiner label,
+  .login_conatiner .login-item .form-input,
+  .login_conatiner a{
+    color: #fff;
+  }
+  .login_conatiner .logo_img {
+    width: 180px;
+    height: 112px;
+    margin: 0 auto;
+  }
+  .login_conatiner .halo-page-wrapper {
+    padding: 50px 20px 0 20px;
+  }
+  .login_conatiner .login-item .form-actions .button {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  .login_conatiner .redirect_recover {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+  }
+  .login_conatiner .links_icon_svg svg {
+    width: 20px;
+    height: 20px;
+    stroke: none;
+  }
+  .login_conatiner .redirect_recover a{
+    text-decoration: underline;
+  }
+  .login_conatiner .login-item .form-input {
+    border-color: #fff;
+    line-height: 30px;
+  }
+  .prod_modal-layout {
+    width: 100vw;
+    height: 100vh;
+    max-width: 100vw;
+    max-height: 100vh;
+    overflow: hidden;
+    opacity: 1;
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #000;
+    transition: all .3s ease-in-out;
+  }
+  .prod_modal-layout .prod_model-video{
+    width: 100%;
+    height: auto;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    opacity: 1;
+    transition: all .3s ease-in-out;
+  }
+  .download-btns{
+    position: absolute;
+    bottom: 10%;
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-direction: column;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .download-btns .download-btn-item{
+    background: linear-gradient(93.01deg, rgba(155, 10, 255, 0.2) 2.65%, #5F0AFF 96.35%);
+    font: 500 16px var(--font-family-1);
+    color: #fff;
+    padding: 12px 36px;
+    border-radius: 100px;
+    display: flex;
+    gap: 4px;
+    justify-content: center;
+    align-items: center;
+    white-space: nowrap;
+  }
+  .download-btns .download-btn-item svg{
+    width: 20px;
+    height: 20px;
+  }
+
+
+  .section-{{ section.id }}{
+      position: relative;
+      overflow: hidden;
+  }
+  .container-layout{
+      width: 100vh;
+      height: 100vh;
+      overflow: hidden;
+      background: rgba(0, 0, 0, 0.8);
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      opacity: 0;
+      z-index: -10;
+      transition: all .35s ease;
+  }
+  .container-layout .cont-buttons{
+    position: absolute;
+    background: white;
+    border-radius: 12px;
+    padding: 24px;
+    max-width: 90vw;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    top: 50%;
+    transform: translateY(-50%);
+    margin-left: 5vw;
+  }
+  .container-layout .cont-buttons .cont-title{
+      margin: 0 0 12px 0;
+      font-size: 18px;
+      font-weight: 600;
+      color: #333;
+      position: relative;
+  }
+  .container-layout .cont-buttons .cont-title .close-icon{
+    position: absolute;
+    right: 0;
+    top: -10px;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .container-layout .cont-buttons .cont-desc{
+      margin: 0 0 24px 0;
+      font-size: 14px;
+      color: #666;
+      line-height: 1.5;
+  }
+  .container-layout .cont-buttons .click-btns{
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+  }
+  .container-layout .cont-buttons .click-btns .download-btn-cont{
+      padding: 10px 20px;
+      border: 1px solid #ddd;
+      background: white;
+      color: #666;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+      transition: all 0.2s;
+      flex: 1;
+  }
+  .container-layout .cont-buttons .click-btns .open-btn-cont{
+        padding: 10px 20px;
+        border: none;
+        background: #007AFF;
+        color: white;
+        border-radius: 6px;
+        cursor: pointer;
+        font-size: 14px;
+        transition: all 0.2s;
+        flex: 1;
+  }
+
+</style>
+
+<section id="{{ section.id }}" data-section-id="{{ section.id }}" class="section-{{ section.id }}">
+  <div class="account-page login-page section-block-{{section.id}}">
+    <div class="{% if container == '1170' %}container-1170{% elsif container == '1570' %}container-1570{% elsif container == '1770' %}container-1770{% elsif container == 'fullwidth'%}container-full{% else %}container{% endif %} login_conatiner" style="{% if section.settings.downLoadBgImage != blank %}background: url({{ section.settings.downLoadBgImage | img_url: 'master' }}); background-size: cover;background-position: center;{% endif %}">
+      <div class="download-btns">
+        {% for block in section.blocks %}
+          <div class="download-btn-item" data-target="{{ block.settings.btnItemTarget }}">
+            <span class="download-icon">{{ block.settings.btnItemIcon }}</span>
+            <span class="download-text">{{ block.settings.btnItemTitle }}</span>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+  <div class="container-layout">
+    <div class="cont-buttons">
+      <div class="cont-title">
+        Open the Blacklyte App?
+        <span class="close-icon">
+          <svg class="icon" style="width: 1em;height: 1em;vertical-align: middle;fill: currentColor;overflow: hidden;" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="6493"><path d="M576 512l277.333333 277.333333-64 64-277.333333-277.333333L234.666667 853.333333 170.666667 789.333333l277.333333-277.333333L170.666667 234.666667 234.666667 170.666667l277.333333 277.333333L789.333333 170.666667 853.333333 234.666667 576 512z" fill="#444444" p-id="6494"></path></svg>
+        </span>
+      </div>
+      <div class="cont-desc">
+        If you haven't installed the app,
+        you will be directed to the App Store to download it;
+        If you have installed the app, you can click Open to open it
+      </div>
+      <div class="click-btns">
+        <span class="download-btn-cont">Download</span>
+        <span class="open-btn-cont">Open</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script type="text/javascript">
+  function getQueryParameter(name) {
+      const urlParams = new URLSearchParams(window.location.search);
+      return urlParams.get(name);
+  }
+  const codeVal = new URLSearchParams(window.location.search).get('code')
+
+  const ossLinkUrl = `blacklyte://arcushome.cn/nfc?code=${codeVal}`;
+
+  const iosAppUrl = 'https://apps.apple.com/cn/app/id6443767757';
+    
+  const androidAppUrl = 'https://play.google.com/store/apps/details?id=com.zhjj.blacklyte';
+
+  const androidApkBackup = 'https://oss.arcushome.cn/d/blacklyte.apk';
+
+  function isIOS() {
+    const ua = navigator.userAgent;
+    console.log(navigator.userAgent)
+    return /iPad|iPhone|iPod/.test(ua)
+  }
+
+  (async () => {
+    if (codeVal) {
+
+      $('.download-btns .download-btn-item').hide();
+
+      $('.download-btns .download-btn-item').each(function(){
+        const target = $(this).data('target');
+
+        if (isIOS()) {
+          if (target === 'iPhone') $(this).show();
+          
+          $('.container-layout').css({
+            "opacity": 1,
+            "z-index": 1
+          })
+        } else {
+          if (target === 'Android') $(this).show();
+          openAndroidApp()
+        }
+      });
+    }
+  })();
+
+  function openAndroidApp(){
+      const appUrl = `blacklyte://arcushome.cn/nfc?code=${codeVal}`;
+
+      let appOpened = false;
+      const timeout = setTimeout(() => {
+        if (!appOpened) {
+          if(isIOS()){
+            window.location.href = iosAppUrl;
+          } else {
+            const a = document.createElement("a");
+            a.href = androidApkBackup;
+            a.target = "_blank";
+            a.click();
+          }
+          
+        }
+      }, 3000);
+
+      window.location.href = appUrl;
+
+
+      document.addEventListener(
+        "visibilitychange",
+        function visibilityChange() {
+          if (document.hidden) {
+            appOpened = true;
+            clearTimeout(timeout);
+            document.removeEventListener("visibilitychange", visibilityChange);
+          }
+        }
+      );
+
+      window.addEventListener("blur", function blurHandler() {
+        appOpened = true;
+        clearTimeout(timeout);
+        window.removeEventListener("blur", blurHandler);
+      });
+  }
+  
+  
+  (function ($) {
+
+      $('.download-btns .download-btn-item').on('click', function () {
+        const target = $(this).data('target');
+
+        if (target === 'iPhone') {
+          console.log('iosAppUrl:', iosAppUrl)
+          window.location.href = iosAppUrl;
+
+        } else if (target === 'Android') {
+          const ua = navigator.userAgent.toLowerCase();
+          if (/micromessenger|weibo|douyin/.test(ua)) {
+
+            alert('Please open this page in your browser to download the Android version.');
+          } else {
+            try {
+              window.location.href = androidAppUrl;
+              setTimeout(() => {
+                window.location.href = androidApkBackup;
+              }, 1500);
+            } catch (e) {
+              window.location.href = androidApkBackup;
+            }
+          }
+        } else {
+          console.warn('未知的 target 值:', target);
+        }
+      });
+
+
+      $('.container-layout .cont-buttons .click-btns .open-btn-cont').on('click', function(){
+        console.log('ossLinkUrl:', ossLinkUrl)
+        window.location.href = ossLinkUrl
+      })
+
+      $('.container-layout .cont-buttons .click-btns .download-btn-cont').on('click', function(){
+        console.log('iosAppUrl:', iosAppUrl)
+        window.location.href = iosAppUrl
+      })
+
+      $('.container-layout .cont-buttons .cont-title .close-icon').on('click', function(){
+          $('.container-layout').css({
+            "opacity": 0,
+            "z-index": "-1"
+          })
+      })
+
+  })(jQuery)
+
+
+</script>
+
+{% schema %}
+  {
+    "name": "Warranty Login",
+    "settings": [
+      {
+          "type": "select",
+          "id": "container",
+          "label": "t:sections.layout.container.option",
+          "default": "container",
+          "options": [
+              {
+                  "value": "container",
+                  "label": "t:sections.layout.container.option1"
+              },
+              {
+                  "value": "1170",
+                  "label": "t:sections.layout.container.option4"
+              },
+              {
+                  "value": "1570",
+                  "label": "Width (1570px)"
+              },
+              {
+                  "value": "1770",
+                  "label": "t:sections.layout.container.option3"
+              },
+              {
+                  "value": "fullwidth",
+                  "label": "t:sections.layout.container.option2"
+              }
+          ]
+      },
+      {
+          "type": "range",
+          "id": "padding_full_width",
+          "label": "t:sections.layout.container.padding_full_width",
+          "min": 0,
+          "max": 100,
+          "step": 5,
+          "unit": "t:sections.layout.fontsize.fontsize_title.unit",
+          "default": 0,
+          "info": "t:sections.layout.container.info_full_width"
+      },
+      {
+        "type": "image_picker",
+        "id": "downloadPageLogo",
+        "label": "DownLoad APP Page Logo"
+      },
+      {
+        "type": "text",
+        "id": "downLoadTitle",
+        "label": "Download Title",
+        "default": "Download Blacklyte App"
+      },
+      {
+        "type": "text",
+        "id": "downLoadDescripe",
+        "label": "Downlopad APP Desc"
+      },
+      {
+        "type": "image_picker",
+        "id": "downLoadBgImage",
+        "label": "DownLoadBackgroundImage"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "btnItem",
+        "name": "btnItem",
+        "settings": [
+          {
+            "type": "textarea",
+            "id": "btnItemIcon",
+            "label": "Button Item Icon"
+          },
+          {
+            "type": "text",
+            "id": "btnItemTitle",
+            "label": "Button Item Title"
+          },
+          {
+            "type": "text",
+            "id": "btnItemTarget",
+            "label": "Button Item Target"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Warranty Login"
+      }
+    ]
+  }
+{% endschema %}

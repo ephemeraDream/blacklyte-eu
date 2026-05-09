@@ -1,0 +1,340 @@
+<style>
+    .prod-collection-section{
+        padding-top: 100px;
+        padding-bottom: 0;
+        background-color: #EBEBEB;
+    }
+    .prod-collection-section .container-full{
+        padding-left: 16%;
+        padding-right: 16%;
+    }
+    .prod-collection-section .prods-section-title{
+        font: 600 40px var(--font-family-3);
+        line-height: 1.4;
+        color: #262629;
+        text-align: center;
+    }
+    .prod-collection-section .prods-sections-desc{
+        font: 500 16px var(--font-family-1);
+        color: #262629;
+        line-height: 1.4;
+        margin-top: 10px;
+        text-align: center;
+        opacity: 0.7;
+    }
+    .prod-collection-section .prods-collection-list{
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+        margin-top: 38px;
+    }
+    .prod-collection-section .prods-collection-list .collection-items{
+        width: calc((100% - 20px) / 2);
+        position: relative;
+        border-radius: 24px;
+        cursor: pointer;
+        height: max-content;
+        overflow: hidden;
+        background: #E0E0E0;
+    }
+    .prod-collection-section .prods-collection-list .collection-items.collection-items-large{
+        width: 100%;
+    }
+    .prod-collection-section .prods-collection-list .collection-items .items-cont-img-pc{
+        display: block;
+    }
+    .prod-collection-section .prods-collection-list .collection-items .items-cont-img-mb{
+        display: none;
+    }
+    .prod-collection-section .prods-collection-list .collection-items .items-cont-img{
+        position: relative;
+    }
+    .prod-collection-section .prods-collection-list .collection-items .items-cont-img img{
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+    .prod-collection-section .prods-collection-list .collection-items .items-container{
+        position: absolute;
+        top: 32%;
+        left: 53px;
+        transform: translate(0, -50%);
+        text-align: left;
+    }
+    .prod-collection-section .prods-collection-list .collection-items.collection-items-large .items-container{
+        left: 30%;
+        text-align: left;
+    }
+    .prod-collection-section .prods-collection-list .collection-items .items-container .cont-titles{
+        font: 500 30px var(--font-family-1);
+        color: #262629;
+    }
+    .prod-collection-section .prods-collection-list .collection-items .items-container .cont-descripe{
+        font: 400 16px var(--font-family-1);
+        color: #262629;
+        line-height: 1.4;
+        width: 270px;
+        margin-top: 5px;
+    }
+    .prod-collection-section .prods-collection-list .collection-items .items-container .cont-btns{
+        font: 400 12px var(--font-family-1);
+        margin-top: 23px;
+        color: #fff;
+        padding: 10px 28px;
+        background: #262629;
+        border: 1px solid #262629;
+        border-radius: 100px;
+        width: fit-content;
+        transition: all .35s ease-in-out;
+    }
+    .prod-collection-section .prods-collection-list .collection-items .items-container .cont-btns:hover{
+        background: #121212;
+        border-color: #121212;
+    }
+
+    /* IPhone */
+    @media(max-width: 767px) {
+        .prod-collection-section{
+            padding-top: 50px;
+        }
+        .prod-collection-section .container-full{
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+        .prod-collection-section .prods-section-title{
+            font-size: 24px;
+        }
+        .prod-collection-section .prods-sections-desc{
+            font-size: 14px;
+        }
+        .prod-collection-section .prods-collection-list{
+            margin-top: 20px;
+            gap: 16px;
+        }
+        .prod-collection-section .prods-collection-list .collection-items{
+            width: 100%;
+            border-radius: 12px;
+        }
+        .prod-collection-section .prods-collection-list .collection-items .items-container{
+            top: 20px;
+            left: 28px;
+            transform: translate(0, 0);
+        }
+        .prod-collection-section .prods-collection-list .collection-items .items-container .cont-titles{
+            font-size: 20px;
+        }
+        .prod-collection-section .prods-collection-list .collection-items .items-container .cont-descripe{
+            font-size: 14px;
+            line-height: 1.2;
+        }
+        .prod-collection-section .prods-collection-list .collection-items .items-container .cont-btns{
+            margin-top: 10px;
+        }
+        .prod-collection-section .prods-collection-list .collection-items.collection-items-large .items-container{
+            left: 50%;
+            text-align: center;
+        }
+        .prod-collection-section .prods-collection-list .collection-items .items-cont-img-pc{
+            display: none;
+        }
+        .prod-collection-section .prods-collection-list .collection-items .items-cont-img-mb{
+            display: block;
+        }
+    }
+    /* IPad */
+    @media(min-width: 768px) and (max-width: 1024px){
+        .prod-collection-section .container-full{
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+        .prod-collection-section .prods-collection-list{
+            gap: 10px;
+        }
+        .prod-collection-section .prods-collection-list .collection-items{
+            width: calc((100% - 10px) / 2);
+            border-radius: 12px;
+        }
+        .prod-collection-section .prods-collection-list .collection-items .items-container .cont-titles{
+            font-size: 25px;
+        }
+        .prod-collection-section .prods-collection-list .collection-items .items-container .cont-descripe{
+            font-size: 14px;
+        }
+        .prod-collection-section .prods-collection-list .collection-items .items-container .cont-btns{
+            font-size: 10px;
+            margin-top: 10px;
+            padding: 10px 22px;
+        }
+        .prod-collection-section .prods-collection-list .collection-items .items-container{
+            left: 26px;
+        }
+    }
+    /* small screen */
+    @media(min-width: 1025px) and (max-width: 1600px){
+        .prod-collection-section .prods-collection-list .collection-items .items-container{
+            left: 20px;
+        }
+    }
+    /* large screen */
+    @media(min-width: 2000px){ }
+    @media(min-width: 1025px) and (max-width: 1480px){
+        .prod-collection-section .container-full{
+            padding-left: var(--padding-left-1);
+            padding-right: var(--padding-right-1);
+        }
+    }
+</style>
+
+<section class="prod-collection-section">
+    <div class="container-full">
+        {% if section.settings.sectionTitle != blank %}
+            <h2 class="prods-section-title">
+                {{ section.settings.sectionTitle }}
+            </h2>
+        {% endif %}
+        {% if section.settings.sectionDesc != blank %}
+            <div class="prods-sections-desc">
+                {{ section.settings.sectionDesc }}
+            </div>
+        {% endif %}
+        <div class="prods-collection-list">
+            {% for block in section.blocks %}
+                {% if block.type == "collItems" %}
+                    <a {% if block.settings.collItemLINK != blank %} href="{{ block.settings.collItemLINK }}" {% else %} aria-disabled="true" {% endif %} class="collection-items">
+                        <div class="items-cont-img image-zoom items-cont-img-pc" style="padding-top: {% unless block.settings.collItemMainImage.presentation.focal_point == '50.0% 50.0%' %}{{ 1 | divided_by: block.settings.collItemMainImage.aspect_ratio | times: 120 }}%{% else %}{{ 1 | divided_by: block.settings.collItemMainImage.aspect_ratio | times: 100 }}%{% endunless %}">
+                            <img src="{{ block.settings.collItemMainImage | img_url: 'master' }}" alt="{{ block.settings.collItemMainImage.alt | escape }}" />
+                        </div>
+
+                        <div class="items-cont-img image-zoom items-cont-img-mb" style="padding-top: {% unless block.settings.collItemMainImageMobile.presentation.focal_point == '50.0% 50.0%' %}{{ 1 | divided_by: block.settings.collItemMainImageMobile.aspect_ratio | times: 120 }}%{% else %}{{ 1 | divided_by: block.settings.collItemMainImageMobile.aspect_ratio | times: 100 }}%{% endunless %}">
+                            <img src="{{ block.settings.collItemMainImageMobile | img_url: 'master'}}" alt="{{ block.settings.collItemMainImageMobile.alt | escape }}" />
+                        </div>
+
+                        <div class="items-container">
+                            <h3 class="cont-titles">{{ block.settings.collItemTitle }}</h3>
+                            <div class="cont-descripe">
+                                {{ block.settings.collItemRichDesc | default: block.settings.collItemDesc }}
+                            </div>
+                            <div class="cont-btns">{{ block.settings.shopnowbtn }}</div>
+                        </div>
+                    </a>
+                {% elsif block.type == "largeCollItems" %}
+                    <a {% if block.settings.largeMainLINK != blank %} href="{{ block.settings.largeMainLINK }}" {% else %} aria-disabled="true" {% endif %} class="collection-items collection-items-large">
+                        <div class="items-cont-img items-cont-img-pc image-zoom" style="padding-top: {% unless block.settings.largeMainImage.presentation.focal_point == '50.0% 50.0%' %}{{ 1 | divided_by: block.settings.largeMainImage.aspect_ratio | times: 120 }}%{% else %}{{ 1 | divided_by: block.settings.largeMainImage.aspect_ratio | times: 100 }}%{% endunless %}">
+                            <img src="{{ block.settings.largeMainImage | img_url: 'master' }}" alt="{{ block.settings.largeMainImage.alt | escape }}" />
+                        </div>
+                        <div class="items-cont-img items-cont-img-mb image-zoom" style="padding-top: {% unless block.settings.largeMainImageMobile.presentation.focal_point == '50.0% 50.0%' %}{{ 1 | divided_by: block.settings.largeMainImageMobile.aspect_ratio | times: 120 }}%{% else %}{{ 1 | divided_by: block.settings.largeMainImageMobile.aspect_ratio | times: 100 }}%{% endunless %}">
+                            <img src="{{ block.settings.largeMainImageMobile | img_url: 'master' }}" alt="{{ block.settings.largeMainImageMobile.alt | escape }}" />
+                        </div>
+                        <div class="items-container">
+                            <h3 class="cont-titles">{{ block.settings.largeMainTitle }}</h3>
+                            <div class="cont-descripe">{{ block.settings.largeMainRichDesc | default: block.settings.largeMainDesc }}</div>
+                        </div>
+                    </a>
+                {% endif %}
+            {% endfor %}
+        </div>
+    </div>
+</section>
+
+{% schema %}
+    {
+        "name": "Home Product Collection",
+        "settings": [
+            {
+                "type": "text",
+                "id": "sectionTitle",
+                "label": "Section Title"
+            },
+            {
+                "type": "text",
+                "id": "sectionDesc",
+                "label": "Section Descripe"
+            }
+        ],
+        "blocks": [
+            {
+                "type": "largeCollItems",
+                "name": "largeCollItems",
+                "settings": [
+                    {
+                        "type": "image_picker",
+                        "id": "largeMainImage",
+                        "label": "Large Main Image"
+                    },
+                    {
+                        "type": "image_picker",
+                        "id": "largeMainImageMobile",
+                        "label": "Large Main Image Mobile"
+                    },
+                    {
+                        "type": "text",
+                        "id": "largeMainTitle",
+                        "label": "Large Main Title"
+                    },
+                    {
+                        "type": "text",
+                        "id": "largeMainDesc",
+                        "label": "Large Main Descripe"
+                    },
+                    {
+                        "type": "richtext",
+                        "id": "largeMainRichDesc",
+                        "label": "Large Main Rich Descripe"
+                    },
+                    {
+                        "type": "url",
+                        "id": "largeMainLINK",
+                        "label": "Large Main LINK"
+                    }
+                ]
+            },
+            {
+                "type": "collItems",
+                "name": "collItems",
+                "settings": [
+                    {
+                        "type": "image_picker",
+                        "id": "collItemMainImage",
+                        "label": "Collection Items Main Image"
+                    },
+                    {
+                        "type": "image_picker",
+                        "id": "collItemMainImageMobile",
+                        "label": "Collection Items Main Image Mobile"
+                    },
+                    {
+                        "type": "text",
+                        "id": "collItemTitle",
+                        "label": "Collection Items Title"
+                    },
+                    {
+                        "type": "text",
+                        "id": "collItemDesc",
+                        "label": "Collection Items Desc"
+                    },
+                    {
+                        "type": "richtext",
+                        "id": "collItemRichDesc",
+                        "label": "Collection Items Rich Desc"
+                    },
+                    {
+                        "type": "url",
+                        "id": "collItemLINK",
+                        "label": "Collection Items LINK"
+                    },
+                    {
+                        "type": "text",
+                        "id": "shopnowbtn",
+                        "label": "Collection Shop Now Button",
+                        "default": "Learn More"
+                    }
+                ]
+            }
+        ],
+        "presets": [
+            {
+                "name": "Home Product Collection"
+            }
+        ]
+    }
+{% endschema %}

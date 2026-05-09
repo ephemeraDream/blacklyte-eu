@@ -1,0 +1,204 @@
+<style>
+    .brands-section{
+        padding: 130px 0 100px;
+        border-bottom: 1px solid #D5D5D5;
+    }
+    .brands-section .section-title{
+        font: 600 40px var(--font-family-3);
+        color: #262629;
+        line-height: 1.4;
+        text-align: center;
+    }
+    .brands-section .section-descripe{
+        font: 500 18px var(--font-family-1);
+        color: #76767F;
+        margin-top: 16px;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+    }
+    .brands-section .section-descripe svg{
+        fill: none;
+        stroke: none;
+        width: 130px;
+        height: 20px;
+    }
+    .brands-section .section-descripe svg.star-icons{
+        width: 18px;
+        height: 18px;
+        margin: 0 8px;
+    }
+    .brands-section .brands-list{
+        display: flex;
+        gap: 94px;
+        margin-top: 73px;
+    }
+    .brands-section .brands-list .items{
+        display: flex;
+        gap: 16px;
+        flex-direction: column;
+        align-items: center;
+        width: calc((100% - 94px) / 3);
+    }
+    .brands-section .brands-list .items .items-logo-img{
+        width: 300px;
+        height: auto;
+    }
+    .brands-section .brands-list .items .items-cont{
+        font: 400 16px var(--font-family-3);
+        color: #262629;
+        line-height: 1.4;
+        text-align: center;
+    }
+
+    /* IPhone */
+    @media(max-width: 767px){
+        .brands-section{
+            padding-top: 50px;
+            padding-bottom: 50px;
+            border-bottom: 1px solid #CCCCCC;
+        }
+        .brands-section .section-title{
+            font-size: 24px;
+        }
+        .brands-section .brands-list{
+            gap: 30px;
+            margin-top: 30px;
+            flex-direction: column;
+        }
+        .brands-section .brands-list .items{
+            width: 100%;
+        }
+        .brands-section .brands-list .items .items-logo-img{
+            width: 220px;
+        }
+        .brands-section .brands-list .items .items-cont{
+            font-size: 14px;
+            line-height: 21px;
+            width: 80%;
+        }
+        .brands-section .section-descripe{
+            font-size: 14px;
+            margin-top: 10px;
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .brands-section .section-descripe svg{
+            width: 70px;
+            height: 10px;
+        }
+        .brands-section .section-descripe svg.star-icons{
+            width: 12px;
+            height: 12px;
+            margin: 0 3px;
+        }
+    }
+
+    /* IPad */
+    @media(min-width: 768px) and (max-width: 1024px){ }
+
+    /* small screen */
+    @media(min-width: 1025px) and (max-width: 1600px){ }
+
+    /* large screen */
+    @media(min-width: 2000px){ }
+    @media(min-width: 1025px) and (max-width: 1480px){
+        .brands-section .container-1570{
+            max-width: 100%;
+            padding-left: var(--padding-left-1);
+            padding-right: var(--padding-right-1);
+        }
+    }
+    
+</style>
+<div class="brands-section" style="background: {{ section.settings.sectionBgColor }}">
+    <div class="container-1570">
+        {% if section.settings.sectionTitle != blank %}
+            <h1 class="section-title">{{ section.settings.sectionTitle }}</h1>
+        {% endif %}
+        {% if section.settings.sectionDescLink != blank %}
+            <a {% if section.settings.sectionDescUrl != blank %} href="{{ section.settings.sectionDescUrl }}" target="_blank" {% else %} aria-disabled="true" {% endif %} class="section-descripe">
+                {{ section.settings.sectionDesc-0 }}
+                {{ section.settings.sectionDescLink }}
+                {{ section.settings.sectionDesc-1 }}
+            </a>
+        {% endif %}
+        <div class="brands-list">
+            {% for block in section.blocks %}
+                <div class="items">
+                    <div class="items-logo-img">
+                        <img src="{{ block.settings.brandsItemImage | img_url: "master" }}" alt="{{ block.settings.brandsItemImage.alt | escape }}" />
+                    </div>
+                    <div class="items-cont">
+                        {{ block.settings.brandsItemCont }}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% schema %}
+    {
+        "name": "Home Brands Images",
+        "tag": "section",
+        "settings": [
+            {
+                "type": "color",
+                "id": "sectionBgColor",
+                "label": "section background color",
+                "default": "#EBEBEB"
+            },
+            {
+                "type": "text",
+                "id": "sectionTitle",
+                "label": "Section Title"
+            },
+            {
+                "type": "text",
+                "id": "sectionDesc-0",
+                "label": "Section Descripe Text 0"
+            },
+            {
+                "type": "html",
+                "id": "sectionDescLink",
+                "label": "Section Descripe Link"
+            },
+            {
+                "type": "html",
+                "id": "sectionDesc-1",
+                "label": "Section Descripe Text 1"
+            },
+            {
+                "type": "url",
+                "id": "sectionDescUrl",
+                "label": "Section Descripe URL"
+            }
+        ],
+        "blocks": [
+            {
+                "type": "brandsItem",
+                "name": "brandsItem",
+                "settings": [
+                    {
+                        "type": "image_picker",
+                        "id": "brandsItemImage",
+                        "label": "Brands Items Image"
+                    },
+                    {
+                        "type": "text",
+                        "id": "brandsItemCont",
+                        "label": "Brands Items Cont"
+                    }
+                ]
+            }
+        ],
+        "presets": [
+            {
+                "name": "Home Brands Images"
+            }
+        ]
+    }
+{% endschema %}

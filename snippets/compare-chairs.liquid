@@ -1,0 +1,35 @@
+{{ 'compare-chairs.css' | asset_url | stylesheet_tag }}
+
+<div class="compare_chair_module">
+  <div class="compare_chairs_left">
+    <img src="{{ chairs_prod_main_image | img_url: 'master' }}" class="image-pc">
+    <img src="{{ chairs_prod_main_image_mobile | img_url: 'master' }}" class="image-mb">
+  </div>
+  <div class="compare_chairs_right">
+    <div class="compare_subtitle">{{ chairs_compare_module_sub_title }}</div>
+    <div class="compare_title">{{ chairs_compare_module_title }}</div>
+    <div class="compare_descr">{{ chairs_compare_module_desc }}</div>
+    <div
+      class="compare_button"
+      {% if chairs_compare_module_button_link != blank %}
+        data-href="{{ chairs_compare_module_button_link }}"
+      {% endif %}
+    >
+      <span class="text">{{ chairs_compare_module_button }}</span>
+      <span class="icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="15" height="8" viewBox="0 0 15 8" fill="none">
+          <path d="M14.3536 4.35355C14.5488 4.15829 14.5488 3.84171 14.3536 3.64645L11.1716 0.464466C10.9763 0.269204 10.6597 0.269204 10.4645 0.464466C10.2692 0.659728 10.2692 0.976311 10.4645 1.17157L13.2929 4L10.4645 6.82843C10.2692 7.02369 10.2692 7.34027 10.4645 7.53553C10.6597 7.7308 10.9763 7.7308 11.1716 7.53553L14.3536 4.35355ZM0 4V4.5H14V4V3.5H0V4Z" fill="#DE2E39"/>
+        </svg>
+      </span>
+    </div>
+  </div>
+</div>
+
+<script>
+  document.querySelector('.compare_chair_module .compare_button').addEventListener('click', (e) => {
+    const href = e.target.closest('.compare_button').dataset.href;
+    if (href) {
+      location.href = href;
+    }
+  });
+</script>

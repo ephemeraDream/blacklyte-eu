@@ -1,0 +1,212 @@
+.partners_blog {
+  width: 100vw;
+  background-color: #F8F8F8;
+  padding: 6.25vw 15.625vw 5.15625vw;
+}
+
+.partners_blog .partners_blog_title {
+  font-family: Roboto;
+  font-weight: 600;
+  font-style: SemiBold;
+  font-size: 36px;
+  leading-trim: NONE;
+  line-height: 60px;
+  letter-spacing: 0%;
+  color: #262629;
+  text-align: center;
+}
+
+.partners_blog .partners_blog_text {
+  font-family: Roboto;
+  font-weight: 400;
+  font-style: Regular;
+  font-size: 16px;
+  leading-trim: NONE;
+  line-height: 24px;
+  letter-spacing: 0.32px;
+  text-align: center;
+  color: rgba(38, 38, 41, .7);
+  margin: 0.3125vw auto 0 auto;
+  width: 42.65625vw;
+}
+
+.partners_blog .partners_blog_contain {}
+
+.partners_blog .slick-slider .slick-track,
+.partners_blog .slick-slider .slick-list {
+  display: flex;
+  align-items: stretch;
+  gap: 0.78125vw;
+}
+
+.partners_blog .partners_blog_box {
+  margin-top: 2.8125vw;
+  position: relative;
+}
+
+.partners_blog .partners_blog_item {
+  flex: 0 0 auto;
+  height: auto;
+  display: flex !important;
+  flex-direction: column;
+  border: 1px solid #E8E8E8;
+  background-color: #fff;
+  width: 22.34375vw;
+  border-radius: 1.25vw;
+}
+
+.partners_blog .partners_blog_item_img {
+  width: 100%;
+  height: 15.625vw;
+  overflow: hidden;
+  border-radius: 1.25vw 1.25vw 0 0;
+}
+
+.partners_blog .partners_blog_item_img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+  transition: transform .4s ease-in-out;
+  border-radius: 1.25vw 1.25vw 0 0;
+}
+
+.partners_blog .partners_blog_item_info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1.25vw 1.5625vw 0.78125vw;
+}
+
+.partners_blog .partners_blog_item_title {
+  font-family: Roboto;
+  font-weight: 500;
+  font-style: Medium;
+  font-size: 20px;
+  leading-trim: NONE;
+  line-height: 30px;
+  letter-spacing: 0%;
+  color: #262629;
+}
+
+.partners_blog .partners_blog_item_date {
+  font-family: Roboto;
+  font-weight: 400;
+  font-style: Regular;
+  font-size: 16px;
+  leading-trim: NONE;
+  line-height: 24px;
+  letter-spacing: 0.32px;
+  color: rgba(38, 38, 41, .7);
+  margin-top: 0.46875vw;
+}
+
+.partners_blog .partners_blog_item_link {
+  font-family: Roboto;
+  font-weight: 500;
+  font-style: Medium;
+  font-size: 20px;
+  leading-trim: NONE;
+  line-height: 60px;
+  letter-spacing: 0%;
+  color: rgba(38, 38, 41, .7);
+}
+
+.partners_blog .partners_blog_prev,
+.partners_blog .partners_blog_next {
+  width: 2.96875vw;
+  height: 2.96875vw;
+  display: flex;
+  border: none;
+  padding: 0;
+}
+
+.partners_blog .partners_blog_prev {
+  left: 1.25vw;
+}
+
+.partners_blog .partners_blog_next {
+  right: 1.25vw;
+}
+
+.partners_blog .partners_blog_prev svg,
+.partners_blog .partners_blog_next svg {
+  width: 100%;
+  height: 100%;
+  fill: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .partners_blog .partners_blog_item:hover .partners_blog_item_img img {
+    transform: scale(1.1);
+  }
+
+  .partners_blog .partners_blog_item:hover {
+    border-color: #262629;
+  }
+
+  .partners_blog .partners_blog_item:hover .partners_blog_item_link {
+    color: #262629;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .partners_blog {
+    padding: 12vw 5.33vw 21.6vw;
+  }
+
+  .partners_blog .partners_blog_title {
+    font-size: 30px;
+    line-height: 40px;
+  }
+
+  .partners_blog .partners_blog_text {
+    font-size: 14px;
+    line-height: 22px;
+    margin-top: 3.2vw;
+    width: 100%;
+  }
+
+  .partners_blog .partners_blog_box {
+    margin-top: 11.2vw;
+  }
+
+  .partners_blog .partners_blog_item {
+    border-radius: 3.2vw;
+    margin: 0 0.8vw;
+  }
+
+  .partners_blog .partners_blog_item_img {
+    height: 62.4vw;
+    border-radius: 3.2vw 3.2vw 0 0;
+  }
+
+  .partners_blog .partners_blog_item_info {
+    padding: 4.8vw 6.4vw 0.8vw;
+  }
+
+  .partners_blog .slick-dots li button,
+  .partners_blog .slider-dots li button {
+    width: 8vw;
+    height: 0.8vw;
+    background-color: #EDEFF2;
+    border-radius: 0.8vw;
+    border: none;
+  }
+
+  .partners_blog .slick-dots li.slick-active button,
+  .partners_blog .slider-dots li.active button {
+    background-color: #262629;
+  }
+
+  .partners_blog .partners_blog_prev,
+  .partners_blog .partners_blog_next {
+    display: none;
+  }
+
+  .partners_blog .slick-slider .slick-track,
+  .partners_blog .slick-slider .slick-list {
+    gap: 0;
+  }
+}

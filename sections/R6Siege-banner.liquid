@@ -1,0 +1,276 @@
+{% assign first_block = section.blocks | first %}
+
+<style>
+  .large-image-pc{
+      display: block;
+  }
+  .large-image-mb{
+      display: none;
+  }
+  .large-image-container{
+      position: relative;
+      overflow: hidden;
+  }
+
+  .large-image-container .large-image img{
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: auto;
+  }
+  .section-{{ section.id }} .cont-container{
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      bottom: 80px;
+  }
+  .section-{{ section.id }} .cont-container img{
+      height: auto;
+  }
+  .section-{{ section.id }} .cont-container .title-logo svg{
+      {% comment %} width: 32vw; {% endcomment %}
+      width: 100%;
+      height: auto;
+  }
+  .section-{{ section.id }} .cont-container .title,
+  .section-{{ section.id }} .cont-container .title-2{
+      font: 700 100px 'DIN';
+      color: #FDDA6F;
+      text-shadow: 0px 4px 4px #00000080;
+  }
+  .section-{{ section.id }} .cont-container .title-2{
+      display: flex;
+      align-items: center;
+  }
+  .section-{{ section.id }} .cont-container .title-2 img{
+      width: 100px;
+      height: fit-content;
+  }
+  .section-{{ section.id }} .cont-container .subtitle{
+      font: 700 100px 'DIN';
+      color: #fff;
+  }
+  .section-{{ section.id }} .cont-container .years-text{
+      font: 700 46px 'DIN';
+      color: #fff;
+      text-align: center;
+      position: relative;
+  }
+  .section-{{ section.id }} .cont-container .years-text:before,
+  .section-{{ section.id }} .cont-container .years-text:after{
+      display: inline-block;
+      content: '';
+      width: calc((100% - 120px) / 2);
+      height: 1px;
+      background: #fff;
+  }
+  .section-{{ section.id }} .cont-container .years-text:before{
+      position: absolute;
+      top: 50%;
+      left: 0;
+  }
+  .section-{{ section.id }} .cont-container .years-text:after{
+      position: absolute;
+      right: 0;
+      top: 50%;
+  }
+  .section-{{ section.id }} .cont-container .desc-text{
+      font: 500 27px 'DIN';
+      color: #FDDA6F;
+      text-align: center;
+  }
+  .section-{{ section.id }} .large-image-container .large-image {
+      padding-top: {% unless first_block.settings.imageATpc.presentation.focal_point == '50.0% 50.0%' %}{{ 1 | divided_by: first_block.settings.imageATpc.aspect_ratio | times: 120 }}%{% else %}{{ 1 | divided_by: first_block.settings.imageATpc.aspect_ratio | times: 100 }}%{% endunless %}
+  }
+
+  .section-{{ section.id }} .large-image-title{
+    font-family: Poppins;
+    font-weight: 700;
+    font-style: Bold;
+    font-size: 40px;
+    line-height: 1.2;
+    letter-spacing: 0%;
+    text-align: center;
+    text-transform: uppercase;
+    color: #D0DAE4;
+    width: max-content;
+    text-shadow: 0 4px 0 #00000040;
+  }
+
+  {% comment %} iPhone {% endcomment %}
+  @media(max-width: 767px){
+      .large-image-pc{
+          display: none;
+      }
+      .large-image-mb{
+          display: block;
+      }
+      .section-{{ section.id }} .cont-container {
+          width: 80%;
+          bottom: 40px;
+      }
+      .section-{{ section.id }} .cont-container .title-logo svg{
+          width: 66vw;
+          margin: auto;
+      }
+      .section-{{ section.id }} .cont-container .subtitle {
+          font-size: 50px;
+      }
+      .section-{{ section.id }} .cont-container .bottom-cont{
+          position: absolute;
+          bottom: 20px;
+          left: 50%;
+          transform: translateX(-50%);
+      }
+      .section-{{ section.id }} .cont-container .years-text {
+          font-size: 20px;
+      }
+      .section-{{ section.id }} .cont-container .years-text:before,
+      .section-{{ section.id }} .cont-container .years-text:after{
+          width: calc((100% - 70px) / 2);
+      }
+      .section-{{ section.id }} .cont-container .desc-text{
+          font-size: 18px;
+          white-space: nowrap;
+      }
+      .section-{{ section.id }} .large-image-container .large-image {
+          padding-top: {% unless first_block.settings.imageMobile.presentation.focal_point == '50.0% 50.0%' %}{{ 1 | divided_by: first_block.settings.imageMobile.aspect_ratio | times: 120 }}%{% else %}{{ 1 | divided_by: first_block.settings.imageMobile.aspect_ratio | times: 100 }}%{% endunless %}
+      }
+
+      .section-{{ section.id }} .large-image-title{
+          font-size: 26px;
+          width: auto;
+      }
+
+  }
+
+  {% comment %} iPad {% endcomment %}
+  @media(min-width: 768px) and (max-width: 1024px){
+      .section-{{ section.id }} .cont-container .subtitle{
+          font-size: 58px;
+      }
+      .section-{{ section.id }} .cont-container .years-text{
+          font-size: 25px;
+      }
+      .section-{{ section.id }} .cont-container .desc-text {
+          font-size: 16px;
+      }
+      .section-{{ section.id }} .cont-container .title-logo svg{
+          width: 32vw;
+      }
+
+  }
+
+  {% comment %} small screen {% endcomment %}
+  @media(min-width: 1025px) and (max-width: 1490px){
+      .section-{{ section.id }} .cont-container .subtitle{
+          font-size: 90px;
+      }
+      
+  }
+</style>
+
+<div id="{{ section.id }}" data-section-id="{{ section.id }}" class="section-{{ section.id }}">
+  <div class="container-full">
+    {% for block in section.blocks %}
+      {% if block.type == 'largeImage' %}
+        <div class="large-image-container">
+          {% render 'picture-simple',
+            image: block.settings.imageATpc,
+            image_mobile: block.settings.imageMobile,
+            mobile_dpr: 2,
+            loading: "eager"
+          %}
+
+          <div class="cont-container">
+            <div class="top-cont">
+              {% if block.settings.sectionTitle != blank %}
+                <div class="large-image-title">{{ block.settings.sectionTitle }}</div>
+              {% endif %}
+              {% if block.settings.sectionSubTitle != blank %}
+                <div class="subtitle">{{ block.settings.sectionSubTitle }}</div>
+              {% endif %}
+              
+            </div>
+            <div class="bottom-cont">
+              {% if block.settings.sectionYears != blank %}
+                <div class="years-text">{{ block.settings.sectionYears }}</div>
+              {% endif %}
+              {% if block.settings.sectionDesc != blank %}
+                <div class="desc-text">{{ block.settings.sectionDesc }}</div>
+              {% endif %}
+              
+            </div>
+          </div>
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "R6 Siege Banner",
+  "tag": "section",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "largeImage",
+      "name": "largeImage",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "imageATpc",
+          "label": "Web Image Banner"
+        },
+        {
+          "type": "image_picker",
+          "id": "imageMobile",
+          "label": "Image Banner Mobile"
+        },
+        {
+          "type": "text",
+          "id": "sectionTitle",
+          "label": "Section Title",
+          "default": "Munich Major"
+        },
+        {
+          "type": "image_picker",
+          "id": "r6LogoImage",
+          "label": "section Title R6 Logo"
+        },
+        {
+          "type": "text",
+          "id": "sectionTitle2",
+          "label": "Section Title 2"
+        },
+        {
+          "type": "image_picker",
+          "id": "titleLogo",
+          "label": "section title logo"
+        },
+        {
+          "type": "text",
+          "id": "sectionSubTitle",
+          "label": "Section Sub Title"
+        },
+        {
+          "type": "text",
+          "id": "sectionDesc",
+          "label": "Section Descripe"
+        },
+        {
+          "type": "text",
+          "id": "sectionYears",
+          "label": "Section Years"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "R6 Siege Banner"
+    }
+  ]
+}
+{% endschema %}
