@@ -432,34 +432,96 @@
     </div>
 </div>
 
-<script src="{{ 'hls.js' | asset_url }}" defer></script>
-
 <script defer>
   (function ($) {
-    const loadVideoSrc = (video) => {
-      const dataSrc = video.getAttribute('data-src');
-      const dataPoster = video.getAttribute('data-poster');
-      if (!dataSrc || video.getAttribute('data-loaded')) return;
-      video.setAttribute('poster', dataPoster);
-      if (Hls.isSupported()) {
-        const hls = new Hls();
-        hls.loadSource(dataSrc);
-        hls.attachMedia(video);
-      } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
-        {% comment %} Safari 原生支持 {% endcomment %}
-        video.src = dataSrc;
-      } else {
-        console.warn('该浏览器不支持 HLS');
+    const hlsAssetUrl = "{{ 'hls.js' | asset_url }}";
+    let hlsScriptLoading = false;
+    const hlsReadyCallbacks = [];
+
+    const ensureHls = (callback) => {
+      if (window.Hls) {
+        callback();
         return;
       }
 
-      video.setAttribute('data-loaded', 'true');
+      hlsReadyCallbacks.push(callback);
+
+      if (hlsScriptLoading) {
+        return;
+      }
+
+      hlsScriptLoading = true;
+      const script = document.createElement('script');
+      script.src = hlsAssetUrl;
+      script.defer = true;
+      script.onload = () => {
+        hlsScriptLoading = false;
+        hlsReadyCallbacks.splice(0).forEach((cb) => cb());
+      };
+      script.onerror = () => {
+        hlsScriptLoading = false;
+        hlsReadyCallbacks.splice(0);
+      };
+      document.head.appendChild(script);
+    };
+
+    const loadVideoSrc = (video, callback) => {
+      const dataSrc = video.getAttribute('data-src');
+      const dataPoster = video.getAttribute('data-poster');
+      if (!dataSrc) return;
+
+      if (video.getAttribute('data-loaded') === 'true') {
+        if (callback) callback();
+        return;
+      }
+
+      if (callback) {
+        video._loadCallbacks = video._loadCallbacks || [];
+        video._loadCallbacks.push(callback);
+      }
+
+      if (video.getAttribute('data-loading') === 'true') {
+        return;
+      }
+
+      video.setAttribute('data-loading', 'true');
+      video.setAttribute('poster', dataPoster);
+
+      const onMetadata = () => {
+        video.setAttribute('data-loaded', 'true');
+        video.removeAttribute('data-loading');
+        const callbacks = video._loadCallbacks || [];
+        video._loadCallbacks = [];
+        callbacks.forEach((cb) => cb());
+      };
+
+      if (dataSrc.includes('.m3u8') && video.canPlayType('application/vnd.apple.mpegurl')) {
+        video.src = dataSrc;
+        video.addEventListener('loadedmetadata', onMetadata, { once: true });
+      } else if (dataSrc.includes('.m3u8')) {
+        ensureHls(() => {
+          if (window.Hls && window.Hls.isSupported()) {
+            const hls = new window.Hls();
+            hls.loadSource(dataSrc);
+            hls.attachMedia(video);
+            hls.on(window.Hls.Events.MANIFEST_PARSED, onMetadata);
+            video._hls = hls;
+          } else {
+            console.warn('该浏览器不支持 HLS');
+          }
+        });
+      } else {
+        video.src = dataSrc;
+        video.addEventListener('loadedmetadata', onMetadata, { once: true });
+      }
     };
 
 
     const playVideo = (video) => {
       if (!video) return;
-      video.play().catch((e) => console.warn('播放失败:', e));
+      loadVideoSrc(video, () => {
+        video.play().catch((e) => console.warn('播放失败:', e));
+      });
     };
 
     const pauseAllVideos = () => {
@@ -473,7 +535,6 @@
     const playFirstVisibleVideo = () => {
       const video = $('.slick-current video.Influencer-lazy-video')[0];
       if (video) {
-        loadVideoSrc(video);
         playVideo(video);
         $(video).closest('.video-item').find('.focusable-play-button').css('opacity', 0);
       }
@@ -504,14 +565,37 @@
     {% comment %} 切换时只播放当前页第一个视频 {% endcomment %}
     $('.video-list-container').on('afterChange', function (event, slick, currentSlide) {
       pauseAllVideos();
-      playFirstVisibleVideo();
+      if (sectionVideosStarted) {
+        playFirstVisibleVideo();
+      }
     });
 
-    {% comment %} 初始化时播放第一个视频 {% endcomment %}
+    let sectionVideosStarted = false;
+    const startSectionVideos = () => {
+      if (sectionVideosStarted) return;
+      sectionVideosStarted = true;
+      playFirstVisibleVideo();
+    };
+
+    {% comment %} 进入视口附近后再播放第一个视频，避免首页首屏抢 HLS 分片。 {% endcomment %}
     $(document).ready(function () {
-      setTimeout(() => {
-        playFirstVisibleVideo();
-      }, 200);
+      const sectionEl = document.querySelector('.Influencer-return');
+      if ('IntersectionObserver' in window && sectionEl) {
+        const sectionObserver = new IntersectionObserver((entries, obs) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              startSectionVideos();
+              obs.disconnect();
+            }
+          });
+        }, {
+          rootMargin: '200px 0px',
+          threshold: 0.1,
+        });
+        sectionObserver.observe(sectionEl);
+      } else {
+        window.addEventListener('load', startSectionVideos, { once: true });
+      }
     });
 
     {% comment %} 点击视频：懒加载 + 播放/暂停切换 {% endcomment %}
@@ -536,7 +620,7 @@
 
       {% comment %} // 切换当前视频播放状态 {% endcomment %}
       if (video.paused) {
-        video.play();
+        playVideo(video);
         button.css('opacity', 0);
       } else {
         video.pause();
@@ -576,7 +660,7 @@
           }
         });
 
-        currentVideo.play();
+        playVideo(currentVideo);
         $(this).find('.focusable-play-button').css('opacity', 0);
       });
     }
@@ -598,26 +682,35 @@
         modal.classList.add('is-active');
         document.body.style.overflow = 'hidden';
 
+        const playModalVideo = () => {
+            video.play().catch((error) => console.warn('弹窗视频播放失败:', error));
+        };
+
         {% comment %} HLS 播放逻辑 {% endcomment %}
         if (videoUrl.includes('.m3u8')) {
-            if (Hls.isSupported()) {
-                const hls = new Hls();
-                hls.loadSource(videoUrl);
-                hls.attachMedia(video);
-                hls.on(Hls.Events.MANIFEST_PARSED, () => video.play());
-                
-                {% comment %} 绑定到 video 对象以便关闭时销毁 {% endcomment %}
-                video._hls = hls;
-            } 
             {% comment %} 针对 Safari 原生支持 {% endcomment %}
-            else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+            if (video.canPlayType('application/vnd.apple.mpegurl')) {
                 video.src = videoUrl;
-                video.addEventListener('loadedmetadata', () => video.play());
+                video.addEventListener('loadedmetadata', playModalVideo, { once: true });
+            } else {
+                ensureHls(() => {
+                    if (window.Hls && window.Hls.isSupported()) {
+                        const hls = new window.Hls();
+                        hls.loadSource(videoUrl);
+                        hls.attachMedia(video);
+                        hls.on(window.Hls.Events.MANIFEST_PARSED, playModalVideo);
+
+                        {% comment %} 绑定到 video 对象以便关闭时销毁 {% endcomment %}
+                        video._hls = hls;
+                    } else {
+                        console.warn('该浏览器不支持 HLS');
+                    }
+                });
             }
         } else {
             {% comment %} 普通 MP4 逻辑 {% endcomment %}
             video.src = videoUrl;
-            video.play();
+            playModalVideo();
         }
     });
 

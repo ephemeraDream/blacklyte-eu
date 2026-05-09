@@ -136,18 +136,20 @@
                    {% if block.type == "item" %}
                         <div class="video-item">
                             {% if block.settings.itemVideo != blank %}
-                                {% assign poster_image = block.settings.itemPosterImage | image_url %}
-                                {{
-                                    block.settings.itemVideo
-                                    | video_tag:
-                                    class: 'video-item-sett',
-                                    loop: true,
-                                    muted: true,
-                                    playsinline: true,
-                                    autoplay: true,
-                                    preload: 'metadata',
-                                    poster: poster_image
-                                }}
+                                {% assign poster_image = block.settings.itemPosterImage | image_url: width: 1600 %}
+                                <video
+                                    class="video-item-sett"
+                                    loop
+                                    muted
+                                    playsinline
+                                    preload="none"
+                                    data-poster="{{ poster_image }}"
+                                    data-home-video-lazy
+                                >
+                                    {% for source in block.settings.itemVideo.sources %}
+                                        <source data-src="{{ source.url }}" type="{{ source.mime_type }}">
+                                    {% endfor %}
+                                </video>
                             {% else %}
                                 <picture class="trust-data-item-image">
                                     <source media="(max-width: 768px)"
@@ -184,6 +186,60 @@
         {% endif %}
     </div>
 </div>
+
+<script>
+    (function () {
+        const section = document.getElementById('{{ section.id }}');
+        if (!section) return;
+
+        const videos = section.querySelectorAll('video[data-home-video-lazy]');
+        if (!videos.length) return;
+
+        const loadVideo = (video) => {
+            if (video.dataset.loaded === 'true') return;
+
+            if (video.dataset.poster && !video.getAttribute('poster')) {
+                video.setAttribute('poster', video.dataset.poster);
+            }
+
+            video.querySelectorAll('source[data-src]').forEach((source) => {
+                source.src = source.dataset.src;
+            });
+            video.dataset.loaded = 'true';
+            video.load();
+        };
+
+        const playVideo = (video) => {
+            loadVideo(video);
+            const playPromise = video.play();
+            if (playPromise && typeof playPromise.catch === 'function') {
+                playPromise.catch(() => {});
+            }
+        };
+
+        if ('IntersectionObserver' in window) {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    const video = entry.target;
+                    if (entry.isIntersecting) {
+                        playVideo(video);
+                    } else {
+                        video.pause();
+                    }
+                });
+            }, {
+                rootMargin: '300px 0px',
+                threshold: 0.1
+            });
+
+            videos.forEach((video) => observer.observe(video));
+        } else {
+            window.addEventListener('load', () => {
+                videos.forEach(playVideo);
+            }, { once: true });
+        }
+    })();
+</script>
 
 {% schema %}
 {
