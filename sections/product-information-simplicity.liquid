@@ -1,10 +1,6 @@
 {{ 'section-product-information-simplicity.css' | asset_url | stylesheet_tag }}
 {{ 'section-product-information-simplicity-fitter.css' | asset_url | stylesheet_tag }}
 <link
-  rel="stylesheet"
-  href="https://cdn.shopify.com/s/files/1/0663/6742/2695/files/swiper-bundle.min.css?v=1702624065"
->
-<link
   rel="preload"
   as="image"
   href="{{ product.selected_or_first_available_variant.metafields.custom.multiple_images.value | first | image_url }}"
@@ -1539,7 +1535,6 @@
     });
   </script>
 {% endcomment %}
-<script src="https://cdn.shopify.com/s/files/1/0663/6742/2695/files/swiper-bundle.min.js?v=1702624149"></script>
 <script>
   const show_degree = JSON.parse({{ section.settings.show_degree | json }})
   const img_show_type = "{{ section.settings.img_show_type }}"
