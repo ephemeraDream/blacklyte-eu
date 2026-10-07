@@ -560,18 +560,7 @@
 </div>
 {{ 'component-sticky-add-to-cart.css' | asset_url | stylesheet_tag }}
 <div class="product-details">
-  {%
-    render 'halo-sticky-add-to-cart',
-    product: product,
-    current_variant: product.selected_or_first_available_variant,
-    variantCount: product.variants | size,
-    show_vendor: false,
-    sticky_atc_layout: "1",
-    container: "container",
-    show_qty: false,
-    qty_style: "1",
-    subtotal: current_variant.price | money
-  %}
+  {% render 'halo-sticky-add-to-cart', product: product, current_variant: product.selected_or_first_available_variant, variantCount: product.variants, show_vendor: false, sticky_atc_layout: "1", container: "container", show_qty: false, qty_style: "1", subtotal: current_variant.price %}
 </div>
 <script src="{{ 'sticky-add-to-cart.js' | asset_url }}" defer="defer"></script>
 <script src="https://cdn.jsdelivr.net/npm/url-parse@1.5.10/dist/url-parse.min.js"></script>
@@ -2249,3 +2238,28 @@ let id = productData.variants.find(f=> skuArray.length === f.options.length && s
   "presets": [{ "name": "A Product Main" }]
 }
 {% endschema %}
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: |-
+    {%
+        render 'halo-sticky-add-to-cart',
+        product: product,
+        current_variant: product.selected_or_first_available_variant,
+        variantCount: product.variants | size,
+        show_vendor: false,
+        sticky_atc_layout: "1",
+        container: "container",
+        show_qty: false,
+        qty_style: "1",
+        subtotal: current_variant.price | money
+      %}
+  to: '{% render ''halo-sticky-add-to-cart'', product: product, current_variant: product.selected_or_first_available_variant,
+    variantCount: product.variants, show_vendor: false, sticky_atc_layout: "1", container:
+    "container", show_qty: false, qty_style: "1", subtotal: current_variant.price
+    %}'
+  position: 28976..29260
+{% endcomment %}

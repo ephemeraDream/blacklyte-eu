@@ -138,11 +138,7 @@
                             </div>
                         {%- endif -%}
                         {%- if show_compare -%}
-                            {% render 'product-compare'.
-                                product: product_card_product,
-                                sectionId: sectionId,
-                                class: 'card-product__group-item card-compare card-compareIcon'
-                            %}
+                            {% render 'product-compare', product: product_card_product, sectionId: sectionId, class: 'card-product__group-item card-compare card-compareIcon' %}
                         {%- endif -%}
                     </div>
                 {%- endif -%}
@@ -310,3 +306,19 @@
         </div>
     </div>
 </div>
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: |-
+    {% render 'product-compare'.
+                                    product: product_card_product,
+                                    sectionId: sectionId,
+                                    class: 'card-product__group-item card-compare card-compareIcon'
+                                %}
+  to: "{% render 'product-compare', product: product_card_product, sectionId: sectionId,
+    class: 'card-product__group-item card-compare card-compareIcon' %}"
+  position: 7719..7867
+{% endcomment %}
